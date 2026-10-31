@@ -6,5 +6,3 @@
 
 - 프로젝트 저장소: [youngni05/gait-scoring](https://github.com/youngni05/gait-scoring)
 - [방향 전환 이후 중간발표 흐름과 원고](docs/2026-10-31-interim-presentation.md): 전환 이유, 목표 시스템, 데이터 제약, 실험과 진행 상황을 정리했다.
-
-이 저장소에는 현재 프로젝트 안내와 발표 문서를 올렸다. 기존 앱·서버·연구 작업본의 전체 코드 이관과 통합이 완료됐다는 뜻은 아니다.
