@@ -1,5 +1,7 @@
 # MotionBERT 자료 확대·부분학습 실험
 
+**배포 목적은 대학 과목 제출용 비상업적 연구 결과 공유다.** 모델 압축에 Stanford 학습 자료와 MotionBERT 사전학습 모델의 출처·라이선스 원문·부분학습 및 공개 변환 내역을 동봉했다. [출처·조건](../licenses/bundles/motionbert/SOURCES.md), [수정 내역](../licenses/bundles/motionbert/MODIFICATIONS.md), [적용 범위](../licenses/README.md)를 함께 확인한다.
+
 2026-10-30에 수행한 실험이다. 사전학습된 MotionBERT가 움직임을 요약하고 작은 회귀 출력부가 좌우 GDI를 예측한다. 자료를 늘린 뒤 본체 일부도 GDI에 맞게 조정했을 때 오차가 줄어드는지 확인했다. **같은 695명의 MAE는 고정 MotionBERT+Ridge 8.526630점에서 마지막 단계 부분학습 8.354702점으로 약 0.172점 감소했다.**
 
 ## 모델이 배우는 것과 실험 순서

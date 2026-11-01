@@ -2,3 +2,6 @@
 research/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Keep upstream MotionBERT formatting intact.
 research/2026-10-30-motionbert695/lib/** -whitespace
+# Keep official license texts byte-for-byte, including upstream formatting.
+research/licenses/*.txt -whitespace
+research/licenses/*.html -whitespace

@@ -38,12 +38,19 @@
         }
       },
       "archive": "sppb-archived-models-20261102.tar.gz",
-      "archive_bytes": 808721,
-      "archive_sha256": "dcd7ae28e981cd6f13176ac0317ef14099c34a4b4d75beed9ea1adfaba1dcb4b",
+      "archive_bytes": 817518,
+      "archive_sha256": "d0abee6b1ffd961e672a99a90b9220fceb732a39403974364757136cb233239d",
       "source_models_unchanged": true,
       "archive_member_hashes_verified": true,
       "all_five_person_splits_disjoint": true,
-      "cli_saved_output_verified": true
+      "cli_saved_output_verified": true,
+      "previous_archive_sha256": "dcd7ae28e981cd6f13176ac0317ef14099c34a4b4d75beed9ea1adfaba1dcb4b",
+      "packaging_update": {
+        "date": "2026-11-02",
+        "notices_and_license_copies_added": true,
+        "all_original_model_and_manifest_bytes_identical": true,
+        "new_model_training": false
+      }
     },
     "tug": {
       "people": 298,
@@ -72,12 +79,19 @@
         }
       },
       "archive": "tug-archived-models-20261102.tar.gz",
-      "archive_bytes": 1232116,
-      "archive_sha256": "168e06a2aa108fe9594dcaf273dbe5f30a7a746821255e767cf3653e0011f06b",
+      "archive_bytes": 1240845,
+      "archive_sha256": "9b6b167a79038488788fe7290922d161bd2db6b08cd31f5d0b0c07e103818731",
       "source_models_unchanged": true,
       "archive_member_hashes_verified": true,
       "all_five_person_splits_disjoint": true,
-      "cli_saved_output_verified": true
+      "cli_saved_output_verified": true,
+      "previous_archive_sha256": "168e06a2aa108fe9594dcaf273dbe5f30a7a746821255e767cf3653e0011f06b",
+      "packaging_update": {
+        "date": "2026-11-02",
+        "notices_and_license_copies_added": true,
+        "all_original_model_and_manifest_bytes_identical": true,
+        "new_model_training": false
+      }
     }
   },
   "passed": true,

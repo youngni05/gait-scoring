@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-02",
+  "purpose": "Non-commercial academic research results for university coursework",
+  "scope": "Add notices and license copies to existing model archives; no training or model changes",
+  "bundles": [
+    {
+      "key": "cnn",
+      "release_tag": "research-initial-models-20261101",
+      "archive": "cnn-initial695-weights.tar.gz",
+      "previous_archive_sha256": "4354a0b47b45ae049a8c17978147ccc03cd192d09adf93a323d4df03638a882f",
+      "archive_sha256": "37e0b3c45ba87bba4d4615d49bc1a52b996b57602329e31b26230087d46a89d6",
+      "archive_bytes": 1117575,
+      "original_files_preserved": 6,
+      "model_files_preserved": 5,
+      "every_original_member_byte_identical": true,
+      "added_files": {
+        "cnn/RESEARCH_USE.md": "c25bd1dfc54110fdabe82984c6ab8d7f33ad5cd91363837ec13f4372f2f9b9c1",
+        "cnn/SOURCES.md": "66f74c33a2592f4a895ba1df17363023e1e3ea8541a0890522d664a6b9c50af2",
+        "cnn/MODIFICATIONS.md": "292ba2463b70a4ed93c01793b33b05707f7f4c784f320e5d3a172eeebac63386",
+        "cnn/NOTICE.md": "36c12c2958534a0ad3654a3d3d4dd639d4f641262d86188f74856ae82b008e86",
+        "cnn/LICENSES/CC-BY-NC-2.0.html": "6a87a5c53ca99ba455188615c17445aba08ea76a36f5149dbd72cd040777d2cb",
+        "cnn/LICENSES/Apache-2.0-mobile-gaitlab.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      "new_model_training": false
+    },
+    {
+      "key": "motionbert",
+      "release_tag": "research-initial-models-20261101",
+      "archive": "motionbert-initial695-weights.tar.gz",
+      "previous_archive_sha256": "632eca53c34bb451b244a213c918b7e8fb553705e9c11f662c4c970e60cc54c3",
+      "archive_sha256": "370db193283a8e2eadbc4c0436b3ebc7f090b0c8410f3ce9566e2bd3b7b92114",
+      "archive_bytes": 297861243,
+      "original_files_preserved": 6,
+      "model_files_preserved": 5,
+      "every_original_member_byte_identical": true,
+      "added_files": {
+        "motionbert/RESEARCH_USE.md": "c25bd1dfc54110fdabe82984c6ab8d7f33ad5cd91363837ec13f4372f2f9b9c1",
+        "motionbert/SOURCES.md": "b52b3f560e821b5210f28c5e9acb3dde4dd7601a1ffd0d7a1d95dc3def9dcd64",
+        "motionbert/MODIFICATIONS.md": "114aa89d4e766e430f7bbc0c8637dcad536f0533931ac1828a6ed0ebf9138a1a",
+        "motionbert/NOTICE.md": "dbfa9e5449f26fd65703ac71889c217089abd3546f2937ff4df5d2f4616eb4fb",
+        "motionbert/LICENSES/CC-BY-NC-2.0.html": "6a87a5c53ca99ba455188615c17445aba08ea76a36f5149dbd72cd040777d2cb",
+        "motionbert/LICENSES/Apache-2.0-MotionBERT-code.txt": "045ee95b545fb51f5c6e28e1a50644fe618f6278f3c8720852c6fe96f53b472f",
+        "motionbert/LICENSES/Apache-2.0-MotionBERT-model.txt": "045ee95b545fb51f5c6e28e1a50644fe618f6278f3c8720852c6fe96f53b472f"
+      },
+      "new_model_training": false
+    },
+    {
+      "key": "sppb",
+      "release_tag": "research-functional-archive-20261102",
+      "archive": "sppb-archived-models-20261102.tar.gz",
+      "previous_archive_sha256": "dcd7ae28e981cd6f13176ac0317ef14099c34a4b4d75beed9ea1adfaba1dcb4b",
+      "archive_sha256": "d0abee6b1ffd961e672a99a90b9220fceb732a39403974364757136cb233239d",
+      "archive_bytes": 817518,
+      "original_files_preserved": 21,
+      "model_files_preserved": 20,
+      "every_original_member_byte_identical": true,
+      "added_files": {
+        "sppb/RESEARCH_USE.md": "c25bd1dfc54110fdabe82984c6ab8d7f33ad5cd91363837ec13f4372f2f9b9c1",
+        "sppb/SOURCES.md": "4901d2611eb521c45858d6fe41bbfc7787117761c834bc33f9c809b443605ff0",
+        "sppb/MODIFICATIONS.md": "8ab89db0f86a7e053f5e321320430fe00ce4e5306ed58f56e406a07474a051c4",
+        "sppb/NOTICE.md": "4c1dfbe666e6d9eae0bbc2b7a69e654efdd0c78f3e47fc603f24faf8aa9b11ba",
+        "sppb/LICENSES/CC-BY-4.0.txt": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+      },
+      "new_model_training": false
+    },
+    {
+      "key": "tug",
+      "release_tag": "research-functional-archive-20261102",
+      "archive": "tug-archived-models-20261102.tar.gz",
+      "previous_archive_sha256": "168e06a2aa108fe9594dcaf273dbe5f30a7a746821255e767cf3653e0011f06b",
+      "archive_sha256": "9b6b167a79038488788fe7290922d161bd2db6b08cd31f5d0b0c07e103818731",
+      "archive_bytes": 1240845,
+      "original_files_preserved": 21,
+      "model_files_preserved": 20,
+      "every_original_member_byte_identical": true,
+      "added_files": {
+        "tug/RESEARCH_USE.md": "c25bd1dfc54110fdabe82984c6ab8d7f33ad5cd91363837ec13f4372f2f9b9c1",
+        "tug/SOURCES.md": "593c0475b90968efed8cda293147122a54b79cacf08f5987b926a0bb48517688",
+        "tug/MODIFICATIONS.md": "595e0bc11ceb600d51fc1ffece58850883dd3add05beee816e5f0ff3695c51c7",
+        "tug/NOTICE.md": "564cab0b87b1d4d27b6230c997314cb39f16b87c015790d7a7b95efdb6ccd6f3",
+        "tug/LICENSES/CC-BY-4.0.txt": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+      },
+      "new_model_training": false
+    }
+  ],
+  "passed": true
+}

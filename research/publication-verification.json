@@ -11,8 +11,8 @@
   "experiments": {
     "cnn": {
       "archive": "cnn-initial695-weights.tar.gz",
-      "archive_bytes": 1101931,
-      "archive_sha256": "4354a0b47b45ae049a8c17978147ccc03cd192d09adf93a323d4df03638a882f",
+      "archive_bytes": 1117575,
+      "archive_sha256": "37e0b3c45ba87bba4d4615d49bc1a52b996b57602329e31b26230087d46a89d6",
       "models": [
         {
           "architecture": "cnn",
@@ -66,12 +66,19 @@
       "max_saved_prediction_difference_gdi": 2.288818359375e-05,
       "reinferred_person_mae": 8.683496292723667,
       "seconds": 0.12594319999334402,
-      "cli_saved_output_checked": true
+      "cli_saved_output_checked": true,
+      "previous_archive_sha256": "4354a0b47b45ae049a8c17978147ccc03cd192d09adf93a323d4df03638a882f",
+      "packaging_update": {
+        "date": "2026-11-02",
+        "notices_and_license_copies_added": true,
+        "all_original_model_and_manifest_bytes_identical": true,
+        "new_model_training": false
+      }
     },
     "motionbert": {
       "archive": "motionbert-initial695-weights.tar.gz",
-      "archive_bytes": 297845011,
-      "archive_sha256": "632eca53c34bb451b244a213c918b7e8fb553705e9c11f662c4c970e60cc54c3",
+      "archive_bytes": 297861243,
+      "archive_sha256": "370db193283a8e2eadbc4c0436b3ebc7f090b0c8410f3ce9566e2bd3b7b92114",
       "models": [
         {
           "architecture": "motionbert",
@@ -125,7 +132,14 @@
       "max_saved_prediction_difference_gdi": 4.457778149458136e-05,
       "reinferred_person_mae": 8.35470300823552,
       "seconds": 443.72907440000563,
-      "cli_saved_output_checked": true
+      "cli_saved_output_checked": true,
+      "previous_archive_sha256": "632eca53c34bb451b244a213c918b7e8fb553705e9c11f662c4c970e60cc54c3",
+      "packaging_update": {
+        "date": "2026-11-02",
+        "notices_and_license_copies_added": true,
+        "all_original_model_and_manifest_bytes_identical": true,
+        "new_model_training": false
+      }
     }
   },
   "protected_final_data_used": false,

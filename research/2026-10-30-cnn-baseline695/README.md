@@ -1,5 +1,7 @@
 # 초기 1D-CNN 기준 실험
 
+**배포 목적은 대학 과목 제출용 비상업적 연구 결과 공유다.** 모델 압축의 `RESEARCH_USE.md`, `SOURCES.md`, `MODIFICATIONS.md`, `NOTICE.md`, `LICENSES/`에 출처와 조건을 동봉했다. [CNN 묶음의 출처·라이선스](../licenses/bundles/cnn/SOURCES.md)와 [수정 내역](../licenses/bundles/cnn/MODIFICATIONS.md)을 함께 확인한다.
+
 2026-10-30에 수행한 실험이다. 관절 움직임을 작은 CNN이 직접 학습하면 기존 MotionBERT 특징 기반 예측보다 오차가 줄어드는지 확인했다. **사람별 MAE는 8.683496점으로, 같은 조건의 고정 MotionBERT+Ridge 8.526630점을 개선하지 못했다.**
 
 ## 입력부터 평가까지
