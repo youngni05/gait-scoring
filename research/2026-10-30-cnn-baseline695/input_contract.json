@@ -1,0 +1,82 @@
+{
+  "source_dataset_sha256": "728bb090b7ef9846514410178f7d022a1300008e605246a141f94cdbaebce998",
+  "data_sha256": "8d146d1f11d401de7653a2369d49096750722adf9a0b70f8b65cf6462c0d5fc4",
+  "source_code_sha256": {
+    "tools/stanford-sample-check/prepare_ridge_data.py": "1c76ff15a5a603c8380a63e756268d908d41b7a959014594f79d1f2a043d3b62",
+    "gdi-research-harness/short_window_contract.py": "c891e20411d08fcdae6613d29d6b75439d3bc9748744da089d3b8e0e2c41e55a",
+    "outputs/motionbert-smoke-20261015/assets/mmpose_inference_3d.py": "dfacf49a7fc6a5cb50b73870d491285892369105bdb863619a545ea815a31fc2"
+  },
+  "people": 695,
+  "records": 1064,
+  "original_shape": [
+    1064,
+    1,
+    124,
+    17,
+    3
+  ],
+  "bundle_shape": [
+    1064,
+    124,
+    17,
+    3
+  ],
+  "cnn_shape": [
+    1064,
+    51,
+    124
+  ],
+  "channels": [
+    "x",
+    "y",
+    "confidence"
+  ],
+  "joints": [
+    "pelvis",
+    "right_hip",
+    "right_knee",
+    "right_ankle",
+    "left_hip",
+    "left_knee",
+    "left_ankle",
+    "spine",
+    "thorax",
+    "nose",
+    "head_eye_midpoint",
+    "left_shoulder",
+    "left_elbow",
+    "left_wrist",
+    "right_shoulder",
+    "right_elbow",
+    "right_wrist"
+  ],
+  "targets": [
+    "left_GDI",
+    "right_GDI"
+  ],
+  "initial_old_people": 175,
+  "additional_people": 520,
+  "missing_confidence_points": 72097,
+  "missing_lower_body_points": 0,
+  "input_channel_ranges": [
+    [
+      -1.0,
+      0.9693350791931152
+    ],
+    [
+      -1.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.9960920214653015
+    ]
+  ],
+  "normalization": "per-window valid-joint xy bounding square to [-1,1], clipping retained; confidence unchanged",
+  "missingness": "unchanged prepared input; no new interpolation/padding/smoothing",
+  "orientation": "inherited stored image axes; no added walking-direction flip or side swap",
+  "window": "first124 of eligible longest consecutive lower-body-observed run; not necessarily first video frame",
+  "reserved223_and_old37_38_numeric_data_opened": false,
+  "teammate_code_available": false,
+  "implementation": "new PyTorch adaptation of official CNN topology, not original-paper reproduction"
+}

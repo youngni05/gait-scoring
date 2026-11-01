@@ -1,0 +1,127 @@
+[
+  {
+    "file": "research/2026-10-30-cnn-baseline695/run.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/run.py",
+    "sha256": "f61eb8f53ef8b6c085c1cd17847b9dd42ce2f243ba8ccecd00fd757f235ba7e2"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/model.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/model.py",
+    "sha256": "73b29c6ab639d43ef4bf6c906516aeb5e19b865941df7262180eb424d85b27bc"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/protocol.json",
+    "sha256": "33a9d99ed98817ef8c57ac7a74ee4abdc83e5ffc6ca0a90271b6f59a5504b0e6"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/manifest.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/manifest.json",
+    "sha256": "d0a95c40f569a3cd834a01fa0e4a13fb834e5568707da68612162a37a4c38369"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/input_contract.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/input_contract.json",
+    "sha256": "0f9020cc72c9825555b2bbfdc0fe6a7df5309553f441abef8c217f213afccef0"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/sources/LICENSE",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/sources/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/sources/provenance.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/sources/provenance.json",
+    "sha256": "f7e4e3b51dc36569d144b1c7745adb0630071394f0b9bc7455425ed3d0d094f3"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/results/metrics.csv",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/analysis/metrics.csv",
+    "sha256": "9b53b488d0df86c59227e2a02c70e374b0a3fd86a8bd8475354f946e5060a981"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/results/fold_metrics.csv",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/analysis/fold_metrics.csv",
+    "sha256": "1064f915ce7ada61a06acaa7ee4290b995eddc5dacb1a78b6e79b2599fbc0f45"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/results/score_bands.csv",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/analysis/score_bands.csv",
+    "sha256": "7f94ee663f19399ed3c1b7f5eabeee34447c21ded302c8acc1ae20dc48c78e4d"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/results/learning_curves.csv",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/analysis/learning_curves.csv",
+    "sha256": "d4366031c3d98bbc84a0b2c808e8d77c2a3e77a6af621c689a35a0521a22ee4f"
+  },
+  {
+    "file": "research/2026-10-30-cnn-baseline695/results/verification.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/analysis/verification.json",
+    "sha256": "135810497d199b705ff3e04d1af96a6026cde1fbc7baae574b917982dc1ba6a0"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/run.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/run.py",
+    "sha256": "04c8807202203fafb3d25e9a447d9ab69294943d9663799c980795219efd9bf3"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/batch.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/batch.py",
+    "sha256": "983f679d236f2c1b75e34a8973c145f0b595a2bf2e0449fde2fdf793d9901e8c"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/manifest.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/manifest.json",
+    "sha256": "cd2c3d242ceaeef9462366e520e266bc8fba6d1a46e0686a48209a7c688b4c28"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/protocol.ready.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/protocol.ready.json",
+    "sha256": "5ce950924f6cdf2c2c49517d2d9b5881a7ed11004e325883a92198597969ec9b"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/MOTIONBERT_LICENSE",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/MOTIONBERT_LICENSE",
+    "sha256": "045ee95b545fb51f5c6e28e1a50644fe618f6278f3c8720852c6fe96f53b472f"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/lib/__init__.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/lib/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/lib/model/drop.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/lib/model/drop.py",
+    "sha256": "44b1af7912ae46c62c5b74712dae31697afc697e788c8dd9c5050602a2397173"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/lib/model/DSTformer.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/lib/model/DSTformer.py",
+    "sha256": "0896b29872b10f55be8902ceceacb9febe7876fa2065d5f9dd670fbb902f2f47"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/lib/model/__init__.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/lib/model/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/analysis/gpu/summary.json",
+    "sha256": "b01fa9da4668cff7c5b0eb3ddee5e1981cfa28e84c2e63232e6f7bb3e4c7afa5"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/results/metrics.csv",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/analysis/gpu/metrics.csv",
+    "sha256": "a33a6c1749b5b83c41d4977bcae9adcc9123ab844d4aa6f3d48c7b8acf12cfb2"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/results/fold_metrics.csv",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/analysis/gpu/fold_metrics.csv",
+    "sha256": "7876c8c16b8729a92f75824626d147e78783afe6d803b5ec02d35de8151b5d3e"
+  },
+  {
+    "file": "research/2026-10-30-motionbert695/results/score_bands.csv",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/analysis/gpu/score_bands.csv",
+    "sha256": "3d6e9e80cf46c5207eb4b76320b0c6d737e44d259f4c4d895514258cc71976ea"
+  }
+]

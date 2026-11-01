@@ -1,0 +1,4 @@
+# Preserve the exact research source bytes recorded in source-files.json.
+research/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Keep upstream MotionBERT formatting intact.
+research/2026-10-30-motionbert695/lib/** -whitespace

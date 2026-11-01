@@ -1,0 +1,18 @@
+{
+  "data.npz": "8d146d1f11d401de7653a2369d49096750722adf9a0b70f8b65cf6462c0d5fc4",
+  "input_contract.json": "0f9020cc72c9825555b2bbfdc0fe6a7df5309553f441abef8c217f213afccef0",
+  "launch.sh": "9c8334f9b461411f9e78aa6aad9ad949fd5be9e7c89cbfff925f5a6df4d20a37",
+  "model.py": "73b29c6ab639d43ef4bf6c906516aeb5e19b865941df7262180eb424d85b27bc",
+  "protocol.json": "33a9d99ed98817ef8c57ac7a74ee4abdc83e5ffc6ca0a90271b6f59a5504b0e6",
+  "README.md": "dce4f076f97b9b4d3166ea62ef16dbd7f4a5964fe8e88c823a33b5458c9a133a",
+  "reference_metrics.json": "f9fd5999900f113dd0c09c94791b2a7d6438c4aaa08e5711ad147a37592e0c7e",
+  "reference_predictions.npz": "a8f9b6b94d477fc1bae5906f45e4dd45c3d1be847bcbf83d885a13fa2b7f13f9",
+  "run.py": "f61eb8f53ef8b6c085c1cd17847b9dd42ce2f243ba8ccecd00fd757f235ba7e2",
+  "sources/cnn_predict_doublesided_var.ipynb": "86429024e818ba1c62e7755cdc36215d105ba00d05034049308289f7cfbff0d5",
+  "sources/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "sources/process_raw_videos.ipynb": "34188bf66081858b2395b173375b87f510543a5d8d6ff7093bcd52299d8b1b1e",
+  "sources/provenance.json": "f7e4e3b51dc36569d144b1c7745adb0630071394f0b9bc7455425ed3d0d094f3",
+  "sources/README.md": "1a44416aa11a1f5a95d47c1de7f4ff015a9e24280bb4dd6b6cffdb392aea80db",
+  "sources/video_process_utils.py": "0dab14d35b2bc3eaabad8901c7d02a9ec08fa2bb8d3077a2866b57579a6ae1ac",
+  "submit.slurm": "9c4e35968a9bde10018511a603afad035969e80e330d6764b653360ca4e3a98a"
+}

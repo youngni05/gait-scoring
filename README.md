@@ -6,3 +6,5 @@
 
 - 프로젝트 저장소: [youngni05/gait-scoring](https://github.com/youngni05/gait-scoring)
 - [방향 전환 이후 중간발표 흐름과 원고](docs/2026-10-31-interim-presentation.md): 전환 이유, 목표 시스템, 데이터 제약, 실험과 진행 상황을 정리했다.
+
+- [초기 CNN·MotionBERT 실험 기록과 모델](research/README.md): 같은 695명 조건의 초기 실험 두 개, 코드·설정·집계 결과와 가중치 다운로드를 제공한다.

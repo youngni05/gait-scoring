@@ -1,0 +1,134 @@
+{
+  "date": "2026-11-01",
+  "scope": "Publication of two historical experiments; no retraining",
+  "runtime": {
+    "python": "3.12.14",
+    "torch": "2.14.1+cpu",
+    "numpy": "2.3.5",
+    "device": "cpu"
+  },
+  "prediction_tolerance_gdi": 0.0001,
+  "experiments": {
+    "cnn": {
+      "archive": "cnn-initial695-weights.tar.gz",
+      "archive_bytes": 1101931,
+      "archive_sha256": "4354a0b47b45ae049a8c17978147ccc03cd192d09adf93a323d4df03638a882f",
+      "models": [
+        {
+          "architecture": "cnn",
+          "fold": 0,
+          "source_checkpoint_sha256": "a87f961c2d0fdd5e794acc697e576e9e914323e7817c045b8e342e58049ba459",
+          "file": "cnn/fold0.pt",
+          "sha256": "2573a9dd7150d44a26c6bc909bce1022b433a5dccfadc78e684008bba2bf965b",
+          "bytes": 244958,
+          "state_tensors_unchanged": true
+        },
+        {
+          "architecture": "cnn",
+          "fold": 1,
+          "source_checkpoint_sha256": "0be6b38c4d962d946220ecd8e9f45e3ad98a75fc08c4968bbcc6dbe385849f34",
+          "file": "cnn/fold1.pt",
+          "sha256": "9a33891410b727291c128129020ecf552cb090f99907952b2b9078edc66c2f99",
+          "bytes": 244958,
+          "state_tensors_unchanged": true
+        },
+        {
+          "architecture": "cnn",
+          "fold": 2,
+          "source_checkpoint_sha256": "c1d874eaf6f0f48e650eedde9dcf3a43107b23e2781db6ad5548ccc4fb0dd199",
+          "file": "cnn/fold2.pt",
+          "sha256": "ecd5d8a582fb5324460907376c2bca52b69c2f2875b0bbd99b7fdea2aa0ed70b",
+          "bytes": 244958,
+          "state_tensors_unchanged": true
+        },
+        {
+          "architecture": "cnn",
+          "fold": 3,
+          "source_checkpoint_sha256": "808b4577c0d787700b2898109742d444e6ea2e31bdf07fb1f987fd29d646b67c",
+          "file": "cnn/fold3.pt",
+          "sha256": "4e890bb380534ac36c21205ccff19712e804c2a71a745d3d26a7277c4ec1a8ac",
+          "bytes": 244958,
+          "state_tensors_unchanged": true
+        },
+        {
+          "architecture": "cnn",
+          "fold": 4,
+          "source_checkpoint_sha256": "9fb057b4460977ef9bf0e87abae96487a131e76f90b00950bc7e514b1660015c",
+          "file": "cnn/fold4.pt",
+          "sha256": "b8cedf0e25dc60e4f46ea7a7932f0cf5ab7bc36126115fb81b791430a088c253",
+          "bytes": 244958,
+          "state_tensors_unchanged": true
+        }
+      ],
+      "all_file_hashes_match": true,
+      "records_reinferred": 1064,
+      "people": 695,
+      "max_saved_prediction_difference_gdi": 2.288818359375e-05,
+      "reinferred_person_mae": 8.683496292723667,
+      "seconds": 0.12594319999334402,
+      "cli_saved_output_checked": true
+    },
+    "motionbert": {
+      "archive": "motionbert-initial695-weights.tar.gz",
+      "archive_bytes": 297845011,
+      "archive_sha256": "632eca53c34bb451b244a213c918b7e8fb553705e9c11f662c4c970e60cc54c3",
+      "models": [
+        {
+          "architecture": "motionbert",
+          "fold": 0,
+          "source_checkpoint_sha256": "73dddb21df5a3a8622a062e56f9ac16ae85e2123009c35e441c27291018489d0",
+          "file": "motionbert/fold0.pt",
+          "sha256": "777cd847db4c4490628dffb43f8b3e934a3bd75dc947236226fad2ab53235e91",
+          "bytes": 64102218,
+          "state_tensors_unchanged": true
+        },
+        {
+          "architecture": "motionbert",
+          "fold": 1,
+          "source_checkpoint_sha256": "6680277b00ff6a9f13e4d82a3be97f4e7e8eeeb9a0a767a9ba484ffaddd25d9a",
+          "file": "motionbert/fold1.pt",
+          "sha256": "1c88c4cc29bf433c1cff80f72caa837e7da4ee1bc74de9712b57ca67823459c4",
+          "bytes": 64102218,
+          "state_tensors_unchanged": true
+        },
+        {
+          "architecture": "motionbert",
+          "fold": 2,
+          "source_checkpoint_sha256": "97bbf9d00606117468f39f7390279eb5f20c10d1f3aa82878aa6dbc30984d613",
+          "file": "motionbert/fold2.pt",
+          "sha256": "c1136113b9f400829da7b23f65eed68292438bf657704b6d8dbb5dd77b2bdd37",
+          "bytes": 64102218,
+          "state_tensors_unchanged": true
+        },
+        {
+          "architecture": "motionbert",
+          "fold": 3,
+          "source_checkpoint_sha256": "35e151bf4ebb5d0b8d65b31d05df1caacdfceae47847148a28306eb622e6ad4d",
+          "file": "motionbert/fold3.pt",
+          "sha256": "6dbeab04d437409359c43806a32c665232cff179fc86ca52c2ba40e9a4b49350",
+          "bytes": 64102218,
+          "state_tensors_unchanged": true
+        },
+        {
+          "architecture": "motionbert",
+          "fold": 4,
+          "source_checkpoint_sha256": "29e85fd9481b60560b8542448a583a49a8fff59c68611448bfad6146fd2142d8",
+          "file": "motionbert/fold4.pt",
+          "sha256": "b222d04c7dca61ff4dda1f1ee00a42881d9dfcdab5c6a064c1513ae711cb9adf",
+          "bytes": 64102218,
+          "state_tensors_unchanged": true
+        }
+      ],
+      "all_file_hashes_match": true,
+      "records_reinferred": 1064,
+      "people": 695,
+      "max_saved_prediction_difference_gdi": 4.457778149458136e-05,
+      "reinferred_person_mae": 8.35470300823552,
+      "seconds": 443.72907440000563,
+      "cli_saved_output_checked": true
+    }
+  },
+  "protected_final_data_used": false,
+  "all_python_files_parse": true,
+  "passed": true
+}

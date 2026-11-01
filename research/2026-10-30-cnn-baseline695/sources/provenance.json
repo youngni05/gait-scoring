@@ -1,0 +1,26 @@
+{
+  "repository": "https://github.com/stanfordnmbl/mobile-gaitlab",
+  "commit": "4167ee6213ac81fb9168f4e20c6538d42a41a5a6",
+  "files": {
+    "training/cnn_predict_doublesided_var.ipynb": {
+      "url": "https://raw.githubusercontent.com/stanfordnmbl/mobile-gaitlab/4167ee6213ac81fb9168f4e20c6538d42a41a5a6/training/cnn_predict_doublesided_var.ipynb",
+      "sha256": "86429024e818ba1c62e7755cdc36215d105ba00d05034049308289f7cfbff0d5"
+    },
+    "training/video_process_utils.py": {
+      "url": "https://raw.githubusercontent.com/stanfordnmbl/mobile-gaitlab/4167ee6213ac81fb9168f4e20c6538d42a41a5a6/training/video_process_utils.py",
+      "sha256": "0dab14d35b2bc3eaabad8901c7d02a9ec08fa2bb8d3077a2866b57579a6ae1ac"
+    },
+    "training/process_raw_videos.ipynb": {
+      "url": "https://raw.githubusercontent.com/stanfordnmbl/mobile-gaitlab/4167ee6213ac81fb9168f4e20c6538d42a41a5a6/training/process_raw_videos.ipynb",
+      "sha256": "34188bf66081858b2395b173375b87f510543a5d8d6ff7093bcd52299d8b1b1e"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/stanfordnmbl/mobile-gaitlab/4167ee6213ac81fb9168f4e20c6538d42a41a5a6/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/stanfordnmbl/mobile-gaitlab/4167ee6213ac81fb9168f4e20c6538d42a41a5a6/README.md",
+      "sha256": "1a44416aa11a1f5a95d47c1de7f4ff015a9e24280bb4dd6b6cffdb392aea80db"
+    }
+  }
+}

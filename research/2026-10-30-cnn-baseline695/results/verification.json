@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "archive_sha256": "abf914fba4e9bbd3b1c13da22209a1ee0892ff4b563823c6cd48cda6604ab69e",
+  "bundle_sha256": "d0a95c40f569a3cd834a01fa0e4a13fb834e5568707da68612162a37a4c38369",
+  "completed_fits": 25,
+  "inner_fits": 20,
+  "outer_refits": 5,
+  "real_gpu_optimizer_steps": 52125,
+  "matched_people": 695,
+  "matched_records": 1064,
+  "code_and_protocol_match": true,
+  "all_identity_and_split_records_match": true,
+  "all_prediction_and_curve_hashes_match": true,
+  "epoch_selection_recomputed": true,
+  "oof_and_fold_predictions_match": true,
+  "metrics_independently_recomputed": true,
+  "checkpoints_downloaded": false,
+  "independent_model_reinference": false,
+  "protected_final_people_used": false
+}

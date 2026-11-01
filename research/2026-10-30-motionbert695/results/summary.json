@@ -1,0 +1,283 @@
+{
+  "metrics": [
+    {
+      "model": "baseline",
+      "group": "old175",
+      "people": 175,
+      "records": 203,
+      "mae": 8.294690772342271,
+      "bias": 2.1176755614259157,
+      "exact_bin_rate": 0.37523809523809526,
+      "within_one_bin_rate": 0.8461904761904762,
+      "two_or_more_bin_rate": 0.1538095238095238,
+      "prediction_min": 51.35592978985784,
+      "prediction_max": 86.32553265493318,
+      "person_prediction_sd": 6.266859556862974
+    },
+    {
+      "model": "baseline",
+      "group": "new520",
+      "people": 520,
+      "records": 861,
+      "mae": 8.604686789414428,
+      "bias": -0.6199953024773295,
+      "exact_bin_rate": 0.35238782051282047,
+      "within_one_bin_rate": 0.814599358974359,
+      "two_or_more_bin_rate": 0.18540064102564102,
+      "prediction_min": 55.25112088606513,
+      "prediction_max": 88.75734976220032,
+      "person_prediction_sd": 5.681289816472535
+    },
+    {
+      "model": "baseline",
+      "group": "all695",
+      "people": 695,
+      "records": 1064,
+      "mae": 8.526630238353093,
+      "bias": 0.06934628195873949,
+      "exact_bin_rate": 0.3581414868105516,
+      "within_one_bin_rate": 0.8225539568345324,
+      "two_or_more_bin_rate": 0.17744604316546764,
+      "prediction_min": 51.35592978985784,
+      "prediction_max": 88.75734976220032,
+      "person_prediction_sd": 5.85914088933845
+    },
+    {
+      "model": "head_only",
+      "group": "old175",
+      "people": 175,
+      "records": 203,
+      "mae": 8.305177555891438,
+      "bias": 2.1198276040830804,
+      "exact_bin_rate": 0.36952380952380953,
+      "within_one_bin_rate": 0.8476190476190476,
+      "two_or_more_bin_rate": 0.1523809523809524,
+      "prediction_min": 52.23259234766806,
+      "prediction_max": 86.29865626235939,
+      "person_prediction_sd": 6.264389817474676
+    },
+    {
+      "model": "head_only",
+      "group": "new520",
+      "people": 520,
+      "records": 861,
+      "mae": 8.604243684221075,
+      "bias": -0.6158278708735261,
+      "exact_bin_rate": 0.35014423076923074,
+      "within_one_bin_rate": 0.8141185897435897,
+      "two_or_more_bin_rate": 0.18588141025641025,
+      "prediction_min": 55.13393561602334,
+      "prediction_max": 88.73904784919925,
+      "person_prediction_sd": 5.6843953378959995
+    },
+    {
+      "model": "head_only",
+      "group": "all695",
+      "people": 695,
+      "records": 1064,
+      "mae": 8.528939263418648,
+      "bias": 0.07300624152561958,
+      "exact_bin_rate": 0.3550239808153477,
+      "within_one_bin_rate": 0.8225539568345324,
+      "two_or_more_bin_rate": 0.17744604316546764,
+      "prediction_min": 52.23259234766806,
+      "prediction_max": 88.73904784919925,
+      "person_prediction_sd": 5.860818825203085
+    },
+    {
+      "model": "tail",
+      "group": "old175",
+      "people": 175,
+      "records": 203,
+      "mae": 8.304521926508393,
+      "bias": 1.388173207283081,
+      "exact_bin_rate": 0.3642857142857143,
+      "within_one_bin_rate": 0.8442857142857143,
+      "two_or_more_bin_rate": 0.1557142857142857,
+      "prediction_min": 54.03678273031803,
+      "prediction_max": 87.9020500715368,
+      "person_prediction_sd": 6.82832973973358
+    },
+    {
+      "model": "tail",
+      "group": "new520",
+      "people": 520,
+      "records": 861,
+      "mae": 8.718602541728341,
+      "bias": -1.1900614050375355,
+      "exact_bin_rate": 0.3341735347985348,
+      "within_one_bin_rate": 0.8135004578754579,
+      "two_or_more_bin_rate": 0.18649954212454212,
+      "prediction_min": 49.33348323659415,
+      "prediction_max": 90.0390746493561,
+      "person_prediction_sd": 6.364945173832268
+    },
+    {
+      "model": "tail",
+      "group": "all695",
+      "people": 695,
+      "records": 1064,
+      "mae": 8.614337638615403,
+      "bias": -0.5408656393452941,
+      "exact_bin_rate": 0.3417557382665296,
+      "within_one_bin_rate": 0.8212521411442275,
+      "two_or_more_bin_rate": 0.17874785885577255,
+      "prediction_min": 49.33348323659415,
+      "prediction_max": 90.0390746493561,
+      "person_prediction_sd": 6.5129027652910345
+    },
+    {
+      "model": "last_stage",
+      "group": "old175",
+      "people": 175,
+      "records": 203,
+      "mae": 8.0680870924661,
+      "bias": 0.9382276536772027,
+      "exact_bin_rate": 0.3680952380952381,
+      "within_one_bin_rate": 0.8519047619047617,
+      "two_or_more_bin_rate": 0.1480952380952381,
+      "prediction_min": 51.23668850584217,
+      "prediction_max": 89.51311383311021,
+      "person_prediction_sd": 6.919335742271402
+    },
+    {
+      "model": "last_stage",
+      "group": "new520",
+      "people": 520,
+      "records": 861,
+      "mae": 8.451159567305954,
+      "bias": -0.7533927550211015,
+      "exact_bin_rate": 0.3468658424908425,
+      "within_one_bin_rate": 0.8348946886446886,
+      "two_or_more_bin_rate": 0.16510531135531137,
+      "prediction_min": 48.03018412387317,
+      "prediction_max": 91.38696180459341,
+      "person_prediction_sd": 6.750018425992029
+    },
+    {
+      "model": "last_stage",
+      "group": "all695",
+      "people": 695,
+      "records": 1064,
+      "mae": 8.354702469324696,
+      "bias": -0.32744517009706825,
+      "exact_bin_rate": 0.3522113737581364,
+      "within_one_bin_rate": 0.8391778006166495,
+      "two_or_more_bin_rate": 0.16082219938335046,
+      "prediction_min": 48.03018412387317,
+      "prediction_max": 91.38696180459341,
+      "person_prediction_sd": 6.867479141011309
+    }
+  ],
+  "comparisons": {
+    "baseline_minus_head_only": {
+      "mae_reduction": -0.0023090250655541183,
+      "relative_reduction_percent": -0.02708015946520162,
+      "person_bootstrap95": [
+        -0.011052997935106208,
+        0.00667940203740787
+      ],
+      "people_improved": 359,
+      "people_worsened": 336,
+      "people_equal": 0,
+      "folds_improved": 3
+    },
+    "head_only_minus_tail": {
+      "mae_reduction": -0.08539837519675607,
+      "relative_reduction_percent": -1.0012777973814053,
+      "person_bootstrap95": [
+        -0.19554491831510823,
+        0.023944790780672805
+      ],
+      "people_improved": 320,
+      "people_worsened": 375,
+      "people_equal": 0,
+      "folds_improved": 2
+    },
+    "head_only_minus_last_stage": {
+      "mae_reduction": 0.17423679409395199,
+      "relative_reduction_percent": 2.0428893759540365,
+      "person_bootstrap95": [
+        0.041148101710617405,
+        0.3073502228115566
+      ],
+      "people_improved": 358,
+      "people_worsened": 337,
+      "people_equal": 0,
+      "folds_improved": 4
+    },
+    "tail_minus_last_stage": {
+      "mae_reduction": 0.25963516929070807,
+      "relative_reduction_percent": 3.013988772936461,
+      "person_bootstrap95": [
+        0.18578973877468002,
+        0.3351681529495929
+      ],
+      "people_improved": 409,
+      "people_worsened": 286,
+      "people_equal": 0,
+      "folds_improved": 5
+    },
+    "baseline_minus_tail": {
+      "mae_reduction": -0.08770740026231018,
+      "relative_reduction_percent": -1.0286291044708273,
+      "person_bootstrap95": [
+        -0.20083619919903112,
+        0.023741697303111785
+      ],
+      "people_improved": 322,
+      "people_worsened": 373,
+      "people_equal": 0,
+      "folds_improved": 2
+    },
+    "baseline_minus_last_stage": {
+      "mae_reduction": 0.17192776902839788,
+      "relative_reduction_percent": 2.0163624341895408,
+      "person_bootstrap95": [
+        0.03580224896439741,
+        0.3070011012561718
+      ],
+      "people_improved": 356,
+      "people_worsened": 339,
+      "people_equal": 0,
+      "folds_improved": 4
+    },
+    "baseline_minus_last_stage_old175": {
+      "mae_reduction": 0.22660367987617017,
+      "person_bootstrap95": [
+        -0.0803253070405193,
+        0.5403439325316254
+      ],
+      "people_improved": 89,
+      "people_worsened": 86
+    },
+    "baseline_minus_last_stage_new520": {
+      "mae_reduction": 0.15352722210847453,
+      "person_bootstrap95": [
+        0.005753628054420686,
+        0.3011582648352232
+      ],
+      "people_improved": 267,
+      "people_worsened": 253
+    },
+    "baseline_minus_last_stage_all695": {
+      "mae_reduction": 0.17192776902839788,
+      "person_bootstrap95": [
+        0.03580224896439741,
+        0.3070011012561718
+      ],
+      "people_improved": 356,
+      "people_worsened": 339
+    },
+    "small_ridge_minus_last_stage": {
+      "small_ridge_mae": 9.09287398597391,
+      "mae_reduction": 0.7381715166492135,
+      "relative_reduction_percent": 8.118132042606883,
+      "note": "Combined data expansion and partial tuning; not the isolated tuning effect."
+    }
+  },
+  "front_only": true,
+  "independent_final_evaluation": false,
+  "one_seed_only": true,
+  "bin_rule": "floor(GDI/10); no clipping; not clinical grades"
+}
