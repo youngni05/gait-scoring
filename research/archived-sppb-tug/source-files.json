@@ -1,0 +1,177 @@
+[
+  {
+    "file": "2026-10-30-sppb-older44/common.py",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/common.py",
+    "source_sha256": "a1aba09721acab114bb0fdec63e7753b535c5f0c3d84d6f2751f8138fc76c5f8",
+    "published_sha256": "a1aba09721acab114bb0fdec63e7753b535c5f0c3d84d6f2751f8138fc76c5f8",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/cpu.py",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/cpu.py",
+    "source_sha256": "c55ae9533c78b07f53bffd714312e0564bedf37ff65fae1bad1ffbc4b840a58d",
+    "published_sha256": "c55ae9533c78b07f53bffd714312e0564bedf37ff65fae1bad1ffbc4b840a58d",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/gpu.py",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/gpu.py",
+    "source_sha256": "d7e53190ecb00987b54a2656ff057cd99d0299b740573061da54824796953b2e",
+    "published_sha256": "d7e53190ecb00987b54a2656ff057cd99d0299b740573061da54824796953b2e",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/cpu-selection.json",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/cpu-selection.json",
+    "source_sha256": "a18fcdb356d97d2085ff8015892f1f93233350339002f3aa5f8b679507bc71b4",
+    "published_sha256": "a18fcdb356d97d2085ff8015892f1f93233350339002f3aa5f8b679507bc71b4",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/protocol.json",
+    "source_sha256": "d976a2f3e175e3f3b998f9024d191f243328c0b42fbfa1f01562175ca5fb0bc2",
+    "published_sha256": "f36a29407fcf5dd1387708fcaa3ed812bd3ffd00a23680b7e03fc0e5f081ba71",
+    "transformation": "Replace workstation-specific label path with public source filename; scientific settings unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/summary.json",
+    "source_sha256": "051cbb1d2628fce2208fba916baef2324f9eb52275efbb1875bb8525d4cefdce",
+    "published_sha256": "051cbb1d2628fce2208fba916baef2324f9eb52275efbb1875bb8525d4cefdce",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/results/verification.json",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/verification.json",
+    "source_sha256": "0d2fc2149c64d1466ed55857dc690b94acfd80000e964c2e1b35b256585da4e9",
+    "published_sha256": "0d2fc2149c64d1466ed55857dc690b94acfd80000e964c2e1b35b256585da4e9",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/results/aggregation-protocol.json",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/aggregation-protocol.json",
+    "source_sha256": "484f818947f41dab1556439b9ec460ba70c4863064ea270c7fbe95d10b4267b3",
+    "published_sha256": "484f818947f41dab1556439b9ec460ba70c4863064ea270c7fbe95d10b4267b3",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/results/aggregation-sensitivity.csv",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/aggregation-sensitivity.csv",
+    "source_sha256": "bfb341b896614dc1a1608da2dce697b1a38bf7f628356e554858206c8e092d20",
+    "published_sha256": "bfb341b896614dc1a1608da2dce697b1a38bf7f628356e554858206c8e092d20",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/results/errors-by-actual-score.csv",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/errors-by-actual-score.csv",
+    "source_sha256": "f761710371f1d7ad81f43c8ad10aff6ff6a2a7291fd8f08f97b6e6fc81ae5414",
+    "published_sha256": "f761710371f1d7ad81f43c8ad10aff6ff6a2a7291fd8f08f97b6e6fc81ae5414",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/prepare.py",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/prepare.py",
+    "source_sha256": "0d7ac561b0ff54ad065a1622bf2eb26f1f73f5903a108d6bcf604c98df85345d",
+    "published_sha256": "0d7ac561b0ff54ad065a1622bf2eb26f1f73f5903a108d6bcf604c98df85345d",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-sppb-older44/verify.py",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries/verify.py",
+    "source_sha256": "b454fd0b5a43c1e3fd7acee7a6937092bfd0a2e2584881bf9dbc330a791edcc4",
+    "published_sha256": "b454fd0b5a43c1e3fd7acee7a6937092bfd0a2e2584881bf9dbc330a791edcc4",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/common.py",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/all3s/common.py",
+    "source_sha256": "38068f940fa5bb180997c0aa9cefdd31c1e14b3527ca6b9e39a6902e1ad2222a",
+    "published_sha256": "38068f940fa5bb180997c0aa9cefdd31c1e14b3527ca6b9e39a6902e1ad2222a",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/cpu.py",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/all3s/cpu.py",
+    "source_sha256": "f5409e8e39d27ab5c37191673963386e4ae4c5474ba0b7be39eaf9ccf661abd0",
+    "published_sha256": "f5409e8e39d27ab5c37191673963386e4ae4c5474ba0b7be39eaf9ccf661abd0",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/gpu.py",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/all3s/gpu.py",
+    "source_sha256": "172a29770bdc1ab6d8b9330f6a7fd6e5a13997a3b956dce850d3a23a0e812369",
+    "published_sha256": "172a29770bdc1ab6d8b9330f6a7fd6e5a13997a3b956dce850d3a23a0e812369",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/cpu-selection.json",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/all3s/cpu-selection.json",
+    "source_sha256": "ed7bed05885f8e00518847009b0029a645da970fc2df656fa91aa0601703114c",
+    "published_sha256": "ed7bed05885f8e00518847009b0029a645da970fc2df656fa91aa0601703114c",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/all3s/protocol.json",
+    "source_sha256": "c10cb51f0abe446f5250cb1c1e7b26b8e03e2c3352ad70356547227250ff1dd1",
+    "published_sha256": "c10cb51f0abe446f5250cb1c1e7b26b8e03e2c3352ad70356547227250ff1dd1",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/summary.json",
+    "source_sha256": "4c822fc0ecfe401f096fefba710284948c0b71d45e896d99dd21f9d099c542dc",
+    "published_sha256": "4c822fc0ecfe401f096fefba710284948c0b71d45e896d99dd21f9d099c542dc",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/results/verification.json",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/verification.json",
+    "source_sha256": "40d0cd41a777f766636ba48b1c68b9179f6b835243df90e3d26aae0453ff9123",
+    "published_sha256": "40d0cd41a777f766636ba48b1c68b9179f6b835243df90e3d26aae0453ff9123",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/results/comparison-protocol.json",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/comparison-protocol.json",
+    "source_sha256": "9459fec1be218ba546cb4480be97bcc539a11afd0b25392f7553fd1af5c10b51",
+    "published_sha256": "9459fec1be218ba546cb4480be97bcc539a11afd0b25392f7553fd1af5c10b51",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/results/uncertainty-and-overlap.json",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/uncertainty-and-overlap.json",
+    "source_sha256": "838c27a7903f46d413c0d6a1a9720ea01e40fdc42748db80635e39242ce892d2",
+    "published_sha256": "838c27a7903f46d413c0d6a1a9720ea01e40fdc42748db80635e39242ce892d2",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/preparation/prepare.py",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/prepare.py",
+    "source_sha256": "1fd2ab31ece0935fcf8a97a1943a9ff9f43826599b86c34287163d3b622a0a90",
+    "published_sha256": "1fd2ab31ece0935fcf8a97a1943a9ff9f43826599b86c34287163d3b622a0a90",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/preparation/extend3.py",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/extend3.py",
+    "source_sha256": "e9cc09e8b9c8947711134553cbc63478e027d6ee60997740faccb34ab03753d0",
+    "published_sha256": "e9cc09e8b9c8947711134553cbc63478e027d6ee60997740faccb34ab03753d0",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/preparation/verify.py",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/verify.py",
+    "source_sha256": "c45db4f612fe8c05a1a27081040ff7e1c4d58ea3ccbd6442c720c8d5765a3e69",
+    "published_sha256": "c45db4f612fe8c05a1a27081040ff7e1c4d58ea3ccbd6442c720c8d5765a3e69",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "2026-10-30-tug-opencap298/preparation/analyze.py",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries/analyze.py",
+    "source_sha256": "5d89efbe29736e6d4d149eec79ce8190d4392bb7e8e97d9429f902b57259b7d6",
+    "published_sha256": "5d89efbe29736e6d4d149eec79ce8190d4392bb7e8e97d9429f902b57259b7d6",
+    "transformation": "unchanged"
+  }
+]

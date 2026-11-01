@@ -1,0 +1,9 @@
+{
+  "status": "post-hoc descriptive input-count sensitivity; not prespecified primary model selection",
+  "fitting": "reuse original OOF models/predictions; no extra fitting",
+  "people": 44,
+  "trial_order": "source CSV filename ascending; first1/3/5; selection independent of scores/prediction errors",
+  "window": "each actual3second walking input",
+  "metric": "mean of absolute person error after averaging selected trial predictions",
+  "scope": "sensitivity of these44person OOF predictions; not independent confirmation"
+}

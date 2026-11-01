@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-02",
+  "experiment_status": "stopped; current research focus is GDI",
+  "new_training_performed": false,
+  "prediction_tolerance": 0.0001,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "torch": "2.14.1+cpu",
+    "sklearn": "1.9.1",
+    "device": "cpu"
+  },
+  "experiments": {
+    "sppb": {
+      "people": 44,
+      "records": 220,
+      "models": 20,
+      "metrics": {
+        "Ridge": {
+          "person_MAE": 1.1415423675016922,
+          "max_saved_prediction_difference": 4.7137451097967187e-07,
+          "records_reinferred": 220
+        },
+        "RF": {
+          "person_MAE": 1.000641058619127,
+          "max_saved_prediction_difference": 1.7763568394002505e-15,
+          "records_reinferred": 220
+        },
+        "CNN": {
+          "person_MAE": 1.235940950567072,
+          "max_saved_prediction_difference": 5.722045900213857e-06,
+          "records_reinferred": 220
+        },
+        "TCN": {
+          "person_MAE": 1.1941780328750609,
+          "max_saved_prediction_difference": 5.722045900213857e-06,
+          "records_reinferred": 220
+        }
+      },
+      "archive": "sppb-archived-models-20261102.tar.gz",
+      "archive_bytes": 808721,
+      "archive_sha256": "dcd7ae28e981cd6f13176ac0317ef14099c34a4b4d75beed9ea1adfaba1dcb4b",
+      "source_models_unchanged": true,
+      "archive_member_hashes_verified": true,
+      "all_five_person_splits_disjoint": true,
+      "cli_saved_output_verified": true
+    },
+    "tug": {
+      "people": 298,
+      "records": 298,
+      "models": 20,
+      "metrics": {
+        "Ridge": {
+          "person_MAE": 2.5416972290909534,
+          "max_saved_prediction_difference": 4.739379875218219e-07,
+          "records_reinferred": 298
+        },
+        "RF": {
+          "person_MAE": 2.1500885393965965,
+          "max_saved_prediction_difference": 3.552713678800501e-15,
+          "records_reinferred": 298
+        },
+        "CNN": {
+          "person_MAE": 2.5243329051356986,
+          "max_saved_prediction_difference": 9.536743168503392e-07,
+          "records_reinferred": 298
+        },
+        "TCN": {
+          "person_MAE": 2.5131140361376256,
+          "max_saved_prediction_difference": 1.9073486328125e-06,
+          "records_reinferred": 298
+        }
+      },
+      "archive": "tug-archived-models-20261102.tar.gz",
+      "archive_bytes": 1232116,
+      "archive_sha256": "168e06a2aa108fe9594dcaf273dbe5f30a7a746821255e767cf3653e0011f06b",
+      "source_models_unchanged": true,
+      "archive_member_hashes_verified": true,
+      "all_five_person_splits_disjoint": true,
+      "cli_saved_output_verified": true
+    }
+  },
+  "passed": true,
+  "publication_source_hashes_verified": true,
+  "all_published_python_files_parse": true,
+  "new_and_modified_document_links_resolve": true,
+  "stopped_status_on_project_index_and_each_study": true
+}

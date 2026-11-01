@@ -6,6 +6,7 @@ research/**/runs/
 research/**/checks/
 *.pt
 *.bin
+*.joblib
 *.npz
 *.npy
 *.tar.gz

@@ -1,0 +1,7 @@
+numpy>=1.24,<3
+torch>=2.4,<3
+scikit-learn>=1.9,<1.10
+joblib>=1.6,<2
+pandas>=2,<4
+threadpoolctl>=3,<4
+openpyxl>=3.1,<4

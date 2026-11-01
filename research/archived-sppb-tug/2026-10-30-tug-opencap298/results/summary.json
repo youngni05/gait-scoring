@@ -1,0 +1,109 @@
+{
+  "people": 196,
+  "metrics": {
+    "1": {
+      "Mean": {
+        "MAE_seconds": 3.1322562886006926,
+        "RMSE_seconds": 4.741908610555411
+      },
+      "Median": {
+        "MAE_seconds": 2.902244897959184,
+        "RMSE_seconds": 4.943618025664349
+      },
+      "Ridge": {
+        "MAE_seconds": 3.300406296938776,
+        "RMSE_seconds": 5.430032746863534
+      },
+      "RF": {
+        "MAE_seconds": 3.077414060734852,
+        "RMSE_seconds": 4.792355722566263
+      },
+      "CNN": {
+        "MAE_seconds": 3.1577326994526143,
+        "RMSE_seconds": 4.779062447423602
+      },
+      "TCN": {
+        "MAE_seconds": 3.162378350861219,
+        "RMSE_seconds": 4.784720989201706
+      }
+    },
+    "3": {
+      "Mean": {
+        "MAE_seconds": 3.1322562886006926,
+        "RMSE_seconds": 4.741908610555411
+      },
+      "Median": {
+        "MAE_seconds": 2.902244897959184,
+        "RMSE_seconds": 4.943618025664349
+      },
+      "Ridge": {
+        "MAE_seconds": 3.255181653061225,
+        "RMSE_seconds": 5.5654271426636415
+      },
+      "RF": {
+        "MAE_seconds": 2.783175662986249,
+        "RMSE_seconds": 4.501436548907131
+      },
+      "CNN": {
+        "MAE_seconds": 3.0949420199102287,
+        "RMSE_seconds": 4.815891317049541
+      },
+      "TCN": {
+        "MAE_seconds": 3.1709812292760735,
+        "RMSE_seconds": 4.795813821288304
+      }
+    },
+    "6": {
+      "Mean": {
+        "MAE_seconds": 3.1322562886006926,
+        "RMSE_seconds": 4.741908610555411
+      },
+      "Median": {
+        "MAE_seconds": 2.902244897959184,
+        "RMSE_seconds": 4.943618025664349
+      },
+      "Ridge": {
+        "MAE_seconds": 3.0263197607142858,
+        "RMSE_seconds": 5.042576541679765
+      },
+      "RF": {
+        "MAE_seconds": 2.657053213257763,
+        "RMSE_seconds": 4.482982622264716
+      },
+      "CNN": {
+        "MAE_seconds": 3.075159527233669,
+        "RMSE_seconds": 4.671042658317784
+      },
+      "TCN": {
+        "MAE_seconds": 2.987618209196597,
+        "RMSE_seconds": 4.654094423234152
+      }
+    },
+    "all3": {
+      "Mean": {
+        "MAE_seconds": 2.7099260930966786,
+        "RMSE_seconds": 4.221882823337287
+      },
+      "Median": {
+        "MAE_seconds": 2.472281879194631,
+        "RMSE_seconds": 4.4019741605405995
+      },
+      "Ridge": {
+        "MAE_seconds": 2.541697223825503,
+        "RMSE_seconds": 4.565189637141091
+      },
+      "RF": {
+        "MAE_seconds": 2.1500885393965965,
+        "RMSE_seconds": 3.811082794619245
+      },
+      "CNN": {
+        "MAE_seconds": 2.524332866732706,
+        "RMSE_seconds": 4.297362213821236
+      },
+      "TCN": {
+        "MAE_seconds": 2.5131140489386232,
+        "RMSE_seconds": 4.291419870719458
+      }
+    }
+  }
+}

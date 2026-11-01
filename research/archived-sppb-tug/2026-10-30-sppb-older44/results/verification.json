@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "checked_utc": "2026-10-30T13:07:04.254369+00:00",
+  "all220_provider_hashes": true,
+  "actual_SPPB_table_linkage": true,
+  "independent_all220_raw_windows_reconstructed_atol": 1e-06,
+  "all_person_splits_disjoint": true,
+  "outer_prediction_coverage": true,
+  "cpu_model_replay": true,
+  "GPU10checkpoint_CPU_reinference_atol": 0.0001,
+  "train_only_normalization_recomputed": true,
+  "metrics_independently_recomputed": true,
+  "cross_person_exact_input_duplicate": false,
+  "checkpoints_local": true,
+  "code_sha256": {
+    "prepare.py": "0d7ac561b0ff54ad065a1622bf2eb26f1f73f5903a108d6bcf604c98df85345d",
+    "common.py": "a1aba09721acab114bb0fdec63e7753b535c5f0c3d84d6f2751f8138fc76c5f8",
+    "cpu.py": "c55ae9533c78b07f53bffd714312e0564bedf37ff65fae1bad1ffbc4b840a58d",
+    "gpu.py": "d7e53190ecb00987b54a2656ff057cd99d0299b740573061da54824796953b2e",
+    "protocol.json": "d976a2f3e175e3f3b998f9024d191f243328c0b42fbfa1f01562175ca5fb0bc2",
+    "verify.py": "b454fd0b5a43c1e3fd7acee7a6937092bfd0a2e2584881bf9dbc330a791edcc4"
+  }
+}

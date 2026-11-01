@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "original_source_CRC_SHA_verified": true,
+  "overlap124_SHA_equal": true,
+  "all_windows_independently_reconstructed": true,
+  "primary_conditions_same_people_labels_folds": true,
+  "expanded_cohort_preserves_primary_people_folds": true,
+  "CPU_models_replayed": true,
+  "GPU_models_replayed": true,
+  "train_only_normalization_checked": true
+}

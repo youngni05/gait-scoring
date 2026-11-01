@@ -1,0 +1,229 @@
+{
+  "scope": "postfit descriptive paired person bootstrap; conditional on storedOOF predictions, excludes retraining/modelselection variability",
+  "duration_comparisons": {
+    "Ridge_3minus6": {
+      "mean_seconds": 0.22886189234693882,
+      "conditional_bootstrap95": [
+        0.061934634821428546,
+        0.40842129783163267
+      ]
+    },
+    "RF_3minus6": {
+      "mean_seconds": 0.12612244972848644,
+      "conditional_bootstrap95": [
+        -0.0716045182986594,
+        0.32405997858670976
+      ]
+    },
+    "CNN_3minus6": {
+      "mean_seconds": 0.01978249267655981,
+      "conditional_bootstrap95": [
+        -0.1038975865597629,
+        0.14226122861249096
+      ]
+    },
+    "TCN_3minus6": {
+      "mean_seconds": 0.1833630200794765,
+      "conditional_bootstrap95": [
+        0.06577877812482869,
+        0.3005538488869764
+      ]
+    }
+  },
+  "baseline_comparisons": {
+    "1": {
+      "Ridge": {
+        "mean_seconds": 0.3981613989795918,
+        "conditional_bootstrap95": [
+          0.11029425095663256,
+          0.7010722938775508
+        ]
+      },
+      "RF": {
+        "mean_seconds": 0.1751691627756681,
+        "conditional_bootstrap95": [
+          -0.09394283632984085,
+          0.4574663278338785
+        ]
+      },
+      "CNN": {
+        "mean_seconds": 0.2554878014934306,
+        "conditional_bootstrap95": [
+          0.06877420206945764,
+          0.44443446668800024
+        ]
+      },
+      "TCN": {
+        "mean_seconds": 0.26013345290203466,
+        "conditional_bootstrap95": [
+          0.0749664197649273,
+          0.4465229309237729
+        ]
+      }
+    },
+    "3": {
+      "Ridge": {
+        "mean_seconds": 0.35293675510204087,
+        "conditional_bootstrap95": [
+          0.028218842716836758,
+          0.706608131033163
+        ]
+      },
+      "RF": {
+        "mean_seconds": -0.11906923497293462,
+        "conditional_bootstrap95": [
+          -0.4287790189531041,
+          0.19533570014629623
+        ]
+      },
+      "CNN": {
+        "mean_seconds": 0.19269712195104488,
+        "conditional_bootstrap95": [
+          0.007288122240377902,
+          0.3733940416744777
+        ]
+      },
+      "TCN": {
+        "mean_seconds": 0.2687363313168895,
+        "conditional_bootstrap95": [
+          0.07524224258442315,
+          0.4670364506147344
+        ]
+      }
+    },
+    "6": {
+      "Ridge": {
+        "mean_seconds": 0.12407486275510199,
+        "conditional_bootstrap95": [
+          -0.2121353089030612,
+          0.4814100035969386
+        ]
+      },
+      "RF": {
+        "mean_seconds": -0.24519168470142108,
+        "conditional_bootstrap95": [
+          -0.5875036988557493,
+          0.1088630374856782
+        ]
+      },
+      "CNN": {
+        "mean_seconds": 0.1729146292744851,
+        "conditional_bootstrap95": [
+          -0.05547106735317063,
+          0.40516630857088104
+        ]
+      },
+      "TCN": {
+        "mean_seconds": 0.08537331123741303,
+        "conditional_bootstrap95": [
+          -0.13319221378589155,
+          0.30519263741678104
+        ]
+      }
+    },
+    "all3": {
+      "Ridge": {
+        "mean_seconds": 0.06941534463087254,
+        "conditional_bootstrap95": [
+          -0.19422187780201342,
+          0.34521565193791914
+        ]
+      },
+      "RF": {
+        "mean_seconds": -0.3221933397980342,
+        "conditional_bootstrap95": [
+          -0.5892665884519837,
+          -0.05531061574552223
+        ]
+      },
+      "CNN": {
+        "mean_seconds": 0.05205098753807522,
+        "conditional_bootstrap95": [
+          -0.18230296711313648,
+          0.29731175777896124
+        ]
+      },
+      "TCN": {
+        "mean_seconds": 0.04083216974399236,
+        "conditional_bootstrap95": [
+          -0.19418865423874565,
+          0.29280569054616373
+        ]
+      }
+    }
+  },
+  "subgroups": {
+    "1": {
+      "known_or_probable_old": {
+        "people": 68,
+        "Median": 2.02985294117647,
+        "Ridge": 2.283242557352941,
+        "RF": 1.9631721252124976,
+        "CNN": 2.265043457255644,
+        "TCN": 2.272166428846471
+      },
+      "no_overlap_identified": {
+        "people": 128,
+        "Median": 3.365703125,
+        "Ridge": 3.84077453359375,
+        "RF": 3.6693550889811024,
+        "CNN": 3.631973859369755,
+        "TCN": 3.6353034344315533
+      }
+    },
+    "3": {
+      "known_or_probable_old": {
+        "people": 68,
+        "Median": 2.02985294117647,
+        "Ridge": 2.0573599176470587,
+        "RF": 1.5234450667414607,
+        "CNN": 2.123499143263873,
+        "TCN": 2.1970538582521324
+      },
+      "no_overlap_identified": {
+        "people": 128,
+        "Median": 3.365703125,
+        "Ridge": 3.8915244500000004,
+        "RF": 3.4524075422412928,
+        "CNN": 3.6110210481286047,
+        "TCN": 3.6883801451325415
+      }
+    },
+    "6": {
+      "known_or_probable_old": {
+        "people": 68,
+        "Median": 2.02985294117647,
+        "Ridge": 1.7729006250000001,
+        "RF": 1.3759803855718606,
+        "CNN": 2.113567901499131,
+        "TCN": 2.0426016058641316
+      },
+      "no_overlap_identified": {
+        "people": 128,
+        "Median": 3.365703125,
+        "Ridge": 3.6921986765624997,
+        "RF": 3.3376231529658984,
+        "CNN": 3.5860050784051416,
+        "TCN": 3.489658279716968
+      }
+    },
+    "all3": {
+      "known_or_probable_old": {
+        "people": 127,
+        "Median": 1.762204724409449,
+        "Ridge": 1.6221937669291338,
+        "RF": 1.2289952369582209,
+        "CNN": 1.739093694761982,
+        "TCN": 1.7372160827456495
+      },
+      "no_overlap_identified": {
+        "people": 171,
+        "Median": 2.9996491228070172,
+        "Ridge": 3.2246033,
+        "RF": 2.8341753780496592,
+        "CNN": 3.107522193284063,
+        "TCN": 3.089365754824632
+      }
+    }
+  }
+}

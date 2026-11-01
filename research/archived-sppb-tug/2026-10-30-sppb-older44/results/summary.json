@@ -1,0 +1,63 @@
+{
+  "people": 44,
+  "clips": 220,
+  "target": "supplied actual SPPB total points",
+  "window_seconds": 3,
+  "metrics": {
+    "Mean": {
+      "person_MAE": 1.379870129870129,
+      "person_RMSE": 1.7060691068472178,
+      "MAE_difference_from_median": 0.06168831168831099,
+      "paired_person_bootstrap95_difference": [
+        0.006871843434343548,
+        0.11448412698412555
+      ]
+    },
+    "Median": {
+      "person_MAE": 1.3181818181818181,
+      "person_RMSE": 1.7056057308448835,
+      "MAE_difference_from_median": 0.0,
+      "paired_person_bootstrap95_difference": [
+        0.0,
+        0.0
+      ]
+    },
+    "Ridge": {
+      "person_MAE": 1.1415423595454544,
+      "person_RMSE": 1.4074077305008363,
+      "MAE_difference_from_median": -0.17663945863636366,
+      "paired_person_bootstrap95_difference": [
+        -0.5029880935113636,
+        0.16059450803409048
+      ]
+    },
+    "RF": {
+      "person_MAE": 1.000641058619127,
+      "person_RMSE": 1.1978374388657904,
+      "MAE_difference_from_median": -0.3175407595626915,
+      "paired_person_bootstrap95_difference": [
+        -0.6344108480271278,
+        -0.021355930333700906
+      ]
+    },
+    "CNN": {
+      "person_MAE": 1.2359411651437935,
+      "person_RMSE": 1.6347004806912513,
+      "MAE_difference_from_median": -0.08224065303802486,
+      "paired_person_bootstrap95_difference": [
+        -0.4136199346997521,
+        0.2848345140435478
+      ]
+    },
+    "TCN": {
+      "person_MAE": 1.1941781195727261,
+      "person_RMSE": 1.6024233633985328,
+      "MAE_difference_from_median": -0.12400369860909205,
+      "paired_person_bootstrap95_difference": [
+        -0.4643179846351799,
+        0.2525818388570436
+      ]
+    }
+  },
+  "scope": "Optical marker-based exploratory44person study, not video-based/clinical validation; bootstrap conditional on fittedOOFpredictions"
+}
