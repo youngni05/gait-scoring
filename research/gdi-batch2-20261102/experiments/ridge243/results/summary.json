@@ -1,0 +1,171 @@
+{
+  "status": "frozen_encoder_ridge_held_person_test_completed",
+  "prepared_records": 285,
+  "prepared_people": 250,
+  "quality_exclusions": {
+    "no_243_frame_observed_lower_body_run": 2914,
+    "no_unique_person_frames": 5,
+    "normalization_would_change_confidence": 1
+  },
+  "selected_alpha": 1.0,
+  "validation_trials": [
+    {
+      "alpha": 0.01,
+      "person_macro_MAE": 8.231126442162822,
+      "person_MAE_left": 8.353515280820918,
+      "person_MAE_right": 8.108737603504723,
+      "record_MAE": 8.02116915447191,
+      "people": 37,
+      "records": 40
+    },
+    {
+      "alpha": 0.1,
+      "person_macro_MAE": 7.973018710108755,
+      "person_MAE_left": 8.326841551271604,
+      "person_MAE_right": 7.619195868945902,
+      "record_MAE": 7.832968439428763,
+      "people": 37,
+      "records": 40
+    },
+    {
+      "alpha": 1.0,
+      "person_macro_MAE": 7.718474433643967,
+      "person_MAE_left": 8.14771797078119,
+      "person_MAE_right": 7.28923089650675,
+      "record_MAE": 7.68473047489709,
+      "people": 37,
+      "records": 40
+    },
+    {
+      "alpha": 10.0,
+      "person_macro_MAE": 8.09451749439171,
+      "person_MAE_left": 8.331592033543535,
+      "person_MAE_right": 7.857442955239882,
+      "record_MAE": 8.118995059411564,
+      "people": 37,
+      "records": 40
+    },
+    {
+      "alpha": 100.0,
+      "person_macro_MAE": 8.565420704789057,
+      "person_MAE_left": 8.728173038029745,
+      "person_MAE_right": 8.402668371548367,
+      "record_MAE": 8.638386155988773,
+      "people": 37,
+      "records": 40
+    },
+    {
+      "alpha": 1000.0,
+      "person_macro_MAE": 9.073643108183077,
+      "person_MAE_left": 9.336330397950796,
+      "person_MAE_right": 8.81095581841536,
+      "record_MAE": 9.141350438145466,
+      "people": 37,
+      "records": 40
+    },
+    {
+      "alpha": 10000.0,
+      "person_macro_MAE": 9.74222941457434,
+      "person_MAE_left": 10.15123600004286,
+      "person_MAE_right": 9.333222829105821,
+      "record_MAE": 9.778642741991746,
+      "people": 37,
+      "records": 40
+    }
+  ],
+  "metrics": {
+    "train": {
+      "ridge": {
+        "person_macro_MAE": 7.6884347805631945,
+        "person_MAE_left": 7.28510909977129,
+        "person_MAE_right": 8.0917604613551,
+        "record_MAE": 7.593345123800116,
+        "people": 175,
+        "records": 203
+      },
+      "training_mean_baseline": {
+        "person_macro_MAE": 9.512628384268822,
+        "person_MAE_left": 9.114993094097496,
+        "person_MAE_right": 9.910263674440143,
+        "record_MAE": 9.364251796050576,
+        "people": 175,
+        "records": 203
+      }
+    },
+    "validation": {
+      "ridge": {
+        "person_macro_MAE": 7.718474433643967,
+        "person_MAE_left": 8.14771797078119,
+        "person_MAE_right": 7.28923089650675,
+        "record_MAE": 7.68473047489709,
+        "people": 37,
+        "records": 40
+      },
+      "training_mean_baseline": {
+        "person_macro_MAE": 9.945621592488909,
+        "person_MAE_left": 10.395586030244354,
+        "person_MAE_right": 9.495657154733466,
+        "record_MAE": 9.979673405939113,
+        "people": 37,
+        "records": 40
+      }
+    },
+    "test": {
+      "ridge": {
+        "person_macro_MAE": 8.866301754247466,
+        "person_MAE_left": 8.345719252954483,
+        "person_MAE_right": 9.386884255540451,
+        "record_MAE": 8.81577663068612,
+        "people": 38,
+        "records": 42
+      },
+      "training_mean_baseline": {
+        "person_macro_MAE": 10.357432027909134,
+        "person_MAE_left": 10.130279226792883,
+        "person_MAE_right": 10.584584829025385,
+        "record_MAE": 10.144336274047536,
+        "people": 38,
+        "records": 42
+      }
+    }
+  },
+  "test_person_MAE_improvement": 1.4911302736616672,
+  "test_person_MAE_improvement_bootstrap_95_CI": [
+    0.06393427740118782,
+    2.9001098033082067
+  ],
+  "test_people_improved": 25,
+  "training_mean_GDI_L_R": [
+    71.49031873577911,
+    71.56217224195457
+  ],
+  "feature_extraction_seconds_this_run": 187.7783541000099,
+  "new_inferences": 285,
+  "inference_median_seconds": 0.6295245999936014,
+  "head_training_selection_export_seconds": 0.2472593999991659,
+  "total_seconds": 190.38059479999356,
+  "process_peak_working_set_bytes": 667779072,
+  "runtime": {
+    "torch": "2.14.1+cpu",
+    "sklearn": "1.9.1",
+    "numpy": "2.3.5",
+    "device": "cpu",
+    "cuda_available": false
+  },
+  "checks": {
+    "strict_weight_load": true,
+    "encoder_frozen": true,
+    "person_disjoint": true,
+    "test_used_for_model_selection": false,
+    "saved_model_reload_predictions_identical": true
+  },
+  "limitations": [
+    "One fixed split; no nested cross validation or external cohort validation",
+    "Strict 243-frame window selection excludes many records and may bias the retained cohort",
+    "No RGB visual verification of person identity or anatomical pose accuracy",
+    "Some upper-body joints have zero confidence; no interpolation was performed",
+    "Visit-level GDI, not a per-frame label; original paper cohort filters not reproduced",
+    "A successful probe does not identify which physical gait property each latent coordinate means",
+    "General older-adult, home-camera and clinical usefulness are not established"
+  ]
+}

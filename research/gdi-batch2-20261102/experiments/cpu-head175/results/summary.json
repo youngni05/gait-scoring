@@ -1,0 +1,54 @@
+{
+  "people": 175,
+  "records": 203,
+  "optimizer_updates": 1000,
+  "synthetic_only": false,
+  "actual_gdi_training_updates": 1000,
+  "baseline": {
+    "front_mae": 8.275834265385386,
+    "back_mae": 9.033922935416292,
+    "front_back_gap": 3.960482771640348,
+    "person_prediction_sd_front_back": [
+      5.881450897111307,
+      5.35447136291952
+    ]
+  },
+  "head_only": {
+    "front_mae": 8.281929817423837,
+    "back_mae": 9.03025950255774,
+    "front_back_gap": 3.9226933663265577,
+    "person_prediction_sd_front_back": [
+      5.877651141042946,
+      5.352900125021035
+    ]
+  },
+  "person_paired_reduction_front_back_gap": [
+    -0.006095552038452305,
+    0.0036634328585528815,
+    0.03778940531378866
+  ],
+  "exploratory_person_bootstrap95_front_back_gap": [
+    [
+      -0.021441628614267887,
+      0.008671174112298079
+    ],
+    [
+      -0.012282742903477941,
+      0.0187221262590526
+    ],
+    [
+      0.023264789706095128,
+      0.0523020624090126
+    ]
+  ],
+  "fold_seconds": [
+    0.1757201999425888,
+    0.17723939998541027,
+    0.21643470006529242,
+    0.2004893000703305,
+    0.21453620004467666
+  ],
+  "gpu_used": false,
+  "encoder_loaded": false,
+  "independent_final_evaluation": false
+}

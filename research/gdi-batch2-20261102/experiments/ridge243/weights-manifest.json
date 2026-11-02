@@ -1,0 +1,11 @@
+[
+  {
+    "file": "ridge_parameters.npz",
+    "source": "outputs/gdi-ridge-experiment-20261016/ridge_model.joblib",
+    "source_sha256": "77023f5f140bc131ff2a6ae1613633751bf4d993cf0ea78ecc4994a7dfea161c",
+    "sha256": "a0bf84ac1c492cbf642ced838df589a40b6d7aee27e7eaab65851ade5c0b3cc9",
+    "bytes": 16257,
+    "numeric_parameters_identical": true,
+    "protocol_split_membership_removed": true
+  }
+]

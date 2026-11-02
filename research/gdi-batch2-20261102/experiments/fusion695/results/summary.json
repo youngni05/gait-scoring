@@ -1,0 +1,1313 @@
+{
+  "metrics": {
+    "rf_coordinate": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 7.9763248875854185,
+      "bias": 0.3770210788172596,
+      "exact_10point_bin_rate": 0.359477560808496,
+      "two_or_more_bins_rate": 0.15163069544364507,
+      "prediction_range": [
+        57.61720244486458,
+        90.5726291326856
+      ]
+    },
+    "rf_motionbert": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 9.065233602432023,
+      "bias": 0.14116396262376738,
+      "exact_10point_bin_rate": 0.3369904076738609,
+      "two_or_more_bins_rate": 0.20244090441932167,
+      "prediction_range": [
+        57.79411129424858,
+        89.38704485877035
+      ]
+    },
+    "rf_concatenated": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 8.03503123804448,
+      "bias": 0.2828633785830176,
+      "exact_10point_bin_rate": 0.3653819801301816,
+      "two_or_more_bins_rate": 0.15652278177458034,
+      "prediction_range": [
+        54.82358561335231,
+        91.53617480728549
+      ]
+    },
+    "pls": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 7.97489635035398,
+      "bias": -0.023489696414393028,
+      "exact_10point_bin_rate": 0.38710346008907154,
+      "two_or_more_bins_rate": 0.15525865022267898,
+      "prediction_range": [
+        36.45707073728113,
+        91.51390692940407
+      ]
+    },
+    "rf_coordinate_pls_equal": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 7.724280542742291,
+      "bias": 0.17676569120143318,
+      "exact_10point_bin_rate": 0.38396882494004797,
+      "two_or_more_bins_rate": 0.1368705035971223,
+      "prediction_range": [
+        50.93942187902864,
+        89.84327718576766
+      ]
+    },
+    "rf_concatenated_pls_equal": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 7.760388009498559,
+      "bias": 0.12968684108431197,
+      "exact_10point_bin_rate": 0.37979616306954433,
+      "two_or_more_bins_rate": 0.13752997601918465,
+      "prediction_range": [
+        51.12886928522001,
+        90.2489046979434
+      ]
+    },
+    "raw_cnn": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 9.284686090267034,
+      "bias": -2.3015784691369454,
+      "exact_10point_bin_rate": 0.32446214457005823,
+      "two_or_more_bins_rate": 0.21134121274409046,
+      "prediction_range": [
+        26.160354614257812,
+        94.59302520751953
+      ]
+    },
+    "raw_cnn_pls_equal": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 8.136475662423587,
+      "bias": -1.1625340827756694,
+      "exact_10point_bin_rate": 0.37990750256937306,
+      "two_or_more_bins_rate": 0.16775265501884207,
+      "prediction_range": [
+        46.847147658069275,
+        90.50811486851751
+      ]
+    },
+    "raw_cnn_rf_coordinate_equal": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 8.1657978409432,
+      "bias": -0.9622786951598427,
+      "exact_10point_bin_rate": 0.3640082219938335,
+      "two_or_more_bins_rate": 0.15717711545049676,
+      "prediction_range": [
+        50.54318951759228,
+        89.77869708918288
+      ]
+    },
+    "temporal_cnn": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 8.905255010708432,
+      "bias": -0.36144760422220495,
+      "exact_10point_bin_rate": 0.33940561836245287,
+      "two_or_more_bins_rate": 0.18932339842411786,
+      "prediction_range": [
+        46.42753601074219,
+        117.68802642822266
+      ]
+    },
+    "temporal_cnn_pls_equal": {
+      "people": 695,
+      "records": 1064,
+      "MAE": 8.142646672566068,
+      "bias": -0.19246865031829907,
+      "exact_10point_bin_rate": 0.3690767386091127,
+      "two_or_more_bins_rate": 0.16053442959917782,
+      "prediction_range": [
+        51.30681295653119,
+        97.16162092296663
+      ]
+    }
+  },
+  "fold_metrics": {
+    "rf_coordinate": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 8.677550136024996,
+        "bias": 0.5936469669512289,
+        "exact_10point_bin_rate": 0.3325196985268927,
+        "two_or_more_bins_rate": 0.1963429256594724,
+        "prediction_range": [
+          60.46608027383192,
+          90.5726291326856
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 7.798944856415144,
+        "bias": 1.2298056981784424,
+        "exact_10point_bin_rate": 0.3723021582733813,
+        "two_or_more_bins_rate": 0.13309352517985612,
+        "prediction_range": [
+          61.59020894938083,
+          90.20432183093456
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 7.666771568838202,
+        "bias": -0.4803802201069704,
+        "exact_10point_bin_rate": 0.3752997601918465,
+        "two_or_more_bins_rate": 0.13459232613908872,
+        "prediction_range": [
+          58.82820158977496,
+          85.70497662966095
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 7.704023575956843,
+        "bias": -0.0703322820937934,
+        "exact_10point_bin_rate": 0.33195443645083933,
+        "two_or_more_bins_rate": 0.13992805755395682,
+        "prediction_range": [
+          61.4101755165432,
+          89.47195528995648
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 8.034334300691915,
+        "bias": 0.6123652311573905,
+        "exact_10point_bin_rate": 0.3853117505995204,
+        "two_or_more_bins_rate": 0.1541966426858513,
+        "prediction_range": [
+          57.61720244486458,
+          87.63544656807117
+        ]
+      }
+    ],
+    "rf_motionbert": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 9.661738819933381,
+        "bias": -0.41088392375161814,
+        "exact_10point_bin_rate": 0.31594724220623505,
+        "two_or_more_bins_rate": 0.21244433025008566,
+        "prediction_range": [
+          62.96890744432601,
+          89.38704485877035
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 9.351855229911251,
+        "bias": 0.7416059326672689,
+        "exact_10point_bin_rate": 0.3029376498800959,
+        "two_or_more_bins_rate": 0.21366906474820146,
+        "prediction_range": [
+          59.922831998142215,
+          85.81966671110911
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 8.7302643538179,
+        "bias": 0.16885340185051387,
+        "exact_10point_bin_rate": 0.35431654676258995,
+        "two_or_more_bins_rate": 0.18225419664268586,
+        "prediction_range": [
+          58.023428648965464,
+          86.85712771098318
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 8.517912992418175,
+        "bias": -0.6549826586680639,
+        "exact_10point_bin_rate": 0.3285371702637889,
+        "two_or_more_bins_rate": 0.21127098321342927,
+        "prediction_range": [
+          57.79411129424858,
+          87.57364489680072
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 9.064396616079405,
+        "bias": 0.8612270610207365,
+        "exact_10point_bin_rate": 0.38321342925659474,
+        "two_or_more_bins_rate": 0.19256594724220621,
+        "prediction_range": [
+          59.14310504598812,
+          85.55561402592382
+        ]
+      }
+    ],
+    "rf_concatenated": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 8.542437066659925,
+        "bias": 0.387683461269577,
+        "exact_10point_bin_rate": 0.3508907159986297,
+        "two_or_more_bins_rate": 0.18135491606714627,
+        "prediction_range": [
+          57.75225459825474,
+          91.53617480728549
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 8.047124509451674,
+        "bias": 1.1752132839805294,
+        "exact_10point_bin_rate": 0.35389688249400475,
+        "two_or_more_bins_rate": 0.16366906474820142,
+        "prediction_range": [
+          59.77263769778906,
+          91.00006568883686
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 7.628422701496508,
+        "bias": -0.6693782849633275,
+        "exact_10point_bin_rate": 0.3827937649880096,
+        "two_or_more_bins_rate": 0.13788968824940045,
+        "prediction_range": [
+          54.82358561335231,
+          88.29355540651996
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 7.822991234302769,
+        "bias": -0.25499897058694065,
+        "exact_10point_bin_rate": 0.3540167865707434,
+        "two_or_more_bins_rate": 0.1483213429256595,
+        "prediction_range": [
+          58.11575699745701,
+          87.97614111137244
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 8.134180678311527,
+        "bias": 0.7757974032152501,
+        "exact_10point_bin_rate": 0.3853117505995204,
+        "two_or_more_bins_rate": 0.15137889688249398,
+        "prediction_range": [
+          58.057851135134754,
+          88.86592630008573
+        ]
+      }
+    ],
+    "pls": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 8.198224598798435,
+        "bias": -0.2143232803458042,
+        "exact_10point_bin_rate": 0.38437821171634123,
+        "two_or_more_bins_rate": 0.16298389859540938,
+        "prediction_range": [
+          50.498112125316,
+          89.68878778219292
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 7.816450735191116,
+        "bias": 0.7080176837853756,
+        "exact_10point_bin_rate": 0.3705635491606715,
+        "two_or_more_bins_rate": 0.14658273381294964,
+        "prediction_range": [
+          43.06207904898383,
+          90.56229043816973
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 8.062699638397433,
+        "bias": -0.5113120754163636,
+        "exact_10point_bin_rate": 0.38009592326139086,
+        "two_or_more_bins_rate": 0.14268585131894487,
+        "prediction_range": [
+          51.39290746523071,
+          90.94811295190178
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 7.782609732910135,
+        "bias": -0.6271487512958405,
+        "exact_10point_bin_rate": 0.3645083932853717,
+        "two_or_more_bins_rate": 0.1686450839328537,
+        "prediction_range": [
+          44.946373755628144,
+          91.51390692940407
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 8.01449704647278,
+        "bias": 0.5273179412006673,
+        "exact_10point_bin_rate": 0.4359712230215827,
+        "two_or_more_bins_rate": 0.15539568345323743,
+        "prediction_range": [
+          36.45707073728113,
+          90.38778888010143
+        ]
+      }
+    ],
+    "rf_coordinate_pls_equal": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 8.186788410774707,
+        "bias": 0.18966184330271263,
+        "exact_10point_bin_rate": 0.3699040767386091,
+        "two_or_more_bins_rate": 0.15887290167865706,
+        "prediction_range": [
+          55.875719296992415,
+          87.60448867307872
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 7.55150892500025,
+        "bias": 0.9689116909819089,
+        "exact_10point_bin_rate": 0.35689448441247,
+        "two_or_more_bins_rate": 0.1109112709832134,
+        "prediction_range": [
+          54.655102832542056,
+          89.84327718576766
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 7.643078266657557,
+        "bias": -0.4958461477616672,
+        "exact_10point_bin_rate": 0.3833932853717027,
+        "two_or_more_bins_rate": 0.12200239808153476,
+        "prediction_range": [
+          56.903108901834194,
+          86.44788861808941
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 7.39930399174611,
+        "bias": -0.34874051669481715,
+        "exact_10point_bin_rate": 0.3780575539568345,
+        "two_or_more_bins_rate": 0.14286570743405277,
+        "prediction_range": [
+          56.55707191759099,
+          86.81980653801247
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 7.840723119532831,
+        "bias": 0.5698415861790285,
+        "exact_10point_bin_rate": 0.4315947242206235,
+        "two_or_more_bins_rate": 0.14970023980815345,
+        "prediction_range": [
+          50.93942187902864,
+          86.251032683229
+        ]
+      }
+    ],
+    "rf_concatenated_pls_equal": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 8.145676806791275,
+        "bias": 0.08668009046188624,
+        "exact_10point_bin_rate": 0.36630695443645084,
+        "two_or_more_bins_rate": 0.16516786570743405,
+        "prediction_range": [
+          56.42490271382323,
+          87.69846149887022
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 7.695132811525603,
+        "bias": 0.941615483882952,
+        "exact_10point_bin_rate": 0.363189448441247,
+        "two_or_more_bins_rate": 0.12020383693045562,
+        "prediction_range": [
+          54.54445245054766,
+          90.2489046979434
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 7.600775893395965,
+        "bias": -0.5903451801898459,
+        "exact_10point_bin_rate": 0.374400479616307,
+        "two_or_more_bins_rate": 0.11660671462829737,
+        "prediction_range": [
+          54.90080091362287,
+          87.00291372329193
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 7.462386259815427,
+        "bias": -0.4410738609413909,
+        "exact_10point_bin_rate": 0.3676858513189449,
+        "two_or_more_bins_rate": 0.14286570743405277,
+        "prediction_range": [
+          55.592725863119426,
+          86.0042807978853
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 7.897968275964524,
+        "bias": 0.6515576722079586,
+        "exact_10point_bin_rate": 0.42739808153477216,
+        "two_or_more_bins_rate": 0.14280575539568344,
+        "prediction_range": [
+          51.12886928522001,
+          86.85713456048344
+        ]
+      }
+    ],
+    "raw_cnn": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 12.102176304091667,
+        "bias": -9.24284217212509,
+        "exact_10point_bin_rate": 0.2570229530661185,
+        "two_or_more_bins_rate": 0.3460945529290853,
+        "prediction_range": [
+          54.842201232910156,
+          85.9381103515625
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 8.590580839547332,
+        "bias": 1.3650468872728396,
+        "exact_10point_bin_rate": 0.2984412470023981,
+        "two_or_more_bins_rate": 0.17529976019184654,
+        "prediction_range": [
+          59.81095886230469,
+          93.05494689941406
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 8.108687619923938,
+        "bias": -2.5940946401563063,
+        "exact_10point_bin_rate": 0.3923860911270984,
+        "two_or_more_bins_rate": 0.16306954436450838,
+        "prediction_range": [
+          58.5018310546875,
+          88.0250015258789
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 8.578411533302859,
+        "bias": -2.8047179837090446,
+        "exact_10point_bin_rate": 0.3288369304556355,
+        "two_or_more_bins_rate": 0.18663069544364508,
+        "prediction_range": [
+          55.57081985473633,
+          90.30067443847656
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 9.043574154469376,
+        "bias": 1.768715563032875,
+        "exact_10point_bin_rate": 0.3456235011990408,
+        "two_or_more_bins_rate": 0.18561151079136692,
+        "prediction_range": [
+          26.160354614257812,
+          94.59302520751953
+        ]
+      }
+    ],
+    "raw_cnn_pls_equal": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 9.259974192054322,
+        "bias": -4.728582726235448,
+        "exact_10point_bin_rate": 0.3449811579307982,
+        "two_or_more_bins_rate": 0.21574169236039736,
+        "prediction_range": [
+          52.67015667911308,
+          87.80414938799147
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 7.854876803903219,
+        "bias": 1.0365322855291075,
+        "exact_10point_bin_rate": 0.34436450839328536,
+        "two_or_more_bins_rate": 0.15299760191846523,
+        "prediction_range": [
+          52.54612665217746,
+          89.41295760277092
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 7.715832869866738,
+        "bias": -1.5527033577863345,
+        "exact_10point_bin_rate": 0.39928057553956836,
+        "two_or_more_bins_rate": 0.14298561151079137,
+        "prediction_range": [
+          56.73992363429046,
+          87.83678728477248
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 7.784917727505691,
+        "bias": -1.7159333675024426,
+        "exact_10point_bin_rate": 0.380515587529976,
+        "two_or_more_bins_rate": 0.16654676258992804,
+        "prediction_range": [
+          50.92699289340449,
+          88.3108198405424
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 8.06677671878796,
+        "bias": 1.148016752116771,
+        "exact_10point_bin_rate": 0.4303956834532374,
+        "two_or_more_bins_rate": 0.1604916067146283,
+        "prediction_range": [
+          46.847147658069275,
+          90.50811486851751
+        ]
+      }
+    ],
+    "raw_cnn_rf_coordinate_equal": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 9.432381463130968,
+        "bias": -4.324597602586931,
+        "exact_10point_bin_rate": 0.3006166495375128,
+        "two_or_more_bins_rate": 0.2196385748544022,
+        "prediction_range": [
+          58.03138188801459,
+          85.4223757368754
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 7.879814197931122,
+        "bias": 1.297426292725641,
+        "exact_10point_bin_rate": 0.3524580335731415,
+        "two_or_more_bins_rate": 0.1344124700239808,
+        "prediction_range": [
+          61.684745077494235,
+          89.77869708918288
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 7.635315263968488,
+        "bias": -1.5372374301316376,
+        "exact_10point_bin_rate": 0.40677458033573144,
+        "two_or_more_bins_rate": 0.13908872901678657,
+        "prediction_range": [
+          58.66501632223123,
+          86.86498907776993
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 7.764766916102339,
+        "bias": -1.4375251329014185,
+        "exact_10point_bin_rate": 0.3610911270983213,
+        "two_or_more_bins_rate": 0.15293764988009592,
+        "prediction_range": [
+          58.49049768563977,
+          88.70119523531028
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 8.11671136358309,
+        "bias": 1.1905403970951323,
+        "exact_10point_bin_rate": 0.3991007194244604,
+        "two_or_more_bins_rate": 0.1398081534772182,
+        "prediction_range": [
+          50.54318951759228,
+          87.99010257232355
+        ]
+      }
+    ],
+    "temporal_cnn": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 9.294482612791615,
+        "bias": -2.221256597708734,
+        "exact_10point_bin_rate": 0.31333504624871533,
+        "two_or_more_bins_rate": 0.2106457690990065,
+        "prediction_range": [
+          59.274532318115234,
+          89.96829223632812
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 8.967615934963302,
+        "bias": 0.03203537716939881,
+        "exact_10point_bin_rate": 0.29538369304556356,
+        "two_or_more_bins_rate": 0.1920863309352518,
+        "prediction_range": [
+          46.42753601074219,
+          84.70338439941406
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 8.70303038731101,
+        "bias": -0.8777833900688512,
+        "exact_10point_bin_rate": 0.3699040767386091,
+        "two_or_more_bins_rate": 0.1552757793764988,
+        "prediction_range": [
+          64.71237182617188,
+          117.68802642822266
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 8.742359847159182,
+        "bias": 1.370659010151799,
+        "exact_10point_bin_rate": 0.3126498800959232,
+        "two_or_more_bins_rate": 0.18603117505995204,
+        "prediction_range": [
+          59.414512634277344,
+          90.52825927734375
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 8.818786271317057,
+        "bias": -0.11089242065463827,
+        "exact_10point_bin_rate": 0.4057553956834532,
+        "two_or_more_bins_rate": 0.20257793764988008,
+        "prediction_range": [
+          57.78520584106445,
+          89.07847595214844
+        ]
+      }
+    ],
+    "temporal_cnn_pls_equal": [
+      {
+        "people": 139,
+        "records": 216,
+        "MAE": 8.41709299571183,
+        "bias": -1.217789939027269,
+        "exact_10point_bin_rate": 0.35251798561151076,
+        "two_or_more_bins_rate": 0.1683795820486468,
+        "prediction_range": [
+          57.10461971170851,
+          88.04200665354763
+        ]
+      },
+      {
+        "people": 139,
+        "records": 211,
+        "MAE": 8.121698267018125,
+        "bias": 0.37002653047738715,
+        "exact_10point_bin_rate": 0.3422062350119904,
+        "two_or_more_bins_rate": 0.14058752997601917,
+        "prediction_range": [
+          54.438678074296604,
+          87.16721928524697
+        ]
+      },
+      {
+        "people": 139,
+        "records": 194,
+        "MAE": 8.071353756840104,
+        "bias": -0.6945477327426075,
+        "exact_10point_bin_rate": 0.3729016786570743,
+        "two_or_more_bins_rate": 0.1486810551558753,
+        "prediction_range": [
+          58.05263964570129,
+          97.16162092296663
+        ]
+      },
+      {
+        "people": 139,
+        "records": 231,
+        "MAE": 7.962034095457645,
+        "bias": 0.37175512942797934,
+        "exact_10point_bin_rate": 0.358273381294964,
+        "two_or_more_bins_rate": 0.1788369304556355,
+        "prediction_range": [
+          52.7368892703922,
+          87.80807994870221
+        ]
+      },
+      {
+        "people": 139,
+        "records": 212,
+        "MAE": 8.141054247802636,
+        "bias": 0.20821276027301475,
+        "exact_10point_bin_rate": 0.41948441247002394,
+        "two_or_more_bins_rate": 0.1661870503597122,
+        "prediction_range": [
+          51.30681295653119,
+          87.19443928308135
+        ]
+      }
+    ]
+  },
+  "groups": {
+    "rf_coordinate": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 8.01524593955804,
+        "bias": 1.8113902715267192,
+        "exact_10point_bin_rate": 0.349047619047619,
+        "two_or_more_bins_rate": 0.16428571428571428,
+        "prediction_range": [
+          61.80260260584168,
+          88.18371841139121
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 7.9632264566330955,
+        "bias": -0.10569932257534709,
+        "exact_10point_bin_rate": 0.3629876373626374,
+        "two_or_more_bins_rate": 0.14737179487179486,
+        "prediction_range": [
+          57.61720244486458,
+          90.5726291326856
+        ]
+      }
+    },
+    "rf_motionbert": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 8.755234266156696,
+        "bias": 2.208928552652982,
+        "exact_10point_bin_rate": 0.36714285714285716,
+        "two_or_more_bins_rate": 0.17523809523809522,
+        "prediction_range": [
+          57.864782230166625,
+          86.85712771098318
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 9.169560302140063,
+        "bias": -0.5547183513283722,
+        "exact_10point_bin_rate": 0.3268429487179487,
+        "two_or_more_bins_rate": 0.21159569597069597,
+        "prediction_range": [
+          57.79411129424858,
+          89.38704485877035
+        ]
+      }
+    },
+    "rf_concatenated": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 8.006887135048133,
+        "bias": 1.6866811460631672,
+        "exact_10point_bin_rate": 0.3523809523809524,
+        "two_or_more_bins_rate": 0.1519047619047619,
+        "prediction_range": [
+          59.78252960629021,
+          89.38727861982308
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 8.04450281116825,
+        "bias": -0.18957529316510968,
+        "exact_10point_bin_rate": 0.36975732600732597,
+        "two_or_more_bins_rate": 0.15807692307692306,
+        "prediction_range": [
+          54.82358561335231,
+          91.53617480728549
+        ]
+      }
+    },
+    "pls": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 7.959338881924393,
+        "bias": 1.1746198558924046,
+        "exact_10point_bin_rate": 0.39238095238095233,
+        "two_or_more_bins_rate": 0.1461904761904762,
+        "prediction_range": [
+          51.23499186166501,
+          90.94811295190178
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 7.980132036844708,
+        "bias": -0.4266996419022577,
+        "exact_10point_bin_rate": 0.38532738095238095,
+        "two_or_more_bins_rate": 0.15831043956043955,
+        "prediction_range": [
+          36.45707073728113,
+          91.51390692940407
+        ]
+      }
+    },
+    "rf_coordinate_pls_equal": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 7.589703864799142,
+        "bias": 1.493005063709562,
+        "exact_10point_bin_rate": 0.3890476190476191,
+        "two_or_more_bins_rate": 0.12238095238095238,
+        "prediction_range": [
+          57.09140815404058,
+          87.57276443214147
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 7.7695707708962365,
+        "bias": -0.26619948223880247,
+        "exact_10point_bin_rate": 0.38225961538461534,
+        "two_or_more_bins_rate": 0.14174679487179487,
+        "prediction_range": [
+          50.93942187902864,
+          89.84327718576766
+        ]
+      }
+    },
+    "rf_concatenated_pls_equal": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 7.615274042314824,
+        "bias": 1.4306505009777852,
+        "exact_10point_bin_rate": 0.3804761904761905,
+        "two_or_more_bins_rate": 0.12523809523809523,
+        "prediction_range": [
+          57.86088872279457,
+          88.17454453635739
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 7.809224440762317,
+        "bias": -0.30813746753368393,
+        "exact_10point_bin_rate": 0.3795673076923077,
+        "two_or_more_bins_rate": 0.14166666666666664,
+        "prediction_range": [
+          51.12886928522001,
+          90.2489046979434
+        ]
+      }
+    },
+    "raw_cnn": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 9.320169192355847,
+        "bias": -0.669571432868021,
+        "exact_10point_bin_rate": 0.30428571428571427,
+        "two_or_more_bins_rate": 0.22142857142857142,
+        "prediction_range": [
+          26.160354614257812,
+          89.80148315429688
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 9.272744661679452,
+        "bias": -2.8508116063428335,
+        "exact_10point_bin_rate": 0.33125228937728934,
+        "two_or_more_bins_rate": 0.20794642857142856,
+        "prediction_range": [
+          54.842201232910156,
+          94.59302520751953
+        ]
+      }
+    },
+    "raw_cnn_pls_equal": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 7.96390478031003,
+        "bias": 0.2525242115121917,
+        "exact_10point_bin_rate": 0.39809523809523806,
+        "two_or_more_bins_rate": 0.17333333333333334,
+        "prediction_range": [
+          52.990302944296786,
+          88.3816468035943
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 8.194552401596418,
+        "bias": -1.6387556241225454,
+        "exact_10point_bin_rate": 0.37378663003663004,
+        "two_or_more_bins_rate": 0.16587454212454214,
+        "prediction_range": [
+          46.847147658069275,
+          90.50811486851751
+        ]
+      }
+    },
+    "raw_cnn_rf_coordinate_equal": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 8.094108657565895,
+        "bias": 0.5709094193293489,
+        "exact_10point_bin_rate": 0.36619047619047623,
+        "two_or_more_bins_rate": 0.16047619047619047,
+        "prediction_range": [
+          50.54318951759228,
+          88.99260078284405
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 8.18992400842595,
+        "bias": -1.4782554644590897,
+        "exact_10point_bin_rate": 0.3632738095238095,
+        "two_or_more_bins_rate": 0.15606684981684982,
+        "prediction_range": [
+          57.11401623043048,
+          89.77869708918288
+        ]
+      }
+    },
+    "temporal_cnn": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 8.741931325235418,
+        "bias": 1.4822008573163632,
+        "exact_10point_bin_rate": 0.3466666666666667,
+        "two_or_more_bins_rate": 0.1957142857142857,
+        "prediction_range": [
+          57.78520584106445,
+          90.22021484375
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 8.960219712550314,
+        "bias": -0.9819062210861462,
+        "exact_10point_bin_rate": 0.33696199633699636,
+        "two_or_more_bins_rate": 0.18717261904761906,
+        "prediction_range": [
+          46.42753601074219,
+          117.68802642822266
+        ]
+      }
+    },
+    "temporal_cnn_pls_equal": {
+      "0": {
+        "people": 175,
+        "records": 203,
+        "MAE": 8.028474949014804,
+        "bias": 1.328410356604384,
+        "exact_10point_bin_rate": 0.37857142857142856,
+        "two_or_more_bins_rate": 0.16857142857142857,
+        "prediction_range": [
+          55.324752247971176,
+          85.99060350791702
+        ]
+      },
+      "1": {
+        "people": 520,
+        "records": 861,
+        "MAE": 8.181069848761204,
+        "bias": -0.704302931494202,
+        "exact_10point_bin_rate": 0.36588141025641024,
+        "two_or_more_bins_rate": 0.1578296703296703,
+        "prediction_range": [
+          51.30681295653119,
+          97.16162092296663
+        ]
+      }
+    }
+  },
+  "comparisons_with_PLS": {
+    "rf_coordinate": {
+      "MAE_reduction": -0.0014285372314397117,
+      "conditional_bootstrap95": [
+        -0.2543377513473682,
+        0.2547027535814627
+      ],
+      "people_improved_equal_worse": [
+        361,
+        0,
+        334
+      ]
+    },
+    "rf_motionbert": {
+      "MAE_reduction": -1.0903372520780428,
+      "conditional_bootstrap95": [
+        -1.3763847644323552,
+        -0.8102240014574573
+      ],
+      "people_improved_equal_worse": [
+        273,
+        0,
+        422
+      ]
+    },
+    "rf_concatenated": {
+      "MAE_reduction": -0.060134887690500564,
+      "conditional_bootstrap95": [
+        -0.30303591777989897,
+        0.18224316072234265
+      ],
+      "people_improved_equal_worse": [
+        345,
+        0,
+        350
+      ]
+    },
+    "pls": {
+      "MAE_reduction": 0.0,
+      "conditional_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "people_improved_equal_worse": [
+        0,
+        695,
+        0
+      ]
+    },
+    "rf_coordinate_pls_equal": {
+      "MAE_reduction": 0.25061580761168867,
+      "conditional_bootstrap95": [
+        0.11412644776009889,
+        0.39148078837850997
+      ],
+      "people_improved_equal_worse": [
+        399,
+        0,
+        296
+      ]
+    },
+    "rf_concatenated_pls_equal": {
+      "MAE_reduction": 0.21450834085542114,
+      "conditional_bootstrap95": [
+        0.08256310009415285,
+        0.34798063889308545
+      ],
+      "people_improved_equal_worse": [
+        386,
+        0,
+        309
+      ]
+    },
+    "raw_cnn": {
+      "MAE_reduction": -1.309789739913054,
+      "conditional_bootstrap95": [
+        -1.6618709820252189,
+        -0.9564918940544679
+      ],
+      "people_improved_equal_worse": [
+        286,
+        0,
+        409
+      ]
+    },
+    "raw_cnn_pls_equal": {
+      "MAE_reduction": -0.16157931206960552,
+      "conditional_bootstrap95": [
+        -0.36090899318555164,
+        0.04019373055993738
+      ],
+      "people_improved_equal_worse": [
+        347,
+        0,
+        348
+      ]
+    },
+    "raw_cnn_rf_coordinate_equal": {
+      "MAE_reduction": -0.190901490589221,
+      "conditional_bootstrap95": [
+        -0.4485785656060568,
+        0.07124573497470188
+      ],
+      "people_improved_equal_worse": [
+        354,
+        0,
+        341
+      ]
+    },
+    "temporal_cnn": {
+      "MAE_reduction": -0.930358660354453,
+      "conditional_bootstrap95": [
+        -1.223284657689431,
+        -0.6429944783587053
+      ],
+      "people_improved_equal_worse": [
+        287,
+        0,
+        408
+      ]
+    },
+    "temporal_cnn_pls_equal": {
+      "MAE_reduction": -0.1677503222120881,
+      "conditional_bootstrap95": [
+        -0.32629629318877706,
+        -0.013430582061597605
+      ],
+      "people_improved_equal_worse": [
+        327,
+        0,
+        368
+      ]
+    }
+  },
+  "people": 695,
+  "records": 1064,
+  "methods": [
+    "rf_coordinate",
+    "rf_motionbert",
+    "rf_concatenated",
+    "pls",
+    "rf_coordinate_pls_equal",
+    "rf_concatenated_pls_equal",
+    "raw_cnn",
+    "raw_cnn_pls_equal",
+    "raw_cnn_rf_coordinate_equal",
+    "temporal_cnn",
+    "temporal_cnn_pls_equal"
+  ],
+  "phase_evidence": {
+    "rf": {
+      "summary_sha256": "17705e2c02c2f0d5841f3bd6cfd2b9e778dd06af606afda43a5890c6e8fdd779",
+      "verification_sha256": "7dc38716c50b993d24f87d272c89290275bf9ec5dec3c84c9f0d37a9bfb8ae1e",
+      "prediction_sha256": "547aee0b29318020d5e5d5bcaf86a13ef4cb8f43040288b737dcd665324ae4c3"
+    },
+    "raw": {
+      "summary_sha256": "f8f473a7dad0b55129b87aa12403949f15d027416c2bc8952cd31bd546ed24ed",
+      "verification_sha256": "c9b49a0c1081e17d38d02f785dee5bf09adc70fef23ff7a73a5ddcd07a0acce6",
+      "prediction_sha256": "c22777c8590ec442bd10d6c560942fe3ace27b025532ed1e73d87b236ab4e52e"
+    },
+    "temporal": {
+      "summary_sha256": "9c6fa4035d9a476e01bf5602097d0656a4224527b00582ee56dc3bf3feb54b14",
+      "verification_sha256": "2726c7985d7a634a32609803fbd62dcfa93eb953e75ee4f14814f58c0da9be57",
+      "prediction_sha256": "452aef55945b754cf5447e711d259f33e3d5cae96bd1ac6572d7253d3260ff22"
+    }
+  },
+  "completed_utc": "2026-10-30T08:10:55.937356+00:00",
+  "existing_CNN_RF_status_before_this_study": {
+    "same695_CNN_completed_results_found": false,
+    "same695_RF_completed_results_found": false,
+    "CNN_available": "Prepared six-convolution source adaptation and synthetic-only workflow, not real-person training results",
+    "RF_available": "No RandomForestRegressor/Classifier training code found in searched project code",
+    "search_scope": [
+      "gdi-research-harness",
+      "tools",
+      "2026-ITEC0401",
+      "ai-measurement-review"
+    ],
+    "teammate_experiment_status": "No teammate code or predictions available; completion cannot be confirmed",
+    "existing_completed_GDI_methods": [
+      "frozen MotionBERT Ridge/PCA/PLS",
+      "MotionBERT partial training",
+      "PLS/GPU fixed equal prediction average"
+    ]
+  },
+  "independent_final_evaluation": false,
+  "protected_numeric_data_read": false,
+  "all_new_CNN_training_device": "CPU",
+  "new_encoder_training": false,
+  "all_predictions_sha256": "02e44bc5d7df5935143ff7449c7eeb292111deefc61c79cdd412ed8c499839bf",
+  "execution_note": "Phase elapsed_seconds values measure the last invocation. Raw CNN resumed after a transient Windows log-file lock; all 20 inner curves and five selected refits were checked. Source learning functions were unchanged by the IO-only retry patch.",
+  "code_sha256": {
+    "common.py": "adfe00604291edc2dd8182f6cd10147b3d6c1c154cee8b73e23b1c4bfadb7389",
+    "prepare.py": "c31e509e794fe60c20a3a2c652e85ea1d22553067ccfcbc0c8897e4a8f9a2500",
+    "train_rf.py": "144bb41ef1815a97b11198c3ef2eb5ec6770f5b8024eda42d0122b112a5de119",
+    "train_cnn.py": "4ff2f726f89e7f9393b6bbe98b2489ace11ee48b0fa5a7cb85018db9fd877215",
+    "verify.py": "36073494a95066ba95e9c7e04a066986b0e8a577e1e508a5adf8b02549efab93",
+    "verify_frames.py": "3d63f5f12cc0fe68edf275d8f67cadfd8e52657ee6a81bc281171edd793d3d07",
+    "combine.py": "08e6a0d9259c58a290a10e372e71f33614e293c16e524afca0b00558681d4227",
+    "cnn_source/run.py": "98752f1abe4ad414350e1a1da85268e9fb4963f93988c6be98cef9efa0eaabb7",
+    "cnn_source/model.py": "73b29c6ab639d43ef4bf6c906516aeb5e19b865941df7262180eb424d85b27bc",
+    "cnn_execution.json": "9736f1ed07be19b8cdea0883791dfbb7aaf3f5f37593d4daf8a055a2bbd034d7",
+    "io_patch.json": "ad0e7dc9afe759dfead6fb25d24c1c3e55d3b1aee624e0c9f8008640c402ee92"
+  },
+  "score_bands_sha256": "02aade203ceae5a055be80b0235f2fd0572a629dd28e9c7efe3d7e0cb21e52f4"
+}

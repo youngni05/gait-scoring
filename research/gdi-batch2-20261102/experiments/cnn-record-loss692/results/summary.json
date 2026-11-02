@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "people": 692,
+  "records": 1061,
+  "metrics": {
+    "record_mean": {
+      "mae": 7.3243770651253,
+      "high90_mae": 10.236336984955347,
+      "high90_people": 68,
+      "exact_band": 0.3840575970272502
+    },
+    "record_mean_raw": {
+      "mae": 7.633369292540793,
+      "high90_mae": 10.88134849643857,
+      "high90_people": 68,
+      "exact_band": 0.37159888521882745
+    },
+    "window_control": {
+      "mae": 7.250783131810132,
+      "high90_mae": 10.5264248862445,
+      "high90_people": 68,
+      "exact_band": 0.38453241123038806
+    },
+    "multiwindow_CNN": {
+      "mae": 6.866655321854305,
+      "high90_mae": 8.294163898887925,
+      "high90_people": 68,
+      "exact_band": 0.4149033168180567
+    },
+    "multiwindow_STT": {
+      "mae": 6.944988193492919,
+      "high90_mae": 9.594099711709836,
+      "high90_people": 68,
+      "exact_band": 0.40358175061932283
+    },
+    "existing_CNN_STT": {
+      "mae": 6.686592323152646,
+      "high90_mae": 8.808608929875007,
+      "high90_people": 68,
+      "exact_band": 0.42195499587118085
+    },
+    "existing_mean_difference": {
+      "mae": 6.6055885701904105,
+      "high90_mae": 8.780505047998641,
+      "high90_people": 68,
+      "exact_band": 0.43042595650977145
+    },
+    "inner_selected": {
+      "mae": 6.602250190269376,
+      "high90_mae": 8.753083291197113,
+      "high90_people": 68,
+      "exact_band": 0.4309076520781723
+    }
+  },
+  "paired": {
+    "window_control": {
+      "delta": 0.07359393331516732,
+      "descriptive_bootstrap95": [
+        -0.19996176476984054,
+        0.32928472822634985
+      ]
+    },
+    "multiwindow_CNN": {
+      "delta": 0.45772174327099396,
+      "descriptive_bootstrap95": [
+        0.2296642418584041,
+        0.6862067778251717
+      ]
+    },
+    "inner_selected": {
+      "delta": 0.7221268748559226,
+      "descriptive_bootstrap95": [
+        0.5158987599299297,
+        0.9303008608220533
+      ]
+    }
+  },
+  "previous_explosion_case": {
+    "record_row": 93,
+    "actual": 55.6015454932175,
+    "predictions": {
+      "record_mean": 66.22637442851763,
+      "record_mean_raw": 61.43430391947428,
+      "window_control": 159.00986249195583,
+      "multiwindow_CNN": 57.72222444096305,
+      "multiwindow_STT": 58.128022186271096,
+      "existing_CNN_STT": 57.864253651820874,
+      "existing_mean_difference": 57.88600822802344,
+      "inner_selected": 57.8860019818613
+    }
+  },
+  "sources": {
+    "window_control": {
+      "path": "[workstation/server location omitted]",
+      "sha256": "fc50100d946b4d310bbc8cfcb4d7b012544e763c71a86d5d7bac94a0ccd4bc08"
+    },
+    "multiwindow_CNN": {
+      "path": "[workstation/server location omitted]",
+      "sha256": "af27ee472606996d7e8e2e914a1041e2ee29d867ff25f09b3f9368f2c485cf11"
+    },
+    "multiwindow_STT": {
+      "path": "[workstation/server location omitted]",
+      "sha256": "62797c6bf0aa0782e178d6a001ad03f5ba36233f0e747933a23329c8018a0228"
+    },
+    "combinations": {
+      "path": "[workstation/server location omitted]",
+      "sha256": "e1d5ae8cc291b2fcdb9702b1bc7e666728e16d83e6d1ca52963954474e996564"
+    }
+  },
+  "verification_sha256": "b86cac46a23736a82bccdd5add508171bbc2799d99f1316b024ee0d3906015e9",
+  "protected_final_opened": false
+}

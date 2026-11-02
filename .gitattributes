@@ -5,3 +5,5 @@ research/2026-10-30-motionbert695/lib/** -whitespace
 # Keep official license texts byte-for-byte, including upstream formatting.
 research/licenses/*.txt -whitespace
 research/licenses/*.html -whitespace
+# Preserve formatting of the archived original verification script.
+research/gdi-batch2-20261102/experiments/rhythm-pooling/source/verify.py -whitespace

@@ -1,0 +1,47 @@
+{
+  "records_total": 1064,
+  "people_total": 695,
+  "records_usable": 1061,
+  "people_usable": 692,
+  "excluded_reasons": {
+    "matched_frames_outside_official_converter_extent": 1,
+    "matched_window_over_25pct_missing_required_coordinates": 2
+  },
+  "matched_same124_frame_ids": true,
+  "all_fixed_folds_preserved": true,
+  "fold_people": {
+    "0": 138,
+    "1": 138,
+    "2": 138,
+    "3": 139,
+    "4": 139
+  },
+  "sliding_windows_available_for_retained_records": 11261,
+  "records_without_sliding_window": 0,
+  "ambiguous_frames_total": 26994,
+  "data_sha256": "7c1912cd27c63a82ed0d0324f98c0c0fae9a608174d52bd7a502f05e9a8c7a1e",
+  "prepare_seconds": 82.14000000001397,
+  "windows": 11261,
+  "fallback_records": 4,
+  "actual_training_steps": 0,
+  "protected_labels_opened": false,
+  "record_count": 1061,
+  "people": 692,
+  "axes": [
+    "window",
+    "left_right",
+    "time124",
+    "feature12"
+  ],
+  "window_to_record": "window_record",
+  "window_start": "zero based, frame = window_start + 1",
+  "window_rule": "range(0,500-124,31); required xy max missing <=25%; finite official features",
+  "canonical_fallback_records": 4,
+  "source_single_bundle_sha256": "65fd5673df547348e9bfc5f61e443a4e571d381596898e658ca5bae099395abb",
+  "preprocessing": "same pinned full-clip processing as single window; ambiguity kept missing",
+  "target_and_fold": "record-level; identical y, IDs and folds to single-window bundle",
+  "loss": "global-mean-one inverse number-of-windows per RECORD; not per-person balance",
+  "batch_normalization": "unweighted window distribution; inverse weighting affects MSE only",
+  "inference": "uniform window mean per record side, then train-record-only pooled-side OLS",
+  "not_compute_matched": true
+}

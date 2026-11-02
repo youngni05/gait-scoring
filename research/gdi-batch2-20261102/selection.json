@@ -1,0 +1,248 @@
+{
+  "date": "2026-11-02",
+  "scope": "GDI only; completed saved-model experiment families",
+  "count_unit": "One experiment family; folds, seeds, arms and superseded revisions are grouped, not counted as independent experiments.",
+  "selection_rule": "Recorded experiment date, then source path for same-date ties; take ceiling(N/2). Dates are day-level study records, not exact job completion times.",
+  "already_published": [
+    "cnn-followup695",
+    "expansion695 MotionBERT adaptation family"
+  ],
+  "remaining_before": 25,
+  "selected": 13,
+  "deferred": 12,
+  "excluded": [
+    "SPPB/TUG and their transfer experiments",
+    "Fixed-model video/external applications and post-hoc aggregation without new saved estimators",
+    "Pilot-only or running experiments, synthetic checks, failed/superseded revisions",
+    "175-person GPU MotionBERT prototype: same adaptation family as already published expansion695",
+    "Repeated variants and output-head followups are grouped within their parent experiment family"
+  ],
+  "experiments": [
+    {
+      "id": "ridge243",
+      "date": "2026-10-16",
+      "title": "고정 MotionBERT 특징·243프레임 Ridge",
+      "source": "outputs/gdi-ridge-experiment-20261016",
+      "evidence": "verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-ridge243-20261102.tar.gz",
+      "package_scope": "One initial frozen-encoder Ridge head and scaler. The encoder itself is not included."
+    },
+    {
+      "id": "weighted-ridge",
+      "date": "2026-10-25",
+      "title": "사람별 학습 비중 Ridge",
+      "source": "gdi-research-harness/jobs/weighted-ridge",
+      "evidence": "runs/20261025T060216615670Z-043ae7/verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-weighted-ridge-20261102.tar.gz",
+      "package_scope": "Original and weighted Ridge coefficient sets, sharing the original scaler."
+    },
+    {
+      "id": "window-ablation",
+      "date": "2026-10-27",
+      "title": "구간 위치·정규화 Ridge 비교",
+      "source": "gdi-research-harness/studies/20261027-window-ablation",
+      "evidence": "independent_verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-window-ablation-20261102.tar.gz",
+      "package_scope": "The five fitted validation heads present in new_validation_models.npz; other diagnostic conditions in the result table are not claimed as separately packaged models."
+    },
+    {
+      "id": "missing-augmentation",
+      "date": "2026-10-28",
+      "title": "누락 증강과 일반 추가 학습",
+      "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning",
+      "evidence": "verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-missing-augmentation-20261102.tar.gz",
+      "package_scope": "Original models.npz, including the fold scalers/target transforms and 30 residual MLPs across the original three seeds."
+    },
+    {
+      "id": "rhythm-pooling",
+      "date": "2026-10-28",
+      "title": "반복성 특징·유효 관절 집계",
+      "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling",
+      "evidence": "verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-rhythm-pooling-20261102.tar.gz",
+      "package_scope": "The original 20 Ridge heads (four feature contracts × five folds)."
+    },
+    {
+      "id": "cpu-head175",
+      "date": "2026-10-30",
+      "title": "175명 고정 특징 출력부 학습",
+      "source": "gdi-research-harness/studies/20261030-cpu-head-study",
+      "evidence": "runs/main/verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-cpu-head175-20261102.tar.gz",
+      "package_scope": "Five main head_only refits from the 175-person experiment. Subsequent PLS/diagnostic substudies are grouped in the parent history and are not separate uploads in this batch."
+    },
+    {
+      "id": "fusion695",
+      "date": "2026-10-30",
+      "title": "695명 RF·시간별 특징 CNN 비교",
+      "source": "gdi-research-harness/studies/20261030-gdi-fusion695",
+      "evidence": "verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-fusion695-20261102.tar.gz",
+      "package_scope": "15 RF refits (three representations × five folds) and five temporal-feature CNN refits. Other controls in the result table are not included as separate checkpoint files."
+    },
+    {
+      "id": "cnn-frozen-residual692",
+      "date": "2026-10-30",
+      "title": "고정 CNN·MotionBERT 잔차 보정",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692",
+      "evidence": "analysis/verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-cnn-frozen-residual692-20261102.tar.gz",
+      "package_scope": "Five residual-model refits plus the five matching frozen baseline CNN refits required to interpret the residual scores."
+    },
+    {
+      "id": "cnn-motionbert-fusion692",
+      "date": "2026-10-30",
+      "title": "MotionBERT 특징·CNN 결합",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692",
+      "evidence": "analysis/verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-cnn-motionbert-fusion692-20261102.tar.gz",
+      "package_scope": "Five outer refit CNNs. Frozen MotionBERT feature extraction is a prerequisite; its encoder weights are not re-uploaded here."
+    },
+    {
+      "id": "cnn-multiwindow692",
+      "date": "2026-10-30",
+      "title": "여러 보행 구간 CNN",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695",
+      "evidence": "analysis/verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-cnn-multiwindow692-20261102.tar.gz",
+      "package_scope": "Five original outer refits; inner models and later seed/ensemble experiments are not silently combined into this result."
+    },
+    {
+      "id": "cnn-paper-input692",
+      "date": "2026-10-30",
+      "title": "원 연구식 입력 한 구간 CNN",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695",
+      "evidence": "analysis/verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-cnn-paper-input692-20261102.tar.gz",
+      "package_scope": "Five original outer refits, recovered as the matching frozen-baseline states used by the verified residual study."
+    },
+    {
+      "id": "cnn-record-loss692",
+      "date": "2026-10-31",
+      "title": "기록 평균 손실 CNN 비교",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692",
+      "evidence": "analysis/pair_comparison.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-cnn-record-loss692-20261102.tar.gz",
+      "package_scope": "Both original arms, window_control and record_mean, with five outer refits each."
+    },
+    {
+      "id": "probability-bands692",
+      "date": "2026-10-31",
+      "title": "GDI 10점 구간 확률 출력부",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/probability-bands692",
+      "evidence": "analysis/verification.json",
+      "status": "selected_for_this_batch",
+      "archive": "gdi-probability-bands692-20261102.tar.gz",
+      "package_scope": "20 outer/inner experts, each retaining fitted heads, selected family, temperature and residual comparator parameters. Individual fitting/calibration membership and cached labels are omitted."
+    },
+    {
+      "id": "stt-bilateral692",
+      "date": "2026-10-31",
+      "title": "좌우 결합 STT",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/bilateral",
+      "evidence": "analysis/verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "stt-single692",
+      "date": "2026-10-31",
+      "title": "한 구간 STT",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/full",
+      "evidence": "analysis/verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "stt-multiwindow692",
+      "date": "2026-10-31",
+      "title": "여러 구간 STT",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/multiwindow",
+      "evidence": "analysis/verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "stt-self-supervised692",
+      "date": "2026-10-31",
+      "title": "학습 사람만의 STT 사전학습",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/self-supervised",
+      "evidence": "analysis/verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "cnn-high-gdi",
+      "date": "2026-10-31",
+      "title": "높은 GDI 학습 비중 비교",
+      "source": "gdi-research-harness/studies/20261031-cnn-high-gdi",
+      "evidence": "README.md",
+      "status": "deferred"
+    },
+    {
+      "id": "cnn-ordinal692",
+      "date": "2026-11-01",
+      "title": "GDI 점수·10/20점 구간 동시 학습",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ordinal692",
+      "evidence": "checks/verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "cnn-person-bmc692",
+      "date": "2026-11-01",
+      "title": "사람 비중 MSE·Balanced MSE",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-person-bmc692",
+      "evidence": "checks/supplemental-verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "cnn-ranksim692",
+      "date": "2026-11-01",
+      "title": "RankSim 순위 손실 비교",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim692",
+      "evidence": "analysis/supplemental-verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "cnn-multiseed",
+      "date": "2026-11-01",
+      "title": "CNN 추가 초기값·동일 비중 평균",
+      "source": "gdi-research-harness/studies/20261101-gdi-cnn-multiseed",
+      "evidence": "checks/comparison-verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "cnn-pairloss",
+      "date": "2026-11-01",
+      "title": "반복 검사 변화량 손실",
+      "source": "gdi-research-harness/studies/20261101-gdi-pairloss-cnn/revision2",
+      "evidence": "comparison-verification.json",
+      "status": "deferred"
+    },
+    {
+      "id": "synthgait-transfer",
+      "date": "2026-11-01",
+      "title": "SynthGait 합성곱 사전학습 전이",
+      "source": "gdi-research-harness/studies/20261101-synthgait-conv-transfer",
+      "evidence": "analysis/comparison.json",
+      "status": "deferred"
+    },
+    {
+      "id": "cnn-ranksim-strength692",
+      "date": "2026-11-02",
+      "title": "RankSim 강도 비교",
+      "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim-strength692",
+      "evidence": "analysis/supplemental-verification.json",
+      "status": "deferred"
+    }
+  ]
+}

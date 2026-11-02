@@ -1,0 +1,207 @@
+[
+  {
+    "file": "rf_coordinate-fold0.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_coordinate/fold0/model.joblib",
+    "source_sha256": "bf3b3cc897d7a9a1a9faab2624af300bdc936bc0a56e89f847bb2ade9a64eb26",
+    "sha256": "bf3b3cc897d7a9a1a9faab2624af300bdc936bc0a56e89f847bb2ade9a64eb26",
+    "bytes": 2011119,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_coordinate-fold1.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_coordinate/fold1/model.joblib",
+    "source_sha256": "6fe9465eb36ca697cf435cdeed0b33bf8e0792426102502932d94ca6328e3a00",
+    "sha256": "6fe9465eb36ca697cf435cdeed0b33bf8e0792426102502932d94ca6328e3a00",
+    "bytes": 2025469,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_coordinate-fold2.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_coordinate/fold2/model.joblib",
+    "source_sha256": "7fc61355146028679cdadc554b385a8adb59743fffb969a54d4ab2ae42e52524",
+    "sha256": "7fc61355146028679cdadc554b385a8adb59743fffb969a54d4ab2ae42e52524",
+    "bytes": 2074642,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_coordinate-fold3.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_coordinate/fold3/model.joblib",
+    "source_sha256": "e3a5701293b020336512485c8fb4b20f6977df21db9084fff952c03c1f2fc978",
+    "sha256": "e3a5701293b020336512485c8fb4b20f6977df21db9084fff952c03c1f2fc978",
+    "bytes": 1981783,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_coordinate-fold4.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_coordinate/fold4/model.joblib",
+    "source_sha256": "6700e635a2cd854f2edb6966e950793439f0110e0c01a3c8f7efe37b7a4bc951",
+    "sha256": "6700e635a2cd854f2edb6966e950793439f0110e0c01a3c8f7efe37b7a4bc951",
+    "bytes": 2016469,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_motionbert-fold0.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_motionbert/fold0/model.joblib",
+    "source_sha256": "5620e3f17aacb24ab24039953e532c15bd036b9bd56130d490e11cfbc2da2864",
+    "sha256": "5620e3f17aacb24ab24039953e532c15bd036b9bd56130d490e11cfbc2da2864",
+    "bytes": 368148,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_motionbert-fold1.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_motionbert/fold1/model.joblib",
+    "source_sha256": "2f737570a8a26ed3c2842a168536552c490fc0afe1eab537c616aa96e3142e3d",
+    "sha256": "2f737570a8a26ed3c2842a168536552c490fc0afe1eab537c616aa96e3142e3d",
+    "bytes": 372001,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_motionbert-fold2.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_motionbert/fold2/model.joblib",
+    "source_sha256": "542d151305c77ee5a60b41d5c5e21f2cc7a0cb380f173e01ebff4802e67019a5",
+    "sha256": "542d151305c77ee5a60b41d5c5e21f2cc7a0cb380f173e01ebff4802e67019a5",
+    "bytes": 377555,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_motionbert-fold3.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_motionbert/fold3/model.joblib",
+    "source_sha256": "91d4c73cd2699ada15a543b8e8c858ff1151eebacfc5b141d78c574ce3f9cf64",
+    "sha256": "91d4c73cd2699ada15a543b8e8c858ff1151eebacfc5b141d78c574ce3f9cf64",
+    "bytes": 363083,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_motionbert-fold4.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_motionbert/fold4/model.joblib",
+    "source_sha256": "bf798b098a1626e1243840ea715c3f544c6e43b1c22fe89499d18c58b5411822",
+    "sha256": "bf798b098a1626e1243840ea715c3f544c6e43b1c22fe89499d18c58b5411822",
+    "bytes": 369202,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_concatenated-fold0.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_concatenated/fold0/model.joblib",
+    "source_sha256": "564b214f33888caaae7b452ed5736d94e774ec2915ad77d0f656576582dc9811",
+    "sha256": "564b214f33888caaae7b452ed5736d94e774ec2915ad77d0f656576582dc9811",
+    "bytes": 2024120,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_concatenated-fold1.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_concatenated/fold1/model.joblib",
+    "source_sha256": "d8be4e5afb808fb78a1684c0809c0ac33be035833f572f2f254347a373526cc6",
+    "sha256": "d8be4e5afb808fb78a1684c0809c0ac33be035833f572f2f254347a373526cc6",
+    "bytes": 2034443,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_concatenated-fold2.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_concatenated/fold2/model.joblib",
+    "source_sha256": "1f9125a0c2afbf4fc32a0b42b9df2c8d90d14bc1c997760291ca73bbbeaa7235",
+    "sha256": "1f9125a0c2afbf4fc32a0b42b9df2c8d90d14bc1c997760291ca73bbbeaa7235",
+    "bytes": 2081738,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_concatenated-fold3.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_concatenated/fold3/model.joblib",
+    "source_sha256": "c56781bfec93e85dffd8d2832632a7b1cf12721eafa3f189c592e74b4359d45a",
+    "sha256": "c56781bfec93e85dffd8d2832632a7b1cf12721eafa3f189c592e74b4359d45a",
+    "bytes": 1993503,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "rf_concatenated-fold4.joblib",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/rf/rf_concatenated/fold4/model.joblib",
+    "source_sha256": "7bfedcd09650ab5ba6c842d5446d813ac75343d4c1dba98a0ebc1b5e72938e51",
+    "sha256": "7bfedcd09650ab5ba6c842d5446d813ac75343d4c1dba98a0ebc1b5e72938e51",
+    "bytes": 2028954,
+    "model_bytes_identical": true
+  },
+  {
+    "file": "temporal-cnn-fold0.pt",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/cnn/temporal/fold0/refit/latest.pt",
+    "source_sha256": "8009acc1364683f41255fe056d05132e28af53daca7aef1b251acea6f8a074f8",
+    "sha256": "89bf9a9946568be6c35967f2812aa29805359d5c969880cd1a44bd13f1fd77d5",
+    "bytes": 720421,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "temporal-cnn-fold1.pt",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/cnn/temporal/fold1/refit/latest.pt",
+    "source_sha256": "86020ced4a3c847e151103e03c20ff41ba81aaab9467cd233c6572ac7b722f76",
+    "sha256": "86b3a89cd798598bef69a7c747ddf8ae5ab67fac7fb4df028a330d4d5ad1f511",
+    "bytes": 720421,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "temporal-cnn-fold2.pt",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/cnn/temporal/fold2/refit/latest.pt",
+    "source_sha256": "5f2230b06d949e5b55eb56f552e1bb5aae4885429c906f02f5777d9cfd4563d2",
+    "sha256": "5ab22aaf35300dd0358de14e8ad9641e218eac3332e3a5e9ac37301babb0c786",
+    "bytes": 720421,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "temporal-cnn-fold3.pt",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/cnn/temporal/fold3/refit/latest.pt",
+    "source_sha256": "1453fd16efc308d88dd1339bce83a5904cad798706b88bd52ad2d0ebe74dd013",
+    "sha256": "49e9065844a2c240cf4dc500ccc28291a3b1b6ab3dc52842f3e593b4e0ea73a6",
+    "bytes": 720421,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "temporal-cnn-fold4.pt",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/cnn/temporal/fold4/refit/latest.pt",
+    "source_sha256": "b3647dacbd72e66222a26d1c313803600dcaf6f9bcbbe2f114df728c8e2b1647",
+    "sha256": "3d5a17060559ee16e5410b596db42764cf4b21bb7d5ad1d2f4844215c63b9d9e",
+    "bytes": 720421,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span"
+    ],
+    "tensor_count": 46
+  }
+]

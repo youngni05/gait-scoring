@@ -1,0 +1,92 @@
+[
+  {
+    "file": "fold0.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/received/checkpoints/fold0.pt",
+    "source_sha256": "48bfe852d11f488a53de89f6f0acee301e658132c4b38bed4358ef8da6409a7d",
+    "sha256": "8634983e47a62706cc65ad975ef8177342667160335c45610036d2e453398a17",
+    "bytes": 734237,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 48
+  },
+  {
+    "file": "fold1.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/received/checkpoints/fold1.pt",
+    "source_sha256": "02b954e01f81fda6feb9e7a3cded69056460d6535b8fd8e619d1b6837677f523",
+    "sha256": "4a595dec7bef918d4051db90cb344279f9ee078a76efe4c16c31c615573dfe68",
+    "bytes": 734237,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 48
+  },
+  {
+    "file": "fold2.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/received/checkpoints/fold2.pt",
+    "source_sha256": "3dd1e91d4002a1d463fddc9f120fa344aeb6319851ef79c394c48da02e580878",
+    "sha256": "ee56d3af17208f5aa5c26a18511392aec1e5c9cdf74faf1641a6054c811f48f0",
+    "bytes": 734237,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 48
+  },
+  {
+    "file": "fold3.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/received/checkpoints/fold3.pt",
+    "source_sha256": "2bfb7ff53c2958b8b8f57d19657eea467d47a809b271a8987a36af902e2ad7e9",
+    "sha256": "e514c4e8f03f5d52a372c423f8a8e0851c88681fd5e404db15f174843b0f89eb",
+    "bytes": 734237,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 48
+  },
+  {
+    "file": "fold4.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/received/checkpoints/fold4.pt",
+    "source_sha256": "c9668d9bede3b9004ef19389b32cdf370c0364ffc77aaa8f4c352615d78bb02d",
+    "sha256": "368d41b323b71eef29ee40c445c2502312a1e5b89ef77e35aad6c1446041117a",
+    "bytes": 734237,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 48
+  }
+]

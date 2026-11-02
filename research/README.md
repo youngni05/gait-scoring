@@ -10,6 +10,8 @@
 | SPPB | 후속 실험 중단·과거 결과 보존 | [44명 실제 SPPB 실험](archived-sppb-tug/2026-10-30-sppb-older44/README.md) |
 | TUG | 후속 실험 중단·과거 결과 보존 | [298명 실제 TUG 실험](archived-sppb-tug/2026-10-30-tug-opencap298/README.md) |
 
+2026-11-02 추가 공개: [GDI 미공개 완료 실험 25종 중 13종](gdi-batch2-20261102/README.md)을 더 올렸다. 날짜순으로 선택하고 홀수는 올림했으며, [이번 선택·보류 목록](gdi-batch2-20261102/selection.json)에 나머지 12종과 집계 기준을 보존했다. 분할별 파일 수와 실험 종류 수는 구분한다.
+
 SPPB·TUG의 중단 이유와 모델 다운로드는 [과거 실험 안내](archived-sppb-tug/README.md)에 있다. 현재 전체 실험을 이 저장소에 모두 이관한 것은 아니다.
 
 ## GDI 초기 CNN·MotionBERT 실험

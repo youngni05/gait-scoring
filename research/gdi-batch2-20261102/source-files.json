@@ -1,0 +1,548 @@
+[
+  {
+    "file": "experiments/ridge243/source/run_ridge_experiment.py",
+    "source": "tools/stanford-sample-check/run_ridge_experiment.py",
+    "source_sha256": "0fbcf7849037e06350ff4bbffba6ad0bcb00b0d7a73c6c461ea2e0396bbf9525",
+    "published_sha256": "0fbcf7849037e06350ff4bbffba6ad0bcb00b0d7a73c6c461ea2e0396bbf9525",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/ridge243/source/verify_ridge_experiment.py",
+    "source": "tools/stanford-sample-check/verify_ridge_experiment.py",
+    "source_sha256": "ed2ddde4d899c91d4349be0ea627be68d17435429597eba7d4d54c74a4578e14",
+    "published_sha256": "ed2ddde4d899c91d4349be0ea627be68d17435429597eba7d4d54c74a4578e14",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/ridge243/results/summary.json",
+    "source": "outputs/gdi-ridge-experiment-20261016/result.json",
+    "source_sha256": "33ea33dfcb21531f24f7bba1305a2aa007aba73f34864e57c78b3c95a4190a2f",
+    "published_sha256": "22f0acfdfee68670aeaeb2d038acfba8ab77b7fde28714a919e0711edf258075",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/ridge243/results/verification-original.json",
+    "source": "outputs/gdi-ridge-experiment-20261016/verification.json",
+    "source_sha256": "a248f7db5518efa8fce13b938083df0a678f75a8c80a0eae7dd7e5ba48427d3b",
+    "published_sha256": "5b80f9ee98af4d179142a559f0883745755b803c2aba97699941db7d7acde273",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/weighted-ridge/source/weighted_ridge_job.py",
+    "source": "gdi-research-harness/weighted_ridge_job.py",
+    "source_sha256": "b92e0114d0ef0fa3f2355ad4151fd0906c35fc4b4e0f691670172860803346e4",
+    "published_sha256": "b92e0114d0ef0fa3f2355ad4151fd0906c35fc4b4e0f691670172860803346e4",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/weighted-ridge/results/summary.json",
+    "source": "gdi-research-harness/jobs/weighted-ridge/runs/20261025T060216615670Z-043ae7/result.json",
+    "source_sha256": "01f5b79ca318ca1d7364e8a5a2aaaa9d48e091e2a6ad5d38b34dbfd3c77e9da3",
+    "published_sha256": "d449bf39c8c50f793c5d683902e8e95a89c1d04c443557f3824736163b813417",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/weighted-ridge/results/verification-original.json",
+    "source": "gdi-research-harness/jobs/weighted-ridge/runs/20261025T060216615670Z-043ae7/verification.json",
+    "source_sha256": "3e20c7feb8ca386c826accd334757e8ca241c804f0d9cb7dc19ca2b829d775fb",
+    "published_sha256": "d3121dc094f14d3193be85d38953dedd2e748ce796ecfca307df0781a6d10c6d",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/window-ablation/source/prepare.py",
+    "source": "gdi-research-harness/studies/20261027-window-ablation/prepare.py",
+    "source_sha256": "8b373d2873f0809bbe6a7cd8495ade4038add99012193cfb158150619e2473ba",
+    "published_sha256": "8b373d2873f0809bbe6a7cd8495ade4038add99012193cfb158150619e2473ba",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/window-ablation/source/raw_prepare.py",
+    "source": "gdi-research-harness/studies/20261027-window-ablation/raw_prepare.py",
+    "source_sha256": "b46c29dbb3148c3fc8b97a782bd877956c1e54f7da606191c622ce9b0dbc7e58",
+    "published_sha256": "b46c29dbb3148c3fc8b97a782bd877956c1e54f7da606191c622ce9b0dbc7e58",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/window-ablation/source/analyze.py",
+    "source": "gdi-research-harness/studies/20261027-window-ablation/analyze.py",
+    "source_sha256": "2ff49b00ffec45e9e436c3dc1d8b11f02c33ab6f0d16c37395896f73c88ba2b9",
+    "published_sha256": "2ff49b00ffec45e9e436c3dc1d8b11f02c33ab6f0d16c37395896f73c88ba2b9",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/window-ablation/results/summary.json",
+    "source": "gdi-research-harness/studies/20261027-window-ablation/comparison.json",
+    "source_sha256": "ea6e561a3f9d3587a20fe9fe681ddad48c58c9ec38b5d34982178b21b30b5e53",
+    "published_sha256": "ea6e561a3f9d3587a20fe9fe681ddad48c58c9ec38b5d34982178b21b30b5e53",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/window-ablation/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261027-window-ablation/independent_verification.json",
+    "source_sha256": "e655a44c7879a82b74ac9e9f6b14a2e4286427b9af567a0d636a560186d37354",
+    "published_sha256": "b64a4f533fa57958395909f08e2335c7f56300db61a18bad2163e3071f3f2753",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/missing-augmentation/source/prepare.py",
+    "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning/prepare.py",
+    "source_sha256": "c48260159e95953d16c8897b5c8d62bcc74495b2c1d1d8b7980ac3ede314a644",
+    "published_sha256": "c48260159e95953d16c8897b5c8d62bcc74495b2c1d1d8b7980ac3ede314a644",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/missing-augmentation/source/train.py",
+    "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning/train.py",
+    "source_sha256": "1df20fea3ff284f6a7b8de38bd5d6e940be25cfe97ee4ce111fe32cacb04a168",
+    "published_sha256": "1df20fea3ff284f6a7b8de38bd5d6e940be25cfe97ee4ce111fe32cacb04a168",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/missing-augmentation/source/verify.py",
+    "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning/verify.py",
+    "source_sha256": "532812b8fef815767784a457e057e9c6cb3416d07b2d9844fa728af696364fc9",
+    "published_sha256": "532812b8fef815767784a457e057e9c6cb3416d07b2d9844fa728af696364fc9",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/missing-augmentation/source/finalize.py",
+    "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning/finalize.py",
+    "source_sha256": "b0ee3c1dc580d17295e13231676345a611a774c26e0618dc984c9eb20c2b2d59",
+    "published_sha256": "b0ee3c1dc580d17295e13231676345a611a774c26e0618dc984c9eb20c2b2d59",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/missing-augmentation/results/summary.json",
+    "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning/result.json",
+    "source_sha256": "0d105b61b9228669426d4916e7eafe386c76bab2a84aae55b90ad6d60c26ecbe",
+    "published_sha256": "5dc15a575a5dc0f4a50cfff7ae7f1a8f0a47e1291686d9041c6d6cb6cb7587c9",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/missing-augmentation/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning/verification.json",
+    "source_sha256": "c2e2df0092b17dd568e0d70c214394b8873b745e12cf941b4a3b4bb30d748fda",
+    "published_sha256": "9124fc2743562a439a1df5ce04983692ae80ad511a65f75fabfac2bfe8bf44ae",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/rhythm-pooling/source/prepare.py",
+    "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/prepare.py",
+    "source_sha256": "72bf03943e755202f5e75a5fc05420e3ceb1512cef976fb97b64b2fbb0e096e6",
+    "published_sha256": "72bf03943e755202f5e75a5fc05420e3ceb1512cef976fb97b64b2fbb0e096e6",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/rhythm-pooling/source/temporal_features.py",
+    "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/temporal_features.py",
+    "source_sha256": "ee696d4935f9bf0dc61e566192f8d317e2c23334cb59d3715b9c3f293adbaa61",
+    "published_sha256": "ee696d4935f9bf0dc61e566192f8d317e2c23334cb59d3715b9c3f293adbaa61",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/rhythm-pooling/source/analyze.py",
+    "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/analyze.py",
+    "source_sha256": "9b42a6c53362e08130ee0ebb7d7e97990ba5897c6605005ded4bda662f64e5c8",
+    "published_sha256": "9b42a6c53362e08130ee0ebb7d7e97990ba5897c6605005ded4bda662f64e5c8",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/rhythm-pooling/source/verify.py",
+    "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/verify.py",
+    "source_sha256": "0d522f9f1bc590796e429ae226742e1d70cc24d8133da3ea94c4c977ffa31d7c",
+    "published_sha256": "0d522f9f1bc590796e429ae226742e1d70cc24d8133da3ea94c4c977ffa31d7c",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/rhythm-pooling/results/summary.json",
+    "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/result.json",
+    "source_sha256": "89372debf6b7c9019a67d9aad65b1d5550ad59532d3c776e679c5da25889bee3",
+    "published_sha256": "3772b1957e4209cb966538705debb2542dec482e0fd50ee65b3b8c1ce1ea5036",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/rhythm-pooling/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/verification.json",
+    "source_sha256": "ab6ea93e1f098123dc9b8bfa7adfa20014fdaa3a72a4e9f1d0da2343690e393c",
+    "published_sha256": "c85b1133850cf28704ae294a49854e640c34b6f962d91a66b109a06a8f9c842a",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cpu-head175/source/cpu_head.py",
+    "source": "gdi-research-harness/studies/20261030-cpu-head-study/cpu_head.py",
+    "source_sha256": "dcbc179bdf75d64b58e7376371b6230664b3f7e61a3c842fde697979db7f5e92",
+    "published_sha256": "dcbc179bdf75d64b58e7376371b6230664b3f7e61a3c842fde697979db7f5e92",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cpu-head175/source/verify_actual.py",
+    "source": "gdi-research-harness/studies/20261030-cpu-head-study/verify_actual.py",
+    "source_sha256": "1fe8fe3d64c029ffe19dbb189587d4eb1ac7c6fb5a2d1d9aa4ff1ad910ab7804",
+    "published_sha256": "1fe8fe3d64c029ffe19dbb189587d4eb1ac7c6fb5a2d1d9aa4ff1ad910ab7804",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cpu-head175/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-cpu-head-study/runs/main/summary.json",
+    "source_sha256": "5c08e2febb25156f5135266a40134ba025c0b302c3f8f4ee782a1a01fca0dcf1",
+    "published_sha256": "96c3c514a8dcfa2eeb0698efe668f5bf212b469ff0e9536e2f90f4cfa3533909",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cpu-head175/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261030-cpu-head-study/runs/main/verification.json",
+    "source_sha256": "ff81fefb96db74792f031f2f0e235569cc1c85465fd3173890ad15e1962fe1f3",
+    "published_sha256": "46a2f392bd5f6a09d103a49ac99c0773a6b24205d4de9d25d806915087981183",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/fusion695/source/common.py",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/common.py",
+    "source_sha256": "adfe00604291edc2dd8182f6cd10147b3d6c1c154cee8b73e23b1c4bfadb7389",
+    "published_sha256": "adfe00604291edc2dd8182f6cd10147b3d6c1c154cee8b73e23b1c4bfadb7389",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/fusion695/source/train_rf.py",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/train_rf.py",
+    "source_sha256": "144bb41ef1815a97b11198c3ef2eb5ec6770f5b8024eda42d0122b112a5de119",
+    "published_sha256": "144bb41ef1815a97b11198c3ef2eb5ec6770f5b8024eda42d0122b112a5de119",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/fusion695/source/train_cnn.py",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/train_cnn.py",
+    "source_sha256": "4ff2f726f89e7f9393b6bbe98b2489ace11ee48b0fa5a7cb85018db9fd877215",
+    "published_sha256": "4ff2f726f89e7f9393b6bbe98b2489ace11ee48b0fa5a7cb85018db9fd877215",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/fusion695/source/combine.py",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/combine.py",
+    "source_sha256": "08e6a0d9259c58a290a10e372e71f33614e293c16e524afca0b00558681d4227",
+    "published_sha256": "08e6a0d9259c58a290a10e372e71f33614e293c16e524afca0b00558681d4227",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/fusion695/source/verify.py",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/verify.py",
+    "source_sha256": "36073494a95066ba95e9c7e04a066986b0e8a577e1e508a5adf8b02549efab93",
+    "published_sha256": "36073494a95066ba95e9c7e04a066986b0e8a577e1e508a5adf8b02549efab93",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/fusion695/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/summary.json",
+    "source_sha256": "a9a0d429fd2c01866b019b7c438a52aee6731116ca5ed29d82b21f33067d8cf4",
+    "published_sha256": "95ff0f078b3567f1afbd2a4123a0a4fa2af2d2ac5dbfb2bed449620bf29178c1",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/fusion695/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/verification.json",
+    "source_sha256": "2cb1f9f22e83e7dfef12e02618fe085996fa8c5ba524e89c0f507920a011e3e3",
+    "published_sha256": "3b8f1445e2694517bc609ccaed2f27dc3e1c8ba1c559cce6f204d249bbb0d95a",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/fusion695/source/cnn_source/model.py",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/cnn_source/model.py",
+    "source_sha256": "73b29c6ab639d43ef4bf6c906516aeb5e19b865941df7262180eb424d85b27bc",
+    "published_sha256": "73b29c6ab639d43ef4bf6c906516aeb5e19b865941df7262180eb424d85b27bc",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/fusion695/source/cnn_source/run.py",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/cnn_source/run.py",
+    "source_sha256": "98752f1abe4ad414350e1a1da85268e9fb4963f93988c6be98cef9efa0eaabb7",
+    "published_sha256": "98752f1abe4ad414350e1a1da85268e9fb4963f93988c6be98cef9efa0eaabb7",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/fusion695/source/cnn_source/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695/cnn_source/protocol.json",
+    "source_sha256": "33a9d99ed98817ef8c57ac7a74ee4abdc83e5ffc6ca0a90271b6f59a5504b0e6",
+    "published_sha256": "63fefa18703365b9e67c0033fda11554192cfea57c1b4f539066dc848fe5de34",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-frozen-residual692/source/residual.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/residual.py",
+    "source_sha256": "d1ebabe66a8d645eee2fa5d79b49b0be70077b1300fea019a44523b16d145804",
+    "published_sha256": "d1ebabe66a8d645eee2fa5d79b49b0be70077b1300fea019a44523b16d145804",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-frozen-residual692/source/base_model.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/base_model.py",
+    "source_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "published_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-frozen-residual692/source/run.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/run.py",
+    "source_sha256": "ccfd384d851128f9387c26dfd4c139d0f148cf1a44fb38f5c6abd62c30b40bc6",
+    "published_sha256": "ccfd384d851128f9387c26dfd4c139d0f148cf1a44fb38f5c6abd62c30b40bc6",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-frozen-residual692/source/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/protocol.json",
+    "source_sha256": "00b6b8d435aadd7bde86cb84a2c11286be6a1808847246730674cb4fe66416f6",
+    "published_sha256": "45a0e0b11afc83cebe5dd361e4da5c45e9c617ec17b50dbde6a4a7a92e1aaf77",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-frozen-residual692/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/analysis/summary.json",
+    "source_sha256": "7f81f18d5c4d545a2f575299507564db7882c056d80bfb09e1590cc6ea5e97aa",
+    "published_sha256": "e077fb44d778170a60c8782e12a96a3ac45f01b5c80b9c51a47d161770a95e0e",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-frozen-residual692/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/analysis/verification.json",
+    "source_sha256": "6b99097ff60eecd40b4e389205607e33c8c2955dd14b92e129706b0470f28d92",
+    "published_sha256": "6b99097ff60eecd40b4e389205607e33c8c2955dd14b92e129706b0470f28d92",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-motionbert-fusion692/source/model.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/bundle/model.py",
+    "source_sha256": "29060cfc9a430f63c8b4ccbc221d39d4e1aa54b2ba121f23916d294e9e11b39c",
+    "published_sha256": "29060cfc9a430f63c8b4ccbc221d39d4e1aa54b2ba121f23916d294e9e11b39c",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-motionbert-fusion692/source/baseline_model.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/bundle/baseline_model.py",
+    "source_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "published_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-motionbert-fusion692/source/features.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/bundle/features.py",
+    "source_sha256": "53ace65dfd41543323f8e78306ec766b4534164db9d259bdb5d78e60779321b6",
+    "published_sha256": "53ace65dfd41543323f8e78306ec766b4534164db9d259bdb5d78e60779321b6",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-motionbert-fusion692/source/run.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/bundle/run.py",
+    "source_sha256": "7f87a63f8cccd1aa8a1afdde089252e7806dc0e31f19489f2f6712c8dc518568",
+    "published_sha256": "7f87a63f8cccd1aa8a1afdde089252e7806dc0e31f19489f2f6712c8dc518568",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-motionbert-fusion692/source/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/bundle/protocol.json",
+    "source_sha256": "5b660d97ca4d5b3c81b2b5c756b97cd7fb6e2f3fb9fff6f6c2ae0c4166c6ede0",
+    "published_sha256": "5b660d97ca4d5b3c81b2b5c756b97cd7fb6e2f3fb9fff6f6c2ae0c4166c6ede0",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-motionbert-fusion692/source/input_contract.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/bundle/input_contract.json",
+    "source_sha256": "dd01a02cff64e35c7573acd8513ee3b53148aaf350965e38b0fce233f238a7d2",
+    "published_sha256": "dd01a02cff64e35c7573acd8513ee3b53148aaf350965e38b0fce233f238a7d2",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-motionbert-fusion692/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/analysis/summary.json",
+    "source_sha256": "1d8e03cc7492806d031c559227646859c0983d4fe7dd20b0629d70d4a60e4deb",
+    "published_sha256": "c7a7394a00d1a3d57494bc961fd22210539d6d4e2d7184d4c7104432b72be534",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-motionbert-fusion692/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/analysis/verification.json",
+    "source_sha256": "feb4bebf8edb0e7d3993733a5e16713afa22b4f04aeecec8cc4f0872e9e2feb9",
+    "published_sha256": "feb4bebf8edb0e7d3993733a5e16713afa22b4f04aeecec8cc4f0872e9e2feb9",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-multiwindow692/source/model.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/bundle/model.py",
+    "source_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "published_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-multiwindow692/source/windows.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/bundle/windows.py",
+    "source_sha256": "d42696957eb832f76101b7cfc879d9ea94083992e32cda6314a7e0c4794c30d5",
+    "published_sha256": "d42696957eb832f76101b7cfc879d9ea94083992e32cda6314a7e0c4794c30d5",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-multiwindow692/source/run.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/bundle/run.py",
+    "source_sha256": "4947116c2d779fa48c67463660fa35f4610e65d0b68d749a035c2269cf80a7f0",
+    "published_sha256": "4947116c2d779fa48c67463660fa35f4610e65d0b68d749a035c2269cf80a7f0",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-multiwindow692/source/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/bundle/protocol.json",
+    "source_sha256": "574a2ed98ff3876cc61843aacef5adc4163b406c5b422674a0e99aded43f133e",
+    "published_sha256": "574a2ed98ff3876cc61843aacef5adc4163b406c5b422674a0e99aded43f133e",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-multiwindow692/source/input_contract.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/bundle/input_contract.json",
+    "source_sha256": "a5db918388876eeb811e0926cbeffe98be552e299a821957474023716ec22e88",
+    "published_sha256": "a5db918388876eeb811e0926cbeffe98be552e299a821957474023716ec22e88",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-multiwindow692/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/analysis/summary.json",
+    "source_sha256": "177d8694757f262c6eb724f850f2c17126f6d08d8081112ebda434c38cfeabf5",
+    "published_sha256": "047fb63b17437d15b9cb6026bac7d6093edc14a77143d10ed801e52cff770066",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-multiwindow692/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/analysis/verification.json",
+    "source_sha256": "42da7cf5e41cb28514a9ba5430110edc69b40520774b32dbe61b1a225ff2c516",
+    "published_sha256": "42da7cf5e41cb28514a9ba5430110edc69b40520774b32dbe61b1a225ff2c516",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-paper-input692/source/model.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695/bundle/model.py",
+    "source_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "published_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-paper-input692/source/run.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695/bundle/run.py",
+    "source_sha256": "f110034a0097359e749d065176da6c3063ad387bc400fdf23be42d024a8ff4a0",
+    "published_sha256": "f110034a0097359e749d065176da6c3063ad387bc400fdf23be42d024a8ff4a0",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-paper-input692/source/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695/bundle/protocol.json",
+    "source_sha256": "81311bd954436384de65e2226f090054e4b01f5af38802954e95b899306bcf3e",
+    "published_sha256": "81311bd954436384de65e2226f090054e4b01f5af38802954e95b899306bcf3e",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-paper-input692/source/input_contract.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695/bundle/input_contract.json",
+    "source_sha256": "337bcd2f183c98ce6f7fa2d06ff8a6f59bb4e400f70c6e405ae3f7350b1d7d2a",
+    "published_sha256": "337bcd2f183c98ce6f7fa2d06ff8a6f59bb4e400f70c6e405ae3f7350b1d7d2a",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-paper-input692/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695/analysis/summary.json",
+    "source_sha256": "f762d8b40900c3343878003321607ee78836db643cc4f5412acb7c94ceeb4941",
+    "published_sha256": "b61da2f3d3b4ecc96efa6ebcd266d57da8c5e3514dee0ec53bf347c37ef00e15",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-paper-input692/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695/analysis/verification.json",
+    "source_sha256": "bd178b64918724f4ca83c5314130df27fdf80ee35dd340c983b12697431425fe",
+    "published_sha256": "bd178b64918724f4ca83c5314130df27fdf80ee35dd340c983b12697431425fe",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-record-loss692/source/model.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/bundle/model.py",
+    "source_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "published_sha256": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-record-loss692/source/record_loss.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/bundle/record_loss.py",
+    "source_sha256": "2c4a4dda4287df10119d13380c8088a9c1fbff88ea37178289af6e0ee6ea7ad7",
+    "published_sha256": "2c4a4dda4287df10119d13380c8088a9c1fbff88ea37178289af6e0ee6ea7ad7",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-record-loss692/source/run.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/bundle/run.py",
+    "source_sha256": "625742b36d34ef7ab1699ea044dafe98929739eafb26cc149ec150df5cd6ae30",
+    "published_sha256": "625742b36d34ef7ab1699ea044dafe98929739eafb26cc149ec150df5cd6ae30",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/cnn-record-loss692/source/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/bundle/protocol.json",
+    "source_sha256": "65f2a52a80f8654bfd51f42e3f59327d4b1b106d9f07f7abad84778be9daf0e3",
+    "published_sha256": "65f2a52a80f8654bfd51f42e3f59327d4b1b106d9f07f7abad84778be9daf0e3",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-record-loss692/source/input_contract.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/bundle/input_contract.json",
+    "source_sha256": "4789a8ee85a97a775385bb3754290a643dc6e3763f955dbb37c70319844f036a",
+    "published_sha256": "4789a8ee85a97a775385bb3754290a643dc6e3763f955dbb37c70319844f036a",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-record-loss692/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/analysis/pair_comparison.json",
+    "source_sha256": "415fc09f3a6cf812799aa4ff8e8b8f4c47c7bb548562e4d35a5bf450ebe64075",
+    "published_sha256": "ea14636072b87929a05f07060f676054a3e85c018c3aa909b9e2f5154019db3c",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/cnn-record-loss692/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/analysis/pair_comparison.json",
+    "source_sha256": "415fc09f3a6cf812799aa4ff8e8b8f4c47c7bb548562e4d35a5bf450ebe64075",
+    "published_sha256": "ea14636072b87929a05f07060f676054a3e85c018c3aa909b9e2f5154019db3c",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/probability-bands692/source/core.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/probability-bands692/core.py",
+    "source_sha256": "e2ebcecb00f7771c782ada77f103ebe153b42f1185e8da7b380c9b624383ac6d",
+    "published_sha256": "e2ebcecb00f7771c782ada77f103ebe153b42f1185e8da7b380c9b624383ac6d",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/probability-bands692/source/train.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/probability-bands692/train.py",
+    "source_sha256": "ff2665bf34fde210bd988c27ad4cbf91089de9a4cbe40955f1597d22c36da572",
+    "published_sha256": "ff2665bf34fde210bd988c27ad4cbf91089de9a4cbe40955f1597d22c36da572",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/probability-bands692/source/evaluate.py",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/probability-bands692/evaluate.py",
+    "source_sha256": "f0af5ebc545226ded92e933ae8b59d16a5f70b2ae9909c81f02b8cf39881220e",
+    "published_sha256": "f0af5ebc545226ded92e933ae8b59d16a5f70b2ae9909c81f02b8cf39881220e",
+    "transformation": "unchanged"
+  },
+  {
+    "file": "experiments/probability-bands692/source/protocol.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/probability-bands692/protocol.json",
+    "source_sha256": "fd099f39173680496e25ce988f1b361d1884c7d32dd744cd3c1508ba21f22d04",
+    "published_sha256": "cb434a9584e8cd394d12a2e285629b3a94b188a25400f5adf9378ca204cfa887",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/probability-bands692/results/summary.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/probability-bands692/analysis/comparison.json",
+    "source_sha256": "d102479e8094c2640bcf82c99b469988217a00aca71456959d9f9588180c4609",
+    "published_sha256": "46bede02c982d2f2fbfe1c29b0675dcae0a08fbd8d2e10210f248cc43ef9dff1",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  },
+  {
+    "file": "experiments/probability-bands692/results/verification-original.json",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/probability-bands692/analysis/verification.json",
+    "source_sha256": "c66711a539f96548e4515dbf1560d8d5f0a437229a506b7a9b1bd772f305592e",
+    "published_sha256": "c66711a539f96548e4515dbf1560d8d5f0a437229a506b7a9b1bd772f305592e",
+    "transformation": "Operational locations and individual/split metadata omitted in public JSON; scientific scalar settings/results retained."
+  }
+]

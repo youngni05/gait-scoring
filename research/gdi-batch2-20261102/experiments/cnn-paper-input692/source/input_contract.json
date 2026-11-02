@@ -1,0 +1,53 @@
+{
+  "records_total": 1064,
+  "people_total": 695,
+  "records_usable": 1061,
+  "people_usable": 692,
+  "excluded_reasons": {
+    "matched_frames_outside_official_converter_extent": 1,
+    "matched_window_over_25pct_missing_required_coordinates": 2
+  },
+  "matched_same124_frame_ids": true,
+  "all_fixed_folds_preserved": true,
+  "fold_people": {
+    "0": 138,
+    "1": 138,
+    "2": 138,
+    "3": 139,
+    "4": 139
+  },
+  "sliding_windows_available_for_retained_records": 11257,
+  "records_without_sliding_window": 4,
+  "ambiguous_frames_total": 26994,
+  "data_sha256": "1448059f493156c0194a9d2518f5c6cf04e40c4bb2a39472d5d0c35885ab8967",
+  "prepare_seconds": 95.48499999998603,
+  "actual_training_steps": 0,
+  "protected_labels_opened": false,
+  "axes": [
+    "record",
+    "left_right",
+    "time124",
+    "feature12"
+  ],
+  "features": [
+    "ankle_x",
+    "ankle_y",
+    "knee_x",
+    "knee_y",
+    "hip_x",
+    "hip_y",
+    "big_toe_x",
+    "big_toe_y",
+    "ankle_knee_hip_angle_radians",
+    "toe_ankle_knee_angle_radians",
+    "toe_ankle_distance",
+    "other_ankle_x_minus_this_ankle_x"
+  ],
+  "coordinate_scale": "mean left/right thigh length, pelvis centered, all processed frames",
+  "preprocessing_context": "full source-converter clip up to1499frames; selected output is same124frames",
+  "source_orientation": "swap_orientation=False in public doublesided notebook; no side mirror added",
+  "source_missingness": "zero/NaN xy coordinates, max per required coordinate <=25pct in selected window",
+  "ambiguity_policy": "multiple left-half detections kept missing, unlike source accidental last-person overwrite",
+  "multiwindow_training_implemented": false,
+  "original_695_fold_ids_retained": true
+}

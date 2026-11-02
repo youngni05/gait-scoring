@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "baseline": {
+    "person_mae": 7.718474433643967,
+    "left_person_mae": 8.14771797078119,
+    "right_person_mae": 7.28923089650675,
+    "record_mae": 7.68473047489709,
+    "people": 37,
+    "records": 40
+  },
+  "weighted": {
+    "person_mae": 7.767074776713792,
+    "left_person_mae": 8.277514854022337,
+    "right_person_mae": 7.256634699405246,
+    "record_mae": 7.727559956532589,
+    "people": 37,
+    "records": 40
+  },
+  "mae_reduction": -0.048600343069825414,
+  "relative_mae_reduction_percent": -0.6296625516822594,
+  "train_records": 203,
+  "training_people_with_multiple_records": 22,
+  "training_records_per_person_counts": {
+    "1": 153,
+    "2": 16,
+    "3": 6
+  },
+  "min_training_record_weight": 0.38666666666666666,
+  "max_training_record_weight": 1.1600000000000001,
+  "equal_total_weight_per_training_person": 1.16,
+  "alpha": 1.0,
+  "new_test_prediction_computed": false,
+  "hyperparameter_search": false,
+  "independent_final_validation": false,
+  "clinical_validation": false,
+  "versions": {
+    "numpy": "2.3.5",
+    "sklearn": "1.9.1"
+  },
+  "elapsed_seconds": 0.10246750002261251
+}

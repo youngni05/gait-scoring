@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "archive_sha256": "6ee336e680cc8e473a5c247f0913ec70ba8086812d30bf63afc9614e65b255bf",
+  "bundle_sha256": "bf76bc5bc73fc9226d907d90026d9f8c5ad0944baf86e21d79448022357475f2",
+  "fits": 25,
+  "optimizer_steps": 47185,
+  "all_split_identities_match": true,
+  "epoch_selection_recomputed": true,
+  "all_predictions_and_metrics_recomputed": true,
+  "train_only_normalization_recomputed": true,
+  "checkpoints_reinferred": 5,
+  "records_reinferred": 1061,
+  "cpu_replay_max_error": 2.857967896829905e-05,
+  "protected_final_data_used": false
+}

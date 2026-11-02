@@ -1,0 +1,14 @@
+{
+  "baseline_reproduced": true,
+  "equal_total_weight_per_training_person": true,
+  "training_weight_mean": 1.0,
+  "independent_equation_max_prediction_difference": 4.065725534019293e-11,
+  "saved_models_reproduce_predictions": true,
+  "csv_recomputed_mae": {
+    "baseline": 7.718474433643968,
+    "weighted": 7.767074776713791
+  },
+  "test_rows_available_to_training": false,
+  "scaler_fit": "unweighted train only, unchanged between methods",
+  "source_files_unchanged": true
+}

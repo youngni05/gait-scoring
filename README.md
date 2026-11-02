@@ -10,4 +10,5 @@
 - [방향 전환 이후 중간발표 흐름과 원고](docs/2026-10-31-interim-presentation.md): 전환 이유, 목표 시스템, 데이터 제약, 실험과 진행 상황을 정리했다.
 
 - [초기 CNN·MotionBERT 실험 기록과 모델](research/README.md): 같은 695명 조건의 초기 실험 두 개, 코드·설정·집계 결과와 가중치 다운로드를 제공한다.
+- [GDI 추가 공개 2차 — 13종](research/gdi-batch2-20261102/README.md): 미공개 완료 실험 계열 25종 중 날짜순 앞쪽 절반을 올림해 공개했다. 선택·보류 목록, 코드·결과와 라이선스를 동봉한 모델을 연결한다.
 - [SPPB·TUG 과거 실험 — 현재 중단](research/archived-sppb-tug/README.md): 실제 점수·시간 예측의 대표 실험을 하나씩 보존했다. 현재 연구의 중심은 GDI다.

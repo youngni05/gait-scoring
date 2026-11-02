@@ -1,0 +1,10 @@
+[
+  {
+    "file": "new_validation_models.npz",
+    "source": "gdi-research-harness/studies/20261027-window-ablation/new_validation_models.npz",
+    "source_sha256": "c998b1ff393e40c5d1fb38fb61f8a43b93d63641c6f7bcbd026dc6eafd7d5ba8",
+    "sha256": "c998b1ff393e40c5d1fb38fb61f8a43b93d63641c6f7bcbd026dc6eafd7d5ba8",
+    "bytes": 81648,
+    "numeric_parameters_byte_identical": true
+  }
+]

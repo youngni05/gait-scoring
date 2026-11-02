@@ -1,0 +1,10 @@
+[
+  {
+    "file": "model_parameters.npz",
+    "source": "gdi-research-harness/jobs/weighted-ridge/runs/20261025T060216615670Z-043ae7/model_parameters.npz",
+    "source_sha256": "3f9c7f1e51d7ff6385dfb86dfe08208e80fcdea8eb27281562a9a595e12f3542",
+    "sha256": "3f9c7f1e51d7ff6385dfb86dfe08208e80fcdea8eb27281562a9a595e12f3542",
+    "bytes": 24640,
+    "numeric_parameters_byte_identical": true
+  }
+]

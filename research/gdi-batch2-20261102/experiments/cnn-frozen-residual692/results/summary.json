@@ -1,0 +1,86 @@
+{
+  "people": 692,
+  "records": 1061,
+  "metrics": {
+    "single_cnn": {
+      "mae": 7.838916517111626,
+      "bias": 0.035091756538020435,
+      "exact_10point_bin_rate": 0.3676472612166254,
+      "two_or_more_bins_rate": 0.14838804018717314
+    },
+    "pls": {
+      "mae": 7.9869874515361055,
+      "bias": -0.04607367925004969,
+      "exact_10point_bin_rate": 0.3866140242224057,
+      "two_or_more_bins_rate": 0.15593173685659234
+    },
+    "ridge": {
+      "mae": 8.541777406158962,
+      "bias": 0.047828923942089485,
+      "exact_10point_bin_rate": 0.357526493256262,
+      "two_or_more_bins_rate": 0.17821531791907513
+    },
+    "motionbert_last_stage": {
+      "mae": 8.369197540815106,
+      "bias": -0.3505894669856541,
+      "exact_10point_bin_rate": 0.35157067162124966,
+      "two_or_more_bins_rate": 0.1615194054500413
+    },
+    "direct_fusion": {
+      "mae": 9.024211197087585,
+      "bias": 0.021127887389436516,
+      "exact_10point_bin_rate": 0.3245767960363336,
+      "two_or_more_bins_rate": 0.2017478667767685
+    },
+    "residual": {
+      "mae": 7.7191875303775,
+      "bias": -0.21343398604696784,
+      "exact_10point_bin_rate": 0.37761835948252137,
+      "two_or_more_bins_rate": 0.14013900357830994
+    }
+  },
+  "comparisons": {
+    "single_cnn": {
+      "mae_reduction": 0.11972898673412595,
+      "relative_reduction_pct": 1.5273665240951184,
+      "people_improved": 361,
+      "people_worsened": 331,
+      "exploratory95_reduction": [
+        0.0368650693674813,
+        0.20463870182533117
+      ]
+    },
+    "pls": {
+      "mae_reduction": 0.2677999211586045,
+      "relative_reduction_pct": 3.352952822119429,
+      "people_improved": 355,
+      "people_worsened": 337,
+      "exploratory95_reduction": [
+        -0.06079979685828406,
+        0.595810317671927
+      ]
+    },
+    "ridge": {
+      "mae_reduction": 0.8225898757814616,
+      "relative_reduction_pct": 9.63019564509304,
+      "people_improved": 390,
+      "people_worsened": 302,
+      "exploratory95_reduction": [
+        0.47163714541681023,
+        1.1740865517013996
+      ]
+    },
+    "direct_fusion": {
+      "mae_reduction": 1.305023666710085,
+      "relative_reduction_pct": 14.461359981593294,
+      "people_improved": 402,
+      "people_worsened": 290,
+      "exploratory95_reduction": [
+        0.9267241206627596,
+        1.6865274028597073
+      ]
+    }
+  },
+  "optimizer_steps": 47185,
+  "note": "Fixed OOF person bootstrap only; no retraining variability or repeated-experiment correction. Older PLS/Ridge trained on 695, evaluated on common 692."
+}

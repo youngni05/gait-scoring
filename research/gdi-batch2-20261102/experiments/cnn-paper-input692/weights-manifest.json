@@ -1,0 +1,92 @@
+[
+  {
+    "file": "fold0.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/base/fold0/refit/latest.pt",
+    "source_sha256": "ddd30641b3a89b4ab2e8b80736b7cb2afbe2fd0ab549b7a5cce2338caa4ffbeb",
+    "sha256": "2d9e76267bd3ff24285fa3e13bfa5ba3b07f27a8f0c59612d964b9e554c3d680",
+    "bytes": 205415,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "fold1.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/base/fold1/refit/latest.pt",
+    "source_sha256": "98bb377a9fbda1f729492f57d63dffa4de9da32dbb470d9286ecc1e2473980f3",
+    "sha256": "ad15300ed9631b4b136925f85032974cdb16ea3b5342b68bb046692f108feaad",
+    "bytes": 205415,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "fold2.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/base/fold2/refit/latest.pt",
+    "source_sha256": "3ddb880ca47f2af3af620a4bb32891208ec9f1cabe66e1efbf655764c3345b98",
+    "sha256": "99a5bcf86d286125cc7609f09b4cafb12943470de21083698b51df582ec22b4c",
+    "bytes": 205415,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "fold3.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/base/fold3/refit/latest.pt",
+    "source_sha256": "d9ea14574b64a67bbdfaa2e5422e6eb0b2123281df6c45a5c5953c94301ce8fd",
+    "sha256": "0638ec07a0227e0e69afb10cee0e3250fd566407f1f926fbf62318dfe7dedf07",
+    "bytes": 205415,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "fold4.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/base/fold4/refit/latest.pt",
+    "source_sha256": "e053b43bb9b730a4381273d5f547d3fb2dd1fe86e0ae7e28a785bde832e15930",
+    "sha256": "160cb910016407779d914f391f8edbfccf7f63c02be094d501b62f8b2c57de33",
+    "bytes": 205415,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  }
+]

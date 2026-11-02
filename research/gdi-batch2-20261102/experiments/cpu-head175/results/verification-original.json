@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "actual_gdi_optimizer_updates": 1000,
+  "head_trainable_parameters": 1026,
+  "people": 175,
+  "records": 203,
+  "all_records_predicted_once": true,
+  "saved_model_replay_independent_numpy": true,
+  "saved_scalers_unchanged": true,
+  "prediction_row_identity_preserved": true,
+  "left_right_and_front_back_columns_preserved": true,
+  "source_files_unchanged": true,
+  "baseline": {
+    "front_mae": 8.275834265385384,
+    "back_mae": 9.033922935416292,
+    "front_back_gap": 3.9604827716403497
+  },
+  "head_only": {
+    "front_mae": 8.281929817423837,
+    "back_mae": 9.030259502557744,
+    "front_back_gap": 3.9226933663265573
+  },
+  "reduction_positive_is_improvement": {
+    "front_mae": -0.006095552038452305,
+    "back_mae": 0.003663432858552892,
+    "front_back_gap": 0.03778940531378866
+  },
+  "exploratory_person_bootstrap95": {
+    "front_mae": [
+      -0.021441628614267887,
+      0.008671174112298079
+    ],
+    "back_mae": [
+      -0.012282742903477941,
+      0.0187221262590526
+    ],
+    "front_back_gap": [
+      0.023264789706095128,
+      0.0523020624090126
+    ]
+  },
+  "people_improved_worsened_tied": {
+    "front_mae": {
+      "improved": 87,
+      "worsened": 88,
+      "tied": 0
+    },
+    "back_mae": {
+      "improved": 93,
+      "worsened": 82,
+      "tied": 0
+    },
+    "front_back_gap": {
+      "improved": 105,
+      "worsened": 70,
+      "tied": 0
+    }
+  },
+  "total_five_fold_training_seconds_including_checkpoints_and_predictions": 0.9844198001082987,
+  "prediction_contract": {
+    "file": "runs/main/all_predictions.npz",
+    "shape": [
+      203,
+      2,
+      2
+    ],
+    "keys": [
+      "baseline",
+      "fold",
+      "person_id",
+      "predictions",
+      "video_id"
+    ],
+    "axis0": "original train_only.npz record order",
+    "axis1": [
+      "front",
+      "back"
+    ],
+    "axis2": [
+      "left_GDI",
+      "right_GDI"
+    ]
+  },
+  "encoder_loaded": false,
+  "gpu_used": false,
+  "independent_final_evaluation": false
+}

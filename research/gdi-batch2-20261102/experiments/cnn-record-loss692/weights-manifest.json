@@ -1,0 +1,182 @@
+[
+  {
+    "file": "window_control-fold0.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/analysis/window_control/checkpoints/runs/main/window_control/fold0/refit/latest.pt",
+    "source_sha256": "9c3cf0e17723fcc6c91e03bef951f05e4e833136524eba85764667b7c84b474b",
+    "sha256": "78b9716a1e263151753e1cb29e9c763841a1e0cab8294f80a4b279379f227c0f",
+    "bytes": 208593,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "window_control-fold1.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/analysis/window_control/checkpoints/runs/main/window_control/fold1/refit/latest.pt",
+    "source_sha256": "52dcb48ab4561f19bf62eebed33ebd162872a2b435d24102cb7c55ef94e2539d",
+    "sha256": "cbe60047ad34b8e3f6e300969e59e53cd3ff8e056e09f2f7599409d3befdcd33",
+    "bytes": 208593,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "window_control-fold2.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/analysis/window_control/checkpoints/runs/main/window_control/fold2/refit/latest.pt",
+    "source_sha256": "31d03d2f4dd7d40b0e405dc74a95c2b1411dd0786826e8e899bde2a7d2fbc4ee",
+    "sha256": "712d5432fe9df6264c375ebdf82003e8bcb0da1e46fdc277b8ed3fb976745dde",
+    "bytes": 208593,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "window_control-fold3.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/analysis/window_control/checkpoints/runs/main/window_control/fold3/refit/latest.pt",
+    "source_sha256": "f8f6ecf2f48ff5d12087b0b789bccf05455d6b9f41e4aaa8bdf7902e35ec8381",
+    "sha256": "1a68217a18ab68536a217e3fbf31503757662120e0a45151418b1d9110a4e41e",
+    "bytes": 208593,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "window_control-fold4.pt",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/analysis/window_control/checkpoints/runs/main/window_control/fold4/refit/latest.pt",
+    "source_sha256": "e1872e84be64af81b83d220c30c65d1031d6c64ff3d5b99691f7fd24fb4c8b8a",
+    "sha256": "154255dfc854f4ada267e1a0339d93c63ca036c996d412d8add45b5dc48445d9",
+    "bytes": 208593,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "record_mean-fold0.pt",
+    "source": "[D model store]/latest.pt",
+    "source_sha256": "8bafd2fe58ca9739fc277e6f02f2f7dcbc8ca05cbf6aaa263ca7142bbaa3bf07",
+    "sha256": "e93b5f00d34d71a8b209ffce1dbf78638621dfebeb52a9634308f88ad0c80bef",
+    "bytes": 208431,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "record_mean-fold1.pt",
+    "source": "[D model store]/latest.pt",
+    "source_sha256": "51d7f12908526f188b3578e66e90d611354275b29aea4130f828fa51932d3175",
+    "sha256": "21b81a2f90c08cce1f257b882155599d777e39c9efb800c087adb606999822c2",
+    "bytes": 208431,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "record_mean-fold2.pt",
+    "source": "[D model store]/latest.pt",
+    "source_sha256": "c609eb2612491583ce1bc53c8d31b51e427ac0e0a36e951ec0d13023f880cd67",
+    "sha256": "3ca9e201688d9121070af2f09cc54eb628e0ab56e508c442534c569fae45bd44",
+    "bytes": 208431,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "record_mean-fold3.pt",
+    "source": "[D model store]/latest.pt",
+    "source_sha256": "9bf9773bf1ddc1bddab54fd7649af44b940ebfdc095627062ef0169507b2f81a",
+    "sha256": "8cc8899e99b1ad50fe1016d6220c6285009eef5a5137b0e085ab19809040ea4a",
+    "bytes": 208431,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  },
+  {
+    "file": "record_mean-fold4.pt",
+    "source": "[D model store]/latest.pt",
+    "source_sha256": "bbf2effd48bd56f91049ef49dd1b59f035d51f0755e429d38c2208a53f9d04a5",
+    "sha256": "6b31687fb4067632b72cb3bee53ba13ac56275de626ff39dd52c1152e31a6a7d",
+    "bytes": 208431,
+    "model_tensors_identical": true,
+    "fields": [
+      "format_version",
+      "experiment",
+      "fold",
+      "model",
+      "lo",
+      "span",
+      "calibration"
+    ],
+    "tensor_count": 46
+  }
+]

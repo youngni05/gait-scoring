@@ -1,0 +1,39 @@
+{
+  "people": 692,
+  "records": 1061,
+  "raw_shape": [
+    1061,
+    2,
+    124,
+    12
+  ],
+  "pose_shape": [
+    1061,
+    124,
+    17,
+    3
+  ],
+  "temporal_shape": [
+    1061,
+    124,
+    512
+  ],
+  "fused_shape": [
+    1061,
+    2,
+    124,
+    524
+  ],
+  "same_frame_ids": true,
+  "same_labels_and_folds": true,
+  "feature_pool": "17-joint mean only; do not pool time",
+  "side_handling": "same full-body temporal features appended to left and right geometry separately",
+  "normalization": "per fit training only; cached raw frozen features are never normalized across all people",
+  "single_cnn_manifest_sha256": "65fd5673df547348e9bfc5f61e443a4e571d381596898e658ca5bae099395abb",
+  "motionbert_checkpoint_sha256": "6a6ad0055c7ad50da083af0549a24c52ec1c21f89e440912645054d74be0a461",
+  "old_pose_bundle_sha256": "cd2c3d242ceaeef9462366e520e266bc8fba6d1a46e0686a48209a7c688b4c28",
+  "old_pose_data_sha256": "728bb090b7ef9846514410178f7d022a1300008e605246a141f94cdbaebce998",
+  "baseline_predictions_sha256": "98ef52a2d95f24891fa6be0b5e51c129f58a6f78158eb5ca3889a01d7b1ee26e",
+  "no_protected_labels": true,
+  "actual_gpu_execution": false
+}

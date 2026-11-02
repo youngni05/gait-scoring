@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "archive_sha256": "79c76374047bdd1ff34b30fec99366806035ed40c468343bf2c928f2ef711687",
+  "bundle_sha256": "cdddbbca96dae2723714cb8e9a1f7fe6f603967914febc952c8a3872c135f4a0",
+  "matched_people": 692,
+  "matched_records": 1061,
+  "completed_fits": 25,
+  "real_gpu_optimizer_steps": 1079654,
+  "all_split_and_identity_records_match": true,
+  "code_and_protocol_match": true,
+  "weighted_epoch_selection_recomputed": true,
+  "all_prediction_curve_hashes_match": true,
+  "calibration_applied_as_recorded": true,
+  "oof_csv_and_fold_predictions_match": true,
+  "metrics_independently_recomputed": true,
+  "reference_predictions_match_prior_artifacts": true,
+  "checkpoints_downloaded": true,
+  "independent_model_reinference": true,
+  "protected_final_people_used": false,
+  "checkpoint_replay_artifact": "checkpoint_replay.json",
+  "matched_comparison_artifact": "comparison.json"
+}

@@ -1,0 +1,610 @@
+{
+  "metrics": {
+    "residual_raw": {
+      "accuracy": 0.4109465317919073,
+      "two_or_more_band_error": 0.08388728323699421,
+      "nll": 1.2990259080869353,
+      "brier": 0.6840506364311695,
+      "rps": 0.029351411172753573,
+      "ece10": 0.03620293675274125,
+      "mean_confidence": 0.43667000141549145,
+      "reliability": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "mass": 0.13820706028075969,
+          "people": 225,
+          "observations": 286,
+          "confidence": 0.38551660721189207,
+          "accuracy": 0.423428806154076
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "mass": 0.8617929397192401,
+          "people": 677,
+          "observations": 1836,
+          "confidence": 0.4448735499831621,
+          "accuracy": 0.4089447302387696
+        }
+      ]
+    },
+    "residual_calibrated": {
+      "accuracy": 0.41227807597027233,
+      "two_or_more_band_error": 0.08364643545279382,
+      "nll": 1.3000048753472246,
+      "brier": 0.6840557131070203,
+      "rps": 0.029355251351996233,
+      "ece10": 0.03881527329025142,
+      "mean_confidence": 0.4354326277379448,
+      "reliability": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "mass": 0.1530914533443435,
+          "people": 244,
+          "observations": 323,
+          "confidence": 0.3863777309181766,
+          "accuracy": 0.4375259863578645
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "mass": 0.8469085466556564,
+          "people": 669,
+          "observations": 1799,
+          "confidence": 0.44430003789391825,
+          "accuracy": 0.40771413655744254
+        }
+      ]
+    },
+    "score_only_raw": {
+      "accuracy": 0.4095083264519679,
+      "two_or_more_band_error": 0.08259874759152214,
+      "nll": 1.294999773706491,
+      "brier": 0.6829741960372235,
+      "rps": 0.02921041484633177,
+      "ece10": 0.0379365769303896,
+      "mean_confidence": 0.44472495244692395,
+      "reliability": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "mass": 0.09585913845306908,
+          "people": 168,
+          "observations": 202,
+          "confidence": 0.388587309275239,
+          "accuracy": 0.4027745374275408
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "mass": 0.9041408615469309,
+          "people": 684,
+          "observations": 1920,
+          "confidence": 0.450676797273422,
+          "accuracy": 0.41022225858562017
+        }
+      ]
+    },
+    "score_only_calibrated": {
+      "accuracy": 0.4115486512524083,
+      "two_or_more_band_error": 0.08271917148362234,
+      "nll": 1.2959587050085515,
+      "brier": 0.682841405095945,
+      "rps": 0.029209266775487727,
+      "ece10": 0.03324771227669723,
+      "mean_confidence": 0.44233664852190346,
+      "reliability": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "mass": 0.10353014037985134,
+          "people": 185,
+          "observations": 224,
+          "confidence": 0.38822021609679686,
+          "accuracy": 0.39729145895646395
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "mass": 0.8869563721442332,
+          "people": 684,
+          "observations": 1881,
+          "confidence": 0.4480232337461554,
+          "accuracy": 0.411924665903757
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "mass": 0.009513487475915221,
+          "people": 16,
+          "observations": 17,
+          "confidence": 0.5010878527308381,
+          "accuracy": 0.5316455696202531
+        }
+      ]
+    },
+    "score_spread_raw": {
+      "accuracy": 0.41911815304156325,
+      "two_or_more_band_error": 0.08524807321772639,
+      "nll": 1.2935346819172016,
+      "brier": 0.6825300601788574,
+      "rps": 0.029147601609727073,
+      "ece10": 0.045763482238323744,
+      "mean_confidence": 0.4469426071374756,
+      "reliability": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "mass": 0.08943538398018167,
+          "people": 158,
+          "observations": 190,
+          "confidence": 0.3886394841150583,
+          "accuracy": 0.4889299247888897
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "mass": 0.8796758876961187,
+          "people": 683,
+          "observations": 1872,
+          "confidence": 0.4506215874157693,
+          "accuracy": 0.4126370424259491
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "mass": 0.030888728323699422,
+          "people": 56,
+          "observations": 60,
+          "confidence": 0.5109805931594367,
+          "accuracy": 0.40155945419103306
+        }
+      ]
+    },
+    "score_spread_calibrated": {
+      "accuracy": 0.4171913707679602,
+      "two_or_more_band_error": 0.08524807321772639,
+      "nll": 1.295180517168971,
+      "brier": 0.6824011718038662,
+      "rps": 0.0291509419841952,
+      "ece10": 0.030113132686480894,
+      "mean_confidence": 0.44143988061284856,
+      "reliability": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "mass": 0.11488611340489951,
+          "people": 194,
+          "observations": 245,
+          "confidence": 0.38794726070767954,
+          "accuracy": 0.4134708974109403
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "mass": 0.8602635562895677,
+          "people": 677,
+          "observations": 1827,
+          "confidence": 0.44672068955553235,
+          "accuracy": 0.4183508181116439
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "mass": 0.024850330305532617,
+          "people": 45,
+          "observations": 50,
+          "confidence": 0.5059328549889203,
+          "accuracy": 0.3942540671512634
+        }
+      ]
+    },
+    "selected_raw": {
+      "accuracy": 0.4091229699972473,
+      "two_or_more_band_error": 0.08277938342967243,
+      "nll": 1.2939091574470094,
+      "brier": 0.6825087683451272,
+      "rps": 0.029168520907244616,
+      "ece10": 0.036562954690332806,
+      "mean_confidence": 0.4456859246875802,
+      "reliability": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "mass": 0.09585913845306906,
+          "people": 170,
+          "observations": 202,
+          "confidence": 0.3888517193527153,
+          "accuracy": 0.38116688501642126
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "mass": 0.8911109964216899,
+          "people": 684,
+          "observations": 1895,
+          "confidence": 0.45087941395261905,
+          "accuracy": 0.41243665357104936
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "mass": 0.013029865125240847,
+          "people": 24,
+          "observations": 25,
+          "confidence": 0.5086261436620869,
+          "accuracy": 0.38817005545286504
+        }
+      ]
+    },
+    "selected_calibrated": {
+      "accuracy": 0.4115125240847783,
+      "two_or_more_band_error": 0.08398362235067436,
+      "nll": 1.2950841953713221,
+      "brier": 0.6823432356507958,
+      "rps": 0.029168224488808056,
+      "ece10": 0.030625192191799232,
+      "mean_confidence": 0.4421377162765776,
+      "reliability": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "mass": 0.10549304982108448,
+          "people": 189,
+          "observations": 231,
+          "confidence": 0.3877970955141367,
+          "accuracy": 0.3804243244565484
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "mass": 0.8829462565372967,
+          "people": 684,
+          "observations": 1869,
+          "confidence": 0.44781756585936966,
+          "accuracy": 0.4142046882641421
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "mass": 0.011560693641618497,
+          "people": 20,
+          "observations": 22,
+          "confidence": 0.5042063004657265,
+          "accuracy": 0.48958333333333326
+        }
+      ]
+    },
+    "matched_hard": {
+      "accuracy": 0.4068951279933937,
+      "two_or_more_band_error": 0.08400770712909439,
+      "nll": null,
+      "brier": 1.186209744013213,
+      "rps": 0.04255285748692544,
+      "ece10": 0.5931048720066082,
+      "mean_confidence": 1.000000000000002,
+      "reliability": [
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "mass": 0.9999999999999998,
+          "people": 692,
+          "observations": 2122,
+          "confidence": 1.0000000000000022,
+          "accuracy": 0.40689512799339383
+        }
+      ]
+    },
+    "legacy_CNN_STT_hard": {
+      "accuracy": 0.4219549958711806,
+      "two_or_more_band_error": 0.08655553261767132,
+      "nll": null,
+      "brier": 1.1560900082576389,
+      "rps": 0.04174827535783102,
+      "ece10": 0.5780450041288213,
+      "mean_confidence": 1.000000000000002,
+      "reliability": [
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "mass": 0.9999999999999998,
+          "people": 692,
+          "observations": 2122,
+          "confidence": 1.0000000000000022,
+          "accuracy": 0.42195499587118074
+        }
+      ]
+    },
+    "legacy_mean_difference_hard": {
+      "accuracy": 0.43042595650977133,
+      "two_or_more_band_error": 0.08229768786127167,
+      "nll": null,
+      "brier": 1.1391480869804573,
+      "rps": 0.041009173720066086,
+      "ece10": 0.5695740434902307,
+      "mean_confidence": 1.000000000000002,
+      "reliability": [
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "mass": 0.9999999999999998,
+          "people": 692,
+          "observations": 2122,
+          "confidence": 1.0000000000000022,
+          "accuracy": 0.43042595650977145
+        }
+      ]
+    },
+    "legacy_robust_hard": {
+      "accuracy": 0.4309076520781721,
+      "two_or_more_band_error": 0.08374277456647397,
+      "nll": null,
+      "brier": 1.138184695843656,
+      "rps": 0.04106938566611618,
+      "ece10": 0.5690923479218298,
+      "mean_confidence": 1.000000000000002,
+      "reliability": [
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "mass": 0.9999999999999998,
+          "people": 692,
+          "observations": 2122,
+          "confidence": 1.0000000000000022,
+          "accuracy": 0.4309076520781722
+        }
+      ]
+    }
+  },
+  "fold_accuracy": {
+    "residual_raw": [
+      0.38043478260869573,
+      0.428743961352657,
+      0.4335748792270531,
+      0.40527577937649883,
+      0.40677458033573144
+    ],
+    "residual_calibrated": [
+      0.37732919254658387,
+      0.4341787439613526,
+      0.42934782608695654,
+      0.41199040767386097,
+      0.40857314148681056
+    ],
+    "score_only_raw": [
+      0.3869910282953762,
+      0.4323671497584541,
+      0.4311594202898551,
+      0.38093525179856125,
+      0.4162470023980815
+    ],
+    "score_only_calibrated": [
+      0.38828502415458943,
+      0.43115942028985504,
+      0.4375,
+      0.3829136690647482,
+      0.4180455635491606
+    ],
+    "score_spread_raw": [
+      0.415976535541753,
+      0.4359903381642512,
+      0.42934782608695654,
+      0.4035971223021583,
+      0.41085131894484406
+    ],
+    "score_spread_calibrated": [
+      0.40510697032436166,
+      0.4384057971014493,
+      0.4338768115942029,
+      0.4008992805755396,
+      0.40785371702637885
+    ],
+    "selected_raw": [
+      0.3869910282953762,
+      0.43176328502415456,
+      0.4257246376811594,
+      0.3850119904076739,
+      0.4162470023980815
+    ],
+    "selected_calibrated": [
+      0.38828502415458943,
+      0.4365942028985507,
+      0.4320652173913043,
+      0.3827338129496404,
+      0.4180455635491606
+    ],
+    "matched_hard": [
+      0.36193064182194623,
+      0.428743961352657,
+      0.429951690821256,
+      0.4088729016786571,
+      0.4049760191846523
+    ],
+    "legacy_CNN_STT_hard": [
+      0.37060041407867506,
+      0.451207729468599,
+      0.4553140096618357,
+      0.39892086330935256,
+      0.43381294964028777
+    ],
+    "legacy_mean_difference_hard": [
+      0.38155624568668056,
+      0.4605676328502415,
+      0.45410628019323673,
+      0.4169064748201439,
+      0.43902877697841725
+    ],
+    "legacy_robust_hard": [
+      0.38457556935817816,
+      0.4672101449275362,
+      0.4468599033816425,
+      0.4169064748201439,
+      0.43902877697841725
+    ]
+  },
+  "paired": {
+    "accuracy_vs_legacy_mean_difference_hard": {
+      "delta": -0.018913432424993118,
+      "descriptive_bootstrap95": [
+        -0.03403454445361959,
+        -0.004077208918249381
+      ]
+    },
+    "accuracy_vs_legacy_robust_hard": {
+      "delta": -0.01939512799339389,
+      "descriptive_bootstrap95": [
+        -0.03473085260115606,
+        -0.004275048169556841
+      ]
+    },
+    "accuracy_vs_matched_hard": {
+      "delta": 0.004617396091384531,
+      "descriptive_bootstrap95": [
+        -0.006069536195981283,
+        0.014860437310762451
+      ]
+    },
+    "accuracy_vs_residual_calibrated": {
+      "delta": -0.0007655518854940825,
+      "descriptive_bootstrap95": [
+        -0.011142736718965044,
+        0.009348377718139279
+      ]
+    },
+    "nll_vs_residual_calibrated": {
+      "delta": -0.004920679975902421,
+      "descriptive_bootstrap95": [
+        -0.009357995893532632,
+        -0.0004251610372233671
+      ]
+    },
+    "brier_vs_residual_calibrated": {
+      "delta": -0.0017124774562244278,
+      "descriptive_bootstrap95": [
+        -0.003829118510470709,
+        0.0003680303190570623
+      ]
+    },
+    "nll_vs_selected_raw": {
+      "delta": 0.001175037924313244,
+      "descriptive_bootstrap95": [
+        -0.0012825371653014935,
+        0.0035361329191407574
+      ]
+    },
+    "brier_vs_selected_raw": {
+      "delta": -0.00016553269433140173,
+      "descriptive_bootstrap95": [
+        -0.0012075152932335225,
+        0.0008626384133339959
+      ]
+    }
+  },
+  "people": 692,
+  "records": 1061,
+  "observations": 2122,
+  "training_sha256": "1791ae1b2419915bef3caa59a59f1532dec90183240105ba70cd4085cb971c88",
+  "protocol_sha256": "fd099f39173680496e25ce988f1b361d1884c7d32dd744cd3c1508ba21f22d04",
+  "limitations": [
+    "Development cohort already explored, not independent final validation",
+    "Four inner base models differ from original outer-refit pipeline; include matched-model baseline",
+    "Each head uses about110 people for refit and about28 people for calibration",
+    "Independent expert calibration does not guarantee calibration after averaging",
+    "No claim of transfer reliability on unlabelled external adults"
+  ],
+  "support": [
+    {
+      "class_index": 0,
+      "observations": 0,
+      "people": 0
+    },
+    {
+      "class_index": 1,
+      "observations": 0,
+      "people": 0
+    },
+    {
+      "class_index": 2,
+      "observations": 0,
+      "people": 0
+    },
+    {
+      "class_index": 3,
+      "observations": 0,
+      "people": 0
+    },
+    {
+      "class_index": 4,
+      "observations": 2,
+      "people": 2
+    },
+    {
+      "class_index": 5,
+      "observations": 26,
+      "people": 20
+    },
+    {
+      "class_index": 6,
+      "observations": 204,
+      "people": 152
+    },
+    {
+      "class_index": 7,
+      "observations": 506,
+      "people": 311
+    },
+    {
+      "class_index": 8,
+      "observations": 674,
+      "people": 391
+    },
+    {
+      "class_index": 9,
+      "observations": 455,
+      "people": 285
+    },
+    {
+      "class_index": 10,
+      "observations": 211,
+      "people": 149
+    },
+    {
+      "class_index": 11,
+      "observations": 42,
+      "people": 34
+    },
+    {
+      "class_index": 12,
+      "observations": 2,
+      "people": 2
+    },
+    {
+      "class_index": 13,
+      "observations": 0,
+      "people": 0
+    },
+    {
+      "class_index": 14,
+      "observations": 0,
+      "people": 0
+    },
+    {
+      "class_index": 15,
+      "observations": 0,
+      "people": 0
+    },
+    {
+      "class_index": 16,
+      "observations": 0,
+      "people": 0
+    }
+  ],
+  "predictions_path": "[workstation/server location omitted]",
+  "predictions_sha256": "21d7de8da9697843ecf1a473260f3191f3628fc5ba3f7e028a14ca03c525f966",
+  "experts_sha256": "f647fb2013172c3292fd8ea3ab123c3af7c8bdc3695754cf3bb203969b445594",
+  "protected_final_data_opened": false,
+  "neural_optimizer_steps": 0,
+  "hard_nll_note": "Hard bins do not supply probabilities; log loss is infinite on any wrong class, reported as null rather than arbitrary epsilon clipping"
+}

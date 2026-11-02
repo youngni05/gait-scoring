@@ -1,0 +1,10 @@
+[
+  {
+    "file": "fold_models.npz",
+    "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/fold_models.npz",
+    "source_sha256": "618ee1f4b789aded133d39c9da441dabc698ea09337903e4ed265b22de21de55",
+    "sha256": "618ee1f4b789aded133d39c9da441dabc698ea09337903e4ed265b22de21de55",
+    "bytes": 251166,
+    "numeric_parameters_byte_identical": true
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "verified": true,
+  "csv_method_scope_groups": 14,
+  "internal_people": 175,
+  "new_final_reserved_people": 223,
+  "new_development_candidate_people": 520,
+  "new_people_in_current_comparison": 0,
+  "new_final_GDI_labels_opened": false,
+  "new_final_evaluation_executed": false,
+  "raw_recovery_records_verified": 243,
+  "failure_preserved": true,
+  "old_guard_not_relaxed": true,
+  "no_extra_fits_in_verification": true
+}

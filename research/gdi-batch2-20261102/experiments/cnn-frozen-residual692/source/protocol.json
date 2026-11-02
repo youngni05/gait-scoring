@@ -1,0 +1,19 @@
+{
+  "name": "frozen_single_cnn_motionbert_temporal_residual_v1",
+  "seed": 20261028,
+  "batch_size": 32,
+  "max_epochs": 100,
+  "pilot_epochs": 3,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "optimizer": "AdamW",
+  "model": "Conv1d512to16_kernel1_ReLU_Conv1d16to16_kernel3_ReLU_temporalmean_dropout0.1_linear2_zero_init",
+  "loss": "record_side_mean_squared_residual_divided_by_10",
+  "baseline": "existing calibrated single CNN, eval and frozen; inner checkpoints fixed100 epochs; outer checkpoints existing inner-selected refit",
+  "motionbert": "frozen original MB_lite temporal cache, joint mean only",
+  "normalization": "current training records and time only, feature mean/std",
+  "selection": "earliest minimum validation-person-weighted MAE over epochs0..100; zero means baseline only",
+  "prediction": "frozen calibrated CNN plus learned GDI correction; no new output calibration",
+  "training_residual": "in-sample frozen CNN residual on current training people; not cross-fitted residual targets",
+  "independent_final_evaluation": false
+}

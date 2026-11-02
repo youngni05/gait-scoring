@@ -1,0 +1,10 @@
+[
+  {
+    "file": "models.npz",
+    "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning/models.npz",
+    "source_sha256": "0ec6195614618dd6ecad166f0bec70090a5b197cbe7ba47a79d4070d9a58b5a8",
+    "sha256": "0ec6195614618dd6ecad166f0bec70090a5b197cbe7ba47a79d4070d9a58b5a8",
+    "bytes": 2008142,
+    "numeric_parameters_byte_identical": true
+  }
+]
