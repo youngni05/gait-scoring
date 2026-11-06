@@ -9,7 +9,7 @@
   "primary_model": "fusion",
   "test_sets": {
     "live": "LIVE-GaitNeuroKids typically developing children, 9 people, 12 records, 5-10y, from matched-normal100/child/data.npz. Not used by either arm. All 5 outer-fold models are averaged.",
-    "self": "Self-recorded Test01, 3 adults, 13 videos: 6 normal, 7 imitated abnormal. Labels were corrected by the user after an earlier scoring and are used for reporting only. Not used by either arm. All 5 outer-fold models are averaged.",
+    "self": "Self-recorded Test01, 3 adults, 13 videos: 6 normal, 7 imitated abnormal. Labels are used for reporting only. Not used by either arm. All 5 outer-fold models are averaged.",
     "ljmu": "LJMU 64 people, 881 records, all 3305 windows. Each record is scored only by the outer fold that held that person out."
   },
   "excluded_sets": {

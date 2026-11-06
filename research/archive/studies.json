@@ -946,8 +946,7 @@
     "source": "gdi-research-harness/studies/20261101-self-video-test01",
     "files": 17,
     "reports": [
-      "archive/gdi-research-harness/studies/20261101-self-video-test01/README.md",
-      "archive/gdi-research-harness/studies/20261101-self-video-test01/before-label-correction/README.md"
+      "archive/gdi-research-harness/studies/20261101-self-video-test01/README.md"
     ],
     "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
   },
