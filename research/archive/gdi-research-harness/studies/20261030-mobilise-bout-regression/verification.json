@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "models_replayed": 180,
+  "inner_person_splits_checked": 180,
+  "independent_closed_form_ridge_fits": 12,
+  "independently_recomputed_metric_rows": 144,
+  "same_people_visits_all_six_conditions_and_three_draws": true,
+  "all_visits_of_each_person_have_same_fold": true,
+  "scaler_statistics_match_outer_training_only": true,
+  "sampled_bout_feature_medians_match": true,
+  "source_clinical_labels_match": true,
+  "source_hashes_match": true,
+  "selected_bouts_independently_checked_against_original": 205307,
+  "artifacts_sha256": {
+    "protocol.json": "ad91510513123c8ef85c85143c1c9748e6686f2cd27f576ed7dbccbc44da07fc",
+    "predictions.csv": "c91bd1d36786f1148de0a960a686d249f624e70148bd0a1732928463df5c89bf",
+    "metrics.csv": "dda6ab312f7601d1e35fbf7b2ff741dbb16f0401341bc04a3a8ba664afa94e13",
+    "paired-comparisons.json": "81f558781b8c7c9afbf4086e757eff75caed2acf25e205eafe267c15b8f62f1c",
+    "subgroup-metrics.csv": "a3bdb270267c5dfae3c0f04307d3b4be32ea0869b31c093fbd99910af36e2c38",
+    "summary.json": "8b25a30fae451b666363149e63c5585053a613e9c5ba979f383e215034290a00"
+  },
+  "scripts_sha256": {
+    "common.py": "dd1321ce7f574be2b5fe4b3fbf3fb09a03c6bba4d53ba4484e8c85fd7ebed46c",
+    "prepare.py": "aed9c98d86a7b3c2659b6fe7c9e9565f0833a812a060cdb34d4320a48820a426",
+    "summarize.py": "21da2f54b124bbf88f48ecc68290d60cfb5a0c7e22d577b1d998f5c5257e17cf",
+    "train.py": "38f9fc1f21670996189bd2dc9421cbbc12db1952893e2486e08690809ee63c57",
+    "verify.py": "e3b57d24ab8d54f97111c67c074c4c64074c483fe1e61e818224ec9b4bab3044",
+    "verify_sources.py": "cc3f6c7bdfb9b5332f1059c89d645d9fd457bc7f5489934fffc6988bfd4e8c7a"
+  }
+}

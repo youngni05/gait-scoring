@@ -1,0 +1,48 @@
+{
+  "purpose": "Separate short-input training mismatch from camera and population shift. No MoVi label assumptions.",
+  "variants": [
+    "full",
+    "first2",
+    "center2"
+  ],
+  "primary": "first2",
+  "secondary": "center2",
+  "control": "full: refit full-walk features on identical eligible records",
+  "people": 110,
+  "records": 2914,
+  "excluded_short_records": 39,
+  "frames": 50,
+  "fps": 25,
+  "features": 128,
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "folds": 6,
+  "inner_validation": "(outer_fold+1)%6",
+  "selection": "Person-equal inner MAE; leaves2/8; tie lower leaf. Refit outer training only.",
+  "rf": {
+    "n_estimators": 200,
+    "max_features": 0.5,
+    "bootstrap": true,
+    "criterion": "squared_error",
+    "n_jobs": 2
+  },
+  "weighting": "Each person same total fitting weight; no normalization or calibration. One input per source record in each variant, no sample inflation.",
+  "expected_inner_fits": 180,
+  "expected_final_fits": 90,
+  "scope": "Same 14 MoVi people, 2sec straight and turn, paired cameras,56clips. No new HMR2 inference. Compare same-record OOF CARE error and same-clip camera sensitivity. No clinical cutoff optimized.",
+  "code_sha256": "735cd1c9615266162ef62a08fa0261a3c12e54db5927c31978f9c4fafa5b26ab",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\data.npz": "84f4058cd20167a4b8d6054952f4e37a0e1f9eac6a7e02c93dad6be025fb4efb",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\feature-analysis\\inputs.npz": "8c7ac76500f1708e82db674ab9e0528c51e38ebc3438f50eba2b4e269ce3d3d8",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\care-features.npz": "2390432cfc3e26cf60791295bc46cfd124563810beac1033d06e745ee6d14999",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\care-predictions.npz": "a802733fbbfe95a5068d7300e07d6c26d16b56d00a4f6676a4bec4473c441f7e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\movi-predictions.npz": "44c86aed6f37db7aa9c7a33eb244952f7eee97da573001f79c287ca9ff458b29",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\protocol.json": "87d7a70f229b7464d81af99ad24b9bf38fac834f004202565f40f988b7ed6d9f",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\rf-two-second\\experiment.py": "735cd1c9615266162ef62a08fa0261a3c12e54db5927c31978f9c4fafa5b26ab"
+  }
+}

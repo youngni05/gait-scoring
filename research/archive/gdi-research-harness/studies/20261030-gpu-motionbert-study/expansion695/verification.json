@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "paired_metric_independent_max_error": 0.0,
+  "saved_heads_reproduce_predictions": true,
+  "train_only_scalers_verified": true,
+  "local_replay_max_error": 0.0,
+  "synthetic_resume_exact": true,
+  "cpu_ridge_fits_completed": 10,
+  "expanded_gpu_real_steps": 0,
+  "archive_sha256": "45b488e48dc216e1ab2108183dc2371c41c5f512219ddecf4c0ff5eb19a3c995",
+  "gpu_execution_pending": true,
+  "local_bash_syntax_check_completed": false,
+  "local_bash_limitation": "Windows Git Bash startup denied NtCreateDirectoryObject; run bash -n launch.sh on server before launch."
+}

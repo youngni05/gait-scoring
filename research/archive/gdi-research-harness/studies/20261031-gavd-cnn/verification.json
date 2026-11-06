@@ -1,0 +1,13 @@
+{
+  "synthetic_tests": 6,
+  "skipped": 0,
+  "failures": 0,
+  "real_annotation_reconciliation": {
+    "annotation_rows": 458116,
+    "sequences": 1874,
+    "videos": 348,
+    "label_conflicts": 37,
+    "checks": "Independent SQLite counts, boundaries, no gaps/duplicates, label/view consistency, SHA256"
+  },
+  "GAVD_inference_run": false
+}

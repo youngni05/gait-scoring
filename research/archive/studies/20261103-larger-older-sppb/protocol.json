@@ -1,0 +1,43 @@
+{
+  "owner_thread": "01a19c6f-49f7-7300-97b0-a303b71ffe91",
+  "frozen_before_prediction": true,
+  "authorization": "User approved larger-cohort speed/coordination/variability SPPB comparison and dataset compatibility assessment.",
+  "datasets": {
+    "gait2care": "Zenodo17017009 v2; Week0 only; keep Week8 out of model development/evaluation this run",
+    "gstride": "Zenodo17052815 v3; one visit/person"
+  },
+  "input_gate": "IMU-derived stride metrics and original common-clock heel-strike events, not RGB or full-body 3D. Existing GDI model cannot accept these inputs. No CP GDI inference/training.",
+  "labels": "Published SPPB total primary. TUG and SPPB balance/chair-stand subscore exploratory. Reject missing/invalid total; if total differs from recorded sum, exclude from primary and log, never repair. No exclusion by poor outcome. Age>=65.",
+  "features": {
+    "speed": "Mean stride speed across accepted straight strides (both feet pooled in gait2care). Not 4m test speed, which enters SPPB label.",
+    "variability": "Stride duration, stride length and swing-percent CV. Pool within-foot centred sums of squares / pooled degrees of freedom, divide by grand mean*100. GSTRIDE single foot. Require>=15 accepted strides per observed foot. Use finite positive duration,length,speed and swing between0and100, absolute turning angle<20deg. No learned/outcome-dependent trimming.",
+    "coordination": "PCI=100*sampleSD(phase)/mean(phase)+100*mean(abs(phase-180))/180; phase=360*(opposite HS - own HS)/(next own HS-own HS). Only valid source strides with exactly one opposite strike, each linked via segmentation sample to timestamp_NoCal. Average two foot PCI; >=15 phases each. Do not substitute calibrated per-foot clocks. No cross-gap cycles. Availability gate before fitting."
+  },
+  "conditions": {
+    "A": [
+      "speed"
+    ],
+    "B": [
+      "speed",
+      "PCI"
+    ],
+    "C": [
+      "speed",
+      "stride_time_CV",
+      "stride_length_CV",
+      "swing_percent_CV"
+    ],
+    "D": [
+      "speed",
+      "PCI",
+      "stride_time_CV",
+      "stride_length_CV",
+      "swing_percent_CV"
+    ]
+  },
+  "evaluation": "Within each dataset independent person5-fold outer shuffled seed20261103; inner3-fold shuffled seed20261031. Ridge alpha[0.1,1,10,100,1000], training-only mean/SD, select smallest inner person MAE. No output clipping. All conditions on common eligible participants; GSTRIDE A/C only. Also training mean/median controls. Save train/test IDs, every inner/final fit, predictions, scalers and selected settings. No repeated seed selection.",
+  "external_gate": "Train GSTRIDE then evaluate GAIT2CARE common A/C features without target tuning only if cross-cohort identity independence can be established. Otherwise label as provisional cross-dataset transfer, not independently verified external test; do not pool cohorts. Screen matching raw-file hashes and available demographic fingerprints; absence of a match alone cannot prove independence.",
+  "metrics": "Person MAE,RMSE,bias,R2,Spearman,within1,abs error>2. SPPB bands0-4,5-8,9-10,11-12; fixed predicted<=8 detection TP,FN,TN,FP. Paired fixed-OOF bootstrap10000 seed20261103 CI95 for B-A,C-A,D-A,D-C. Conditional interval not full retraining uncertainty. Primary inference D-A in GAIT2CARE and C-A in GSTRIDE; no claim of improvement if interval includes zero.",
+  "verification": "Source workbook MD5, retrieved member ZIP CRC32 and local SHA256; full archive MD5 not claimed for range extraction. Check clinical sum and ID joins, phase clocks, person separation and train-only preprocessing. Independently recompute ridge coefficients, replay all saved fits and recompute primary metrics. Hash protocol before fit. Report unresolved anatomy, timing, sampling/population limits.",
+  "status": "Protocol frozen after schema/readme audit and before any model fit. Downloaded sources retain original values."
+}

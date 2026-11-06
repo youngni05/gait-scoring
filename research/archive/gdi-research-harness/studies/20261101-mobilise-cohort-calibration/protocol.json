@@ -1,0 +1,50 @@
+{
+  "code_sha256": "2d3a15dfeeb8696da164c43b7106b8c0e93ee244ce15d73764674c99f1955ae2",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-transfer\\study.py": "13c489ddf464ee889d571d5bd7cec20ac0c25799bb90662ee74e4871eabf429a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-transfer\\verify.py": "ee82688e51ba66e4d9a130aef82a8c64fc25bcd3554c629b12cf409610d69ea4",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-transfer\\main-verification.json": "c3cba142415ca85e30b182fb98ee1114c3b134a1f2519e1296da90e4ac00dbe3",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-transfer\\summary.json": "0664d8deb62cc508ed6cf90f222321b45fadd83b3173c05da8f206f0d81a0b32",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\audited-bouts.csv": "f826fbf2b9010b36cb0c8f181636242504e862e46f125d31db68c205a2a5d202"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "hypothesis": "Calibration OOF from unseen source disease cohorts better matches deployment to a held disease than ordinary mixed-person OOF; test calibration and a conservative source-group FPR guard without changing final RF.",
+  "input": "fixed original4+turns/sec,25columns,30-60sec5bouts draw0; no disease/age metadata predictors",
+  "labels": "same four SPPB/TUG bands; lowSPPB<=3/TUG>20sec;2174/1939people7356/5688visits",
+  "outer": "same four disease-cohort holdouts and five seeds as cohort-transfer; exact evaluation people/visits/bouts and frozen final LocoTurnRF",
+  "inner": "NEW remaining3source cohorts each held as whole; train RF on other2cohorts to create OOF. No evaluated outer disease in model/scaler/temperature/threshold selection.",
+  "methods": {
+    "RawRF": "existing final raw probabilities and raw internal warning",
+    "PersonCal": "existing mixed-person OOF temperature and warning",
+    "CohortCal": "source-cohort OOF temperature with source-cohort cross-calibration for pooled fpr10 threshold",
+    "CohortGuard": "same probabilities as CohortCal; maximum of the three source-cohort fpr10 thresholds"
+  },
+  "fixed_model": "reused40final RF128 leaf20 max_features1;120newinnerRF same parameters,person-equal weights. No hyperparameter search.",
+  "selection": "temperature[.25,4], all-source person weighted OOF NLL; cross-fit temperature excluding source calibration group before warning thresholds. No choice using held-disease labels.",
+  "primary_success": "CohortCal must reduce multiclass Brier and not increase pooled miss or FPR vs PersonCal in both outcomes, direction at least4/5seeds. Report all regardless. CohortGuard is a predeclared trade-off: source-group cap does not guarantee unseen-group cap; never call reducedFPR alone a gain.",
+  "diagnostics": "pooled/per-disease Brier,RPS,miss,FPR,warning rate; identical same-disease/original-person-fold speed pairs. No new diagnostic cutoff search.",
+  "resource": "CPU4workers, estimate5-15min training+audit; pilot2tasks heldMS firstseed; no GPU",
+  "expected": {
+    "tasks": 40,
+    "new_inner_models": 120,
+    "reused_final_models": 40,
+    "model_replays": 160,
+    "selected_refits": 8,
+    "metric_rows": 50,
+    "cohort_metric_rows": 200,
+    "matched_rows": 40
+  },
+  "limits": "same development people reused after outcomes informed hypothesis; only3sourcegroups; RFs trained on2 vs3diseases for OOF/final differ; rare severe COPD/PD; no external/video validity or universal FPR guarantee",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-calibration",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-cohort-calibration-20261101"
+  }
+}

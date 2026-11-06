@@ -1,0 +1,29 @@
+"""Prepare fixed labeled IMU sequences; no MediaPipe/RGB accuracy claim."""
+from pathlib import Path
+import sys,json,zipfile,hashlib,datetime
+import numpy as np
+H=Path('D:/Projects/D_P/studies/20261104-frailpol-temporal-cnn');B=Path('D:/gait-research-data/D_P/frailpol-temporal-cnn-20261104');S=Path('D:/Projects/D_P/studies/20261103-frailpol-improvement-loop');SRC=Path('D:/gait-research-data/D_P/frailpol-short-walk-20261103')
+sys.path.insert(0,str(S));from features4 import sequence
+from signal_pilot import filemap,rawread
+from sklearn.model_selection import StratifiedKFold
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def save(p,x):Path(p).write_text(json.dumps(x,indent=2,ensure_ascii=False,allow_nan=False),encoding='utf8')
+def main():
+    H.mkdir(exist_ok=True);B.mkdir(exist_ok=True);(H/'bundle').mkdir(exist_ok=True)
+    rr=[r for r in json.loads((SRC/'cohorts.json').read_text()) if r['status']=='ok' and r['tug'] is not None];features=json.loads((Path('D:/gait-research-data/D_P/frailpol-improvement-loop-20261103/round05/features.json')).read_text());byid={r['id']:r for r in features};ids=np.array([r['id'] for r in rr]);y=np.array([r['tug'] for r in rr]);fold=np.array([r['fold'] for r in rr]);assert len(rr)==594;windows=[];names=list(byid[int(ids[0])]['features']);seq=[]
+    with zipfile.ZipFile(SRC/'raw/IMU_signals.zip') as z:
+      mapping=filemap(z)
+      for n,r in enumerate(rr):
+        w=byid[r['id']]['window'];raw=rawread(z,mapping,r['id']);a=sequence(raw,w);assert np.array_equal(a,sequence(rawread(z,mapping,r['id']),w))
+        if n<12:
+            ref=raw['sacrum back'].PacketCounter.iloc[w['core_start']:w['core_end']].to_numpy();alter={s:d.copy() for s,d in raw.items()}
+            for d in alter.values():d.loc[~d.PacketCounter.isin(ref),d.columns!='PacketCounter']=99999.
+            assert np.array_equal(a,sequence(alter,w))
+        seq.append(a);windows.append(w)
+    X=np.array(seq,dtype=np.float64);F=np.array([[byid[int(i)]['features'][k] for k in names] for i in ids],float);np.savez_compressed(B/'data.npz',X=X,F=F,y=y,ids=ids,fold=fold)
+    splits={}
+    for f in range(5):
+        tr=np.flatnonzero(fold!=f);te=np.flatnonzero(fold==f);inner=[dict(train=tr[it].tolist(),valid=tr[iv].tolist()) for it,iv in StratifiedKFold(3,shuffle=True,random_state=20261103).split(tr,np.digitize(y[tr],[12,20]))];splits[str(f)]=dict(train=tr.tolist(),test=te.tolist(),inner=inner)
+    proto=dict(owner_thread='01a1a1c2-655b-79a3-87bc-e325af86028e',experiment='frailpol-temporal-cnn-20261104',authorization='User requested GPU models in parallel with existing improvement loop, motion learning and a separately gated MediaPipe input investigation.',created=datetime.datetime.now(datetime.timezone.utc).isoformat(),data_sha256=sha(B/'data.npz'),prepare_sha256=sha(Path(__file__)),sequence_library_sha256=sha(S/'features4.py'),source_cohort_sha256=sha(SRC/'cohorts.json'),source_bilateral_features_sha256=sha(Path('D:/gait-research-data/D_P/frailpol-improvement-loop-20261103/round05/features.json')),feature_names=names,people=594,goal=dict(mae=.9,p95=3,slow_mae=3),splits=splits,conditions=['speed_mlp','features_mlp','motion_speed','motion_features'],model='24channel128sample IMU waveform; 3residualConv1d blocks32channels dilation1/2/4,kernel5,GroupNorm4,SiLU,global mean+std pooling. Manual branch32units; concatenated head64->32->1,dropout0.15. MLP controls use same manual branch/head without waveform. No model on RGB/MediaPipe yet.',training='One fixed initialization seed20261104+fold100+condition index;AdamW lr.001 weight_decay.01,batch64,100epochs; target mean/std and manual medians/mean/std use fit training people only. SmoothL1(beta.5 standardized units) with training-label weights1 for<12,2 for12..20,4 for>=20. Clip gradient norm5. No target clipping.',epoch_selection='All3inner models train100epochs, save checkpoint and heldout predictions at10/25/50/100. Aggregate inner out-of-fold predictions in outer-training person order; choose lowest max(MAE/.9,p95/3,slowMAE/3),earlier epoch tie. Retrain on outer training for selected epoch. Outer labels used only after all fits saved for final evaluation.',preprocessing='Frozen bilateral core<=4s, original anchor fallback. 3validated sensors Acc/GyrXYZ+norm=24channels, interpolate128phase samples and zscore each channel within observed window. F213 features, missing values imputed training-only; speed column retained. No full-TUG duration/global counts/turn/chair times/clinical covariates. Source metadata windows not model inputs.',verification='Original594and5folds. Raw sequences replay594 and outside-core perturbation12. Pilot GPU calculation, save/reload, CPU64 independent replay, hashes and measured runtime before main. Final all saved inner grid and final models recovered, server/local SHA256; training-only scalers/target transforms, inner epoch selection and final metrics independently replayed. Paired person uncertainty and same-window speed controls.',limits='IMU sensor study, no RGB/MediaPipe equivalence or camera clinical accuracy claim. Reused development folds; severeTUG>=20only9.',resource_policy='Pilot provisional2min total estimated incl environment/init/export,request3min=1.5x. Main time request based on measured total fit timing+review waiting+aggregation,approximately1.5x; no hold-after-training. Split independent folds3:2 across1GPU jobs if main pilot passes. Monitor interval half shortest unfinished model total estimated training duration,never half remaining time. No other jobs changed.')
+    save(H/'protocol.json',proto);save(H/'data-verification.json',dict(status='passed',people=594,shape=list(X.shape),manual_shape=list(F.shape),raw_replayed=594,perturbation_count=12,protocol_sha256=sha(H/'protocol.json'),data_sha256=sha(B/'data.npz')));print('GPU data verified',X.shape,F.shape,flush=True)
+if __name__=='__main__':main()

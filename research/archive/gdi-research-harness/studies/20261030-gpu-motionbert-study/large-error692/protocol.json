@@ -1,0 +1,18 @@
+{
+  "selection": "Top five records by maximum absolute side OOF error, stable original row tie order",
+  "model": "packed record window_control; not the still-running record_mean model",
+  "records": [
+    93,
+    90,
+    133,
+    886,
+    1008
+  ],
+  "cpu_only": true,
+  "no_training_or_exclusion": true,
+  "no_input_modification": true,
+  "protected_final_opened": false,
+  "replay_tolerance": 0.0001,
+  "replay_precision": "CPU float64 same weights, already established reference",
+  "diagnostic_reference": "Only outer training windows; descriptive overlapping-window quantiles, not person-equal performance"
+}

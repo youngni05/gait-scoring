@@ -1,0 +1,45 @@
+{
+  "status": "declared_before_fitting",
+  "parent_study": "expanded695-pls-study",
+  "change": "Extend PLS component candidates only, from [2,4,8,16] to [2,4,8,16,32,64]",
+  "pls_components": [
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "people": 695,
+  "records": 1064,
+  "window": "front124_only",
+  "features": "same cached frozen MotionBERT-Lite 512-dimensional features",
+  "outer_split": "reuse parent development695.npz fold assignments exactly",
+  "outer_train_people": 556,
+  "outer_evaluation_people": 139,
+  "inner_split": "reuse parent fold{fold}_inner.npz inner_assignment exactly",
+  "inner_train_people": 417,
+  "inner_validation_people": 139,
+  "scaling": "StandardScaler on each training slice only, no Y scaling",
+  "pls": {
+    "scale": false,
+    "max_iter": 500,
+    "tol": 1e-06
+  },
+  "selection": "pooled inner out-of-person MAE, each person equal; no outer-held data passed to selector",
+  "tie": "smallest component count within 1e-12 of minimum inner MAE",
+  "refit": "refit StandardScaler and PLS on all outer-training people after dimension selection",
+  "fitting_weights": "record equal, joint left/right GDI outputs",
+  "evaluation": "same person-macro error, bias, floor(GDI/10) bins without clipping, person-mean population SD",
+  "references": "reuse parent OOF predictions for old140_ridge, expanded ridge, expanded pca_ridge, and nested PLS up to16",
+  "bootstrap": {
+    "seed": 20261029,
+    "draws": 10000,
+    "unit": "person",
+    "interpretation": "exploratory paired conditional OOF comparison; repeated development evaluation, not independent final evaluation"
+  },
+  "protected_numeric_data_used": false,
+  "encoder_inference_or_training": false,
+  "GPU_used": false,
+  "independent_final_evaluation": false
+}

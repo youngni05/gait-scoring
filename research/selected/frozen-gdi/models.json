@@ -1,0 +1,1051 @@
+{
+  "format": "gdi-inference-only-v1",
+  "members": [
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "refit",
+      "calibration": [
+        1.1482360228111055,
+        -9.961834963918882
+      ],
+      "stanford_calibration": [
+        1.1482360228111055,
+        -9.961834963918882
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-refit.pt",
+      "source_sha256": "b1ec9ec0c6fea97032e2f4e306f3d469ea4be8189b4329649981a2a7e596b80a",
+      "public_sha256": "eb1f93151e7f53c078b45d860561dd18630fab47e96cd6cb38a5aa70bf150113",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "inner1",
+      "calibration": [
+        1.114225979431203,
+        -5.710279171606922
+      ],
+      "stanford_calibration": [
+        1.114225979431203,
+        -5.710279171606922
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-inner1.pt",
+      "source_sha256": "6a0aa01d827aff2b3b1d2a8803c83356823b0a7a8fb8f801d72271e02f7e7b10",
+      "public_sha256": "d3595ec632738af8da77860867faa94ca261f084c83083b6ccaa7e7d17e8ea7d",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "inner2",
+      "calibration": [
+        1.0880310180370514,
+        -4.46187572593036
+      ],
+      "stanford_calibration": [
+        1.0880310180370514,
+        -4.46187572593036
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-inner2.pt",
+      "source_sha256": "e9c158a0be506ada48acc83b3be2370c29a06431589b155b2c8761b3a8ba5959",
+      "public_sha256": "c2a9a8c5ec505e54a5190385168bab9cb78e99b668d3fd058a049f0fa3523f23",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "inner3",
+      "calibration": [
+        1.0137460948028731,
+        1.9180418276113194
+      ],
+      "stanford_calibration": [
+        1.0137460948028731,
+        1.9180418276113194
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-inner3.pt",
+      "source_sha256": "1a1812a5762349b4e519a7429d61a5591018149813f2da01ef6b241044506ad4",
+      "public_sha256": "a1736b6128c1e5fbcecff2fe8149bbedd13ee4959284e1b8c769a0f07689dfe3",
+      "bytes": 207149
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "refit",
+      "calibration": [
+        1.1483702781164047,
+        -11.838773227239422
+      ],
+      "stanford_calibration": [
+        1.1483702781164047,
+        -11.838773227239422
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-refit.pt",
+      "source_sha256": "9f5141f4bf9b40481d6a5f4c81414259818598e03e5829f53bc75042cf711221",
+      "public_sha256": "c45b3c424d93796615c9c8985071772722119afe7a82ddabbf9958eb4ceb8f62",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "inner1",
+      "calibration": [
+        1.1906090891281886,
+        -13.902204228056151
+      ],
+      "stanford_calibration": [
+        1.1906090891281886,
+        -13.902204228056151
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-inner1.pt",
+      "source_sha256": "138a1315153538c8f111e763f2d345d10459b57fd614e7f72465f516cae06ebe",
+      "public_sha256": "6184331aee0118f0b0928907dfbc9c10a908d2f938b49b7f2548963240b9c38b",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "inner2",
+      "calibration": [
+        1.2115704075868177,
+        -15.993677645497788
+      ],
+      "stanford_calibration": [
+        1.2115704075868177,
+        -15.993677645497788
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-inner2.pt",
+      "source_sha256": "1842ed1d5517740f85fa6e559a53853a939636e2e05f3804dc7413bf108173e9",
+      "public_sha256": "9088776ea3c49e40274b44988337d6c8ecfff354aaa6d8fa9e788bdc8cea1c8e",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "inner3",
+      "calibration": [
+        1.2319496348845864,
+        -17.417096474610787
+      ],
+      "stanford_calibration": [
+        1.2319496348845864,
+        -17.417096474610787
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-inner3.pt",
+      "source_sha256": "2760c88261813b82bc74d4b0e3f1cf3d1d62a3ce0639a35bd9af889ee243cd7e",
+      "public_sha256": "f6e91992f923d5fec17fa35744757016ad0c176f4ffeba4cfdb6d668ebbb791b",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "inner4",
+      "calibration": [
+        1.1991821230303954,
+        -15.420713789704365
+      ],
+      "stanford_calibration": [
+        1.1991821230303954,
+        -15.420713789704365
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-inner4.pt",
+      "source_sha256": "735eac47dfc108951db8b34c882f0499fbb88dc911f87d822fac344eaa3e1640",
+      "public_sha256": "7fab7f4696c42d58ed2875df7e6100deaa900bfe054388cb8ab58866cf8e90c3",
+      "bytes": 120393
+    },
+    {
+      "family": "bilateral",
+      "fold": 0,
+      "tag": "refit",
+      "calibration": [
+        1.237543678809793,
+        -18.659123422006584
+      ],
+      "stanford_calibration": [
+        1.237543678809793,
+        -18.659123422006584
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold0-refit.pt",
+      "source_sha256": "251eb39dd61664737bd3b9ebfa1a45f74af470cd6000ec16b1136b1f3e9de8d8",
+      "public_sha256": "49089bc3134f0c6cd33d98150f2fd17e47d4e7ec605211faf46e7fbb5ac7dff1",
+      "bytes": 147377
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "refit",
+      "calibration": [
+        1.0447276969679162,
+        -2.2348441555575485
+      ],
+      "stanford_calibration": [
+        1.0447276969679162,
+        -2.2348441555575485
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-refit.pt",
+      "source_sha256": "4e4f02ad78f6bdf506b20aa85dbc3c1b38a40871204efc285a90c1812e48fff0",
+      "public_sha256": "3cd0139fa9b96154081bfd5e0b96b8a454815dbed151c8d7c7e2b4cb76d87a85",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "inner0",
+      "calibration": [
+        1.0742862408289284,
+        -4.529593612648149
+      ],
+      "stanford_calibration": [
+        1.0742862408289284,
+        -4.529593612648149
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-inner0.pt",
+      "source_sha256": "84f02a2468aeb44056f238caa01d2dc40641361bd35ee6ae74d1639aec0fcd9d",
+      "public_sha256": "4d1366ac2dd3c397c5575400b1d5f1df121fd4b94aa56b36ef781385acb02995",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "inner2",
+      "calibration": [
+        1.1772097469045553,
+        -9.287408615638013
+      ],
+      "stanford_calibration": [
+        1.1772097469045553,
+        -9.287408615638013
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-inner2.pt",
+      "source_sha256": "117e804d25a10936e2cfb9e4b153d56c093f28e975ef5f11ef5c3644037d8f4e",
+      "public_sha256": "ccac30873a4a058913ec51b19e7efc0c122340ad555550c50b173e6f9f0825a8",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "inner3",
+      "calibration": [
+        1.0913787540211437,
+        -3.9728061204307887
+      ],
+      "stanford_calibration": [
+        1.0913787540211437,
+        -3.9728061204307887
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-inner3.pt",
+      "source_sha256": "8f08306cb8ceabc97bdc2c7bf6890b7a9721d20415e6f3bd876930ca93c66973",
+      "public_sha256": "27750a7c901fe6697bac991ead40014244d9399ff82df1a115595b6436ba74b9",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "inner4",
+      "calibration": [
+        1.1749787659151067,
+        -11.292598945896872
+      ],
+      "stanford_calibration": [
+        1.1749787659151067,
+        -11.292598945896872
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-inner4.pt",
+      "source_sha256": "0122041cda2c2dccabf741940a82b585b3819a25a4fc07ec5fad600dc111f4d2",
+      "public_sha256": "82694c89aac02f7f47f280e67b20a3ce4979a5570a44b011093b27677d766bda",
+      "bytes": 207149
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "refit",
+      "calibration": [
+        1.1520634953146562,
+        -12.58980666812332
+      ],
+      "stanford_calibration": [
+        1.1520634953146562,
+        -12.58980666812332
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-refit.pt",
+      "source_sha256": "3e9928dd211035e02c401c8a4e7e2ea014c4d092727bc6772c711a024100f319",
+      "public_sha256": "95ff9f3c9949abae99f808305937a7e34ba33c7e83494d97447db89616c0ab59",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "inner0",
+      "calibration": [
+        1.207708614001527,
+        -15.125231754006608
+      ],
+      "stanford_calibration": [
+        1.207708614001527,
+        -15.125231754006608
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-inner0.pt",
+      "source_sha256": "90bf79eb361405eacbe0313abdaad8b1840e2c8acb9f19e33a511aaa13e01047",
+      "public_sha256": "0295019a88845b70970e6f5768c6536de72367036a62922881e6bd2b1371add1",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "inner2",
+      "calibration": [
+        1.1799066401245293,
+        -13.289954883211465
+      ],
+      "stanford_calibration": [
+        1.1799066401245293,
+        -13.289954883211465
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-inner2.pt",
+      "source_sha256": "4a2c7f096db2957c86079547416c4422045e6b74459bcbbe1ac49a8169aa0d4f",
+      "public_sha256": "7c3654b9d8da27cb0f66ec56a590253b24d591e1175de253efa8679dc6aa4306",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "inner3",
+      "calibration": [
+        1.1949396482562133,
+        -15.661106190233626
+      ],
+      "stanford_calibration": [
+        1.1949396482562133,
+        -15.661106190233626
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-inner3.pt",
+      "source_sha256": "18ee8871fe91a1d51d5cbb9fa6644774a115bc2a6f358cc987752535a785e0a4",
+      "public_sha256": "42c3f2ab77f6cc4173546a7d23a57ab3770b223bc71c9c22490b9c0d2a489c1c",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "inner4",
+      "calibration": [
+        1.1781068547837312,
+        -14.037544920637238
+      ],
+      "stanford_calibration": [
+        1.1781068547837312,
+        -14.037544920637238
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-inner4.pt",
+      "source_sha256": "ee146bd3a91834e86b88157d8706b781f4028b37ddd5750a41088edfa5771c8b",
+      "public_sha256": "ba7d53db45eb610ebac7743b54aec8d02724ccdd8bbeb699537e18f24f2119c5",
+      "bytes": 120393
+    },
+    {
+      "family": "bilateral",
+      "fold": 1,
+      "tag": "refit",
+      "calibration": [
+        1.2206750457356976,
+        -14.568137686780624
+      ],
+      "stanford_calibration": [
+        1.2206750457356976,
+        -14.568137686780624
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold1-refit.pt",
+      "source_sha256": "b1f4abe21e35f9b442756d5b2b939bd4143030d251697f320b1e47e3bee176bf",
+      "public_sha256": "eb06b608c56638c913b562526ba3ce26a465231e2285979adb167893af0a507e",
+      "bytes": 147377
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "refit",
+      "calibration": [
+        1.1973003458711735,
+        -12.054882856048538
+      ],
+      "stanford_calibration": [
+        1.1973003458711735,
+        -12.054882856048538
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-refit.pt",
+      "source_sha256": "9955bee1ea49f116c85bef418845c451c0d39186d7c07fa0f018b7f0572d1b26",
+      "public_sha256": "83eaa3e5de83148e8b765494bd3b467cde6ac738ac50e5f5c051577a939c3579",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "inner0",
+      "calibration": [
+        1.107914835982863,
+        -6.222498101476844
+      ],
+      "stanford_calibration": [
+        1.107914835982863,
+        -6.222498101476844
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-inner0.pt",
+      "source_sha256": "12619f6a3ab5a2bbec3c16a69a102c52571154cb5cb09f1fb6b747b19fdb300d",
+      "public_sha256": "70e82cec75189272cbcaf982738ce4b93b8f1aadebff480c20949eda1d7b71a5",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "inner1",
+      "calibration": [
+        1.068512725039163,
+        -2.397666499017594
+      ],
+      "stanford_calibration": [
+        1.068512725039163,
+        -2.397666499017594
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-inner1.pt",
+      "source_sha256": "309bbe65e22990100d6700e8626c2698c6705faf0f2c13dc634d83a472ec4056",
+      "public_sha256": "0ca2690de6c1dd744901f74f92901ba2f175ab3356ab583368fb1b90d76b229d",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "inner3",
+      "calibration": [
+        1.0695539916715093,
+        -3.6788463787724273
+      ],
+      "stanford_calibration": [
+        1.0695539916715093,
+        -3.6788463787724273
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-inner3.pt",
+      "source_sha256": "4e4e4c71fe79ee1c7ce70eca23ccd9aa5ef4b01de043ce4361e8397f3425c0ec",
+      "public_sha256": "843791d9e7de3bc29aed52da4484dfae60d44520ec89abff72e50b505deda73c",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "inner4",
+      "calibration": [
+        1.17110432242882,
+        -11.531262380674384
+      ],
+      "stanford_calibration": [
+        1.17110432242882,
+        -11.531262380674384
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-inner4.pt",
+      "source_sha256": "2cf43446c1fa5b977780fdbfe7a74310db0af07f8d90c1498203cf1d91ae1942",
+      "public_sha256": "45338bd1f794b5f819d62d18dde3b1d7677bf89e5c6fbeae60e449530abfa596",
+      "bytes": 207149
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "refit",
+      "calibration": [
+        1.1856241655812791,
+        -14.064205104210354
+      ],
+      "stanford_calibration": [
+        1.1856241655812791,
+        -14.064205104210354
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-refit.pt",
+      "source_sha256": "1c5466b7aa1bef2fd437a8924bdbace54b99ff33fa51c139b3dbdd5658d5afe6",
+      "public_sha256": "1aaa8607165df524354ad841c027ea308fd98c781d86215731a8e6421b6fe0be",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "inner0",
+      "calibration": [
+        1.2296390603577962,
+        -17.471480441031968
+      ],
+      "stanford_calibration": [
+        1.2296390603577962,
+        -17.471480441031968
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-inner0.pt",
+      "source_sha256": "a7253480b1c3e58acc15cee393d8a1e6c2e8c80028ea9cba195c0a498ee99c8a",
+      "public_sha256": "e3642c925a5c910eadd630fc777ff3dd8de36762a8d08c22ebfe26218d36d97f",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "inner1",
+      "calibration": [
+        1.2142725291412604,
+        -15.834592971300234
+      ],
+      "stanford_calibration": [
+        1.2142725291412604,
+        -15.834592971300234
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-inner1.pt",
+      "source_sha256": "dfd4305365a474a374fa0ccaf08e6ce443114bc86ba96eb820571b1d057492de",
+      "public_sha256": "7b75d6242adac5f79ddeafd5f1a501913518c63ff5361ce8830f573cec399cb9",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "inner3",
+      "calibration": [
+        1.1959465483704983,
+        -14.777668678326672
+      ],
+      "stanford_calibration": [
+        1.1959465483704983,
+        -14.777668678326672
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-inner3.pt",
+      "source_sha256": "47836ed67cff9033d6734ec39124865e406177db958428ab05542bf5ac6d20c6",
+      "public_sha256": "00e074dbcb968b8b1656530212946f3e0e30c0045f5fb5723a74d0b5706ce3b3",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "inner4",
+      "calibration": [
+        1.1326481953921783,
+        -10.272461053431215
+      ],
+      "stanford_calibration": [
+        1.1326481953921783,
+        -10.272461053431215
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-inner4.pt",
+      "source_sha256": "807780bbe12b2033e6e8ffda9f8bdbb5017774d66135a7fe742e2fef242e4e36",
+      "public_sha256": "345ff6c58190a84b4512d99ecdd1a64296b24f818b668c4d562bf2238a4d5347",
+      "bytes": 120393
+    },
+    {
+      "family": "bilateral",
+      "fold": 2,
+      "tag": "refit",
+      "calibration": [
+        1.1630910048594563,
+        -13.290669589731461
+      ],
+      "stanford_calibration": [
+        1.1630910048594563,
+        -13.290669589731461
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold2-refit.pt",
+      "source_sha256": "4f00bce3067efd0c6c2374077e3b24f4159da8008e0213f96e318b9ffd83013c",
+      "public_sha256": "3492017bc92034254e5dcdb257b01ae95a4fe789808ad2763ec3d24981de9f0a",
+      "bytes": 147377
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "refit",
+      "calibration": [
+        1.1126787378004672,
+        -6.140882801120891
+      ],
+      "stanford_calibration": [
+        1.1126787378004672,
+        -6.140882801120891
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-refit.pt",
+      "source_sha256": "bab825f96490d878813e828fdd616daace5ee4a4ed6b7c695efec4c2620ad397",
+      "public_sha256": "2d42278d4e18fd0cb3241dadd445a8b5db0e7cc377f0c9a4183749d9e009612a",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "inner0",
+      "calibration": [
+        1.230471891434815,
+        -14.350415049598046
+      ],
+      "stanford_calibration": [
+        1.230471891434815,
+        -14.350415049598046
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-inner0.pt",
+      "source_sha256": "b003e21a5d17dd6af2478ff7b46bbbdc7d7057440009f83441437170a72c04a6",
+      "public_sha256": "276f20713848b47fe6cd90db984b0e9f9e12a10564c47f22e5f175757ae71f52",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "inner1",
+      "calibration": [
+        1.2059712302615058,
+        -14.124591267703845
+      ],
+      "stanford_calibration": [
+        1.2059712302615058,
+        -14.124591267703845
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-inner1.pt",
+      "source_sha256": "9acc84d15a96b3cfc7e9c8058ae3cf8b01c39c1075aa2df9741015f68dd690ba",
+      "public_sha256": "bb39131afdb773c3ebd1ca8acaab6f17464e3e388dd151e5976ea9ded1ad6c2c",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "inner2",
+      "calibration": [
+        1.1615524782673992,
+        -11.073637771442892
+      ],
+      "stanford_calibration": [
+        1.1615524782673992,
+        -11.073637771442892
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-inner2.pt",
+      "source_sha256": "3ce251aee2c9b7687b36230dd117b061765795a4a7c45fc2afa0428a5fd974c9",
+      "public_sha256": "be1dcd40dfa472c635923e8b810dbbbd029f29e8351b58ee9fcc987f3356cb50",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "inner4",
+      "calibration": [
+        1.0178076641388307,
+        0.07145461642135302
+      ],
+      "stanford_calibration": [
+        1.0178076641388307,
+        0.07145461642135302
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-inner4.pt",
+      "source_sha256": "f03f1e9c16659ffc25a7fb45e72d39d7367754adda8dd4c9630b2ccf0b8b3422",
+      "public_sha256": "e2b2e38d7a7f5b932d66026ef946a084e583ab99ff75088f87543431f8603080",
+      "bytes": 207149
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "refit",
+      "calibration": [
+        1.1985385987676813,
+        -15.273035444079555
+      ],
+      "stanford_calibration": [
+        1.1985385987676813,
+        -15.273035444079555
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-refit.pt",
+      "source_sha256": "c9a99fa120c441b48cf70e7c0572ef6a1098eeb55f92cf4c794331dba41d454b",
+      "public_sha256": "c158930270863ddde14f70251c84806fc887b70e21bd1807eb6e3e89f52a633a",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "inner0",
+      "calibration": [
+        1.2116312891613146,
+        -16.251577370972004
+      ],
+      "stanford_calibration": [
+        1.2116312891613146,
+        -16.251577370972004
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-inner0.pt",
+      "source_sha256": "c66ecb5bdb5a3c5f238a229144d1ade9a7c51222ce6259b53df64fadd5bc3235",
+      "public_sha256": "cb543f977c5298d1c7413d450adcc484810e8e24519875ad7eaa39b9622a8606",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "inner1",
+      "calibration": [
+        1.2134560054931711,
+        -15.862558282738453
+      ],
+      "stanford_calibration": [
+        1.2134560054931711,
+        -15.862558282738453
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-inner1.pt",
+      "source_sha256": "95a1f984f2e19fa7d481f0e0ee97a428ee9c410ba22f3d078beb16f344351df2",
+      "public_sha256": "168d87a5137edb408f0a700456a1f1f3fc5ac4ce54f5cbc870f19ea9f29b8e2f",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "inner2",
+      "calibration": [
+        1.1675299177823795,
+        -12.330068170961864
+      ],
+      "stanford_calibration": [
+        1.1675299177823795,
+        -12.330068170961864
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-inner2.pt",
+      "source_sha256": "9715444300fb5d166f4e1ec7201bb22c35ee44344492edbc338b4044c6412671",
+      "public_sha256": "89718af6d70a42f90a23d92a1e1bf3d8ddee57b5eb5f42ac9ebfab8149877f10",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "inner4",
+      "calibration": [
+        1.192241226065843,
+        -14.600820406194094
+      ],
+      "stanford_calibration": [
+        1.192241226065843,
+        -14.600820406194094
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-inner4.pt",
+      "source_sha256": "58099553feb85aa899a1c852705d4a8a6fc1b2c3668c86d683b5e1926892446b",
+      "public_sha256": "6745aa8d261c8b97d78f8d07ac90c6a81ce438b3fadc161871d79104c962d30d",
+      "bytes": 120393
+    },
+    {
+      "family": "bilateral",
+      "fold": 3,
+      "tag": "refit",
+      "calibration": [
+        1.1817121276872298,
+        -13.239978462081778
+      ],
+      "stanford_calibration": [
+        1.1817121276872298,
+        -13.239978462081778
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold3-refit.pt",
+      "source_sha256": "d10f7f78cff04185b5771c7b6b101832cb53b9968410d1ab572c1556a042c4d7",
+      "public_sha256": "c34f7c518c87e4150102a0362e92a8e4ea1a3316168243a4a6bed40fcb28dcbc",
+      "bytes": 147377
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "refit",
+      "calibration": [
+        0.9540920234740579,
+        6.068034034074011
+      ],
+      "stanford_calibration": [
+        0.9540920234740579,
+        6.068034034074011
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-refit.pt",
+      "source_sha256": "4803a821ada797e60dd3915d23f332514e4de755d77f9634ce5f5e64b86ea72a",
+      "public_sha256": "0a5edbbd0e9371963afe6828c1b7a5d131e7bd94f0c8f046643672fde8496d0a",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "inner0",
+      "calibration": [
+        1.201904920143399,
+        -12.808548857548905
+      ],
+      "stanford_calibration": [
+        1.201904920143399,
+        -12.808548857548905
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-inner0.pt",
+      "source_sha256": "6936032502e66eaac82f174315cb8748e136ee5d5a2296e549f428cfb29637d2",
+      "public_sha256": "b5a8d4ac271498d8319b936aa5d6e18f63575d7be6996f6e0f33ac9c070f688e",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "inner1",
+      "calibration": [
+        1.2118147061690294,
+        -14.0464430525433
+      ],
+      "stanford_calibration": [
+        1.2118147061690294,
+        -14.0464430525433
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-inner1.pt",
+      "source_sha256": "f449960d4cbe13ebaf6c6f56fd127b036b61a0628e813fabe9414d8371643f51",
+      "public_sha256": "9319d8a01a702c29552254d74529b766fb9fde053fb349d82958913293f77fac",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "inner2",
+      "calibration": [
+        1.1476565137847892,
+        -8.391797530756612
+      ],
+      "stanford_calibration": [
+        1.1476565137847892,
+        -8.391797530756612
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-inner2.pt",
+      "source_sha256": "14e0743b007ed1de421dcadc82092469ef4a1f706face0fb0ef002efe3308805",
+      "public_sha256": "1a6388e2ab2e2f0c2b3243946618b6fb4a68c37b612787b23a5697fc43e529dd",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "inner3",
+      "calibration": [
+        1.1315841311398984,
+        -7.516671385849271
+      ],
+      "stanford_calibration": [
+        1.1315841311398984,
+        -7.516671385849271
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-inner3.pt",
+      "source_sha256": "cdbbb73028d468bc9b5ee3af44a1af83c6f36faa5a779fe4d827370dd9b92457",
+      "public_sha256": "57be4113c059140359d04bc763549f35b2bc2eb6dbf02a1842c3717588adbf6b",
+      "bytes": 207149
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "refit",
+      "calibration": [
+        1.2400479977212897,
+        -17.48828886498871
+      ],
+      "stanford_calibration": [
+        1.2400479977212897,
+        -17.48828886498871
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-refit.pt",
+      "source_sha256": "b4f0ab395d445d5c06a800752fb5bae30504fec64f77cf08916940fe55bcbb4b",
+      "public_sha256": "d6f425cf09bfa272cb3a2a166a2c0bc7f202809e4f4f775b95e48f54c37caf9e",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "inner0",
+      "calibration": [
+        1.1828906299995157,
+        -13.754408994165603
+      ],
+      "stanford_calibration": [
+        1.1828906299995157,
+        -13.754408994165603
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-inner0.pt",
+      "source_sha256": "3ec4b3dbeaa43e030c9214af9ea97bdeb666932956156aa91be83945b7ed50cf",
+      "public_sha256": "ef10246b3955746f4a8faaee642b2e112343daa3129e11c20829dbc050390d20",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "inner1",
+      "calibration": [
+        1.2490202094956642,
+        -18.0917750468854
+      ],
+      "stanford_calibration": [
+        1.2490202094956642,
+        -18.0917750468854
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-inner1.pt",
+      "source_sha256": "55e7f5a17375d1225ac761393f10164d9ebeb81514f2bbd61aa00ece075413e5",
+      "public_sha256": "722e08e37e4eb83bfef7a1fe0d318f84fc978396d9c14921f54df2f4221d5154",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "inner2",
+      "calibration": [
+        1.192085726650815,
+        -13.294759989198962
+      ],
+      "stanford_calibration": [
+        1.192085726650815,
+        -13.294759989198962
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-inner2.pt",
+      "source_sha256": "7415ca8c193b9a8e6c8555987115e908fca352f94453411bbd87a4cb7458346a",
+      "public_sha256": "c97be04c13ba202e8bbb369080ff5ff2ce3eb296fe27008c2f40e3fb239d6f2f",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "inner3",
+      "calibration": [
+        1.1931854684673942,
+        -14.930130678438537
+      ],
+      "stanford_calibration": [
+        1.1931854684673942,
+        -14.930130678438537
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-inner3.pt",
+      "source_sha256": "171e2d14cab906a19b8b5f1e58196be1343868335e36944e4a1eb75e5027b3b3",
+      "public_sha256": "9dad296a21070eb30720ee44767940ef3167bba99c8d20660332304995c42178",
+      "bytes": 120393
+    },
+    {
+      "family": "bilateral",
+      "fold": 4,
+      "tag": "refit",
+      "calibration": [
+        1.2722252739699786,
+        -18.98291068518381
+      ],
+      "stanford_calibration": [
+        1.2722252739699786,
+        -18.98291068518381
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold4-refit.pt",
+      "source_sha256": "9ed2e80821449111e7524f78b5b056c92429a629936ceea36fa34e202e653ab2",
+      "public_sha256": "64122828054e1bb6b81d5f3d207706a30108e07e9b17c98020be89352b74a97a",
+      "bytes": 147377
+    }
+  ],
+  "selections": [
+    {
+      "outer": 0,
+      "cnn_weight": 0.35,
+      "fraction": 0.5,
+      "scores": [
+        6.899362989696122,
+        6.835443549232136,
+        6.803202283411978,
+        6.80912359787502,
+        6.846032796490274
+      ],
+      "inner_sha256": "61a9582d7429b9cadd7236d54bf82a30255e66b39790d21e5220a55fa683602d",
+      "outer_evaluation_used": false
+    },
+    {
+      "outer": 1,
+      "cnn_weight": 0.6,
+      "fraction": 0.5,
+      "scores": [
+        6.848045009320387,
+        6.781337179976563,
+        6.746253686467825,
+        6.7517548308682525,
+        6.79480265459085
+      ],
+      "inner_sha256": "7e28706fe0f0b52557a47294e883dd97bf437a9f4ee0ba6c76f2d6a09da5a5ca",
+      "outer_evaluation_used": false
+    },
+    {
+      "outer": 2,
+      "cnn_weight": 0.5,
+      "fraction": 0.5,
+      "scores": [
+        6.636982066128641,
+        6.587012503408357,
+        6.564651624583366,
+        6.583697937084507,
+        6.6422040751586096
+      ],
+      "inner_sha256": "32e5b7ee9fe38d3a396ce33a49e8fe756d94cdeec0f691eb2dfd7ace49375c48",
+      "outer_evaluation_used": false
+    },
+    {
+      "outer": 3,
+      "cnn_weight": 0.5,
+      "fraction": 0.5,
+      "scores": [
+        6.827070711978384,
+        6.7615577042887764,
+        6.736335972063202,
+        6.7504553655044575,
+        6.797757116641458
+      ],
+      "inner_sha256": "ffc231de42fd073cae22541e1b6dc9f9f8c8b900f0c90a259457d606f9864171",
+      "outer_evaluation_used": false
+    },
+    {
+      "outer": 4,
+      "cnn_weight": 0.65,
+      "fraction": 0.25,
+      "scores": [
+        6.627505503620178,
+        6.596574766777092,
+        6.59751772660835,
+        6.632113014597601,
+        6.695178625989889
+      ],
+      "inner_sha256": "6dabfd3e68610a4d8fe1ca6ebd40657d40fc6379a0530de83db7b08431f11223",
+      "outer_evaluation_used": false
+    }
+  ],
+  "input": "[windows,2,124,12] preprocessed float32",
+  "scope": "Stored research parameters; not clinical or older-adult validation"
+}

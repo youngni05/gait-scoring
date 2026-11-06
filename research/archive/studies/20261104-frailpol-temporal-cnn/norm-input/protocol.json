@@ -1,0 +1,9 @@
+{
+  "code_sha256": "f8396df2f3975983f472dbf566736a079dd339443153b14315a2065f763fec82",
+  "source_sha256": "dfd85dcda4caaf6d3679f06f46b5d04bb143cb39659aba9a60d4cea5f1d02d33",
+  "people": 594,
+  "design": "Samefrozennativecore and50Hz samples; sixorientation-invariantAcc/Gyrnorms fromleftankle/rightankle/sacrum. No TUGlabels accessed ormodel fitted. Alsofixedleft-rightmean/absolute-difference representation loseslaterality butmayfitglobalfunctionalTUG. Preserveexplicitvalue/derivativemasks andfirstderivativeunknown. Bothvariantsretainselectedcoreonly;nooutsidegait/chair/turn/globalTUGtiming.",
+  "checks": "All594storednormchannels matchXYZnorm andindependentsensororthogonalrotation;left-rightswapinvarianceforsymmetricrepresentation;staticderivativeexactzero;invalidderivativesremainfalse. These are arithmeticinvariance proofs,notpredictionaccuracy.",
+  "limits": "RawIMUnotMediaPipe/RGB. Original50Hzresamplingcanaliascontentabove25Hz;notananti-aliasfiltervalidation. Absoluteleft-rightdifferencecanhavekinksandderivativesamplifynoise. Futurecandidateonly;do notchangeongoingnative-motiontraining.",
+  "expected_additional_GB": 0.01
+}

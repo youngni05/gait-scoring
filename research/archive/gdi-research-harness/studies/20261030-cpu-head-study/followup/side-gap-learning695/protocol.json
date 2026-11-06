@@ -1,0 +1,54 @@
+{
+  "status": "declared_before_candidate_fitting",
+  "data": "same 695 people / 1064 front124 windows, cached frozen MotionBERT 512 features and matched 17-joint xy/confidence",
+  "outer": "same five person folds: train556 held139",
+  "inner": "reuse saved four internal folds: train417 validation139",
+  "target": "signed difference D = left_GDI - right_GDI",
+  "reconstruct": "M is unchanged original joint-PLS selected-model mean; predicted L=M+D/2, R=M-D/2",
+  "methods": [
+    "joint_pls32",
+    "zero_gap_control",
+    "train_mean_gap_control",
+    "mb_gap_ridge",
+    "mb_gap_pls",
+    "leg_gap_ridge",
+    "combined_gap_ridge",
+    "guarded_gap"
+  ],
+  "ridge_alphas": [
+    0.01,
+    0.1,
+    1,
+    10,
+    100,
+    1000,
+    10000
+  ],
+  "pls_components": [
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "family_controls": [
+    "zero",
+    "training_record_mean"
+  ],
+  "selection": "within each family minimize pooled inner person-macro signed-gap MAE; fixed candidate order breaks ties. Guarded method includes original joint PLS and all gap candidates: admit only inner overall MAE no greater than original joint PLS, then minimize gap MAE; no held-person results used",
+  "mean_reference": "use saved original inner PLS predictions for the outer-selected component count (32 in all existing folds); selected using outer training people only. The candidate expansion and study choice followed prior development results, so no independent final-validation claim",
+  "training": "record equal; StandardScaler fit on each training slice only; single-target PLS scale=False,max_iter=500,tol=1e-6; Ridge intercept fitted",
+  "leg_features": "Per side: root-relative hip/knee/ankle xy, image-plane knee flexion, thigh length and shank length. Each signal summarized by 10/25/50/75/90 percentiles and population SD. Concatenate left, right, left-minus-right summaries and two knee-valid-frame fractions = 164 features. Confidence-positive lower joints only; zero-length knee angles omitted, no interpolation or relabeling.",
+  "checks": "training and held-person gap/overall MAE, signed-gap correlation, predicted gap magnitude, direction accuracy excluding true zero gaps, overall bins and tail bias; constants are controls not clinical assumptions",
+  "bootstrap": {
+    "seed": 20261029,
+    "draws": 10000,
+    "unit": "person",
+    "interpretation": "exploratory paired conditional OOF interval, selection uncertainty excluded"
+  },
+  "GPU_used": false,
+  "encoder_reinference": false,
+  "protected_numeric_data_used": false,
+  "independent_final_evaluation": false
+}

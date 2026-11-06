@@ -1,0 +1,42 @@
+{
+  "declared_before_Jev_requests": true,
+  "created_utc": "2026-10-31T11:37:52.951221+00:00",
+  "question": "Can Jev replace Ridge as the predictor on the SAME frozen MotionBERT output?",
+  "sources": {
+    "TUG": {
+      "path": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-toronto-poma-tug\\features.npz",
+      "sha256": "b5aaa0935ba7e1d4d0c961a0998febb89dda16cec32b64da52fb7532a4a414ac"
+    },
+    "TUG_folds": {
+      "path": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-tug-toronto-timeseries\\input.npz",
+      "sha256": "5740f0421d284266a0555174888a28a9a4eb56bbbbea2303d90316ef1d78b773"
+    },
+    "GDI": {
+      "path": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-gdi-fusion695\\data.npz",
+      "sha256": "05ea3daac71fe99ae0c3cc88be6aa25290c51ed8a58e001fed8836de3c49332b"
+    }
+  },
+  "data": "TUG12 existing person-mean512 embeddings; GDI695 existing record-mean512 embeddings, bilateral/record mean target per person. Protected37/38/223 sets not used.",
+  "selection": "All12 TUG;10 label-blind SHA256-ordered IDs per existing GDI fold, total50 of695. Same five outer person folds as prior work.",
+  "representation": "Full512 latent dimensions; training-only standardization, round3, identical vectors supplied to both methods. No semantic reinterpretation or feature selection.",
+  "examples": "Eight nearest outer-training people, chosen without their target values, deterministically shuffled. Same8 examples and labels for matched Ridge and Jev.",
+  "Ridge": "StandardScaler plus Ridge; alpha1/10/100/1000 chosen by fixed3fold INNER MAE using only the relevant training examples. Also report Ridge on ALL outer training people.",
+  "Jev": "Frozen jev-1.14.0, no customer fine-tuning. In-context labeled examples only. One request has direct numerical Choice and exemplar Choice.",
+  "score_output": "Primary: chosen grid point, TUG0..60 step1; GDI0..140 step2. Unknown falls back to same8-example median. Report coverage. Also report probability-weighted grid and example-target proxies as exploratory; these are not native continuous regression or calibrated clinical scores.",
+  "controls": [
+    "same-example median",
+    "same-example mean",
+    "nearest1",
+    "all-training median",
+    "same-example Ridge quantized to the same grid"
+  ],
+  "limits": {
+    "max_requests": 70,
+    "max_input_tokens": 3000000,
+    "expected_requests": 62,
+    "workers": 1
+  },
+  "privacy": "Only anonymous public training feature-label examples and query features sent. Query label, person IDs, filenames and images are not sent.",
+  "metrics": "Same-person MAE/RMSE, paired conditional bootstrap95, per-fold error, unknown coverage. All arms reported, no held-out prompt tuning.",
+  "caveats": "Repeated development cohorts; GDI50 is a pilot subset, not all695 evaluation. In-context example use differs from fitting Ridge weights. Pretraining overlap unknown."
+}

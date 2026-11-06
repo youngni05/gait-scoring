@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "verified_utc": "2026-11-05T04:53:07.527712+00:00",
+  "mixed_neural_fits": 75,
+  "mixed_neural_folds": 15,
+  "RF_fits": 170,
+  "reported_models": 7,
+  "audits": [
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\bilateral-0_1_2_3.json",
+      "sha256": "b9fdeec1ed02e8aa3584c87cb061ecc452d1a0d31ec9f5164e30e7ff587f1c38"
+    },
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\bilateral-4.json",
+      "sha256": "a2ee3f9650abe3c53303892c4e6abe7ff58cc2f8a19f8f91bac420c5f0bc0252"
+    },
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\CNN-0.json",
+      "sha256": "0f49ff3737965c01f00a83481e5adb5ec90197bffecf12c92893cb07e7e06e69"
+    },
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\CNN-1.json",
+      "sha256": "2d98d2077294ca6a07a3d1910d69f99bd516a4704ce8788fafb4d27748014201"
+    },
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\CNN-2.json",
+      "sha256": "6f4dbeb8065d9ff6c8113aaeca425b49a356b7dc156a05bc98e4be561265a93b"
+    },
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\CNN-3.json",
+      "sha256": "c0b9b6037e566992c623c3f67890cbc6fa2653a2a0db93c052cba8c4289ba175"
+    },
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\CNN-4.json",
+      "sha256": "0fcb102bf615f242f6bb4b7cc0a7bcd86b21720cc9cfc43e633b3d998f47c48a"
+    },
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\RF-0_1_2_3_4.json",
+      "sha256": "bcddc34047e71ea87698af3c857e2f11a73d8ba88db8fb9dae74adf2882788d1"
+    },
+    {
+      "path": "studies\\20261104-ljmu100-mixed\\audits\\STT-0_1_2_3_4.json",
+      "sha256": "c0528dae11e0d9b78b53dd6a7af360152a3cbb5c064e80b815890e52c4bfb733"
+    }
+  ],
+  "comparison_sha256": "5c36e287cd3e538932ca75391e27b37927eabffb191c78575a4a177a97358c0a",
+  "high_gdi_comparison_sha256": "0ac841d1c911c7f2bec51c336fff36ae433c3685fad017b745ca02d671e710f1",
+  "baseline_gpu_replay_sha256": "ffbe3b94f18ccdf7282395e7c886e54c51e98db57fb99a2739dc2dcdb09969ee",
+  "baseline_cross_device_exception": "CNN fold3 bag CPU max difference0.0012155359 exceeds0.001; preserved. All15 same-environment GPU fold replays agreed exactly.",
+  "terminal_jobs": "35866|COMPLETED|0:0|13:22:26|DIS02\n35866.batch|COMPLETED|0:0|13:22:26|DIS02\n35866.extern|COMPLETED|0:0|13:22:26|DIS02\n35867|COMPLETED|0:0|08:01:07|DIS02\n35867.batch|COMPLETED|0:0|08:01:07|DIS02\n35867.extern|COMPLETED|0:0|08:01:07|DIS02\n"
+}

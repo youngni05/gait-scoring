@@ -1,0 +1,22 @@
+{
+  "declared_before_fitting": true,
+  "question": "Predict clinical participant TUG seconds from walking-only video-derived skeleton clips in unseen people",
+  "sources": {
+    "input": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-toronto-poma-tug\\inputs.npz",
+    "input_sha256": "df5e18a015b193683405d78a573154e9b15fec4b4a52e2123d68200a3a41ef6d",
+    "clinical_table": "C:\\Users\\jun\\Desktop\\D_P\\outputs\\gait-public-access-20261015\\Toronto\\Table 1.xlsx",
+    "clinical_sha256": "5b9d1e4541c045cc25c452eb719e7438f38408d83e1600a582648a62533c6e24",
+    "source_preparation_sha256": "ebb960d3989301d0be3b5ae96383431b4aa80f2eae4815ad952d7dd681a69615"
+  },
+  "input": "59 original audited Alphapose windows; 12 full participant IDs; each124frames at30Hz (4.1 seconds), existing COCO to H36M17-joint normalization; XY and confidence only",
+  "target": "Table1 column10 TUG(s), participant ID exact match; no score conversion; same person label reused across walking clips (weak supervision, not59 independently measured TUG labels)",
+  "split": "label-independent person5fold seed20261030, nested training-person3fold seed20261031; all clips for a person stay together; no augmentation or external pretraining",
+  "weight": "equal total per person in training; average clip predictions before person MAE/RMSE",
+  "cpu": "Mean/Median constants; Ridge alpha[1,100]; RF128trees leaf[2,5]; 153summaryfeatures = channel mean/std/mean absolute temporal difference; scale trained on training people only",
+  "gpu": "CNN vs TCN,3layers width24,kernel5,dilation[1,1,1]vs[1,2,4],dropout.2,AdamW lr.001 decay.001,person-weighted standardized MSE; train-only normalization; inner3fold best epoch median refit; max80epochs patience12; one seed20261030",
+  "scalar_input": "constant log1p124 for compatibility; carries no target/person information, never score or participant metadata",
+  "pilot": "3epochs on fold0 inner-training people; realCUDA calculation/finite loss+prediction/checkpoint reload equivalence/time+GPU peak memory; no outer evaluation people used for pilot",
+  "scope": "small feasibility comparison; 12participants cannot establish clinical validity or reliable large-network advantage; frozen MotionBERT prior experiment preserved; no GDI input used",
+  "licence": "Toronto source Figshare release CC0, independently rechecked canonical source page",
+  "no_clipping_or_rounding": true
+}

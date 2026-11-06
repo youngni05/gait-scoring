@@ -1,0 +1,250 @@
+{
+  "version": 1,
+  "id": "cnn-huber-point-692",
+  "owner_thread": "01a18b12-4a31-7283-a35d-17f28017111a",
+  "automation_id": "gdi-2",
+  "frozen_before_new_training": true,
+  "purpose": "Limit large-residual gradients after seed averaging gave negligible extra ensemble gain; check high-score underprediction and low-score harm",
+  "prior_comparison_sha256": "a264b6ce6144ca3b6b87f11ee5c9231b6c4b17e4bab2f8d6e8b284f9337ff109",
+  "prior_report_sha256": "639d349733a1cb472d1e5799bf7169789f56ac08648faa5e85434836f7ad84e6",
+  "prior_primary": {
+    "delta": -0.0003466240282593081,
+    "bootstrap95": [
+      -0.02851213078295989,
+      0.028331106822990157
+    ],
+    "high90_delta": -0.019860497322811706,
+    "high90_bootstrap95": [
+      -0.10538989910366592,
+      0.06999527293055355
+    ],
+    "high90_bias_delta": -0.0050208683718924564,
+    "high90_bias_delta_bootstrap95": [
+      -0.10281968867226195,
+      0.08925398927983796
+    ],
+    "improved_folds": 4
+  },
+  "single_change": "Pointwise normalized MSE to 2*Huber(delta0.1), matched old seed20261028 MSE and RankSim1 controls reused",
+  "hypothesis": "Bounded large-residual gradients may improve person-equal MAE or upper-score bias; unconfirmed, low-score losses required",
+  "training_seed": 20261028,
+  "source_manifest_sha256": "e5c5252ab031cfa777ac25f53a01acc34ba4925715de95016d7dd399a42ea131",
+  "data_sha256": "7c1912cd27c63a82ed0d0324f98c0c0fae9a608174d52bd7a502f05e9a8c7a1e",
+  "cohort": {
+    "people": 692,
+    "records": 1061,
+    "windows": 11261,
+    "input": "side-view OpenPose124x12/side,stride31",
+    "person_folds": 5
+  },
+  "labels": "Same true left/right GDI; no new inputs, synthetic labels or protected final data",
+  "arms": [
+    "mse",
+    "ranksim"
+  ],
+  "arm_meanings": {
+    "mse": "Huber only, no ranking auxiliary",
+    "ranksim": "Huber plus fixed RankSim1/interpolation2"
+  },
+  "point_loss": {
+    "formula": "2*torch.nn.functional.huber_loss(pred,target,delta=0.1,reduction=mean)",
+    "small_residual": "e^2 for abs(e)<0.1",
+    "large_residual": "0.2*abs(e)-0.01 otherwise",
+    "units": "Existing train-only minmax normalized units, not fixed physical GDI units",
+    "search": false
+  },
+  "unchanged": [
+    "GdiCNN",
+    "person folds",
+    "seed formula",
+    "dropout",
+    "sampler draw counts/order",
+    "RMSprop",
+    "batch32",
+    "kernelL2",
+    "max100epochs",
+    "train-onlyminmax/OLS",
+    "record window mean",
+    "RankSim1/interpolation2"
+  ],
+  "epoch_selection": "Earliest minimum inner MAE weighted by actual validation people138/139; no outer labels",
+  "training": {
+    "fits_per_arm": 25,
+    "total_new_fits": 50,
+    "total_outer": 10,
+    "reused_control_fits": 50,
+    "gpus_per_job": 1,
+    "workers": 3,
+    "time_limit_hours": 24
+  },
+  "tasks": {
+    "worker0": [
+      [
+        "mse",
+        0
+      ],
+      [
+        "ranksim",
+        1
+      ],
+      [
+        "mse",
+        3
+      ],
+      [
+        "ranksim",
+        4
+      ]
+    ],
+    "worker1": [
+      [
+        "ranksim",
+        0
+      ],
+      [
+        "mse",
+        2
+      ],
+      [
+        "ranksim",
+        3
+      ]
+    ],
+    "worker2": [
+      [
+        "mse",
+        1
+      ],
+      [
+        "ranksim",
+        2
+      ],
+      [
+        "mse",
+        4
+      ]
+    ]
+  },
+  "pilot": {
+    "real_epochs": 3,
+    "arms": [
+      "mse",
+      "ranksim"
+    ],
+    "outer": 0,
+    "inner": 1,
+    "expected_train_people": 416,
+    "expected_valid_people": 138,
+    "device_checks": "Each assigned physical GPU synthetic train/save/resume/replay; UUIDs distinct",
+    "local_gate": "Server GPU/CPU64 and localCPU64 score difference<1e-4, real per-epoch samples/IDs/scale/OLS/checkpoint SHA; all checks before main",
+    "runtime_gate": "Estimate remaining full tasks and fixed max100epochs from actual pilot; must fit remaining allocation with margin, otherwise hold and report, never shorten silently"
+  },
+  "evaluation": {
+    "primary": "HuberRank1 addition vs existing single-seedRank1 addition; fixed two-seedRank addition also compared",
+    "standalone": [
+      "oldMSE",
+      "oldRank1",
+      "HuberOnly",
+      "HuberRank1"
+    ],
+    "ensemble_candidates": [
+      "oldMSE",
+      "oldRank1",
+      "HuberOnly",
+      "HuberRank1"
+    ],
+    "formula": "(1-w)*original_existing_best+w*additional_model",
+    "weight_grid": [
+      0.0,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95,
+      1.0
+    ],
+    "inner": "Each component excludes f,j; fixed100epoch corrected inner predictions; minimum person-equal MAE, tie1e-12 smaller weight",
+    "outer": "Actual original best bagged + internally selected per-arm refit; no outer winner selection or extra calibrator",
+    "comparators": [
+      "original_best6.515816569178735",
+      "oldRankadd6.476734533865628",
+      "fixed_twoSeedRankadd6.476387909837368"
+    ],
+    "metrics": [
+      "overall person-equal MAE",
+      "person-mean90/100 counts MAE bias",
+      "observation90/100 counts MAE bias",
+      "person-mean60below losses",
+      "same10/20bins",
+      "fold changes",
+      "raw/corrected"
+    ],
+    "bootstrap": {
+      "unit": "paired person",
+      "replicates": 10000,
+      "seed": 20261101
+    },
+    "promotion": "overall delta CIupper<0,>=4/5folds improve,high90MAE/absolutebias nonworse; disclose low-score harm, otherwise no automatic replacement",
+    "limitations": [
+      "Repeated development cohort",
+      "inner single vs outer bagged baseline",
+      "original combination fractions are outer-training meta-fit",
+      "inner100 vs outer selected epoch",
+      "one fixed seed"
+    ]
+  },
+  "expected_resources": {
+    "total_gpu_hours": [
+      20,
+      40
+    ],
+    "parallel_elapsed_hours": [
+      10,
+      18
+    ],
+    "vram_GiB_less_than": 1,
+    "basis": "Previous same architecture/input pilot, reestimate actual Huber pilot",
+    "runtime_gate": "measured sample time,25%margin+90min IO/summary within remaining24h; no shortening"
+  },
+  "verification": {
+    "original_coefficient_tolerance": 1e-10,
+    "score_tolerance": 0.0001,
+    "preserve_exact_failures": true,
+    "source_strict_proof_separate_from_frozen_output": true,
+    "all_epochs": true,
+    "final_CPU64_replays": 10
+  },
+  "storage": {
+    "small": "D:\\Projects\\D_P\\gdi-research-harness\\studies\\20261030-gpu-motionbert-study\\cnn-huber-point692",
+    "large": "D:/gait-research-data/D_P/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-huber-point692"
+  },
+  "method_sources": [
+    "https://raw.githubusercontent.com/pytorch/pytorch/v2.4.0/torch/nn/modules/loss.py",
+    "https://docs.pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html"
+  ],
+  "artifacts": [
+    "50checkpoints/fit_complete",
+    "all epoch raw/curve/sampling SHA",
+    "10outer predictions",
+    "two summaries/pair/marker",
+    "logs/control/checks",
+    "code/config/manifest/licenses",
+    "server-local per-file SHA receipt",
+    "50fit10CPU64 audit",
+    "frozen CPU ensemble comparison"
+  ]
+}

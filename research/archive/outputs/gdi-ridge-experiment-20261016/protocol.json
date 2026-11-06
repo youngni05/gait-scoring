@@ -1,0 +1,52 @@
+{
+  "seed": 20261016,
+  "sides": [
+    "L",
+    "R"
+  ],
+  "alpha_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0,
+    10000.0
+  ],
+  "selection_metric": "validation mean absolute error, equal weight per person and side",
+  "fit": "unweighted records; scaler fit train only, Ridge fit train only",
+  "test_used_for_selection": false,
+  "feature_pooling": "mean over frames and joints",
+  "batch_size": 1,
+  "cpu_threads": 4,
+  "window_frames": 243,
+  "split": {
+    "train": {
+      "people": 175,
+      "records": 203,
+      "patient_ids": {
+        "omitted_for_public_snapshot": true,
+        "count": 175
+      }
+    },
+    "validation": {
+      "people": 37,
+      "records": 40,
+      "patient_ids": {
+        "omitted_for_public_snapshot": true,
+        "count": 37
+      }
+    },
+    "test": {
+      "people": 38,
+      "records": 42,
+      "patient_ids": {
+        "omitted_for_public_snapshot": true,
+        "count": 38
+      }
+    }
+  },
+  "frozen_encoder": true,
+  "weights_sha256": "6a6ad0055c7ad50da083af0549a24c52ec1c21f89e440912645054d74be0a461",
+  "script_sha256": "0fbcf7849037e06350ff4bbffba6ad0bcb00b0d7a73c6c461ea2e0396bbf9525"
+}

@@ -1,0 +1,270 @@
+{
+  "status": "passed",
+  "outer_cases": 20,
+  "inner_models_replayed": 960,
+  "final_models_replayed": 60,
+  "checks": [
+    {
+      "condition": "single-speed",
+      "fold": 0,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        3,
+        7
+      ]
+    },
+    {
+      "condition": "single-speed",
+      "fold": 1,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        3,
+        2
+      ]
+    },
+    {
+      "condition": "single-speed",
+      "fold": 2,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        3,
+        2
+      ]
+    },
+    {
+      "condition": "single-speed",
+      "fold": 3,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        3,
+        2
+      ]
+    },
+    {
+      "condition": "single-speed",
+      "fold": 4,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        13,
+        11
+      ]
+    },
+    {
+      "condition": "single-features",
+      "fold": 0,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        11,
+        7
+      ]
+    },
+    {
+      "condition": "single-features",
+      "fold": 1,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        13,
+        9
+      ]
+    },
+    {
+      "condition": "single-features",
+      "fold": 2,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        11,
+        9
+      ]
+    },
+    {
+      "condition": "single-features",
+      "fold": 3,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        9,
+        11
+      ]
+    },
+    {
+      "condition": "single-features",
+      "fold": 4,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "condition": "multi-speed",
+      "fold": 0,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        3,
+        2,
+        7
+      ]
+    },
+    {
+      "condition": "multi-speed",
+      "fold": 1,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        3,
+        2,
+        7
+      ]
+    },
+    {
+      "condition": "multi-speed",
+      "fold": 2,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        3,
+        2,
+        7
+      ]
+    },
+    {
+      "condition": "multi-speed",
+      "fold": 3,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        3,
+        2,
+        7
+      ]
+    },
+    {
+      "condition": "multi-speed",
+      "fold": 4,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        3,
+        2,
+        7
+      ]
+    },
+    {
+      "condition": "multi-features",
+      "fold": 0,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        11,
+        7
+      ]
+    },
+    {
+      "condition": "multi-features",
+      "fold": 1,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        13,
+        9
+      ]
+    },
+    {
+      "condition": "multi-features",
+      "fold": 2,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        9,
+        15,
+        11
+      ]
+    },
+    {
+      "condition": "multi-features",
+      "fold": 3,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        9,
+        11
+      ]
+    },
+    {
+      "condition": "multi-features",
+      "fold": 4,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "weighted_ridge_independently_solved": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        15,
+        3,
+        1
+      ]
+    }
+  ],
+  "review_sha256": "9582f8da1ce661e1c419520473fc324eb8330d6d14bb3052d33f539751ad5f8d",
+  "comparison_sha256": "009015988052ac1828db4cf460a289fbaced2c22baeba1c1cc57cb05c07b792c"
+}

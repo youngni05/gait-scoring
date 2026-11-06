@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "internal_saved_models_replayed": 375,
+  "final_saved_models_replayed": 25,
+  "blends_rebuilt": 5,
+  "person_overlap": 0,
+  "train_only_normalization_and_epoch_selection_verified": true,
+  "max_prediction_difference": 0,
+  "max_TCN_CPU64_difference": 3.961213032255273e-06,
+  "results_sha256": "885a4c523fcf2d8b4a2fc724acd7b91b0020089034deb9ffa996479f48e725c5",
+  "person_predictions_sha256": "72231e66d83214580eb220af61db7a5bb2205f675b6522011a03a043f44e2c6c"
+}

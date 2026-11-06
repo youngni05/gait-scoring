@@ -1,0 +1,46 @@
+{
+  "selection": "Both cameras all 12 reference joints in frame and no gap. Max of hip and shoulder p95-p05 yaw span <= threshold; full span <= 1.5 threshold; pelvis XY displacement/path >= .98; net speed >= .2 m/s. Thresholds are geometric sensitivity settings, not clinical standards. No RF outputs read.",
+  "duration_seconds": 2,
+  "frames": 60,
+  "fps": 30,
+  "primary_heading_degrees": 20,
+  "selection_rule": "All people with eligible 2-second 20-degree straight window. Earliest eligible straight interval; maximum heading-span fully visible 2-second turn window in same provider walking interval as paired control. No scores used.",
+  "subjects": [
+    1,
+    8,
+    18,
+    27,
+    31,
+    45,
+    49,
+    54,
+    61,
+    72,
+    80,
+    85,
+    89,
+    90
+  ],
+  "conditions": [
+    {
+      "name": "clean",
+      "sigma": 0.0,
+      "seed": 0
+    }
+  ],
+  "geometry_conditions": [
+    "straight",
+    "turn"
+  ],
+  "expected_clips": 56,
+  "expected_frames": 3360,
+  "rf": "Frozen motion3d 128-feature 6 folds x 5 seeds; same model bytes, no refit or calibration. Original 698-feature RF secondary reference.",
+  "care": "Original four straight-walking cohorts; use annotation, no new frame-level geometry claim. 50 frames at 25Hz: first 2 sec primary, centered 2 sec sensitivity. Compare full vs short only on same eligible records and people; held-out fold predictions only. 5-sec first-window comparison on >=125-frame common subset.",
+  "outcomes": "Paired-view absolute and signed differences, score band [0.5,1.5), between-person spread, seedwise effects. CARE-PD person-equal MAE, bias and >=2 errors overall and true scores 2/3,3. No clinical pass threshold, no MoVi accuracy or assumed healthy score.",
+  "previous_control": "Old 5-second clean windows only for the intersection of original five subjects and current primary 14; do not compare changed samples as if paired.",
+  "roi": "Same existing MediaPipe RGB landmarks and 10 percent padding as previous inference; reference used solely for eligibility.",
+  "sources": {
+    "audit": "d83c387a5ef12c0ce452745c8fb040382380be76f897c08927ec189e1945179e",
+    "prepare": "878e09deb0aa727567cf056832cbd46dc023f30c3c100ac6478fca0fcf341b06"
+  }
+}

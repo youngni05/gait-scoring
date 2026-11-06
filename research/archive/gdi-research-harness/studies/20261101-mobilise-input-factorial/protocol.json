@@ -1,0 +1,55 @@
+{
+  "code_sha256": "bc1b5c9eb85123a0c128c6a717efe011f516cef28f584301e30421f1d2db3a1e",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-input-classification\\study.py": "eed2351f06ec1b40b22522b40d8fc70326cd14fdbca94174f03c824b0817eebd",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-input-classification\\verification.json": "333e71d6aad31930bddef85a7e0bcf63be110c19d654c304dfb9c7c6667586e1",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-input-classification\\alignment-verification.json": "eb7592ea57a6416020f3e83b8c339d3884fd989d960df3f216ed8fab75098f3b",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\audited-bouts.csv": "f826fbf2b9010b36cb0c8f181636242504e862e46f125d31db68c205a2a5d202"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "cuts": {
+    "sppb": [
+      3.5,
+      6.5,
+      9.5
+    ],
+    "tug": [
+      10.0,
+      15.0,
+      20.0
+    ]
+  },
+  "design": "2x2 original4/expanded6 x median/bout; same 128-tree leaf20 max_features1 RF, person-equal weights, no metadata or class weighting",
+  "features": [
+    "averagecadence",
+    "averagestrideduration",
+    "averagestridespeed",
+    "averagestridelength",
+    "duration",
+    "turn_rate_per_second"
+  ],
+  "people": {
+    "sppb": 2174,
+    "tug": 1939
+  },
+  "splits": "unchanged outer5 inner3 people, draw0, [4,10)/[30,60) seconds x1/3/5 bouts",
+  "reuse": "Median4 and Bout6 from verified previous models; at k1 median/bout identical and reused; otherwise fit missing Median6/Bout4",
+  "ordering": "speed then six feature values lexicographic order for both bout inputs; ties on first4 give identical core values",
+  "selection": "no new hyperparameter search; previous inner OOF temperature calibration and internally selected fpr10 thresholds; outer labels used only for evaluation",
+  "primary": "long5, five-seed mean not ensemble; report all6 conditions",
+  "contrasts": "Median6-Median4, Bout4-Median4, Bout6-Median6, Bout6-Bout4; interaction Bout6-Bout4-Median6+Median4",
+  "matching": "identical evaluation-only nearest speed pairs caliper .05m/s, different people same fold; same-cohort sensitivity; controls reusable, descriptive ranking",
+  "limits": "reused development people, no video/clinical external validation; representation includes extra dimensions and ordering, not causal physiology",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-input-factorial",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-input-factorial-20261101"
+  }
+}

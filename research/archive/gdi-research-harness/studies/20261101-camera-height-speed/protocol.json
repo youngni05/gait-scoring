@@ -1,0 +1,32 @@
+{
+  "hypothesis": "After limited sensor classifier gains, test whether height-scaled image translation preserves speed across fixed camera views, before claiming phone score accuracy.",
+  "user": "Fixed phone,no floor marks,one height entry allowed.",
+  "inputs": "Existing RGB-only MediaPipe Heavy image landmarks, user height from provider metadata. Reference 3D/geometry only for fixed selection and evaluation. No reference coordinates in estimator.",
+  "methods": "PlaneNet: first-last image pelvis displacement*height/median33-landmark vertical span. PlaneOLS: linear time slope with same scale. PinholeOLS: depth from fy*height/span then 3D slope; uses actual extra camera intrinsics and is diagnostic only. No distortion/extrinsic correction. The landmark span misses top-of-head and can change with pose; it is a deliberately simple candidate, not a validated stature measurement.",
+  "truth": "Provider reference hip-midpoint net/OLS horizontal translation m/s. Net method compared with net truth,OLS methods with OLS truth. Pinhole output includes vertical drift. This is not average stride speed as defined by Mobilise-D.",
+  "people": "Same14 previously selected MoVi people,pairedPG1/PG2,straight2sec primary,turn2sec control,56clips3360frames. No assumed healthy score or clinical labels.",
+  "selection": "Reuse existing geometry-frozen clips.json; no windows/thresholds chosen by this result. No new training or calibration; deterministic,so no new seed/fold count. Existing Mobilise-D5seeds/person folds remain untouched.",
+  "success": "Before viewing these results: simple height-only PlaneOLS straight MAE<=0.10m/s and paired-camera absolute difference<=0.10m/s are exploratory engineering targets,not clinical standards. Report all methods/errors/coverage regardless of pass.",
+  "evaluation": "Person-equal MAE,bias,median/p90 error,paired absolute/signed view difference,per-view values,height +/-2cm analytic sensitivity.14independent people,not56; no score accuracy or domain validation.",
+  "resources": "CPU1,existing cached detections,no GPU/download,new NPZ<5MB D,small tables/protocol C,estimate2-5minutes.",
+  "expected": {
+    "pilot_clips": 8,
+    "pilot_people": 2,
+    "main_clips": 56,
+    "main_people": 14,
+    "frames": 3360,
+    "model_fits": 0,
+    "metric_rows": 12,
+    "paired_rows": 6
+  },
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\clips.json": "3c33928ac646e7748e31e78a687ef4ba27444b2b37cc1faf99c59c7c5fa45adf",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\availability.json": "d83c387a5ef12c0ce452745c8fb040382380be76f897c08927ec189e1945179e",
+    "D:\\gait-research-data\\MoVi\\raw\\Camera Parameters.tar": "08cf818529cec43935345569a14c2445f1ba2d0d5c2cf1d74d4f363a0149c029"
+  },
+  "code_sha256": "71a5d84a7cb1c845a937d1351a0d2eae028a48ab960c97fa274f985d9b6de327",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed",
+    "large": "D:\\gait-research-data\\D_P\\camera-height-speed-20261101"
+  }
+}

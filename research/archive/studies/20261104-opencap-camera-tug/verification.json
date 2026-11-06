@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "source_CRC_SHA_files": 298,
+  "label_visit_matches": 297,
+  "feature_replay_people": 297,
+  "person_disjoint_outer_folds": 25,
+  "person_disjoint_inner_folds": 75,
+  "saved_outer_models_replayed": 100,
+  "selected_inner_models_refitted": 300,
+  "all_candidate_inner_loss_checks": 900,
+  "prediction_rows": 5940,
+  "outer_replay_max_abs": 0.0,
+  "inner_refit_max_abs": 0.0,
+  "train_only_imputation_and_scaling_verified": true,
+  "results_sha256": "9bbd9efd6d7fd9f6e3d54f19283ca8f5da0c860e146b606c505c81bf90a94857",
+  "protocol_sha256": "5f6306cde96a2131fd7289b1f6826a8d7cc9e5b57e34cd15584358b0d3dc7951",
+  "features_sha256": "0bc5b2eab32a0fe563c6ca36656fecfa943c572c56e0d3d9a987f4f7f66c9486",
+  "verification_code_sha256": "c5279a063af65c1cec428c39012ca03da196fe39d77be5deb20755406fd9d284"
+}

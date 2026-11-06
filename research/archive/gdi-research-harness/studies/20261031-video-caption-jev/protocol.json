@@ -1,0 +1,46 @@
+{
+  "declared_before_captions_and_predictions": true,
+  "people": 12,
+  "source": "Toronto bottom-camera raw walking videos; same12 people as prior pose study, noGDI labels here",
+  "window": "4.1seconds from earliest maximum visibility/motion candidate in first30seconds;6 one-second checks, eightjoints visible>=.5 count plus1 for hiprange>.03;124target timestamps at30Hz mapped to nearestnative frame; no label/caption selection; repeatedframes possible below30fps",
+  "preflight_revision": "Fixed10s window caused many missingframes in initial5video decoding check; visibility-based selection fixed before any caption or target evaluation.",
+  "numeric": "New MediaPipe extraction on EXACT same RGB window;17COCO joints XY/conf; per-clip valid bounding-box normalization; mean/std/mean absolute adjacent change=153features. Same summary strategy as prior study but NOT identical old Alphapose inputs.",
+  "target_selection": "Among detected poses, closest hip midpoint to horizontal image center; reject hip invisibility; no disease/score input",
+  "caption_model": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+  "model_revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+  "model_execution": "localCPU; pretrained weights frozen; no raw video sent to externalAPI",
+  "caption_input": "9 equally spaced actualRGB frames per4.1s clip, chronological interleaved-image prompt with timestamps; no derived numerical features or clinical labels supplied; not full-frame-rate video",
+  "caption_variants": [
+    "focused",
+    "generic",
+    "focused with first frame repeated9times (static control)"
+  ],
+  "prompts": {
+    "focused": "Describe only the visible movement of the main participant in the center of this video. Report how the feet advance, whether steps alternate, any visible pause or turn, arm movement, trunk movement, and any walking aid actually being used. Separate visible evidence from what cannot be seen. Do not describe room decorations, clothing, age, sex, diagnosis, disability, risk, test scores or numerical speed. Do not invent subtle movements. A person beside the walking path may be an observer. Use at most five short sentences.",
+    "generic": "Describe the actions of the main person in the center of this video in at most five short sentences. Describe visible actions only, without age, sex, diagnosis, scores, risk, clothing or room decoration."
+  },
+  "caption_decoding": "greedy do_sampleFalse max_new_tokens160; no prompt tuning from test performance",
+  "Jev": "1.14; text captions only; movement questions plus support/pause/turn/clearance; up to60requests and200000inputtokens",
+  "predictions": "existing Toronto5fold people splits; fixedRidge alpha100,RF128 leaf2 seed20261031; same training/test people for every arm; missing/scaling trainonly",
+  "comparisons": [
+    "numeric",
+    "Jev numeric summary",
+    "Jev caption only",
+    "numeric+Jev numeric summary",
+    "numeric+Jev focused caption",
+    "numeric+Jev generic caption",
+    "numeric+Jev static caption",
+    "numeric+shuffled Jev focused caption"
+  ],
+  "shuffle": "50seeded permutations of caption features within training and test partitions separately; labels never used; diagnostic negative control",
+  "metrics": [
+    "personMAE",
+    "RMSE",
+    "conditional paired bootstrap95",
+    "perperson errors",
+    "caption evidence audit"
+  ],
+  "interpretation": "12person exploratory study; require paired prediction benefit AND visually supported observations, not merely longer prose; no universalVLM conclusion",
+  "storage": "D:\\gait-research-data\\D_P\\video-caption-jev-20261031",
+  "GPU_training": false
+}

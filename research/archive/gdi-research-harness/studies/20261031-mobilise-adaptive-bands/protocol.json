@@ -1,0 +1,95 @@
+{
+  "code_sha256": "ba3799cac8a837af9a2735a456f637b552dbafa11153247c42608b6f7f81769b",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-ordinal-bands\\study.py": "b69e278aa969b5999e324fc00f9df02e3746844fac2baccb5b80eea4b293ccf7",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-ordinal-bands\\verification.json": "9ed4dc08fdf6d3210351a6d27c8807b0b565dc9104e4ffead2d640d6418bf15a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "fine_cuts": {
+    "sppb": [
+      3.5,
+      4.5,
+      5.5,
+      6.5,
+      7.5,
+      8.5,
+      9.5
+    ],
+    "tug": [
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0
+    ]
+  },
+  "middle_candidates_ordered": {
+    "sppb": [
+      6.5,
+      4.5,
+      5.5,
+      7.5,
+      8.5
+    ],
+    "tug": [
+      15.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0
+    ]
+  },
+  "anchors": {
+    "sppb": [
+      3.5,
+      9.5
+    ],
+    "tug": [
+      10.0,
+      20.0
+    ]
+  },
+  "people": "same SPPB2174/TUG1939 people, all visits and same outer5/inner3 person IDs, draw0 [4,10)/[30,60) x1/3/5 median four features",
+  "models": "RFreg reuses previous five-seed continuous predictions; RF/OrdinalRF train common fine distribution with same128trees leaf20, then sum probabilities for each partition; distinct from previous four-class-trained forests",
+  "calibration": "candidate-specific train-only OOF multinomial mapping for RFreg; cross-fit temperature on inner OOF probabilities for all, final T uses outer train only",
+  "support": "each class at least40 distinct people in each inner training fold and3percent outer training person-weighted mass; no test-based exclusion",
+  "rules": [
+    "mode",
+    "absolute",
+    "squared",
+    "mix-0.5-0.0-0.0",
+    "mix-0.5-0.0-1.0",
+    "mix-0.5-1.0-0.0",
+    "mix-0.5-1.0-1.0",
+    "mix-2.0-0.0-0.0",
+    "mix-2.0-0.0-1.0",
+    "mix-2.0-1.0-0.0",
+    "mix-2.0-1.0-1.0"
+  ],
+  "selection": "fixed4: maximize balanced recall with extreme/miss/FPR no worse than inner mode; adjusted4: maximize balanced recall jointly over eligible boundaries/rules with same guards versus fixed4 selected; merged3: same guards versus own mode; deterministic tie-break; fallback always available",
+  "primary": "long5 fixed before this run; all six conditions; argmax and chosen-rule reported separately; train-prior baseline for each partition",
+  "comparison": "extreme endpoints unchanged for all partitions; low miss and FPR fixed target; raw accuracy/Brier across K not claimed directly comparable; expected width of true/predicted middle bands and boundary frequencies reported",
+  "limits": "inner reuse for selection not unbiased performance; outer development folds reused across research, not fresh confirmatory validation; no video or clinical grade validation",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-adaptive-bands",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-adaptive-bands-20261031"
+  }
+}

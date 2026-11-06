@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-02T02:06:09.120654+00:00",
+  "request": "Include one-window CNN, multiwindow STT and multiwindow CNN in presentation comparison",
+  "classification": "supplemental descriptive evaluation requested after previous holdout results; not part of original three-model preregistration",
+  "people": 222,
+  "records": 377,
+  "cohort": "Exactly existing377 scored records, no exclusions/label changes",
+  "single_CNN": "Existing five single-window refit CNNs, original canonical124frame IDs per record, same full-record preprocessing, stored training-only OLS; equal average of five fold predictions",
+  "multi_STT": "Reuse already locked per-record STT_f_refit predictions; equal average of five folds. Same multiwindow inputs as multi_CNN.",
+  "precision": "CPU float32 with original models, replay absolute tolerance1e-4; no training or calibration fitting",
+  "quality": "Retain previous input gate and cohort. Single canonical features must reproduce same source process; no new favorable-window selection.",
+  "statistics": "Person-equal MAE, pooled record-side Pearson, person-equal bias, person bootstrapMAE95 (10000 draws seed20261105); fold-origin SD diagnostic only. No new superiority tests or winner selection.",
+  "presentation": "Keep development692 OOF results separate. All final222 deployment rows average five fold-specific predictors; CNN_bag uses additional inner models. Flag late-added rows as supplemental.",
+  "scope": "CP-source held-out people, not healthy-person or older-adult clinical validation"
+}

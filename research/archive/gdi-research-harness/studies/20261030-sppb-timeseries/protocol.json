@@ -1,0 +1,47 @@
+{
+  "declared_before_fitting": true,
+  "input": "walkingSet.mat skeletonJointsCx ONLY; 18 native OpenPose joints x (root-relative x,y,confidence); 128 nearest observed frames across entire walk, no synthetic time axis",
+  "other_inputs": "log1p source walking frame count only; no age, sex, site, ID, date or component scores",
+  "target": "same full participant ID AND exact date; sum walking/balance/ststand evaluations, each integral 0..4; reconstructed SPPB component total, not separately supplied total",
+  "quality": ">=32 source frames and >=50% frames with neck and both hips; frames with duplicate joint IDs fully masked; missing joints zero with confidence zero; no between-visit/camera imputation",
+  "normalization": "each frame hip center; per-sequence median neck-to-hip length; no population-fitted preprocessing",
+  "split": "fixed label-independent shuffled unique full IDs, KFold 5 seed20261030; nested 3-fold unique training IDs seed20261031",
+  "weight": "equal total weight per person during training and evaluation; all visits stay grouped",
+  "baseline": "training person-weighted mean and median; frame-count-only Ridge as acquisition-duration control",
+  "cpu": {
+    "Ridge_alpha": [
+      1.0,
+      100.0
+    ],
+    "RF_leaf": [
+      2,
+      5
+    ],
+    "RF_trees": 128
+  },
+  "gpu": {
+    "models": [
+      "CNN",
+      "TCN"
+    ],
+    "width": 24,
+    "kernel": 5,
+    "layers": 3,
+    "dropout": 0.2,
+    "lr": 0.001,
+    "weight_decay": 0.001,
+    "max_epochs": 80,
+    "patience": 12,
+    "batch": "full training set with person weights",
+    "selection": "inner 3-fold best epoch; median epoch refit on all outer training people",
+    "seeds": [
+      20261030
+    ]
+  },
+  "metrics": "primary mean of each person mean absolute visit error; also person-weighted RMSE; no clipping, rounding, clinical success threshold or outer-fold selection",
+  "pilot": "CUDA allocate/calculate/synchronize; real fold0 training subset 3 epochs; finite loss/prediction; checkpoint save/reload equal predictions; timing/peak allocated/reserved memory",
+  "scope": "small exploratory single-source video-derived skeleton study; not raw RGB validation or clinical performance claim; no GDI input, split or job changes",
+  "method_basis": "Romeo2020 dataset: real 18-joint OpenPose sequences and SPPB component evaluations; Romeo2023: height-normalized interjoint time series and convolution/recurrent comparison; TCAI-FallNet2026: lightweight temporal convolution candidate, different all-task classification objective",
+  "permissions": "public author repository README invites use with paper citation; explicit repository data LICENSE not found. Research-only local derived inputs; no raw/derived dataset publication; no assertion of CC license transfer from author website or paper",
+  "fps": "paper describes nominal20fps but resynchronization to lowest recorded rate; no per-record timestamps in MAT verified. Native frame count used; no exact seconds claim"
+}

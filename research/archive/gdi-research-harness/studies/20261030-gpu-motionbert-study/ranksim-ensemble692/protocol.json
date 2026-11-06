@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "frozen_before_execution": "2026-11-01",
+  "purpose": "Test incremental complementary information beyond the verified bagged CNN/STT/bilateral blend",
+  "people": 692,
+  "records": 1061,
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "arms": [
+    "ranksim",
+    "synth",
+    "scratch_control"
+  ],
+  "weight_grid": [
+    0,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95,
+    1.0
+  ],
+  "formula": "(1-w)*existing_blend+w*additional_model",
+  "selection": "minimum person-equal MAE on four inner folds excluding outer f; tie1e-12 selects smallest w",
+  "additional_inner_prediction": "fixed final epoch100 held-out validation, training-only stored OLS; no new epoch search",
+  "existing_inner_prediction": "fixed CNN/STT mixture and bilateral difference fractions from mean-difference692, using inner single models excluding f and j",
+  "existing_outer_prediction": "verified actual inner-bagging692 best bagged predictions",
+  "additional_outer_prediction": "fixed final refit predictions, excluding outer f",
+  "same_weight_both_sides": true,
+  "joint_three_model_weight_search": false,
+  "outer_label_selection": false,
+  "global_OOF_random_meta_split": false,
+  "true_score_based_gating": false,
+  "source_checks": [
+    "reported result digests",
+    "cache and model hashes",
+    "actual model train/validation/outer IDs",
+    "video/side/label/row identity",
+    "stored training-only calibration"
+  ],
+  "verification": [
+    "independent person-weighted metric",
+    "independent grid minimum",
+    "row reversal invariance",
+    "outer-label poisoning invariance",
+    "injected leakage rejection",
+    "fixed baseline reproduction"
+  ],
+  "evaluation": [
+    "person-equal MAE",
+    "person-mean90/100 MAE and bias",
+    "observation90/100 MAE and bias",
+    "low score error",
+    "five fold changes",
+    "10/20 point accuracy"
+  ],
+  "bootstrap": {
+    "unit": "paired person",
+    "replicates": 10000,
+    "seed": 20261101
+  },
+  "limitations": [
+    "inner single-model versus outer bagged-base mismatch",
+    "previous blend fractions are outer-training meta-fit, not independent of each inner j label",
+    "repeated development evidence, not external validation"
+  ],
+  "new_neural_training": false,
+  "GPU_used": false,
+  "protected_final_or_LJMU_used": false,
+  "large_storage": "D:/gait-research-data/D_P/gdi-research-harness/studies/20261030-gpu-motionbert-study/ranksim-ensemble692/cache"
+}

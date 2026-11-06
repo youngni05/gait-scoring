@@ -1,0 +1,15 @@
+{
+  "verified": true,
+  "independent_right_detector_records": 203,
+  "independent_eligibility_records": 79,
+  "people": 76,
+  "independent_resampled_input_max": 4.172325134277344e-07,
+  "matched_time_grid_translation_max": 1.4210854715202004e-14,
+  "prediction_rows": 711,
+  "scalar_model_replay_max": 4.263256414560601e-14,
+  "person_metrics_verified": true,
+  "bootstrap_recomputed": true,
+  "source_hashes_checked": 297,
+  "clinical_cycle_validation": false,
+  "new_training": 0
+}

@@ -1,0 +1,237 @@
+{
+  "status": "passed",
+  "reconstructed_models": 45,
+  "maximum_replay_error": 1.9073486328125e-06,
+  "models": [
+    {
+      "model": "mobilised-speed-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "b075cf56400cd417b703400afd49499426f57fc7b9a6f7eaf3b4d73fea96610d"
+    },
+    {
+      "model": "mobilised-speed-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "75641c43b9c6114e0b87d4cf54ae407a28c2df3563779857b9950d63aa0923c4"
+    },
+    {
+      "model": "mobilised-speed-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "f2b7fe10bf83607865e34a8cc4a7a44b8920452a3c940f58385d67d3c2cd2dc4"
+    },
+    {
+      "model": "mobilised-speed-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "500f4a6b0435a54a3df3b971dd88ce3c24956535c7c7fcdebb0407d59feb6478"
+    },
+    {
+      "model": "mobilised-speed-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "f1e25bee41f21558b9b06df77395f8221b6538155d268e95f3eea0078db1bf68"
+    },
+    {
+      "model": "mobilised-speed-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "3e76832eaaa18ae8b1ef760836a88c6fecda05ffcf513b6aa4e6dc098c6c5a15"
+    },
+    {
+      "model": "mobilised-speed-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "438e3cf177630edc1a55a8a201e7307b2ffff9719fa72c245cd886fd8ba43e97"
+    },
+    {
+      "model": "mobilised-speed-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "21923a0732e4ded7f0d984327cc76a37d5901708e547bc512468988f2d6e526a"
+    },
+    {
+      "model": "mobilised-speed-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "c2c0c59269430bf7473838a628aa3389f2ba69d0a207d241914b433f90f4c83d"
+    },
+    {
+      "model": "mobilised-speed-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "19716cf046f3225b79efd9f2e8c7fb47b988c99f9feaa17b935c17d88c77da18"
+    },
+    {
+      "model": "mobilised-speed-0-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "bf483c4281adb736718957fbad061541ac4d04360d7f763bde218eb12deb3d88"
+    },
+    {
+      "model": "mobilised-speed-1-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "9b2d4864c26b6f5e4ed038c16c63268c7dd27540c10f2b7dac20fe2c73e2f9f8"
+    },
+    {
+      "model": "mobilised-speed-2-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "76d419cebf065b350fb568eccb2b10507805f2abb952f4899f13a2fce146e0dd"
+    },
+    {
+      "model": "mobilised-speed-3-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "f0117c272c3ccdf6c521e2aad9ce68dc7c246eae38e979b0759d7559eff585ef"
+    },
+    {
+      "model": "mobilised-speed-4-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "f2573b96e6d41dbce096fa2429dea21689e1ae4aeda517a6ffdba1f028873814"
+    },
+    {
+      "model": "mobilised-features-0-TabICLv2",
+      "max_error": 1.9073486328125e-06,
+      "prediction_sha256": "3092a8c1dc4521195e8bda0a66f5d1acbcb688bcfa71c46142026fda8cfa7671"
+    },
+    {
+      "model": "mobilised-features-1-TabICLv2",
+      "max_error": 1.9073486328125e-06,
+      "prediction_sha256": "f4f9d0f448a1c0fb3bf61055ef3b58ea7b52b3f943fd7c2003f10e1396a17f0a"
+    },
+    {
+      "model": "mobilised-features-2-TabICLv2",
+      "max_error": 1.9073486328125e-06,
+      "prediction_sha256": "2873e72cd213acccd17bc853d2aa2326b18d313ea56854f8dc8b458ad2fc79c5"
+    },
+    {
+      "model": "mobilised-features-3-TabICLv2",
+      "max_error": 1.9073486328125e-06,
+      "prediction_sha256": "de000bd2a62d3f919505e08e0790de57f7f31c02399f56904d2748575f0f485d"
+    },
+    {
+      "model": "mobilised-features-4-TabICLv2",
+      "max_error": 1.9073486328125e-06,
+      "prediction_sha256": "1a1c1f63a46ce470a6dc6ed900b088bfc7702fdfb4b8376bc55bab2f8b9de287"
+    },
+    {
+      "model": "mobilised-features-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "0d3c66d639612fa5ff63b2d673ff770d7ed40aa9db1aa7f01eae6c5ca004f0bc"
+    },
+    {
+      "model": "mobilised-features-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "870bf8df9b07c224c959b798d03b089c18e3a5ae61af3023a5f8c58b4ddac8d0"
+    },
+    {
+      "model": "mobilised-features-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "50bda1a77c8a9458581a485b56f825fab6c8a48ecf16959b2329e089b2806603"
+    },
+    {
+      "model": "mobilised-features-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "753fc0a1ee628e12426b3a867dadb42632e97b7f1f421cf741005144823ed47c"
+    },
+    {
+      "model": "mobilised-features-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "830447b06f1b8b5ff21bd62dc45fb5c668286f9a0bef2cc6978e2190697250b1"
+    },
+    {
+      "model": "mobilised-features-0-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "b70e7e6b40eaa6a91d888b527ea6ec9ff6b68cb7eb58cbc67958744f3080beff"
+    },
+    {
+      "model": "mobilised-features-1-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "be4c48ef748b8bf33fd95b70979e7e468e6da3a024baa691379b07489a3f3e91"
+    },
+    {
+      "model": "mobilised-features-2-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "deafc56186817a2202eed326123639d79bfe138d1b7a1663786a4cb51bb0e54d"
+    },
+    {
+      "model": "mobilised-features-3-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "fc4cdbc07a2e40d6916aafccef6c2bb7fa5f4ecd2fee85af1a6e7731b2ae5243"
+    },
+    {
+      "model": "mobilised-features-4-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "d268608f89d047c559d82120579f9c7ded26559d1c1f691267ee5297c91b48eb"
+    },
+    {
+      "model": "mobilised-speed_profile-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "192d3773d8d75279e4a3dbe6eaae470d8633ecb1e7fcc9e3b07028e67db3cb0f"
+    },
+    {
+      "model": "mobilised-speed_profile-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "f7bff6f11dfd1a47d27b3e1a4ee95a0809bb7535da7a01313929324ebc996953"
+    },
+    {
+      "model": "mobilised-speed_profile-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "919bab7e841d06566b4e6c1b5d2931198aa82313e02a8b9d6cd28d4862a6ab12"
+    },
+    {
+      "model": "mobilised-speed_profile-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "bad1f91ae9c8af0ecbc8d11f5efd5abdafc8a066e738dc0870091376917ed55e"
+    },
+    {
+      "model": "mobilised-speed_profile-4-TabICLv2",
+      "max_error": 1.9073486328125e-06,
+      "prediction_sha256": "b3082559823ab5c13642285967ee7bc3faef19d32e9624f61bfa7213d656eba6"
+    },
+    {
+      "model": "mobilised-speed_profile-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "3e997ad0248b6b1e893cc7058f6d6ce5b9cd70069411641e3ea4195e6fbc6274"
+    },
+    {
+      "model": "mobilised-speed_profile-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "902bb0dbd8acc82d45bdd5f2136b67e5ceb402d730661db0c12631dd0473cb72"
+    },
+    {
+      "model": "mobilised-speed_profile-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "04f377727c2e6b0f8b4cd2a9f3d8aab974fa3d23f50f019217baa734ec592f68"
+    },
+    {
+      "model": "mobilised-speed_profile-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "37654207e1b09405becf854a29e723977c0d6d7a0885c17f9180d4594c528755"
+    },
+    {
+      "model": "mobilised-speed_profile-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "c33fff35554c1eeb94fa1624598d83b0120e02e8582b443db6246fa40d5fd6a2"
+    },
+    {
+      "model": "mobilised-speed_profile-0-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "bf86adbb80ee10d453556537068541e0a53196210448a40d84d2b6605d98d64d"
+    },
+    {
+      "model": "mobilised-speed_profile-1-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "6e51b8c1cd7ea89252dcfa5e2c9c8dcbb654514242b9f34f0c5dde77e5ffda7f"
+    },
+    {
+      "model": "mobilised-speed_profile-2-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "452816daea340f8d0e3dc424664adac28490ada18680ad248a235f3a656ad467"
+    },
+    {
+      "model": "mobilised-speed_profile-3-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "b910a57f20a6cb57781e84b0f100f22a7f6ee6aeadcaa6ed593bc62d6e3f0304"
+    },
+    {
+      "model": "mobilised-speed_profile-4-LGBM",
+      "max_error": 0.0,
+      "prediction_sha256": "e0ac0a471c6d3bf0316cb85bb276ce4cc0b43db9bfdb8038fef009293712ab76"
+    }
+  ],
+  "elapsed_seconds": 994.9380219000159,
+  "protocol_sha256": "106939caace017e7da2da2d2c938826acd972115e6dbe5a79e27a7d9eaa87c30",
+  "comparison_sha256": "71457ff66db8d445cd2df637928268139c4d2d776390d245252dec4ec2412f82",
+  "review_code_sha256": "7fb81941d67b44bd5785b159310fca0ef9ae38540999c4ab210470c29b870ca0",
+  "notes": "Fixed foundation weights + stored training contexts reconstructed for every model; LightGBM saved models reloaded and independently tree-walked. Metrics and intervals calculated only after full held-out predictions; conditional intervals do not include full training uncertainty."
+}

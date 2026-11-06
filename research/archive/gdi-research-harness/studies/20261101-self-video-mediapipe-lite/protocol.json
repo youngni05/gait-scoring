@@ -1,0 +1,20 @@
+{
+  "frozen_before_lite_inference": true,
+  "authorization": "User requested recording Full results and applying Lite to the same two videos; compare Full/Lite speed, landmarks and fixed GDI predictions",
+  "model_change_only": "MediaPipe Full task to official Lite float16 task; reuse installed MediaPipe 1.2.0, CPU VIDEO, num_poses1, detection/presence/tracking thresholds0.5, no segmentation",
+  "frames_and_mapping": "All2382 native decoded frames, fresh tracker each clip, actual PTS rounded to ms with same monotonic adjustment; unchanged image pixel conversion and anatomical mapping, foot_index remains a proxy for BODY25 big_toe; no z/world input, no new visibility filter",
+  "gdi": "Same full-record preprocessing, original32 windows, missing<=25%,54 frozen checkpoints,calibration and combination. Reuse exact previous inference code; do not train,tune,swap sides,substitute windows or adjust outputs",
+  "speed": "CPU only. Same first25 frames each clip, predecoded once, warmup excluded. Four timed passes per variant, alternating Full/Lite then Lite/Full orders; fresh tracker each clip each pass. Compare medians and ranges of RGB conversion+final landmarks. Also report full-clip Lite run separately from historical Full full-clip run",
+  "pose": "Full vs Lite image-coordinate distances at same8 GDI joints, normalized by Full leg length; missing and low visibility counts; same42 review frames. Retain Lite vs original OpenPose as secondary descriptive comparison. No estimator is ground truth",
+  "success_interpretation": "Describe normal-minus-abnormal sign and size in both fixed schedules and five fold predictors; not an accuracy, clinical threshold or independent participant test",
+  "storage": {
+    "small": "C:/Users/jun/Desktop/D_P/gdi-research-harness/studies/20261101-self-video-mediapipe-lite",
+    "large": "D:/gait-research-data/D_P/self-video-mediapipe-lite-20261101"
+  },
+  "limits": [
+    "one person two conditions",
+    "no true GDI or landmark ground truth",
+    "no smartphone speed,power,thermal or memory benchmark",
+    "Full/Lite are separate algorithms and absolute scores may shift"
+  ]
+}

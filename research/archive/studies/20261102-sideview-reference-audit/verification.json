@@ -1,0 +1,63 @@
+{
+  "scope": "7 sampled videos decoded fully; downloaded 4 spreadsheets matched publisher MD5. Does not verify all 190 nonempty videos or full 3D MAT/C3D. No inference or score construction.",
+  "video_checks": [
+    {
+      "file": "KOA-PD-NM/KOA/KOA_EL/001_KOA_01_EL.MOV",
+      "decoded_frames": 428,
+      "sha256_match": true
+    },
+    {
+      "file": "KOA-PD-NM/KOA/KOA_MD/001_KOA_01_MD.MOV",
+      "decoded_frames": 168,
+      "sha256_match": true
+    },
+    {
+      "file": "KOA-PD-NM/KOA/KOA_SV/001_KOA_01_SV.MOV",
+      "decoded_frames": 777,
+      "sha256_match": true
+    },
+    {
+      "file": "KOA-PD-NM/NM/001_NM_01.MOV",
+      "decoded_frames": 118,
+      "sha256_match": true
+    },
+    {
+      "file": "KOA-PD-NM/PD/PD_MD/001_PD_01_MD.MOV",
+      "decoded_frames": 524,
+      "sha256_match": true
+    },
+    {
+      "file": "KOA-PD-NM/PD/PD_ML/001_PD_01_ML.MOV",
+      "decoded_frames": 319,
+      "sha256_match": true
+    },
+    {
+      "file": "KOA-PD-NM/PD/PD_SV/001_PD_01_SV.MOV",
+      "decoded_frames": 1011,
+      "sha256_match": true
+    }
+  ],
+  "spreadsheet_checks": [
+    {
+      "name": "MAT_normalizedData_AbleBodiedAdults_v06-03-23.xlsx",
+      "size": 37690639,
+      "md5_match": true
+    },
+    {
+      "name": "MAT_normalizedData_PostStrokeAdults_v27-02-23.xlsx",
+      "size": 14788261,
+      "md5_match": true
+    },
+    {
+      "name": "NrStrides.xlsx",
+      "size": 13939,
+      "md5_match": true
+    },
+    {
+      "name": "MATdatafiles_description_v1.3_LST.xlsx",
+      "size": 18742,
+      "md5_match": true
+    }
+  ],
+  "supplement_pdf_sha256": "ebc4b5a0e4338afc8923d29a2ef94f60336e536167ed9494ba01040750fb59ac"
+}

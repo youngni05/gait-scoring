@@ -1,0 +1,36 @@
+{
+  "source": "https://zenodo.org/records/13788592",
+  "source_md5": {
+    "participant": "e38c5f802c74650326b93eee828a6e53",
+    "features": "310587c52c605b5d986e9f5d2a41ed9c",
+    "key": "58ac2b67f6a44d0d4bbec99fbae1585b"
+  },
+  "features": [
+    "10mwt_speed",
+    "10mwt_stride_time",
+    "10mwt_stride_len",
+    "10mwt_ankle_elev",
+    "10mwt_com_sway",
+    "10mwt_trunk_lean",
+    "10mwt_mean_ptp_hip_add",
+    "10mwt_mean_max_ka"
+  ],
+  "target": "clinician tft_tug seconds",
+  "visits": "first eligible visit per person, numeric day order, complete8walkingfeatures and positive finiteTUG",
+  "outer": "person KFold5 shuffle seed20261030",
+  "inner": "training-person KFold3 shuffle seed20261031",
+  "Ridge_alphas": [
+    1,
+    100
+  ],
+  "RF_leaf": [
+    2,
+    5
+  ],
+  "RF_trees": 128,
+  "seed": 20261030,
+  "scope": "published RGB-derived features from recorded part of10mwalk task; not3second input, rawRGB reinference, elderly-only, or independent external validation",
+  "merged_visits": 162,
+  "eligible_people": 129,
+  "excluded_people": []
+}

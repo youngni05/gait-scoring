@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "results_sha256": "56ec4fb5bd254f976f242c25be2f5bcbbecd76400e55e5df0f8c2e0a7891e7ba",
+  "original_artifacts_unchanged": true,
+  "independent_mae": true,
+  "independent_pair_bootstrap": true,
+  "independent_familywise_intervals": true,
+  "independent_blend_max_difference": 2.842170943040401e-14,
+  "additional_models": 10,
+  "people": 222,
+  "records": 377,
+  "post_hoc": true
+}

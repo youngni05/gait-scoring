@@ -1,0 +1,103 @@
+{
+  "round": 4,
+  "created": "2026-11-03T15:23:36.788291+00:00",
+  "code_sha256": "da5cb373155aea411ee60e641788252fa6b91d8d6047a09f0a1cf1d118d397ab",
+  "round1_library_sha256": "22e2bd1e26fbf2b3d8a715bcc85d16799f1ba5b59bcb6d5ae4eb5fa8bbb9d653",
+  "source_sha256": "62b83914b235ebe5199640d59e972f8bcd8e7bb7de59219c94d18ab8fac345f0",
+  "features_sha256": "7448238afff1953cbf2f54f741cfb58c31226273a5fb85aa9749f162fa925424",
+  "kernel_bank_sha256": "30ec012126acc9b52126f9c790771205835ae6bfb8408429640b926476522c7d",
+  "feature_code_sha256": "6e90ce553b34234b030a4952e0c36fb208e86d98876ef65119fc53aaf8bd2a38",
+  "candidates": [
+    {
+      "alpha": 1.0,
+      "tail_weight": 1.0,
+      "target": "raw"
+    },
+    {
+      "alpha": 1.0,
+      "tail_weight": 1.0,
+      "target": "overhead"
+    },
+    {
+      "alpha": 1.0,
+      "tail_weight": 4.0,
+      "target": "raw"
+    },
+    {
+      "alpha": 1.0,
+      "tail_weight": 4.0,
+      "target": "overhead"
+    },
+    {
+      "alpha": 10.0,
+      "tail_weight": 1.0,
+      "target": "raw"
+    },
+    {
+      "alpha": 10.0,
+      "tail_weight": 1.0,
+      "target": "overhead"
+    },
+    {
+      "alpha": 10.0,
+      "tail_weight": 4.0,
+      "target": "raw"
+    },
+    {
+      "alpha": 10.0,
+      "tail_weight": 4.0,
+      "target": "overhead"
+    },
+    {
+      "alpha": 100.0,
+      "tail_weight": 1.0,
+      "target": "raw"
+    },
+    {
+      "alpha": 100.0,
+      "tail_weight": 1.0,
+      "target": "overhead"
+    },
+    {
+      "alpha": 100.0,
+      "tail_weight": 4.0,
+      "target": "raw"
+    },
+    {
+      "alpha": 100.0,
+      "tail_weight": 4.0,
+      "target": "overhead"
+    },
+    {
+      "alpha": 1000.0,
+      "tail_weight": 1.0,
+      "target": "raw"
+    },
+    {
+      "alpha": 1000.0,
+      "tail_weight": 1.0,
+      "target": "overhead"
+    },
+    {
+      "alpha": 1000.0,
+      "tail_weight": 4.0,
+      "target": "raw"
+    },
+    {
+      "alpha": 1000.0,
+      "tail_weight": 4.0,
+      "target": "overhead"
+    }
+  ],
+  "conditions": [
+    "single-speed",
+    "single-features",
+    "multi-speed",
+    "multi-features"
+  ],
+  "design": "594samepeople/folds. Single original or multi-cycle frozen windows. Fixed random-convolution2000features+19gait descriptors, versus same-window speed only. Append reciprocal speed; standardize training only. Ridge raw TUG or residual TUG-6/speed;6meters is nominal3m out-and-back distance, a model prior not measured phase durations. Tail weights1or4, intermediate TUG12..20 weight sqrt(tailweight). No target clipping, no time-record/turn/clinical inputs. 16configs, inner3 stratified, same maxnormalized3metric selection; selected and equal top3ensemble.",
+  "selection": "min max(MAE/.9,p95/3,slowMAE/3) inner3 stratified TUG<12/12..20/>=20 seed20261103; first tie. No outer fitting or selection.",
+  "verification": "All960 inner and60final models saved and independently replayed, exact cohort and training-only scaler/weights/selection independently rebuilt.",
+  "expected_additional_GB": 0.3,
+  "limitations": "Repeated outer development data. Not clinical or RGB validation. Slow group9people. Random convolution is ROCKET-inspired custom implementation, not original paper reproduction."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://discovery.ucl.ac.uk/id/eprint/10226302/1/Fujiyama_1-s2.0-S3051131326000099-main.pdf",
+    "status": "primary paper read; journal pre-proof",
+    "method": "15 healthy adults, 3 RGB configurations and MoCap; AlphaPose heel events; ground plane homography for spatial measures",
+    "finding": "cadence more stable than step length and derived speed across tested views",
+    "limits": "not older-adult narrow-home validation; camera distance is not walking distance; raw files not acquired"
+  },
+  {
+    "url": "https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker/web_js",
+    "status": "official documentation read",
+    "finding": "33 normalized landmarks; world landmarks originate at hip midpoint; current app retains normalized landmarks"
+  },
+  {
+    "url": "https://api.figshare.com/v2/articles/19929893",
+    "status": "web tool inaccessible; no files acquired"
+  },
+  {
+    "url": "https://figshare.com/articles/dataset/Walking_videos/19929893",
+    "status": "403; no retry; older local catalog only"
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9272879/",
+    "status": "browser check; paper not reread this run"
+  }
+]

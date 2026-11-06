@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "models": 90,
+  "inner_fits": 180,
+  "people": 110,
+  "records": 2914,
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "outer_folds": 6,
+  "movi_people": 14,
+  "selected_leaves_verified": 90,
+  "replay_max_error": 8.881784197001252e-16,
+  "inner_metric_max_error": 4.440892098500626e-16,
+  "root_weight_max_error": 9.992007221626409e-15,
+  "independent_metric_max_error": 1.3322676295501878e-15,
+  "analysis_sha256": "7770d7a6d71eabfb36f82df4074f03125f42ab0f812ee8c8218e5bd936bfbdb4",
+  "collection_sha256": "04f6f54c290b442874bfa4771edf249d2aaf720e1b47cae7788607260427d28f",
+  "verifier_sha256": "938df59e1c8e7b76571e534bbed019a4ff3cdefdb208f5216026a188fb020dec"
+}

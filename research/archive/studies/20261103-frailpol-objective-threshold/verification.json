@@ -1,0 +1,329 @@
+{
+  "status": "passed",
+  "cases": 80,
+  "max_replay_difference": 0.0,
+  "checks": [
+    {
+      "case": "frailty-speed-0-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-1-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-2-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-3-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-4-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-0-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-1-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-2-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-3-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-4-LGBM-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-0-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-1-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-2-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-3-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-4-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-0-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-1-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-2-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-3-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-4-TabICLv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-0-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-1-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-2-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-3-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-4-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-0-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-1-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-2-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-3-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-4-TabPFNv2-original",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-0-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-1-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-2-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-3-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-speed-4-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-0-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-1-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-2-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-3-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "frailty-features-4-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-0-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-1-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-2-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-3-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-4-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-0-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-1-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-2-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-3-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-4-LGBM-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-0-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-1-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-2-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-3-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-4-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-0-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-1-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-2-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-3-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-4-TabICLv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-0-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-1-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-2-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-3-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-4-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-0-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-1-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-2-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-3-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-4-TabPFNv2-raw",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-0-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-1-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-2-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-3-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-speed-4-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-0-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-1-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-2-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-3-LGBM-weighted",
+      "replay_max": 0.0
+    },
+    {
+      "case": "tug-features-4-LGBM-weighted",
+      "replay_max": 0.0
+    }
+  ],
+  "review_code_sha256": "e0a6aa62937647c9a6411bd7856d8733700006cd4a25ab55728f10a2dee38f6b",
+  "comparison_sha256": "4434e133c0c84d77e9d37abff84ddb2f4dc5593a0191876c0bf4c7895e90c5dc"
+}

@@ -1,0 +1,89 @@
+{
+  "features": [
+    "averagecadence",
+    "averagestrideduration",
+    "averagestridespeed",
+    "averagestridelength"
+  ],
+  "duration_intervals_seconds": {
+    "short": "[4,10)",
+    "long": "[30,60)"
+  },
+  "k": [
+    1,
+    3,
+    5
+  ],
+  "aggregation": "per-feature median of nested sampled bouts",
+  "eligibility": "at least 5 valid bouts of each band on the same day, valid target",
+  "sampling": "one uniformly hash-selected eligible day per person-visit, five hash-ranked bouts per band; independent of clinical scores",
+  "draws": {
+    "0": "all fitting, tuning, and primary OOF evaluation",
+    "1": "additional held-out input draw; no retraining, no prediction averaging",
+    "2": "additional held-out input draw; no retraining, no prediction averaging"
+  },
+  "outer": "fixed cohort-stratified person 5-fold CV, all visits grouped",
+  "inner": "cohort-stratified person 3-fold CV within each outer training set",
+  "weights": "each person has equal total training weight; each person has equal metric weight",
+  "baseline": "outer-training person-weighted median label",
+  "target_columns": {
+    "sppb": "total_sppb_score",
+    "tug": "tugtime"
+  },
+  "hyperparameter_grids": {
+    "Ridge": [
+      {
+        "alpha": 0.1
+      },
+      {
+        "alpha": 10.0
+      },
+      {
+        "alpha": 1000.0
+      }
+    ],
+    "SVR": [
+      {
+        "C": 1.0
+      },
+      {
+        "C": 10.0
+      },
+      {
+        "C": 100.0
+      }
+    ],
+    "RF": [
+      {
+        "min_samples_leaf": 5
+      },
+      {
+        "min_samples_leaf": 20
+      },
+      {
+        "min_samples_leaf": 50
+      }
+    ]
+  },
+  "fixed_parameters": {
+    "RF": {
+      "n_estimators": 128,
+      "max_features": 1.0,
+      "random_state": 20261030
+    },
+    "SVR": {
+      "kernel": "rbf",
+      "gamma": "scale",
+      "epsilon": {
+        "sppb": 0.1,
+        "tug": 0.5
+      }
+    }
+  },
+  "clipping_or_rounding": false,
+  "features_sha256": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+  "sklearn": "1.9.1",
+  "numpy": "2.3.5",
+  "pandas": "3.0.1",
+  "interpretation": "exploratory sensor-feature prediction; no video or independent external validation"
+}

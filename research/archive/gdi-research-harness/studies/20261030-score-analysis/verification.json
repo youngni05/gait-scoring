@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "people": 175,
+  "records": 203,
+  "sides": 2,
+  "folds": [
+    {
+      "fold": 0,
+      "train_people": 140,
+      "test_people": 35,
+      "train_records": 163,
+      "test_records": 40,
+      "normal_equation_relative_residual": 9.282255823667975e-15,
+      "replay_max_difference": 0.0
+    },
+    {
+      "fold": 1,
+      "train_people": 140,
+      "test_people": 35,
+      "train_records": 164,
+      "test_records": 39,
+      "normal_equation_relative_residual": 1.3962385666203794e-14,
+      "replay_max_difference": 0.0
+    },
+    {
+      "fold": 2,
+      "train_people": 140,
+      "test_people": 35,
+      "train_records": 162,
+      "test_records": 41,
+      "normal_equation_relative_residual": 1.2394554156301822e-14,
+      "replay_max_difference": 0.0
+    },
+    {
+      "fold": 3,
+      "train_people": 140,
+      "test_people": 35,
+      "train_records": 159,
+      "test_records": 44,
+      "normal_equation_relative_residual": 1.2514738698798897e-14,
+      "replay_max_difference": 0.0
+    },
+    {
+      "fold": 4,
+      "train_people": 140,
+      "test_people": 35,
+      "train_records": 164,
+      "test_records": 39,
+      "normal_equation_relative_residual": 1.7784582030706972e-14,
+      "replay_max_difference": 0.0
+    }
+  ],
+  "fold_people_disjoint": true,
+  "train_only_scalers_reproduced": true,
+  "ridge_alpha1_normal_equation_checked": true,
+  "baseline_replay_max_difference": 0.0,
+  "all_fold_predictions_covered": true,
+  "all_values_finite": true,
+  "confusion_count_per_model_window": 406,
+  "bin_probability_partition": true,
+  "inputs_unchanged": true,
+  "source_hashes": {
+    "train_only.npz": "9086b881c7ae2de17c517eb1f3d2cfef583c54893edc8455c9d0a81e668147ca",
+    "baseline_heads.npz": "a01574d2b2c14b0514905e53439b6b17e0dcc300fb746e43c26d6cf10db9050c",
+    "baseline_predictions.npz": "d33a379296d71dc4d9bc635d720978924bb7b485ffdb69ab02b22b867f2f0d97",
+    "README.md": "a87a4d5ee152c9352803dacb8149543a4fb546923912aa224d00c2f622e9e039"
+  },
+  "protected_data_read": false,
+  "new_training": false,
+  "new_pose_inference": false,
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.3.5",
+  "matplotlib": "3.11.2",
+  "independent_verification": {
+    "passed": true,
+    "person_macro_metrics_recomputed": true,
+    "confusion_weighted_diagonal_matches_exact_rate": true,
+    "score_band_and_boundary_counts_complete": true,
+    "fixed_half_open_interval_boundary_cases": true,
+    "all_four_pngs_readable": true,
+    "report_image_links_valid": true,
+    "report_figures_visually_reviewed": true,
+    "inputs_still_unchanged": true,
+    "checked_at_kst": "2026-10-30T13:23:06+09:00"
+  }
+}

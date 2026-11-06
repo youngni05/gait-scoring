@@ -1,0 +1,244 @@
+{
+  "people": 76,
+  "records": 79,
+  "people_per_original_fold": {
+    "0": 13,
+    "1": 12,
+    "2": 15,
+    "3": 16,
+    "4": 20
+  },
+  "new_model_fits": 0,
+  "baseline_replay_max": 0.0,
+  "metrics": {
+    "original": {
+      "person_mae": {
+        "front": 9.424067816825033,
+        "last": 10.587451818491365,
+        "mean2": 9.82388071018404
+      },
+      "score_gap": {
+        "mean": 4.443816875371328,
+        "median": 3.752307105318188
+      },
+      "feature_gap": {
+        "mean": 0.7586129114749081,
+        "median": 0.6621709915151297
+      },
+      "prediction_person_sd": {
+        "front": 4.774118954311538,
+        "last": 4.704662068832209,
+        "mean2": 4.294048840171396
+      }
+    },
+    "control": {
+      "person_mae": {
+        "front": 9.56633878806239,
+        "last": 11.489708718172675,
+        "mean2": 10.000016046785367
+      },
+      "score_gap": {
+        "mean": 6.677723600555686,
+        "median": 6.276006888044403
+      },
+      "feature_gap": {
+        "mean": 0.9067784353728299,
+        "median": 0.7858115463030929
+      },
+      "prediction_person_sd": {
+        "front": 5.8823960451227775,
+        "last": 5.193994145811657,
+        "mean2": 4.741032058710405
+      }
+    },
+    "aligned": {
+      "person_mae": {
+        "front": 9.488250124443562,
+        "last": 11.41905063711144,
+        "mean2": 9.952642222702341
+      },
+      "score_gap": {
+        "mean": 6.690474850642079,
+        "median": 6.505562561359039
+      },
+      "feature_gap": {
+        "mean": 0.9291049149153486,
+        "median": 0.837648002765213
+      },
+      "prediction_person_sd": {
+        "front": 5.848219166654362,
+        "last": 4.887848023140841,
+        "mean2": 4.585331842892612
+      }
+    }
+  },
+  "comparisons": {
+    "control_vs_original": {
+      "mae_front": {
+        "reduction": -0.14227097123735874,
+        "bootstrap95": [
+          -0.5425897648609803,
+          0.2804993579515955
+        ],
+        "people_improved": 33,
+        "people_worsened": 43
+      },
+      "mae_last": {
+        "reduction": -0.9022568996813102,
+        "bootstrap95": [
+          -1.550141737363721,
+          -0.2955862867099643
+        ],
+        "people_improved": 27,
+        "people_worsened": 49
+      },
+      "mae_mean2": {
+        "reduction": -0.17613533660132463,
+        "bootstrap95": [
+          -0.5960108597243653,
+          0.23272964416614778
+        ],
+        "people_improved": 34,
+        "people_worsened": 42
+      },
+      "score_gap": {
+        "reduction": -2.233906725184358,
+        "bootstrap95": [
+          -3.03340482178134,
+          -1.5101560657278499
+        ],
+        "people_improved": 19,
+        "people_worsened": 57
+      },
+      "feature_gap": {
+        "reduction": -0.14816552389792184,
+        "bootstrap95": [
+          -0.2090683582408917,
+          -0.08648628833873898
+        ],
+        "people_improved": 21,
+        "people_worsened": 55
+      }
+    },
+    "aligned_vs_control": {
+      "mae_front": {
+        "reduction": 0.07808866361882705,
+        "bootstrap95": [
+          -0.1830937703627131,
+          0.356898001353189
+        ],
+        "people_improved": 38,
+        "people_worsened": 38
+      },
+      "mae_last": {
+        "reduction": 0.07065808106123488,
+        "bootstrap95": [
+          -0.2901901549377954,
+          0.4504260277897915
+        ],
+        "people_improved": 37,
+        "people_worsened": 37
+      },
+      "mae_mean2": {
+        "reduction": 0.04737382408302316,
+        "bootstrap95": [
+          -0.1910710633546015,
+          0.3134438590771376
+        ],
+        "people_improved": 38,
+        "people_worsened": 38
+      },
+      "score_gap": {
+        "reduction": -0.01275125008639105,
+        "bootstrap95": [
+          -0.44876625605372045,
+          0.4439311570883614
+        ],
+        "people_improved": 39,
+        "people_worsened": 37
+      },
+      "feature_gap": {
+        "reduction": -0.022326479542518738,
+        "bootstrap95": [
+          -0.07041129794049557,
+          0.022598413487940994
+        ],
+        "people_improved": 42,
+        "people_worsened": 34
+      }
+    },
+    "aligned_vs_original": {
+      "mae_front": {
+        "reduction": -0.06418230761853169,
+        "bootstrap95": [
+          -0.490983108685558,
+          0.3789899971087317
+        ],
+        "people_improved": 34,
+        "people_worsened": 42
+      },
+      "mae_last": {
+        "reduction": -0.8315988186200752,
+        "bootstrap95": [
+          -1.4506723287943522,
+          -0.21958526451466445
+        ],
+        "people_improved": 34,
+        "people_worsened": 42
+      },
+      "mae_mean2": {
+        "reduction": -0.12876151251830148,
+        "bootstrap95": [
+          -0.5429300705889235,
+          0.28824543747591086
+        ],
+        "people_improved": 38,
+        "people_worsened": 38
+      },
+      "score_gap": {
+        "reduction": -2.2466579752707494,
+        "bootstrap95": [
+          -3.0374408072512433,
+          -1.5236923127986786
+        ],
+        "people_improved": 19,
+        "people_worsened": 57
+      },
+      "feature_gap": {
+        "reduction": -0.1704920034404406,
+        "bootstrap95": [
+          -0.23264418045584578,
+          -0.11109968594894355
+        ],
+        "people_improved": 21,
+        "people_worsened": 55
+      }
+    }
+  },
+  "selected_two_cycle_duration_frames": {
+    "front": {
+      "median": 57.0,
+      "min": 35,
+      "max": 79,
+      "median_abs_start_shift": 9.0
+    },
+    "last": {
+      "median": 58.0,
+      "min": 36,
+      "max": 86,
+      "median_abs_start_shift": 10.0
+    }
+  },
+  "selected_period_agreement25": 74,
+  "identical_control_and_aligned_records": 0,
+  "missing_fractions": {
+    "control_front": 0.03690202736442624,
+    "control_last": 0.02184347847797863,
+    "aligned_front": 0.03639019274942575,
+    "aligned_last": 0.02209315389993009
+  },
+  "generalizes_to_all175": false,
+  "clinical_gait_events_validated": false,
+  "time_resampling_changes_cadence": true,
+  "protected_data_used": false
+}

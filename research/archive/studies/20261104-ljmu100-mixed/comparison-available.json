@@ -1,0 +1,311 @@
+{
+  "status": "partial_verified_models",
+  "data_sha256": "306f6f2139a58c0b7716175b6edb05d5072e35f98fdaec0f01b9d40693a08ca9",
+  "metric": "Equal-person average of record/side absolute errors; same held-out people before and after.",
+  "uncertainty": "Paired 10000 person bootstrap, seed20261104. Conditional on these fitted OOF models; development reuse, not independent final validation.",
+  "LJMU_interpretation": "Distance from assumed100. No measured LJMU GDI available.",
+  "rows": [
+    {
+      "model": "CNN_refit",
+      "source": "Stanford",
+      "people": 692,
+      "records": 1061,
+      "before_MAE": 6.866655269796397,
+      "after_MAE": 6.873173230300491,
+      "delta_after_minus_before": 0.006517960504094696,
+      "delta_95pct_low": -0.18797751709002403,
+      "delta_95pct_high": 0.20311773126742563,
+      "before_bias": 0.14790322182606624,
+      "after_bias": -0.13252263297476247,
+      "before_mean_prediction": 74.87266574521678,
+      "after_mean_prediction": 74.59223989041597,
+      "label_kind": "measured_GDI"
+    },
+    {
+      "model": "CNN_refit",
+      "source": "LJMU",
+      "people": 64,
+      "records": 881,
+      "before_MAE": 22.644181902826656,
+      "after_MAE": 0.9648377816482571,
+      "delta_after_minus_before": -21.679344121178396,
+      "delta_95pct_low": -22.986709753687343,
+      "delta_95pct_high": -20.399008605202802,
+      "before_bias": -22.64088105496468,
+      "after_bias": 0.46269879443664524,
+      "before_mean_prediction": 77.3591189450353,
+      "after_mean_prediction": 100.46269879443665,
+      "label_kind": "assumed_100"
+    },
+    {
+      "model": "RF",
+      "source": "Stanford",
+      "people": 692,
+      "records": 1061,
+      "before_MAE": 7.181832938236777,
+      "after_MAE": 7.4287569906314745,
+      "delta_after_minus_before": 0.24692405239469659,
+      "delta_95pct_low": 0.11966158094145476,
+      "delta_95pct_high": 0.38329458518084886,
+      "before_bias": 0.20282715394914155,
+      "after_bias": 1.022894020074383,
+      "before_mean_prediction": 74.92758967733985,
+      "after_mean_prediction": 75.7476565434651,
+      "label_kind": "measured_GDI"
+    },
+    {
+      "model": "RF",
+      "source": "LJMU",
+      "people": 64,
+      "records": 881,
+      "before_MAE": 17.440001601945987,
+      "after_MAE": 1.5796204178414364,
+      "delta_after_minus_before": -15.860381184104556,
+      "delta_95pct_low": -16.5448115249798,
+      "delta_95pct_high": -15.151348837005507,
+      "before_bias": -17.440001601945987,
+      "after_bias": -1.5777498319202576,
+      "before_mean_prediction": 82.55999839805402,
+      "after_mean_prediction": 98.42225016807974,
+      "label_kind": "assumed_100"
+    },
+    {
+      "model": "STT_refit",
+      "source": "Stanford",
+      "people": 692,
+      "records": 1061,
+      "before_MAE": 6.9449881808715,
+      "after_MAE": 7.115339706355198,
+      "delta_after_minus_before": 0.17035152548369747,
+      "delta_95pct_low": 0.009095632967380793,
+      "delta_95pct_high": 0.33822626651755155,
+      "before_bias": 0.07029532314583027,
+      "after_bias": 0.1300655352085051,
+      "before_mean_prediction": 74.79505784653655,
+      "after_mean_prediction": 74.85482805859922,
+      "label_kind": "measured_GDI"
+    },
+    {
+      "model": "STT_refit",
+      "source": "LJMU",
+      "people": 64,
+      "records": 881,
+      "before_MAE": 17.83393627725672,
+      "after_MAE": 1.2606560973644054,
+      "delta_after_minus_before": -16.573280179892315,
+      "delta_95pct_low": -17.33624587264843,
+      "delta_95pct_high": -15.801238945421364,
+      "before_bias": -17.805469203350153,
+      "after_bias": -0.24858426865479816,
+      "before_mean_prediction": 82.19453079664984,
+      "after_mean_prediction": 99.7514157313452,
+      "label_kind": "assumed_100"
+    },
+    {
+      "model": "CNN_bag",
+      "source": "Stanford",
+      "people": 692,
+      "records": 1061,
+      "before_MAE": 6.590389059228339,
+      "after_MAE": 6.697039304944174,
+      "delta_after_minus_before": 0.10665024571583548,
+      "delta_95pct_low": -0.016888293456498078,
+      "delta_95pct_high": 0.22867161830422175,
+      "before_bias": 0.11283425937512699,
+      "after_bias": -0.09095626751068744,
+      "before_mean_prediction": 74.83759678276584,
+      "after_mean_prediction": 74.63380625588003,
+      "label_kind": "measured_GDI"
+    },
+    {
+      "model": "CNN_bag",
+      "source": "LJMU",
+      "people": 64,
+      "records": 881,
+      "before_MAE": 22.320643666353668,
+      "after_MAE": 0.8572876132431002,
+      "delta_after_minus_before": -21.463356053110566,
+      "delta_95pct_low": -23.05558969560738,
+      "delta_95pct_high": -20.252442561966483,
+      "before_bias": -20.657503377354487,
+      "after_bias": 0.22454884380021822,
+      "before_mean_prediction": 79.34249662264551,
+      "after_mean_prediction": 100.22454884380022,
+      "label_kind": "assumed_100"
+    },
+    {
+      "model": "STT_bag",
+      "source": "Stanford",
+      "people": 692,
+      "records": 1061,
+      "before_MAE": 6.752031430243927,
+      "after_MAE": 6.919538290185698,
+      "delta_after_minus_before": 0.1675068599417716,
+      "delta_95pct_low": 0.052623371680559645,
+      "delta_95pct_high": 0.28423644955698407,
+      "before_bias": 0.09386516490331011,
+      "after_bias": 0.06741209929852648,
+      "before_mean_prediction": 74.81862768829403,
+      "after_mean_prediction": 74.79217462268925,
+      "label_kind": "measured_GDI"
+    },
+    {
+      "model": "STT_bag",
+      "source": "LJMU",
+      "people": 64,
+      "records": 881,
+      "before_MAE": 18.23403788169363,
+      "after_MAE": 1.2186036708258974,
+      "delta_after_minus_before": -17.01543421086774,
+      "delta_95pct_low": -17.72185655844922,
+      "delta_95pct_high": -16.3120971002901,
+      "before_bias": -18.23076441095352,
+      "after_bias": -0.43831083998327847,
+      "before_mean_prediction": 81.76923558904649,
+      "after_mean_prediction": 99.56168916001673,
+      "label_kind": "assumed_100"
+    }
+  ],
+  "Stanford_true_person_mean_GDI_groups": [
+    {
+      "model": "CNN_refit",
+      "group": "below60",
+      "people": 62,
+      "baseline_MAE": 8.53299728810418,
+      "mixed_MAE": 9.541725370776117
+    },
+    {
+      "model": "CNN_refit",
+      "group": "60to75",
+      "people": 310,
+      "baseline_MAE": 6.343574717960086,
+      "mixed_MAE": 5.863211417876183
+    },
+    {
+      "model": "CNN_refit",
+      "group": "75to90",
+      "people": 252,
+      "baseline_MAE": 6.7149534729520415,
+      "mixed_MAE": 6.512825066040297
+    },
+    {
+      "model": "CNN_refit",
+      "group": "90plus",
+      "people": 68,
+      "baseline_MAE": 8.294164368898642,
+      "mixed_MAE": 10.37972714994191
+    },
+    {
+      "model": "RF",
+      "group": "below60",
+      "people": 62,
+      "baseline_MAE": 9.806798270049214,
+      "mixed_MAE": 10.056571719150126
+    },
+    {
+      "model": "RF",
+      "group": "60to75",
+      "people": 310,
+      "baseline_MAE": 6.302316562945182,
+      "mixed_MAE": 6.813122099331759
+    },
+    {
+      "model": "RF",
+      "group": "75to90",
+      "people": 252,
+      "baseline_MAE": 6.4630664040380745,
+      "mixed_MAE": 6.6084663486576245
+    },
+    {
+      "model": "RF",
+      "group": "90plus",
+      "people": 68,
+      "baseline_MAE": 11.461706355679372,
+      "mixed_MAE": 10.879279709928014
+    },
+    {
+      "model": "STT_refit",
+      "group": "below60",
+      "people": 62,
+      "baseline_MAE": 8.643640836034814,
+      "mixed_MAE": 9.326623347819769
+    },
+    {
+      "model": "STT_refit",
+      "group": "60to75",
+      "people": 310,
+      "baseline_MAE": 6.376305986080329,
+      "mixed_MAE": 6.467142111848263
+    },
+    {
+      "model": "STT_refit",
+      "group": "75to90",
+      "people": 252,
+      "baseline_MAE": 6.511795575550385,
+      "mixed_MAE": 6.543966914725604
+    },
+    {
+      "model": "STT_refit",
+      "group": "90plus",
+      "people": 68,
+      "baseline_MAE": 9.594099244195892,
+      "mixed_MAE": 10.17162811836996
+    },
+    {
+      "model": "CNN_bag",
+      "group": "below60",
+      "people": 62,
+      "baseline_MAE": 7.835513259887649,
+      "mixed_MAE": 9.092561919322065
+    },
+    {
+      "model": "CNN_bag",
+      "group": "60to75",
+      "people": 310,
+      "baseline_MAE": 6.049146100586583,
+      "mixed_MAE": 5.800605693863595
+    },
+    {
+      "model": "CNN_bag",
+      "group": "75to90",
+      "people": 252,
+      "baseline_MAE": 6.482103270980942,
+      "mixed_MAE": 6.343122439776467
+    },
+    {
+      "model": "CNN_bag",
+      "group": "90plus",
+      "people": 68,
+      "baseline_MAE": 8.323854285352029,
+      "mixed_MAE": 9.911143236794365
+    },
+    {
+      "model": "STT_bag",
+      "group": "below60",
+      "people": 62,
+      "baseline_MAE": 8.151384203006938,
+      "mixed_MAE": 8.857780644906674
+    },
+    {
+      "model": "STT_bag",
+      "group": "60to75",
+      "people": 310,
+      "baseline_MAE": 6.168672699524033,
+      "mixed_MAE": 6.170989636874847
+    },
+    {
+      "model": "STT_bag",
+      "group": "75to90",
+      "people": 252,
+      "baseline_MAE": 6.409021911671256,
+      "mixed_MAE": 6.4613944596506805
+    },
+    {
+      "model": "STT_bag",
+      "group": "90plus",
+      "people": 68,
+      "baseline_MAE": 9.406733390422936,
+      "mixed_MAE": 10.262645670016399
+    }
+  ]
+}

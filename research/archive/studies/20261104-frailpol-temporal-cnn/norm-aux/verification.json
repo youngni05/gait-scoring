@@ -1,0 +1,305 @@
+{
+  "status": "partially_passed_with_auxiliary_logit_failures",
+  "fits": 100,
+  "inner_checkpoint_replays": 300,
+  "final_checkpoint_replays": 25,
+  "TUG_CPU64_replay_status": "passed_all325",
+  "passed_conditions": [
+    "full_tail4",
+    "norm_tail4",
+    "symnorm_tail4",
+    "symnorm_tail16"
+  ],
+  "failed_conditions": [
+    "symnorm_aux_tail4"
+  ],
+  "condition_status": {
+    "full_tail4": "passed_all65_checkpoints_and_other_gates",
+    "norm_tail4": "passed_all65_checkpoints_and_other_gates",
+    "symnorm_tail4": "passed_all65_checkpoints_and_other_gates",
+    "symnorm_tail16": "passed_all65_checkpoints_and_other_gates",
+    "symnorm_aux_tail4": "failed_auxiliary_logit_CPU64_tolerance"
+  },
+  "auxiliary_failure_details": {
+    "full_tail4": [],
+    "norm_tail4": [],
+    "symnorm_tail4": [],
+    "symnorm_tail16": [],
+    "symnorm_aux_tail4": [
+      {
+        "context": "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\norm-aux\\symnorm_aux_tail4\\fold2\\inner2\\context.json",
+        "epoch": 100,
+        "checkpoint": "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\norm-aux\\symnorm_aux_tail4\\fold2\\inner2\\epoch100.pt",
+        "failed_points": 2,
+        "total_logits": 314,
+        "max_delta": 2.46141653015286e-06,
+        "same_CPU32_TUG_and_aux_exact": true,
+        "original_CPU64_tolerance_failed": true
+      },
+      {
+        "context": "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\norm-aux\\symnorm_aux_tail4\\fold4\\inner0\\context.json",
+        "epoch": 100,
+        "checkpoint": "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\norm-aux\\symnorm_aux_tail4\\fold4\\inner0\\epoch100.pt",
+        "failed_points": 1,
+        "total_logits": 316,
+        "max_delta": 2.434936190898185e-06,
+        "same_CPU32_TUG_and_aux_exact": true,
+        "original_CPU64_tolerance_failed": true
+      },
+      {
+        "context": "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\norm-aux\\symnorm_aux_tail4\\fold4\\inner1\\context.json",
+        "epoch": 50,
+        "checkpoint": "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\norm-aux\\symnorm_aux_tail4\\fold4\\inner1\\epoch50.pt",
+        "failed_points": 2,
+        "total_logits": 316,
+        "max_delta": 1.7387312938321742e-06,
+        "same_CPU32_TUG_and_aux_exact": true,
+        "original_CPU64_tolerance_failed": true
+      },
+      {
+        "context": "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\norm-aux\\symnorm_aux_tail4\\fold4\\final\\context.json",
+        "epoch": 100,
+        "checkpoint": "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\norm-aux\\symnorm_aux_tail4\\fold4\\final\\epoch100.pt",
+        "failed_points": 1,
+        "total_logits": 242,
+        "max_delta": 3.7280960043517553e-06,
+        "same_CPU32_TUG_and_aux_exact": true,
+        "original_CPU64_tolerance_failed": true
+      }
+    ]
+  },
+  "all_auxiliary_logits_replayed": true,
+  "all_auxiliary_logits_CPU64_tolerance_passed": false,
+  "all_auxiliary_logits_CPU32_exact_replay_passed": true,
+  "checks": [
+    {
+      "condition": "full_tail4",
+      "fold": 0,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.1138784624952223e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "full_tail4",
+      "fold": 1,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.042246091349398e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "full_tail4",
+      "fold": 2,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.7294309507274193e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "full_tail4",
+      "fold": 3,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.111422077177849e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "full_tail4",
+      "fold": 4,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.534362131711987e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "norm_tail4",
+      "fold": 0,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.728667645612859e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "norm_tail4",
+      "fold": 1,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.008166480356067e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "norm_tail4",
+      "fold": 2,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.5122295603807743e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "norm_tail4",
+      "fold": 3,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 1.931312883840519e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "norm_tail4",
+      "fold": 4,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 4.161325211526901e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail4",
+      "fold": 0,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.405058563998864e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail4",
+      "fold": 1,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.7013619359195218e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail4",
+      "fold": 2,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.535218044386056e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail4",
+      "fold": 3,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 4.525753020345746e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail4",
+      "fold": 4,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.354574058533899e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail16",
+      "fold": 0,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.284584855516414e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail16",
+      "fold": 1,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.5253237555821215e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail16",
+      "fold": 2,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.1995668550166556e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail16",
+      "fold": 3,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.127110377614372e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_tail16",
+      "fold": 4,
+      "epoch": 10,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.3658057780883155e-06,
+      "max_cpu64_aux_logit_delta": 0,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_aux_tail4",
+      "fold": 0,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.445824428320975e-06,
+      "max_cpu64_aux_logit_delta": 2.8659325947977266e-06,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_aux_tail4",
+      "fold": 1,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.168963026212168e-06,
+      "max_cpu64_aux_logit_delta": 2.576609759330495e-06,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_aux_tail4",
+      "fold": 2,
+      "epoch": 50,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.471855552244051e-06,
+      "max_cpu64_aux_logit_delta": 2.46141653015286e-06,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_aux_tail4",
+      "fold": 3,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 2.4602026869047222e-06,
+      "max_cpu64_aux_logit_delta": 2.5733473574263144e-06,
+      "person_normalization_aux_weights_and_selection_verified": true
+    },
+    {
+      "condition": "symnorm_aux_tail4",
+      "fold": 4,
+      "epoch": 100,
+      "checkpoints": 13,
+      "max_cpu64_TUG_delta_seconds": 3.0320022581520334e-06,
+      "max_cpu64_aux_logit_delta": 3.7280960043517553e-06,
+      "person_normalization_aux_weights_and_selection_verified": true
+    }
+  ],
+  "comparison_sha256": "019c43e488043ee1a9220b2301691b4237581a8e517af7f05ca64cef831fdb18",
+  "heldout_sha256": "762c6019a17c45e7474993a3b55690b889b391555d67c0e46831b7b86fa6460a",
+  "review_code_sha256": "4378e2aa088aeeaf4a83e0fb00750dfb57262c72ea41a88f579f5d76d1071434",
+  "limits": "OriginalCPU64pointtolerance1e-6absolute+relative retainedforTUGandauxlogits. Failedconditionremainsfailed;noall-studyPASSclaim. Otherindependentconditionsfullycheckedonthesame594/9,andallfiveoutcomesreported. No model/labels/predictionschanged."
+}

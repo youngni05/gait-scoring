@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "development_binned_predictions_vs_original_CSV_max_error": 5.872391994898862e-07,
+  "sensitivity_reaggregation_max_error": 3.078440280468442e-14,
+  "highres_records": 4,
+  "highres_all_five_folds_and_full_window_means_match": true,
+  "original_selection_unchanged": true,
+  "bundle_files_unchanged": 684,
+  "quality": {
+    "omitted_for_public_snapshot": true,
+    "count": 4
+  },
+  "not_verified": [
+    "Anatomical ground-truth joints",
+    "Identical physical camera/timebase across development and GAVD",
+    "Exclusive causal contribution of model vs pose vs population shift"
+  ]
+}

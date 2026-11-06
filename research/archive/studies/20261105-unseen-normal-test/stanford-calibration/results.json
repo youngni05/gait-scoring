@@ -1,0 +1,325 @@
+{
+  "replay": {
+    "stanford_mixed": 0.0,
+    "ljmu_mixed": 1.280903823897006e-05,
+    "live_mixed": 0.0,
+    "self_mixed": 0.0
+  },
+  "ols_closed_form_max_error": 7.460698725481052e-14,
+  "stanford": {
+    "all": {
+      "baseline": {
+        "mae": 6.51581659390443,
+        "bias": 0.09763149206692788,
+        "delta_vs_baseline": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mixed": {
+        "mae": 6.680974926848756,
+        "bias": -0.03181077130525892,
+        "delta_vs_baseline": 0.16515833294432586,
+        "delta_ci95": [
+          0.0614532452146642,
+          0.2692558373368933
+        ]
+      },
+      "mixed_stanford_cal": {
+        "mae": 6.654577569842923,
+        "bias": 0.37939388682667347,
+        "delta_vs_baseline": 0.13876097593849332,
+        "delta_ci95": [
+          0.052918377604453656,
+          0.22417937476716235
+        ]
+      },
+      "people": 692,
+      "side_observations": 2122
+    },
+    "ge90": {
+      "baseline": {
+        "mae": 9.757169941110112,
+        "bias": -9.502380811825656,
+        "delta_vs_baseline": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mixed": {
+        "mae": 11.169002824901279,
+        "bias": -11.119097208728613,
+        "delta_vs_baseline": 1.411832883791169,
+        "delta_ci95": [
+          1.1327574939612333,
+          1.678099754960268
+        ]
+      },
+      "mixed_stanford_cal": {
+        "mae": 9.75267452325503,
+        "bias": -9.437614354983392,
+        "delta_vs_baseline": -0.00449541785508142,
+        "delta_ci95": [
+          -0.24598398775136343,
+          0.21916096086567216
+        ]
+      },
+      "people": 162,
+      "side_observations": 255
+    },
+    "ge100": {
+      "baseline": {
+        "mae": 15.07944706951184,
+        "bias": -15.07944706951184,
+        "delta_vs_baseline": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mixed": {
+        "mae": 16.887988529576482,
+        "bias": -16.887988529576482,
+        "delta_vs_baseline": 1.8085414600646432,
+        "delta_ci95": [
+          1.2537146794820382,
+          2.302186124516181
+        ]
+      },
+      "mixed_stanford_cal": {
+        "mae": 14.714053212056273,
+        "bias": -14.714053212056273,
+        "delta_vs_baseline": -0.36539385745556824,
+        "delta_ci95": [
+          -0.9622668807424943,
+          0.14231613049316102
+        ]
+      },
+      "people": 36,
+      "side_observations": 44
+    },
+    "lt70": {
+      "baseline": {
+        "mae": 7.177689868191158,
+        "bias": 5.780126501610145,
+        "delta_vs_baseline": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "mixed": {
+        "mae": 7.4487863924614475,
+        "bias": 6.537275006158079,
+        "delta_vs_baseline": 0.2710965242702901,
+        "delta_ci95": [
+          0.11973810328176246,
+          0.42859380300614547
+        ]
+      },
+      "mixed_stanford_cal": {
+        "mae": 7.518166010253654,
+        "bias": 6.201355110953743,
+        "delta_vs_baseline": 0.34047614206249477,
+        "delta_ci95": [
+          0.20115412009134734,
+          0.4892503915325543
+        ]
+      },
+      "people": 383,
+      "side_observations": 738
+    }
+  },
+  "slope": {
+    "baseline": 0.5660162663618608,
+    "mixed": 0.4900594454837888,
+    "mixed_stanford_cal": 0.557101791499526
+  },
+  "correlation": {
+    "baseline": 0.7438482196087982,
+    "mixed": 0.7301867537494633,
+    "mixed_stanford_cal": 0.7307867548789999
+  },
+  "prediction_sd": {
+    "baseline": 9.168055818288392,
+    "mixed": 8.086255852145172,
+    "mixed_stanford_cal": 9.184944829756692
+  },
+  "external": {
+    "mixed": {
+      "live_mean": 95.49448312302009,
+      "live_sd": 3.5423653681941834,
+      "live_ci95": [
+        93.31581379592903,
+        97.65767769959102
+      ],
+      "self_normal_mean": 91.51769810187459,
+      "self_normal_min": 84.87756036397616,
+      "self_normal_max": 95.00771799013506,
+      "self_abnormal_mean": 69.79030268878371,
+      "self_abnormal_min": 68.16625787148519,
+      "self_abnormal_max": 72.46712320591642,
+      "gap": 21.727395413090875,
+      "ranges_overlap": false,
+      "videos": {
+        "omitted_for_public_snapshot": true,
+        "count": 13
+      }
+    },
+    "mixed_stanford_cal": {
+      "live_mean": 98.83193072647164,
+      "live_sd": 4.071900552151602,
+      "live_ci95": [
+        96.33011110083602,
+        101.31431987901735
+      ],
+      "self_normal_mean": 94.22511229190302,
+      "self_normal_min": 86.59863609145626,
+      "self_normal_max": 98.2331350415883,
+      "self_abnormal_mean": 69.45762276367975,
+      "self_abnormal_min": 67.59122600717058,
+      "self_abnormal_max": 72.47663146262447,
+      "gap": 24.767489528223265,
+      "ranges_overlap": false,
+      "videos": {
+        "omitted_for_public_snapshot": true,
+        "count": 13
+      }
+    }
+  },
+  "ljmu_mean": {
+    "mixed": 99.87541966846402,
+    "mixed_stanford_cal": 103.87190112505255
+  },
+  "refit_calibration": [
+    {
+      "family": "CNN",
+      "fold": 0,
+      "mixed_slope": 0.9852201097210755,
+      "mixed_intercept": 2.4599816490507496,
+      "stanford_slope": 1.0776918059938931,
+      "stanford_intercept": -4.0237500547595
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "mixed_slope": 0.9554333204020182,
+      "mixed_intercept": 5.282016476485088,
+      "stanford_slope": 1.1596898597302792,
+      "stanford_intercept": -8.990117586802855
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "mixed_slope": 0.930665649858169,
+      "mixed_intercept": 7.941384609018977,
+      "stanford_slope": 1.1769177794130952,
+      "stanford_intercept": -9.016364166629288
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "mixed_slope": 0.9465496114247433,
+      "mixed_intercept": 5.7708600287359895,
+      "stanford_slope": 1.224937676106371,
+      "stanford_intercept": -13.694213023335838
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "mixed_slope": 1.006304643101883,
+      "mixed_intercept": 0.9598712033820113,
+      "stanford_slope": 1.3419275277740508,
+      "stanford_intercept": -22.851384686433526
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "mixed_slope": 1.0615068013219604,
+      "mixed_intercept": -5.914746247390555,
+      "stanford_slope": 1.1690034596553585,
+      "stanford_intercept": -13.74249154050079
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "mixed_slope": 1.0689730970428295,
+      "mixed_intercept": -6.3862971633490915,
+      "stanford_slope": 1.1619046943348015,
+      "stanford_intercept": -13.184111980161939
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "mixed_slope": 1.066281063459958,
+      "mixed_intercept": -6.619408722142154,
+      "stanford_slope": 1.1604999939245835,
+      "stanford_intercept": -13.522424372645329
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "mixed_slope": 1.044003635048366,
+      "mixed_intercept": -3.42387181946695,
+      "stanford_slope": 1.1517747683463342,
+      "stanford_intercept": -11.205101925782433
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "mixed_slope": 1.034230199483456,
+      "mixed_intercept": -2.597058443399945,
+      "stanford_slope": 1.2078621325434675,
+      "stanford_intercept": -15.045373226602504
+    },
+    {
+      "family": "bilateral",
+      "fold": 0,
+      "mixed_slope": 1.0387683246182953,
+      "mixed_intercept": -2.971966156873896,
+      "stanford_slope": 1.1364597969973442,
+      "stanford_intercept": -9.916788764247675
+    },
+    {
+      "family": "bilateral",
+      "fold": 1,
+      "mixed_slope": 1.082835554339694,
+      "mixed_intercept": -6.519511316558733,
+      "stanford_slope": 1.1368788616810461,
+      "stanford_intercept": -10.406505834063346
+    },
+    {
+      "family": "bilateral",
+      "fold": 2,
+      "mixed_slope": 1.045514217675681,
+      "mixed_intercept": -4.583596089594202,
+      "stanford_slope": 1.119380199344031,
+      "stanford_intercept": -9.906414769616113
+    },
+    {
+      "family": "bilateral",
+      "fold": 3,
+      "mixed_slope": 1.026534937761302,
+      "mixed_intercept": -3.1261154862331293,
+      "stanford_slope": 1.1083401118453642,
+      "stanford_intercept": -9.003305669949555
+    },
+    {
+      "family": "bilateral",
+      "fold": 4,
+      "mixed_slope": 1.0434413220363368,
+      "mixed_intercept": -4.687613237218446,
+      "stanford_slope": 1.077101041526037,
+      "stanford_intercept": -7.117676809724279
+    }
+  ],
+  "verdict": {
+    "C1_stanford_high_recovery": true,
+    "C1_upper": 0.21916096086567216,
+    "C2_external_kept": true,
+    "C3_discrimination_kept": true,
+    "overall": "both_effects_coexist"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "cohorts": {
+    "exclude283": {
+      "people": 176,
+      "long_people": 8,
+      "views": [
+        "Baseline_10",
+        "Baseline_20",
+        "Baseline_30",
+        "Pooled_10",
+        "Directional_10",
+        "Pooled_20",
+        "Directional_20",
+        "Pooled_30",
+        "Directional_30"
+      ],
+      "hashes": {
+        "input.npz": "6c46f26a4aba0620ee038672f879044835c6cd1cfd8d9519d73ba566e429b03e",
+        "manifest.json": "ef36798bc6297f8fce7495b94bd86e4d5daed7eaf20c5215e408401dce70feb6",
+        "splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8"
+      }
+    },
+    "include283": {
+      "people": 177,
+      "long_people": 9,
+      "views": [
+        "Baseline_10",
+        "Baseline_20",
+        "Baseline_30",
+        "Pooled_10",
+        "Directional_10",
+        "Pooled_20",
+        "Directional_20",
+        "Pooled_30",
+        "Directional_30"
+      ],
+      "hashes": {
+        "input.npz": "b1eeec739426fc4cce26900a06d6f4339dedd93ebc3dd14c4c1abe5447017e74",
+        "manifest.json": "bc22c44dcf1baec729c190042994392d0d393c11f618d93059fc444060f1e28c",
+        "splits.json": "53a66e3096a7398cee071257dbe68605fc2163fd470c4dcc2005413dbcb75716"
+      }
+    }
+  },
+  "primary": "exclude283, max20s; Directional versus Baseline; Pooled ablation separates reciprocal pace from direction separation; all10/20/30 and include283 reported",
+  "hypothesis": "whole-window speed hides slow outbound or return gait; separate moving pace seconds/m may explain residual TUG beyond observed gait-stop offset",
+  "features": "Baseline exact prior Add10 (4 speed/turn columns + final fixed stop offset); Pooled adds 1/mean moving speed; Directional adds separate outbound/return 1/mean moving speed. Existing speed/turn columns and fixed offset unchanged.",
+  "pace": "same raw horizontal speed as existing moving-speed comparison; remove existing horizontal <0.10m/s episodes >=0.5s with <=0.2s bridging; each direction at least0.5s else pooled-speed fallback; no clipping of reciprocal or prediction upper range",
+  "exclusions": "no preparation, rise, sit, absolute timestamps, recording length or clinical target in new inputs; no person removal or new source acquisition",
+  "model": "same train-only StandardScaler and Ridge SVD; alpha0.1/1/10/100 inner3fold finalTUG MAE; target TUG-stop; prediction max(residual,0)+stop;5 unchanged person partitions x5 outer folds",
+  "interpretation": "pace is seconds per metre, not an observed or labelled whole-task movement duration; remainder also includes unobserved parts; stop candidates not independently video-confirmed",
+  "metrics": "person-equal errors over5 partitions; MAE, under, over; >=20s8/9people; conditional pairedperson bootstrap10000 seed20261031; sub397 SD/range; evaluation-only removal of397; common176 comparison for inclusion sensitivity",
+  "limits": "sameperson/visit clinical TUG but exact timed trial unconfirmed; full-record boundaries locate input windows, not online inference; maximum budgets not identical full-length10/20/30 acquisition; repeatedly inspected development cohort, no untouched external validation",
+  "source_hashes": {
+    "20261031-opencap-additive-stop\\exclude283\\input.npz": "1af700c7e6be7047e66ac0268bc03598c166dacace94af55b75cd5a24bb7651d",
+    "20261031-opencap-additive-stop\\exclude283\\manifest.json": "1adafc8db42198c7fa2e0c77ee19fb26af3d1671194bfe329806e3d8c7482c66",
+    "20261031-opencap-additive-stop\\exclude283\\splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8",
+    "20261031-opencap-additive-stop\\exclude283\\predictions.csv": "88c1574caa99441ec588a092c6c4b90d0d47a53fd787ef6aa3cc0c5d9068067f",
+    "20261031-opencap-additive-stop\\include283\\input.npz": "132adaed0d54a355b5c342f7527c9d836af9d22c543484e8deaa46c0474452ac",
+    "20261031-opencap-additive-stop\\include283\\manifest.json": "79403e0de2f377c09dd643d0e58a5ab9ae10b72f4dd47ed0d7fc095660fcc49a",
+    "20261031-opencap-additive-stop\\include283\\splits.json": "53a66e3096a7398cee071257dbe68605fc2163fd470c4dcc2005413dbcb75716",
+    "20261031-opencap-additive-stop\\include283\\predictions.csv": "8a0442de6313f50c2b3af401ac6803b01c2f1ff1d637d89510afdfc7fdee0978",
+    "20261031-opencap-additive-stop\\study.py": "1664bfced6e3cc10d3df66a489038ade6812f089d484c881c417e5e4b871e54a",
+    "20261031-opencap-long-observation\\study.py": "d532cb3578adda5fd7ea3db840a432b3b3518f325f58d011c9a3f3679247f231",
+    "20261031-opencap-long-observation\\traces.npz": "af112449b2eb91302e1e8fab99dbb80d9b5c077cd8a34afdeaa231d7d15a0590"
+  },
+  "code_sha256": "1ddc27b89dd30f72f5ef0a4c43b3516048769182715100f67f24cd4b898158bf"
+}

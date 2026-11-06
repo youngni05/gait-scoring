@@ -1,0 +1,170 @@
+{
+  "speed/config0/plain": {
+    "mae": 1.0821917344838254,
+    "p95": 3.081950908306206,
+    "slow_mae": 7.087050610508821,
+    "slow_bias": -7.087050610508821,
+    "goal_met": false
+  },
+  "speed/config0/guarded": {
+    "mae": 1.0930165735444155,
+    "p95": 3.081950908306206,
+    "slow_mae": 7.087050610508821,
+    "slow_bias": -7.087050610508821,
+    "goal_met": false
+  },
+  "speed/config1/plain": {
+    "mae": 1.1994085352138906,
+    "p95": 3.297490900801147,
+    "slow_mae": 3.7711595569512215,
+    "slow_bias": -3.570533715164361,
+    "goal_met": false
+  },
+  "speed/config1/guarded": {
+    "mae": 1.1149163937821047,
+    "p95": 3.297490900801147,
+    "slow_mae": 3.7711595569512215,
+    "slow_bias": -3.570533715164361,
+    "goal_met": false
+  },
+  "speed/config2/plain": {
+    "mae": 1.1942315850812228,
+    "p95": 3.1893853262167062,
+    "slow_mae": 4.7663053838688265,
+    "slow_bias": -4.7663053838688265,
+    "goal_met": false
+  },
+  "speed/config2/guarded": {
+    "mae": 1.1103592453776818,
+    "p95": 3.1893853262167062,
+    "slow_mae": 4.7663053838688265,
+    "slow_bias": -4.7663053838688265,
+    "goal_met": false
+  },
+  "speed/config3/plain": {
+    "mae": 1.203090536078619,
+    "p95": 3.3692067010431033,
+    "slow_mae": 3.6809078195499847,
+    "slow_bias": -3.4917279786763213,
+    "goal_met": false
+  },
+  "speed/config3/guarded": {
+    "mae": 1.1186541875408245,
+    "p95": 3.3692067010431033,
+    "slow_mae": 3.6809078195499847,
+    "slow_bias": -3.4917279786763213,
+    "goal_met": false
+  },
+  "speed_duration/config0/plain": {
+    "mae": 0.9952157337322404,
+    "p95": 2.9113199271733476,
+    "slow_mae": 4.824592830904445,
+    "slow_bias": -4.824592830904445,
+    "goal_met": false
+  },
+  "speed_duration/config0/guarded": {
+    "mae": 0.9951626046443475,
+    "p95": 2.9113199271733476,
+    "slow_mae": 4.824592830904445,
+    "slow_bias": -4.824592830904445,
+    "goal_met": false
+  },
+  "speed_duration/config1/plain": {
+    "mae": 1.0253134984495753,
+    "p95": 3.364419790859696,
+    "slow_mae": 3.488862326289638,
+    "slow_bias": -2.369679244442367,
+    "goal_met": false
+  },
+  "speed_duration/config1/guarded": {
+    "mae": 1.00964725781469,
+    "p95": 3.364419790859696,
+    "slow_mae": 3.488862326289638,
+    "slow_bias": -2.369679244442367,
+    "goal_met": false
+  },
+  "speed_duration/config2/plain": {
+    "mae": 1.044432788230716,
+    "p95": 3.153876092487726,
+    "slow_mae": 3.7973101511030314,
+    "slow_bias": -3.666616950884098,
+    "goal_met": false
+  },
+  "speed_duration/config2/guarded": {
+    "mae": 0.9928153266404887,
+    "p95": 3.0424053930321713,
+    "slow_mae": 3.7973101511030314,
+    "slow_bias": -3.666616950884098,
+    "goal_met": false
+  },
+  "speed_duration/config3/plain": {
+    "mae": 1.038886884594464,
+    "p95": 3.43949048288846,
+    "slow_mae": 3.5155541496989975,
+    "slow_bias": -2.5462007731123655,
+    "goal_met": false
+  },
+  "speed_duration/config3/guarded": {
+    "mae": 1.0066895198979675,
+    "p95": 3.3377074019357713,
+    "slow_mae": 3.5155541496989975,
+    "slow_bias": -2.5462007731123655,
+    "goal_met": false
+  },
+  "combined/config0/plain": {
+    "mae": 0.9021374792102902,
+    "p95": 2.5732824915084107,
+    "slow_mae": 3.947507724828731,
+    "slow_bias": -3.947507724828731,
+    "goal_met": false
+  },
+  "combined/config0/guarded": {
+    "mae": 0.8809297260589947,
+    "p95": 2.5732824915084107,
+    "slow_mae": 3.947507724828731,
+    "slow_bias": -3.947507724828731,
+    "goal_met": false
+  },
+  "combined/config1/plain": {
+    "mae": 0.9036363353487488,
+    "p95": 2.6796660133212664,
+    "slow_mae": 2.8932487711097887,
+    "slow_bias": -2.619244066530825,
+    "goal_met": false
+  },
+  "combined/config1/guarded": {
+    "mae": 0.8805398997851134,
+    "p95": 2.6134318628275035,
+    "slow_mae": 2.8932487711097887,
+    "slow_bias": -2.619244066530825,
+    "goal_met": true
+  },
+  "combined/config2/plain": {
+    "mae": 0.9029668205582663,
+    "p95": 2.6895571088238404,
+    "slow_mae": 3.173069906276394,
+    "slow_bias": -3.029462976095912,
+    "goal_met": false
+  },
+  "combined/config2/guarded": {
+    "mae": 0.8765312809652755,
+    "p95": 2.6895571088238404,
+    "slow_mae": 3.173069906276394,
+    "slow_bias": -3.029462976095912,
+    "goal_met": false
+  },
+  "combined/config3/plain": {
+    "mae": 0.9005176762200726,
+    "p95": 2.6176422209717494,
+    "slow_mae": 2.8984855784154306,
+    "slow_bias": -2.625901481555466,
+    "goal_met": false
+  },
+  "combined/config3/guarded": {
+    "mae": 0.8814736285591193,
+    "p95": 2.6176422209717494,
+    "slow_mae": 2.8984855784154306,
+    "slow_bias": -2.625901481555466,
+    "goal_met": true
+  }
+}

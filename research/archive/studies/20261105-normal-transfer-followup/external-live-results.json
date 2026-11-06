@@ -1,0 +1,397 @@
+{
+  "passed": true,
+  "protocol_sha256": "f88b26cb06ac8016c8389a0fcad0632faa4679a855cecc1200286db1515ae870",
+  "external_data_sha256": "4c357517dfe21426f90e57a6503eabf10c5db836a954135a25ca095989678654",
+  "rows": [
+    {
+      "family": "CNN",
+      "method": "baseline",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 84.63208531433145,
+      "median": 86.06049329570274,
+      "min": 77.84553145382735,
+      "max": 88.78939308910759,
+      "people_ge90": 0,
+      "people_ge100": 0,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      },
+      "fold_means": [
+        84.75841738424737,
+        83.36998027241617,
+        86.8197122104055,
+        85.37859780742815,
+        82.83371889716005
+      ]
+    },
+    {
+      "family": "CNN",
+      "method": "mixed_original_calibration",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 95.04651614831631,
+      "median": 95.71822580596017,
+      "min": 87.5281938108794,
+      "max": 100.99478041507963,
+      "people_ge90": 7,
+      "people_ge100": 1,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      },
+      "fold_means": [
+        96.83119955949836,
+        94.55396476701067,
+        92.32142424731407,
+        95.98640168511022,
+        95.53959048264828
+      ],
+      "delta_mean": 10.414430833984873,
+      "delta95": [
+        7.274379611968524,
+        13.265474022039594
+      ]
+    },
+    {
+      "family": "CNN",
+      "method": "mixed_Stanford_calibration",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 100.51786114240207,
+      "median": 101.3623998460395,
+      "min": 91.31306493217457,
+      "max": 107.96467161327139,
+      "people_ge90": 9,
+      "people_ge100": 6,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      },
+      "fold_means": [
+        99.20504852563745,
+        99.36676193601608,
+        97.69045250058687,
+        103.05446513511765,
+        103.2725776146523
+      ],
+      "delta_mean": 15.885775828070624,
+      "delta95": [
+        12.229365048006244,
+        19.20116849376778
+      ]
+    },
+    {
+      "family": "STT",
+      "method": "baseline",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 77.0205371715564,
+      "median": 79.14596312449962,
+      "min": 64.58927645923191,
+      "max": 85.64169517647335,
+      "people_ge90": 0,
+      "people_ge100": 0,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      },
+      "fold_means": [
+        82.85658722188889,
+        80.03061299425877,
+        71.26278352327907,
+        77.49638888369242,
+        73.45631323466273
+      ]
+    },
+    {
+      "family": "STT",
+      "method": "mixed_original_calibration",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 96.17046856625525,
+      "median": 94.99344048182297,
+      "min": 93.44616073760389,
+      "max": 99.8750682737381,
+      "people_ge90": 9,
+      "people_ge100": 0,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      },
+      "fold_means": [
+        96.67005775362823,
+        95.5886218614932,
+        96.75042384043951,
+        95.16963587267874,
+        96.67360350303662
+      ],
+      "delta_mean": 19.149931394698882,
+      "delta95": [
+        13.520848178635289,
+        25.243584218183997
+      ]
+    },
+    {
+      "family": "STT",
+      "method": "mixed_Stanford_calibration",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 98.86514931636667,
+      "median": 97.61609127855846,
+      "min": 95.88621605769985,
+      "max": 102.98936071049731,
+      "people_ge90": 9,
+      "people_ge100": 4,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      },
+      "fold_means": [
+        99.23086919153742,
+        97.65603680108309,
+        98.98139302762131,
+        97.56608494591157,
+        100.89136261567994
+      ],
+      "delta_mean": 21.84461214481028,
+      "delta95": [
+        16.052011582219162,
+        28.135496166905124
+      ]
+    },
+    {
+      "family": "CNN",
+      "method": "hard_gate",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 97.90778387268941,
+      "min": 81.78438607362696,
+      "max": 100.0,
+      "people_ge90": 8,
+      "people_ge100": 7,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      }
+    },
+    {
+      "family": "CNN",
+      "method": "soft_gate",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 97.6817119981025,
+      "min": 84.89132727986339,
+      "max": 99.99999977929204,
+      "people_ge90": 8,
+      "people_ge100": 0,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      }
+    },
+    {
+      "family": "STT",
+      "method": "hard_gate",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 98.04235230354931,
+      "min": 85.11795197840799,
+      "max": 100.0,
+      "people_ge90": 8,
+      "people_ge100": 7,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      }
+    },
+    {
+      "family": "STT",
+      "method": "soft_gate",
+      "people": 9,
+      "records": 12,
+      "mean_prediction": 97.51801696923894,
+      "min": 87.69779379448477,
+      "max": 99.99999926981296,
+      "people_ge90": 8,
+      "people_ge100": 0,
+      "per_person": {
+        "omitted_for_public_snapshot": true,
+        "count": 9
+      }
+    }
+  ],
+  "provenance": [
+    {
+      "family": "CNN",
+      "fold": 0,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\CNN\\fold0_refit.pt",
+      "sha256": "b1ec9ec0c6fea97032e2f4e306f3d469ea4be8189b4329649981a2a7e596b80a",
+      "heldout_three_record_replay_error": 1.1444091796875e-05
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold0\\refit\\latest.pt",
+      "sha256": "5c65f1c2c38a067ce4c62689d85b125a8d32e968d047bbd8f8f6e3f3d0abaa16",
+      "heldout_three_record_replay_error": 1.71661376953125e-05
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\CNN\\fold1_refit.pt",
+      "sha256": "4e4f02ad78f6bdf506b20aa85dbc3c1b38a40871204efc285a90c1812e48fff0",
+      "heldout_three_record_replay_error": 8.58306884765625e-06
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold1\\refit\\latest.pt",
+      "sha256": "0fd8b4f6bf0932e507cf7062e2517be288b88885b6c83372b85c562ed7941963",
+      "heldout_three_record_replay_error": 2.09808349609375e-05
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\CNN\\fold2_refit.pt",
+      "sha256": "9955bee1ea49f116c85bef418845c451c0d39186d7c07fa0f018b7f0572d1b26",
+      "heldout_three_record_replay_error": 8.322975844521352e-06
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold2\\refit\\latest.pt",
+      "sha256": "cbdee32f1b902b0baf53f2381a03fc301c92ae78dd9bd102d3757901189d5746",
+      "heldout_three_record_replay_error": 1.3871626421746441e-05
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\CNN\\fold3_refit.pt",
+      "sha256": "bab825f96490d878813e828fdd616daace5ee4a4ed6b7c695efec4c2620ad397",
+      "heldout_three_record_replay_error": 6.039937339608059e-06
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold3\\refit\\latest.pt",
+      "sha256": "f33c1b5ac25f94bfe11fb2042961d65819b572f4f2bd2cbe724d5ddebe569ce6",
+      "heldout_three_record_replay_error": 9.5367431640625e-06
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\CNN\\fold4_refit.pt",
+      "sha256": "4803a821ada797e60dd3915d23f332514e4de755d77f9634ce5f5e64b86ea72a",
+      "heldout_three_record_replay_error": 5.201859906378559e-06
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold4\\refit\\latest.pt",
+      "sha256": "da55e1e479f09269010eca6a836b44ecbc35b3a135939d1f94f9f958c7d801ea",
+      "heldout_three_record_replay_error": 2.4275346106605866e-06
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\STT\\fold0_refit.pt",
+      "sha256": "9f5141f4bf9b40481d6a5f4c81414259818598e03e5829f53bc75042cf711221",
+      "heldout_three_record_replay_error": 5.548650563014235e-06
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold0\\refit\\latest.pt",
+      "sha256": "26cba00fc697b3922e11fb9a03cce7cdb49461ce01fe24ace1a31affd3ed1735",
+      "heldout_three_record_replay_error": 9.71013848527491e-06
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\STT\\fold1_refit.pt",
+      "sha256": "3e9928dd211035e02c401c8a4e7e2ea014c4d092727bc6772c711a024100f319",
+      "heldout_three_record_replay_error": 4.1325887139009865e-06
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold1\\refit\\latest.pt",
+      "sha256": "47ded80878110db3d992488be371faec49436748d6fd525af26d351abc583933",
+      "heldout_three_record_replay_error": 6.67572021484375e-06
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\STT\\fold2_refit.pt",
+      "sha256": "1c5466b7aa1bef2fd437a8924bdbace54b99ff33fa51c139b3dbdd5658d5afe6",
+      "heldout_three_record_replay_error": 6.357828780778618e-06
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold2\\refit\\latest.pt",
+      "sha256": "b0e0f44a5588eda0e0625c4b1c2a24b3dbbb503a5d627e00508e1a5f53a5248f",
+      "heldout_three_record_replay_error": 1.3987223297817764e-05
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\STT\\fold3_refit.pt",
+      "sha256": "c9a99fa120c441b48cf70e7c0572ef6a1098eeb55f92cf4c794331dba41d454b",
+      "heldout_three_record_replay_error": 4.450480147966118e-06
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold3\\refit\\latest.pt",
+      "sha256": "2de5dd9c7ca7459b1ec36cb9be5e5453b93b01002d4fe26b6605697913c70aed",
+      "heldout_three_record_replay_error": 8.322975858732207e-06
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "arm": "baseline",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\baseline\\STT\\fold4_refit.pt",
+      "sha256": "b4f0ab395d445d5c06a800752fb5bae30504fec64f77cf08916940fe55bcbb4b",
+      "heldout_three_record_replay_error": 1.7801920577653618e-05
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "arm": "mixed",
+      "checkpoint": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold4\\refit\\latest.pt",
+      "sha256": "dee694b6eff8a5a164d1dff586cc51b9485fb116a86bc524abd3c072a1edc05e",
+      "heldout_three_record_replay_error": 1.6530354812971382e-05
+    }
+  ],
+  "predictions": {
+    "omitted_for_public_snapshot": true,
+    "count": 10
+  },
+  "LIVE_LJMU_source_probability": {
+    "omitted_for_public_snapshot": true,
+    "count": 12
+  },
+  "labels": "None: score distribution and paired change only, not MAE or clinical accuracy",
+  "limitation": "Five-fold model average on the same9 LIVE children; previous project exploration, never used in these checkpoints; age/source/extraction confounded."
+}

@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "independent_bout_assembly": "join each rank separately by participant,visit,draw,band; no positional reshape",
+  "numpy_forward_models": 60,
+  "torch_replays_and_permutation_checks": 60,
+  "max_numpy_vs_torch_error": 5.615234371703082e-06,
+  "max_bout_permutation_error": 7.62939453125e-06,
+  "inner_person_splits_match_mlp": 180,
+  "metric_rows_recomputed": 36,
+  "seeded_outer_refits_with_exact_learned_weights": 2,
+  "one_bout_models_with_exact_mlp_weights_and_predictions": 20,
+  "numeric_checks": "stored model replay exact in original float32 dtype; float64 scaler agreement rtol/atol 1e-12; independent NumPy/permuted forward rtol1e-5 atol2e-5",
+  "reference_hashes_unchanged": true,
+  "same_people_visits_selected_bouts_and_draws": true,
+  "train_only_person_weighted_scalers": true,
+  "selected_maximum_epoch_count": 13,
+  "parameter_counts": [
+    705,
+    2433
+  ],
+  "limitations": [
+    "single initialization seed schedule",
+    "bounded width/epoch search",
+    "fixed OOF bootstrap excludes retraining and selection uncertainty",
+    "sensor summaries, not video or raw within-bout time series"
+  ],
+  "artifacts_sha256": {
+    "protocol.json": "ad3e15f927ee8fbbaf9c4180887ab1f42a46de6cd753b60372bc920f9fe43ad4",
+    "predictions.csv": "9d711f2d70b9b7fb670ec28a6f5db5263432b06f2abb95c885cdfd158970a47a",
+    "paired-predictions.csv": "bf711a9dfbe0b3f2d7fc07f680d44b4b65f01b168c024e6eea8f99f05e788e36",
+    "metrics.csv": "57330d3b1c52054f048a8a33951f76771793f37f655c71779ea42e72d552f66c",
+    "summary.json": "d4a9dff5af5a5568ad4eed4d6c0b4faa62728cb95831c6afeeede6e7967cc539",
+    "subgroup-metrics.csv": "d015bca924e135db56853acaada872b564f6dc55f7f0b444f48b58c56978fa1b",
+    "condition-contrasts.json": "aad98da58327196f2b5a11cf8b81caf6d58d7b58f5170c07c557f6c149d45b8e",
+    "completion.json": "fa2f90bdb95b871a5f81918a2900f665ed6f7841beff9e6013863ea723b2d8b2"
+  },
+  "scripts_sha256": {
+    "train.py": "741c98f1f612e8e181048efa03be714e9bed232e9a460b61510e322185f07314",
+    "summarize.py": "c264c7d3ee718c670686a3585465faeb75584b4b12f1dc474fe86ccf050646c6",
+    "verify.py": "56d7c22fe0cc5e419424e8feb828ae1276af2af7866ffef8b23ab8753161e42e"
+  }
+}

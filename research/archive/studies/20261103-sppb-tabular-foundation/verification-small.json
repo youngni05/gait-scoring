@@ -1,0 +1,612 @@
+{
+  "status": "passed",
+  "reconstructed_models": 120,
+  "maximum_replay_error": 0.0,
+  "models": [
+    {
+      "model": "older37-speed-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "7a5c7076d0a5bc5f2e56efc61bc9b5f36ab4e2540f889161776c5804d1166a36"
+    },
+    {
+      "model": "older37-speed-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "079468c55426a9a8aad828a7699a0adc27770c9c820c924a02379c632da08a1a"
+    },
+    {
+      "model": "older37-speed-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "fd4dc28b6c0ab96ed2d61ffdc0e6109e6c45d62d04fab3e8eac69835491a4334"
+    },
+    {
+      "model": "older37-speed-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "75f5c07f0c5bec47e3c4811f2a440c9d04dc98e4139f821f680735005148db90"
+    },
+    {
+      "model": "older37-speed-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "2323d0038ecf93ad8b6e37641f4a4affdafb9d3a0cf34e7e2a7cfff11d26ff84"
+    },
+    {
+      "model": "older37-speed-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "f655a1de785403236177aebe20752caaf55a64da2ab104b6cd59ed79ff0bd380"
+    },
+    {
+      "model": "older37-speed-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "d40a1f1b21f931b3d5a83c0abb53f58fa76fd8bfbafbf15bf6dc762364ab1802"
+    },
+    {
+      "model": "older37-speed-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "8805b3cf6db2cab0e2bfda06fbf7e861b2783feb1655034911a18d6903344f72"
+    },
+    {
+      "model": "older37-speed-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "52268c417a54750869d202378dc587f5d8986f4cb450997db3c496d8f0c3982c"
+    },
+    {
+      "model": "older37-speed-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "847371c69e9244b10efe99a338de6ff4055c12a0412766da2a168a28b125e562"
+    },
+    {
+      "model": "older37-features-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "8786a12588e5bbe8fda210c89ca5c253906c15ef2aa234d2c5837ae8d5b5fe6d"
+    },
+    {
+      "model": "older37-features-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "44aceca4bcaec5748cd2ea7a554d6d1e3b1b4ce17eec302f8d13d61d3bb8d32a"
+    },
+    {
+      "model": "older37-features-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "a7f05303e5aaa866b0a92e07d08bb9bd62adafb7838453d436660c0133cfb032"
+    },
+    {
+      "model": "older37-features-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "09e37bdfdb4a1a7b65379cecd5d7d746f0d01bfdb0ec67ff412a5e91c0d79bce"
+    },
+    {
+      "model": "older37-features-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "5ab4da69732f33caaa8923f63e61c0a6ec775da58ed4b278fe1567bcd82555b0"
+    },
+    {
+      "model": "older37-features-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "7eeaed8252870712b9ee500a7f028e749cc613968dce46050900d3e707fe903e"
+    },
+    {
+      "model": "older37-features-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "8432391f13760d0be3fe6f8775cfbaabdbcf1d6ebcc059715fe9b8e3a9ed3bd3"
+    },
+    {
+      "model": "older37-features-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "789c2d2d4dd2991f06feed7746fa2f6e34bb623d801f57b8a54cb399d0e9244b"
+    },
+    {
+      "model": "older37-features-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "1cb549dd3dc36117710bb91afc17a0b6de197849e39b457579b8836c4f325491"
+    },
+    {
+      "model": "older37-features-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "9e03b95d95e3d40624b4073213df4dfe83f033f9a595b29cf11adc5bed7bc1ed"
+    },
+    {
+      "model": "older37-features_GDI-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "ade7f69b94450abc75a8a1efc6c530d5ded0ab269b28f468171f281415953a27"
+    },
+    {
+      "model": "older37-features_GDI-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "93bc8128581fee05dd646e2539bd584080658a779b7f8dfc382af1801811c23d"
+    },
+    {
+      "model": "older37-features_GDI-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "69d05a6db6e083d0644dba3f022d84829502c44db2487f072fdc5052aec9f39e"
+    },
+    {
+      "model": "older37-features_GDI-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "e363d5613c67346aed3b763830001b184873ffed74ad32a9ae14c7df24bffd1f"
+    },
+    {
+      "model": "older37-features_GDI-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "2fd013baf9d2930b6c962df346a5c11de48bb56050b0209928547e53c06937f0"
+    },
+    {
+      "model": "older37-features_GDI-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "5723b4e0840d9e85c8922af274cda7e4698f3eab4cbc8c7dc1f100a845cc31d1"
+    },
+    {
+      "model": "older37-features_GDI-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "9cdb5e166d5e239108c19acd451af0afc5e2d86ca2a9995577206c343a70a0c5"
+    },
+    {
+      "model": "older37-features_GDI-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "83f18bddd5870f9d756674c003722a402739e4de10e26e1b4dd88e2e2e2068e8"
+    },
+    {
+      "model": "older37-features_GDI-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "e07529734fb905000a32b3b0c1351c467313f490b292db671573046fbb581d3a"
+    },
+    {
+      "model": "older37-features_GDI-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "316bfc9d943072c677002a5c7e628e8a4c993d0b0e2eada9489e1e764ca70f15"
+    },
+    {
+      "model": "older24-speed-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "0f739e25d1217077c95b8843616a757738e142eabef83928080597af201f93ed"
+    },
+    {
+      "model": "older24-speed-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "a9b2c727ddea021863bc4d909b50bf6804c9889caababff1d549179859059819"
+    },
+    {
+      "model": "older24-speed-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "ac836ca2677bab7bf06de8d7900fa18a37ee320ec1602b9a6f1d0517bd00c1de"
+    },
+    {
+      "model": "older24-speed-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "ae5624d5b7a29d94aa7d94ee25e114a1e26737ca9e44e422a3a1057b699de426"
+    },
+    {
+      "model": "older24-speed-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "f9221f69c798fae70ddbbcedb49becdbcf3f7ee67b36942218c9bbfaa8b15307"
+    },
+    {
+      "model": "older24-speed-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "794e6f99e6a03331e80ae046db427f7953a8eb588820b6e1160636dc90fddd37"
+    },
+    {
+      "model": "older24-speed-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "8ed88ba711e9f46e1a8a3d957a413b2b53c0be31f4377c41a4feccc5dec93e7e"
+    },
+    {
+      "model": "older24-speed-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "d1bff2ee56da52bbdebe41e33d6026da94437a38224738941a75a0df7b0da50d"
+    },
+    {
+      "model": "older24-speed-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "bd02283b02cad9a23b1199a6d10188a2eb75e9bb583bc7bbc310d65f986e9b26"
+    },
+    {
+      "model": "older24-speed-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "aca0fcf9ad769eb9de89b01cb3d69753a17cf96e29808a26b01d1b8514222f2c"
+    },
+    {
+      "model": "older24-features-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "fa3c3e0fabb339a9de4b481d731a86be9db66362236ba343e1eb2993d387c79d"
+    },
+    {
+      "model": "older24-features-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "526f68b6131a2e7129b0e29c7e99ba7fc90dc0841ca300d21f3f716ab2b4cf95"
+    },
+    {
+      "model": "older24-features-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "17328e02868ac1e247ee278ef8356f0f901d93594953a7c788c0a7dc3805278c"
+    },
+    {
+      "model": "older24-features-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "7441128b3fe596bb6c096553fc281fb4db7192ac4952c01910dea04b3e8de7f7"
+    },
+    {
+      "model": "older24-features-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "6c7863f2b926d6e836b0beffa4d1a78f4e87604651b0eafd1e2111e4df6a0380"
+    },
+    {
+      "model": "older24-features-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "7051662e83b3ad193ebadac9ea4cc25d390d07834ae435e9eca33f9f69b4b716"
+    },
+    {
+      "model": "older24-features-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "60a5ec1555137a4145d6ad5fbdcd87847982bdbfffa3965bab0253864d4f2448"
+    },
+    {
+      "model": "older24-features-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "efdb42c15649c9a96a60021718e033a235adf17404d8f5c4b6f29584b4426603"
+    },
+    {
+      "model": "older24-features-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "0d61f12411ed203d0a7691510b6522de87fe49e022669214fc59f592ab7a73e1"
+    },
+    {
+      "model": "older24-features-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "3bb03e07306ad13316388e37b047b1c68c68f211e94ce1c64914a4e1f6920eb4"
+    },
+    {
+      "model": "older24-features_GDI-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "6911840a624e22c0ecb440098bfa934c4a97db6b51e63904d69e4ce9d6bd74a3"
+    },
+    {
+      "model": "older24-features_GDI-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "157b95f8206e067c3c361e88352ded56f62637ef312959b06c3c14c9910941aa"
+    },
+    {
+      "model": "older24-features_GDI-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "7bccf6b6faed5a7ebf29d170f494618b71d1d9c7f4e4b1ad1223178dfe08d16e"
+    },
+    {
+      "model": "older24-features_GDI-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "8e5dd835328e8b9708514a6801ed215a721fbb9497ac9aeae48589c68889ec71"
+    },
+    {
+      "model": "older24-features_GDI-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "0d02ead071e6a1dedbc2afec5f475816036f18a9786a60eb8d9997de9573e0e0"
+    },
+    {
+      "model": "older24-features_GDI-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "d365911263da1df0eab176d8f8fa013e55457a76f1ffa9564661a35bc5527d93"
+    },
+    {
+      "model": "older24-features_GDI-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "ce82362fc53934c9a1a0d4f93248e74fd0d890674871f75e6f763c2d07d2c3d7"
+    },
+    {
+      "model": "older24-features_GDI-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "95509ce0ab199eef9a37370781313b27e6a2dca56dca6cd33e269381d34ac2c5"
+    },
+    {
+      "model": "older24-features_GDI-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "36bcdce0e772890882d131f9f18ed9d35a0f8b7c94631f0b905751fc791765f9"
+    },
+    {
+      "model": "older24-features_GDI-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "9743a9209a9af23a339ba2451a2cd93aa08229250ff10387636f311f49be0c98"
+    },
+    {
+      "model": "older44-speed-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "50603934a14f418c5ff439fbebbc59733edb0f72108d4f041bf1799c18319c48"
+    },
+    {
+      "model": "older44-speed-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "82f949b95c3d32c7c0281087c86dd95ac6b7aa8055449cff71329d4da9892cdc"
+    },
+    {
+      "model": "older44-speed-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "6747988979e8909f1f037c68cdd9b996a0d39bf6787a5e22c63c4a31a9edf8da"
+    },
+    {
+      "model": "older44-speed-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "dc54b24c7e82e1cb6d92705485c78ded6f19a877cffbcbe3bf4912cb78c8be16"
+    },
+    {
+      "model": "older44-speed-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "80d522581ffd4274fb08f0f4a9dda13ada66c77555e2535fe69b7c8685654418"
+    },
+    {
+      "model": "older44-speed-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "f17f48c90b439aab9a57f1d9a0933c843a78cffdb9e18ae679ca95bc3ec41efa"
+    },
+    {
+      "model": "older44-speed-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "9a5eab2dc70cc805c008c7cb2013525671b1187121d368942118f016b33c87d8"
+    },
+    {
+      "model": "older44-speed-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "9fceaa826eece854ad8c46e9e7e8bcb7dfc4429b1610c4afdf64a43ed28d1eff"
+    },
+    {
+      "model": "older44-speed-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "037816721d44c6a372eaff33f686701dbeeb841060555e2e9f36bf0546e395c1"
+    },
+    {
+      "model": "older44-speed-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "a01396bf6036b5edd0afe385345d9a57626064cb5e61d4ad9294b5f68b16b117"
+    },
+    {
+      "model": "older44-features-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "3596157f2714174fdb553c34f82fd65690c0815e65e501c849f649faa1efcd1c"
+    },
+    {
+      "model": "older44-features-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "7b591b1952ae2044d311c70d224f05eec058030b703f79a903a282c01779f441"
+    },
+    {
+      "model": "older44-features-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "c9394130def38af5d8f3c61770777f7206c45157a8848adfabce2c8131064def"
+    },
+    {
+      "model": "older44-features-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "2d30668d8ea2dc6909d9b75feafcb54ca9f67bb81805c71389c016d782ae6613"
+    },
+    {
+      "model": "older44-features-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "d5d68e6c27bc00a4125616517c16f4d7956a5c98180a303026fc93188374cf2f"
+    },
+    {
+      "model": "older44-features-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "73f2debb5113dd926b5d588318d45c1a562a65ccfaf57e9f52d8bc8e508d98ba"
+    },
+    {
+      "model": "older44-features-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "d1e8270d0e650598469f9b8ff9d1cac72a96118e05bbe6d7604030dacc7e38b4"
+    },
+    {
+      "model": "older44-features-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "c2d89f0dc929d26844e248efe3d574ba22335e18e9361a104a13f9c4bce27535"
+    },
+    {
+      "model": "older44-features-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "b01003cc121ec5d484d4cb229bc2c1ca1eae5ceb2d3983e3c34838c0103b43e0"
+    },
+    {
+      "model": "older44-features-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "23c3172d9ff7bcc8d9616e489fb3f389e07564541bf5745716555fc736d8e094"
+    },
+    {
+      "model": "gait2care-speed-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "f6eb04ca0aaecb465fb8fb4bd8c7c1674991c0a98d6b2a6742c2e0223cba7756"
+    },
+    {
+      "model": "gait2care-speed-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "db7178895ef010dd90284c181aa1597ba44b024920d72ac0568eca8717c394dc"
+    },
+    {
+      "model": "gait2care-speed-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "c3d8e8fa76504da4760de479f76603dec0d5d26e04ba5da47b91bf5d81466579"
+    },
+    {
+      "model": "gait2care-speed-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "316c08b5a76a88d097e3ad5c500037fe216ff15b170e7e0c350bc75863d8c0f1"
+    },
+    {
+      "model": "gait2care-speed-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "2fd0c12197c4bdb8e339212c7d0df9c5326ced486060330020f3703b8c2cb67f"
+    },
+    {
+      "model": "gait2care-speed-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "48f2b0abfbd4243d36502161d119ccb37e704a1184f882c8ca1437b3bf8127cc"
+    },
+    {
+      "model": "gait2care-speed-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "649195676e0b117dbaef2ae0e0b36d2d5994b2ed6bc349bbe5abad4d85c64d80"
+    },
+    {
+      "model": "gait2care-speed-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "ae0c3f2a555d6eaf23ce05ee5f76590de41be54e11b1136d2c2bded2d22d7244"
+    },
+    {
+      "model": "gait2care-speed-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "ef9b3d48b878f3f5f6d5e1ba893cce1716568b08a610a0d976e8890344d0f1ae"
+    },
+    {
+      "model": "gait2care-speed-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "5fe7008d2a8ccff25b9b77ac8516801933aacf26aff0a937556aec3e9bc2aebf"
+    },
+    {
+      "model": "gait2care-features-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "63389bc36e1db0261d9769f3d335a87025e2bea5a51f8df062889401371f7c20"
+    },
+    {
+      "model": "gait2care-features-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "209e5351db14aeb7b0cbdc9e0e2ac616a5e916d1e3d8f1e080cea2278585d0a1"
+    },
+    {
+      "model": "gait2care-features-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "54a26e0d3a0dfe51a05741b663a068aa59b153df0d759f8638abb9d8bf3c9d5d"
+    },
+    {
+      "model": "gait2care-features-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "a2362b679ec6eacd5655e07247cebd218f862d796d72ca9cd7f11e7b6893cdad"
+    },
+    {
+      "model": "gait2care-features-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "6631e0a4204cfe8eea1f17ad4753038e6b2862b6f97ca621b5795d40b382ee27"
+    },
+    {
+      "model": "gait2care-features-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "4ea42eef2ef6c6477d20cc205a28f97db6abf556dd057af504f94ae35759eff6"
+    },
+    {
+      "model": "gait2care-features-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "98979c05769feabfcf66568d62799dc7d5148feae91f0c0e4fd9c0b7665d4b47"
+    },
+    {
+      "model": "gait2care-features-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "39acf430bf8677cbb7b1d608d82090017b260a05b04e3c7c20194baa95a8394b"
+    },
+    {
+      "model": "gait2care-features-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "8c2d1cafe492cc31c627763410f4b16c961df6c339038c23e4381a6283f07c61"
+    },
+    {
+      "model": "gait2care-features-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "5b4c7e54e157667afc1b5aa9474b5da4e07136213d191472edc4dc40ce233ec0"
+    },
+    {
+      "model": "gstride-speed-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "7afb8a6e2d7f15882d14209506b25de8baa2a4d7a979a223ee3f16cd16d63386"
+    },
+    {
+      "model": "gstride-speed-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "dba44ee466816ea7b36ab2e056ac75d7c1ae4be39f8cfb025b296941b258b3c0"
+    },
+    {
+      "model": "gstride-speed-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "89e2b884efa4fd70fa74ce570694b6623e68c425045dc82f99847339c636a830"
+    },
+    {
+      "model": "gstride-speed-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "b294afa181ab7de51c4a2c8172e0da1843b54481469acab5d91c76f343bdc02d"
+    },
+    {
+      "model": "gstride-speed-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "14d28f19725167b27266f77d5fd8c555e1ff8465ca25971481d254eb17f87177"
+    },
+    {
+      "model": "gstride-speed-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "438388ff92e53dab2445814fbda1873898c1d228bf870324af35f292a5d9371f"
+    },
+    {
+      "model": "gstride-speed-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "48bbc7264f240c8564a7a19880f3420002ab22fd58b893b74c28bb72bc0ebdbd"
+    },
+    {
+      "model": "gstride-speed-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "88e01038704965cf0d20b28a68d736dc02d9462310a8c48563a039fc03657d97"
+    },
+    {
+      "model": "gstride-speed-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "c1994fce82e9981b434648c315a38b0f1edbff02d23b5e259206d16f0f96158e"
+    },
+    {
+      "model": "gstride-speed-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "60ade07a6aef24f545d16331fdc4ddd9d5ccca7b950f1e37e4a572f3e85e7523"
+    },
+    {
+      "model": "gstride-features-0-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "30163c4f4289b0727a1294d36ab7f6770693762b7d24b52ee733ea2228237d7c"
+    },
+    {
+      "model": "gstride-features-1-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "86cf3cc9d90503acb4d8f7f8a565b14a23fd5fc93872d9c32a436700cc1c872c"
+    },
+    {
+      "model": "gstride-features-2-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "ae93406271f8bfadeab5cfdd7c28701ce6211b66ea7afffe5f55b0c2cab2427c"
+    },
+    {
+      "model": "gstride-features-3-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "7b3b5943db558c4f56b6eaed8da57878808cb34a36f6f3b72579b2c1d2d8abbf"
+    },
+    {
+      "model": "gstride-features-4-TabICLv2",
+      "max_error": 0.0,
+      "prediction_sha256": "ec41858003ebd84225eead67b2bb8e5e070f011780602c6c8d6d51bd399f3cdf"
+    },
+    {
+      "model": "gstride-features-0-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "da0042a75d2b409bd390d2f874d4d5b2c98a5e7c6b38ec500a3ce15e502a78c6"
+    },
+    {
+      "model": "gstride-features-1-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "98b6317c4b0ebb9912a3f0d042b9d1564aa06765c3b8397c6c57860055d22c83"
+    },
+    {
+      "model": "gstride-features-2-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "f7b4e71c44c5da2c85fbbaa8ec717ac3f932ab034e694dd139a2879632a7870e"
+    },
+    {
+      "model": "gstride-features-3-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "a95aa0d32c337aee45877f9b0eb63ddc628115912c07bcbdd1835a44b3d17bc0"
+    },
+    {
+      "model": "gstride-features-4-TabPFNv2",
+      "max_error": 0.0,
+      "prediction_sha256": "da919da51f74c26a6c230333eb49333f7e7334b1efc9b5d9f1cd9238ae102c33"
+    }
+  ],
+  "elapsed_seconds": 373.53629660001025,
+  "protocol_sha256": "106939caace017e7da2da2d2c938826acd972115e6dbe5a79e27a7d9eaa87c30",
+  "comparison_sha256": "91dd82506760f2539f0002f8a1bd9683f593953f5e6d661346fc7379f1dde169",
+  "review_code_sha256": "7fb81941d67b44bd5785b159310fca0ef9ae38540999c4ab210470c29b870ca0",
+  "notes": "Fixed foundation weights + stored training contexts reconstructed for every model; LightGBM saved models reloaded and independently tree-walked. Metrics and intervals calculated only after full held-out predictions; conditional intervals do not include full training uncertainty."
+}

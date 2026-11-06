@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "final_models_independently_refit": 550,
+  "inner_fits_independently_refit": 6600,
+  "max_prediction_difference": 3.552713678800501e-15,
+  "full_baselines_reproduced": true,
+  "same_test_people_windows_and_targets": true,
+  "person_equal_metrics_and_conditional_intervals": true,
+  "label_join_and_temporal_decomposition": true
+}

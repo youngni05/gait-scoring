@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "RF_models": 30,
+  "video_people": 5,
+  "video_clips": 10,
+  "leaf_reconstruction_max_error": 1.1102230246251565e-15,
+  "path_reconstruction_max_error": 1.4432899320127035e-15,
+  "CARE_oof_replay_max_error": 1.3322676295501878e-15,
+  "direct_nearest_distance_max_error": 4.440892098500626e-16,
+  "reference_percentile_max_error": 0.0,
+  "heading_recalculation_max_error": 0.0,
+  "summary_sha256": "6786bd9229d4b1d42c196e69b84cdcd28449a098328a5f2ef84218da3542a97c",
+  "diagnostic_sources_sha256": {
+    "arrays.npz": "1ed29eb800d8d8084546368d33ff85320262fd3753eca7c4a9423cebb33f842f",
+    "distributions.json": "d1b25628687acfe7443ce060e4a203b2a5dcd26ce38ae9efffad22431dc57b8b",
+    "nearest.json": "9a07e420a25c61f220f0bb62a8b8821a7d7cd34c01ee3f30ea857cae81cca7be",
+    "leaf-records.json": "2447d0be10090224ae43373df0fde9114e53ba8a351c2bc264d70dacf35c114f",
+    "heading.json": "f5c39c6dddd83438975404c3d712d7da46e9cbea11f8c8d74d2b2cfc7ccf647a"
+  },
+  "limits": "Exact accounting and observational distribution checks; no causal allocation of HMR2 vs population/turns, no new clinical accuracy or corrected-camera claim."
+}

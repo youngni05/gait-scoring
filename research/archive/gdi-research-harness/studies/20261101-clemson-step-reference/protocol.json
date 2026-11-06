@@ -1,0 +1,29 @@
+{
+  "code_sha256": "ce9c2fc275992cd470d5d8978266b442c2937ff0572b00277e4fb052bfc7b631",
+  "hypothesis": "Independent human step annotations with source RGB may resolve whether camera-derived cadence is accurate rather than merely agreeing with an optical proxy. Audit access,task/view/inputsemantics andtimealignment before any pose/modelbenchmark.",
+  "sources": {
+    "project": "https://cecas.clemson.edu/~ahoover/pedometer/",
+    "data": "https://cecas.clemson.edu/tracking/Pedometer/Data.zip",
+    "videos": "https://cecas.clemson.edu/tracking/Pedometer/Videos.zip",
+    "paper": "https://cecas.clemson.edu/~ahoover/pedometer/mattfeld2017-pedom.pdf",
+    "dissertation": "https://cecas.clemson.edu/~ahoover/theses/mattfeld-diss.pdf"
+  },
+  "stage": "First feasibility stage only: verifiedmetadata/ZIPindex,31.7MBpublicsensor+stepannotations,originalpaper. No video extraction,pose inference,scoreprediction ornewclinicalmodel until groundtruth semantics/timealignment/reuseconditions andcamera framing checked.",
+  "access": "ObservedofficialHTTPSdirectlinks withoutlogin/application. TLSverification retained. Public availability is not a blanket data-license/IRB determination. Inspect archive andprimarypapers for actualreuseandannotation conditions;do not declare licensing cleared from a code license. No forms/emails/agreements submitted.",
+  "input": "30participants reported byofficialpage,3walkingactivitytypes,15Hzsensorline indices forsteps. Rawvideo task/camera/framing andsample-levelmapping not yet verified;noSPPB/TUGlabels assumed. May be moving camera anddifferent fromfixedphone target.",
+  "pilot": "HEADdata/videos andreadZIP64centraldirectorytwice viaHTTP206/ETag/ContentRange with<1MBnetworkbytes. Recordactualvideoentrynames,sizes,CRC,offsets;do not infervideo integrity fromindex.",
+  "main": "DownloadData.zip andoriginalpaper toD withContentLength/ETag/SHA. CRCtestalllocalDataentries;writefileinventoryandboundedtextpreviews afterexcludingidentifiers. Inventoryallvideoentriesbutdo notfetch11.7GB. Extractpapertextlocallyinanalysis;recordterms/alignmentlimits beforeselectingsamplevideo.",
+  "success": "Feasibility gates:actualanonymousdownload;allarchiveCRCsvalid;person/activitylabelmatrixidentified;eventunits/step-vs-shift/side andvideooffsetconventiondocumented;video framing andterms checkedbeforemodelbenchmark. Partialaccessalone is not cadencevalidation orlearning-success.",
+  "expected": {
+    "pilot_remote_directory_replays": 2,
+    "main_data_archives": 1,
+    "main_papers": 1,
+    "new_model_fits": 0
+  },
+  "verification": "Independentmanualcentraldirectoryentrycount/signatures/CRCcomparedtozipfile,repeatmetadataindex;localDataZIPCRC/entrybytes/linecounts/monotoniceventindex andsensorbounds whereidentifiable;sourceSHAandoriginalHTTPmetadata. Keep allfiles/failedcases;neverfittemporaloffset to predictions.",
+  "resources": "CPU1,metadata+31.7MBdata+1MBpaper onD;smallcode/inventory/reportsC. Videoarchive11.7GBnotdownloaded atthisstage. ExistingMobilise-Dscorepeople/bouts/5seeds andallotherexperimentsunchanged.",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-clemson-step-reference",
+    "large": "D:\\gait-research-data\\D_P\\clemson-step-reference-20261101"
+  }
+}

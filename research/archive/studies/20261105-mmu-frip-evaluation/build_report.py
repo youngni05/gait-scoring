@@ -1,0 +1,117 @@
+"""Produce a factual closeout record from verified artifacts."""
+import json,hashlib
+from pathlib import Path
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import prepare as p
+H=p.H;B=p.B
+
+def read(name):return json.loads((H/name).read_text(encoding='utf8'))
+
+def main():
+    r1=read('results.json');r2=read('round2-results.json');r3=read('round3-results.json');diag=read('diagnosis.json');extra=read('extra-diagnostics.json')
+    verifications=[read(n) for n in ['input-verification.json','verification.json','round2-verification.json','round3-verification.json']]
+    assert all(x['status']=='passed' for x in verifications)
+    for result,verification in [('results.json','verification.json'),('round2-results.json','round2-verification.json'),('round3-results.json','round3-verification.json')]:assert p.sha(H/result)==read(verification)['results_sha256']
+    assert not r1['goal_passing_models'] and not r3['goal_passing_models']
+    rows=[]
+    for label,arm in [('체격 보정 이동 속도만','A'),('속도 + 2D 보행 특징','B'),('속도 + 2D 관절 CNN','C'),('무작위 시간 필터 + Ridge','R'),('내부 검증 예측 결합','D')]:
+        a=r1['conditions']['all'][arm];b=r1['conditions']['age65plus'][arm];rows.append(f"{label}: 전체 MAE {a['mae']:.3f}점 / 65세 이상 {b['mae']:.3f}점; 오차 2점 이내 {a['within2']:.1%} / {b['within2']:.1%}")
+    for label,arm in [('순서형 학습','ordinal'),('위험도 분기 회귀','gate')]:
+        a=r3['summary']['all'][arm];b=r3['summary']['age65plus'][arm];rows.append(f"{label}: 전체 MAE {a['mae']:.3f}점 / 65세 이상 {b['mae']:.3f}점; 오차 2점 이내 {a['within2']:.1%} / {b['within2']:.1%}")
+    a=r2['summary']['all']['same_3D_eligible_people'];b=r2['summary']['age65plus']['same_3D_eligible_people']
+    comparison3d='\n'.join(f"{label}: 122명 {a[arm]['mae']:.3f}점 / 65세 이상 55명 {b[arm]['mae']:.3f}점" for label,arm in [('기존 속도만','A'),('기존 2D CNN','C'),('2D + 3D 특징','B_2D3D'),('3D 관절 CNN','C_3D')])
+    text=f'''MMU-FRiP 실제 평가·개선 실험 기록 — 2026-11-05
+
+결과: 비교와 세 차례 탐색을 실행·검산했다. 설정한 개인 구분용 개발 목표는 달성하지 못했다.
+카메라에서 추정한 관절에 예측 정보가 일부 있으나, 일반 고령자 개인의 정밀한 상태 차이를 판단할 수준이라는 근거는 부족하다.
+
+무엇을 예측했나
+TUG 검사 장면에서 추출한 관절을 입력으로 제공된 JH-FRAT 낙상 위험 총점을 예측했다. 공개 표에 실제 TUG 완료 시간이나 SPPB 정답은 없다.
+따라서 아래 오차 단위는 점이다. 기존 FRAILPOL 0.881초와 직접 비교할 수 없다. 영상 프레임 수를 임의로 TUG 실측 정답으로 대체하지 않았다.
+원본 RGB 영상은 미공개다. 2D는 AlphaPose, 3D는 HybrIK의 추정치이며 센서·모션캡처 정답 좌표가 아니다.
+신장·체중·카메라 거리 보정값이 없어 m/s는 측정 불가다. 비교의 속도는 영상 수평 이동 / 목-발목 체격 길이 / 초의 상대값이다.
+
+자료와 비교 절차
+Kaggle API datasetVersionNumber=3, 제공 README의 코호트 명칭 v2. 125명과 연결되는 2D·3D 원본 및 표를 받았다. 65세 이상 56명이다.
+원본 압축 196,148,521바이트, 267개 전체 멤버 CRC 확인. 정답 범위 0–31점, 14점 이상은 5명이다.
+각 사람의 2초·60프레임 구간을 정답을 보지 않는 동일 규칙으로 선택했다. 여러 사람 검출은 연속 이동·크기·신뢰도로 추적했다.
+125명 모두 2D 기준을 통과했다. 57개 입력은 상대 속도와 관절각·상대 이동·속도 변동·발목 주기 등이다. 임상적으로 검증한 실제 보폭·접지 시간은 아니다.
+사람 단위 바깥 5분할, 학습 사람 안의 3분할로 모델·설정·학습 종료 시점을 골랐다. 모든 기본 조건은 동일한 평가 사람과 구간을 쓴다.
+정규화는 학습 사람만 사용했다. 나이·복약·인지·임상 하위 항목·전체 검사 시간은 기본 입력에서 제외했다.
+구간 선택은 관절로 확인한 이동 구간이며, 일부 방향 전환이 남을 수 있다. RGB나 독립 보행 단계 주석으로 정확한 직선 보행을 확인한 것은 아니다.
+
+개발 목표
+전체와 65세 이상에서 모두 MAE ≤1점, 개인 오차 ≤2점인 비율 ≥80%, 속도 단독보다 MAE ≥20% 감소와 사람별 짝비교의 개선 근거를 목표로 정했다.
+1점 이상 오차는 원인 점검을 시작하는 기준이다. 오차가 크다는 사실만으로 프로그램 오류로 확정하지 않는다.
+작은 개인 차이를 구분하려면 오차 폭도 작아야 한다는 취지의 공학적 목표이며, JH-FRAT의 임상 최소 유의 변화량이나 공인 정확도 기준이 아니다.
+목표에 도달하더라도 동일인 반복 측정과 독립 자료 평가 없이 임상적 변화 감지 능력을 주장할 수 없다.
+
+전체 125명 / 65세 이상 56명 결과
+{chr(10).join(rows)}
+참고용 학습 사람 중앙값 예측: {r1['conditions']['all']['median']['mae']:.3f} / {r1['conditions']['age65plus']['median']['mae']:.3f}점.
+나이만 쓴 진단용 예측: {r1['conditions']['all']['age']['mae']:.3f} / {r1['conditions']['age65plus']['age']['mae']:.3f}점. 나이는 정답 구성 항목이기도 하므로 보행 모델과 동일 조건의 실용 비교는 아니다.
+
+개선 폭의 해석
+처음 고정한 비교에서 특징 추가는 -0.240점(95% 사람 짝비교 구간 -0.606~+0.119), 2D CNN은 -0.262점(-0.585~+0.073)이었다. 0을 포함하므로 명확한 개선으로 확정하기 어렵다.
+추가 순서형 학습은 전체에서 -0.343점(-0.592~-0.085), 약 9.9% 감소했다. 고령층은 -0.321점(-0.705~+0.098)으로 불확실하다.
+순서형 모델은 각 점수 이상일 가능성을 학습하고 중앙값 또는 평균을 내부 검증에서 선택한다. 위험도 분기는 예측 위험도 확률로 두 회귀 모델을 결합하며 실제 평가 정답으로 분기를 선택하지 않는다.
+순서형 학습과 3D 후속은 첫 결과를 본 뒤 같은 바깥 분할을 재사용한 개발 탐색이다. 구간은 고정된 분할·예측의 사람 재표집이며 전체 모델 선택 불확실성과 반복 탐색을 반영하지 않는다.
+전체 최선 수치만 골라 독립 검증 결과로 발표하지 않는다.
+
+3D 후속 비교 — 연결 가능한 같은 평가 사람만
+{comparison3d}
+3명은 동일 프레임의 사람 검출을 연결할 수 없어 3D 측정 불가로 남겼다. 기본 125명 결과에서 제외하지 않았다.
+3D CNN 대 속도는 전체 -0.447점(-0.793~-0.091), 고령층 -0.236점(-0.630~+0.189)이었다.
+3D CNN 대 기존 2D CNN은 전체 -0.181점(-0.423~+0.069), 고령층 -0.264점(-0.640~+0.096)이다. 3D의 추가 가치가 없다고 단정할 수 없다.
+다만 3D 모델은 연결된 122명으로 학습했고 기존 2D 모델은 125명으로 학습했다. 평가 사람은 맞췄으나 학습 인원 차이가 있어 순수한 3D 효과를 분리한 비교는 아니다.
+제공된 전체 검사 72개 특징을 쓴 별도 진단: 전체 {r2['summary']['all']['all125_provider_diagnostic']['mae']:.3f}점 / 고령층 {r2['summary']['age65plus']['all125_provider_diagnostic']['mae']:.3f}점. 짧은 보행이나 휴대폰 정확도 검증과 구분한다.
+
+큰 오차 원인 점검
+확인한 계산·실행 상태: 사람 중복, 평가 사람 정규화 사용, 평가 사람으로 학습 종료 선택, 비유한 입력은 발견하지 않았다.
+125명 입력 구간과 원본을 다시 연결했고 속도를 별도 직선 기울기 계산으로 재구성했다. 최대 차이는 약 2.89e-15다. 영상 이동·균일 크기 변화에 대한 보정 검사도 통과했다.
+큰 오차는 고득점 과소예측에서 두드러진다. 기존 2D CNN의 0–5점 69명 MAE 2.370점, 6–13점 51명 3.403점, 14점 이상 5명 12.997점이다.
+예: 제공 점수 31점인 사람을 2D CNN은 5.643점으로 예측했다. 순서형 개선 후에도 14점 이상 5명의 MAE는 13.8점이다. 위험도 분기 후에도 12.524점이다.
+높은 점수 5명은 모두 확장 코호트에 있다. 원래 76명과 추가 49명의 2D CNN MAE는 2.719 / 3.989점이다. 표본 부족·분포 차이의 가능성이며 원인 확정은 아니다.
+총점은 나이·낙상 이력·배뇨·복약·장비·이동·인지의 합이다. 표의 구성 점수 합에서 이동 항목 비중은 약 8.9%였다. 보행 외 정보가 많지만 이것만으로 보행과 총점의 연관성이 없다고 결론 낼 수 없다.
+총점과 구성 합이 맞지 않는 2명, 표준 도구의 연령 점수와 기록 나이가 맞지 않는 4명을 찾았다. 적용한 척도의 변형인지 기록 오류인지 확정하지 못했다. 정답은 임의로 고치지 않았다.
+이 6명만 결과 집계에서 뺀 보조 점검에서도 기존 CNN MAE는 3.274점이었다. 다시 학습한 결과가 아니며 전체 큰 오차를 이 사례들로 설명할 수 없다.
+시간 순서를 섞어도 기존 CNN MAE 변화는 +0.065점(-0.072~+0.203)에 그쳤다. 유용한 시간 구조 학습의 강한 증거가 없으며, 이 변형 검사만으로 원인을 확정할 수는 없다.
+학습 내부 잔차로 만든 경험적 90% 오차 구간은 CNN에서 대표 반폭 약 6.40점이었다. 전체 포괄률 92.8%, 고령층 87.5%다. 개인의 1–2점 차이를 신뢰해 판정하기에는 넓다. 정식 보장 구간이나 임상 변화량은 아니다.
+
+검산·보존 상태
+기본 375개 내부 모델 + 25개 최종 모델 재추론, 결합 5개 재구성. 3D 후속 330+15개, 순서형·분기 180+10개 재추론 완료.
+총 885개 내부 모델과 50개 최종 모델을 확인했다. 저장 파일 SHA256, 사람 분리, 내부 선택·정규화를 검산했다. 신경망 CPU64 재추론 최대 차이는 약 3.97e-6이며 사전 허용오차 2e-5 이내다.
+검증 과정의 출력 필드 중복(age)과 후속 검산 코드의 출력 구문 오류는 예측값·판정 기준을 바꾸지 않고 수정했다. 3D 연결 실패는 기준을 낮추지 않고 측정 불가로 기록했다.
+기존의 단일 검출 제한 파일럿·원본 프로토콜·수정 전 주요 파일과 실패 원인은 보존했다.
+모델·원본·예측 배열: {B.as_posix()}
+사람별 기본 예측: person-predictions.csv. 상세 지표·짝비교·점수대별 편향: results.json / round2-results.json / round3-results.json.
+
+확인하지 못한 범위
+실제 휴대폰 영상의 MediaPipe 추출 오차, 실제 m/s·보폭의 정확도, TUG 초 단위 오차, SPPB 예측, 동일인 시간에 따른 변화, 독립 외부 고령자 일반화는 검증하지 않았다.
+현재 결과는 JH-FRAT 점수 예측 개발 실험이며 실제 낙상 발생 예측이나 임상 검사 대체 성능이 아니다.
+
+출처
+자료: https://www.kaggle.com/datasets/limzhekhae1008/mmu-frip (다운로드 버전은 acquisition.json에 고정)
+정답 구성·기준: https://www.rwjbh.org/documents/nursing/nursing-resources/Johns-Hopkins-Fall-Risk-Assessment-Tool.pdf
+표준 도구는 6–13점을 중등도, 14점 이상을 고위험으로 나눈다. 자료의 fall_risk=1은 score≥6이므로 보고서에서는 이를 중등도 이상으로 해석한다.
+'''
+    (H/'RESULTS.txt').write_text(text,encoding='utf8')
+    plt.rcParams['font.family']='Malgun Gothic';plt.rcParams['axes.unicode_minus']=False
+    fig,axes=plt.subplots(1,2,figsize=(11,4.5));labels=['속도만','2D 특징 추가','2D CNN','순서형 개선*'];arms=['A','B','C','ordinal'];xx=np.arange(4)
+    for group,offset,color,label in [('all',-.13,'#2563eb','전체 125명'),('age65plus',.13,'#ea580c','65세 이상 56명')]:
+        mm=[r1['conditions'][group][a] if a!='ordinal' else r3['summary'][group][a] for a in arms];v=np.array([m['mae'] for m in mm]);ci=np.array([m['mae_ci95'] for m in mm]);axes[0].errorbar(xx+offset,v,yerr=np.array([v-ci[:,0],ci[:,1]-v]),fmt='o',color=color,capsize=3,label=label)
+    axes[0].set(xticks=xx,xticklabels=labels,ylabel='평균 절대오차 (JH-FRAT 점)',ylim=(0,5.1),title='개인 예측 오차: 목표에 미달');axes[0].axhline(1,color='#64748b',ls='--',label='개발 목표 1점');axes[0].legend(fontsize=9);axes[0].grid(axis='y',alpha=.2)
+    pp=np.load(B/'round3-verified-predictions.npz');old=pp['participant_age']>=65
+    axes[1].scatter(pp['y'][~old],pp['ordinal'][~old],s=25,alpha=.6,label='65세 미만');axes[1].scatter(pp['y'][old],pp['ordinal'][old],s=30,alpha=.7,label='65세 이상');axes[1].plot([0,32],[0,32],color='#64748b',ls='--');axes[1].set(xlim=(-1,32),ylim=(-1,32),xlabel='제공된 실제 점수',ylabel='예측 점수',title='순서형 개선 후에도 높은 점수 과소예측');axes[1].legend(fontsize=9);axes[1].grid(alpha=.2)
+    fig.text(.5,.01,'*첫 결과를 본 뒤 같은 분할로 개선한 개발 결과. 오차 막대는 사람 재표집 95% 구간. TUG 초 단위가 아님.',ha='center',fontsize=9);fig.tight_layout(rect=(0,.05,1,1));fig.savefig(H/'comparison.png',dpi=160);plt.close(fig)
+    inventory=[]
+    for path in sorted(H.iterdir()):
+        if path.is_file() and path.name not in ['artifact-manifest.json','STATE.json']:inventory.append({'name':path.name,'bytes':path.stat().st_size,'sha256':p.sha(path)})
+    p.save(H/'artifact-manifest.json',{'study':'20261105-mmu-frip-evaluation','files':inventory,'large_root':str(B),'large_predictions':[{'name':name,'sha256':p.sha(B/name)} for name in ['input.npz','round2-input.npz','verified-predictions.npz','round2-verified-predictions.npz','round3-verified-predictions.npz']]})
+    p.save(H/'STATE.json',{'status':'completed_comparison_and_exploratory_improvement_target_not_met','clinical_or_mobile_validation':False,'primary_people':125,'primary_older65':56,'matched3D':122,'matched3D_older65':55,'goal_achieved':False,'all_registered_comparisons_verified':True,'internal_models_replayed':885,'final_models_replayed':50,'blends_rebuilt':5,'report_sha256':p.sha(H/'RESULTS.txt'),'manifest_sha256':p.sha(H/'artifact-manifest.json')})
+    print('REPORT_AND_FIGURE_WRITTEN',p.sha(H/'RESULTS.txt'))
+
+if __name__=='__main__':main()

@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "contexts": 15,
+  "gates_replayed": 60,
+  "policy_fold_outputs_checked": 120,
+  "checks": [
+    {
+      "condition": "speed",
+      "fold": 0,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 3,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed",
+      "fold": 1,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed",
+      "fold": 2,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed",
+      "fold": 3,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 1,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed",
+      "fold": 4,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 0,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 3,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 1,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 2,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 3,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 1,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 4,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "combined",
+      "fold": 0,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 3,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "combined",
+      "fold": 1,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "combined",
+      "fold": 2,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "combined",
+      "fold": 3,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 1,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    },
+    {
+      "condition": "combined",
+      "fold": 4,
+      "gates_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_experts_features_IDs_rebuilt": true,
+      "train_only_feature_moments_and_class_weights": true,
+      "numpy_loss_gradient_and_CPU64_prediction_replay": true
+    }
+  ],
+  "comparison_sha256": "5cec26084ee344912c229e36d827df23b842578e920eabcb86bb8a96940fb6b4",
+  "heldout_sha256": "f9aa137a324123aa496356ddba898bc58db5b02ee9779cc2e2576be6c7f17c90",
+  "review_code_sha256": "ad30145214e74a2d576baa8c169fb761fded99f890056d5236a020a8e36cbc68"
+}

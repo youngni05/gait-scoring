@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "classifier_jobs": 300,
+  "regression_control_jobs": 60,
+  "source_hashes_checked": 5,
+  "all_saved_models_replayed": 720,
+  "classifier_max_probability_difference": 9.996344030316351e-17,
+  "regression_max_probability_difference": 1.1102230246251565e-16,
+  "metric_max_difference": 8.881784197001252e-16,
+  "refits": [
+    {
+      "target": "sppb",
+      "model": "LR",
+      "refit_max_difference": 0.0,
+      "calibrator_refit_max_difference": 0.0
+    },
+    {
+      "target": "sppb",
+      "model": "RF",
+      "refit_max_difference": 0.0,
+      "calibrator_refit_max_difference": 0.0
+    },
+    {
+      "target": "tug",
+      "model": "LR",
+      "refit_max_difference": 0.0,
+      "calibrator_refit_max_difference": 0.0
+    },
+    {
+      "target": "tug",
+      "model": "RF",
+      "refit_max_difference": 0.0,
+      "calibrator_refit_max_difference": 0.0
+    }
+  ],
+  "leakage": "outer test people absent from training, calibration and rule selection; train scaler moments independently recomputed",
+  "analysis_code_sha256": "4c173fbc76f7fcc9a24c3d1cb4157b67a717ebe44cca78efe0b49d3a84d8df7b",
+  "verification_code_sha256": "8557e31b707e7408d8301a2235023d0e6f8d13a977e14ea517139cb1cc950e1e"
+}

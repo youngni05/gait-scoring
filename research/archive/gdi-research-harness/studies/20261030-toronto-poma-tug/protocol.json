@@ -1,0 +1,82 @@
+{
+  "status": "declared_before_fitting",
+  "question": "Can the existing frozen MotionBERT-Lite representation predict participant-level POMA-Gait and TUG in previously unseen Toronto participants?",
+  "source": "Toronto Older Adults Gait Archive: PoseTracking.zip and Table 1.xlsx",
+  "pose_method": "Alphapose only, selected from the prior structural audit before score prediction",
+  "input": {
+    "shape": [
+      124,
+      17,
+      3
+    ],
+    "channels": [
+      "x",
+      "y",
+      "confidence"
+    ],
+    "fps": 30,
+    "joint_order": "H36M via existing COCO converter",
+    "normalization": "existing crop_scale([1,1]) implementation"
+  },
+  "selection": {
+    "required_header": "time plus 17 COCO x/y/conf triples; reject absent columns",
+    "valid_source_row": "all values finite, all confidence in [0,1], six lower-body joints have confidence > 0",
+    "continuous_time": "positive adjacent timestamps, gap <= 1.5 times the median positive source interval",
+    "window": "first 4.1 seconds of longest valid continuous time span; ties use earliest span; exactly one window per CSV",
+    "resampling": "linear x/y/conf interpolation at 30 Hz between observed adjacent valid rows only; no crossing missing rows or dropped-frame gaps; no extrapolation or padding",
+    "label_used_for_selection": false
+  },
+  "encoder": {
+    "name": "frozen MotionBERT-Lite",
+    "weights_sha256": "6a6ad0055c7ad50da083af0549a24c52ec1c21f89e440912645054d74be0a461",
+    "pooling": "mean over time and joints",
+    "features": 512,
+    "device": "CPU",
+    "threads": 2
+  },
+  "analysis_unit": "one participant; average their eligible window feature vectors with equal window weights",
+  "targets": [
+    "POMA-Gait points",
+    "TUG seconds"
+  ],
+  "target_handling": "separate continuous regressions; original values, no rounding, clipping, thresholding or combined score",
+  "outer_evaluation": "leave one participant out; every eligible participant evaluated exactly once",
+  "baselines": [
+    "training-participant mean",
+    "training-participant median"
+  ],
+  "models": {
+    "Ridge": {
+      "alpha": 1.0
+    },
+    "PLS": {
+      "components": [
+        2,
+        4,
+        8
+      ],
+      "scale": false,
+      "max_iter": 500,
+      "tol": 1e-06,
+      "selection": "inner leave-one-training-participant-out MAE for each target; smallest component count breaks ties; never use outer participant"
+    }
+  },
+  "standardization": "StandardScaler fitted only on the relevant training participants; refitted for each inner and outer split",
+  "constant_training_target": "predict training mean instead of fitting PLS",
+  "metrics": [
+    "person-level MAE",
+    "RMSE",
+    "R2",
+    "Spearman correlation",
+    "paired absolute-error difference from training-median baseline"
+  ],
+  "uncertainty": {
+    "paired_person_bootstrap_draws": 10000,
+    "seed": 20261030,
+    "interpretation": "exploratory intervals conditional on these OOF predictions, not an independent clinical validation"
+  },
+  "interpretation": "Compare with both constant baselines; report individual errors and target imbalance. No clinical success threshold is introduced and no best method is adopted using this outer evaluation.",
+  "existing_GDI_training_or_splits_changed": false,
+  "protected_GDI_numeric_data_used": false,
+  "GPU_training": false
+}

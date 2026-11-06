@@ -1,0 +1,169 @@
+{
+  "passed": true,
+  "outer_fold_models": 5,
+  "independent_inner_pipeline_checks": 80,
+  "inner_independent_max_prediction_error": 7.105427357601002e-13,
+  "outer_independent_max_prediction_error": 2.8421709430404007e-13,
+  "combined_linear_head_replay_max_error": 9.947598300641403e-14,
+  "inner_audits": [
+    {
+      "outer_fold": 0,
+      "inner_fold": 0,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 0,
+      "inner_fold": 1,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 0,
+      "inner_fold": 2,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 0,
+      "inner_fold": 3,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 1,
+      "inner_fold": 0,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 1,
+      "inner_fold": 1,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 1,
+      "inner_fold": 2,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 1,
+      "inner_fold": 3,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 2,
+      "inner_fold": 0,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 2,
+      "inner_fold": 1,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 2,
+      "inner_fold": 2,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 2,
+      "inner_fold": 3,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 3,
+      "inner_fold": 0,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 3,
+      "inner_fold": 1,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 3,
+      "inner_fold": 2,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 3,
+      "inner_fold": 3,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 4,
+      "inner_fold": 0,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 4,
+      "inner_fold": 1,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 4,
+      "inner_fold": 2,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    },
+    {
+      "outer_fold": 4,
+      "inner_fold": 3,
+      "outer_held_absent": true,
+      "inner_people_disjoint": true,
+      "inner_scaler_refit_checked": true
+    }
+  ],
+  "outer_held_people_absent_from_every_inner_fit": true,
+  "inner_scaler_PCA_and_Ridge_refitted": true,
+  "inner_dimension_choice_independently_reproduced": true,
+  "all_outer_models_saved_and_replayed": true,
+  "outer_metrics_and_bands_independently_checked": true,
+  "all_8_train_held_rows_and_64_bands_independently_weighted": true,
+  "existing_OOF_contract_accepted": true,
+  "source_and_previous_artifacts_unchanged": true,
+  "source_hashes": {
+    "train_only.npz": "9086b881c7ae2de17c517eb1f3d2cfef583c54893edc8455c9d0a81e668147ca",
+    "baseline_heads.npz": "a01574d2b2c14b0514905e53439b6b17e0dcc300fb746e43c26d6cf10db9050c",
+    "baseline_predictions.npz": "d33a379296d71dc4d9bc635d720978924bb7b485ffdb69ab02b22b867f2f0d97",
+    "run.py": "e53407e2f0743570b4bea15960a05442c1ce9d616deb5f0fc7357410956c572c",
+    "protocol.draft.json": "86877ba3e062595faab3ed78cb86f50893d7739853f47f2c044852e88a9a3ad4"
+  },
+  "protected_cohorts_used": false,
+  "encoder_reinference": false,
+  "GPU_used": false,
+  "independent_final_evaluation": false
+}

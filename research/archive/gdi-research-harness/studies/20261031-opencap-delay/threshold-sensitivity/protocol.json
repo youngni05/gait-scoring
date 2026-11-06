@@ -1,0 +1,14 @@
+{
+  "timing": "after primary results; complete both originally declared alternative thresholds on posture-screened windows, report both; not a new primary or independent confirmation",
+  "thresholds": [
+    0.05,
+    0.15
+  ],
+  "source_protocol_sha256": "a43600e8813a232bb8da5c1b91e8f92f44014215549b0cb8270a975bb6a5811f",
+  "code_sha256": "3154ad051c03b2ae6a52038000a86e55db27c109d26ae944b7a88c9a7d95aa3b",
+  "all_other_conditions": "same176, same3s+D, same outer/inner splits and Ridge grid",
+  "comparisons": [
+    "CleanDelay05 vs CleanSpeed",
+    "CleanDelay15 vs CleanSpeed"
+  ]
+}

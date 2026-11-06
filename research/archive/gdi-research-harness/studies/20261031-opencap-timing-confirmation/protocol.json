@@ -1,0 +1,66 @@
+{
+  "cohorts": {
+    "exclude283": {
+      "people": 82,
+      "long_people": 6,
+      "views": [
+        "Gait_10",
+        "Withheld_10",
+        "Candidate_10",
+        "Gait_20",
+        "Withheld_20",
+        "Candidate_20",
+        "Gait_30",
+        "Withheld_30",
+        "Candidate_30"
+      ],
+      "hashes": {
+        "input.npz": "2fd76535066ce523db8d8c5698ab906a29fb49f4b0710b922d33d0499417a17c",
+        "manifest.json": "995895678e51fcf453642b26c2abbd2f05ac15fb374b04706d98b3b26037564f",
+        "splits.json": "b99176e4fd9c69fb26787002a152476374019dd903a3738a4c1b194778f0ddee"
+      }
+    },
+    "include283": {
+      "people": 83,
+      "long_people": 7,
+      "views": [
+        "Gait_10",
+        "Withheld_10",
+        "Candidate_10",
+        "Gait_20",
+        "Withheld_20",
+        "Candidate_20",
+        "Gait_30",
+        "Withheld_30",
+        "Candidate_30"
+      ],
+      "hashes": {
+        "input.npz": "443674f829453ceaa9612f75b08c26c7592698dcf21fb2d57e8d8fb7f75dcc6d",
+        "manifest.json": "2910f68ce009940f2ff2bd0a29a23babc76ada35dc63bace5b9b0da6ed4bb163",
+        "splits.json": "ce020cac9fee95393c03f92e5f199fca8c0de693906e5ae043f32aaba0a95f43"
+      }
+    }
+  },
+  "scope": "CONSERVATIVE SENSITIVITY ONLY; actual requested confirmed-preparation experiment lacks verified timer/trial evidence for83 people",
+  "mapping": {
+    "Gait": "previous Gait",
+    "Withheld": "previous Reallocated; same prep+gait observed clips, no unverified prep OR core rise duration is added or used as feature",
+    "Candidate": "previous Prep; all automatically observed prep+rise duration is added"
+  },
+  "observation": "exact same previous per-person clips and total durations,10/20/30 caps; Withheld and Candidate identical clipped speed and observed gait stop; only candidate time addition differs",
+  "split": "byte-identical previous82/83 person folds; no re-selection of people or records",
+  "model": "Ridge SVD .1,1,10,100 chosen within3inner folds using finalTUG MAE;5partitionsx5outer; training-only scaling and residual target; no evaluation label timing corrections",
+  "semantics": "withholding uncertain time is a policy, not assertion that true timed preparation=0; core rise proxy is also not independently timed annotation",
+  "not_new_independent_validation": "reruns previous relevant conditions for explicit conservative audit; results expected to reproduce, not new independent clinical evidence",
+  "code_sha256": "97d3e9a7e8ace45174eaaf13ca7a06e4292fbffa70c2facd1c7f5155e4c2edbf",
+  "source_hashes": {
+    "20261031-opencap-preparation-offset\\exclude283\\input.npz": "3da2af77dd7bba3837f4e6aed1b7c5b11c9088c75c08140c3644ca3612f2dc0f",
+    "20261031-opencap-preparation-offset\\exclude283\\manifest.json": "995895678e51fcf453642b26c2abbd2f05ac15fb374b04706d98b3b26037564f",
+    "20261031-opencap-preparation-offset\\exclude283\\splits.json": "b99176e4fd9c69fb26787002a152476374019dd903a3738a4c1b194778f0ddee",
+    "20261031-opencap-preparation-offset\\exclude283\\predictions.csv": "e433236e5c5a6b98803f9bedc74c18629d70a113adceddd915976b2d6e78242f",
+    "20261031-opencap-preparation-offset\\include283\\input.npz": "4aaa61a9dab34a2869abb7e4b8f536c2193e4823a74e2e8cc667d6d3b95868d3",
+    "20261031-opencap-preparation-offset\\include283\\manifest.json": "2910f68ce009940f2ff2bd0a29a23babc76ada35dc63bace5b9b0da6ed4bb163",
+    "20261031-opencap-preparation-offset\\include283\\splits.json": "ce020cac9fee95393c03f92e5f199fca8c0de693906e5ae043f32aaba0a95f43",
+    "20261031-opencap-preparation-offset\\include283\\predictions.csv": "3ef37338ec84f46ae26a51d3a26789176c4dc086cc46a5d9519cba528cdbe83d"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "A_and_root_comparison": [
+    {
+      "window": "front",
+      "A_all_shared_metrics_match": true,
+      "root_CPU_baseline_comparison_matches": true
+    },
+    {
+      "window": "back",
+      "A_all_shared_metrics_match": true,
+      "root_CPU_baseline_comparison_matches": true
+    }
+  ],
+  "A_band_rows_checked": 16,
+  "all_CPU_band_metrics_independently_checked": true,
+  "refusal_tests": [
+    {
+      "case": "wrong_dataset",
+      "rejected": true,
+      "reason": "prediction metadata mismatch: dataset_sha256"
+    },
+    {
+      "case": "wrong_baseline_source",
+      "rejected": true,
+      "reason": "prediction metadata mismatch: baseline_sha256"
+    },
+    {
+      "case": "wrong_artifact_hash",
+      "rejected": true,
+      "reason": "prediction metadata mismatch: prediction_sha256"
+    },
+    {
+      "case": "swapped_window_declaration",
+      "rejected": true,
+      "reason": "prediction metadata mismatch: windows"
+    },
+    {
+      "case": "swapped_side_declaration",
+      "rejected": true,
+      "reason": "prediction metadata mismatch: sides"
+    },
+    {
+      "case": "missing_fold_provenance",
+      "rejected": true,
+      "reason": "missing/duplicate fold provenance"
+    },
+    {
+      "case": "leaked_training_person",
+      "rejected": true,
+      "reason": "fold training/evaluation membership mismatch"
+    },
+    {
+      "case": "missing_record",
+      "rejected": true,
+      "reason": "prediction shape/dtype/finite mismatch"
+    },
+    {
+      "case": "duplicated_record",
+      "rejected": true,
+      "reason": "missing or duplicated records"
+    },
+    {
+      "case": "wrong_row_order",
+      "rejected": true,
+      "reason": "record order or dataset identity mismatch: person_id"
+    },
+    {
+      "case": "wrong_fold_array",
+      "rejected": true,
+      "reason": "record order or dataset identity mismatch: fold"
+    },
+    {
+      "case": "missing_identity_array",
+      "rejected": true,
+      "reason": "missing prediction identity arrays"
+    },
+    {
+      "case": "nan_score",
+      "rejected": true,
+      "reason": "prediction shape/dtype/finite mismatch"
+    },
+    {
+      "case": "wrong_shape",
+      "rejected": true,
+      "reason": "prediction shape/dtype/finite mismatch"
+    },
+    {
+      "case": "changed_embedded_baseline",
+      "rejected": true,
+      "reason": "embedded baseline changed"
+    }
+  ],
+  "negative_and_above100_half_open_bin_cases_checked": true,
+  "anonymous_demo_replays_saved_oof_prediction": true,
+  "primary_results_unchanged": true,
+  "source_hashes": {
+    "train_only.npz": "9086b881c7ae2de17c517eb1f3d2cfef583c54893edc8455c9d0a81e668147ca",
+    "baseline_predictions.npz": "d33a379296d71dc4d9bc635d720978924bb7b485ffdb69ab02b22b867f2f0d97",
+    "baseline_heads.npz": "a01574d2b2c14b0514905e53439b6b17e0dcc300fb746e43c26d6cf10db9050c"
+  },
+  "additional_training_updates": 0,
+  "encoder_reinference": false,
+  "gpu_used": false,
+  "metadata_declarations_do_not_prove_training_independence_by_themselves": true
+}

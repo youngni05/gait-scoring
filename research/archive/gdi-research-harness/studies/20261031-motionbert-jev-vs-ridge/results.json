@@ -1,0 +1,452 @@
+{
+  "TUG": {
+    "people": 12,
+    "metrics": {
+      "Ridge_same8": {
+        "MAE": 3.8091725030402053,
+        "RMSE": 5.037745269262058,
+        "bias": -0.17112546570896425
+      },
+      "Ridge_all_training": {
+        "MAE": 3.4552409582547017,
+        "RMSE": 4.887439567214694,
+        "bias": 0.005803894917342974
+      },
+      "Ridge_same8_grid": {
+        "MAE": 3.7608333333333337,
+        "RMSE": 5.1009190348406825,
+        "bias": -0.28083333333333343
+      },
+      "median_same8": {
+        "MAE": 3.1433333333333344,
+        "RMSE": 4.772148363158883,
+        "bias": -1.0683333333333334
+      },
+      "mean_same8": {
+        "MAE": 3.3166666666666678,
+        "RMSE": 4.658379686337658,
+        "bias": -0.0625
+      },
+      "nearest1": {
+        "MAE": 4.735000000000001,
+        "RMSE": 6.773577341405352,
+        "bias": -0.21666666666666648
+      },
+      "median_all_training": {
+        "MAE": 3.0391666666666666,
+        "RMSE": 4.796282414537326,
+        "bias": -1.3425
+      },
+      "Jev_direct": {
+        "MAE": 6.010833333333333,
+        "RMSE": 7.993082947148741,
+        "bias": 0.8025000000000002
+      },
+      "Jev_grid_probability_proxy": {
+        "MAE": 6.539100000000001,
+        "RMSE": 8.294075332830458,
+        "bias": 5.370116666666667
+      },
+      "Jev_example_probability_proxy": {
+        "MAE": 4.579583333333335,
+        "RMSE": 6.150872091283751,
+        "bias": 0.22935000000000003
+      }
+    },
+    "coverage": 1.0,
+    "paired": {
+      "Jev_direct_minus_Ridge_same8": {
+        "difference": 2.201660830293128,
+        "conditional_bootstrap95": [
+          0.27855456455215494,
+          4.627951395674558
+        ],
+        "people_improved": 3
+      },
+      "Jev_direct_minus_Ridge_all_training": {
+        "difference": 2.555592375078632,
+        "conditional_bootstrap95": [
+          0.6229593560289218,
+          4.912910365430418
+        ],
+        "people_improved": 3
+      },
+      "Jev_grid_probability_proxy_minus_Ridge_same8": {
+        "difference": 2.7299274969597946,
+        "conditional_bootstrap95": [
+          -0.3888799975426994,
+          5.9017852434938805
+        ],
+        "people_improved": 5
+      },
+      "Jev_grid_probability_proxy_minus_Ridge_all_training": {
+        "difference": 3.083859041745299,
+        "conditional_bootstrap95": [
+          -0.04095398172763154,
+          6.1853216524807895
+        ],
+        "people_improved": 4
+      },
+      "Jev_example_probability_proxy_minus_Ridge_same8": {
+        "difference": 0.7704108302931284,
+        "conditional_bootstrap95": [
+          -0.15367749902998876,
+          1.879427454322136
+        ],
+        "people_improved": 4
+      },
+      "Jev_example_probability_proxy_minus_Ridge_all_training": {
+        "difference": 1.1243423750786323,
+        "conditional_bootstrap95": [
+          0.15049418724641597,
+          2.2237488536366055
+        ],
+        "people_improved": 3
+      }
+    },
+    "per_fold": {
+      "0": {
+        "Ridge_same8": 5.13680894946781,
+        "Ridge_all_training": 5.206234020146761,
+        "Ridge_same8_grid": 5.460000000000001,
+        "median_same8": 6.170000000000002,
+        "mean_same8": 4.9887500000000005,
+        "nearest1": 6.260000000000001,
+        "median_all_training": 6.239999999999999,
+        "Jev_direct": 6.460000000000001,
+        "Jev_grid_probability_proxy": 2.8561333333333327,
+        "Jev_example_probability_proxy": 5.591466666666666
+      },
+      "1": {
+        "Ridge_same8": 2.855853166186799,
+        "Ridge_all_training": 2.4137478565665726,
+        "Ridge_same8_grid": 2.6,
+        "median_same8": 1.7900000000000016,
+        "mean_same8": 3.345416666666667,
+        "nearest1": 3.510000000000001,
+        "median_all_training": 1.6000000000000003,
+        "Jev_direct": 3.266666666666667,
+        "Jev_grid_probability_proxy": 4.650300000000001,
+        "Jev_example_probability_proxy": 3.0073000000000008
+      },
+      "2": {
+        "Ridge_same8": 2.992920867125436,
+        "Ridge_all_training": 2.775083061970638,
+        "Ridge_same8_grid": 2.545,
+        "median_same8": 2.545,
+        "mean_same8": 2.5500000000000007,
+        "nearest1": 3.325000000000001,
+        "median_all_training": 2.545,
+        "Jev_direct": 10.045,
+        "Jev_grid_probability_proxy": 7.765,
+        "Jev_example_probability_proxy": 4.827500000000001
+      },
+      "3": {
+        "Ridge_same8": 4.845963982095241,
+        "Ridge_all_training": 3.710632914201886,
+        "Ridge_same8_grid": 5.1000000000000005,
+        "median_same8": 2.545000000000001,
+        "mean_same8": 3.04,
+        "nearest1": 8.600000000000001,
+        "median_all_training": 2.1000000000000005,
+        "Jev_direct": 9.600000000000001,
+        "Jev_grid_probability_proxy": 8.924950000000003,
+        "Jev_example_probability_proxy": 7.62045
+      },
+      "4": {
+        "Ridge_same8": 3.0271569955386406,
+        "Ridge_all_training": 2.815756958285685,
+        "Ridge_same8_grid": 2.83,
+        "median_same8": 1.83,
+        "mean_same8": 1.8087500000000007,
+        "nearest1": 1.83,
+        "median_all_training": 1.83,
+        "Jev_direct": 1.83,
+        "Jev_grid_probability_proxy": 11.285,
+        "Jev_example_probability_proxy": 2.131400000000001
+      }
+    },
+    "unknown_people": 0,
+    "mean_unknown_probability": 0.05166666666666667,
+    "answered_only": {
+      "people": 12,
+      "metrics": {
+        "Ridge_same8": {
+          "MAE": 3.8091725030402053,
+          "RMSE": 5.037745269262058,
+          "bias": -0.17112546570896425
+        },
+        "Ridge_all_training": {
+          "MAE": 3.4552409582547017,
+          "RMSE": 4.887439567214694,
+          "bias": 0.005803894917342974
+        },
+        "Ridge_same8_grid": {
+          "MAE": 3.7608333333333337,
+          "RMSE": 5.1009190348406825,
+          "bias": -0.28083333333333343
+        },
+        "median_same8": {
+          "MAE": 3.1433333333333344,
+          "RMSE": 4.772148363158883,
+          "bias": -1.0683333333333334
+        },
+        "mean_same8": {
+          "MAE": 3.3166666666666678,
+          "RMSE": 4.658379686337658,
+          "bias": -0.0625
+        },
+        "nearest1": {
+          "MAE": 4.735000000000001,
+          "RMSE": 6.773577341405352,
+          "bias": -0.21666666666666648
+        },
+        "median_all_training": {
+          "MAE": 3.0391666666666666,
+          "RMSE": 4.796282414537326,
+          "bias": -1.3425
+        },
+        "Jev_direct": {
+          "MAE": 6.010833333333333,
+          "RMSE": 7.993082947148741,
+          "bias": 0.8025000000000002
+        },
+        "Jev_grid_probability_proxy": {
+          "MAE": 6.539100000000001,
+          "RMSE": 8.294075332830458,
+          "bias": 5.370116666666667
+        },
+        "Jev_example_probability_proxy": {
+          "MAE": 4.579583333333335,
+          "RMSE": 6.150872091283751,
+          "bias": 0.22935000000000003
+        }
+      }
+    }
+  },
+  "GDI": {
+    "people": 50,
+    "metrics": {
+      "Ridge_same8": {
+        "MAE": 8.967041308186015,
+        "RMSE": 11.32722237920558,
+        "bias": 0.8567116552834552
+      },
+      "Ridge_all_training": {
+        "MAE": 7.056316317724956,
+        "RMSE": 8.69710361589612,
+        "bias": -0.005162169217365857
+      },
+      "Ridge_same8_grid": {
+        "MAE": 9.027624186535723,
+        "RMSE": 11.386384945412686,
+        "bias": 0.9216504667204128
+      },
+      "median_same8": {
+        "MAE": 8.654186586563196,
+        "RMSE": 10.651355370644238,
+        "bias": 0.026273442709057945
+      },
+      "mean_same8": {
+        "MAE": 8.790728817879888,
+        "RMSE": 10.594318282623611,
+        "bias": 0.6545626680056454
+      },
+      "nearest1": {
+        "MAE": 12.014698338269252,
+        "RMSE": 14.007007717669461,
+        "bias": 1.893662990587647
+      },
+      "median_all_training": {
+        "MAE": 9.395606001065266,
+        "RMSE": 12.017352195823307,
+        "bias": -0.08583922563103556
+      },
+      "Jev_direct": {
+        "MAE": 10.540245520761852,
+        "RMSE": 13.945225495462653,
+        "bias": 3.2016504667204133
+      },
+      "Jev_grid_probability_proxy": {
+        "MAE": 9.336844921249986,
+        "RMSE": 11.172117481393641,
+        "bias": 1.3123741753134672
+      },
+      "Jev_example_probability_proxy": {
+        "MAE": 9.180935541907111,
+        "RMSE": 10.760167143871234,
+        "bias": 1.0863846306431593
+      }
+    },
+    "coverage": 1.0,
+    "paired": {
+      "Jev_direct_minus_Ridge_same8": {
+        "difference": 1.5732042125758365,
+        "conditional_bootstrap95": [
+          -0.4862866087004775,
+          3.7147310695230615
+        ],
+        "people_improved": 21
+      },
+      "Jev_direct_minus_Ridge_all_training": {
+        "difference": 3.4839292030368934,
+        "conditional_bootstrap95": [
+          1.174706975682256,
+          6.011648558110037
+        ],
+        "people_improved": 18
+      },
+      "Jev_grid_probability_proxy_minus_Ridge_same8": {
+        "difference": 0.36980361306397014,
+        "conditional_bootstrap95": [
+          -0.7858021417132461,
+          1.5646716613593759
+        ],
+        "people_improved": 22
+      },
+      "Jev_grid_probability_proxy_minus_Ridge_all_training": {
+        "difference": 2.280528603525027,
+        "conditional_bootstrap95": [
+          0.8499948108076331,
+          3.7712634069685373
+        ],
+        "people_improved": 16
+      },
+      "Jev_example_probability_proxy_minus_Ridge_same8": {
+        "difference": 0.21389423372109506,
+        "conditional_bootstrap95": [
+          -0.9595821165733948,
+          1.4135780699535336
+        ],
+        "people_improved": 22
+      },
+      "Jev_example_probability_proxy_minus_Ridge_all_training": {
+        "difference": 2.124619224182152,
+        "conditional_bootstrap95": [
+          0.8526337744449127,
+          3.4954654581691456
+        ],
+        "people_improved": 13
+      }
+    },
+    "per_fold": {
+      "0": {
+        "Ridge_same8": 10.968184984170811,
+        "Ridge_all_training": 9.112155484947472,
+        "Ridge_same8_grid": 11.025403904345875,
+        "median_same8": 10.731545508630322,
+        "mean_same8": 10.050413971134372,
+        "nearest1": 9.828189900994884,
+        "median_all_training": 10.076463350013023,
+        "Jev_direct": 12.344705633543635,
+        "Jev_grid_probability_proxy": 10.272092922608625,
+        "Jev_example_probability_proxy": 10.355139610431484
+      },
+      "1": {
+        "Ridge_same8": 11.002006439865976,
+        "Ridge_all_training": 9.09717335141686,
+        "Ridge_same8_grid": 11.028153870669048,
+        "median_same8": 11.226074214467479,
+        "mean_same8": 11.424177919799254,
+        "nearest1": 11.926407663378658,
+        "median_all_training": 12.537070884731047,
+        "Jev_direct": 9.102352371763097,
+        "Jev_grid_probability_proxy": 10.434024728611558,
+        "Jev_example_probability_proxy": 10.340643658270839
+      },
+      "2": {
+        "Ridge_same8": 6.395914774412312,
+        "Ridge_all_training": 5.850311620606702,
+        "Ridge_same8_grid": 6.335355441609616,
+        "median_same8": 8.074869767204914,
+        "mean_same8": 7.28100523096721,
+        "nearest1": 11.495758068197137,
+        "median_all_training": 6.331747820144321,
+        "Jev_direct": 8.034940729068046,
+        "Jev_grid_probability_proxy": 7.484363041535721,
+        "Jev_example_probability_proxy": 7.772450357192552
+      },
+      "3": {
+        "Ridge_same8": 7.690298011814565,
+        "Ridge_all_training": 5.9482694237289415,
+        "Ridge_same8_grid": 7.767318941640605,
+        "median_same8": 5.733226983955303,
+        "mean_same8": 6.78092979149948,
+        "nearest1": 14.964951893145425,
+        "median_all_training": 10.202421712015816,
+        "Jev_direct": 11.637340095021003,
+        "Jev_grid_probability_proxy": 8.887193737905367,
+        "Jev_example_probability_proxy": 8.018573017510974
+      },
+      "4": {
+        "Ridge_same8": 8.778802330666412,
+        "Ridge_all_training": 5.273671707924817,
+        "Ridge_same8_grid": 8.981888774413477,
+        "median_same8": 7.505216458557965,
+        "mean_same8": 8.41711717599913,
+        "nearest1": 11.858184165630153,
+        "median_all_training": 7.83032623842212,
+        "Jev_direct": 11.581888774413477,
+        "Jev_grid_probability_proxy": 9.606550175588655,
+        "Jev_example_probability_proxy": 9.417871066129702
+      }
+    },
+    "unknown_people": 0,
+    "mean_unknown_probability": 0.0374,
+    "answered_only": {
+      "people": 50,
+      "metrics": {
+        "Ridge_same8": {
+          "MAE": 8.967041308186015,
+          "RMSE": 11.32722237920558,
+          "bias": 0.8567116552834552
+        },
+        "Ridge_all_training": {
+          "MAE": 7.056316317724956,
+          "RMSE": 8.69710361589612,
+          "bias": -0.005162169217365857
+        },
+        "Ridge_same8_grid": {
+          "MAE": 9.027624186535723,
+          "RMSE": 11.386384945412686,
+          "bias": 0.9216504667204128
+        },
+        "median_same8": {
+          "MAE": 8.654186586563196,
+          "RMSE": 10.651355370644238,
+          "bias": 0.026273442709057945
+        },
+        "mean_same8": {
+          "MAE": 8.790728817879888,
+          "RMSE": 10.594318282623611,
+          "bias": 0.6545626680056454
+        },
+        "nearest1": {
+          "MAE": 12.014698338269252,
+          "RMSE": 14.007007717669461,
+          "bias": 1.893662990587647
+        },
+        "median_all_training": {
+          "MAE": 9.395606001065266,
+          "RMSE": 12.017352195823307,
+          "bias": -0.08583922563103556
+        },
+        "Jev_direct": {
+          "MAE": 10.540245520761852,
+          "RMSE": 13.945225495462653,
+          "bias": 3.2016504667204133
+        },
+        "Jev_grid_probability_proxy": {
+          "MAE": 9.336844921249986,
+          "RMSE": 11.172117481393641,
+          "bias": 1.3123741753134672
+        },
+        "Jev_example_probability_proxy": {
+          "MAE": 9.180935541907111,
+          "RMSE": 10.760167143871234,
+          "bias": 1.0863846306431593
+        }
+      }
+    }
+  }
+}

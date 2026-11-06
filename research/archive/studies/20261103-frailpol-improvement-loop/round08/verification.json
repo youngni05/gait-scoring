@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "outer_cases": 10,
+  "inner_models_replayed": 240,
+  "final_models_replayed": 80,
+  "meta_models_replayed": 20,
+  "checks": [
+    {
+      "condition": "speed",
+      "fold": 0,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 0
+    },
+    {
+      "condition": "speed",
+      "fold": 1,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 0
+    },
+    {
+      "condition": "speed",
+      "fold": 2,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 0
+    },
+    {
+      "condition": "speed",
+      "fold": 3,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 0
+    },
+    {
+      "condition": "speed",
+      "fold": 4,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 0
+    },
+    {
+      "condition": "bilateral",
+      "fold": 0,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 5.381010161897848e-06
+    },
+    {
+      "condition": "bilateral",
+      "fold": 1,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 4.225483117181739e-06
+    },
+    {
+      "condition": "bilateral",
+      "fold": 2,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 4.225483124287166e-06
+    },
+    {
+      "condition": "bilateral",
+      "fold": 3,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 3.354909466679601e-06
+    },
+    {
+      "condition": "bilateral",
+      "fold": 4,
+      "inner_models_replayed": 24,
+      "final_models_replayed": 8,
+      "meta_models_replayed": 2,
+      "target_transform_training_only_verified": true,
+      "original_selection_verified": true,
+      "max_base_replay_delta_seconds": 4.225483117181739e-06
+    }
+  ],
+  "review_sha256": "e85cfe6633b2c7f3dca4cbf71083590f8ad1edcca18f317efe55e70bac9ef563",
+  "comparison_sha256": "6b545526d3db5fb999a378b8ad33aa92701e7a0f3e98824caa420425f22aa7c0",
+  "heldout_sha256": "f610fbb37956b392d13ba24f920cf2ddc0ea2b205b0d927ac288d1289c326376"
+}

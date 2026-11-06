@@ -1,0 +1,19 @@
+{
+  "code_sha256": "687dbaf99946e497e892427478ceef8675367787ba3247407c9cfd550c0eede5",
+  "previous_window_table_sha256": "3b29ecce4f2020d898583281af2db5773ce6fad52dddd2c33366ef761b49138b",
+  "cached_pose_manifest_sha256": "bb3423cd6dde53d0381d6100ff0981a362ac4b8a60af49bc8a3c7e9a4dd3440d",
+  "question": "Howaccuratelydoactual2DMediaPipevideomeasuresspeed,steplength,steptimeandbilateraldifferencesagainstindependent120Hzopticalphysicalmarkers?",
+  "primary": "Samepreviouslyfrozen14people,pairedPG1near-side/PG2oblique2secondstraightwindows.Noaccuracy-drivenclipselection. Reportall14includingunmeasurable.",
+  "additional": "All30cachedwalkingpeople,earliestcommonconsecutive4secondblocks,nonoverlap,fromfirstcommonframe. Referencegeometryfilterisvalidation-only:netdistance>.5m,net/path>=.9,firstPCAvariance>=.98;sameacceptedwindowsbothcameras. No inferred deployablecameraqualityclassifier.",
+  "source": "ActualRGBMediaPipeHeavy800x600,30Hz.Imagecoordinatesonly.NofeedingprojectedMoCapintopredictor.Knownsubjectheightusedforprimaryscale;height/median33landmarkverticalspan.Nooutcome-basedmetriccalibration.",
+  "reference": "Native120HzMoViFmarkerLocation,LHEE/RHEE,pelviscentroidLFWT/LBWT/RFWT/RBWT.Publishedframeconventionindex=(videoframeonebased-1)*4.ReplaycachedLHIP/RHIP/LKJC/RKJC/LAJC/RAJCtoverifyframeandunits.Missingphysicalmarkersrejectreference,nogapinterpolation.",
+  "events": "Zeni-inspiredkinematicHS:forwardheelpositionrelativepelvislocalmax;SG7/order2at30HzandSG29/order2at120Hz;peakdistance.4s,prominence=max(.02m,.15range).ForwardreferenceaxisPCAofpelvis,signnetdirection;predictedaxisimageX,signownhiptrend. Notforceplateorexpertcontacttruth.",
+  "measures": "Speed=normOLShorizontalpelvisvelocitym/s(referenceworldXY,predimageXY*scale);steptime=consecutiveopposite-sideHStimedifference.2..1.5s;steplength=forwardheelsseparationatHS;stridelength=sameheelpositionadvanceatnextsamefootHS.8..3s;eventpairmatchingseparatepertolerance.15s,nooffsetfitting.",
+  "symmetry": "AbsoluteLmean-Rmeandividedbybilateralmean*100percent,separatelength/time;atleast2validstepspersideforreferenceandprediction.Otherwindowmeasures>=2validsteps;stride>=1validsamefootpair.",
+  "inputquality": "Nomissinglandmarks;pelvismedianvisibility>=.5forspeed;bothheelmedianvisibility>=.5andimagehorizontalnetprogress>=.1mforsteplength/time/stride/asymmetry. Fail=>unmeasurablewithreason,notzeroorlowhealthscore. Rawunfiltered-speeddiagnosticretained.",
+  "metrics": "Coverage,person-equalMAE,bias,95percentLoA,p95AE;10000personbootstrap. Step/strideinmetres,steptimeseconds,symmetrypercentagepoints.Eventprecision/recall/F1withsamefootmatching. Keeppersonandwindowcountsseparate.",
+  "repeat_or_change": "Onlysame-continuous-recordnonoverlapping4secondblocks:comparepredictedchangeagainstmarker-referencechange,personclusterederrors. Noclaimseparatecapturetestretest,MDCorlongitudinaldecline. AnnotatedchangepopulationisnotavailableincurrentMoVi.",
+  "verification": "SourceSHA,exactvideo/nativeframeindices,cachedjointreplay,independentOLS/geometry/eventmatching/step-tableformulas,independentmetricrebuild.Allfailuresretained.Nomodeltraining,nofittedtimeoffset,noautomaticthresholdrelaxation.",
+  "scope": "LaboratoryRGB,mostlyyoungadults;notgeneralelderly/realphonehardwarevalidation.Marker-eventuncertaintyremains.No clinicalfootcontactgoldorTUG/SPPB prediction inthisstudy.",
+  "storage": "Smallcode/tables/researchrecordinD:/Projects/D_P/studies/20261105-planar-measurement-validation;arraysunderD:/gait-research-data/D_P/planar-measurement-validation-20261105;expected<30MB,noGPU/noexternaltransfer."
+}

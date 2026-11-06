@@ -1,0 +1,16 @@
+{
+  "verified": true,
+  "record_descriptors_checked": 9576,
+  "person_rows_checked": 695,
+  "association_rows_checked": 36,
+  "review_people_checked": 70,
+  "within_strata_people": 691,
+  "max_descriptor_difference": 1.288229419804665e-07,
+  "input_identity_and_existing_errors_verified": true,
+  "source_files_unchanged": 23,
+  "side_diagnostic_metrics_checked": 18,
+  "boundary_precision_correction_verified": true,
+  "GPU_used": false,
+  "training": false,
+  "causal_validation": false
+}

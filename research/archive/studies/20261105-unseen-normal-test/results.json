@@ -1,0 +1,317 @@
+{
+  "replay": {
+    "ljmu_fusion_baseline": 0.0004140149735292198,
+    "ljmu_fusion_mixed": 1.280903823897006e-05,
+    "self_fusion_baseline": 3.7597031621317e-07
+  },
+  "replay_tolerance": 0.005,
+  "live": {
+    "baseline": {
+      "person_mean": 81.76113566509053,
+      "person_sd": 3.443389065439094,
+      "person_min": 76.69218011388334,
+      "person_max": 87.08401118853646,
+      "ci95": [
+        79.67894634768288,
+        83.95172737298255
+      ],
+      "fold_group_means": [
+        81.49021064765219,
+        82.3465535608109,
+        80.494017753677,
+        82.66221352945921,
+        81.81268283385332
+      ],
+      "records": [
+        86.9,
+        87.08,
+        80.96,
+        76.3,
+        76.69,
+        80.38,
+        82.46,
+        81.16,
+        80.32,
+        81.56,
+        85.26,
+        79.72
+      ],
+      "CNN_bag": 85.79457253953113,
+      "STT_bag": 77.52814908451562
+    },
+    "mixed": {
+      "person_mean": 95.49448312302009,
+      "person_sd": 3.5423653681941834,
+      "person_min": 90.73410535154451,
+      "person_max": 100.32455582471596,
+      "ci95": [
+        93.31581379592903,
+        97.65767769959102
+      ],
+      "fold_group_means": [
+        96.19348803749286,
+        94.68966130015313,
+        95.99510411078539,
+        95.32582343254568,
+        95.2683387341234
+      ],
+      "records": [
+        93.79,
+        98.02,
+        94.94,
+        90.71,
+        97.86,
+        100.32,
+        93.03,
+        89.82,
+        95.03,
+        99.45,
+        91.58,
+        89.89
+      ],
+      "CNN_bag": 95.04854505174141,
+      "STT_bag": 96.01189521421743
+    }
+  },
+  "self": {
+    "baseline": {
+      "normal_mean": 79.35106532035886,
+      "normal_min": 77.52683117452565,
+      "normal_max": 81.14063641742271,
+      "abnormal_mean": 66.68331956829901,
+      "abnormal_min": 65.22069736848329,
+      "abnormal_max": 67.68965495642941,
+      "gap": 12.667745752059844,
+      "ranges_overlap": false,
+      "videos": {
+        "omitted_for_public_snapshot": true,
+        "count": 13
+      },
+      "fold_normal_means": [
+        81.87935553647169,
+        78.44446838991034,
+        78.19390526536206,
+        80.98348930409875,
+        77.25410810595137
+      ],
+      "fold_abnormal_means": [
+        68.61239563996564,
+        65.95723901881117,
+        65.99032380490878,
+        65.96017232709697,
+        66.8964670507125
+      ],
+      "CNN_bag": {
+        "normal": 74.08035229499053,
+        "abnormal": 66.64952739290646
+      },
+      "STT_bag": {
+        "normal": 85.28011431739182,
+        "abnormal": 66.75416703896492
+      }
+    },
+    "mixed": {
+      "normal_mean": 91.51769810187459,
+      "normal_min": 84.87756036397616,
+      "normal_max": 95.00771799013506,
+      "abnormal_mean": 69.79030268878371,
+      "abnormal_min": 68.16625787148519,
+      "abnormal_max": 72.46712320591642,
+      "gap": 21.727395413090875,
+      "ranges_overlap": false,
+      "videos": {
+        "omitted_for_public_snapshot": true,
+        "count": 13
+      },
+      "fold_normal_means": [
+        93.4841386024414,
+        91.14485035040319,
+        89.48299562150798,
+        92.05970153776313,
+        91.41680439725714
+      ],
+      "fold_abnormal_means": [
+        71.31395655049984,
+        69.9762466585311,
+        69.48311186398648,
+        68.93821036525007,
+        69.23998800565106
+      ],
+      "CNN_bag": {
+        "normal": 89.32671979640956,
+        "abnormal": 68.7442418421792
+      },
+      "STT_bag": {
+        "normal": 93.90329917927818,
+        "abnormal": 71.21538177465001
+      }
+    }
+  },
+  "perturbations": {
+    "baseline": {
+      "ljmu_original": {
+        "person_mean": 80.46856903608926,
+        "person_sd": 4.2299497099285475,
+        "person_min": 71.64357565231926,
+        "person_max": 101.70943313707939,
+        "delta_from_original": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "left": 80.65460100886048,
+        "right": 80.28253706331805,
+        "person_share_ge95": 0.015625,
+        "person_share_ge90": 0.015625
+      },
+      "ljmu_frame_shuffle": {
+        "person_mean": 71.76872364382982,
+        "person_sd": 3.3774134181612077,
+        "person_min": 66.43364790477274,
+        "person_max": 80.87438762377903,
+        "delta_from_original": -8.699845392259444,
+        "delta_ci95": [
+          -9.513571268752479,
+          -7.969104432144764
+        ],
+        "left": 71.66118948735726,
+        "right": 71.87625780030234,
+        "person_share_ge95": 0.0,
+        "person_share_ge90": 0.0
+      },
+      "ljmu_static_mean": {
+        "person_mean": 67.61997938588152,
+        "person_sd": 2.3757130993415503,
+        "person_min": 62.099774074073615,
+        "person_max": 73.22446783735585,
+        "delta_from_original": -12.848589650207732,
+        "delta_ci95": [
+          -14.27744108872973,
+          -11.597874285684561
+        ],
+        "left": 68.01382669092601,
+        "right": 67.22613208083702,
+        "person_share_ge95": 0.0,
+        "person_share_ge90": 0.0
+      },
+      "ljmu_left_leg_stiff": {
+        "person_mean": 72.40247434076475,
+        "person_sd": 3.317924575199868,
+        "person_min": 67.66313258920609,
+        "person_max": 94.69251017099084,
+        "delta_from_original": -8.066094695324493,
+        "delta_ci95": [
+          -8.594177533119423,
+          -7.545732130744011
+        ],
+        "left": 67.8850172841762,
+        "right": 76.91993139735331,
+        "person_share_ge95": 0.0,
+        "person_share_ge90": 0.015625
+      },
+      "ljmu_both_amp50": {
+        "person_mean": 73.57278555271934,
+        "person_sd": 3.5678912116495742,
+        "person_min": 66.65733082992388,
+        "person_max": 93.05651277767771,
+        "delta_from_original": -6.895783483369911,
+        "delta_ci95": [
+          -7.617935346065945,
+          -6.181249098468843
+        ],
+        "left": 74.2442017424759,
+        "right": 72.90136936296278,
+        "person_share_ge95": 0.0,
+        "person_share_ge90": 0.015625
+      }
+    },
+    "mixed": {
+      "ljmu_original": {
+        "person_mean": 99.87541966846402,
+        "person_sd": 1.1812620295441851,
+        "person_min": 92.97896201100389,
+        "person_max": 100.76227510154206,
+        "delta_from_original": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "left": 99.9277942706182,
+        "right": 99.82304506630982,
+        "person_share_ge95": 0.984375,
+        "person_share_ge90": 1.0
+      },
+      "ljmu_frame_shuffle": {
+        "person_mean": 93.74342810823484,
+        "person_sd": 2.4810868914646864,
+        "person_min": 83.36695930464346,
+        "person_max": 98.04204442247045,
+        "delta_from_original": -6.13199156022918,
+        "delta_ci95": [
+          -6.625201088036547,
+          -5.673859265855635
+        ],
+        "left": 93.82748468847717,
+        "right": 93.65937152799249,
+        "person_share_ge95": 0.328125,
+        "person_share_ge90": 0.96875
+      },
+      "ljmu_static_mean": {
+        "person_mean": 71.4630173668001,
+        "person_sd": 2.444426277382474,
+        "person_min": 65.50855137765585,
+        "person_max": 75.9383632962647,
+        "delta_from_original": -28.41240230166391,
+        "delta_ci95": [
+          -28.957472216604817,
+          -27.869790931610023
+        ],
+        "left": 71.93003630071357,
+        "right": 70.99599843288665,
+        "person_share_ge95": 0.0,
+        "person_share_ge90": 0.0
+      },
+      "ljmu_left_leg_stiff": {
+        "person_mean": 82.96076326420078,
+        "person_sd": 1.6987427145821794,
+        "person_min": 77.78342901625702,
+        "person_max": 86.38102237276522,
+        "delta_from_original": -16.91465640426323,
+        "delta_ci95": [
+          -17.249403267008205,
+          -16.574250244870335
+        ],
+        "left": 74.8216299664034,
+        "right": 91.09989656199814,
+        "person_share_ge95": 0.0,
+        "person_share_ge90": 0.0
+      },
+      "ljmu_both_amp50": {
+        "person_mean": 79.85889495088117,
+        "person_sd": 3.306624717034905,
+        "person_min": 70.77833373238914,
+        "person_max": 89.14376668212066,
+        "delta_from_original": -20.01652471758284,
+        "delta_ci95": [
+          -20.741004274320776,
+          -19.29503054106064
+        ],
+        "left": 79.82512571695374,
+        "right": 79.89266418480861,
+        "person_share_ge95": 0.0,
+        "person_share_ge90": 0.0
+      }
+    }
+  },
+  "verdict": {
+    "live_mixed_mean": 95.49448312302009,
+    "self_normal_mixed_mean": 91.51769810187459,
+    "overall": "supports_normal_gait",
+    "perturbation": {
+      "ljmu_frame_shuffle": "partial",
+      "ljmu_static_mean": "motion_responsive",
+      "ljmu_left_leg_stiff": "motion_responsive",
+      "ljmu_both_amp50": "motion_responsive"
+    }
+  }
+}

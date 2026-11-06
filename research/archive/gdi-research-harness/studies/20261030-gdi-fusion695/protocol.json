@@ -1,0 +1,100 @@
+{
+  "status": "declared_before_new_fitting",
+  "purpose": "Establish missing RF/CNN baselines and test complementary representations on the existing matched 695-person GDI task",
+  "data": {
+    "people": 695,
+    "records": 1064,
+    "input": "front124 H36M17 x/y/confidence",
+    "targets": [
+      "left GDI",
+      "right GDI"
+    ]
+  },
+  "outer": "Reuse original five outer folds: train556/evaluate139 people",
+  "inner": "Reuse actual saved CPU PLS inner_assignment per outer fold: train417/validate139. This differs from the four original-fold inner splits in the prepared GPU CNN bundle; outer evaluation people remain identical.",
+  "training_weight": "records equal, two outputs jointly fitted; evaluation first averages records and sides within each person, then people equally",
+  "phase_order": [
+    "RF baselines and feature concatenation",
+    "raw-coordinate CNN baseline and fixed prediction averages",
+    "frozen MotionBERT frame features plus the same CNN topology"
+  ],
+  "RF": {
+    "representations": [
+      "coordinate summaries",
+      "frozen MotionBERT512",
+      "coordinate summaries plus MotionBERT512"
+    ],
+    "n_estimators": 128,
+    "candidates": [
+      {
+        "min_samples_leaf": 10,
+        "max_features": "sqrt"
+      },
+      {
+        "min_samples_leaf": 2,
+        "max_features": "sqrt"
+      },
+      {
+        "min_samples_leaf": 10,
+        "max_features": 0.5
+      },
+      {
+        "min_samples_leaf": 2,
+        "max_features": 0.5
+      }
+    ],
+    "selection": "pooled inner person-MAE, first candidate breaks ties",
+    "bootstrap": true,
+    "seed": 20261030,
+    "threads": 2,
+    "feature_scaling": "none"
+  },
+  "coordinate_summaries": "Per-joint observed xy mean/std/mean absolute adjacent change, mean confidence and observed fraction; bilateral 2D knee angle mean/std and ankle-relative displacement summaries. All are normalized image-coordinate proxies, not measured physical speed or clinical joint angles. All-missing summary is zero plus explicit observed fraction; no modification of source input.",
+  "CNN": {
+    "source": "Reuse prepared mobile-gaitlab-inspired six-convolution PyTorch model and training implementation",
+    "max_epochs": 100,
+    "seed": 20261028,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "lr_drop_every": 10,
+    "lr_drop_factor": 0.8,
+    "dropout": 0.5,
+    "kernel_l2": 0.00031622776601683794,
+    "optimizer": "RMSprop",
+    "rmsprop_alpha": 0.9,
+    "rmsprop_eps": 1e-08,
+    "target_scaling": "training_only_per_side_minmax",
+    "loss": "record_equal_scaled_left_right_MSE_plus_kernel_L2",
+    "selection": "earliest minimum of four inner person-MAE curves",
+    "device": "cpu",
+    "threads": 4,
+    "resume": "epoch checkpoints; same protocol and identity required"
+  },
+  "temporal_fusion": "Frozen original MotionBERT -> average joints only -> 124x512 features -> same six-convolution CNN; change only first convolution input channels 51 to 512. Encoder is never trained. Temporal vectors are not the 512-dimension time-averaged cache.",
+  "fixed_prediction_averages": [
+    "RF-coordinate + existing PLS",
+    "RF-concatenated + existing PLS",
+    "raw CNN + existing PLS",
+    "raw CNN + RF-coordinate",
+    "temporal CNN + existing PLS"
+  ],
+  "averaging_rule": "50:50 in original GDI points; no learned weights, clipping, calibration or outer-evaluation method selection",
+  "metrics": [
+    "person MAE",
+    "person-weighted bias",
+    "fixed 10-point bin agreement",
+    "two-or-more-bin errors",
+    "outer fold MAE",
+    "old175/additional520 groups"
+  ],
+  "uncertainty": {
+    "paired_person_bootstrap": 10000,
+    "seed": 20261030,
+    "scope": "exploratory conditional OOF intervals; development reuse, not independent final validation"
+  },
+  "existing_files_changed": false,
+  "protected37_38_223_numeric_data_read": false,
+  "GPU_or_remote_access": false,
+  "teammate_reproduction": false,
+  "interpretation": "New matched-input adaptations, not reproduction of an unavailable teammate experiment or original-paper full-video performance. Compare standalone and combined candidates; do not adopt a winner from outer development outcomes."
+}

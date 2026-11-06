@@ -1,0 +1,1474 @@
+{
+  "status": "failed_pretraining_reconstruction_cpu64_tolerance",
+  "people": 14,
+  "cnn_fits": 224,
+  "TUG_CPU64_replay_status": "passed",
+  "inner_checkpoint_replays": 504,
+  "final_checkpoint_replays": 56,
+  "pretrained_states_and_reconstruction_probes_replayed": 112,
+  "pretrained_CPU64_failed_states": 98,
+  "pretrain_checks": [
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold0\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.7298773822282953e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold0\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.8574173821228612e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold0\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 22,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.964534507654548e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold0\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 45,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.709935641886929e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold1\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.2294723271976125e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold1\\inner1\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.8580334635309725e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold1\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.710377175001554e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold1\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 11,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.983467123434224e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold2\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.4348922183771151e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold2\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 3,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.7735871571389339e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold2\\inner2\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.6147398462784679e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold2\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 15,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.175333153164871e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold3\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.7951058381981966e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold3\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 7,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.6139561267447533e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold3\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.8889011785816479e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold3\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.3096944127831698e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold4\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 17,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.298423700253238e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold4\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.7686911872871747e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold4\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.448979201956746e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold4\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 6,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.9554808496913267e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold5\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.7155567828552876e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold5\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.5626353706554852e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold5\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 3,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.7673372174620283e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold5\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.8054751151908022e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold6\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.545449065305405e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold6\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 5,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.5402013674735713e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold6\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.7378835481807187e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold6\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.075283962010843e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold7\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.3286160585046503e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold7\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.6476409689936133e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold7\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 7,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.838041750801267e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold7\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 18,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.43428587243244e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold8\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 7,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.1732715920208534e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold8\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 21,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.2692592653861254e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold8\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 41,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.393445150294937e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold8\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 15,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.9753889852758277e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold9\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 11,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.0551619871467253e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold9\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.4564885497669877e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold9\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.4907415797349444e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold9\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 5,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.049436616857747e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold10\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 3,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.9010656915341428e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold10\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 33,
+      "total_points": 25920,
+      "max_cpu64_delta": 3.5304309560224567e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold10\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 19,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.5343698035751316e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold10\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 7,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.2162445567630584e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold11\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.6991274880417961e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold11\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.4268106273973569e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold11\\inner2\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.727154058439595e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold11\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.8077879970768151e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold12\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.9079727326953844e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold12\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 5,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.240828478772272e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold12\\inner2\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.698607451583456e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold12\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 10,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.246034537467523e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold13\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.8027899422179416e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold13\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.7962580771690995e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold13\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.2746653768047622e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pelvis_stable_xy\\masked_pretrain\\fold13\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 5,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.9058272489047567e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold0\\inner0\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.5132807500428669e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold0\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 13,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.8228533226482e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold0\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 9,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.1361897797333995e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold0\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.6140161904765193e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold1\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 10,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.6912314881878387e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold1\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 6,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.934540192927159e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold1\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.99058519356754e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold1\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.5721018973291478e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold2\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 7,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.6745522189175475e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold2\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.7379953143326077e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold2\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 7,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.8599888647052865e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold2\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.032335767676585e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold3\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 3,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.6715965120160945e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold3\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 9,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.477642421450099e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold3\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 5,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.0851923467901656e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold3\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 3,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.0450770170654664e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold4\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 5,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.307348798302744e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold4\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 7,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.9592970565973644e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold4\\inner2\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.6446657360447148e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold4\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.587072220754493e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold5\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 5,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.0704103809165986e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold5\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 3,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.7217720258422275e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold5\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 6,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.0894445444952225e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold5\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.544542795579474e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold6\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.4191538735275344e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold6\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.182507018666513e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold6\\inner2\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.2743441524243337e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold6\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 7,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.1306901132334133e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold7\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.5677151126158861e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold7\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.4104418088199964e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold7\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 3,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.9735005682974815e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold7\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.559910854709301e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold8\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.3928072273294845e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold8\\inner1\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.460003194342363e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold8\\inner2\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.4410299506995017e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold8\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 12,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.987876864006921e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold9\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.6043162764933783e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold9\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 3,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.500202428728059e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold9\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.0894259238346535e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold9\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 4,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.8753080563982394e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold10\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 10,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.0557130109288835e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold10\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.523335207671451e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold10\\inner2\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.5234561586984228e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold10\\final\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.399156887682551e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold11\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 6,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.122841284535326e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold11\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.8998754943998506e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold11\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.9148203236341033e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold11\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 8,
+      "total_points": 37440,
+      "max_cpu64_delta": 2.4312982156438068e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold12\\inner0\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 23040,
+      "max_cpu64_delta": 1.7180620317525097e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold12\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 9,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.1149371276507622e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold12\\inner2\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.5422981092250154e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold12\\final\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.663389465278442e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold13\\inner0\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 6,
+      "total_points": 23040,
+      "max_cpu64_delta": 2.3292384891959728e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold13\\inner1\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 1,
+      "total_points": 25920,
+      "max_cpu64_delta": 2.3486771909553283e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold13\\inner2\\context.json",
+      "cpu64_strict_passed": true,
+      "failed_points": 0,
+      "total_points": 25920,
+      "max_cpu64_delta": 1.3967050274121817e-06,
+      "same_cpu32_exact_replay": true
+    },
+    {
+      "context": "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\motion-pretrain\\pair_mean_absdiff\\masked_pretrain\\fold13\\final\\context.json",
+      "cpu64_strict_passed": false,
+      "failed_points": 2,
+      "total_points": 37440,
+      "max_cpu64_delta": 1.5185239030657272e-06,
+      "same_cpu32_exact_replay": true
+    }
+  ],
+  "checks": [
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 0,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.1364578806905001e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 1,
+      "epoch": 50,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 9.003995060652414e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 2,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 3.906454962177008e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 3,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.7788773885030196e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 4,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 2.2216383275264207e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 5,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.6983784210111708e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 6,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.8422113532423623e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 7,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 3.4611647308224747e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 8,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.2060029224159052e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 9,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.0852754623869032e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 10,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 9.665462741281772e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 11,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.4314013547789273e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 12,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 9.336551354266476e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "supervised",
+      "outer": 13,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.0466185518254179e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 0,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 3.49362407980891e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 1,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 2.1125678024702665e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 2,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.4653347939486139e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 3,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 2.9080702024231186e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 4,
+      "epoch": 50,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 2.0306622374732797e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 5,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 3.979485887484202e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 6,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.6269258509282736e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 7,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 2.5371283687292134e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 8,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 9.347801341874629e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 9,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.2418645471967693e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 10,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.7833886136742194e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 11,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.7236456422153879e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 12,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.202846203085528e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pelvis_stable_xy",
+      "mode": "masked_pretrain",
+      "outer": 13,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.2599300642790467e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 0,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 4.472081567286068e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 1,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.184096428019643e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 2,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.1477416190786016e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 3,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 6.966847614364724e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 4,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 4.029567165275694e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 5,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.3710704056535405e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 6,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.11267646474289e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 7,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.014254760178801e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 8,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 7.168712183869275e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 9,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.5732460365569523e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 10,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 9.365121655946496e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 11,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 8.746844244456042e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 12,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 6.922328115166465e-07,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "supervised",
+      "outer": 13,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 0,
+      "cpu64_max_TUG_delta_seconds": 1.013078481548746e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 0,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.4431737191955563e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 1,
+      "epoch": 50,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.5739469780839954e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 2,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 2.2750239665469962e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 3,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 2.1224834787503255e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 4,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 2.0123898067936352e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 5,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.6656853958352258e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 6,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 3.2210024834000706e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 7,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 4.567999019045033e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 8,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.5860203781414839e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 9,
+      "epoch": 20,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 2.036751707734652e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 10,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.947953638392619e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 11,
+      "epoch": 50,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.4675310424649979e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 12,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.0737661160220568e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    },
+    {
+      "variant": "pair_mean_absdiff",
+      "mode": "masked_pretrain",
+      "outer": 13,
+      "epoch": 5,
+      "checkpoints": 10,
+      "pretrained_states": 4,
+      "cpu64_max_TUG_delta_seconds": 1.6068151165171685e-06,
+      "unsupervised_and_supervised_person_separation_verified": true
+    }
+  ],
+  "comparison_sha256": "ac4e789b6a37cc8fcd1892f67721aa62532d1a2e205bddcee8fe6e1c9f516418",
+  "heldout_sha256": "ea6f479eb479a31b3b48c1b3c82958d6750b129cd51c5770667a9f9b1b6b6708",
+  "review_code_sha256": "0a036c1a2e134c10d7b0869c3f2f07fcb44e3b702391940686476af36ad2fd4a",
+  "limits": "CPU64reconstructiontolerance1e-6absolute+relative unchanged;all112CPU32reconstructionsrequiredexactbitwise. FailedCPU64statesretained,notpromotedasfullverifiedpretraining. All560TUGcheckpointsstillrequireoriginalCPU64tolerance."
+}

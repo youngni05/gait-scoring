@@ -1,0 +1,40 @@
+{
+  "question": "Do frozen GDI predictions follow actual Toronto TUG and POMA-Gait differences?",
+  "authorization": "User selected frozen-model association first; no TUG/POMA fitting or recalibration.",
+  "primary": "Same six people and exactly the same native 124-frame BODY25 tracks, adapted separately by each original model's preprocessing.",
+  "primary_people": [
+    "1",
+    "2",
+    "5",
+    "6",
+    "9",
+    "12"
+  ],
+  "exclusions": "Existing visual tracking exclusions 7/11 retained. People 3/10/13/14 fail unchanged H36M confidence preservation; no confidence clipping, replacement windows, or outcome-based exclusions.",
+  "supplements": "All existing H36M inputs: 12 people/59 segments. Original 12-feature CNN inputs: 10 people/10 segments. Separate summaries, never a common-input model ranking.",
+  "models": [
+    "mb_ridge",
+    "mb_pls32",
+    "rf_coordinate",
+    "rf_motionbert",
+    "rf_concatenated",
+    "raw_cnn",
+    "temporal_cnn",
+    "multiwindow_cnn",
+    "multiwindow_high90",
+    "mb_leg_time_ridge",
+    "rf_coordinate_pls_equal",
+    "rf_concatenated_pls_equal",
+    "raw_cnn_pls_equal",
+    "raw_cnn_rf_coordinate_equal",
+    "temporal_cnn_pls_equal"
+  ],
+  "model_eligibility_audit": "Original single-window GPU CNN omitted before association calculation: original verification explicitly says checkpoints_downloaded=false. Its predictions are not substituted for a checkpoint. Remaining 15 predictors have local checkpoints.",
+  "source_folds": "All five fixed source fold models. Average segments within person, then source folds. Five source models are not five independent external samples.",
+  "primary_output": "Mean of left/right GDI. Left and right outputs retained descriptively, never selected by target correlation.",
+  "metrics": "Person-level Spearman rho (primary), Pearson r (descriptive), two-sided permutation p, Holm adjustment across all model-target tests within each cohort, percentile person-bootstrap 95% interval, leave-one-person-out rho range, rho after removing the single 25-second TUG person. No clinical success threshold or conversion to target units.",
+  "randomization": "seed 20261031, bootstrap 10000 person resamples; primary all 720 label permutations; supplementary 9999 Monte Carlo permutations with plus-one p correction. Degenerate bootstrap/LOO samples are counted and excluded from intervals, not set to zero.",
+  "interpretation": "Exploratory source-cohort transfer; Toronto already used for TUG development, not an untouched external final evaluation. Tiny person count, narrow POMA range, frontal-vs-side view and uncertain training/source time-axis agreement restrict interpretation.",
+  "storage": "Only small derived arrays, predictions, figures, code and audit records in this C study directory. Reuse existing D video/pose/model files read-only. No downloads, new model copies or training.",
+  "verification": "Exact original clinical labels, source hashes before/after, original preprocessing and source-prediction replays, independent participant aggregation/statistic recomputation, no fitting methods in new inference path. Numerical tolerances: linear/RF 1e-8, CNN 1e-4 GDI, cached encoder features 1e-5 relative and 2e-6 absolute."
+}

@@ -1,0 +1,553 @@
+{
+  "status": "passed",
+  "models": 90,
+  "contexts": 30,
+  "inner_selections": 30,
+  "max_abs_replay_difference": 0.0,
+  "seconds": 458.49575310002547,
+  "protocol_sha256": "fb3b968eba1e556542deb6e3b78d416a015f1e8154f16deaf51fb5a773699f1e",
+  "cohorts_sha256": "62b83914b235ebe5199640d59e972f8bcd8e7bb7de59219c94d18ab8fac345f0",
+  "checks": [
+    {
+      "file": "frailty-features-0-LGBM.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-features-0-TabICLv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-0-TabPFNv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-1-LGBM.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-features-1-TabICLv2.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-1-TabPFNv2.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-2-LGBM.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-features-2-TabICLv2.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-2-TabPFNv2.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-3-LGBM.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-features-3-TabICLv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-3-TabPFNv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-4-LGBM.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-features-4-TabICLv2.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-features-4-TabPFNv2.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-0-LGBM.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-speed-0-TabICLv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-0-TabPFNv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-1-LGBM.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-speed-1-TabICLv2.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-1-TabPFNv2.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-2-LGBM.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-speed-2-TabICLv2.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-2-TabPFNv2.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-3-LGBM.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-speed-3-TabICLv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-3-TabPFNv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-4-LGBM.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "frailty-speed-4-TabICLv2.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "frailty-speed-4-TabPFNv2.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-0-LGBM.json",
+      "people": 116,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-features-0-TabICLv2.json",
+      "people": 116,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-0-TabPFNv2.json",
+      "people": 116,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-1-LGBM.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-features-1-TabICLv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-1-TabPFNv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-2-LGBM.json",
+      "people": 122,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-features-2-TabICLv2.json",
+      "people": 122,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-2-TabPFNv2.json",
+      "people": 122,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-3-LGBM.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-features-3-TabICLv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-3-TabPFNv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-4-LGBM.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-features-4-TabICLv2.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-features-4-TabPFNv2.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-0-LGBM.json",
+      "people": 116,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-speed-0-TabICLv2.json",
+      "people": 116,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-0-TabPFNv2.json",
+      "people": 116,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-1-LGBM.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-speed-1-TabICLv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-1-TabPFNv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-2-LGBM.json",
+      "people": 122,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-speed-2-TabICLv2.json",
+      "people": 122,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-2-TabPFNv2.json",
+      "people": 122,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-3-LGBM.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-speed-3-TabICLv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-3-TabPFNv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-4-LGBM.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "non_slowness-speed-4-TabICLv2.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "non_slowness-speed-4-TabPFNv2.json",
+      "people": 119,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-0-LGBM.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-features-0-TabICLv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-0-TabPFNv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-1-LGBM.json",
+      "people": 117,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-features-1-TabICLv2.json",
+      "people": 117,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-1-TabPFNv2.json",
+      "people": 117,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-2-LGBM.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-features-2-TabICLv2.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-2-TabPFNv2.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-3-LGBM.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-features-3-TabICLv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-3-TabPFNv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-4-LGBM.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-features-4-TabICLv2.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-features-4-TabPFNv2.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-0-LGBM.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-speed-0-TabICLv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-0-TabPFNv2.json",
+      "people": 118,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-1-LGBM.json",
+      "people": 117,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-speed-1-TabICLv2.json",
+      "people": 117,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-1-TabPFNv2.json",
+      "people": 117,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-2-LGBM.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-speed-2-TabICLv2.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-2-TabPFNv2.json",
+      "people": 123,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-3-LGBM.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-speed-3-TabICLv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-3-TabPFNv2.json",
+      "people": 115,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-4-LGBM.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": true
+    },
+    {
+      "file": "tug-speed-4-TabICLv2.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    },
+    {
+      "file": "tug-speed-4-TabPFNv2.json",
+      "people": 121,
+      "max_abs_replay_difference": 0.0,
+      "inner_selection_checked": false
+    }
+  ],
+  "review_code_sha256": "e9d8c548526849895548cc481cde2742e27932153cadf247d07f4741cde4c8ad"
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "models_replayed": 90,
+  "max_replay_error": 1.3322676295501878e-15,
+  "people": 110,
+  "walks": 2953,
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "folds": 6,
+  "comparison_sha256": "d86a06f107031c0c7f21cc143bfca8da35cc7d1b62c155b5d42b8d8e35ce054a",
+  "limited_to_derived_3d": true
+}

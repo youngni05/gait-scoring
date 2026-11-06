@@ -1,0 +1,14 @@
+{
+  "prepared_inputs_and_views": true,
+  "all_people_separated": true,
+  "original_split_preserved": true,
+  "different_partitions": 5,
+  "CPU_models_replayed": 400,
+  "CPU_max_prediction_delta": 7.105427357601002e-15,
+  "original_RF_Ridge_reproduced": true,
+  "nested_selection_recalculated": true,
+  "CNN_models_replayed": 75,
+  "CNN_training_device": "cpu",
+  "CNN_max_prediction_delta": 3.552713678800501e-15,
+  "passed": true
+}

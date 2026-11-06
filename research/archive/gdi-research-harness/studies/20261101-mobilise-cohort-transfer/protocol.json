@@ -1,0 +1,108 @@
+{
+  "code_sha256": "13c489ddf464ee889d571d5bd7cec20ac0c25799bb90662ee74e4871eabf429a",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns\\study.py": "b24d2470d0084a9128d91271638ac8e70ec00cfec3ec77e3c9e062ecc6b80b8d",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns\\main-verification.json": "07d9e100776e52e6bab0b1afa0f67d6325ef87ca8e58239b0c6a136db13a5acb",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-ordinal\\main-verification.json": "f96f4ab7c84db55321819c324c8217a5acff0d8e074a283b5e4ac24764983294",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-ordinal\\summary.json": "d73cd28cac1bebac81c88f620c108531896a61618b12523fd6751eaf65dbda53",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "hypothesis": "small objective changes did not lower miss; test whether the apparent gait/turn signal and low-function warning depend on disease-cohort distribution",
+  "input": "same selected30-60sec5bouts, Core20 original4 or Turn25 original4+turns/sec; no age/cohort/label metadata predictors",
+  "target": "unchanged4 score bands; low SPPB<=3/TUG>20s. Same2174/1939 people and7356/5688 visits across all holdouts,5seeds",
+  "outer": "deliberately NEW four disease-cohort holdouts COPD/MS/PD/PFF; one whole disease cohort absent from training/calibration; this replaces original mixed-cohort5fold for the stress test",
+  "inner": "3 person folds within remaining3cohorts, stratified by cohort, randomstate20261101+held-cohort-index, fixed across5seeds; all4classes supported in every inner training split",
+  "controls": "MixedCore/MixedTurn reuse original person-held-out mixed-cohort OOF predictions on exact same visits; LocoCore/LocoTurn train without held cohort. Models RF128 leaf20 max_features1, person equal weights, no hyperparameter search",
+  "calibration": "train-only weighted X scaling, inner OOF temperature, cross-calibrated fpr10/sens80 thresholds only from remaining cohorts; no recalibration on unseen cohort",
+  "matching": "same disease and ORIGINAL person fold, different people within .05m/s; pairs shared across models/seeds. Avoid mixing differently calibrated original RF folds within a pair",
+  "criteria": "diagnose per-cohort and pooled Brier/RPS/tail miss/FPR, turn benefit in mixed versus unseen cohorts, same-cohort speed ordering and5seed stability. Stress-test degradation is a result, not a reason to tune on held disease",
+  "confounds": "training size differs; cohorts differ in pathology, activity environment and labels; this is not causal identification or a truly external new collection. Rare severe COPD/PD counts limit subgroup estimates",
+  "resource": "CPU4single-thread fits, estimate15-40min; pilot two targets held MS first. No GPU needed",
+  "deliverables": "40tasks,80newfinal+240inner models; original mixed-cohort RF references reused;720model subset/inner replays and16selected refits,90pooled metric rows40matched rows plus per-cohort metrics",
+  "counts": [
+    {
+      "target": "sppb",
+      "cohort": "COPD",
+      "train_people": 1597,
+      "test_people": 577,
+      "test_visits": 2033,
+      "low_people": 6,
+      "low_visits": 11
+    },
+    {
+      "target": "sppb",
+      "cohort": "MS",
+      "train_people": 1603,
+      "test_people": 571,
+      "test_visits": 2031,
+      "low_people": 100,
+      "low_visits": 182
+    },
+    {
+      "target": "sppb",
+      "cohort": "PD",
+      "train_people": 1591,
+      "test_people": 583,
+      "test_visits": 2109,
+      "low_people": 8,
+      "low_visits": 9
+    },
+    {
+      "target": "sppb",
+      "cohort": "PFF",
+      "train_people": 1731,
+      "test_people": 443,
+      "test_visits": 1183,
+      "low_people": 81,
+      "low_visits": 104
+    },
+    {
+      "target": "tug",
+      "cohort": "COPD",
+      "train_people": 1449,
+      "test_people": 490,
+      "test_visits": 1483,
+      "low_people": 8,
+      "low_visits": 11
+    },
+    {
+      "target": "tug",
+      "cohort": "MS",
+      "train_people": 1444,
+      "test_people": 495,
+      "test_visits": 1500,
+      "low_people": 117,
+      "low_visits": 240
+    },
+    {
+      "target": "tug",
+      "cohort": "PD",
+      "train_people": 1412,
+      "test_people": 527,
+      "test_visits": 1575,
+      "low_people": 26,
+      "low_visits": 33
+    },
+    {
+      "target": "tug",
+      "cohort": "PFF",
+      "train_people": 1512,
+      "test_people": 427,
+      "test_visits": 1130,
+      "low_people": 139,
+      "low_visits": 202
+    }
+  ],
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-transfer",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-cohort-transfer-20261101"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "event_strict": {
+    "people": 117,
+    "long_people": 4,
+    "observation_min_median_max": [
+      6.633333333333333,
+      7.999999999999999,
+      12.933333333333334
+    ],
+    "sub283_training_target_maxima": [
+      22.5,
+      22.18,
+      22.5,
+      22.5,
+      22.5
+    ],
+    "excluded_reason_counts": {
+      "central_context_insufficient": 95,
+      "missing_required_transition": 18,
+      "chair_vertical_quality": 7,
+      "context_vertical_quality": 1
+    }
+  },
+  "fixed_strict": {
+    "people": 40,
+    "long_people": 4,
+    "observation_min_median_max": [
+      9.266666666666666,
+      10.100000000000001,
+      13.600000000000001
+    ],
+    "sub283_training_target_maxima": [
+      22.5,
+      22.18,
+      22.5,
+      22.5,
+      22.5
+    ],
+    "excluded_reason_counts": {
+      "central_context_insufficient": 166,
+      "missing_required_transition": 18,
+      "chair_vertical_quality": 8,
+      "context_vertical_quality": 1,
+      "overlapping_transitions": 5
+    }
+  },
+  "rise_strict": {
+    "people": 134,
+    "long_people": 6,
+    "observation_min_median_max": [
+      6.533333333333333,
+      7.366666666666667,
+      11.600000000000001
+    ],
+    "sub283_training_target_maxima": [
+      28.03,
+      22.18,
+      28.03,
+      28.03,
+      28.03
+    ],
+    "excluded_reason_counts": {
+      "central_context_insufficient": 85,
+      "missing_required_transition": 8,
+      "chair_vertical_quality": 6,
+      "context_side_too_short": 1,
+      "overlapping_transitions": 4
+    }
+  },
+  "prep_event": {
+    "people": 101,
+    "long_people": 4,
+    "observation_min_median_max": [
+      6.733333333333335,
+      8.066666666666668,
+      24.799999999999997
+    ],
+    "sub283_training_target_maxima": [
+      22.5,
+      22.18,
+      22.5,
+      22.5,
+      22.5
+    ],
+    "excluded_reason_counts": {
+      "central_context_insufficient": 111,
+      "missing_required_transition": 18,
+      "chair_vertical_quality": 7,
+      "context_vertical_quality": 1
+    }
+  },
+  "fixed_flagged": {
+    "people": 45,
+    "long_people": 6,
+    "observation_min_median_max": [
+      9.266666666666666,
+      10.166666666666666,
+      13.600000000000001
+    ],
+    "sub283_training_target_maxima": [
+      25.14,
+      25.14,
+      25.14,
+      23.41,
+      25.14
+    ],
+    "excluded_reason_counts": {
+      "central_context_insufficient": 169,
+      "missing_required_transition": 18,
+      "context_vertical_quality": 1,
+      "overlapping_transitions": 5
+    }
+  }
+}

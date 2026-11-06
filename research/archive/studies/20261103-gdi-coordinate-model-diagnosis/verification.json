@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "protocol_sha256": "b53dc7a76063c0acc14ae2eeb8e4f23a9cf35ec6d415a05d556a748e36fc4295",
+  "results_sha256": "b20f14a9683685a64d258961df52eb3b60daa2b326f9916aaa0a615a20c73139",
+  "baseline_features_exactly_equal": true,
+  "source_records_rehashed": 1061,
+  "same_windows_all_conditions": true,
+  "coordinate_checks": [
+    {
+      "record": 0,
+      "baseline_invariance_max": 2.5757174171303632e-14,
+      "doses": [
+        0.010109636605639374,
+        0.030328909816918118,
+        0.050548183028196865
+      ]
+    },
+    {
+      "record": 101,
+      "baseline_invariance_max": 2.1227464230832993e-13,
+      "doses": [
+        0.010080416726949338,
+        0.030241250180848014,
+        0.05040208363474669
+      ]
+    },
+    {
+      "record": 503,
+      "baseline_invariance_max": 6.661338147750939e-15,
+      "doses": [
+        0.009967912735013408,
+        0.029903738205040224,
+        0.04983956367506705
+      ]
+    },
+    {
+      "record": 1060,
+      "baseline_invariance_max": 1.7719159473017498e-13,
+      "doses": [
+        0.00994902166467373,
+        0.02984706499402119,
+        0.04974510832336865
+      ]
+    }
+  ],
+  "neural_checkpoints": 10,
+  "neural_condition_replay_cells": 110,
+  "max_neural_replay_error": 1.828824767358128e-05,
+  "ridge_inner_candidate_fits_verified": 480,
+  "ridge_saved_models_replayed": 20,
+  "cross_input_cells_verified": 16,
+  "max_ridge_replay_error": 3.844036200462142e-12,
+  "person_splits_verified": true,
+  "metrics_and_bootstrap_verified": true,
+  "existing_ensemble_reconstructed": true,
+  "protected_final_inputs_or_labels_opened": false,
+  "elapsed_seconds": 47.21899999998277,
+  "code_sha256": {
+    "prepare.py": "da645f5a720a7ec89a2659a320f4dae971efab70639f95151bcd06056a7ff169",
+    "infer.py": "98048a15a0b6737980d3a699c02d23bb3717a4d073386023e00967edecb36b47",
+    "ridge.py": "f18e43c5ea0f26ba74ae8f9521fb7720e0be9305a94d2b66b3d142244772d273",
+    "analyse.py": "f97c671a3873077a450cb20e3761fe2611ecd379b414f981ff18227030930d43",
+    "verify.py": "455089bb4cd0ec167d29ec66f69ea9cd563d51d80948a0b94cd04f274e282c19",
+    "cross_inputs.py": "2b590c607f342b35eb4de689c894a6b7cc1dfff06ad38d0d838561c333164333"
+  }
+}

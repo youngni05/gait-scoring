@@ -1,0 +1,36 @@
+{
+  "status": "ready",
+  "data_scope": "original175_plus_development520_only",
+  "people": 695,
+  "records": 1064,
+  "split_seed": 20261030,
+  "old_folds_preserved": true,
+  "new_people_per_fold": 104,
+  "evaluation_people_per_fold": 139,
+  "small_training_people_per_fold": 140,
+  "expanded_training_people_per_fold": 556,
+  "window": "front_124_only",
+  "ridge_alpha": 1.0,
+  "fit_weight": "record_equal",
+  "scaler_fit": "training_records_only",
+  "evaluation": "person_macro_MAE",
+  "subgroups": [
+    "old175",
+    "new520",
+    "all695"
+  ],
+  "primary_report": "paired results in each subgroup; no test-set selection",
+  "final_reserved223_used": false,
+  "old37_38_used": false,
+  "gpu_steps": 200,
+  "gpu_batch_size": 32,
+  "gpu_head_lr": 0.0001,
+  "gpu_encoder_lr": 1e-05,
+  "gpu_seed": 20261028,
+  "gpu_variants": [
+    "head_only",
+    "tail",
+    "last_stage"
+  ],
+  "note": "First fixed expansion comparison, no tuning. Expanded GPU has fewer data passes at same update budget; do not infer optimal training."
+}

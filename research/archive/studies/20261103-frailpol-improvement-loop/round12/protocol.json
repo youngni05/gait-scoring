@@ -1,0 +1,42 @@
+{
+  "round": 12,
+  "created_unix": 1793734252.0618243,
+  "code_sha256": "ad43d312060ea0bf17b89a61be301878b0843e117744789a5dafafd452241ed9",
+  "data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "native_data_sha256": "dfd85dcda4caaf6d3679f06f46b5d04bb143cb39659aba9a60d4cea5f1d02d33",
+  "source_round11_verification_sha256": "55ec3acebe4ca24a545555c73803e3c8610f51eb0b9299dfd624b8da829f283b",
+  "source_round11_protocol_sha256": "cbc089df94390627a53fc8dcc622359f221ec7730435df5080d2fe7122c7045e",
+  "conditions": [
+    "speed",
+    "speed_duration",
+    "combined"
+  ],
+  "configs": [
+    {
+      "tail": 1,
+      "aux": 0.0,
+      "regularization": 0.01
+    },
+    {
+      "tail": 1,
+      "aux": 0.1,
+      "regularization": 0.01
+    },
+    {
+      "tail": 4,
+      "aux": 0.0,
+      "regularization": 0.01
+    },
+    {
+      "tail": 4,
+      "aux": 0.1,
+      "regularization": 0.01
+    }
+  ],
+  "design": "Same594/frozenouter5;allfullyreviewedsourcebaseexpertinputsfromround11. Withinoutertrainfitgatebetweenfixedround11tail1andtail16linearexperts. Theiroutputsonthemetatrainingrowsarein-sampleinternalactivations,NOTvalidationevidence;onlyrawsourcebasecolumnsareinnerOOF. No traininglossreportedaspredictionaccuracy. Outertestpeopleexcludedfromallcomponents/scalers/weights/selection.",
+  "gate_features": "Fiveperson-levelfeatures:reviewedorderednormprediction(or matchedmanualpredictionforcontrols);oldmotionCNNprediction(oroldspeedMLPforcontrols);log1p(per-personexpertpredictionstd);logestimatedspeed;selectedcoreduration(constant0inpurespeedcontrol). Featurescomputedfromsamepersononly,scaledusingoutertrain. Fixedsigmoid5weights+biasinit0/-2. Learnedmixturecoefficientisnotacalibratedclinicalriskprobability.",
+  "training": "CPU64fromstart;LBFGSmax_iter200,max_eval300,strongWolfe,gradtol1e-9,changetol1e-12,onefixedinitialization. Huber/SmoothL1beta1seconds,training-labeltail1or4,middle sqrt(tail);optional.1BCEofTUG>=20,positiveweightnnegative/npositivefromtrainingpeopleonly. .01L2ongateweights,biasunpenalized. Sourceexpertweightsfrozenfromfittraininglabels. No target/outputclipping;mixtureispartofthelearnedmodel. All4predeclaredconfigsreported,noouterselection.",
+  "policies": "Plainmixandthesameround11input-supportguardusingtrain-onlyspeedmin/max;outsideusesfixedreviewedwave/manualfallback. Every594personretained;guarddoesnotclaimprovenmeasurementerror. Controlgatehasno waveforminputs;speed_durationaddsselectedcore durationonly.",
+  "verification": "60savedgates/15contexts/120policyfoldoutputs. IndependentNumPyobjective/analyticgradient/re-inference+sourceexpert/ID/trainonlyscale/labelweight/bounds/fallbackchecks,allpolicyoutputsCPU64tol1e-6absolute+relative. AllsourceNNLSandrawmodelreplaysfromround11receipt,failedwaveauxsourceexcluded. Conditional5000pairedpersonbootstrap/bands;reuseddevelopmentfolds,severe9,notexternalclinical.",
+  "expected_additional_GB": 0.01
+}

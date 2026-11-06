@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "people": 594,
+  "new_base_models_replayed": 140,
+  "meta_models_replayed": 10,
+  "checks": [
+    {
+      "condition": "timing_plus_availability",
+      "fold": 0,
+      "people": 118,
+      "features": 5,
+      "new_base_models_replayed": 28,
+      "reference_base_model_count": 0,
+      "meta_models_replayed": 2,
+      "max_base_prediction_delta": 7.105427357601002e-15,
+      "max_fresh_meta_prediction_delta": 0.0,
+      "unchanged_people_training_only_imputation_feature_selection_and_meta_KKT_verified": true
+    },
+    {
+      "condition": "timing_plus_availability",
+      "fold": 1,
+      "people": 117,
+      "features": 5,
+      "new_base_models_replayed": 28,
+      "reference_base_model_count": 0,
+      "meta_models_replayed": 2,
+      "max_base_prediction_delta": 3.552713678800501e-15,
+      "max_fresh_meta_prediction_delta": 3.552713678800501e-15,
+      "unchanged_people_training_only_imputation_feature_selection_and_meta_KKT_verified": true
+    },
+    {
+      "condition": "timing_plus_availability",
+      "fold": 2,
+      "people": 123,
+      "features": 5,
+      "new_base_models_replayed": 28,
+      "reference_base_model_count": 0,
+      "meta_models_replayed": 2,
+      "max_base_prediction_delta": 3.552713678800501e-15,
+      "max_fresh_meta_prediction_delta": 3.552713678800501e-15,
+      "unchanged_people_training_only_imputation_feature_selection_and_meta_KKT_verified": true
+    },
+    {
+      "condition": "timing_plus_availability",
+      "fold": 3,
+      "people": 115,
+      "features": 5,
+      "new_base_models_replayed": 28,
+      "reference_base_model_count": 0,
+      "meta_models_replayed": 2,
+      "max_base_prediction_delta": 5.329070518200751e-15,
+      "max_fresh_meta_prediction_delta": 1.7763568394002505e-15,
+      "unchanged_people_training_only_imputation_feature_selection_and_meta_KKT_verified": true
+    },
+    {
+      "condition": "timing_plus_availability",
+      "fold": 4,
+      "people": 121,
+      "features": 5,
+      "new_base_models_replayed": 28,
+      "reference_base_model_count": 0,
+      "meta_models_replayed": 2,
+      "max_base_prediction_delta": 3.552713678800501e-15,
+      "max_fresh_meta_prediction_delta": 7.105427357601002e-15,
+      "unchanged_people_training_only_imputation_feature_selection_and_meta_KKT_verified": true
+    }
+  ],
+  "comparison_sha256": "181db3345af5490a8861dd83423cee7b2c3c45f4aca2847f2e4a49fe52f55555",
+  "heldout_sha256": "d4c7b0712453825016bba382b8a7f7015112d131f82d513fddc09c1c4ccb2c71",
+  "protocol_sha256": "130039da826f781c1d5e22f1feea6d7640488664aa3953d6a5113aad5c25eee9",
+  "review_code_sha256": "050d047a20714c74bbd8f05706746ef8d0c7f6b94205cb9a17832d030a10128b"
+}

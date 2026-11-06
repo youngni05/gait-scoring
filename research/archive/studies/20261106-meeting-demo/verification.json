@@ -1,0 +1,81 @@
+{
+  "checks": [
+    "54 model hashes and MediaPipe hash match existing manifest",
+    "short input rejected without a score",
+    "no-person input rejected without a score",
+    "real video upload -> MediaPipe -> same features -> original54 and adult64-added55 checkpoints -> six results",
+    "temporary videos removed",
+    "HTTP page and request protection passed"
+  ],
+  "clinicalValidation": false,
+  "replay": [
+    {
+      "sample": "sample-0",
+      "maxDifference": 5.45758993553136e-07
+    },
+    {
+      "sample": "sample-1",
+      "maxDifference": 1.2490977496781852e-06
+    }
+  ],
+  "mediapipeSavedReplayMaxDifference": 1.3515876702285823e-06,
+  "sixModelComparison": [
+    {
+      "id": "baseline_CNN",
+      "arm": "baseline",
+      "model": "CNN",
+      "left": 69.2255293085866,
+      "right": 70.2673520724426,
+      "mean": 69.7464406905146
+    },
+    {
+      "id": "baseline_STT",
+      "arm": "baseline",
+      "model": "STT",
+      "left": 76.7512184870363,
+      "right": 75.88817224201473,
+      "mean": 76.31969536452551
+    },
+    {
+      "id": "baseline_fusion",
+      "arm": "baseline",
+      "model": "fusion",
+      "left": 73.87402752912556,
+      "right": 73.86684434502975,
+      "mean": 73.87043593707764
+    },
+    {
+      "id": "adult64_CNN",
+      "arm": "adult64",
+      "model": "CNN",
+      "left": 89.59459850167852,
+      "right": 91.55354169574437,
+      "mean": 90.57407009871145
+    },
+    {
+      "id": "adult64_STT",
+      "arm": "adult64",
+      "model": "STT",
+      "left": 95.52546002855243,
+      "right": 92.81437252253275,
+      "mean": 94.16991627554259
+    },
+    {
+      "id": "adult64_fusion",
+      "arm": "adult64",
+      "model": "fusion",
+      "left": 91.66777297581639,
+      "right": 91.50582731021666,
+      "mean": 91.58680014301652
+    }
+  ],
+  "uploadedVideo": {
+    "source": "existing user normal-walk clip; no actual GDI label",
+    "frames": 1353,
+    "windows": 13,
+    "left": 73.87402752912556,
+    "right": 73.86684434502975,
+    "maxDifferenceFromPriorMediaPipe": 1.3515876702285823e-06
+  },
+  "passed": true
+}

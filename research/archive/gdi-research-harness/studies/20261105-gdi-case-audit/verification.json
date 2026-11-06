@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "independent_scalar_comparisons": 60677,
+  "models": 17,
+  "checkpoints": 94,
+  "all_source_hashes_unchanged": true,
+  "all_train_eval_disjoint": true,
+  "all_94_replay_max_error": 1.2931821260053766e-05,
+  "previous7_full_reproduction_max_errors": {
+    "single_CNN": 0.0,
+    "multi_STT": 2.842170943040401e-14,
+    "multi_CNN": 4.263256414560601e-14,
+    "CNN_bag": 4.263256414560601e-14,
+    "fusion": 4.263256414560601e-14,
+    "plus_general": 4.263256414560601e-14,
+    "plus_ranksim": 2.842170943040401e-14
+  },
+  "results_sha256": "6bf05c7b715ad3ffa76bb2e31e64cc82ba559dadf2073a269a52a2d4f800c4c2",
+  "case_details_sha256": "adf9962b3f6c38ef043a20471d6a18d9cf561d8265ea8f3bec658b5cf43253a4",
+  "predictions_sha256": "25adb98e5665595dcf734e5f498360fefb70fe08686fee35a46ac16d45d624b3",
+  "protocol_sha256": "905f631015cf4d2889e8bc716d376cec20bb2c743e17763d96d8f16ade5a0dd3",
+  "optimizer_steps": 0,
+  "new_training": false,
+  "scope": "Post-hoc same-source case descriptions; no fresh final or clinical validation"
+}

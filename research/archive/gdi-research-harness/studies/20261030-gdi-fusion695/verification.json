@@ -1,0 +1,19 @@
+{
+  "verified": true,
+  "people": 695,
+  "records": 1064,
+  "methods": 11,
+  "prediction_rows": 23408,
+  "all_metrics_and_score_bands_independently_recomputed_with_pandas": true,
+  "RF_outer_models_replayed": 15,
+  "RF_selected_inner_refits": 15,
+  "CNN_inner_fits_checked": 40,
+  "CNN_outer_models_replayed": 10,
+  "frozen_frame_cache_replay_passed": true,
+  "original_input_fingerprints_unchanged": true,
+  "original_encoder_weight_matches_pinned_SHA256": true,
+  "protected_numeric_data_read": false,
+  "independent_final_evaluation": false,
+  "summary_sha256": "a9a0d429fd2c01866b019b7c438a52aee6731116ca5ed29d82b21f33067d8cf4",
+  "verification_code_sha256": "a255635b29434cc7135e0962131dda74459b311f86d588c2c045f978999d4238"
+}

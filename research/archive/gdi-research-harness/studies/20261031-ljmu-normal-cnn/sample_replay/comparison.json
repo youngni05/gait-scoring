@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "source_kind": "real public development sample, not normal gait validation",
+  "original_json_files": 650,
+  "windows": 12,
+  "shape": [
+    12,
+    2,
+    124,
+    12
+  ],
+  "feature_max_error": 0.0,
+  "feature_tolerance": 1e-06,
+  "prediction_max_error": 0.0,
+  "prediction_tolerance": 0.0001,
+  "frame_ranges_exact_match": true,
+  "time_alignment_status": "unverified",
+  "resampling_performed": false
+}

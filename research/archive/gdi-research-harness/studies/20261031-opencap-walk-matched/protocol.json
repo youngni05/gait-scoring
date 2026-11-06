@@ -1,0 +1,13 @@
+{
+  "scope": "posthoc descriptive matching, not new held-out performance or causal identification",
+  "cohort": "same179people, same visit/session/start/exact6s; sub-283 excluded",
+  "features": "3speed summaries plus14original patterns; all17 finite for a feature match; no imputation in pair distance",
+  "scale": "per-feature IQR of179 people, outcomes not used; descriptive full-cohort scaling, never used to claim held-out performance",
+  "distance": "sqrt(0.5*mean(square(speed difference/IQR))+0.5*mean(square(pattern difference/IQR)))",
+  "primary_match": "both pass prior frozen stability rule; mean-speed difference<=0.10m/s; feature distance<=0.5",
+  "secondary_match": "same calipers and complete features but without stability exclusion; retain quality flags",
+  "large_label_gap": "absolute actual5xSTS difference>=10s; descriptive case-finding threshold, not clinical significance threshold",
+  "case_selection": "among qualified pairs order by largest target gap then smallest input distance; up to3 disjoint primary pairs and up to2 disjoint flagged pairs",
+  "fallback": "if no primary matches meet gap criterion, report no qualifying pair; do not relax matching thresholds",
+  "limitations": "similar current summaries do not establish similar raw motion or identical functional capacity; original RGB unavailable in current files"
+}

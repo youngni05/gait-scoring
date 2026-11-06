@@ -1,0 +1,28 @@
+{
+  "code_sha256": "26e94548742f6be931fceb98ac8b055dca8bfd1c006ba69b7fc24132263ab2ff",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-straight-gate\\study.py": "aa50334b94e24c19d8b0f49a9d5fbec294e7fb65359f713dff16efb25408bf60",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-straight-gate\\verify.py": "3da14f9c4c9bbe2ae5497f0683cc04af029ad936ccf8e6b3d9a438f0c77e2140",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-straight-gate\\protocol.json": "72e916c8a91b4761ecd9baf0b5c23dfa2e41114d8379e50617444c4d9502911d",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-straight-gate\\main-verification.json": "8ba31c59428682d7e277c8dfb51d27ac67768457863301118e18861efdf6203e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-straight-gate\\main-gates.csv": "8c272372e957fd4441eb0b5f3150fe883b76777ee7b053f5ec78420aa5129700",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-straight-gate\\README.md": "c040c299d21eefe1e2216d3092ee480889cfb849da552760fbd3e6e611016abe"
+  },
+  "hypothesis": "FixedCombinedgate retains straight1/14PG1 vs14/14PG2. Diagnose whether visibility or torsoorientation component drives the view disparity before changing any capture rule.",
+  "inputs": "Same14people56frozenstraight/turn2secRGBclips. Reuse all originalarrays unchanged onD;no new bulkdata/training/inference.",
+  "conditions": "NoGate;VisibilityOnly(original alljointfinite/imagefinite/visibility>=.5);OrientationOnly(original validaxis/span<=30);Combinedoriginal. All thresholds unchanged. Counterfactual component removals are new diagnostic comparators,not a relaxed passing criterion for oldexperiment.",
+  "evaluation": "Percondition/view/component straightretention andturnfalseacceptance,pairedviewagreement,perclipspan/visibility. No component selected for deployment or tuned using outcomes.",
+  "success": "Attribution diagnostic,not improvementclaim. Visibilitydominant if removing visibility restores>=10 of13PG1rejectedstraightclips while orientation threshold unchanged;orientationdominant if analogous visibilityonly restores>=10. Both/neither possible. Report all components and eachviewturnacceptance. Not clinical standard.",
+  "expected": {
+    "main_tasks": 56,
+    "people": 14,
+    "diagnostic_rows": 224,
+    "metric_rows": 8,
+    "paired_rows": 8,
+    "pilot_clips": 8,
+    "new_model_fits": 0
+  },
+  "verification": "Frozen source/array/codeSHA andperson/frame/condition,originalCombined exactreplay. Independentmanualphaseunwrap andquantile from frozen verifier for56clips,componentboolean exact andspan1e-10. Independently count all tables. Pilot2people then main.",
+  "resources": "CPU1<1min,noGPU/download/training,smalltablesC,reuseimmutableDarrays;originalscorepeople/bouts/5seeds unchanged",
+  "limits": "Same14developmentpeople,proxyorientation andestimatedvisibility,no expertcontact/SPPB/TUGlabels. A counterfactual improvementdoesnotvalidate unseenphonecapture. No newthresholdgrid or promotion without independentmeasurement evidence."
+}

@@ -1,0 +1,36 @@
+{
+  "status": "prepared_and_CPU_verified_not_submitted",
+  "checked_at": "2026-10-31T10:06:51.706478+09:00",
+  "passed": true,
+  "checks": {
+    "package_verification.json": "6b2039e095bdec28496f1a5c1913a7ee2addb0f884865795313efcf4b4adbea1",
+    "launch_verification.json": "4f7bd6c804e200cd6d7b3af962acc84e1691b80ee0f6409d0c003ba44fb4215c",
+    "checks/pooling/verification.json": "64e71624993be0e735971c22497b4da724c921a8d234eb7caed14402e3734654",
+    "checks/pilot-review/verification.json": "2fab4a2cc12e5508bb4382f5b2fd741d0225423ae6d1de1533c269fc4e0b5655",
+    "checks/synthetic-mean/verification.json": "d9ff747c0ceb64653b5758c05d16145e7d853b3c65ee2209ff6bec88aa9dba16",
+    "checks/synthetic-attention/verification.json": "b8550e8e19c6592014e6dc3c5ac80686ae9543046cbf169aa3510fdfa5da19e7",
+    "checks/nested-mean/verification.json": "1bff2c7439da7349e88989e5609a86b077d1df2b2190113485fcef769cd89aba",
+    "checks/nested-attention/verification.json": "1bff2c7439da7349e88989e5609a86b077d1df2b2190113485fcef769cd89aba"
+  },
+  "manifest_sha256": "61dbc96a0359e220eff5fd1399361cbf432b8a035614f22fc825327d9c6934cd",
+  "zip_sha256": "0e6df625ea689cbba9c58c872fc1aa33d6dc8d8cc80a78c0b5d089836acbe8b6",
+  "people": 692,
+  "records": 1061,
+  "windows": 11261,
+  "max_windows_per_record": 13,
+  "variants": [
+    "mean",
+    "attention"
+  ],
+  "same_initial_encoder_and_prediction": true,
+  "record_batch": 8,
+  "pilot_steps_per_variant": 240,
+  "synthetic_nested_fits_per_variant": 25,
+  "real_GDI_optimizer_steps": 0,
+  "gpu_execution_verified": false,
+  "server_submitted": false,
+  "existing_STT_and_bilateral_bundles_unchanged": true,
+  "job_id": null,
+  "slurm_bash_syntax_verified": true,
+  "bash_verification_note": "Initial sandboxed Git Bash startup denied by Windows MSYS; unchanged script passed bash -n outside sandbox. No script commands executed."
+}

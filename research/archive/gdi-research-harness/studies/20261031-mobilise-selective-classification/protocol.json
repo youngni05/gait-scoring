@@ -1,0 +1,66 @@
+{
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "source_hashes": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\person-folds.csv": "f5883374906327b6bf0e6ce1f9aaffb9f86f9e6d8679bc02b5775dcc702bea5a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\predictions.csv": "c91bd1d36786f1148de0a960a686d249f624e70148bd0a1732928463df5c89bf",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability\\predictions.csv": "00eac609f647f447702c72c0b5afebeb928ed629513531fcb597df3c9528865a"
+  },
+  "code_sha256": "c702c095ffc9d49156b450e587ac7804d1f84c4d625a7d0b755661af70e64360",
+  "conditions": {
+    "bands": [
+      "short",
+      "long"
+    ],
+    "k": [
+      1,
+      3,
+      5
+    ],
+    "draw": 0
+  },
+  "targets": {
+    "sppb": "<=3",
+    "tug": ">20"
+  },
+  "features": [
+    "averagecadence",
+    "averagestrideduration",
+    "averagestridespeed",
+    "averagestridelength"
+  ],
+  "aggregation": "unchanged per-feature median of same selected bouts",
+  "outer": "unchanged 5 person folds",
+  "inner": "exact original three person-fold ID lists",
+  "models": {
+    "LR": "C=1; weighted StandardScaler; deterministic across seed schedules",
+    "RF": "128 trees; leaf20; max_features1; seed+fold*10+inner/refit9; no class weights"
+  },
+  "selection": "fixed model hyperparameters declared before training; no outer-label selection",
+  "calibration": "sigmoid logistic on inner OOF logits; cross-fitted maps for rule selection, full inner OOF map for outer test",
+  "calibration_limit": "outer held-out evaluation is honest; inner cross-calibration is not a separate nested performance estimate or conformal guarantee",
+  "policies": [
+    "p50",
+    "maximum threshold attaining inner positive-person sensitivity>=.8",
+    "minimum threshold with inner negative-person FPR<=.1"
+  ],
+  "rejection": "inner person-weighted 0/10/20 percentiles of absolute log-odds distance to decision threshold; strict less-than; report realized rates",
+  "weights": "equal total weight per person; subgroup rates reweight within true subgroup",
+  "baselines": "saved original Ridge/SVR/RF and median at target cutoffs; saved DeepSets600 for each of five seeds; prior probability",
+  "interpretation": "development cross-validation, not unseen external or clinical validation; abstention is boundary ambiguity, not validated OOD detection",
+  "outputs": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-selective-classification",
+  "large_models": "D:\\gait-research-data\\D_P\\mobilise-selective-classification-20261031\\models",
+  "download_required": false,
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "sklearn": "1.9.1"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "declared_before_training": true,
+  "reason": "Strict quality filtering retains only4 of9 prior long-TUG people; assess exclusion effect without calling flagged data valid",
+  "views": [
+    "Walk3Speed",
+    "WalkMatchedSpeed",
+    "Walk3Turn"
+  ],
+  "parent_protocol_sha256": "7b82a4c98f9195cd751a26b7b5bd0758159e064c11182e67b239d409ddf1751b",
+  "change": "retain max-speed/yaw-step/joint-step flags; still require complete finite files, detected turn, matched straight duration and yaw range<=45deg",
+  "same_visits_and_frozen_splits": true
+}

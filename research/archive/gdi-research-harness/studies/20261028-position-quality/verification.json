@@ -1,0 +1,12 @@
+{
+  "verified": true,
+  "quality_csv_rows": 729,
+  "cross_head_rows": 360,
+  "mixed_prediction_rows": 160,
+  "summaries_and_spearman_independently_recomputed": true,
+  "cross_head_mae_recomputed": true,
+  "mixed_mae_range_and_mean_verified": true,
+  "source_hashes_unchanged": true,
+  "bootstrap_independently_recomputed": false,
+  "raw_motion_formulas_independently_reimplemented": false
+}

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "original_final_checkpoints_sha256_unchanged": 45,
+  "target_array_sha256_unchanged": true,
+  "baseline_person_metrics_independently_recomputed": 10,
+  "original_NN_metrics_replayed_before_BN_diagnostic": true,
+  "scope": "Diagnostic source integrity and metric arithmetic; not independent clinical validation"
+}

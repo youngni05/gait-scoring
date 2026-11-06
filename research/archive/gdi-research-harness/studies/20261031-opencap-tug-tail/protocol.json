@@ -1,0 +1,95 @@
+{
+  "people": 298,
+  "seconds": 3,
+  "input_sha256": "d30142053ecca9a9d814fcef3bf7e7f3e6834fd6f39340889ef3263fb8784b24",
+  "splits_sha256": "e70ad069fed8104d1736656446474b823f44c9acefb7dfc28f6aceb8166f24d8",
+  "partition_count": 5,
+  "model_seeds": [
+    20261030,
+    20261031,
+    20261032
+  ],
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "baseline": "previous speed-summary RF, exact same inputs/splits/seeds/hyperparameter selection; reused verified predictions and inner OOF predictions",
+  "methods": {
+    "BaselineRF": {
+      "view": "raw",
+      "long_TUG_training_weight": 1,
+      "inner_selection": "MAE",
+      "model": "RF"
+    },
+    "RFSelectBalanced": {
+      "view": "raw",
+      "long_TUG_training_weight": 1,
+      "inner_selection": "macro",
+      "model": "RF"
+    },
+    "WeightedRF": {
+      "view": "raw",
+      "long_TUG_training_weight": 10,
+      "inner_selection": "macro",
+      "model": "RF"
+    },
+    "RobustRF": {
+      "view": "robust",
+      "long_TUG_training_weight": 1,
+      "inner_selection": "MAE",
+      "model": "RF"
+    },
+    "RobustRFSelectBalanced": {
+      "view": "robust",
+      "long_TUG_training_weight": 1,
+      "inner_selection": "macro",
+      "model": "RF"
+    },
+    "RobustWeightedRF": {
+      "view": "robust",
+      "long_TUG_training_weight": 10,
+      "inner_selection": "macro",
+      "model": "RF"
+    },
+    "InverseRidge": {
+      "view": "inverse",
+      "long_TUG_training_weight": 1,
+      "inner_selection": "MAE",
+      "model": "Ridge"
+    },
+    "InverseRidgeBalanced": {
+      "view": "inverse",
+      "long_TUG_training_weight": 1,
+      "inner_selection": "macro",
+      "model": "Ridge"
+    }
+  },
+  "RF": {
+    "n_estimators": 128,
+    "leaf_grid": [
+      2,
+      5
+    ],
+    "max_features": 1.0,
+    "sample_weight": "explicit ones, or 10 for TRAINING targets >=20; uniform scaler weights for all methods"
+  },
+  "Ridge": {
+    "alpha_grid": [
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "predictions": "nonnegative, no upper cap",
+    "deterministic": "5 partitions; not refitted for duplicate training seeds"
+  },
+  "features": {
+    "raw": "mean/std/mean absolute adjacent change of horizontal pelvis speed",
+    "robust": "median/IQR/median absolute adjacent change of same speed window, no target-dependent filtering",
+    "inverse": "1/max(mean_speed,.1), speed_std/max(mean_speed,.1), mean_speed_change/max(mean_speed,.1)"
+  },
+  "selection": "pooled INNER held-out predictions on outer training people; MAE or equal mean of errors in <10,10-<20,>=20 second bands present in training. No outer labels in fitting/selection.",
+  "analysis": "long>=20, mid10-<20, short<10; MAE/RMSE/signed error/underprediction/overprediction for every method; all repetitions reported, no best seed selection",
+  "cause_audit": "clinical join, translation spikes, train tail counts/range, feature-nearest training neighbors, exact baseline forest training-label weights and tail influence",
+  "scope": "exploratory reuse of already examined development cohort; nine unique long-TUG people, repeated predictions are correlated; not new clinical or external validation",
+  "device": "local CPU only; no external transfer",
+  "new_training_inputs": "none: no diagnosis, age, other timed clinical tests, target band at inference or target-dependent window exclusions"
+}

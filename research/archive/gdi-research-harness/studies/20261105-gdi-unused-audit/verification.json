@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "models": 17,
+  "checkpoints": 94,
+  "all_source_hashes_unchanged": true,
+  "primary_train_final_person_overlap": 0,
+  "identified_and_unknown_separate": true,
+  "all4275_records_retained": true,
+  "independent_metric_checks": 986,
+  "max_batch_replay_error": 1.905853591210871e-05,
+  "old38_numeric_labels": false,
+  "unknown_identity_numeric_labels": false,
+  "results_sha256": "5e875107588d9f74a4da24a0bafabf978a1a08ff4c2e71a3856f1f5170781f36",
+  "all_record_csv_sha256": "ccd1871e08fe30ca1b67eefdade6b4c9cde62bb95e663617aad7a507811299a7",
+  "scored_sha256": "9f4231c18b620f3eddc4c63dc6a1e2615794d792a2b3b577fa8292d1fd00a475",
+  "optimizer_steps": 0,
+  "new_training": false
+}

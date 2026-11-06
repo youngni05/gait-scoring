@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "checked_utc": "2026-10-30T12:50:01.572890+00:00",
+  "actual_TUG_table_linkage": true,
+  "input_equal_to_audited_source": true,
+  "all_person_splits_disjoint": true,
+  "outer_prediction_coverage": true,
+  "cpu_model_replay": true,
+  "GPU_checkpoint_CPU_reinference_tolerance": 0.0001,
+  "train_only_normalization_recomputed": true,
+  "metrics_independently_recomputed": true,
+  "checkpoints_local": true,
+  "code_sha256": {
+    "common.py": "e06de527cf5ffac37cf3f7323d54cb927bed8a8d752c6fa327b59b31b0927ee1",
+    "cpu.py": "f5409e8e39d27ab5c37191673963386e4ae4c5474ba0b7be39eaf9ccf661abd0",
+    "gpu.py": "fb87857f73907105387acbc5d275f72a0489a17415c9e407333dd73fae86e612",
+    "protocol.json": "bd3470272c8b792c4d02e7d4936fe2ddc05f71e6cc677084d2757cebee481a2b",
+    "verify.py": "e7fddd5e24edddedfa7cd483ce00bfc60bda8feec93c0e5ac59d02db0bb6c1fd"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "purpose": "CPU-only descriptive diagnosis of shared PLS/GPU errors and the matched CNN input",
+  "scope": "695 development people, 1064 front124 windows; stored inputs and held-person predictions only",
+  "upper_joints": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "leg_joints": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "input_features": [
+    "upper_missing_fraction",
+    "upper_confidence_mean",
+    "leg_missing_fraction",
+    "leg_confidence_mean",
+    "observed_boundary_fraction",
+    "missing_boundary_fraction_all_points",
+    "leg_step_p95",
+    "leg_acceleration_p95",
+    "leg_length_cv_mean"
+  ],
+  "definitions": {
+    "missing": "confidence equals zero; confidence is not a calibrated probability of error",
+    "boundary": "any abs(xy)>=1-1e-6; a numeric normalization boundary, not evidence of camera clipping",
+    "observed_boundary_fraction": "boundary points with confidence>0 divided by observed points",
+    "missing_boundary_fraction_all_points": "boundary points with confidence==0 divided by all points",
+    "leg_step_p95": "95th percentile of normalized-coordinate Euclidean steps across adjacent frames and six observed leg joints; not physical speed",
+    "leg_acceleration_p95": "95th percentile of norm of second frame difference for the six leg joints; not physical acceleration or proven noise",
+    "leg_length_cv_mean": "mean of temporal SD/mean lengths for four hip-knee/knee-ankle segments in image coordinates; motion and projection also affect it"
+  },
+  "person_aggregation": "average per-record input features and per-record-side absolute errors within person; each person equal",
+  "common_error": "minimum of person PLS MAE and person GPU-last-stage MAE; large means both are large",
+  "context_features": [
+    "actual_mean_GDI",
+    "target_distance_from_outer_training_mean",
+    "actual_left_right_difference"
+  ],
+  "target_distance": "mean absolute distance of record-side GDI from the corresponding outer training people mean for that side; diagnostic use of labels only, not an input predictor",
+  "associations": "Spearman for each feature and each model MAE/common_error; additionally Pearson of global rank residuals centered within person-mean GDI ten-point bin x cohort strata with at least five people. Descriptive adjustment only, not causal identification.",
+  "review_group": "top ceil(10% * 695)=70 people by common_error; stable person_id order resolves ties; review only, not exclusion or clinical threshold",
+  "limits": "Selected lower-body-complete windows; no raw RGB or pre-normalization coordinates; no causal claim, input correction, predictive quality cutoff or independent validation",
+  "training": false,
+  "GPU_used": false,
+  "protected_numeric_data_used": false
+}

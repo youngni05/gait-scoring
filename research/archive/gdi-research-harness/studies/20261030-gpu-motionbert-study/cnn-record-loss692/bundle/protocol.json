@@ -1,0 +1,40 @@
+{
+  "name": "cnn_record_loss_comparison",
+  "stage": "record_loss_matched_batch_no_search",
+  "seed": 20261028,
+  "max_epochs": 100,
+  "learning_rate": 0.001,
+  "lr_drop_every": 10,
+  "lr_drop_factor": 0.8,
+  "dropout": 0.5,
+  "kernel_l2": 0.00031622776601683794,
+  "optimizer": "RMSprop",
+  "rmsprop_alpha": 0.9,
+  "rmsprop_eps": 1e-08,
+  "target_scaling": "training_only_pooled_sides_minmax",
+  "loss": "per_record_mean_window_MSE_or_MSE_of_mean_prediction_plus_same_L2",
+  "selection": "earliest_minimum_inner_person_weighted_calibrated_MAE",
+  "input": "sliding124_stride31_official12_separate_sides",
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "inner_folds": "remaining_four_original_folds",
+  "pilot_epochs": 3,
+  "wall_time_seconds": 27000,
+  "note": "Same frozen CNN data, topology, optimizer, epochs, split, evaluation. Packed batches differ from historical CNN; matched window_control isolates loss order.",
+  "calibration": "one_slope_and_intercept_fit_on_current_training_record_sides_only",
+  "primary_prediction": "calibrated",
+  "window_aggregation": "uniform_mean_per_record_side_before_training_only_OLS",
+  "window_starts": "range(0,500-124,31), zero based; original canonical window fallback for four records",
+  "batch_records": 2,
+  "variants": [
+    "window_control",
+    "record_mean"
+  ],
+  "baseline_batch_size": 32,
+  "historical_baseline_manifest_sha256": "cdddbbca96dae2723714cb8e9a1f7fe6f603967914febc952c8a3872c135f4a0"
+}

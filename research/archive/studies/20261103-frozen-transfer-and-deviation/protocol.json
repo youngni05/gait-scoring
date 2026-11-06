@@ -1,0 +1,18 @@
+{
+  "frozen_before_scores": true,
+  "date": "2026-11-03",
+  "authorization": "User requested frozen existing-model conversion experiment and approved a new own-deviation model on reference188 with age65plus healthy reference primary, all healthy secondary.",
+  "frozen_predictor": "Existing 54-checkpoint CNN/STT fusion, CNN_bag and CNN_refit as fixed secondary outputs. No optimization or recalibration. Hash-check all checkpoint paths after relocation; replay prior self-video predictions <1e-4 before new inference. No final223 labels or examples loaded.",
+  "conversion": "100Hz C3D resample on true time axis to30Hz, no stretching/repetition/padding; verified HJC/KJC/AJC; LTOE/RTOE used only as explicitly unvalidated BODY25 big-toe proxies. Primary fixed-position yaw-tracking camera 640x480,60deg HFOV,distance3.5m,height1m. Same pinned preprocessing,124frames and original starts range(0,376,31), only all eight points finite/inframe throughout. No quality exclusion based on predictions.",
+  "sensitivity": "Only original6people, all available trials:3cameras x toe offsets0,30,60mm along heel-to-TOE vector. Offsets are arbitrary sensitivity scenarios, not anatomical recovery. Compare identical trial and window starts for paired contrasts. SourceCP frame interval unverified;30Hz is explicit scenario, no verified transfer or accuracy claim.",
+  "aggregation": "Mean window prediction per trial, then equal mean trials within person. Camera/toe sensitivity paired on common window starts. No independent-window statistical tests.",
+  "new_model": "CPU standardized Ridge with128 common-joint summary features: perleg8features x mean,SD,p05,p25,p50,p75,p95,adjacent-frame derivativeRMS; feature windows90frames,step31; valid observed/inframe only; unionframes once pertrial; equal trial mean perperson. No3D angle, clinical score, age, diagnosis or GDI as predictor. No toe used in newmodel.",
+  "target": "Bilateral mean of side RMS angular deviation over9variables x51cycle samples in degrees, from existing independently verified person curves; not originalGDI and no normalization to100. Build healthy65plus normal reference from outer/inner training people only; each training normal excludes itself from its target reference. Repeat allhealthy reference as predefined secondary.",
+  "split": "5person-held-out outer folds stratified by healthy/stroke and age65plus, seeded20261103;3inner folds by same strata/seed+outer. All trials perperson stay together. Every inner split reconstructs reference,targets,featurestandardizer. Alpha candidates0.1,1,10,100,1000 selected by inner personMAE,earliest lower index tie. Refitoutertrain only. Report held-out target MAE vs outertrainingmean baseline and fold scores/reference counts. Final allavailable refit is deployment artifact, not held-out evaluation.",
+  "comparison": "Only same eligible olderstroke people: frozenGDI and negative predicteddeviation (higherbetter) vsPOMA Spearman and partialSpearman after ranking/residualizing on speed. FAC,TIS secondary. Pairedperson bootstrap2000seed20261103 of fixed OOF predictions for descriptive95intervals, not training uncertainty. No clinical prediction accuracy or direct MAE comparison across different score scales.",
+  "limits": "Syntheticprojection lacks realRGB/occlusion/pose errors;188cohort mixed healthy and stroke not generalelderly;footproxy and timebase unresolved;some exclusion byduration may select slowwalks. Originalmetadata GDI not adopted as groundtruth.",
+  "storage": {
+    "small": "D:/Projects/D_P/studies/20261103-frozen-transfer-and-deviation",
+    "large": "D:/gait-research-data/D_P/frozen-transfer-and-deviation-20261103"
+  }
+}

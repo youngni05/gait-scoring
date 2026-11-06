@@ -1,0 +1,50 @@
+{
+  "purpose": "기존 CNN·STT 결과로 입력별 결합 가능성과 같은 사람 분할의 고정 결합 대비 효과 확인",
+  "created_before_new_outer_evaluation": true,
+  "people": 692,
+  "records": 1061,
+  "outer_folds": 5,
+  "base_paths_per_outer": 4,
+  "meta_split": [
+    0.6,
+    0.2,
+    0.2
+  ],
+  "seed": 20261101,
+  "families": [
+    "shared",
+    "mean_difference"
+  ],
+  "l2_grid": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "constant_grid_step": 0.05,
+  "smooth_absolute_epsilon": 0.25,
+  "feature_clip": 5.0,
+  "bootstrap_repeats": 5000,
+  "high_group": "person mean true GDI >= 90; evaluation analysis only",
+  "possibility_screen": "inner held-out-base record-wise oracle MAE at least 0.1 point below matched fixed combination; oracle uses labels and is not deployable performance",
+  "selection": "each base-held-out inner fold split into meta train/select/audit people; select lambda and constant fallback using select MAE only; report audit separately; freeze choices then refit on the entire base-held-out inner fold",
+  "evaluation": "each f,j base excludes outer f and meta j; apply each gate to same f,j outer predictions then average four paths; no cross-path feature pooling for meta selection",
+  "primary": "internally selected family with constant fallback versus matched fixed prediction; paired person MAE and fold changes; no adoption based solely on one positive metric",
+  "secondary": [
+    "shared gate",
+    "mean/difference gate",
+    "high-group MAE",
+    "high-group signed bias",
+    "high-group mean underprediction",
+    "left-minus-right MAE",
+    "mean-score MAE"
+  ],
+  "limitations": [
+    "repeatedly explored development cohort",
+    "20 small meta training populations",
+    "inner base models use fixed final epochs",
+    "different prediction route from legacy refit and bagged best",
+    "model disagreement/spread are proxies, not verified joint tracking accuracy",
+    "no new base neural network training",
+    "no protected final cohort or external normal data"
+  ]
+}

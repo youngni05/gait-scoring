@@ -1,0 +1,77 @@
+{
+  "people": 692,
+  "records": 1061,
+  "metrics": {
+    "20261028": {
+      "mae": 7.7191875303775,
+      "exact_10point_bin_rate": 0.37761835948252137,
+      "two_or_more_bins_rate": 0.14013900357830994
+    },
+    "20261029": {
+      "mae": 7.725988373483287,
+      "exact_10point_bin_rate": 0.3847233691164327,
+      "two_or_more_bins_rate": 0.14190923479218276
+    },
+    "20261030": {
+      "mae": 7.750741923725573,
+      "exact_10point_bin_rate": 0.3808216350123864,
+      "two_or_more_bins_rate": 0.14264382053399394
+    },
+    "cpu_output_control": {
+      "mae": 7.760390933258649,
+      "exact_10point_bin_rate": 0.37537847508945776,
+      "two_or_more_bins_rate": 0.14499208642994768
+    },
+    "single_cnn": {
+      "mae": 7.838916517111626,
+      "exact_10point_bin_rate": 0.3676472612166254,
+      "two_or_more_bins_rate": 0.14838804018717314
+    }
+  },
+  "seed_summary": {
+    "count": 3,
+    "mean_mae": 7.731972609195453,
+    "sample_std_mae": 0.016606572273810887,
+    "minimum_mae": 7.7191875303775,
+    "maximum_mae": 7.750741923725573,
+    "range_mae": 0.031554393348073084
+  },
+  "comparisons": {
+    "single_cnn": {
+      "mean_mae_reduction": 0.10694390791617314,
+      "relative_reduction_pct": 1.364268999200649,
+      "all_three_seeds_have_lower_mae": true,
+      "exploratory95_fixed_predictions_reduction": [
+        0.024924139487814984,
+        0.19106755486941054
+      ]
+    },
+    "cpu_output_control": {
+      "mean_mae_reduction": 0.028418324063195638,
+      "relative_reduction_pct": 0.36619706800341,
+      "all_three_seeds_have_lower_mae": true,
+      "exploratory95_fixed_predictions_reduction": [
+        -0.05803195851362522,
+        0.11769891512890482
+      ]
+    }
+  },
+  "provenance": {
+    "20261028": {
+      "archive_sha256": "6ee336e680cc8e473a5c247f0913ec70ba8086812d30bf63afc9614e65b255bf",
+      "oof_sha256": "c183a43c9589ff760b666d03565c92ffaf19b2d0ffe5e273269f89edd1e09946",
+      "cpu_replay_max_error": 2.857967896829905e-05
+    },
+    "20261029": {
+      "archive_sha256": "caba25b7e719fdc8f01e2d272d541d5b6105573039ea457607c48a98597fe44f",
+      "oof_sha256": "689fd97543e02b8b9b685cfc803081fa5ed287036a5e8b2a23080ce8299c6a1f",
+      "cpu_replay_max_error": 2.8162446454871315e-05
+    },
+    "20261030": {
+      "archive_sha256": "e6dc82beda6925884c558ab07995c93da1f4a467e1c60914779e8f1e76e2fb6f",
+      "oof_sha256": "6704b29897595fbace789e56116ae53ce645d494fc3e282c1f5dfe32dfb54ea9",
+      "cpu_replay_max_error": 2.8102841810095924e-05
+    }
+  },
+  "note": "Average of three separately evaluated MAEs, not an ensemble. Same people and splits; seeds alter correction initialization, minibatch order and dropout only. Fixed-prediction person bootstrap excludes retraining and repeated-experiment selection uncertainty. No protected final data used."
+}

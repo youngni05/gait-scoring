@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "frozen_before_new_outer_metrics_read": "2026-11-02",
+  "purpose": "Compare weak-rank CNN additions to the same existing best and original RankSim-addition ensemble",
+  "people": 692,
+  "records": 1061,
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "arms": [
+    "rank01",
+    "rank03",
+    "mse_control",
+    "rank1"
+  ],
+  "strengths": {
+    "mse_control": 0,
+    "rank01": 0.1,
+    "rank03": 0.3,
+    "rank1": 1
+  },
+  "weight_grid": [
+    0,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95,
+    1
+  ],
+  "fixed_arm_selection": "Minimum person-equal MAE on held-out inner predictions excluding outer f; tie1e-12 choose smaller additional weight",
+  "joint_arm": "Choose strength and additional weight jointly using only outer-training inner predictions; ties1e-12 choose smaller additional weight then smaller strength",
+  "inner_predictions": "Each model excludes outer f and inner j, fixed epoch100; existing CNN/STT/bilateral inner caches and already chosen original blend fractions",
+  "outer_predictions": "Existing actual best bagged baseline and each strength's fixed refit chosen by its own inner epoch selection",
+  "formula": "(1-w)*existing_best+w*additional_CNN",
+  "same_weight_for_both_sides": true,
+  "outer_label_selection": false,
+  "global_OOF_random_meta_training": false,
+  "new_training_or_GPU": false,
+  "bootstrap": {
+    "unit": "paired person",
+    "replicates": 10000,
+    "seed": 20261101
+  },
+  "primary_comparators": [
+    "existing_best6.515816569178735",
+    "original_rank1_ensemble6.476734533865628"
+  ],
+  "secondary_metrics": [
+    "person_mean90/100 MAE and bias",
+    "observation90/100 MAE and bias",
+    "low-score error",
+    "fold deltas",
+    "same10/20band accuracy"
+  ],
+  "limitations": [
+    "same repeatedly explored development cohort",
+    "inner single versus outer bagged baseline difference",
+    "original blend fractions are outer-training meta-fit",
+    "additional inner final100 versus outer internally selected refit epoch difference"
+  ],
+  "protected_final_or_LJMU_used": false,
+  "large_storage": "D:/gait-research-data/D_P/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim-strength692/ensemble/cache"
+}

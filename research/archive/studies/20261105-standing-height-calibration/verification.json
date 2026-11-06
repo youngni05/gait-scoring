@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "source_hash_files": 48,
+  "new_arrays_and_receipts_hashed": 56,
+  "same_primary_people": 14,
+  "same_primary_windows_views": 28,
+  "independent_measurement_rows": 84,
+  "standing_failure_keys": [
+    "s18_PG2_primary2s_1135",
+    "s27_PG2_primary2s_3474",
+    "s31_PG2_primary2s_3307",
+    "s45_PG2_primary2s_484",
+    "s54_PG2_primary2s_992",
+    "s61_PG2_primary2s_1851",
+    "s72_PG2_primary2s_3761",
+    "s89_PG2_primary2s_3577"
+  ],
+  "standing_frames_before_first_motion_verified": true,
+  "reference_not_used_for_calibration": true,
+  "fixed_walking_coordinates_events_quality_and_availability": true,
+  "native_geometry_and_pixel_metric_replay": true,
+  "tolerance": 1e-10,
+  "comparison_sha256": "903f4864b9043dd346c0b3f50658742d834c692be5233bb580df113edb5d4889",
+  "protocol_sha256": "7064a3f4178188f7693b321746508f86f3bccb3366f42e8603ffc7a88389ddfb",
+  "review_code_sha256": "ff9c5c139eac656a49cccbd78ea2f4301576c5cacba4a5966c8b5ac556c8938a"
+}

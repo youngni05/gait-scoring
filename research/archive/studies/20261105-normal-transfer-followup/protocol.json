@@ -1,0 +1,73 @@
+{
+  "study": "normal-transfer-followup-20261105",
+  "scope": "Source-gated negative control, held-out dataset response, assumed-label sensitivity. User approved starting these experiments after proposal.",
+  "source_gate": {
+    "data": "ljmu100-mixed-20261104/data.npz",
+    "features": "48 pooled feature mean/std/range/absolute frame difference, record mean; no age, GDI or ID input",
+    "folds": "original five person-disjoint source folds",
+    "classifier": "train-only StandardScaler + LogisticRegression C1 max_iter2000 seed20261105, equal-person and equal-source loss",
+    "threshold": 0.5,
+    "outputs": [
+      "hard: source probability>=0.5 =>100, otherwise original Stanford GDI prediction",
+      "soft: p*100+(1-p)*original prediction"
+    ],
+    "families": [
+      "CNN_refit",
+      "STT_refit"
+    ],
+    "compare": [
+      "original baseline",
+      "original LJMU100 mixed",
+      "hard gate",
+      "soft gate"
+    ],
+    "interpretation": "Explanatory control, not a validated clinical model. Source predictability alone does not establish shortcut use."
+  },
+  "external": {
+    "dataset": "LIVE healthy child",
+    "people": 9,
+    "records": 12,
+    "membership": "20261105-matched-normal100/membership.json child",
+    "models": "original adult-only LJMU64 experiment CNN/STT refit five folds, before and after addition",
+    "aggregation": "average five frozen model outputs per record-side, then equal-person; also retain fold results",
+    "calibration": "original stored training-only coefficients, no fitting to LIVE",
+    "labels": "unlabeled, no MAE or clinical GDI claim",
+    "adult_candidate": "MoVi strict side-view intervals have zero124-frame windows; excluded without time stretching or looping",
+    "limitations": "LIVE previously explored in this project, but never in these checkpoints; cross-source plus age change, not a newly untouched final test"
+  },
+  "sensitivity": {
+    "cohort": "same LJMU adult9 people12 records as A-D v3",
+    "families": [
+      "CNN",
+      "STT"
+    ],
+    "label_weight_pairs": [
+      [
+        90,
+        1
+      ],
+      [
+        100,
+        1
+      ],
+      [
+        110,
+        1
+      ],
+      [
+        100,
+        0.25
+      ],
+      [
+        100,
+        4
+      ]
+    ],
+    "reference": "reuse running v3 B_adult label100 weight1; A is Stanford-only reference",
+    "new_main_fits": 40,
+    "folds": 5,
+    "sampling": "exact same B_adult examples/order and updates; multiply external loss weights only; Stanford loss weights unchanged",
+    "calibration_selection": "Stanford training only, frozen original per-fold epochs",
+    "evaluation": "same Stanford all/actual-side>=90/>=100/<70; MAE, shortfall, bias, underprediction fraction, low-score overprediction; descriptive paired person bootstrap; no selecting best arm on these results"
+  }
+}

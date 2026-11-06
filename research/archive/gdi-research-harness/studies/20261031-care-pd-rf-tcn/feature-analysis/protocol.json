@@ -1,0 +1,30 @@
+{
+  "major_joints": [
+    "left_hip",
+    "right_hip",
+    "left_knee",
+    "right_knee",
+    "left_ankle",
+    "right_ankle",
+    "left_shoulder",
+    "right_shoulder",
+    "left_elbow",
+    "right_elbow"
+  ],
+  "dimensions": {
+    "major3d": 308,
+    "motion3d": 128,
+    "bend3d": 58
+  },
+  "limitations": "All derived from frozen 3D rotations. Bone-axis deflection drops twist and direction; not clinical joint flexion, synthetic image landmarks, or real monocular validation.",
+  "fixed_before_results": true,
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "folds": 6,
+  "source_sha256": "84f4058cd20167a4b8d6054952f4e37a0e1f9eac6a7e02c93dad6be025fb4efb"
+}

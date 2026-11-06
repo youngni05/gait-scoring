@@ -1,0 +1,1384 @@
+{
+  "format": "gdi-inference-only-v1",
+  "members": [
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "inner1",
+      "calibration": [
+        0.9931058719247211,
+        1.3037390575168
+      ],
+      "stanford_calibration": [
+        1.1264004764766937,
+        -8.129189938219307
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-inner1.pt",
+      "source_sha256": "06148075105bbbe543608f1845e24a53ea2a8a8843b14c9b072accef2174d60f",
+      "public_sha256": "66d6f35e575b6f9a4c60ddfcecf26a3482d701df27e57f774d335a12ad2fb178",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "inner2",
+      "calibration": [
+        0.9550309887496811,
+        4.60344841653884
+      ],
+      "stanford_calibration": [
+        1.1254228195956868,
+        -7.321377249163449
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-inner2.pt",
+      "source_sha256": "d9b53ffd2b23c916601507b2f6b4c033c7184089d7c7ec10143b8a9ab0ae9802",
+      "public_sha256": "434287e45259e017ea67b9034d52df25ac398b708be17b8ae55e4a5fd6714d4e",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "inner3",
+      "calibration": [
+        1.062053385089274,
+        -5.068982812069385
+      ],
+      "stanford_calibration": [
+        1.1576859903751953,
+        -11.915494701947122
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-inner3.pt",
+      "source_sha256": "a6ce37d9c4a067660f5b2cd3a9c38e1f4f20204b7396373a696339afcb2c0e3d",
+      "public_sha256": "78e80223f3091c79b3d03e96520d5a24c0ed48d7796644cdbe971e3272d60b26",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "inner4",
+      "calibration": [
+        1.0148042341209698,
+        -0.6148249265101327
+      ],
+      "stanford_calibration": [
+        1.206058288077979,
+        -14.238905140534882
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-inner4.pt",
+      "source_sha256": "9716ee14e7963d2152b6991c680862c264c08b6173abc1db82fd01934b78de16",
+      "public_sha256": "055c66ab3c7b6bbd739a6ca5f169025cdfb01c0aa6cc21807355df7bff098b61",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "tag": "refit",
+      "calibration": [
+        0.9852201097210755,
+        2.4599816490507496
+      ],
+      "stanford_calibration": [
+        1.077691805993893,
+        -4.023750054759493
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold0-refit.pt",
+      "source_sha256": "5c65f1c2c38a067ce4c62689d85b125a8d32e968d047bbd8f8f6e3f3d0abaa16",
+      "public_sha256": "f793c9f38a9911c1454bed42fe0f312f784714e8af548be55296bc5e4f87b299",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "inner0",
+      "calibration": [
+        1.0255367375226891,
+        -0.4372887362161656
+      ],
+      "stanford_calibration": [
+        1.215654078997722,
+        -13.831231402683455
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-inner0.pt",
+      "source_sha256": "5bc5eb6bb3d71d919f83e9782f24d823156654be8a3cc31b606e1a68bf5d0b58",
+      "public_sha256": "cfa931a747dba19f82bc07a41a930b1a52df964a71cb1417d5f0d58db9b3355f",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "inner2",
+      "calibration": [
+        0.9542131365101747,
+        5.443532666306757
+      ],
+      "stanford_calibration": [
+        1.2220492816737782,
+        -13.261036738866055
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-inner2.pt",
+      "source_sha256": "721732013ad398da9c1ae059518ddab7e7acaf8d31a85b32d49746863c072299",
+      "public_sha256": "5a8d797681b2f33477c89c352b1c962d657187a4a604d58bba5eb733372029a5",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "inner3",
+      "calibration": [
+        0.97426815095587,
+        2.629093414984138
+      ],
+      "stanford_calibration": [
+        0.9893167615983082,
+        1.5633627591771393
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-inner3.pt",
+      "source_sha256": "1ccc58542319633b89e4f4d98e738d45ee701d19c0b9e1f1aad02e4ca04ff89d",
+      "public_sha256": "803159f39d3a4c6bc8df86e1c15abdbd9bd498e85d4fe5036f19d5204daf9b60",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "inner4",
+      "calibration": [
+        0.9848296824336651,
+        2.6967944853008032
+      ],
+      "stanford_calibration": [
+        1.134112565483316,
+        -7.8024688076852335
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-inner4.pt",
+      "source_sha256": "754a4fb42bcc4a6a4a1600959733e77cbe44eabd0e51bc69e2294485ed41abc3",
+      "public_sha256": "2f0f9ab8f282ee8294b948f0f0d774f5df22887500c116e92f68617a0093b9ed",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "tag": "refit",
+      "calibration": [
+        0.9554333204020182,
+        5.282016476485088
+      ],
+      "stanford_calibration": [
+        1.159689859730279,
+        -8.990117586802851
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold1-refit.pt",
+      "source_sha256": "0fd8b4f6bf0932e507cf7062e2517be288b88885b6c83372b85c562ed7941963",
+      "public_sha256": "803c72b76d94eec0396488f334052020fa03463ee6ddb0e4c1ccaff9c52fb218",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "inner0",
+      "calibration": [
+        1.0048940210550732,
+        0.3415632754249071
+      ],
+      "stanford_calibration": [
+        1.2375779619132061,
+        -16.17261343403404
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-inner0.pt",
+      "source_sha256": "ad94a4d4f38c1f476bece312103b136364a73f797086715d77f503feb767a982",
+      "public_sha256": "2561ee2cadff2670a53d53be1bfd082a4ff8a2b8fda8828fbe1b01197dbedf68",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "inner1",
+      "calibration": [
+        0.9314455803056648,
+        7.648149452300048
+      ],
+      "stanford_calibration": [
+        1.0503077137559018,
+        -0.5423691778314409
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-inner1.pt",
+      "source_sha256": "7ab53b67bed5e3913e21366a759cfc80db06853622162172f79e455b6bde43e7",
+      "public_sha256": "d10253127b6da75dbc949c5a9477b92e9ef9f53e0531e925f7647b5fe96937f3",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "inner3",
+      "calibration": [
+        1.0913799937896018,
+        -8.066302568963255
+      ],
+      "stanford_calibration": [
+        1.236537283026443,
+        -18.58355082896618
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-inner3.pt",
+      "source_sha256": "f1cda0c94535d88245bbb2d69a1b62fb5ee3ba677640f19328ddaaec50947402",
+      "public_sha256": "f5d90a3f894022a9ce25547dd3fa0ca10a657daef28c1f3d763191266a2d9760",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "inner4",
+      "calibration": [
+        1.0549220415193545,
+        -4.241998337474885
+      ],
+      "stanford_calibration": [
+        1.2511608787559896,
+        -18.377012284400955
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-inner4.pt",
+      "source_sha256": "ce4fe61521db2f62029375b2a17da5bd225ce697f9f76bb6432b4ab64ce16fb6",
+      "public_sha256": "0cb3eccfa02c195ca5311f808246d44b6789f917346b9279bc03b525d3bc959a",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "tag": "refit",
+      "calibration": [
+        0.930665649858169,
+        7.941384609018977
+      ],
+      "stanford_calibration": [
+        1.1769177794130952,
+        -9.016364166629288
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold2-refit.pt",
+      "source_sha256": "cbdee32f1b902b0baf53f2381a03fc301c92ae78dd9bd102d3757901189d5746",
+      "public_sha256": "1caa34309ca34b55aa5dc0e5a4da22045f0034ff3144cbb80d84d21479ea2b91",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "inner0",
+      "calibration": [
+        1.0827316562036644,
+        -7.732158644279665
+      ],
+      "stanford_calibration": [
+        1.1020402622263417,
+        -9.133154088387876
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-inner0.pt",
+      "source_sha256": "1a727a27a2e4bf8f4fdc44d40328f060bc44b6b1e18e3f39ca31c99bdfd5f558",
+      "public_sha256": "a18060eee08021d5f2d3330a6498dfc8fc4d33c277003ef22da6561c6b47f35d",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "inner1",
+      "calibration": [
+        0.945790143549893,
+        6.40512392071561
+      ],
+      "stanford_calibration": [
+        1.109098696960845,
+        -4.837691762251091
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-inner1.pt",
+      "source_sha256": "7ed8341d032df4049b0c3e0c1eb956321f373abd09edfc379a2400ec17eea071",
+      "public_sha256": "0e72604c278c2b76a38eea35ba958f6db59ac2adcf97750a02199ce6d25dbac9",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "inner2",
+      "calibration": [
+        0.9694862819301685,
+        4.136147097558006
+      ],
+      "stanford_calibration": [
+        1.0606730867598924,
+        -2.1438845445626846
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-inner2.pt",
+      "source_sha256": "d1475bc98e38e605ecf8825a825cc30a929e21d937acbd2d4aba3e0fff501214",
+      "public_sha256": "efd7354e94cdfcfd2802e475d4d95ff325b99191805b1406dd9cefa7c8d2276f",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "inner4",
+      "calibration": [
+        1.0047793447933817,
+        -0.15838471543479124
+      ],
+      "stanford_calibration": [
+        1.1179659575308176,
+        -8.201019494168275
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-inner4.pt",
+      "source_sha256": "ba6da9986e03724a0c5b8ae8b37dc3168ce1176f7dfc7a5ea0202d39fb238540",
+      "public_sha256": "3cc3c7ef2d29b0842c6a49178f17b6400b3a44f6bb07c66142ccc13889f75dfa",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "tag": "refit",
+      "calibration": [
+        0.9465496114247433,
+        5.7708600287359895
+      ],
+      "stanford_calibration": [
+        1.224937676106371,
+        -13.69421302333583
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold3-refit.pt",
+      "source_sha256": "f33c1b5ac25f94bfe11fb2042961d65819b572f4f2bd2cbe724d5ddebe569ce6",
+      "public_sha256": "24ee6083a6063418c64903f7e90f10a2487a68ff912f5edab1ae9b88a0bcc831",
+      "bytes": 207097
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "inner0",
+      "calibration": [
+        0.9854402516225323,
+        2.381180450625405
+      ],
+      "stanford_calibration": [
+        1.1702952758690248,
+        -10.643053165312086
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-inner0.pt",
+      "source_sha256": "ae37a66eba0648b6bde761c9f6085407f909fa63fc632668fa79632a0f0c35ab",
+      "public_sha256": "16adc12ae9f4c483d71dacf763c400a6f949969a368cf148de6ce34181556919",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "inner1",
+      "calibration": [
+        0.9695592107773554,
+        3.5726441738622152
+      ],
+      "stanford_calibration": [
+        1.1719962689975816,
+        -10.719790887623653
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-inner1.pt",
+      "source_sha256": "21c6970b9f645d65e38cc0a2f4f04ba81f4d2e873f703523f8dfa4216744896c",
+      "public_sha256": "aec732dcb2dcae17472c88e362c2e065134fc1aa128ffc7fb3a8fc28607feb62",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "inner2",
+      "calibration": [
+        1.0314409923284993,
+        -2.3947279810190754
+      ],
+      "stanford_calibration": [
+        1.2070610154060013,
+        -15.011731471179614
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-inner2.pt",
+      "source_sha256": "b3960b3fdd8ec83249a404b5948904e1318b308e8c8f0cfd2a2df3ade724c428",
+      "public_sha256": "6f5a90f2bc6fafce370b75b2fdd0fd726651b1f43c4c6a7c4af581e5cf80598d",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "inner3",
+      "calibration": [
+        0.9574339556808174,
+        5.006988201846256
+      ],
+      "stanford_calibration": [
+        1.0176815957423324,
+        0.8473354899231746
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-inner3.pt",
+      "source_sha256": "068b1b5d6a01f7ba5aacb81e04041a817525e3cada88ec5aa0b4c08c2bba72f2",
+      "public_sha256": "1db8b1a9ddc1b90cb721d2f49dfbf279ed2e1612e0e153de7897ca134f19f7a7",
+      "bytes": 207149
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "tag": "refit",
+      "calibration": [
+        1.006304643101883,
+        0.9598712033820113
+      ],
+      "stanford_calibration": [
+        1.3419275277740508,
+        -22.851384686433526
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/CNN-fold4-refit.pt",
+      "source_sha256": "da55e1e479f09269010eca6a836b44ecbc35b3a135939d1f94f9f958c7d801ea",
+      "public_sha256": "4ef64952ba88c407ad187603f46d40c0000a21dcfc7949a6f003b1646d346e5a",
+      "bytes": 207097
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "inner1",
+      "calibration": [
+        1.010408683728005,
+        -0.6964004295960625
+      ],
+      "stanford_calibration": [
+        1.1035946334826063,
+        -7.378994829672996
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-inner1.pt",
+      "source_sha256": "5727d27aac113e8b74ed6e28eb3f03ad4e248601b677d5c235f9bc40ce840e5a",
+      "public_sha256": "82906b5c4628d3715838835d6b7e53a4d006ee51f7a2d20044aee437b5ac9420",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "inner2",
+      "calibration": [
+        1.0467220229775125,
+        -4.2345848821402
+      ],
+      "stanford_calibration": [
+        1.1564348127492399,
+        -12.146001210628942
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-inner2.pt",
+      "source_sha256": "b013d105a5b9a71c1d23f2eeb6b78bdce9f84681f8c242ed2cfcf0979f155db7",
+      "public_sha256": "03003cf47230190294a6835da95975151895303d8fddcbc0b7958e282d39cbea",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "inner3",
+      "calibration": [
+        1.028468537821933,
+        -2.4727239235291987
+      ],
+      "stanford_calibration": [
+        1.1686543553713784,
+        -12.50392248821821
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-inner3.pt",
+      "source_sha256": "dcb812b866af796635bb40ab50b839a3442b743c0f7e25fe01b9713c879c0004",
+      "public_sha256": "abf89d9de9e0a841dfa18ab11d728b6eadeb83f37075902afce240c232598eec",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "inner4",
+      "calibration": [
+        1.0659365880271048,
+        -6.599479025463375
+      ],
+      "stanford_calibration": [
+        1.1240767083281205,
+        -10.887718231049522
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-inner4.pt",
+      "source_sha256": "5bbf93d7cd1d9b43b2bb53ffd378312875bd4f3f38287a0e0b113f39f294d84f",
+      "public_sha256": "bb2c76ed9e195f7d68681a0e5ce4a8c777a26a81327455187c0b03b72e46b691",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "tag": "refit",
+      "calibration": [
+        1.0615068013219604,
+        -5.914746247390555
+      ],
+      "stanford_calibration": [
+        1.1690034596553587,
+        -13.742491540500795
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold0-refit.pt",
+      "source_sha256": "26cba00fc697b3922e11fb9a03cce7cdb49461ce01fe24ace1a31affd3ed1735",
+      "public_sha256": "b773e70f846029cc418e10804815ce6d2f112b3fadc9d4b9e613795b08d965e4",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "inner0",
+      "calibration": [
+        1.0071619804775502,
+        -0.17603798386628322
+      ],
+      "stanford_calibration": [
+        1.1529089482204147,
+        -10.551399010827401
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-inner0.pt",
+      "source_sha256": "225b672a91b160ba03a31d89b63347460b349e0836e06cf8fd8013141200e4f1",
+      "public_sha256": "b420b5321c8246112c69f65477a767efebe927f0ec521edbfd3e1c51742d7102",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "inner2",
+      "calibration": [
+        1.0689086430601564,
+        -5.8683748625115255
+      ],
+      "stanford_calibration": [
+        1.220660651620244,
+        -16.91883265064488
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-inner2.pt",
+      "source_sha256": "5ed0c200b00be955d25cffc61701ed0c3abfd538fcfd93623b020d3830c53697",
+      "public_sha256": "98385ce59a6c97a8c09dc681b1cc3900b1a5cb6498739f1b08ceef4f493acde9",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "inner3",
+      "calibration": [
+        1.0786047236183967,
+        -6.726130602826991
+      ],
+      "stanford_calibration": [
+        1.2243291471591586,
+        -17.282675978505452
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-inner3.pt",
+      "source_sha256": "3c5fa60b4a489dc6adb1b8b7bad38dcfa0b12b32f776296a19e7aa01397b83cf",
+      "public_sha256": "0a92c6841901721ee5dd6f2d354d3b70ea1a33e52f5fa8b72ca3ff3a2d708afe",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "inner4",
+      "calibration": [
+        1.0435281788937611,
+        -3.8513052972494624
+      ],
+      "stanford_calibration": [
+        1.1680274502054955,
+        -12.869024664845801
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-inner4.pt",
+      "source_sha256": "65c247e57b38980d5257ac98e6608e4cdb67d7db4675da452dc95d1a62f4b1af",
+      "public_sha256": "dd3be25cb28a4afd1c8eec56da0b98bf2fe97d932136cf79b4a390f3684870c1",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "tag": "refit",
+      "calibration": [
+        1.0689730970428295,
+        -6.3862971633490915
+      ],
+      "stanford_calibration": [
+        1.1619046943348015,
+        -13.18411198016195
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold1-refit.pt",
+      "source_sha256": "47ded80878110db3d992488be371faec49436748d6fd525af26d351abc583933",
+      "public_sha256": "5e7aa261b8fa9b30404c89f2852a0b465efacc651d410c69e06fb74e0e406617",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "inner0",
+      "calibration": [
+        1.0719225087047737,
+        -6.667505673819919
+      ],
+      "stanford_calibration": [
+        1.1841527184837284,
+        -14.804389392082479
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-inner0.pt",
+      "source_sha256": "a8d4dd8212f1aa2e40b93026bf83047e81e0ade3dce5f384e04f2f4e3a28a709",
+      "public_sha256": "0d49cf3d20f085f5cac906db286c409349bf8b8f4330b30124da7a05759acf8b",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "inner1",
+      "calibration": [
+        1.0608616068499168,
+        -5.337615317109636
+      ],
+      "stanford_calibration": [
+        1.171985428930205,
+        -13.432195130881922
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-inner1.pt",
+      "source_sha256": "235a16abeea4506c5e3cfd41debd82b7bca9895ec88d41c6ab622465cf6b3edd",
+      "public_sha256": "e7dfc5140ba966c632bec678258bffb5d184d993242df877cfba181323a0058a",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "inner3",
+      "calibration": [
+        1.0592034915863915,
+        -5.486971048513322
+      ],
+      "stanford_calibration": [
+        1.1746163045076055,
+        -13.824245336469408
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-inner3.pt",
+      "source_sha256": "dbc975a22e376be2eb49c3d286a84e574e2a47e8e966bfd0b0c98047ef19039b",
+      "public_sha256": "b1e45c9f848b3cb0212b2aadb3a6ffbab7023cf4c43b4a0f65c8e1f2e09e5e89",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "inner4",
+      "calibration": [
+        1.0458644963248858,
+        -3.974225846846859
+      ],
+      "stanford_calibration": [
+        1.1686284100708682,
+        -12.820035567884212
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-inner4.pt",
+      "source_sha256": "43d51a7da966661d58e94419335536dab127c2cc4402bd77f79c090b90e43b5b",
+      "public_sha256": "6186cb2cf2677d2f9a5ae5a6a42ba86c37bea2a0930b812493c934c3602f5af6",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "tag": "refit",
+      "calibration": [
+        1.066281063459958,
+        -6.619408722142154
+      ],
+      "stanford_calibration": [
+        1.1604999939245835,
+        -13.522424372645325
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold2-refit.pt",
+      "source_sha256": "b0e0f44a5588eda0e0625c4b1c2a24b3dbbb503a5d627e00508e1a5f53a5248f",
+      "public_sha256": "79a3bbc4cf4c01350418c68956aa0babd7a53dcba9bd6baff7a1a544a9b18565",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "inner0",
+      "calibration": [
+        1.0469254285555416,
+        -4.169034769971454
+      ],
+      "stanford_calibration": [
+        1.1425136012549642,
+        -11.040763325004372
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-inner0.pt",
+      "source_sha256": "b52557120d5597bf9d2399dd85cc5b7b926de0d5782f4cf711eced5fae6434d4",
+      "public_sha256": "86e2666b9759ee0794ae8cbd656f5d886f590251cca7ad784bb45e6f3601b83b",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "inner1",
+      "calibration": [
+        1.067779204207263,
+        -5.953595766473414
+      ],
+      "stanford_calibration": [
+        1.2057089964638577,
+        -15.946718822696315
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-inner1.pt",
+      "source_sha256": "513a927be06ebddfb4b03bcb8a506641fd1fa4ae508686c9c8bddf984f939821",
+      "public_sha256": "3d0d40ab1fe0ac015ee642a0ce61ae86a4be136bf888bc5c7687f6132364102b",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "inner2",
+      "calibration": [
+        1.0280872673996253,
+        -1.9103030179575777
+      ],
+      "stanford_calibration": [
+        1.15660496109041,
+        -11.070220388203294
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-inner2.pt",
+      "source_sha256": "012aa7e6a99aa5d51a2190b18188b3f5af524ec2be0e8cebfcf54a7256cc4fbf",
+      "public_sha256": "d3e78dfe477cad9b497e3cfaf49c955f324926b6ee63906a188555f9d62d35bf",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "inner4",
+      "calibration": [
+        1.0213299337846915,
+        -1.3702506701401265
+      ],
+      "stanford_calibration": [
+        1.1917130106949145,
+        -13.523985396988984
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-inner4.pt",
+      "source_sha256": "8e5892eff757b1ce1ddfe7d645e95d46be25427a5c8af162405fe377197fce5d",
+      "public_sha256": "0e3326960ec98fe79d80b3f9f503c2b506c2258bb36361d8e0c0e9785696be3a",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "tag": "refit",
+      "calibration": [
+        1.044003635048366,
+        -3.42387181946695
+      ],
+      "stanford_calibration": [
+        1.1517747683463342,
+        -11.205101925782428
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold3-refit.pt",
+      "source_sha256": "2de5dd9c7ca7459b1ec36cb9be5e5453b93b01002d4fe26b6605697913c70aed",
+      "public_sha256": "d5581c5b2c10231384a96d7ffda0f21ee800845cb1857aa0472c536f853dddbd",
+      "bytes": 120347
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "inner0",
+      "calibration": [
+        1.0565356960263619,
+        -5.024927213713854
+      ],
+      "stanford_calibration": [
+        1.202524999765071,
+        -15.60768428725723
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-inner0.pt",
+      "source_sha256": "069d95a94adaa13f186b91d19e6fa023065a8455a17cfdbf553e68a4f379f7c2",
+      "public_sha256": "bb8de4213650f571114a4fd549b1759f2429583dfee59e095f2183cf5a383156",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "inner1",
+      "calibration": [
+        1.0316912601916268,
+        -2.636043633427893
+      ],
+      "stanford_calibration": [
+        1.1169462979082887,
+        -8.81388935616932
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-inner1.pt",
+      "source_sha256": "16427198bef5fa8be23957f7e4f1ef18797070c19d9fb8c8c60a264ef746bff3",
+      "public_sha256": "ab715d57012edbc4947f7cc0f3c363fb733e05509e3b821aa92823711ddbc092",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "inner2",
+      "calibration": [
+        1.0110932909419459,
+        -0.45660312451232454
+      ],
+      "stanford_calibration": [
+        1.151504907556918,
+        -10.524014660511503
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-inner2.pt",
+      "source_sha256": "2bcc6e0fb721350442ef1cf13a7924762e3e8f675bf7cc44ceeab7ef171ebfd7",
+      "public_sha256": "bf31305de65d4fa10bb0b9a2ab2ee82aec321aafd31a8f5b358fea562da1147d",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "inner3",
+      "calibration": [
+        1.0777473709641976,
+        -7.194776569777512
+      ],
+      "stanford_calibration": [
+        1.143053557634356,
+        -11.996124126708605
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-inner3.pt",
+      "source_sha256": "9649e03f24e5b59fe7af7d915bee7ef048753089222d2ac2b025f2a81239fb40",
+      "public_sha256": "f8bd5251e78fdc40396f20c02e188ee820c6dd3ca94e8410dfb5feed37835d2c",
+      "bytes": 120393
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "tag": "refit",
+      "calibration": [
+        1.034230199483456,
+        -2.597058443399945
+      ],
+      "stanford_calibration": [
+        1.2078621325434675,
+        -15.045373226602507
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/STT-fold4-refit.pt",
+      "source_sha256": "dee694b6eff8a5a164d1dff586cc51b9485fb116a86bc524abd3c072a1edc05e",
+      "public_sha256": "a1b5a5c04bd13f4fef13e6359856ec7624855edd27cd262b17e694e3da761abc",
+      "bytes": 120347
+    },
+    {
+      "family": "bilateral",
+      "fold": 0,
+      "tag": "inner1",
+      "calibration": [
+        1.0455613923425424,
+        -4.063986875602887
+      ],
+      "stanford_calibration": [
+        1.1051088499340878,
+        -8.318760891480425
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold0-inner1.pt",
+      "source_sha256": "a24548699f3a77d60f20d1b0dbf53a9d21b2c416cd56616a410532810f242d59",
+      "public_sha256": "6c2ae7546a7eddaa24ecdae226ed89e8c038b9c7faae9c0e83e15d1805b0298c",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 0,
+      "tag": "inner2",
+      "calibration": [
+        1.019686073669999,
+        -1.4940719656576078
+      ],
+      "stanford_calibration": [
+        1.0878386225057395,
+        -6.289948069181217
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold0-inner2.pt",
+      "source_sha256": "ba193c7ee227e44f1b2140a5fcb7c7aeb21e2fb7cfb0fc2f44dff5401bfd6bf2",
+      "public_sha256": "b83a8a75d470edec850ffee1987831e3fd46acb66484260c939c3d2beaf1c365",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 0,
+      "tag": "inner3",
+      "calibration": [
+        1.0367838981273407,
+        -3.146163221781241
+      ],
+      "stanford_calibration": [
+        1.0940766921779639,
+        -7.185290053933328
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold0-inner3.pt",
+      "source_sha256": "81f769a846dacdb06b26aa7c930ef55f6b104880075d20e554d5af1b3331ec5b",
+      "public_sha256": "b6ff4d9ed772c90ad7bfb6ee053c10c7a2776fd4ea563ff9f584b5ed5b48383d",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 0,
+      "tag": "inner4",
+      "calibration": [
+        1.0061688505437532,
+        -0.9467883124395094
+      ],
+      "stanford_calibration": [
+        1.0648155102839039,
+        -5.10827004968356
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold0-inner4.pt",
+      "source_sha256": "3de204c8c8bed39eb6a94ac1505a879d7a692112365c0d3533f0e23aae56d8f3",
+      "public_sha256": "3b7625f442e5ab8d7fe2983a3452a0284dd957592b60d837d0e9ed3ab6ca8ce0",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 0,
+      "tag": "refit",
+      "calibration": [
+        1.0387683246182953,
+        -2.971966156873896
+      ],
+      "stanford_calibration": [
+        1.136459796997344,
+        -9.916788764247679
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold0-refit.pt",
+      "source_sha256": "44d704af99aed152cf015dc29c8911b9eaa228fc306fad0d961126078a82de33",
+      "public_sha256": "e05425c0fbb9845894247f5d443946647149b7d196df4cd64d51a42a018a979b",
+      "bytes": 147377
+    },
+    {
+      "family": "bilateral",
+      "fold": 1,
+      "tag": "inner0",
+      "calibration": [
+        1.026151260063797,
+        -2.1953588643425976
+      ],
+      "stanford_calibration": [
+        1.0701712728494714,
+        -5.305391282637491
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold1-inner0.pt",
+      "source_sha256": "dd30635e465dd8e7c63534a73800d8faee05dd6b7ed8be9ffa792d47bafdb308",
+      "public_sha256": "74f551d878903b649d74b00a9ff39d7914413be105af3d9436f2283976cdca3c",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 1,
+      "tag": "inner2",
+      "calibration": [
+        1.0282213257044912,
+        -2.2792408271618463
+      ],
+      "stanford_calibration": [
+        1.1176488874780321,
+        -8.620777676320591
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold1-inner2.pt",
+      "source_sha256": "85be9601a10043ba498e8b5747eae106d984ab1c9a6059125ecb3d2c317e38ac",
+      "public_sha256": "1ac359a25c05dfd124b589d58353a14e90ae5ffd3c99a8f12676c3f17937c180",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 1,
+      "tag": "inner3",
+      "calibration": [
+        1.0228787327181728,
+        -1.790891347020232
+      ],
+      "stanford_calibration": [
+        1.080401458909436,
+        -5.831854340591986
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold1-inner3.pt",
+      "source_sha256": "5433dd4dca300c45e06b12829173a24bf050e26b8cfe05f1ea759649e9cb55ab",
+      "public_sha256": "8b7678e3bf744fe3b27101d5b9621cc9ceb7bf94f04c901cafa749588b8bc080",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 1,
+      "tag": "inner4",
+      "calibration": [
+        1.002234137975641,
+        -0.2851260834115039
+      ],
+      "stanford_calibration": [
+        1.0656457650584084,
+        -4.773498910972825
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold1-inner4.pt",
+      "source_sha256": "89fd26432529d11be1bfaf840b35b0d844b705702daf36e38d09869073a8a21f",
+      "public_sha256": "80ff722d034bc74dbe451e18267108aec60bb0e48ea5364264ffa721e7426401",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 1,
+      "tag": "refit",
+      "calibration": [
+        1.082835554339694,
+        -6.519511316558733
+      ],
+      "stanford_calibration": [
+        1.1368788616810466,
+        -10.40650583406336
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold1-refit.pt",
+      "source_sha256": "384473a8b4296d924953a2498b5af325dc36d274b849862996489276129bde99",
+      "public_sha256": "d46c3cd275f910a926e9dd5e07a8142ffc7a554ef374fe96eb4c17ca7a47f586",
+      "bytes": 147377
+    },
+    {
+      "family": "bilateral",
+      "fold": 2,
+      "tag": "inner0",
+      "calibration": [
+        1.029979603029335,
+        -2.72252190207855
+      ],
+      "stanford_calibration": [
+        1.080824573726326,
+        -6.315542225832427
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold2-inner0.pt",
+      "source_sha256": "881c72919c29f4265b0370b41e788bf56f5e6f41eec2678b8472fe91bc9ec9a7",
+      "public_sha256": "7cec64c2fdd720865cc6cb16a5c58fd0a8ed1fdfc138661bffec08bc650cd2fd",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 2,
+      "tag": "inner1",
+      "calibration": [
+        1.0248096053875755,
+        -1.923890990194096
+      ],
+      "stanford_calibration": [
+        1.0996242684943094,
+        -7.209155994018194
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold2-inner1.pt",
+      "source_sha256": "92ff41eb6300d55991487ed653f05f297158346d8935dd3584176c59d0b100a5",
+      "public_sha256": "fb22c47ec0e42a7741c347a8967e599bde0b231d2f3c22e39c3ed8e05d038b94",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 2,
+      "tag": "inner3",
+      "calibration": [
+        1.0307704439273135,
+        -2.4984342765189385
+      ],
+      "stanford_calibration": [
+        1.084099785150016,
+        -6.235270994730902
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold2-inner3.pt",
+      "source_sha256": "f38f6952eabcdc1835ea99f2090f2c257e5db1ebc792a1de960057de93d1d3f0",
+      "public_sha256": "0a7a9ab46e3f4f62b9c2adf1e70bd815dd61b91f8b6d81d98bd8e3439def0e55",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 2,
+      "tag": "inner4",
+      "calibration": [
+        1.0122572357402024,
+        -0.9384913851842681
+      ],
+      "stanford_calibration": [
+        1.063821179904221,
+        -4.554078911803197
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold2-inner4.pt",
+      "source_sha256": "06fc77c2aa2d6d9767e35a98e11809472a8af9347cb6153262f22ea62e4a50ee",
+      "public_sha256": "4915f6b324b09ea0d420197ceade512074119700449ba8b8828fcc67897dce9d",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 2,
+      "tag": "refit",
+      "calibration": [
+        1.045514217675681,
+        -4.583596089594202
+      ],
+      "stanford_calibration": [
+        1.119380199344031,
+        -9.906414769616113
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold2-refit.pt",
+      "source_sha256": "9c5b8bfcbe27f426aa89fd72cf3cca72e228f52e245d395d4abd66cca9245913",
+      "public_sha256": "82d5c45adfb1b752c6c100b4d8556c15689903b065a134bf3a3fc6bf2617c145",
+      "bytes": 147377
+    },
+    {
+      "family": "bilateral",
+      "fold": 3,
+      "tag": "inner0",
+      "calibration": [
+        1.0337018383248666,
+        -3.008408109042046
+      ],
+      "stanford_calibration": [
+        1.094307341370789,
+        -7.279370346682179
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold3-inner0.pt",
+      "source_sha256": "b5ab26562542e3ef5bdd1ff5ab1126509ed9cc835ceb0b0f455903df2232b55b",
+      "public_sha256": "832bda34f61fc22d427b2a66e3800ea46ebba9a5a1ba2f252eca02ed9eb7034c",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 3,
+      "tag": "inner1",
+      "calibration": [
+        1.0176995426936342,
+        -1.4668445306259776
+      ],
+      "stanford_calibration": [
+        1.0689353322899902,
+        -5.067093494141685
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold3-inner1.pt",
+      "source_sha256": "6502177e6afa38f65b94eb488750755deeef1c0b3325783f647a1e6e133afd99",
+      "public_sha256": "539baf753cfa9a9b4cd06456dbfbd9d501c580baa24b0e70c91bb32134162df8",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 3,
+      "tag": "inner2",
+      "calibration": [
+        1.0284600076128803,
+        -2.104517332256999
+      ],
+      "stanford_calibration": [
+        1.0955247793447382,
+        -6.802824001142021
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold3-inner2.pt",
+      "source_sha256": "987fe545b1c55aca05c03253268b23f5c865ba947f73955e20990fedf426b4ac",
+      "public_sha256": "37de38bbc58c5cc0da3796c8f16ac882ae0ee862d981b99f92f4e22eb7a07b37",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 3,
+      "tag": "inner4",
+      "calibration": [
+        1.0358142075651104,
+        -3.4014400728015373
+      ],
+      "stanford_calibration": [
+        1.0908429862179305,
+        -7.299091274861828
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold3-inner4.pt",
+      "source_sha256": "d18f1d1f4410a1ab2eafcb8218371e5ebd858e0128084ad38f32d998d5f585e7",
+      "public_sha256": "34b6960765eb6ab5c900312159ad72b1426d03e7c3799514319b1054088d0c61",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 3,
+      "tag": "refit",
+      "calibration": [
+        1.026534937761302,
+        -3.1261154862331293
+      ],
+      "stanford_calibration": [
+        1.1083401118453644,
+        -9.003305669949555
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold3-refit.pt",
+      "source_sha256": "25870066dd11482a38bd138e482f3e56af2334ddc60b0af96ea88d00ea3576c2",
+      "public_sha256": "008708b8511e6776f817e188f5d06e295193102ac43e640f6a54596109723f03",
+      "bytes": 147377
+    },
+    {
+      "family": "bilateral",
+      "fold": 4,
+      "tag": "inner0",
+      "calibration": [
+        0.9998665892522842,
+        0.03611584602130229
+      ],
+      "stanford_calibration": [
+        1.0620975809773514,
+        -4.33576708510262
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold4-inner0.pt",
+      "source_sha256": "7adb52b35a9e32d3a756a929444cc05bb58dfaca7293c11982f09ae49b681653",
+      "public_sha256": "b61ba99a60bdb67fcbaacee6d513929e5c34845d93784c41f1857b58e8472521",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 4,
+      "tag": "inner1",
+      "calibration": [
+        1.0413940477296961,
+        -3.404001226830295
+      ],
+      "stanford_calibration": [
+        1.1135258940443193,
+        -8.542627864163387
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold4-inner1.pt",
+      "source_sha256": "cf6aa8381d8a95f5553a90660334e4deb431bbd8895168b374240dca77a3746c",
+      "public_sha256": "d5f203f6cc9f9f79eef940669226986d89a296448bddea635f2c78364d26122d",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 4,
+      "tag": "inner2",
+      "calibration": [
+        1.0198155786927487,
+        -1.759707980058447
+      ],
+      "stanford_calibration": [
+        1.0905380086372343,
+        -6.75558757610755
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold4-inner2.pt",
+      "source_sha256": "3dad46e3935af2a5c74837db57a5704aa78dea8a4f26fca9010a412019291913",
+      "public_sha256": "3c78ba7b74234be626e7898da1c559433b0e26f45a4a6eae4b6a2103d8adb926",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 4,
+      "tag": "inner3",
+      "calibration": [
+        1.0273022639598202,
+        -2.6850141139391566
+      ],
+      "stanford_calibration": [
+        1.0742921220394537,
+        -6.008155998865048
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold4-inner3.pt",
+      "source_sha256": "dc040c3e9bbae098b574277d3192ce2c65d598ccd775dd4c653f13827498e975",
+      "public_sha256": "4199c5f9832885879a329c47a8b5b66a64116890735c9b5d4cfc82a043e51781",
+      "bytes": 147493
+    },
+    {
+      "family": "bilateral",
+      "fold": 4,
+      "tag": "refit",
+      "calibration": [
+        1.0434413220363368,
+        -4.687613237218446
+      ],
+      "stanford_calibration": [
+        1.0771010415260371,
+        -7.117676809724274
+      ],
+      "excluded_from_bag": false,
+      "file": "weights/bilateral-fold4-refit.pt",
+      "source_sha256": "b0a16d13d10339154fa3e1bb28e9b55a61d05ddc3771a7e165797b2d8e85941b",
+      "public_sha256": "343b998d0c64204c895dc9c4bcff7b661c7692413d97a871cf9cc8881415737d",
+      "bytes": 147377
+    }
+  ],
+  "selections": [
+    {
+      "outer": 0,
+      "cnn_weight": 0.35,
+      "fraction": 0.5
+    },
+    {
+      "outer": 1,
+      "cnn_weight": 0.6,
+      "fraction": 0.5
+    },
+    {
+      "outer": 2,
+      "cnn_weight": 0.5,
+      "fraction": 0.5
+    },
+    {
+      "outer": 3,
+      "cnn_weight": 0.5,
+      "fraction": 0.5
+    },
+    {
+      "outer": 4,
+      "cnn_weight": 0.65,
+      "fraction": 0.25
+    }
+  ],
+  "input": "[windows,2,124,12] preprocessed float32",
+  "scope": "Stored research parameters; not clinical or older-adult validation"
+}

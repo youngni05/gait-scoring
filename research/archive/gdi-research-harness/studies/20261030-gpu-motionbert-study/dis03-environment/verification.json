@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "job_id": "33178",
+  "sha256_files_checked": 8,
+  "source_files_matched_local": 4,
+  "accounting": "33178|COMPLETED|0:0|00:00:28|DIS03\n33178.batch|COMPLETED|0:0|00:00:28|DIS03\n33178.extern|COMPLETED|0:0|00:00:28|DIS03\n",
+  "queue_before_after_equal": true,
+  "synthetic_steps": 6,
+  "real_data_optimizer_steps": 0,
+  "independent_environment_needed": false,
+  "required_python": "/usr/bin/python3.8",
+  "models": {
+    "CNN": {
+      "synthetic_steps": 3,
+      "losses": [
+        4.053633213043213,
+        3.0708043575286865,
+        2.269423723220825
+      ],
+      "changed_parameter_tensors": 28,
+      "gpu_reload_max_error": 0.0,
+      "cpu_replay_max_error": 2.905726432800293e-07,
+      "tolerance": 0.0001,
+      "seconds": 7.842190484981984,
+      "peak_allocated_bytes": 142498304,
+      "checkpoint_sha256": "cbb1a367f7d7f2c26043eb6e88b5c432b10c3a739e32e8bfc542974f40e34c58"
+    },
+    "bilateral_STT": {
+      "synthetic_steps": 3,
+      "losses": [
+        0.1296577751636505,
+        0.06727470457553864,
+        0.032165803015232086
+      ],
+      "changed_parameter_tensors": 45,
+      "gpu_reload_max_error": 0.0,
+      "cpu_replay_max_error": 2.2351741790771484e-07,
+      "tolerance": 0.0001,
+      "seconds": 0.616768613923341,
+      "peak_allocated_bytes": 83422720,
+      "checkpoint_sha256": "8b35de6da9c04c961e6b0ca65aba4074e6ef33911d72f9038732fda2db352b1c"
+    }
+  }
+}

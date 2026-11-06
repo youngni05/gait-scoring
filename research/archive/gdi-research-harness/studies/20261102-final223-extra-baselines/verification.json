@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "original_artifacts_unchanged": true,
+  "independent_person_mae": true,
+  "independent_mae_intervals": true,
+  "fold_averages_verified": true,
+  "model_replay_count": 5,
+  "results_sha256": "53920f49bd450fdcc876885b10bb243e308aa12ff83e9cc03694b4b51e03b6d1"
+}

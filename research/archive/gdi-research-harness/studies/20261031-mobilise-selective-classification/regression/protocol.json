@@ -1,0 +1,8 @@
+{
+  "code_sha256": "d33d329e2510227e66485475be0e0174aa9d5ed8b673a0ca984f3e14865344ab",
+  "models": "reuse saved original SVR/RF outer models exactly; do not refit final models",
+  "calibration_data": "refit selected regression hyperparameters on exact inner train folds; held-out inner predictions feed sigmoid calibration",
+  "limit": "hyperparameters were originally selected on these inner folds; only outer held-out comparisons are performance estimates",
+  "seeds": "original regression was a single fixed seed; do not count it as five independent runs",
+  "policies": "same p50/sens80/fpr10 and ambiguity 0/10/20 percent rejection as direct classifiers"
+}

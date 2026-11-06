@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "models_independently_refit": 50,
+  "inner_fits_independently_refit": 600,
+  "max_difference": 0.0,
+  "same_splits_and_coverage": true,
+  "sub283_absent": true
+}

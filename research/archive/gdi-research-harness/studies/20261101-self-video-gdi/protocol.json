@@ -1,0 +1,41 @@
+{
+  "declared_before_gdi_predictions": true,
+  "question": "Do frozen existing GDI predictors assign a higher score to the user's normal recording than the same person's abnormal recording?",
+  "source": "Two user-recorded 30 FPS portrait MP4 files, same person confirmed by user; abnormal action/diagnosis not supplied",
+  "ground_truth": "Only user normal/abnormal labels, no true GDI; no MAE, classification accuracy, independent-participant CI or clinical cutoffs",
+  "primary": "Existing first-500-frame schedule (starts 0..372 step31, 124 consecutive native frames each); frozen full-record coordinate preparation; no resampling, reflection, side swap, clipping, refitting or label-guided model selection",
+  "best_model": "inner-bagging692 frozen equal member CNN/STT means then existing fold-specific mean/difference weights; average all five fold predictions for new videos, which is deployment exploration rather than original OOF validation",
+  "comparators": [
+    "CNN outer refits",
+    "CNN member average",
+    "STT member average"
+  ],
+  "secondary": "Three visually reviewed straight-walking 124-frame intervals per recording, fixed from 1-second contact sheets before scores. Use same full-record smoothing and frozen missing-coordinate criterion; no interval substitution on score or pose failures.",
+  "straight_starts": {
+    "clip0": [
+      180,
+      570,
+      810
+    ],
+    "clip1": [
+      30,
+      315,
+      600
+    ]
+  },
+  "comparison": "Normal-minus-abnormal video and interval means, per-fold direction, interval ranges/overlap. No new binary success threshold; describe observed ordering and instability directly.",
+  "caption_extension": "If GDI separation is unclear or inconsistent, frozen local SmolVLM2-500M on nine timestamped RGB frames per fixed straight interval. Repeat first frame as static negative control. Combine numeric and caption evidence for movement assessment, never invent an improved calibrated GDI without scored training data.",
+  "privacy": "User explicitly approved transferring both MP4 files to existing school ABRM02 own account for BODY25 inference. Raw RGB remains local for caption model; any additional external text API needs an explicit separate scope.",
+  "storage": {
+    "small": "C:/Users/jun/Desktop/D_P/gdi-research-harness/studies/20261101-self-video-gdi",
+    "large": "D:/gait-research-data/D_P/self-video-gdi-20261101"
+  },
+  "limitations": [
+    "One person performing two conditions; abnormal is not a verified diagnosis",
+    "No true GDI",
+    "Clothing and subject population differ from pediatric CP development data",
+    "Portrait geometry and exact capture distances differ or are unknown",
+    "Public training-coordinate timebase unverified",
+    "Direction mirroring used in original paper is not added to the existing frozen model pipeline"
+  ]
+}

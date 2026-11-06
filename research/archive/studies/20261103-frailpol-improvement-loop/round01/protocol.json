@@ -1,0 +1,167 @@
+{
+  "round": 1,
+  "created": "2026-11-03T14:46:17.279158+00:00",
+  "goal": {
+    "mae": 0.9,
+    "p95": 3.0,
+    "slow_mae": 3.0
+  },
+  "source_sha256": "62b83914b235ebe5199640d59e972f8bcd8e7bb7de59219c94d18ab8fac345f0",
+  "code_sha256": "22e2bd1e26fbf2b3d8a715bcc85d16799f1ba5b59bcb6d5ae4eb5fa8bbb9d653",
+  "candidates": [
+    {
+      "kind": "ridge",
+      "alpha": 0.1
+    },
+    {
+      "kind": "ridge",
+      "alpha": 1
+    },
+    {
+      "kind": "ridge",
+      "alpha": 10
+    },
+    {
+      "kind": "ridge",
+      "alpha": 100
+    },
+    {
+      "kind": "huber",
+      "alpha": 0.01
+    },
+    {
+      "kind": "huber",
+      "alpha": 1
+    },
+    {
+      "kind": "svr",
+      "C": 10,
+      "gamma": 0.03
+    },
+    {
+      "kind": "svr",
+      "C": 10,
+      "gamma": 0.3
+    },
+    {
+      "kind": "svr",
+      "C": 100,
+      "gamma": 0.03
+    },
+    {
+      "kind": "svr",
+      "C": 100,
+      "gamma": 0.3
+    },
+    {
+      "kind": "kernel",
+      "alpha": 1,
+      "gamma": 0.03
+    },
+    {
+      "kind": "kernel",
+      "alpha": 1,
+      "gamma": 0.3
+    },
+    {
+      "kind": "kernel",
+      "alpha": 10,
+      "gamma": 0.03
+    },
+    {
+      "kind": "kernel",
+      "alpha": 10,
+      "gamma": 0.3
+    },
+    {
+      "kind": "extra",
+      "leaf": 2
+    },
+    {
+      "kind": "extra",
+      "leaf": 5
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 8,
+      "rounds": 150,
+      "linear_lambda": 1
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 8,
+      "rounds": 150,
+      "linear_lambda": 10
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 8,
+      "rounds": 300,
+      "linear_lambda": 1
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 8,
+      "rounds": 300,
+      "linear_lambda": 10
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 20,
+      "rounds": 150,
+      "linear_lambda": 1
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 20,
+      "rounds": 150,
+      "linear_lambda": 10
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 20,
+      "rounds": 300,
+      "linear_lambda": 1
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 20,
+      "rounds": 300,
+      "linear_lambda": 10
+    },
+    {
+      "kind": "residual",
+      "leaf": 8,
+      "alpha": 1
+    },
+    {
+      "kind": "residual",
+      "leaf": 8,
+      "alpha": 10
+    },
+    {
+      "kind": "residual",
+      "leaf": 8,
+      "alpha": 100
+    },
+    {
+      "kind": "residual",
+      "leaf": 20,
+      "alpha": 1
+    },
+    {
+      "kind": "residual",
+      "leaf": 20,
+      "alpha": 10
+    },
+    {
+      "kind": "residual",
+      "leaf": 20,
+      "alpha": 100
+    }
+  ],
+  "inputs": "Same19 features or speed only; add reciprocal speed to each condition, standardize using training only. No demographics/fullTUG/record length.",
+  "selection": "Inner3 StratifiedKFold by TUG<12/12..20/>=20 seed20261103 on outertrain only. Choose min max(MAE/0.9,p95/3,slowMAE/3),first tie. Frozen outer folds. Selected model and equal average of top3 inner-ranked candidates evaluated separately; no outer-outcome weight adjustment.",
+  "limitations": "Repeated development cohort; no clinical validation. Slow>=20 has9people. Coverage fixed594. Never exclude hard people to meet goals.",
+  "verification": "Save all inner models+predictions; reload and replay independently. Save final selected/top3 models and contexts. Independent IDs,selection,metrics,bootstrap; report all candidates and unsuccessful rounds."
+}

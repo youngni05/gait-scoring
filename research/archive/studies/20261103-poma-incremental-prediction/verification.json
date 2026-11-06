@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "independent_method": "dual ridge linear solve vs original SVD",
+  "primary_people": 25,
+  "auxiliary_people": 33,
+  "all_sources_same_windows": true,
+  "original_frozen_predictions_reaggregated": true,
+  "upstream_selection_fits_checked": 30,
+  "downstream_inner_fits_checked": 18000,
+  "saved_functional_models_replayed": 175,
+  "saved_auxiliary_models_replayed": 2,
+  "max_prediction_replay_error": 2.149391775674303e-12,
+  "heldout_people_excluded_from_all_fitting": true,
+  "metrics_and_bootstrap_recomputed": true,
+  "invariance_max_errors": {
+    "2": 1.7763568394002505e-14,
+    "3": 7.105427357601002e-15
+  },
+  "protocol_sha256": "e86d0f55ed91270b773bc5daec00c20b2e5c2d4c3a5c2e501d037fda219ace0d",
+  "results_sha256": "5770c5c679b5d2308f579c0faa1758262a10d4d372a4a15715ec17c5a8a7980f",
+  "code_sha256": {
+    "prepare.py": "2f744cd39a270f4b96bd0ac2267e778e9f0b78fbd5c756fe788da96cf0630849",
+    "run.py": "cd4ad79a1df478f7051c50ef40acea0e90c9e45556db18d0b514d69c20ab91b9",
+    "verify.py": "20e499c5bcaf0b857a18f478d974e91d1884e4bb4a6f03e3642163a63cad38ed"
+  }
+}

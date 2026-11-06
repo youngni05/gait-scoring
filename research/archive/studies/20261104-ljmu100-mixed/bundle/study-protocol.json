@@ -1,0 +1,99 @@
+{
+  "authorization": "User requested mixed Stanford + audited LJMU881 assumed100 training and person-disjoint before/after MAE comparison.",
+  "arms": [
+    "Stanford_only_frozen",
+    "Stanford_plus_LJMU100"
+  ],
+  "families": [
+    "CNN",
+    "STT",
+    "bilateral"
+  ],
+  "reports": [
+    "CNN_refit",
+    "STT_refit",
+    "RF",
+    "bilateral_refit",
+    "CNN_bag",
+    "STT_bag",
+    "fusion"
+  ],
+  "data_counts": {
+    "Stanford_people": 692,
+    "Stanford_records": 1061,
+    "LJMU_people": 64,
+    "LJMU_records": 881,
+    "windows": 14566
+  },
+  "splits": [
+    {
+      "fold": 0,
+      "Stanford": {
+        "people": 138,
+        "records": 215
+      },
+      "LJMU": {
+        "people": 13,
+        "records": 176
+      }
+    },
+    {
+      "fold": 1,
+      "Stanford": {
+        "people": 138,
+        "records": 210
+      },
+      "LJMU": {
+        "people": 13,
+        "records": 184
+      }
+    },
+    {
+      "fold": 2,
+      "Stanford": {
+        "people": 138,
+        "records": 193
+      },
+      "LJMU": {
+        "people": 13,
+        "records": 179
+      }
+    },
+    {
+      "fold": 3,
+      "Stanford": {
+        "people": 139,
+        "records": 231
+      },
+      "LJMU": {
+        "people": 13,
+        "records": 170
+      }
+    },
+    {
+      "fold": 4,
+      "Stanford": {
+        "people": 139,
+        "records": 212
+      },
+      "LJMU": {
+        "people": 12,
+        "records": 172
+      }
+    }
+  ],
+  "LJMU_split_seed": 20261104,
+  "training": "Original architectures/optimizers/seeds and 5 outer x4 inner epoch selection. Add only LJMU people outside outer/inner held-out folds; fit 75 models. No final223 access.",
+  "loss_weighting": "Original equal-record objective, inverse within-record window count. No dataset rebalancing. LJMU is 881/1942 records; not 64/756 of loss.",
+  "epoch_selection": "Person-equal calibrated MAE pooled across internal validation people from both sources. Separate source metrics reported only for outer evaluation.",
+  "calibration": "Per-model shared slope and intercept fitted on that model training records only, after averaging windows.",
+  "ensemble": "Keep existing fold CNN weight and bilateral difference fraction fixed in both arms. Average eligible refit/inner CNN/STT; exclude a bag member iff training raw prediction SD<0.01 on either side, original rule.",
+  "baseline": "Replay existing frozen54 checkpoint predictor per outer fold; each LJMU person evaluated by their assigned fold model only, not all-five-fold mean.",
+  "primary_metric": "Within person mean absolute error across records and two sides, then equal mean across people, separately by source. LJMU MAE is deviation from assumed100, not measured GDI accuracy.",
+  "comparison": "After minus before on exactly same held-out people; paired person bootstrap10000 seed20261104,95% interval. Stanford person mean trueGDI bands below60,60to75,75to90,90plus.",
+  "validation": "Bundle hashes; all20 split boundaries; train-only scaling/calibration; selected epochs; original baseline replay; saved checkpoint replay tolerance0.001; independent metric reconstruction.",
+  "training_initialization_seed": 20261028,
+  "baseline_source": "D:\\Projects\\D_P\\gdi-research-harness\\studies\\20261030-gpu-motionbert-study",
+  "data_sha256": "306f6f2139a58c0b7716175b6edb05d5072e35f98fdaec0f01b9d40693a08ca9",
+  "cpu_comparator": "User explicitly requested RF in addition to neural models. Same input cohort and outer person splits; RF feature/selection protocol recorded separately before CPU fitting."
+}

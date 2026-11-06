@@ -1,0 +1,172 @@
+{
+  "owner_thread": "01a1a1c2-655b-79a3-87bc-e325af86028e",
+  "created_unix": 1793755311.5770862,
+  "code_sha256": "2cdaafa549b53bbfdd4eef0ecf97c90a04d920d75e865f99b4aed59f4a148531",
+  "authorization": "User requested renewed improvement loops on original0.881 and phone-camera-available inputs. Camera only, no worn phone. Local CPU; no new school job or upload.",
+  "source_hashes": {
+    "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\data.npz": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+    "D:\\gait-research-data\\D_P\\frailpol-temporal-cnn-20261104\\native-motion\\data.npz": "dfd85dcda4caaf6d3679f06f46b5d04bb143cb39659aba9a60d4cea5f1d02d33",
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\round11\\verification.json": "55ec3acebe4ca24a545555c73803e3c8610f51eb0b9299dfd624b8da829f283b",
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\round12\\verification.json": "e78bd2e58875f04bdbf0a0303b6af989a678917bce34d522f11fa3636c5457ba",
+    "D:\\Projects\\D_P\\studies\\20261104-pose-compatible-tug\\verification.json": "d918b9f8e43023f3f25547c1d393eccd8408416115dfbb7b4e51e0bd00912492",
+    "D:\\Projects\\D_P\\studies\\20261104-pose-compatible-tug\\protocol.json": "b345cd240b997b85c307e3957060427ab6ddeb4b8d694a3d735a558f62120cb9",
+    "D:\\Projects\\D_P\\studies\\20261104-mediapipe-functional-loop\\first4s-verification.json": "9edfd8af1bdba7a40a96c241255952b7264c871dfb51e3c683d593695957876b",
+    "D:\\Projects\\D_P\\studies\\20261104-mediapipe-functional-loop\\clinical-label-audit.json": "f7f69fb4344c5cc7ee31a41d87495eb46cccf16300438c3a1f0463c62e45b3b2",
+    "D:\\gait-research-data\\D_P\\mediapipe-functional-loop-20261104\\bottom14-inputs.npz": "3ba3ad4c2ae4a3764c8313d5829a44065308390bad86627eae8e0ede2b142feb"
+  },
+  "design": "Three separately labelled tracks. Sensor: new fixed meta learning/gating, verified source baseOOF reused, no source CNN retraining. Proxy: fit raw permitted sensor-derived quantities with nested outer5/inner3 model choice. Camera: same14people/first qualified4s as previously reviewed, feature extraction outcome-blind, outerleave-one-person-out/innerLOO, fixed candidate recipes. No outer-based recipe selection within any declared policy. Every declared condition reported, observed best labelled exploratory.",
+  "success": "Compare against original0.8805398998 with pairedperson95percent uncertainty, p95<=3seconds and slow20plusMAE<=3seconds retained from prior development criteria. Camera/proxy improvement evaluated against matched strong speed or camera baselines. No new clinical usability threshold or phone accuracy claim.",
+  "limits": "Repeatedly reused development cohorts; post-search CIs conditional not multiplicity/selection-adjusted.9slow/594,1slow/14. Proxy sensor-derived features are not actual camera. Camera frontal/back, released clock only, no synchronized sensor supervision or metric calibration. Short clips cannot guarantee enough cycles for variability. Failures and all candidates retained.",
+  "sensor_round1": {
+    "families": [
+      "full34",
+      "wave_manual11"
+    ],
+    "methods": [
+      "robust_positive_beta.25",
+      "robust_positive_beta1",
+      "robust_positive_beta3",
+      "rbf_C1",
+      "rbf_C10",
+      "median_boosting"
+    ]
+  },
+  "sensor_round2": {
+    "families": [
+      "full34",
+      "wave_manual11"
+    ],
+    "gate_variants": [
+      {
+        "beta": 0.25,
+        "reg": 0.01,
+        "extended": false
+      },
+      {
+        "beta": 0.5,
+        "reg": 0.01,
+        "extended": false
+      },
+      {
+        "beta": 1,
+        "reg": 0.001,
+        "extended": false
+      },
+      {
+        "beta": 1,
+        "reg": 0.1,
+        "extended": false
+      },
+      {
+        "beta": 1,
+        "reg": 0.01,
+        "extended": true
+      },
+      {
+        "beta": 0.5,
+        "reg": 0.1,
+        "extended": true
+      }
+    ],
+    "expert_tail": [
+      1,
+      16
+    ],
+    "aux": 0.1
+  },
+  "proxy_round1": {
+    "conditions": [
+      "speed",
+      "core3",
+      "timing7",
+      "metric12",
+      "availability5"
+    ],
+    "candidates": [
+      {
+        "kind": "svr",
+        "C": 1,
+        "transform": "direct"
+      },
+      {
+        "kind": "svr",
+        "C": 10,
+        "transform": "direct"
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "transform": "direct"
+      },
+      {
+        "kind": "svr",
+        "C": 10,
+        "transform": "product"
+      },
+      {
+        "kind": "svr",
+        "C": 10,
+        "transform": "residual"
+      },
+      {
+        "kind": "ridge",
+        "C": 10,
+        "transform": "direct"
+      },
+      {
+        "kind": "ridge",
+        "C": 10,
+        "transform": "product"
+      },
+      {
+        "kind": "hist",
+        "C": 1,
+        "transform": "direct"
+      }
+    ],
+    "policies": [
+      "inner_mae_selected",
+      "inner_balanced_selected"
+    ]
+  },
+  "camera_round1": {
+    "conditions": [
+      "mechanics",
+      "smooth_mechanics",
+      "optical_flow",
+      "mechanics_flow",
+      "quality_only"
+    ],
+    "candidates": [
+      {
+        "kind": "ridge",
+        "C": 10,
+        "transform": "direct"
+      },
+      {
+        "kind": "ridge",
+        "C": 100,
+        "transform": "direct"
+      },
+      {
+        "kind": "ridge",
+        "C": 1000,
+        "transform": "direct"
+      },
+      {
+        "kind": "svr",
+        "C": 1,
+        "transform": "direct"
+      },
+      {
+        "kind": "svr",
+        "C": 10,
+        "transform": "direct"
+      }
+    ],
+    "policies": [
+      "inner_mae_selected"
+    ]
+  },
+  "expected_additional_GB": 0.25
+}

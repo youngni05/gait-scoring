@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "bundle_hashes_checked": 200,
+  "inner_outer_bundles_replayed": 200,
+  "submodels_per_bundle": 10,
+  "all_saved_submodels_replayed": 2000,
+  "outer_folds_person_disjoint": 25,
+  "inner_folds_person_disjoint": 75,
+  "train_only_imputation_scaling_weights_checked": true,
+  "candidate_inner_scores_recomputed": 700,
+  "nested_policy_choices_checked": 100,
+  "prediction_rows_checked": 47520,
+  "max_abs_replay_difference": 0.0,
+  "protocol_sha256": "f6694a89aa41666fa917cc43e0578e432da3143c825e4bbb2460f67732a559c6",
+  "results_sha256": "3631582f22b29a429014d76ba04ae65a533cf9d508870de816f6d9e64f6cd992",
+  "verification_code_sha256": "92a66deaaf7715cdf0466692e6c1aab8dc45b7dfdd2e01b1d7a0e7abbf7dc291"
+}

@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "created_at": "2026-11-05T14:27:44.266686+09:00",
+  "authorization": "User asks to apply existing diverse models to remaining materials, including flawed records. No new training.",
+  "source": "All 5713 existing Stanford OpenPose folders, minus exact 1438 previously used development/final video IDs. No new download.",
+  "expected_records": 4275,
+  "expected_linked_records": 1767,
+  "expected_unlinked_records": 2508,
+  "models_source": "20261105-gdi-case-audit/models.json; exactly 17 configurations and 94 checkpoints; same fixed calibration and blend weights",
+  "input": {
+    "processing": "Unchanged pinned whole-video official preprocessing; native frames1..1499 stopping at first absent file; same unique-person maxx<320 selector, ambiguous detection remains missing; no new mirroring, scaling fit or resampling",
+    "windows": "All complete124 windows at starts range(0,500-124,31); finite12features both sides required",
+    "quality_policy": "If any finite grid windows have required-coordinate missingness<=.25, use exactly those; otherwise use all finite grid windows as flagged high-missing exploratory inputs. No exclusion by predicted score or error.",
+    "single_window": "Original single-CNN checkpoints use first selected grid window, since original canonical selected frames are unavailable for unprepared records. Label this changed selector, do not treat it as same complete system as prior canonical baseline.",
+    "under124": "No padding/repetition. If raw converter extent is<124 or no finite124 window, report measurement unavailable.",
+    "groups": [
+      "standard_window_gate_only (canonical eligibility not established)",
+      "high_missing_exploratory",
+      "unavailable"
+    ],
+    "missing_metrics": "Original max required-coordinate missingness before official interpolation; >.25 flags; 1.0 flags at least one required coordinate entirely absent within a window. Existing whole-record interpolation may use outside-window observations. Not end-to-end short-video measurement."
+  },
+  "cohorts": {
+    "primary": "Current-checkpoint train+validation union disjoint AND not in previous222-person final cohort; historical old37/old38 and previously excluded records flagged separately. Do not call all of them never-before-evaluated.",
+    "additional_final": "New records of previous final222; dependent extra-visit descriptions, not independent new people",
+    "additional_development": "Additional records of current model training/development people; no generalization claim",
+    "unlinked": "Unknown patient/exam mapping, predictions and disagreement only; never compute error from guessed identity"
+  },
+  "outcomes": {
+    "prediction_lock_before_numeric_labels": true,
+    "labels": "Exact current patient_id/exam_id/side keys in original annotations/gdi.csv; require unique finite bilateral values for accuracy, no guessing or imputed labels",
+    "statistics": "Person-equal MAE,bias,RMSE and personmean truth <60,>=90,>=100, by cohort and input-quality groups. Keep prior222 comparison separate. Descriptive post-hoc stress audit, no superiority/model-selection/clinical claim.",
+    "agreement": "Model pair score MAD; person-equal if identity known, record-equal otherwise; maximum-minus-minimum across17 is disagreement, not uncertainty/accuracy.",
+    "export": "All per-record17 predictions, source flags, missingness, label status and reasons; unavailable rows retained."
+  },
+  "compute": {
+    "device": "cpu",
+    "threads": 4,
+    "optimizer_steps": 0,
+    "gpu_jobs": 0,
+    "new_training": false
+  },
+  "verification": {
+    "exact_feature_replay": "Three cached development records from raw archive; existing strict finite-window features exactly equal",
+    "model_replay": "Use fixed same94 CP/source/coeff hashes already independently verified; reproduce first/last compatible remaining rows in different batch sizes to1e-4",
+    "checks": "Record/owner/side/identity linkage; all checkpoint train/validation identities used for cohort assignment; independent metric loops and new ensemble arithmetic; source/protocol/model fingerprints unchanged"
+  },
+  "storage": {
+    "small": "D:\\Projects\\D_P\\gdi-research-harness\\studies\\20261105-gdi-unused-audit",
+    "large": "D:\\gait-research-data\\D_P\\gdi-unused-audit-20261105"
+  }
+}

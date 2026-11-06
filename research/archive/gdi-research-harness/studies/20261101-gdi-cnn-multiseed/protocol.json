@@ -1,0 +1,22 @@
+{
+  "approved_initialization_seeds": [
+    20261101,
+    20261102
+  ],
+  "baseline_seed": 20261028,
+  "people": 692,
+  "records": 1061,
+  "windows": 11261,
+  "baseline_mae": 6.515816569178735,
+  "primary": "For each seed average refit and four inner CNNs after member training-only OLS, exclude only training raw std<0.01 as in baseline; average three CNN seeds equally; retain baseline bagged STT and bilateral difference and existing fold-wise weights.",
+  "outer_selection": false,
+  "target": [
+    6.1,
+    6.3
+  ],
+  "deadline_kst": "2026-11-01T23:59:59+09:00",
+  "expected_fits": 50,
+  "expected_outer_folds": 10,
+  "seed_selection": "none",
+  "protected_final_data": false
+}

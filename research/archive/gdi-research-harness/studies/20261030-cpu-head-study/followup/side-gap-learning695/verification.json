@@ -1,0 +1,18 @@
+{
+  "verified": true,
+  "people": 695,
+  "records": 1064,
+  "raw_feature_values_checked": 174496,
+  "max_raw_feature_difference": 5.684341886080802e-14,
+  "independent_selected_outer_refits": 25,
+  "independent_selected_inner_refits": 100,
+  "max_prediction_difference": 0.0,
+  "nested_candidate_rows_checked": 175,
+  "metric_rows_checked": 176,
+  "bootstrap_comparisons_checked": 14,
+  "mean_predictions_unchanged": true,
+  "source_files_unchanged": 96,
+  "GPU_used": false,
+  "protected_numeric_data_used": false,
+  "independent_final_evaluation": false
+}

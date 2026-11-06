@@ -1,0 +1,19 @@
+{
+  "audit_checks_passed": true,
+  "people_checked": 28,
+  "kinematic_cycle_candidates": 52,
+  "candidate_cycles_with_nine_finite_angle_curves": 52,
+  "orientation_unflagged_people": 22,
+  "orientation_unflagged_cycles": 30,
+  "original_reference_calculation_reproduced": true,
+  "synthetic_known_pose_cases": 20,
+  "score_replay_max_error": 2.842170943040401e-14,
+  "foot_sensitivity_replay_max_error": 0.0,
+  "source_event_contact_sheets_reviewed_by_assistant": 7,
+  "event_frame_positions_reviewed": 156,
+  "visual_review_scope": "Cycle correspondence only, not precise forceplate contact timing or all-frame occlusion validation",
+  "forceplate_contact_validation_passed": false,
+  "clinical_angle_validation_passed": false,
+  "stanford_label_equivalence_passed": false,
+  "training_labels_accepted": 0
+}

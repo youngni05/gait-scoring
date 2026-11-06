@@ -1,0 +1,48 @@
+{
+  "frozen_before_prediction": true,
+  "owner_thread": "01a19c6f-49f7-7300-97b0-a303b71ffe91",
+  "authorization": "User requested event/variability feasibility and four-condition SPPB comparison, with camera compatibility checked first.",
+  "source": "44 people, five optical motion capture trials per person; released CSV events and CGM2.3 joint centres. SPPB supplied total only. No new downloads or GPU training.",
+  "features": {
+    "speed": "Mean across five trials of pelvis-centre forward displacement / observed duration, metres per second.",
+    "PCI": "For each side, 360*(contralateral strike - ipsilateral strike)/(next ipsilateral strike - ipsilateral strike), using cycles containing exactly one opposite strike. Pool phases across trials without connecting boundaries; PCI=100*sampleSD(phase)/mean(phase)+100*mean(abs(phase-180))/180. Average left and right PCI. Require at least15 valid phases per side across trials.",
+    "variability": "Within each trial and side: stride duration, step length (heel separation along travel at heel strike), swing duration as percent stride. Pool within-trial-side centred sums of squares / pooled degrees of freedom, divide by grand mean, multiply100. This removes between-side/trial mean shifts; not SD of five trial averages. Require at least15 observations per side for each variable.",
+    "frame_alignment": "CSV event seconds*100 matches stored frame numbers; verify sample C3D and supplied cycle summaries. No invented events. Reject missing or out-of-range interpolation and nonalternating cycles. No clinical score based exclusions.",
+    "aggregation": "One feature row/person. All five trials for event features; eligible >=124-frame trials only for frozen GDI. Observation durations differ and are reported. No pooling gaps between trials."
+  },
+  "camera": {
+    "source": "Kidzinski2020 Methods: fixed-position camera rotates about vertical axis following patient, distance3-4m,29.97fps.",
+    "primary": "Perspective camera right of walking direction at distance3.5m, height1m,640x480,60deg horizontal FOV, yaw tracks pelvis. World progression maps image leftward as in pinned input orientation. Height/FOV are explicit assumptions, not recovered calibration.",
+    "time": "Native100Hz to29.97Hz on physical time;124 observed samples; same starts0,31,...,372 limited by observed duration; no stretching,padding or gap filling. Reject required points outside frame.",
+    "joints": "Use supplied LHJC/RHJC,LKJC/RKJC,LAJC/RAJC, verify duplicate columns agree and centres differ plausibly from skin markers. TOE is a metatarsal-region proxy, not verified BODY25 big toe; strict anatomical equivalence remains false.",
+    "sensitivity": "Full frozen predictor, same people and common trial/window starts: toe proxy moved60mm along heel-to-toe direction; camera distance4m. These arbitrary scenarios assess sensitivity, not anatomical correction. No selection using SPPB.",
+    "gate": "Audit geometry, time and centres and inspect projections before inference. Permit explicitly labelled simulation with toe proxy; no claim of camera-ready or clinical GDI validity."
+  },
+  "frozen_model": "Existing54-checkpoint CNN/STT/bilateral fusion from 20261102-final223-frozen/models.json; hash check, old prediction replay, zero optimizer steps. Equal window then trial then CP outer-fold ensemble averaging. Keep original calibration. No protected223 samples/labels accessed.",
+  "conditions": {
+    "A": [
+      "speed"
+    ],
+    "B": [
+      "predicted_GDI"
+    ],
+    "C": [
+      "speed",
+      "PCI",
+      "stride_time_CV",
+      "step_length_CV",
+      "swing_percent_CV"
+    ],
+    "D": [
+      "speed",
+      "PCI",
+      "stride_time_CV",
+      "step_length_CV",
+      "swing_percent_CV",
+      "predicted_GDI"
+    ]
+  },
+  "evaluation": "Use existing44-person five outer folds. Within each outer training set, three shuffled folds random_state20261031 to select Ridge alpha[0.1,1,10,100,1000] by person MAE, first candidate tie. Training-only standardization. Same model class/search in A-D, no output clipping. Save all fits, choices, IDs and replay. Constant training mean/median controls. Main A-D on common eligible people; secondary A/C on all event-eligible44; age65plus held-out subgroup descriptive, no refitting.",
+  "metrics": "Person MAE primary; RMSE,bias,R2,Spearman,within1,errors>2, scorebands5-8,9-10,11-12. Exploratory SPPB<=8 detection using fixed predicted<=8 threshold: recall,specificity,confusion. Paired fixed-OOF person bootstrap10000 seed20261103, percentile95CI for C-A,D-C,D-A,B-A; conditional uncertainty not full retraining or external validation.",
+  "limits": "Repeated-use small development cohort, not all >=65, absentSPPB0-4, optical/annotated events not video estimates, camera/toe/timebase domain gaps, exclusion may favour slower walkers. Statistical association is not clinical validation. Only SPPB total available; no fabricated subscores/TUG."
+}

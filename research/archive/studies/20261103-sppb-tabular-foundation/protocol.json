@@ -1,0 +1,111 @@
+{
+  "owner_thread": "01a19c6f-49f7-7300-97b0-a303b71ffe91",
+  "frozen_before_predictions": true,
+  "purpose": "Compare fixed TabICLv2 and TabPFN v2 with LightGBM on identical people, features and folds; separate large weekly-sensor extension from short-walk datasets.",
+  "sources": {
+    "D:\\gait-research-data\\D_P\\sppb-lightgbm-20261103\\cohorts.json": "ae85dbea1968ef75f8b982217be998498e7fd42ce4f8ef5dc83dc565fd4279a7",
+    "D:\\Projects\\D_P\\studies\\20261103-sppb-lightgbm\\comparison.json": "65e0fb4be0d167cb926ae8352ed71b9f78dc502ce7d21d7b2c778569a81298ab",
+    "D:\\Projects\\D_P\\studies\\20261103-sppb-lightgbm\\verification.json": "1c7d1cfbe05219830c7f9b0941ad217626fa112436045b6f0a505bb7ab3d7030",
+    "D:\\Projects\\D_P\\studies\\20261103-sppb-lightgbm\\protocol.json": "9af62305913a1838530a5bf2079b33c461666a9eefbc02722651ef119ec049c9",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261031-mobilised-uncertainty-review\\extracted\\Main datasets for analysis\\CSV files\\All_cohorts_dataset.csv": "486fdf888caab366e25b03aae4b885a43e863b711390cc94569973051a212afc",
+    "D:\\Projects\\D_P\\gdi-research-harness\\studies\\20261031-mobilised-uncertainty-review\\first-eligible-per-target.csv": "365e43ce87dfcb8b5fb31dbf5ba4a2305af03c1607d7330e6e15b9080e1af9c5",
+    "D:\\Projects\\D_P\\studies\\20261103-sppb-tabular-foundation\\weights-manifest.json": "16fa9bfe2864b1860ecdd001e0f3804407e555d737530bb96d00b42feee26ce7"
+  },
+  "cohort_sha256": "591fa4567554bf503f87bf45796ce2878c9738173a2065fa03a1e91a59187f73",
+  "small": "Exact previously frozen older37/older24/older44/gait2care92/gstride158 input rows and outer folds. Existing LightGBM predictions reused, not retuned. These cohorts overlap within OlderAdults and must not be pooled.",
+  "large": "2232 first eligible SPPB visits; >=3 provider-valid sensor days, positive ws_1030_avg_w, proto_dev=N, valid official SPPB 0..12. One row/person. Sorted string IDs KFold5 shuffle seed20261103. Four disease cohorts, 1222 aged>=65; neither healthy-community nor short-camera validation. Same folds for all models. CC BY-NC-ND4.0 source, internal research only; no product-use permission inferred.",
+  "conditions": {
+    "small": [
+      "speed",
+      "features",
+      "features_GDI only older37/older24"
+    ],
+    "mobilised": {
+      "speed": [
+        "ws_30_p90_w"
+      ],
+      "speed_profile": [
+        "ws_30_p90_w",
+        "ws_1030_avg_w",
+        "ws_10_p90_w",
+        "ws_30_avg_w",
+        "ws_30_var_w"
+      ],
+      "features": [
+        "ws_30_p90_w",
+        "ws_1030_avg_w",
+        "ws_10_p90_w",
+        "ws_30_avg_w",
+        "ws_30_var_w",
+        "strlen_1030_avg_w",
+        "strlen_30_avg_w",
+        "strlen_30_var_w",
+        "cadence_all_avg_w",
+        "cadence_all_var_w",
+        "cadence_30_avg_w",
+        "cadence_30_p90_w",
+        "strdur_all_avg_w",
+        "strdur_all_var_w",
+        "strdur_30_avg_w"
+      ]
+    }
+  },
+  "model": {
+    "TabICLv2": {
+      "checkpoint": "tabicl-regressor-v2-20260212.ckpt",
+      "n_estimators": 8,
+      "device": "cpu",
+      "random_state": 20261103
+    },
+    "TabPFNv2": {
+      "checkpoint": "tabpfn-v2-regressor-v2_default.ckpt",
+      "version": "V2",
+      "n_estimators": 8,
+      "device": "cpu",
+      "random_state": 20261103
+    },
+    "notes": "Fixed pretrained weights; no gradient training or outcome-driven hyperparameter/ensemble tuning. Native training-only preprocessing and missing-value handling. CPU float32 where supported. Mean prediction; no SPPB clipping/calibration. Model inputs never include age, diagnosis, site, SPPB subscores or test walking time. CPU sample-count runtime guard may be disabled for 1786 training people, within v2 pretraining limits; runtime pilot before full large run."
+  },
+  "LGBM": {
+    "fixed": {
+      "objective": "regression",
+      "learning_rate": 0.03,
+      "max_depth": 3,
+      "max_bin": 31,
+      "min_data_in_bin": 1,
+      "feature_pre_filter": false,
+      "verbosity": -1,
+      "num_threads": 2,
+      "seed": 20261103,
+      "deterministic": true,
+      "force_col_wise": true
+    },
+    "grid": {
+      "num_leaves": [
+        3,
+        7
+      ],
+      "min_data_in_leaf": [
+        3,
+        8
+      ],
+      "lambda_l2": [
+        1,
+        10
+      ],
+      "num_boost_round": [
+        50,
+        150
+      ]
+    }
+  },
+  "LGBM_large": "Same 16-setting grid as prior baseline, inner KFold3 seed20261031, choose pooled inner MAE, first tie. All tuning inside outer training. Add training mean baseline.",
+  "metrics": "Person MAE primary; RMSE,bias,R2,Spearman,within1,errors>2,bands0-4/5-8/9-10/11-12 and <=8 confusion. Paired bootstrap10000 seed20261103 conditional on fixed OOF predictions. Within-model feature additions and matched-feature model differences. Report >=65 and diagnosis strata descriptively; no best-subgroup selection.",
+  "verification": "Check hashes and person/fold/feature identity; save every final fitted state or complete deterministic training context plus frozen checkpoint. Reload/reconstruct and predict every held-out person again, compare predictions; independent metrics/paired intervals and inner selection audit. Preserve original results and all failures.",
+  "limitations": "Reused development cohorts; no external clinical validation. SPPB contains walking component; correlation does not show all physical function is measured. GDI input is prior virtual-camera simulation with anatomical uncertainties, not observed RGB. Sensor cohorts cannot supply GDI.",
+  "storage": {
+    "small": "D:\\Projects\\D_P\\studies\\20261103-sppb-tabular-foundation",
+    "large": "D:\\gait-research-data\\D_P\\sppb-tabular-foundation-20261103",
+    "expected_GB": 3
+  }
+}

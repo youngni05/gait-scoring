@@ -1,0 +1,18 @@
+{
+  "owner_thread": "01a1a1c2-655b-79a3-87bc-e325af86028e",
+  "frozen_at": "2026-11-03T14:20:13.949825+00:00",
+  "source_cohort_sha256": "62b83914b235ebe5199640d59e972f8bcd8e7bb7de59219c94d18ab8fac345f0",
+  "source_run_sha256": "a533f4ee22507944b008a40631526db1f62bde0d1b9b623c967c88df20d41886",
+  "code_sha256": "c2584b35a3a96de29afeb6909136ccfc59f6c5ac17a328c415a1a172ef654882",
+  "scope": "Same people/features/folds. TUG raw seconds LGBM/TabICLv2/TabPFNv2; weighted raw seconds LGBM. Frailty original models threshold-only, plus inverse-frequency weighted multiclass LGBM.",
+  "tug_weight": "fixed2 if12<=y<20,4 ify>=20,else1; select weighted model by inner weighted MAE,raw model by inner MAE",
+  "threshold": "P(frail)>=threshold; smallest threshold satisfying pooled inner OOF nonfrail FPR<=0.10(primary) or0.20(secondary). No external labels. Also report original argmax and P(frail)>=0.5.",
+  "selection": "LGBM same16grid/inner3splits. Weighted frailty choose mean per-class logloss. Foundation fixed8ensembles. No new probability calibration. Original LGBM selected inner predictions reused for threshold. Foundation inner3 new fits on outertrain only.",
+  "metrics": "TUG paired MAE,bias,slow>=20 n9,12..20,under12; stratified frailty rates,ROC-AUC,AP,recall,FPR,PPV and confusion; paired bootstrap10000 conditional fixed OOF. Compare speed/features and same-input new/original. Report actual held-out FPR; target not guaranteed. Exploratory reused development cohort.",
+  "verification": "Hash source/checkpoints, train/test IDs, inner partitions, independently reconstruct threshold and selection, save/reload new LGBM final+inner, reconstruct all new foundation final+inner from contexts; atol/rtol1e-6; independent outcome metrics.",
+  "storage": {
+    "expected_additional_GB": 1,
+    "small": "D:\\Projects\\D_P\\studies\\20261103-frailpol-objective-threshold",
+    "large": "D:\\gait-research-data\\D_P\\frailpol-objective-threshold-20261103"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "declared_utc": "2026-11-02T01:50:40.559550+00:00",
+  "request": "Assess whether already frozen methods improve over the existing multiwindow CNN",
+  "classification": "post-hoc descriptive reanalysis of the already inspected same222people377records; no new model or independent test",
+  "reference": "CNN_refit: original average of five multiwindow CNN refit predictors, not single-window CNN",
+  "comparisons": [
+    "CNN_bag",
+    "fusion",
+    "plus_general",
+    "plus_ranksim"
+  ],
+  "primary_metric": "person-equal MAE, mean record-side absolute errors within person then mean people",
+  "bootstrap": {
+    "seed": 20261104,
+    "draws": 10000,
+    "unit": "paired person",
+    "individual95": [
+      2.5,
+      97.5
+    ],
+    "Bonferroni_familywise95_four_contrasts": [
+      0.625,
+      99.375
+    ]
+  },
+  "decision": "Report every contrast; negative difference favors candidate. CI crossing zero means inconclusive, not equivalence. Any nominal interval excluding zero remains post-hoc evidence, not independent confirmation.",
+  "no_new_training_selection_predictions_or_exclusions": true
+}

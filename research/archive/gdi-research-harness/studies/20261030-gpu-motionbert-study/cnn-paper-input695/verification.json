@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "people": 692,
+  "records": 1061,
+  "source_geometry_checks": true,
+  "same124_frame_ids_verified": true,
+  "training_only_calibration_label_poison_test": true,
+  "side_order_and_weighted_epoch_selection": true,
+  "checkpoint_resume_exact": true,
+  "independent_raw_and_calibrated_reinference_on_synthetic": true,
+  "synthetic_nested_fits": 25,
+  "synthetic_steps": 1070,
+  "actual_GDI_training_steps": 0,
+  "actual_GPU_execution": false,
+  "torch": "2.14.1+cpu",
+  "bundle_sha256": "65fd5673df547348e9bfc5f61e443a4e571d381596898e658ca5bae099395abb",
+  "zip_verified": true,
+  "details": "checks/verification-1793350991995167100"
+}

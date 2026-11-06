@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "frozen_before_results": true,
+  "date": "2026-11-06",
+  "authorization": "User asked what the older-adult result becomes with the model trained with assumed-100 normal gait.",
+  "question": "On the same 58 older-cohort people and windows as the 2026-11-03 frozen test, how do scores change with the LJMU100-mixed model?",
+  "training": false,
+  "fitting_on_older_data": false,
+  "input": "D:/gait-research-data/D_P/frozen-transfer-and-deviation-20261103/features.npz unchanged: 3D markers projected to a virtual side camera. Not real video.",
+  "models": "studies/20261104-ljmu100-mixed: baseline (Stanford only) and mixed (Stanford + LJMU 64 people 881 records assumed 100). Fixed bundle/ensemble.json fusion, all five folds averaged.",
+  "primary_calibration": "Stanford-training-only member calibration, the condition reported in the paper draft.",
+  "secondary_calibration": "Original mixed calibration.",
+  "aggregation": "Same as frozen test: window -> primary record mean -> person mean of left/right.",
+  "primary_population": "Age>=65 healthy 11 and stroke 25 with primary windows.",
+  "outcomes": [
+    "group means/ranges",
+    "healthy-stroke mean difference with 10000 person bootstrap",
+    "AUC with bootstrap",
+    "25 stroke people: Spearman with POMA and speed, speed-partial Spearman with POMA"
+  ],
+  "replay_gates": {
+    "baseline_members_vs_saved_frozen_predictions_points": 0.001,
+    "external_live_person_mean_vs_saved_points": 0.005
+  },
+  "interpretation_limits": "This cohort was already inspected on 2026-11-03, so this is a post-hoc exploratory comparison. No measured GDI exists for these inputs, so higher scores are not accuracy. A difference between groups is not diagnostic performance."
+}

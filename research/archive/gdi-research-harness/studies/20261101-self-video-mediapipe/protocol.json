@@ -1,0 +1,36 @@
+{
+  "frozen_before_mediapipe_inference": true,
+  "question": "Same two user videos: MediaPipe Full versus OpenPose BODY25 extraction speed, landmark disagreement, and frozen GDI normal-minus-abnormal ordering",
+  "authorization": "User explicitly requested applying MediaPipe to both own videos and comparing speed, joints and the unchanged GDI predictor",
+  "mediapipe": {
+    "model": "existing pose_landmarker_full.task",
+    "delegate": "CPU",
+    "running_mode": "VIDEO",
+    "num_poses": 1,
+    "min_pose_detection_confidence": 0.5,
+    "min_pose_presence_confidence": 0.5,
+    "min_tracking_confidence": 0.5,
+    "output_segmentation_masks": false
+  },
+  "frames": "Every original decoded frame, no resampling, reflection, side swapping or cropping outside each model's built-in input pipeline. Each clip starts with fresh tracking state.",
+  "timestamps": "OpenCV decoded presentation time rounded to ms; when rounding yields non-increasing values, use previous_ms+1 for the tracker only and record the adjustment. Original frame indices, coordinates and GDI windows remain unchanged.",
+  "mapping": "Image x*width,y*height; anatomical hip/knee/ankle mapping. MP left/right foot_index 31/32 approximate BODY25 big_toe 19/22. No use of world landmarks or z. Other BODY25 joints remain missing because the frozen feature pipeline does not consume them.",
+  "confidence": "Retain all returned coordinates and raw visibility/presence. No new coordinate confidence threshold: existing feature extraction discards confidence columns. visibility<0.5 is a descriptive diagnostic only, not a claim of calibrated equivalence to OpenPose confidence.",
+  "target": "Single actor setting, num_poses=1; not equivalent to OpenPose's multiple-person rejection. Fixed-frame overlays will check target plausibility.",
+  "gdi": "Reuse exact previous 32 requested windows, full-record interpolation/smoothing, required-coordinate missing<=25%, 54 checkpoints and stored calibration/combination weights. No tuning, refit, score-based window selection, or automatic fallback.",
+  "comparison": "Describe normal-minus-abnormal means, all five fold differences and per-window results. Positive sign indicates maintained ordering only for this pair, not clinical validity or diagnostic accuracy. If windows fail, report failures and matched accepted windows, never substitute intervals.",
+  "pose": "On jointly observed frames, report per-joint pixel distance and distance normalized by OpenPose leg length; do not treat OpenPose as ground truth. Report missing frames, low visibility, and diagnostic alternative left/right correspondence without swapping data. Use identical previously fixed 42 review frames.",
+  "speed": "Full MediaPipe extraction on local CPU with inference and wall time separated; reuse previous full GPU OpenPose records only as a different-hardware reference. Also rerun the same 50 frames (first25 each clip) locally for both engines, warm model initialization excluded, sequential execution; OpenPose neural output and MediaPipe final landmark output are different scopes and reported explicitly.",
+  "limits": [
+    "one actor, two acted/labelled conditions",
+    "no annotated joint or true GDI ground truth",
+    "not a smartphone benchmark",
+    "Full variant only, not Lite/Heavy",
+    "foot landmark semantic mismatch",
+    "CPU runtime implementations/thread settings differ"
+  ],
+  "storage": {
+    "small": "C:/Users/jun/Desktop/D_P/gdi-research-harness/studies/20261101-self-video-mediapipe",
+    "large": "D:/gait-research-data/D_P/self-video-mediapipe-20261101"
+  }
+}

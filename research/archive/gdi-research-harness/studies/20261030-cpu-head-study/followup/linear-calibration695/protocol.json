@@ -1,0 +1,28 @@
+{
+  "declared_before_fitting": true,
+  "data": "same development695, 1064 records, same 5 outer folds",
+  "models": [
+    "pls32",
+    "temporal_combined"
+  ],
+  "variants": [
+    "unchanged",
+    "train_affine",
+    "inner_oof_affine"
+  ],
+  "formula": "y_corrected=a*y_pred+b; one shared scalar slope/intercept for pooled left/right records",
+  "fitting": "unweighted OLS over record-side pairs; train_affine uses predictions of outer refit on its 556 training people; inner_oof_affine uses four inner validation predictions within same 556 people",
+  "selection": "No calibration selection using outer held people. Report both predeclared variants. Base hyperparameters remain previously selected within outer training people, no epoch reselection.",
+  "inner_limit": "Base hyperparameters were selected using all outer-training internal scores, so inner OOF is not a fresh independent calibration set. Outer evaluation remains excluded.",
+  "evaluation": "person macro MAE, mean/gap errors, tail bias, score bins, prediction SD, train/held metrics; no clipping, no arbitrary expansion",
+  "cnn": "Baseline outer held predictions only available locally. Cannot fit calibration without train predictions. Prepare read-only refit checkpoint exporter, no CNN training or remote execution.",
+  "paper_relation": "Tests affine postprocessing idea only. Original paper selected epoch using corrected validation RMSE and used multiple windows; neither reproduced here.",
+  "bootstrap": {
+    "seed": 20261029,
+    "draws": 10000,
+    "interpretation": "conditional exploratory paired person resampling; no model-selection adjustment"
+  },
+  "GPU_used": false,
+  "protected_numeric_data_used": false,
+  "independent_final_evaluation": false
+}

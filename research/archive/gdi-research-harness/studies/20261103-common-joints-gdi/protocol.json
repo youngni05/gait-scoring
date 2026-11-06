@@ -1,0 +1,104 @@
+{
+  "created_utc": "2026-11-03T04:03:29.392097+00:00",
+  "authorization": "User requested execution of agreed common-joint and shorter-input comparison",
+  "variants": {
+    "full124": {
+      "features": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "start": 0,
+      "frames": 124
+    },
+    "common124": {
+      "features": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        11
+      ],
+      "start": 0,
+      "frames": 124
+    },
+    "full90": {
+      "features": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "start": 17,
+      "frames": 90
+    },
+    "common90": {
+      "features": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        11
+      ],
+      "start": 17,
+      "frames": 90
+    }
+  },
+  "design": "2x2 factorial; 4 models x 5 outer folds x (4 inner fits + 1 refit) = 100 fits; all four conditions retrained",
+  "population": {
+    "people": 692,
+    "records": 1061,
+    "windows": 11261,
+    "source_data_sha256": "7c1912cd27c63a82ed0d0324f98c0c0fae9a608174d52bd7a502f05e9a8c7a1e"
+  },
+  "normal_reference": "No new reference used for CP training; prior elderly reference40/secondary138 preserved",
+  "model": "Same 6-layer CNN topology and pooling rule; 90-frame dense width 224 vs 320; feature input 8 vs 12; not the previous 54-member best ensemble",
+  "selection": "100 epochs in each inner fit; earliest minimum weighted inner-person calibrated MAE; outer refit at selected epoch; training-only target scaling/calibration",
+  "test": "Original 5 person-disjoint folds; prior final evaluation cohort not loaded",
+  "aggregation": "Equal windows per recording and equal people for primary error; no synthetic cameras count as independent people",
+  "comparisons": [
+    "common124-full124",
+    "full90-full124",
+    "common90-full90",
+    "common90-common124",
+    "common90-full124"
+  ],
+  "report": "Person-equal MAE, paired person bootstrap95CI seed20261103 n5000, low actual GDI<70 and high>=90 person-equal band error/bias and n; no invented noninferiority margin or clinical validation",
+  "timebase": "CP native frame interval unresolved; raw188 resampled at known30fps; transfer timing unverified",
+  "decision": "Report error increases and confidence intervals; do not select from outer evaluation and claim independent final performance",
+  "source_joint_gate": "C3D surface points not used as BODY25 truth; no external inference until joints/time/labels are explicitly resolved",
+  "storage": {
+    "small": "D:\\Projects\\D_P\\gdi-research-harness\\studies\\20261103-common-joints-gdi",
+    "large": "D:\\gait-research-data\\D_P\\common-joints-gdi-20261103"
+  },
+  "estimated_disk_budget_bytes": 2000000000,
+  "source_code_sha256": {
+    "run.py": "4947116c2d779fa48c67463660fa35f4610e65d0b68d749a035c2269cf80a7f0",
+    "model.py": "78d5b0f95411de74ab6668ad923be7e9bd49e6f4f3939a144158a62f8c5bdc80",
+    "windows.py": "d42696957eb832f76101b7cfc879d9ea94083992e32cda6314a7e0c4794c30d5",
+    "protocol.json": "574a2ed98ff3876cc61843aacef5adc4163b406c5b422674a0e99aded43f133e"
+  }
+}

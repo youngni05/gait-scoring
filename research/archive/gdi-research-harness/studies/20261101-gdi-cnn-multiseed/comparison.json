@@ -1,0 +1,173 @@
+{
+  "passed": true,
+  "people": 692,
+  "records": 1061,
+  "metrics": {
+    "baseline": {
+      "mae": 6.515816569178735,
+      "bias": 0.09763173265761617,
+      "high90": {
+        "people": 68,
+        "mae": 8.782527747879264,
+        "bias": -7.9151585238819635
+      },
+      "fold_mae": [
+        6.792923644393225,
+        6.18479309029197,
+        6.3816956004856875,
+        6.365655957325264,
+        6.852661766545981
+      ]
+    },
+    "three_initialization_blend": {
+      "mae": 6.504341820931249,
+      "bias": 0.08989539661574898,
+      "high90": {
+        "people": 68,
+        "mae": 8.792190261531903,
+        "bias": -7.926006204602413
+      },
+      "fold_mae": [
+        6.75674778592966,
+        6.183763423175565,
+        6.404533204101882,
+        6.354651804028769,
+        6.820804390660758
+      ]
+    },
+    "old_CNN_bag": {
+      "mae": 6.590389070965508,
+      "bias": 0.11283496810818189,
+      "high90": {
+        "people": 68,
+        "mae": 8.323853074762242,
+        "bias": -7.322846838711138
+      },
+      "fold_mae": [
+        6.712672280547207,
+        6.269737263093799,
+        6.5929984626551565,
+        6.464692923302711,
+        6.910436085612831
+      ]
+    },
+    "CNN_seed20261101": {
+      "mae": 6.578139735488354,
+      "bias": 0.09384475102916988,
+      "high90": {
+        "people": 68,
+        "mae": 8.42530050279772,
+        "bias": -7.352844805704762
+      },
+      "fold_mae": [
+        6.64626881226265,
+        6.208126106094563,
+        6.729297203829032,
+        6.435337196445046,
+        6.870584991297678
+      ]
+    },
+    "CNN_seed20261102": {
+      "mae": 6.626889534977502,
+      "bias": 0.06025468642070609,
+      "high90": {
+        "people": 68,
+        "mae": 8.334300481137717,
+        "bias": -7.358771813714433
+      },
+      "fold_mae": [
+        6.687435869759798,
+        6.265952143969718,
+        6.77317927461423,
+        6.513591975500661,
+        6.893179768477712
+      ]
+    },
+    "three_initialization_CNN": {
+      "mae": 6.545999718048853,
+      "bias": 0.08897813518601948,
+      "high90": {
+        "people": 68,
+        "mae": 8.329921140045155,
+        "bias": -7.34482115271011
+      },
+      "fold_mae": [
+        6.618890858470247,
+        6.206372572417766,
+        6.663604084645865,
+        6.384129486130516,
+        6.855928699093449
+      ]
+    }
+  },
+  "new_minus_baseline": -0.011474748247486115,
+  "paired_person_bootstrap95": [
+    -0.032639660999973875,
+    0.009391259833068826
+  ],
+  "target6_3_met": false,
+  "members": {
+    "omitted_for_public_snapshot": true,
+    "count": 50
+  },
+  "maximum_replay_error": 3.3050796872657884e-05,
+  "baseline_reproduction_max": 0.0,
+  "protocol_sha256": "cb6cec8e8594743784d6cf202da91a0195609d5ba12948a4734e5a731d355099",
+  "full_receipt_sha256": "48ab802d02665a09e0e2afb7c19483cfadaeb37b98dae7c44d64705e616a530c",
+  "sources": {
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold0\\refit\\latest.pt": "b6982eff70ee362b5e7afc75c47a223c37759d2797f7f08e96e28c5806efc439",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold0\\inner1\\latest.pt": "36b7e2a7fb08ca54a6057102b15f4121a1c4e735106be70bc227d793bd457092",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold0\\inner2\\latest.pt": "45d359490c99a53879c4df797b96c52517f395d6d6928a606d9facf2b73bc56b",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold0\\inner3\\latest.pt": "dc0e01f38ee9df43856851399f6ad35b06b1e52d429f7ecdc3ae4f47c66e3fae",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold0\\inner4\\latest.pt": "1580ad00eae0c0406ffa4004ad2446cee2c1e5b8812a7352eb686259edcba3b8",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold1\\refit\\latest.pt": "1e9fdfd2cd73e946b590bc5bf796bdea0963a17e9ca92b2a4cbb30d977bf525f",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold1\\inner0\\latest.pt": "cf6e523229975cae6388106639c32386b9a64bcf5c389b974740eda5ccd48b81",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold1\\inner2\\latest.pt": "826dbb9693464a758a62829d1c1e0a99c161ff362a541d30792efbcfe4910764",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold1\\inner3\\latest.pt": "3ff864acf1752ae7122177d030b59cead46c32e01d68288fbd86474de94ba498",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold1\\inner4\\latest.pt": "cdadb98ea5c616e56adf176554a7e5452b418200b6daa3e94bdc3c8d5d55ade4",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold2\\refit\\latest.pt": "85ae4be8f6c911828fa24f82746ddbc2bc8e0ca49955509629b632f9d38987f2",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold2\\inner0\\latest.pt": "7e21412a0fa81f0b24faa93f067a737170b9702a8603c516651f0b09a21bc220",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold2\\inner1\\latest.pt": "779bee1fa92ad5e7debd5fd108306a065c0e2d0e9d28cb9703578d7ff8c93751",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold2\\inner3\\latest.pt": "edb4c30906d2a2f9b155e99306bae2d61fd081d8bbfd838b64747156c8f5aafd",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold2\\inner4\\latest.pt": "31053a7b723e7d947b005dec65a83dcae4160a35696c001e1f47d5bda368492d",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold3\\refit\\latest.pt": "8e8f0a4b6368e9ba123d178179cb7df5b0bbc61cd759d4b436ae8fe9c435abc6",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold3\\inner0\\latest.pt": "ebc27161a98fbe864c9a54c6d47865537132455eff29c7bc4bae0cd3aecc8b39",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold3\\inner1\\latest.pt": "195377f2fcddee8bfda8bf3d9acbee1b015f2c39d266d19bbcf2c09e88e5913c",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold3\\inner2\\latest.pt": "c60507711236b288b18a36151fe54613b188f319eca4b9676054621d74eb0a45",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold3\\inner4\\latest.pt": "8f0edac987d17b22e3bac439c40cfa257b699000f4f28b3604c6952b87e7b216",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold4\\refit\\latest.pt": "7ba9c79292d390acb5c1fd03d7e145997a80a4dbaa2164c987ba8f511336462c",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold4\\inner0\\latest.pt": "3e2f62c29eda6fdd4d83554e006d9c97ff017819100d695ceffaeeac4ff2dc8e",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold4\\inner1\\latest.pt": "89ac5102ceb960c91089d13dee0092b6bb4fb9447ea740f0226de3671f3951f1",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold4\\inner2\\latest.pt": "972430932da19038dfcdbdeec12342da0cf320a7ded9d309c3887cae36896dd2",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261101\\unpacked\\runs\\main\\fold4\\inner3\\latest.pt": "ef708127f96d308d122606541edc1cd1dc151a30be94ff92823c0df3265a434c",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold0\\refit\\latest.pt": "2634b57d47e37316f7cc7792bfe379e10de91471f6a39b8cb54590b80bcd56d9",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold0\\inner1\\latest.pt": "8bfdd09c1b9148f0a7f2450b8f0245a365679a1b01eea9d12dfb3820ba6823f6",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold0\\inner2\\latest.pt": "3e90a65d1c72d522681361beb91e38a236b9aa77412f7913780642dbd25e3130",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold0\\inner3\\latest.pt": "38dd7ce7a48af7aed29773d0ead513fc5e277e31f148eafb9fce6e51253b5794",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold0\\inner4\\latest.pt": "54759e5fbe918e590bb18ae4d89c385e7d8c51524749ecffd84bfe2706c9ee01",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold1\\refit\\latest.pt": "9c22e7f11e774456432a73255adecffdd6a911b03e33587860ab043d5e5e9bac",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold1\\inner0\\latest.pt": "6ebe6fcbbc3ba5a9aedb2aaed6c613aa21d054fba8e007690cfdc5172c17697e",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold1\\inner2\\latest.pt": "6372e68c88c892da6ab03481959a8c7afa73d81bb3ff87019963eb5596976a6e",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold1\\inner3\\latest.pt": "3bf571045d70d9a2d41e8d50929832f6769c8c26966ff945572dc5711ddd334e",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold1\\inner4\\latest.pt": "ecdabe05d5a370e9850759aaa0cd47fef03801349b0bbde54bfb5275d9f921b0",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold2\\refit\\latest.pt": "1a0b4e47771e36550010d7c3b3a3d1f7ead0691ab6284a55e375bfb585a5f7f2",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold2\\inner0\\latest.pt": "a2d398f0e4eecf8a588008ce52ad89949da04d39fb072f3453b9564382d3785c",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold2\\inner1\\latest.pt": "d8c7f3c5102d8ae659458a7a67248cbef45a0dc2074afc9f6690c3f984b477d1",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold2\\inner3\\latest.pt": "22c905b0de8c092c4b4468143bc36065b75b9fd558beea01ba42e87b659e1ad8",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold2\\inner4\\latest.pt": "997bad1eb85b0e1c85c04ec41df829b0e0c6f8587e277265f1a5d7d765227c49",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold3\\refit\\latest.pt": "88ac4473db1002c4ac41672779074c1bdfbffb947937dcdc3621ab5602dae0f2",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold3\\inner0\\latest.pt": "92124f90ed2ca72a02820cb54874d60350b79dfd9d2617600d2bfb675b45bf44",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold3\\inner1\\latest.pt": "0ece1081ec1a64dea27963058978317e9c9455c395252096d050d6c39c1b9b13",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold3\\inner2\\latest.pt": "51c889bc29fb55227f6371f3132f5b5a31971e3053aa0fe7572c88f449bf4802",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold3\\inner4\\latest.pt": "ed461f0a1285c0afba11a66b3274d32442165a0c56c676c00419900a34228445",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold4\\refit\\latest.pt": "691d5176b75fccf10116e8eff22d4a4b41fd3d06d34d610de083a5f05dd94636",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold4\\inner0\\latest.pt": "646de11b28c2305a3336b3e15f3b55c291165815179a4cf551d8a1d3b7b388fd",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold4\\inner1\\latest.pt": "968b7ed5da32b04ac75fbafdf461db37049521329829d37a0c4f11a91b55ed1d",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold4\\inner2\\latest.pt": "19e7a48abf38b480e983ab22d1cfc7e173a0eee6b41734eda3fbac0638e8a4cd",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\received\\full\\seed20261102\\unpacked\\runs\\main\\fold4\\inner3\\latest.pt": "d8de7ba5c76fef8e02253ae1ed2183f2ca1c7c3d8eb7d513ff83f4d29586df3e"
+  },
+  "predictions_path": "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-cnn-multiseed\\comparison\\predictions.npz",
+  "predictions_sha256": "8fdb60164e887047a5e78017788cc810261ec5a1971d93663fb65d62bcf1f697",
+  "independent_final_evaluation": false,
+  "seed_or_weight_selection_on_outer": false
+}

@@ -1,0 +1,15 @@
+{
+  "verified": true,
+  "csv_rows": 9135,
+  "people": 175,
+  "records": 203,
+  "matched_training_pairs": 15,
+  "training_models": 30,
+  "source_hashes_checked": 213,
+  "per_record_feature_hashes_checked": 203,
+  "numpy_model_replay_max": 2.1316282072803006e-14,
+  "independent_person_metric_aggregation": true,
+  "bootstrap_recomputed": true,
+  "synthetic_identity_training": true,
+  "protected_partitions_not_loaded": true
+}

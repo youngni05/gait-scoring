@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "selected_and_reference_models_replayed": 300,
+  "constrained_searches_independently_reaggregated": 300,
+  "all_inner_overall_and_tail_constraints_pass": true,
+  "all_person_splits_and_source_hashes_unchanged": true,
+  "fallback_models_and_predictions_exact": 276,
+  "independent_selected_training_refits_exact": [
+    "sppb",
+    "tug"
+  ],
+  "full_inner_curves_replayed_exact": 4,
+  "metric_rows_checked": 2880,
+  "aggregate_rows_checked": 288,
+  "joint_tradeoffs_checked": 180,
+  "bootstrap_point_estimates_checked": 36,
+  "max_numpy_forward_difference": 1.52587890625e-05,
+  "max_permutation_difference": 1.52587890625e-05,
+  "artifacts_sha256": {
+    "protocol.json": "08a0bf715576fa77a83505c715fae52da7a82d39371fce96d4d03e72ef1daa8b",
+    "completion.json": "4d78856b178192431f5633cc3227f160abcbcb5b9942d452bb8bc66471f1fdf9",
+    "predictions.csv": "cf0740293dbe2425c97d680352e897016a79437e780c2b24400c5173202ece0b",
+    "paired-predictions.csv": "2300dc5283eff4b28f861d440e1315ae35bdd3e5f7bedf810258c8b5eb8d2ec5",
+    "seed-metrics.csv": "1a8517313cbfef44e599c5e0d333ab4f380335813d46b4a145becf822d62556f",
+    "paired-metrics.csv": "a57a5ba4383bddaa698d297017913fc2257db4deb4f6319784d9fc896ab3e762",
+    "aggregate-metrics.csv": "023b08d28587de052315faacc99988db80d93dda0c11e01d6b4b1a6db7d9011c",
+    "joint-tradeoffs.csv": "f1d4c4c119be64cf130fcd5f1287f38c1fd7bf27a71d60628e3742ecdb3725bf",
+    "condition-tradeoffs.csv": "1c908a75fd180fa1e959eaf4568d567f09692c010cacc71794007f89ed6be5e5",
+    "selections.csv": "47982afbee2b50cc357a54cc301d92de362d32e9536c25d2f3b99d31f61a3ba1",
+    "paired-bootstrap.json": "d222828ad41348c8805aa70e2d29c2ede90dbbd9bff6f501b25572898e3402cb",
+    "summary.json": "e079400158a356969598a7d56b29b5610806bcfa20eacfd4e1f2359ca3890d3a"
+  },
+  "scripts_sha256": {
+    "train.py": "926aced70ad9de9ccda3f850077523b28efc8f8afc170f26cc0718ef611637a2",
+    "analyze.py": "11ea709e55f7eb98c5cf083c423a804771a2a105caef82c933682fe9d47a844d",
+    "verify.py": "ab8527a5a2f6c442f79cabff6cd26380a5298860691e34d5b65d6394034deacb"
+  },
+  "metric_helper_sha256": "b8c7ccb1789bcf82421f03cecd3764db1f23250369347158682736862133dd33"
+}

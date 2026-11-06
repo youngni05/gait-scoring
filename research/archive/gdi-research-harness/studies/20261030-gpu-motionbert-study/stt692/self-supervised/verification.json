@@ -1,0 +1,214 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "passed": true,
+      "synthetic_only": true,
+      "real_GDI_optimizer_steps": 0,
+      "device": "cpu",
+      "labels_absent_from_ssl_api": true,
+      "hidden_targets_do_not_change_encoder_input": true,
+      "exact_resume": true,
+      "only_encoder_transferred": true,
+      "fresh_GDI_head_preserved": true,
+      "changed_encoder_tensors": 32,
+      "input_identity_and_corruption_rejected": true
+    },
+    {
+      "passed": true,
+      "device": "cpu",
+      "synthetic_only": true,
+      "real_GDI_optimizer_steps": 0,
+      "exact_model_optimizer_scheduler_resume": true,
+      "validation_input_and_label_changes_do_not_change_fit": true,
+      "train_only_target_scale_and_calibration": true,
+      "person_overlap_rejected": true,
+      "checkpoint_identity_change_rejected": true,
+      "batch_side_layout_verified": true,
+      "loss_broadcast_rejected": true,
+      "checkpoint_prediction_replay_exact": true,
+      "official_weighted_loss_counterexample": {
+        "upstream": 2.5,
+        "aligned_weighted": 3.25
+      },
+      "changed_parameter_tensors": 40,
+      "parameters": 27022
+    },
+    {
+      "passed": true,
+      "synthetic_only": true,
+      "real_GDI_optimizer_steps": 0,
+      "device": "cpu",
+      "nested_25_fits_completed": true,
+      "weighted_selection_and_earliest_tie_verified": true,
+      "outer_input_and_label_changes_do_not_change_models_or_selection": true,
+      "completed_fit_resume_does_not_update_weights": true,
+      "all_epoch_raw_predictions_and_calibrations_recomputed": true,
+      "corrupt_diagnostics_rejected": true
+    },
+    {
+      "passed": true,
+      "real_GDI_optimizer_steps": 0,
+      "window_count": 11261,
+      "all25_training_subset_weights_checked": true,
+      "subset_reordering_verified": true,
+      "loss_and_prediction_aggregation_verified": true,
+      "fold_counts": [
+        {
+          "outer": 0,
+          "inner": null,
+          "train_records": 846,
+          "train_windows": 8931
+        },
+        {
+          "outer": 0,
+          "inner": 1,
+          "train_records": 636,
+          "train_windows": 6696
+        },
+        {
+          "outer": 0,
+          "inner": 2,
+          "train_records": 653,
+          "train_windows": 6903
+        },
+        {
+          "outer": 0,
+          "inner": 3,
+          "train_records": 615,
+          "train_windows": 6509
+        },
+        {
+          "outer": 0,
+          "inner": 4,
+          "train_records": 634,
+          "train_windows": 6685
+        },
+        {
+          "outer": 1,
+          "inner": null,
+          "train_records": 851,
+          "train_windows": 9026
+        },
+        {
+          "outer": 1,
+          "inner": 0,
+          "train_records": 636,
+          "train_windows": 6696
+        },
+        {
+          "outer": 1,
+          "inner": 2,
+          "train_records": 658,
+          "train_windows": 6998
+        },
+        {
+          "outer": 1,
+          "inner": 3,
+          "train_records": 620,
+          "train_windows": 6604
+        },
+        {
+          "outer": 1,
+          "inner": 4,
+          "train_records": 639,
+          "train_windows": 6780
+        },
+        {
+          "outer": 2,
+          "inner": null,
+          "train_records": 868,
+          "train_windows": 9233
+        },
+        {
+          "outer": 2,
+          "inner": 0,
+          "train_records": 653,
+          "train_windows": 6903
+        },
+        {
+          "outer": 2,
+          "inner": 1,
+          "train_records": 658,
+          "train_windows": 6998
+        },
+        {
+          "outer": 2,
+          "inner": 3,
+          "train_records": 637,
+          "train_windows": 6811
+        },
+        {
+          "outer": 2,
+          "inner": 4,
+          "train_records": 656,
+          "train_windows": 6987
+        },
+        {
+          "outer": 3,
+          "inner": null,
+          "train_records": 830,
+          "train_windows": 8839
+        },
+        {
+          "outer": 3,
+          "inner": 0,
+          "train_records": 615,
+          "train_windows": 6509
+        },
+        {
+          "outer": 3,
+          "inner": 1,
+          "train_records": 620,
+          "train_windows": 6604
+        },
+        {
+          "outer": 3,
+          "inner": 2,
+          "train_records": 637,
+          "train_windows": 6811
+        },
+        {
+          "outer": 3,
+          "inner": 4,
+          "train_records": 618,
+          "train_windows": 6593
+        },
+        {
+          "outer": 4,
+          "inner": null,
+          "train_records": 849,
+          "train_windows": 9015
+        },
+        {
+          "outer": 4,
+          "inner": 0,
+          "train_records": 634,
+          "train_windows": 6685
+        },
+        {
+          "outer": 4,
+          "inner": 1,
+          "train_records": 639,
+          "train_windows": 6780
+        },
+        {
+          "outer": 4,
+          "inner": 2,
+          "train_records": 656,
+          "train_windows": 6987
+        },
+        {
+          "outer": 4,
+          "inner": 3,
+          "train_records": 618,
+          "train_windows": 6593
+        }
+      ]
+    }
+  ],
+  "independent_zip_real_input_check": true,
+  "tampered_ssl_code_rejected": true,
+  "real_GDI_optimizer_steps": 0,
+  "GPU_executed": false
+}

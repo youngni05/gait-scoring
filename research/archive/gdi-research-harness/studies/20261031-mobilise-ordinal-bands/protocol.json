@@ -1,0 +1,64 @@
+{
+  "code_sha256": "b69e278aa969b5999e324fc00f9df02e3746844fac2baccb5b80eea4b293ccf7",
+  "source_hashes": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\person-folds.csv": "f5883374906327b6bf0e6ce1f9aaffb9f86f9e6d8679bc02b5775dcc702bea5a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\predictions.csv": "c91bd1d36786f1148de0a960a686d249f624e70148bd0a1732928463df5c89bf",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-selective-classification\\verification.json": "e3e7fbe89e0da46858835c922bab4958dbc3b558c872430616bbbb6b470d2354",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-selective-classification\\metrics-by-seed.csv": "0456f13480846e033ae9dfd8ef657dfe31cbd67301c7b6c404da19ed12099c2b"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "bands": {
+    "sppb": [
+      3.5,
+      6.5,
+      9.5
+    ],
+    "tug": [
+      10.0,
+      15.0,
+      20.0
+    ]
+  },
+  "label_interpretation": {
+    "sppb": "0-3 /4-6 /7-9 /10-12; continuous regression divided at3.5,6.5,9.5 without rounding",
+    "tug": "<=10 /(10,15] /(15,20] />20 seconds"
+  },
+  "data": "same 2174 SPPB /1939 TUG people, visits, draw0; [4,10)/[30,60) seconds x1/3/5; median four features; exact outer5 and inner3 person IDs",
+  "RF": "128 trees leaf20 max_features1 gini, equal person weights, no class weights",
+  "OrdinalRF": "same shared forest size; multioutput squared-error to I(class>0),I(class>1),I(class>2); objective proportional to RPS; shared leaves guarantee ordered cumulative probabilities",
+  "regression_probability": "reuse verified saved SVR/RF inner scores and outer predictions; one-dimensional multinomial LR C1 maps score to4 probabilities, cross-fit map on inner groups",
+  "regression_repetitions": "saved single-seed baselines repeated for pairing, not five independent runs",
+  "temperature": "fit scalar T in[.25,4] by person-weighted OOF log loss; cross-fit T for internal threshold selection; raw and calibrated both reported, no choosing by outer results",
+  "low": "SPPB class0 /TUG class3; argmax miss plus p50/fpr10/sens80 operating rules chosen internally",
+  "metrics": [
+    "multiclass Brier sum4",
+    "RPS mean3 cumulative squared errors",
+    "log loss clipped1e-12",
+    "per-class Brier and ECE10",
+    "accuracy",
+    "balanced recall",
+    "band distance MAE",
+    "opposite extreme abs distance3",
+    "low extreme-to-best error",
+    "low miss and false positive"
+  ],
+  "primary": "long5 draw0 declared before new outcomes; all6conditions and5seeds reported; no new model hyperparameter search",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-ordinal-bands",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-ordinal-bands-20261031"
+  },
+  "versions": {
+    "numpy": "2.3.5",
+    "sklearn": "1.9.1",
+    "pandas": "3.0.1"
+  },
+  "limits": "reused development folds; no external/video/clinical threshold validation; monotone cumulative probabilities do not guarantee accurate risk estimates"
+}

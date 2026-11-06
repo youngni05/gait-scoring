@@ -1,0 +1,44 @@
+{
+  "code_sha256": "58c701479c121b78d3a410e1d9bc1ef330e56bde5f69f2566427050dd94bf985",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-hgb\\study.py": "8207576f7273e4e4d990cddc69acc760af48b5fae978dd3fc65baf4a6a684ed5",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-hgb\\main-verification.json": "5667518022459b49c4f959bee6bdd49da8576a03d983bef4dd04810f6ca58e4a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-binary-objective\\main-verification.json": "18be907eed5fac6dda4bc2d755601bf7ddd1588d99881705f6a802104dd93608",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-binary-objective\\summary.json": "97f8e2d7f63383b93a3a5fb95d5bfba93b25651573b00d09d49774b42f18f499",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-binary-objective\\paired-bootstrap.json": "c280da253e62e2d39acbd08d52a3f2adfdb995f030f83cfa58361572b4550c46"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "cuts": {
+    "sppb": [
+      3.5,
+      6.5,
+      9.5
+    ],
+    "tug": [
+      10.0,
+      15.0,
+      20.0
+    ]
+  },
+  "hypothesis": "direct binary objective and binary recalibration did not improve RF; test ordered four-band severity instead of discarding severity or treating bands as unrelated",
+  "input": "same25 columns,5 speed-sorted30-60second bouts, original4+turns/sec, no duration or metadata",
+  "data": "same2174 SPPB/1939 TUG people, original outer5/inner3 person folds, draw0,5seeds",
+  "RF": "reuse verified nominal RF128trees leaf20 max_features1 gini person-equal weights",
+  "OrdinalRF": "same forest hyperparameters, shared multioutput regressor to I(class>0),I(class>1),I(class>2), squared loss proportional to RPS; shared leaves ensure ordered cumulative probabilities; difference to4 probabilities",
+  "selection": "no new hyperparameter search; train-only weighted scaling, unchanged OOF temperature and cross-calibrated internal fpr10/sens80 threshold choice",
+  "criteria": "compare multiclass Brier/RPS/accuracy/tail miss/FPR, same-cohort speed order and5seed stability; joint gain requires lower miss with nonworse FPR and Brier; evaluate rather than tune on outer predictions",
+  "resource": "CPU4single-thread models; estimated15-35min,2taskpilot first; no GPU needed for25-column input",
+  "deliverables": "50 new final+150 inner ordinal models,50 reused RF final+150 inner;50tasks400model replays8selected refits50metric rows40matched rows",
+  "novelty": "ordinal RF was previously tested on four medians, not the current retained25-column turn-only bout representation; this is a fixed-input objective ablation",
+  "limits": "same development people repeatedly explored; no video/external validity. If no gain, prioritize measurement/input/domain diagnostics over further small objective grids.",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-ordinal",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-turn-ordinal-20261101"
+  }
+}

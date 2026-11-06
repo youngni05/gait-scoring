@@ -1,0 +1,31 @@
+{
+  "declared_before_geometry_training": true,
+  "motivation": "Visual review of all9 long people showed far-end trajectory turns even when pelvis yaw failed; worst prior walking input has initial root-position jumps. This is an exploratory method addition after input QC, before examining model metrics.",
+  "turn": "region within0.75m of 99th-percentile far-end progress along origin-to-farthest3percent median axis; includes approach and departure, not pure angular turn; 0.25s position smoothing for boundaries; no yaw inputs",
+  "quality": "complete finite source, max source gap0.05s, excursion>=1.5m, return<=65percent, native root speed<=6m/s inside selected windows; no filtering on unused joint angles",
+  "straight": "prior start if clean and long enough, otherwise earliest clean start in same10mWT record; smoothed displacement/path ratio>=0.85; duration3+D; first3s at that same start for short baseline",
+  "observations": "3s clean straight plus D-second turn region versus3+D straight; model sees no full TUG elapsed time or absolute timestamps; full recordings locate windows",
+  "views": [
+    "OldWalk3Speed",
+    "Walk3Speed",
+    "WalkMatchedSpeed",
+    "Walk3TurnTime",
+    "Walk3TurnShape",
+    "Walk3Turn"
+  ],
+  "turn_feature_names": [
+    "turn_seconds",
+    "horizontal_speed_mean",
+    "horizontal_speed_std",
+    "horizontal_speed_change",
+    "path_length",
+    "lateral_range",
+    "direction_change_deg",
+    "direction_speed_mean",
+    "direction_speed_p95",
+    "slow_fraction"
+  ],
+  "folds": "same old outer and inner person folds restricted to this cohort",
+  "RF": "same128trees and innerleaf2/5, all15 runs",
+  "timed_trial_limitation": "same person/visit clinical label; exact cone/line timed trial mapping unavailable"
+}

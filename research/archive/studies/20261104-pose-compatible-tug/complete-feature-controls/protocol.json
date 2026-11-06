@@ -1,0 +1,104 @@
+{
+  "created_utc": "2026-11-04T00:24:22.608035+00:00",
+  "code_sha256": "8737ef40fdd626606a79701c818387adadd862a36abef09180cae89452feb8ce",
+  "parent_protocol_sha256": "b345cd240b997b85c307e3957060427ab6ddeb4b8d694a3d735a558f62120cb9",
+  "parent_code_sha256": "48c10269347c1b29d935e5663792dbb1cdfdbf08528f11eb316c4fdb724de2b6",
+  "source_data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "feature_sets": {
+    "timing_core": [
+      "speed",
+      "stride_time",
+      "swing_fraction"
+    ],
+    "metric_core": [
+      "speed",
+      "stride_time",
+      "swing_fraction",
+      "stride_length"
+    ]
+  },
+  "candidates": {
+    "timing_core": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 3
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 3
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 3
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 3
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 3
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 3
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 3
+      }
+    ],
+    "metric_core": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 4
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 4
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 4
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 4
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 4
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 4
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 4
+      }
+    ]
+  },
+  "reason": "Bilateralfeaturesavailable351/594,repeatedcyclefeatures198/594. These additional controls retain only original pose-computable basic quantities available594/594,so no missingness/detectorcoverage features can account for their gains. Declared from feature availability before inspecting new held-out metrics. All original594people/folds preserved.",
+  "primary": "Fixed nonnegative Ridge stacking alpha10 on all candidate innerOOF predictions,tailweight1,exactly originalR5 procedure. Compare each retained-feature arm against same-procedure speed arm with paired person bootstrap; no outer-based model selection.",
+  "secondary": "Fixed tailweight4 stack; selected single candidate by innerMAE and equal top3byinnerMAE. Report every arm/policy. Primary remains fixed even if a secondary arm looks better.",
+  "verification": "Sameindependentall-model/scaler/split/epoch-freeNNLS audit.280additionalbasefits(210inner70final),20metamodels. No new clinical thresholds,feature replacement,pose estimates,or model selection using outer people."
+}

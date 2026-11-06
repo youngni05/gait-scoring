@@ -1,0 +1,241 @@
+{
+  "quality_people": 212,
+  "quality_records": 243,
+  "main_association_people": 37,
+  "main_association_records": 40,
+  "summary": {
+    "train": {
+      "front": {
+        "lower_confidence_mean": 0.7032049500942229,
+        "lower_below_0_3_fraction": 0.003937532002048131,
+        "all_joint_missing_fraction": 0.037518297641637305,
+        "projected_bone_length_cv": 0.10620623750709994,
+        "relative_lower_acceleration_p90": 0.13856338497625229,
+        "ankle_horizontal_excursion": 1.0543730368155275,
+        "knee_angle_range_deg": 38.180793761511126,
+        "trunk_angle_range_deg": 13.584909782800569,
+        "shoulder_width_over_torso": 0.415910688468402,
+        "pelvis_horizontal_displacement": -0.03548046054805033,
+        "lower_missing_fraction": 0.0
+      },
+      "middle": {
+        "lower_confidence_mean": 0.7237964278175717,
+        "lower_below_0_3_fraction": 0.0025627240143369172,
+        "all_joint_missing_fraction": 0.027755489292491192,
+        "projected_bone_length_cv": 0.08678432897365719,
+        "relative_lower_acceleration_p90": 0.12346644365730298,
+        "ankle_horizontal_excursion": 0.9673626373844529,
+        "knee_angle_range_deg": 37.66069726808995,
+        "trunk_angle_range_deg": 15.197148581310994,
+        "shoulder_width_over_torso": 0.46002654797027764,
+        "pelvis_horizontal_displacement": -0.06807111270638383,
+        "lower_missing_fraction": 0.0
+      },
+      "last": {
+        "lower_confidence_mean": 0.7226974687689827,
+        "lower_below_0_3_fraction": 0.0027278545826932925,
+        "all_joint_missing_fraction": 0.021928255173036953,
+        "projected_bone_length_cv": 0.09793127180059165,
+        "relative_lower_acceleration_p90": 0.12836296241977757,
+        "ankle_horizontal_excursion": 1.0276779409237202,
+        "knee_angle_range_deg": 38.571245010007175,
+        "trunk_angle_range_deg": 14.46534612160321,
+        "shoulder_width_over_torso": 0.44572487554067347,
+        "pelvis_horizontal_displacement": -0.029428559800945307,
+        "lower_missing_fraction": 0.0
+      }
+    },
+    "validation": {
+      "front": {
+        "lower_confidence_mean": 0.7018969703365017,
+        "lower_below_0_3_fraction": 0.005903080499854693,
+        "all_joint_missing_fraction": 0.03602107800400021,
+        "projected_bone_length_cv": 0.10841301677692396,
+        "relative_lower_acceleration_p90": 0.13733981467265438,
+        "ankle_horizontal_excursion": 1.0223062492842792,
+        "knee_angle_range_deg": 37.683370483002385,
+        "trunk_angle_range_deg": 12.102435206194633,
+        "shoulder_width_over_torso": 0.4375454586014291,
+        "pelvis_horizontal_displacement": -0.11540906319280712,
+        "lower_missing_fraction": 0.0
+      },
+      "middle": {
+        "lower_confidence_mean": 0.7207129267421929,
+        "lower_below_0_3_fraction": 0.003868788142981691,
+        "all_joint_missing_fraction": 0.02857838863531463,
+        "projected_bone_length_cv": 0.08462341762517886,
+        "relative_lower_acceleration_p90": 0.11312665579019411,
+        "ankle_horizontal_excursion": 0.9037047973745616,
+        "knee_angle_range_deg": 37.676675034656306,
+        "trunk_angle_range_deg": 13.828232610962816,
+        "shoulder_width_over_torso": 0.46913049147720254,
+        "pelvis_horizontal_displacement": -0.0738027574216609,
+        "lower_missing_fraction": 0.0
+      },
+      "last": {
+        "lower_confidence_mean": 0.7207670195682628,
+        "lower_below_0_3_fraction": 0.0024702121476315024,
+        "all_joint_missing_fraction": 0.02683470947228063,
+        "projected_bone_length_cv": 0.09671277733317356,
+        "relative_lower_acceleration_p90": 0.1215284191973388,
+        "ankle_horizontal_excursion": 0.9219080848454593,
+        "knee_angle_range_deg": 37.11029239636902,
+        "trunk_angle_range_deg": 14.684966844960792,
+        "shoulder_width_over_torso": 0.4570424804652966,
+        "pelvis_horizontal_displacement": 0.11720945982798879,
+        "lower_missing_fraction": 0.0
+      }
+    }
+  },
+  "associations": {
+    "middle": {
+      "people": 37,
+      "metrics": {
+        "lower_confidence_mean": {
+          "mean_change": 0.018815956405691198,
+          "signed_spearman": -0.1986723565670934,
+          "absolute_spearman": -0.103366524419156
+        },
+        "lower_below_0_3_fraction": {
+          "mean_change": -0.002034292356873002,
+          "signed_spearman": 0.15833805883355387,
+          "absolute_spearman": 0.2374507133788192
+        },
+        "all_joint_missing_fraction": {
+          "mean_change": -0.007442689368685574,
+          "signed_spearman": 0.25595732248634695,
+          "absolute_spearman": -0.03047009355197394
+        },
+        "projected_bone_length_cv": {
+          "mean_change": -0.02378959915174512,
+          "signed_spearman": 0.2294926505452821,
+          "absolute_spearman": 0.14224751066856328
+        },
+        "relative_lower_acceleration_p90": {
+          "mean_change": -0.02421315888246026,
+          "signed_spearman": 0.10526315789473684,
+          "absolute_spearman": 0.0033191085822664762
+        },
+        "ankle_horizontal_excursion": {
+          "mean_change": -0.11860145190971737,
+          "signed_spearman": -0.019677572309151254,
+          "absolute_spearman": -0.1522048364153627
+        },
+        "knee_angle_range_deg": {
+          "mean_change": -0.0066954483460761665,
+          "signed_spearman": 0.20578473210052156,
+          "absolute_spearman": 0.0045045045045045045
+        },
+        "trunk_angle_range_deg": {
+          "mean_change": 1.725797404768182,
+          "signed_spearman": 0.1301564722617354,
+          "absolute_spearman": -0.14035087719298245
+        },
+        "shoulder_width_over_torso": {
+          "mean_change": 0.031585032875773515,
+          "signed_spearman": 0.000948316737790422,
+          "absolute_spearman": 0.03366524419155997
+        },
+        "pelvis_horizontal_displacement": {
+          "mean_change": 0.04160630577114623,
+          "signed_spearman": -0.389995258416311,
+          "absolute_spearman": -0.039829302987197716
+        },
+        "lower_missing_fraction": {
+          "mean_change": 0.0,
+          "signed_spearman": null,
+          "absolute_spearman": null
+        }
+      }
+    },
+    "last": {
+      "people": 37,
+      "metrics": {
+        "lower_confidence_mean": {
+          "mean_change": 0.01887004923176121,
+          "signed_spearman": -0.13252726410621146,
+          "absolute_spearman": 0.011853959222380275
+        },
+        "lower_below_0_3_fraction": {
+          "mean_change": -0.003432868352223191,
+          "signed_spearman": -0.1464926575432261,
+          "absolute_spearman": 0.00124464137460663
+        },
+        "all_joint_missing_fraction": {
+          "mean_change": -0.009186368531719577,
+          "signed_spearman": 0.5219607619861993,
+          "absolute_spearman": 0.17415530649951072
+        },
+        "projected_bone_length_cv": {
+          "mean_change": -0.011700239443750425,
+          "signed_spearman": 0.07871028923660502,
+          "absolute_spearman": 0.006164058795637743
+        },
+        "relative_lower_acceleration_p90": {
+          "mean_change": -0.015811395475315588,
+          "signed_spearman": 0.028449502133712654,
+          "absolute_spearman": -0.1519677572309151
+        },
+        "ankle_horizontal_excursion": {
+          "mean_change": -0.10039816443881946,
+          "signed_spearman": 0.23921289710763388,
+          "absolute_spearman": 0.1986723565670934
+        },
+        "knee_angle_range_deg": {
+          "mean_change": -0.5730780866333739,
+          "signed_spearman": 0.37695590327169276,
+          "absolute_spearman": 0.0694642010431484
+        },
+        "trunk_angle_range_deg": {
+          "mean_change": 2.5825316387661585,
+          "signed_spearman": 0.24703651019440492,
+          "absolute_spearman": 0.12612612612612611
+        },
+        "shoulder_width_over_torso": {
+          "mean_change": 0.019497021863867398,
+          "signed_spearman": -0.07207207207207207,
+          "absolute_spearman": 0.17828354670459934
+        },
+        "pelvis_horizontal_displacement": {
+          "mean_change": 0.23261852302079597,
+          "signed_spearman": -0.18871503082029395,
+          "absolute_spearman": 0.20151730678046467
+        },
+        "lower_missing_fraction": {
+          "mean_change": 0.0,
+          "signed_spearman": null,
+          "absolute_spearman": null
+        }
+      }
+    }
+  },
+  "cross_head_person_mae": {
+    "front": {
+      "front": 7.288263376420898,
+      "middle": 7.747624849458927,
+      "last": 8.682646906412192
+    },
+    "middle": {
+      "front": 7.601726464868389,
+      "middle": 7.965310134097651,
+      "last": 8.693432480828173
+    },
+    "last": {
+      "front": 8.351697694085615,
+      "middle": 8.312854809854723,
+      "last": 8.772325695925439
+    }
+  },
+  "minimum_valid_shoulder_torso_frames": 101,
+  "sources_unchanged": true,
+  "new_training": 0,
+  "heldout38_or223_used": false,
+  "causal_effect_identified": false,
+  "limitations": [
+    "confidence not ground-truth coordinate error",
+    "2D changes confounded by view, camera motion and true movement",
+    "preselected fully detected lower-limb cohort",
+    "exploratory multiple associations on reused validation37",
+    "no new ordinal target or clinical threshold"
+  ]
+}

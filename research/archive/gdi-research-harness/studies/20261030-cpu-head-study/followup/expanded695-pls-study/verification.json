@@ -1,0 +1,40 @@
+{
+  "verified": true,
+  "independent_inner_refits": 160,
+  "independent_outer_refits": 15,
+  "max_inner_prediction_difference": 6.608047442568932e-13,
+  "max_outer_prediction_difference": 7.105427357601002e-13,
+  "max_PLS_latent_identity_difference": 5.115907697472721e-13,
+  "weighted_metric_rows_checked": 48,
+  "candidate_score_rows_checked": 40,
+  "paired_bootstrap_comparisons_checked": 4,
+  "protected_cohort_ID_overlap": 0,
+  "protected_numeric_data_read": false,
+  "preserved_previous_artifacts": 100,
+  "original_folds_preserved": true,
+  "inner_outer_person_overlap": 0,
+  "selected_dimensions": [
+    {
+      "pca_ridge": 64,
+      "pls": 16
+    },
+    {
+      "pca_ridge": 64,
+      "pls": 16
+    },
+    {
+      "pca_ridge": 64,
+      "pls": 16
+    },
+    {
+      "pca_ridge": 64,
+      "pls": 16
+    },
+    {
+      "pca_ridge": 64,
+      "pls": 16
+    }
+  ],
+  "source_hashes_rechecked": 20,
+  "GPU_used": false
+}

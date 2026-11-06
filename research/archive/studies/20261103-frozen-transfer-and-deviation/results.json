@@ -1,0 +1,894 @@
+{
+  "protocol_sha256": "d2302a7a64fb51cf03ec438b31d913889a298578d0f6e9d9563720c855a5da62",
+  "frozen_prediction_sha256": "0ea6bcf5f5d401ce4ac767f4c11a29bc6f340a3af29693ad77edcafe45c18e99",
+  "new_prediction_sha256": "b3c07e0927b4796bd0f032ac947dcce560866f192297a81543a08b5de735f808",
+  "frozen_people": 58,
+  "new_model_people": 134,
+  "older_frozen_distributions": {
+    "healthy": {
+      "n": 11,
+      "mean": 82.70365955595156,
+      "median": 81.11867815112444,
+      "min_max": [
+        75.93243604846874,
+        90.71460189824775
+      ]
+    },
+    "stroke": {
+      "n": 25,
+      "mean": 71.89187734646809,
+      "median": 71.89754450500271,
+      "min_max": [
+        62.764025196077135,
+        83.04589807292795
+      ]
+    }
+  },
+  "clinical_comparison": {
+    "people": [
+      "TVC10",
+      "TVC12",
+      "TVC13",
+      "TVC14",
+      "TVC17",
+      "TVC24",
+      "TVC25",
+      "TVC26",
+      "TVC27",
+      "TVC29",
+      "TVC30",
+      "TVC34",
+      "TVC35",
+      "TVC37",
+      "TVC38",
+      "TVC39",
+      "TVC4",
+      "TVC42",
+      "TVC47",
+      "TVC48",
+      "TVC49",
+      "TVC53",
+      "TVC54",
+      "TVC8",
+      "TVC9"
+    ],
+    "n": 25,
+    "speed_vs_POMA": 0.5636458530941804,
+    "models": {
+      "fusion": {
+        "higher_is_better": true,
+        "POMA_spearman": 0.426312786623052,
+        "speed_spearman": 0.7138461538461538,
+        "POMA_partial_spearman_speed": 0.041413926492058495,
+        "POMA_spearman_bootstrap": {
+          "ci95": [
+            0.014589857365669227,
+            0.7375220731497065
+          ],
+          "valid": 2000
+        },
+        "POMA_partial_bootstrap": {
+          "ci95": [
+            -0.4722492512899191,
+            0.5427012948748703
+          ],
+          "valid": 2000
+        },
+        "FAC_spearman": 0.30195854664713434,
+        "TIS_spearman": 0.29967994269792275
+      },
+      "CNN_bag": {
+        "higher_is_better": true,
+        "POMA_spearman": 0.33656272628135686,
+        "speed_spearman": 0.6476923076923076,
+        "POMA_partial_spearman_speed": -0.045295373768841234,
+        "POMA_spearman_bootstrap": {
+          "ci95": [
+            -0.0974129655967465,
+            0.6916713322449931
+          ],
+          "valid": 2000
+        },
+        "POMA_partial_bootstrap": {
+          "ci95": [
+            -0.4261472859965429,
+            0.42207386009926345
+          ],
+          "valid": 2000
+        },
+        "FAC_spearman": 0.23429978515773497,
+        "TIS_spearman": 0.2589730940778945
+      },
+      "CNN_refit": {
+        "higher_is_better": true,
+        "POMA_spearman": 0.24565210481455357,
+        "speed_spearman": 0.6846153846153846,
+        "POMA_partial_spearman_speed": -0.23290400530657726,
+        "POMA_spearman_bootstrap": {
+          "ci95": [
+            -0.18554588681927758,
+            0.6210753029950704
+          ],
+          "valid": 2000
+        },
+        "POMA_partial_bootstrap": {
+          "ci95": [
+            -0.5486320971224858,
+            0.19258687809983935
+          ],
+          "valid": 2000
+        },
+        "FAC_spearman": 0.13406458295121734,
+        "TIS_spearman": 0.17058107993154728
+      },
+      "new_age65plus": {
+        "higher_is_better": true,
+        "POMA_spearman": 0.49942813750486403,
+        "speed_spearman": 0.7961538461538461,
+        "POMA_partial_spearman_speed": 0.10139558169067979,
+        "POMA_spearman_bootstrap": {
+          "ci95": [
+            0.17180585889402822,
+            0.7111390471025482
+          ],
+          "valid": 2000
+        },
+        "POMA_partial_bootstrap": {
+          "ci95": [
+            -0.25073118677068745,
+            0.4390383473262596
+          ],
+          "valid": 2000
+        },
+        "FAC_spearman": 0.2869232663161567,
+        "TIS_spearman": 0.22253077245615482
+      },
+      "new_allhealthy": {
+        "higher_is_better": true,
+        "POMA_spearman": 0.4437212034996739,
+        "speed_spearman": 0.8076923076923078,
+        "POMA_partial_spearman_speed": -0.023676951426441228,
+        "POMA_spearman_bootstrap": {
+          "ci95": [
+            0.08496931792922165,
+            0.6836957683581864
+          ],
+          "valid": 2000
+        },
+        "POMA_partial_bootstrap": {
+          "ci95": [
+            -0.36026225604921486,
+            0.32040793743556667
+          ],
+          "valid": 2000
+        },
+        "FAC_spearman": 0.24808212546113112,
+        "TIS_spearman": 0.19539287337613598
+      },
+      "direct3D_fold_reference": {
+        "higher_is_better": true,
+        "POMA_spearman": 0.3760218045350332,
+        "speed_spearman": 0.3984615384615384,
+        "POMA_partial_spearman_speed": 0.19987936349837906,
+        "POMA_spearman_bootstrap": {
+          "ci95": [
+            -0.046625977633140185,
+            0.7088220159540117
+          ],
+          "valid": 2000
+        },
+        "POMA_partial_bootstrap": {
+          "ci95": [
+            -0.2807930189004762,
+            0.6026177436820251
+          ],
+          "valid": 2000
+        },
+        "FAC_spearman": 0.1816763039993132,
+        "TIS_spearman": 0.058540325158326446
+      }
+    },
+    "new_minus_fusion_partial_rho": {
+      "value": 0.059981655198621295,
+      "bootstrap": {
+        "ci95": [
+          -0.4288916028780474,
+          0.5259122084492035
+        ],
+        "valid": 2000
+      }
+    }
+  },
+  "sensitivity": [
+    {
+      "camera": "side_fixed",
+      "toe_offset_mm": 0,
+      "people": 1,
+      "records": 3,
+      "signed_difference": {
+        "n": 1,
+        "mean": -0.07393719804188743,
+        "median": -0.07393719804188743,
+        "min_max": [
+          -0.07393719804188743,
+          -0.07393719804188743
+        ]
+      },
+      "absolute_difference": {
+        "n": 1,
+        "mean": 0.07393719804188743,
+        "median": 0.07393719804188743,
+        "min_max": [
+          0.07393719804188743,
+          0.07393719804188743
+        ]
+      },
+      "matches": [
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA1.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279
+          ],
+          "difference": -0.03627829394139041
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA3.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ],
+          "difference": -0.14419508377278972
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA5.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155
+          ],
+          "difference": -0.041338216411482165
+        }
+      ]
+    },
+    {
+      "camera": "side_fixed",
+      "toe_offset_mm": 30,
+      "people": 1,
+      "records": 3,
+      "signed_difference": {
+        "n": 1,
+        "mean": 0.14813051113824946,
+        "median": 0.14813051113824946,
+        "min_max": [
+          0.14813051113824946,
+          0.14813051113824946
+        ]
+      },
+      "absolute_difference": {
+        "n": 1,
+        "mean": 0.14813051113824946,
+        "median": 0.14813051113824946,
+        "min_max": [
+          0.14813051113824946,
+          0.14813051113824946
+        ]
+      },
+      "matches": [
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA1.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279
+          ],
+          "difference": 0.17995798803272364
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA3.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ],
+          "difference": 0.055736589322359774
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA5.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155
+          ],
+          "difference": 0.20869695605966498
+        }
+      ]
+    },
+    {
+      "camera": "side_fixed",
+      "toe_offset_mm": 60,
+      "people": 1,
+      "records": 3,
+      "signed_difference": {
+        "n": 1,
+        "mean": -0.042026604608778,
+        "median": -0.042026604608778,
+        "min_max": [
+          -0.042026604608778,
+          -0.042026604608778
+        ]
+      },
+      "absolute_difference": {
+        "n": 1,
+        "mean": 0.042026604608778,
+        "median": 0.042026604608778,
+        "min_max": [
+          0.042026604608778,
+          0.042026604608778
+        ]
+      },
+      "matches": [
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA1.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279
+          ],
+          "difference": -0.021504002603193583
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA3.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ],
+          "difference": -0.14346660326052457
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA5.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155
+          ],
+          "difference": 0.03889079203738414
+        }
+      ]
+    },
+    {
+      "camera": "side_pan",
+      "toe_offset_mm": 30,
+      "people": 4,
+      "records": 8,
+      "signed_difference": {
+        "n": 4,
+        "mean": 1.7012136682741084,
+        "median": 1.1702589544490642,
+        "min_max": [
+          0.21009203354903586,
+          4.254244730649269
+        ]
+      },
+      "absolute_difference": {
+        "n": 4,
+        "mean": 1.7012136682741084,
+        "median": 1.1702589544490642,
+        "min_max": [
+          0.21009203354903586,
+          4.254244730649269
+        ]
+      },
+      "matches": [
+        {
+          "person": "SUBJ2",
+          "member": "138_HealthyPiG_10.05/SUBJ02/SUBJ2 (2).c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": 1.7070399137128334
+        },
+        {
+          "person": "SUBJ2",
+          "member": "138_HealthyPiG_10.05/SUBJ02/SUBJ2 (3).c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": 1.637627178928895
+        },
+        {
+          "person": "TVC4",
+          "member": "50_StrokePiG/TVC04/BWA_6.c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": 4.287800734624767
+        },
+        {
+          "person": "TVC4",
+          "member": "50_StrokePiG/TVC04/BWA_7.c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": 4.220688726673771
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA1.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279
+          ],
+          "difference": 0.2053402952824463
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA3.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ],
+          "difference": 0.17814844864184046
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA5.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155
+          ],
+          "difference": 0.2467873567228208
+        },
+        {
+          "person": "TVC9",
+          "member": "50_StrokePiG/TVC09/BWA3.c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": 0.6681843625772643
+        }
+      ]
+    },
+    {
+      "camera": "side_pan",
+      "toe_offset_mm": 60,
+      "people": 4,
+      "records": 8,
+      "signed_difference": {
+        "n": 4,
+        "mean": 0.8216121798247904,
+        "median": 0.04749999795468914,
+        "min_max": [
+          -1.4354004309319208,
+          4.626849154321704
+        ]
+      },
+      "absolute_difference": {
+        "n": 4,
+        "mean": 1.5409000238995916,
+        "median": 0.7667878420294905,
+        "min_max": [
+          0.0031752572176818226,
+          4.626849154321704
+        ]
+      },
+      "matches": [
+        {
+          "person": "SUBJ2",
+          "member": "138_HealthyPiG_10.05/SUBJ02/SUBJ2 (2).c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": 0.2604367174897959
+        },
+        {
+          "person": "SUBJ2",
+          "member": "138_HealthyPiG_10.05/SUBJ02/SUBJ2 (3).c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": -0.0640862112356757
+        },
+        {
+          "person": "TVC4",
+          "member": "50_StrokePiG/TVC04/BWA_6.c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": 5.009936818059586
+        },
+        {
+          "person": "TVC4",
+          "member": "50_StrokePiG/TVC04/BWA_7.c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": 4.243761490583822
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA1.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279
+          ],
+          "difference": 0.0006820739311450552
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA3.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ],
+          "difference": -0.06131848136676865
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA5.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155
+          ],
+          "difference": 0.05111063578257813
+        },
+        {
+          "person": "TVC9",
+          "member": "50_StrokePiG/TVC09/BWA3.c3d",
+          "common_starts": [
+            0
+          ],
+          "difference": -1.4354004309319208
+        }
+      ]
+    },
+    {
+      "camera": "oblique_fixed",
+      "toe_offset_mm": 0,
+      "people": 1,
+      "records": 3,
+      "signed_difference": {
+        "n": 1,
+        "mean": -1.0004155371025665,
+        "median": -1.0004155371025665,
+        "min_max": [
+          -1.0004155371025665,
+          -1.0004155371025665
+        ]
+      },
+      "absolute_difference": {
+        "n": 1,
+        "mean": 1.0004155371025665,
+        "median": 1.0004155371025665,
+        "min_max": [
+          1.0004155371025665,
+          1.0004155371025665
+        ]
+      },
+      "matches": [
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA1.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279
+          ],
+          "difference": -0.8828307386986836
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA3.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ],
+          "difference": -1.072242172949458
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA5.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155
+          ],
+          "difference": -1.0461736996595583
+        }
+      ]
+    },
+    {
+      "camera": "oblique_fixed",
+      "toe_offset_mm": 30,
+      "people": 1,
+      "records": 3,
+      "signed_difference": {
+        "n": 1,
+        "mean": -0.7898904105684582,
+        "median": -0.7898904105684582,
+        "min_max": [
+          -0.7898904105684582,
+          -0.7898904105684582
+        ]
+      },
+      "absolute_difference": {
+        "n": 1,
+        "mean": 0.7898904105684582,
+        "median": 0.7898904105684582,
+        "min_max": [
+          0.7898904105684582,
+          0.7898904105684582
+        ]
+      },
+      "matches": [
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA1.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279
+          ],
+          "difference": -0.6707603414028398
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA3.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ],
+          "difference": -0.8176806895994745
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA5.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155
+          ],
+          "difference": -0.8812302007030605
+        }
+      ]
+    },
+    {
+      "camera": "oblique_fixed",
+      "toe_offset_mm": 60,
+      "people": 1,
+      "records": 3,
+      "signed_difference": {
+        "n": 1,
+        "mean": -0.9188762533380213,
+        "median": -0.9188762533380213,
+        "min_max": [
+          -0.9188762533380213,
+          -0.9188762533380213
+        ]
+      },
+      "absolute_difference": {
+        "n": 1,
+        "mean": 0.9188762533380213,
+        "median": 0.9188762533380213,
+        "min_max": [
+          0.9188762533380213,
+          0.9188762533380213
+        ]
+      },
+      "matches": [
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA1.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279
+          ],
+          "difference": -0.7810674620456581
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA3.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ],
+          "difference": -1.014890882043249
+        },
+        {
+          "person": "TVC8",
+          "member": "50_StrokePiG/TVC08/BWA5.c3d",
+          "common_starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155
+          ],
+          "difference": -0.9606704159251566
+        }
+      ]
+    }
+  ],
+  "original_GDI_accuracy_evaluated": false,
+  "synthetic_only": true
+}

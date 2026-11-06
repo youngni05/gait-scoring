@@ -1,0 +1,137 @@
+{
+  "status": "passed",
+  "provider_labels_checked": 668,
+  "conditions_checked": 18,
+  "paired_intervals_checked": 9,
+  "saved_models_replayed": 90,
+  "raw_feature_replays": 596,
+  "outside_window_checks": 21,
+  "final_audit_sha256": "4e9e52459450688f3429c080eb1371a7cb39b353da622bbd76805999c88fae19",
+  "comparison_sha256": "405556ec2e31b9fa6acc1a636fbb1615a7ffd89f8439b4d2fd39a8fcffd84f18",
+  "intervals": [
+    {
+      "target": "tug",
+      "kind": "LGBM",
+      "ci95": [
+        -0.26281835493505123,
+        -0.09900191474485637
+      ]
+    },
+    {
+      "target": "tug",
+      "kind": "TabICLv2",
+      "ci95": [
+        -0.32420438235215465,
+        -0.15396711793572013
+      ]
+    },
+    {
+      "target": "tug",
+      "kind": "TabPFNv2",
+      "ci95": [
+        -0.3169597109848029,
+        -0.1538105386648931
+      ]
+    },
+    {
+      "target": "frailty",
+      "kind": "LGBM",
+      "ci95": [
+        -0.010490174144045095,
+        0.026623864932938033
+      ]
+    },
+    {
+      "target": "frailty",
+      "kind": "TabICLv2",
+      "ci95": [
+        -0.019946328077752568,
+        0.017156852315407315
+      ]
+    },
+    {
+      "target": "frailty",
+      "kind": "TabPFNv2",
+      "ci95": [
+        -0.028047674431475413,
+        0.003576980029059422
+      ]
+    },
+    {
+      "target": "non_slowness",
+      "kind": "LGBM",
+      "ci95": [
+        -0.013401969508628046,
+        0.02004025001591177
+      ]
+    },
+    {
+      "target": "non_slowness",
+      "kind": "TabICLv2",
+      "ci95": [
+        -0.011467028838913824,
+        0.00789797694974784
+      ]
+    },
+    {
+      "target": "non_slowness",
+      "kind": "TabPFNv2",
+      "ci95": [
+        -0.008410968447436397,
+        0.0019556214691196917
+      ]
+    }
+  ],
+  "probability_checks": [
+    {
+      "kind": "LGBM",
+      "condition": "speed",
+      "max_row_sum_deviation": 2.220446049250313e-16,
+      "normalizing_logloss_difference": 0.0,
+      "warnings": []
+    },
+    {
+      "kind": "LGBM",
+      "condition": "features",
+      "max_row_sum_deviation": 2.220446049250313e-16,
+      "normalizing_logloss_difference": 0.0,
+      "warnings": []
+    },
+    {
+      "kind": "TabICLv2",
+      "condition": "speed",
+      "max_row_sum_deviation": 1.0849907994270325e-07,
+      "normalizing_logloss_difference": 1.3744429705475625e-08,
+      "warnings": [
+        "The y_prob values do not sum to one. Make sure to pass probabilities."
+      ]
+    },
+    {
+      "kind": "TabICLv2",
+      "condition": "features",
+      "max_row_sum_deviation": 1.0570511221885681e-07,
+      "normalizing_logloss_difference": 1.1908935060311876e-08,
+      "warnings": [
+        "The y_prob values do not sum to one. Make sure to pass probabilities."
+      ]
+    },
+    {
+      "kind": "TabPFNv2",
+      "condition": "speed",
+      "max_row_sum_deviation": 9.080395102500916e-08,
+      "normalizing_logloss_difference": 1.2621002354329391e-08,
+      "warnings": [
+        "The y_prob values do not sum to one. Make sure to pass probabilities."
+      ]
+    },
+    {
+      "kind": "TabPFNv2",
+      "condition": "features",
+      "max_row_sum_deviation": 8.940696716308594e-08,
+      "normalizing_logloss_difference": 1.0722905230409197e-08,
+      "warnings": [
+        "The y_prob values do not sum to one. Make sure to pass probabilities."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "code_sha256": "2b19b5ba16f246973ba4051dde7ac51171a6fc25b6fbf48a9c34a2cd8a16c819",
+  "sources": {
+    "D:\\gait-research-data\\MoVi\\experiments\\walking-expansion\\results.json": "bb3423cd6dde53d0381d6100ff0981a362ac4b8a60af49bc8a3c7e9a4dd3440d",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\availability.json": "d83c387a5ef12c0ce452745c8fb040382380be76f897c08927ec189e1945179e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\availability.json": "249caf9f7353c8bac1fdd7cd49a38ec1bdcdc7c090837c0daa66768ab6179a5d"
+  },
+  "hypothesis": "After limited synthetic robustness gains, test if cadence-period information can actually be extracted consistently across fixed-camera views, and if4sec helps relative to2sec on samepeople.",
+  "inputs": "Existing RGB MediaPipeHeavy image and localworld landmarks;no height/floor scale/intrinsics needed for period. Localworld is RGBprediction,not reference3D. ProjectedReference2D is evaluator geometry control,not deployable input.",
+  "reference": "Provider3Dleft-minus-right ankle period on the4sec window,computed by samefixed spectral algorithm. Derivedreference proxy only,no expert annotated footstrikes or validated cadence truth. Frequencyambiguity/turns may affect it. NoSPPB/TUGlabels,normal scores or clinical claims.",
+  "algorithm": "For ankle difference subtract lineartrend,leading principal component,evaluate sine/cosine with constant+linear nuisance at281frequencies.4..1.8Hzstep.005. Pickminimum residual rounded12digits/tie lowerfreq;strideperiodfrequency*120 yields steps/min assumption. No model fit/calibration/hyperparameter search. Quality: harmonicR2>=.5,>=1.5estimatedcycles,and>.02Hz from bounds. Raw/qualitycoverage bothreported;unreliable is not low score.",
+  "people": "27samepeople2/4sec nestedwindows,bothPG1/PG2,providerwalking maycontainturns;differentfromold14straightpeople. Allpeopleusedforsignalmeasurement,no training/new5seeds. ExistingMobilise-Dpeople/bouts/5seedsunchanged.",
+  "evaluation": "Same4secReference3Dproxy for2/4sec comparisons. Referencequality andcandidatecoverage separate. Report raw/accepted meanabsolute discrepancy andbias toproxy,pairedviewdifference,andmatched2/4length oncommonreferenceacceptedpeople. Not groundtruth cadence MAE.",
+  "success": "Exploratory4secRGB3Dtarget:bothviews quality>=80% ofselectedpeople,proxy discrepancy<=5steps/min ineachview,andpairedacceptedviewdifference<=5steps/min. Report components/counts,do not relaxthresholds. No clinical standard.",
+  "expected": {
+    "main_people": 27,
+    "main_tasks": 54,
+    "estimates": 432,
+    "pilot_people": 2,
+    "pilot_tasks": 4,
+    "pilot_estimates": 32,
+    "metric_rows": 12,
+    "paired_rows": 6,
+    "frame_assignments": 9720,
+    "unique_video_frames": 6480,
+    "model_fits": 0
+  },
+  "verification": "Source/codeSHA and exactframe/person/viewlink,reference equality,independentSVDprincipalcomponent+harmony scan,frequencygrid exact/R2tol1e-9,summary/personcounts independent. Pilotfirst2peoplethenmain. FrozeninputarraysD,smallcode/reportsC.",
+  "limits": "Samealgorithmreferencecanoverstateagreement;no event-labelvalidation,no newclinic/phone/generalpathologytest.2/4secperiodnot30–60secmeancadence definition. Onegeometryselectedwindowperperson,qualityselectionmayfavorbetterdetectedpeople.",
+  "resources": "CPU1,no newimageinference/GPU/download,estimate2-5min,arrays<10MBD;smalltablesC.",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence",
+    "large": "D:\\gait-research-data\\D_P\\camera-cadence-20261101"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "source_copy_and_original_hashes_verified": 150,
+  "research_source_hashes_verified": 6,
+  "app_tests_passed": 57,
+  "measurement_tests_initial_passed": 22,
+  "measurement_collection_failure_preserved": true,
+  "dependency_retry_passed": 1,
+  "total_passed_after_dependency_fix": 80,
+  "live_camera_test": false,
+  "server_test": false,
+  "new_training": false,
+  "protected_evaluation_used": false,
+  "new_video_accuracy_test": false,
+  "status_snapshots_equal": true
+}

@@ -1,0 +1,63 @@
+{
+  "source": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-opencap415-tug-timeseries\\all3s",
+  "people": 298,
+  "seconds": 3,
+  "target": "same-visit measured tft_tug seconds",
+  "primary_model": "RF",
+  "views": {
+    "mean_speed": "mean horizontal pelvis speed, one scalar",
+    "speed_summary": "horizontal pelvis speed mean/std/mean absolute adjacent change, 3 scalars",
+    "pelvis_motion": "same summaries of horizontal speed and vertical velocity, 6 scalars",
+    "full": "same summaries of all 19 original channels, 57 scalars"
+  },
+  "outer_splits": "original frozen split plus 4 new shuffled person KFold(5) splits",
+  "split_seeds": [
+    20261030,
+    20261031,
+    20261032,
+    20261033,
+    20261034
+  ],
+  "model_seeds": [
+    20261030,
+    20261031,
+    20261032
+  ],
+  "crossed_design": "5 outer partitions x 3 training seeds; no best-seed selection",
+  "inner": "3 person folds; same inner folds across views/models/seeds within each outer split",
+  "RF": {
+    "trees": 128,
+    "leaf_grid": [
+      2,
+      5
+    ],
+    "max_features": 1.0
+  },
+  "Ridge": {
+    "alpha_grid": [
+      1.0,
+      100.0
+    ],
+    "deterministic": true
+  },
+  "CNN": "original full 19-channel CNN only, 5x3 repetitions, unchanged architecture/optimizer/early stopping; TCN not repeated",
+  "baseline": "training-only mean and lower median, preserves original convention",
+  "normalization": "training people only, nested tuning inside outer training people",
+  "error_analysis": {
+    "primary": "RF full input mean absolute OOF error per person across all 15 runs",
+    "high_error": "top 20% = ceil(298*.2)=60 people, deterministic sample-index tiebreak",
+    "TUG_bins_seconds": [
+      0,
+      10,
+      20,
+      null
+    ],
+    "metadata": "same-visit age/sex/diag/ambulation/height/weight, used only after prediction",
+    "quality": "finite inputs, source time intervals, speed variability, angular steps; no pose-confidence or manual quality ground truth"
+  },
+  "uncertainty": "paired person bootstrap of across-run mean errors, conditional on fitted models; repeated folds/seeds are correlated, no binomial significance test",
+  "scope": "exploratory development-data robustness; no new independent external test or clinical validation",
+  "source_input_sha256": "d30142053ecca9a9d814fcef3bf7e7f3e6834fd6f39340889ef3263fb8784b24",
+  "repeat": 0,
+  "model_seed": 20261030
+}

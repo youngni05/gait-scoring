@@ -1,0 +1,61 @@
+{
+  "people": 100,
+  "long_people": 3,
+  "excluded": "sub-283 absent from all fitting, inner selection and evaluation",
+  "target": "unchanged same-person same-visit clinical tft_tug seconds",
+  "splits": "exact previous100-person outer5partitions x5fold and inner3fold; no reassignment",
+  "model": "Ridge SVD, train-only StandardScaler, inner MAE alpha choice",
+  "alpha_grid": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "views": [
+    "ShortSpeedTurn",
+    "MatchedSpeedTurn",
+    "PlusSitTime",
+    "PlusSitMotion",
+    "PlusSitAll"
+  ],
+  "primary_comparison": "PlusSitAll minus MatchedSpeedTurn; other views explanatory",
+  "speed": "existing horizontal speed mean, standard deviation and mean absolute adjacent speed change; not only a single average speed",
+  "control": "(3+S)s straight walking speed summaries + D-second turn duration",
+  "sitting": "3s straight walking speed summaries + same D-second turn duration + S-second sitting features",
+  "observation": "both 3+D+S seconds; all original clips and sit/turn boundaries preserved; control extends only inside previous QC-passed walking window; prior preparation/rise clips unused in both arms",
+  "short_reference": "3+D seconds, informative-feature addition reference only, NOT equal-input-time comparison",
+  "sit_features": [
+    "seconds",
+    "height_change",
+    "height_range",
+    "vertical_velocity_mean",
+    "vertical_velocity_std",
+    "vertical_speed_p95",
+    "vertical_speed_change",
+    "stationary_fraction"
+  ],
+  "postprocessing": "negative predictions floored0, raw saved, no upper cap",
+  "metrics": "person-equal MAE, positive underprediction, overprediction; >=20 descriptive, not clinical; conditional paired-person bootstrap10000 seed20261031; per-person and per-partition results",
+  "limits": [
+    "development comparison after prior analyses, not independent validation",
+    "full record used to locate clips; input seconds not acquisition time",
+    "exact stopwatch cone/line trial and phase manual labels unresolved",
+    "sitting quality selection keeps previous100; not whole237 cohort"
+  ],
+  "source_hashes": {
+    "20261031-opencap-leave283\\prep\\input.npz": "a5439ddf99484bb384e6b063742ef4ef30ad2a72d60477516097ecdf2a3be74d",
+    "20261031-opencap-leave283\\prep\\manifest.json": "0e34365b3a994fb3096a99fcee70bfa95f285085612ede87280e1b3038295429",
+    "20261031-opencap-leave283\\prep\\splits.json": "5dcd3646fe33beeef6cda0ddd4940fc63015d690941a3b609265138f4fc3f924",
+    "20261031-opencap-extrapolation\\study.py": "bbeec042ba4853078fe04e515b65cf8dc57d97c5c3b9ecac5400433751b74162",
+    "20261031-opencap-turn\\prepare.py": "e1f4befd88a56042d5238897e5c1c8c4ab5eb91766bae7fc425804fe91d9d697",
+    "20261030-opencap415-tug-timeseries\\prepare.py": "1fd2ab31ece0935fcf8a97a1943a9ff9f43826599b86c34287163d3b622a0a90",
+    "20261031-opencap-chair\\segment.py": "b16522df8c4b149497fbef01508722e6f86bac08f556aa59d5099e14c1b3b0e5"
+  },
+  "input_hashes": {
+    "input.npz": "d65e221999b228b029e1485f37b92ac8c3f480240d61b75fceb19fc305efee71",
+    "manifest.json": "0e34365b3a994fb3096a99fcee70bfa95f285085612ede87280e1b3038295429",
+    "splits.json": "5dcd3646fe33beeef6cda0ddd4940fc63015d690941a3b609265138f4fc3f924",
+    "observation-audit.json": "b20130cdeca1b0ef1028838b5ba6e62ee3d58faff7aef018c931282734582e87"
+  },
+  "code_sha256": "04d3de8e7f05e6c0c413c5c04d0d4e0119711ce40ae191d30c19f7d6bb6f3e2d"
+}

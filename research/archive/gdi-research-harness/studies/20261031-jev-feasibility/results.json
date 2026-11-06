@@ -1,0 +1,1749 @@
+{
+  "TUG": {
+    "metrics": {
+      "Median": {
+        "n": 195,
+        "MAE": 2.742897435897436,
+        "RMSE": 4.303342901536563,
+        "bias": -1.2460256410256407,
+        "predicted_range": [
+          7.970000000000001,
+          8.41
+        ],
+        "underprediction": 1.9944615384615383,
+        "overprediction": 0.7484358974358977
+      },
+      "RF_numeric": {
+        "n": 195,
+        "MAE": 2.291322646850974,
+        "RMSE": 3.333473583892788,
+        "bias": 0.017460913179420546,
+        "predicted_range": [
+          6.541013277457329,
+          17.626736050650223
+        ],
+        "underprediction": 1.136930866835777,
+        "overprediction": 1.1543917800151975
+      },
+      "Ridge_numeric": {
+        "n": 195,
+        "MAE": 2.4991813092912674,
+        "RMSE": 3.4201222461777774,
+        "bias": 0.09492991917486597,
+        "predicted_range": [
+          1.3070142998376824,
+          22.61974389640112
+        ],
+        "underprediction": 1.2021256950582004,
+        "overprediction": 1.2970556142330665
+      },
+      "RF_Jev_numeric_only": {
+        "n": 195,
+        "MAE": 2.5137999981060233,
+        "RMSE": 3.5708690813054487,
+        "bias": 0.047099173416710306,
+        "predicted_range": [
+          7.0421456662210336,
+          18.238518874737398
+        ],
+        "underprediction": 1.2333504123446564,
+        "overprediction": 1.2804495857613667
+      },
+      "RF_numeric_plus_Jev_numeric": {
+        "n": 195,
+        "MAE": 2.287183274234291,
+        "RMSE": 3.2996356913664435,
+        "bias": 0.03912317388144467,
+        "predicted_range": [
+          6.454069809097152,
+          17.56203038461614
+        ],
+        "underprediction": 1.124030050176423,
+        "overprediction": 1.163153224057868
+      },
+      "Ridge_Jev_numeric_only": {
+        "n": 195,
+        "MAE": 2.609242381041153,
+        "RMSE": 3.4716178385551166,
+        "bias": -0.011583021989865326,
+        "predicted_range": [
+          3.9013772872457455,
+          17.35354519248326
+        ],
+        "underprediction": 1.3104127015155094,
+        "overprediction": 1.298829679525644
+      },
+      "Ridge_numeric_plus_Jev_numeric": {
+        "n": 195,
+        "MAE": 2.5614484697844104,
+        "RMSE": 3.4686081983058803,
+        "bias": 0.11453418673882539,
+        "predicted_range": [
+          2.5344361763683416,
+          22.55166690392405
+        ],
+        "underprediction": 1.2234571415227924,
+        "overprediction": 1.3379913282616178
+      },
+      "Jev_numeric_band_midpoint_or_train_median": {
+        "n": 195,
+        "MAE": 2.742897435897436,
+        "RMSE": 4.303342901536563,
+        "bias": -1.2460256410256407,
+        "predicted_range": [
+          7.970000000000001,
+          8.41
+        ],
+        "underprediction": 1.9944615384615383,
+        "overprediction": 0.7484358974358977
+      },
+      "RF_Jev_narrative_only": {
+        "n": 195,
+        "MAE": 2.490964427567717,
+        "RMSE": 3.5214567935281695,
+        "bias": -0.009905220983129572,
+        "predicted_range": [
+          6.766350515572414,
+          18.352817209526176
+        ],
+        "underprediction": 1.250434824275423,
+        "overprediction": 1.2405296032922937
+      },
+      "RF_numeric_plus_Jev_narrative": {
+        "n": 195,
+        "MAE": 2.2633616697357057,
+        "RMSE": 3.270518090775544,
+        "bias": 0.041883652803890996,
+        "predicted_range": [
+          6.561653742180513,
+          17.591584705537763
+        ],
+        "underprediction": 1.1107390084659077,
+        "overprediction": 1.1526226612697985
+      },
+      "Ridge_Jev_narrative_only": {
+        "n": 195,
+        "MAE": 2.3976714399267713,
+        "RMSE": 3.2866256365495183,
+        "bias": 0.03045662341714348,
+        "predicted_range": [
+          5.660785357729057,
+          21.081442828726097
+        ],
+        "underprediction": 1.1836074082548138,
+        "overprediction": 1.2140640316719573
+      },
+      "Ridge_numeric_plus_Jev_narrative": {
+        "n": 195,
+        "MAE": 2.4742439070987046,
+        "RMSE": 3.346310736536548,
+        "bias": 0.1374752280510692,
+        "predicted_range": [
+          2.3916564229645987,
+          25.323501952301864
+        ],
+        "underprediction": 1.1683843395238178,
+        "overprediction": 1.305859567574887
+      },
+      "Jev_narrative_band_midpoint_or_train_median": {
+        "n": 195,
+        "MAE": 2.742897435897436,
+        "RMSE": 4.303342901536563,
+        "bias": -1.2460256410256407,
+        "predicted_range": [
+          7.970000000000001,
+          8.41
+        ],
+        "underprediction": 1.9944615384615383,
+        "overprediction": 0.7484358974358977
+      },
+      "existing_tuned_RF_pattern": {
+        "n": 195,
+        "MAE": 2.308978236986423,
+        "RMSE": 3.3815149479883817,
+        "bias": 0.02620117659076912,
+        "predicted_range": [
+          6.559162557633194,
+          17.92033174301826
+        ],
+        "underprediction": 1.141388530197827,
+        "overprediction": 1.1675897067885963
+      }
+    },
+    "direct": {
+      "numeric": {
+        "coverage": {
+          "accepted": 0,
+          "total": 195,
+          "fraction": 0.0
+        },
+        "accepted_only": null,
+        "accepted_bin_accuracy": null,
+        "trait_unknown_rate": {
+          "asymmetry": 0.07179487179487179,
+          "irregularity": 0.07179487179487179,
+          "restriction": 0.07179487179487179,
+          "trunk_motion": 0.041025641025641026,
+          "measurement_problem": 0.0
+        }
+      },
+      "narrative": {
+        "coverage": {
+          "accepted": 0,
+          "total": 195,
+          "fraction": 0.0
+        },
+        "accepted_only": null,
+        "accepted_bin_accuracy": null,
+        "trait_unknown_rate": {
+          "asymmetry": 0.07179487179487179,
+          "irregularity": 0.07179487179487179,
+          "restriction": 0.07179487179487179,
+          "trunk_motion": 0.041025641025641026,
+          "measurement_problem": 0.0
+        }
+      }
+    },
+    "groups": {
+      "all": {
+        "Median": {
+          "n": 195,
+          "MAE": 2.742897435897436,
+          "RMSE": 4.303342901536563,
+          "bias": -1.2460256410256407,
+          "predicted_range": [
+            7.970000000000001,
+            8.41
+          ],
+          "underprediction": 1.9944615384615383,
+          "overprediction": 0.7484358974358977
+        },
+        "RF_numeric": {
+          "n": 195,
+          "MAE": 2.291322646850974,
+          "RMSE": 3.333473583892788,
+          "bias": 0.017460913179420546,
+          "predicted_range": [
+            6.541013277457329,
+            17.626736050650223
+          ],
+          "underprediction": 1.136930866835777,
+          "overprediction": 1.1543917800151975
+        },
+        "Ridge_numeric": {
+          "n": 195,
+          "MAE": 2.4991813092912674,
+          "RMSE": 3.4201222461777774,
+          "bias": 0.09492991917486597,
+          "predicted_range": [
+            1.3070142998376824,
+            22.61974389640112
+          ],
+          "underprediction": 1.2021256950582004,
+          "overprediction": 1.2970556142330665
+        },
+        "RF_Jev_numeric_only": {
+          "n": 195,
+          "MAE": 2.5137999981060233,
+          "RMSE": 3.5708690813054487,
+          "bias": 0.047099173416710306,
+          "predicted_range": [
+            7.0421456662210336,
+            18.238518874737398
+          ],
+          "underprediction": 1.2333504123446564,
+          "overprediction": 1.2804495857613667
+        },
+        "RF_numeric_plus_Jev_numeric": {
+          "n": 195,
+          "MAE": 2.287183274234291,
+          "RMSE": 3.2996356913664435,
+          "bias": 0.03912317388144467,
+          "predicted_range": [
+            6.454069809097152,
+            17.56203038461614
+          ],
+          "underprediction": 1.124030050176423,
+          "overprediction": 1.163153224057868
+        },
+        "Ridge_Jev_numeric_only": {
+          "n": 195,
+          "MAE": 2.609242381041153,
+          "RMSE": 3.4716178385551166,
+          "bias": -0.011583021989865326,
+          "predicted_range": [
+            3.9013772872457455,
+            17.35354519248326
+          ],
+          "underprediction": 1.3104127015155094,
+          "overprediction": 1.298829679525644
+        },
+        "Ridge_numeric_plus_Jev_numeric": {
+          "n": 195,
+          "MAE": 2.5614484697844104,
+          "RMSE": 3.4686081983058803,
+          "bias": 0.11453418673882539,
+          "predicted_range": [
+            2.5344361763683416,
+            22.55166690392405
+          ],
+          "underprediction": 1.2234571415227924,
+          "overprediction": 1.3379913282616178
+        },
+        "Jev_numeric_band_midpoint_or_train_median": {
+          "n": 195,
+          "MAE": 2.742897435897436,
+          "RMSE": 4.303342901536563,
+          "bias": -1.2460256410256407,
+          "predicted_range": [
+            7.970000000000001,
+            8.41
+          ],
+          "underprediction": 1.9944615384615383,
+          "overprediction": 0.7484358974358977
+        },
+        "RF_Jev_narrative_only": {
+          "n": 195,
+          "MAE": 2.490964427567717,
+          "RMSE": 3.5214567935281695,
+          "bias": -0.009905220983129572,
+          "predicted_range": [
+            6.766350515572414,
+            18.352817209526176
+          ],
+          "underprediction": 1.250434824275423,
+          "overprediction": 1.2405296032922937
+        },
+        "RF_numeric_plus_Jev_narrative": {
+          "n": 195,
+          "MAE": 2.2633616697357057,
+          "RMSE": 3.270518090775544,
+          "bias": 0.041883652803890996,
+          "predicted_range": [
+            6.561653742180513,
+            17.591584705537763
+          ],
+          "underprediction": 1.1107390084659077,
+          "overprediction": 1.1526226612697985
+        },
+        "Ridge_Jev_narrative_only": {
+          "n": 195,
+          "MAE": 2.3976714399267713,
+          "RMSE": 3.2866256365495183,
+          "bias": 0.03045662341714348,
+          "predicted_range": [
+            5.660785357729057,
+            21.081442828726097
+          ],
+          "underprediction": 1.1836074082548138,
+          "overprediction": 1.2140640316719573
+        },
+        "Ridge_numeric_plus_Jev_narrative": {
+          "n": 195,
+          "MAE": 2.4742439070987046,
+          "RMSE": 3.346310736536548,
+          "bias": 0.1374752280510692,
+          "predicted_range": [
+            2.3916564229645987,
+            25.323501952301864
+          ],
+          "underprediction": 1.1683843395238178,
+          "overprediction": 1.305859567574887
+        },
+        "Jev_narrative_band_midpoint_or_train_median": {
+          "n": 195,
+          "MAE": 2.742897435897436,
+          "RMSE": 4.303342901536563,
+          "bias": -1.2460256410256407,
+          "predicted_range": [
+            7.970000000000001,
+            8.41
+          ],
+          "underprediction": 1.9944615384615383,
+          "overprediction": 0.7484358974358977
+        },
+        "existing_tuned_RF_pattern": {
+          "n": 195,
+          "MAE": 2.308978236986423,
+          "RMSE": 3.3815149479883817,
+          "bias": 0.02620117659076912,
+          "predicted_range": [
+            6.559162557633194,
+            17.92033174301826
+          ],
+          "underprediction": 1.141388530197827,
+          "overprediction": 1.1675897067885963
+        }
+      },
+      "TUG_ge20": {
+        "Median": {
+          "n": 8,
+          "MAE": 15.256249999999998,
+          "RMSE": 15.421412062453943,
+          "bias": -15.256249999999998,
+          "predicted_range": [
+            7.970000000000001,
+            8.135000000000002
+          ],
+          "underprediction": 15.256249999999998,
+          "overprediction": 0.0
+        },
+        "RF_numeric": {
+          "n": 8,
+          "MAE": 9.984801133569189,
+          "RMSE": 10.161406878571857,
+          "bias": -9.984801133569189,
+          "predicted_range": [
+            9.264857556123413,
+            16.691130145965907
+          ],
+          "underprediction": 9.984801133569189,
+          "overprediction": 0.0
+        },
+        "Ridge_numeric": {
+          "n": 8,
+          "MAE": 8.41774605944696,
+          "RMSE": 8.602375755895016,
+          "bias": -8.41774605944696,
+          "predicted_range": [
+            9.274202392308197,
+            22.61974389640112
+          ],
+          "underprediction": 8.41774605944696,
+          "overprediction": 0.0
+        },
+        "RF_Jev_numeric_only": {
+          "n": 8,
+          "MAE": 10.660847213868108,
+          "RMSE": 10.962159903253188,
+          "bias": -10.660847213868108,
+          "predicted_range": [
+            8.373406775579918,
+            16.411063704722313
+          ],
+          "underprediction": 10.660847213868108,
+          "overprediction": 0.0
+        },
+        "RF_numeric_plus_Jev_numeric": {
+          "n": 8,
+          "MAE": 9.717777732662588,
+          "RMSE": 9.8790222453901,
+          "bias": -9.717777732662588,
+          "predicted_range": [
+            9.458777681947085,
+            16.11077844244275
+          ],
+          "underprediction": 9.717777732662588,
+          "overprediction": 0.0
+        },
+        "Ridge_Jev_numeric_only": {
+          "n": 8,
+          "MAE": 9.82408670418761,
+          "RMSE": 10.073215176507354,
+          "bias": -9.82408670418761,
+          "predicted_range": [
+            8.750384060939322,
+            17.35354519248326
+          ],
+          "underprediction": 9.82408670418761,
+          "overprediction": 0.0
+        },
+        "Ridge_numeric_plus_Jev_numeric": {
+          "n": 8,
+          "MAE": 7.688771882662766,
+          "RMSE": 7.920009236549312,
+          "bias": -7.688771882662766,
+          "predicted_range": [
+            10.081608399212044,
+            22.55166690392405
+          ],
+          "underprediction": 7.688771882662766,
+          "overprediction": 0.0
+        },
+        "Jev_numeric_band_midpoint_or_train_median": {
+          "n": 8,
+          "MAE": 15.256249999999998,
+          "RMSE": 15.421412062453943,
+          "bias": -15.256249999999998,
+          "predicted_range": [
+            7.970000000000001,
+            8.135000000000002
+          ],
+          "underprediction": 15.256249999999998,
+          "overprediction": 0.0
+        },
+        "RF_Jev_narrative_only": {
+          "n": 8,
+          "MAE": 9.802960466891573,
+          "RMSE": 10.197855695532914,
+          "bias": -9.802960466891573,
+          "predicted_range": [
+            8.048066061869497,
+            16.889359962373124
+          ],
+          "underprediction": 9.802960466891573,
+          "overprediction": 0.0
+        },
+        "RF_numeric_plus_Jev_narrative": {
+          "n": 8,
+          "MAE": 9.573799470852196,
+          "RMSE": 9.803878041577736,
+          "bias": -9.573799470852196,
+          "predicted_range": [
+            9.259427419359767,
+            17.006420409725845
+          ],
+          "underprediction": 9.573799470852196,
+          "overprediction": 0.0
+        },
+        "Ridge_Jev_narrative_only": {
+          "n": 8,
+          "MAE": 8.566731910205396,
+          "RMSE": 9.073642619736297,
+          "bias": -8.566731910205396,
+          "predicted_range": [
+            8.0680042596494,
+            21.081442828726097
+          ],
+          "underprediction": 8.566731910205396,
+          "overprediction": 0.0
+        },
+        "Ridge_numeric_plus_Jev_narrative": {
+          "n": 8,
+          "MAE": 7.083452769167539,
+          "RMSE": 7.522602264840156,
+          "bias": -7.083452769167539,
+          "predicted_range": [
+            9.376369207581712,
+            25.323501952301864
+          ],
+          "underprediction": 7.083452769167539,
+          "overprediction": 0.0
+        },
+        "Jev_narrative_band_midpoint_or_train_median": {
+          "n": 8,
+          "MAE": 15.256249999999998,
+          "RMSE": 15.421412062453943,
+          "bias": -15.256249999999998,
+          "predicted_range": [
+            7.970000000000001,
+            8.135000000000002
+          ],
+          "underprediction": 15.256249999999998,
+          "overprediction": 0.0
+        },
+        "existing_tuned_RF_pattern": {
+          "n": 8,
+          "MAE": 10.080917039702435,
+          "RMSE": 10.224157839899924,
+          "bias": -10.080917039702435,
+          "predicted_range": [
+            9.04562013268849,
+            16.403915426587307
+          ],
+          "underprediction": 10.080917039702435,
+          "overprediction": 0.0
+        }
+      },
+      "TUG_lt10": {
+        "Median": {
+          "n": 138,
+          "MAE": 1.3211594202898553,
+          "RMSE": 1.5915367197883883,
+          "bias": 0.7939855072463772,
+          "predicted_range": [
+            7.970000000000001,
+            8.41
+          ],
+          "underprediction": 0.263586956521739,
+          "overprediction": 1.0575724637681163
+        },
+        "RF_numeric": {
+          "n": 138,
+          "MAE": 1.7439265835284914,
+          "RMSE": 2.427732796038563,
+          "bias": 1.1250819715523155,
+          "predicted_range": [
+            6.541013277457329,
+            15.998850582118049
+          ],
+          "underprediction": 0.309422305988088,
+          "overprediction": 1.4345042775404033
+        },
+        "Ridge_numeric": {
+          "n": 138,
+          "MAE": 2.117888018721539,
+          "RMSE": 2.8720698051179783,
+          "bias": 1.1624592684154762,
+          "predicted_range": [
+            1.3070142998376824,
+            16.93587826433734
+          ],
+          "underprediction": 0.4777143751530314,
+          "overprediction": 1.6401736435685075
+        },
+        "RF_Jev_numeric_only": {
+          "n": 138,
+          "MAE": 1.837783567486173,
+          "RMSE": 2.3242864109636243,
+          "bias": 1.4716760784604048,
+          "predicted_range": [
+            7.0421456662210336,
+            13.204701127539993
+          ],
+          "underprediction": 0.18305374451288423,
+          "overprediction": 1.6547298229732892
+        },
+        "RF_numeric_plus_Jev_numeric": {
+          "n": 138,
+          "MAE": 1.748957170590475,
+          "RMSE": 2.432087729762689,
+          "bias": 1.1457715616763222,
+          "predicted_range": [
+            6.454069809097152,
+            15.929949490216872
+          ],
+          "underprediction": 0.3015928044570763,
+          "overprediction": 1.4473643661333986
+        },
+        "Ridge_Jev_numeric_only": {
+          "n": 138,
+          "MAE": 1.994012676606098,
+          "RMSE": 2.3967149937430134,
+          "bias": 1.4365741572077382,
+          "predicted_range": [
+            4.999998177415004,
+            12.212941811418201
+          ],
+          "underprediction": 0.27871925969917977,
+          "overprediction": 1.715293416906918
+        },
+        "Ridge_numeric_plus_Jev_numeric": {
+          "n": 138,
+          "MAE": 2.1103999251269205,
+          "RMSE": 2.9133541587497924,
+          "bias": 1.1456153508879918,
+          "predicted_range": [
+            2.5344361763683416,
+            19.44875300973885
+          ],
+          "underprediction": 0.4823922871194644,
+          "overprediction": 1.6280076380074562
+        },
+        "Jev_numeric_band_midpoint_or_train_median": {
+          "n": 138,
+          "MAE": 1.3211594202898553,
+          "RMSE": 1.5915367197883883,
+          "bias": 0.7939855072463772,
+          "predicted_range": [
+            7.970000000000001,
+            8.41
+          ],
+          "underprediction": 0.263586956521739,
+          "overprediction": 1.0575724637681163
+        },
+        "RF_Jev_narrative_only": {
+          "n": 138,
+          "MAE": 1.7919331104846958,
+          "RMSE": 2.2787383425191434,
+          "bias": 1.4327689063463271,
+          "predicted_range": [
+            7.091029294534863,
+            13.26588286620829
+          ],
+          "underprediction": 0.17958210206918432,
+          "overprediction": 1.6123510084155115
+        },
+        "RF_numeric_plus_Jev_narrative": {
+          "n": 138,
+          "MAE": 1.7232194596976445,
+          "RMSE": 2.397261865357092,
+          "bias": 1.11733938971921,
+          "predicted_range": [
+            6.561653742180513,
+            15.20605941258624
+          ],
+          "underprediction": 0.30294003498921707,
+          "overprediction": 1.4202794247084274
+        },
+        "Ridge_Jev_narrative_only": {
+          "n": 138,
+          "MAE": 1.8239918334617626,
+          "RMSE": 2.32066812942049,
+          "bias": 1.3220403708764443,
+          "predicted_range": [
+            5.660785357729057,
+            12.811140173749465
+          ],
+          "underprediction": 0.25097573129265927,
+          "overprediction": 1.5730161021691036
+        },
+        "Ridge_numeric_plus_Jev_narrative": {
+          "n": 138,
+          "MAE": 2.0462778086475084,
+          "RMSE": 2.8112303801891776,
+          "bias": 1.1319639367909922,
+          "predicted_range": [
+            2.3916564229645987,
+            18.187769911540123
+          ],
+          "underprediction": 0.45715693592825807,
+          "overprediction": 1.5891208727192505
+        },
+        "Jev_narrative_band_midpoint_or_train_median": {
+          "n": 138,
+          "MAE": 1.3211594202898553,
+          "RMSE": 1.5915367197883883,
+          "bias": 0.7939855072463772,
+          "predicted_range": [
+            7.970000000000001,
+            8.41
+          ],
+          "underprediction": 0.263586956521739,
+          "overprediction": 1.0575724637681163
+        },
+        "existing_tuned_RF_pattern": {
+          "n": 138,
+          "MAE": 1.738530410414982,
+          "RMSE": 2.4579447763859235,
+          "bias": 1.1326863406914252,
+          "predicted_range": [
+            6.559162557633194,
+            16.07883057448194
+          ],
+          "underprediction": 0.3029220348617782,
+          "overprediction": 1.4356083755532034
+        }
+      }
+    },
+    "paired": {
+      "RF_numeric_plus_Jev_numeric": {
+        "MAE_difference_new_minus_baseline": -0.00413937261668319,
+        "conditional_bootstrap95": [
+          -0.04918993499381361,
+          0.03951981575152635
+        ],
+        "people_improved_equal_worse": [
+          97,
+          0,
+          98
+        ]
+      },
+      "RF_numeric_plus_Jev_narrative": {
+        "MAE_difference_new_minus_baseline": -0.027960977115268137,
+        "conditional_bootstrap95": [
+          -0.0816227754508343,
+          0.027710698754620892
+        ],
+        "people_improved_equal_worse": [
+          111,
+          0,
+          84
+        ]
+      },
+      "Ridge_numeric_plus_Jev_numeric": {
+        "MAE_difference_new_minus_baseline": 0.062267160493143,
+        "conditional_bootstrap95": [
+          -0.043290570605683525,
+          0.168983551361809
+        ],
+        "people_improved_equal_worse": [
+          89,
+          0,
+          106
+        ]
+      },
+      "Ridge_numeric_plus_Jev_narrative": {
+        "MAE_difference_new_minus_baseline": -0.024937402192562328,
+        "conditional_bootstrap95": [
+          -0.1388595483139592,
+          0.08893365126140258
+        ],
+        "people_improved_equal_worse": [
+          99,
+          0,
+          96
+        ]
+      }
+    },
+    "fold_MAE": {
+      "Median": [
+        1.8514102564102564,
+        3.165256410256411,
+        2.887307692307693,
+        2.6882051282051287,
+        3.122307692307692
+      ],
+      "RF_numeric": [
+        2.0313775374410494,
+        2.108066721875536,
+        2.687524540000683,
+        2.1843013724787568,
+        2.445343062458847
+      ],
+      "Ridge_numeric": [
+        2.0216357855015405,
+        2.4356616431965143,
+        2.9279286993127176,
+        2.5828333958589402,
+        2.5278470225866223
+      ],
+      "RF_Jev_numeric_only": [
+        1.6239193574173107,
+        2.586492283949862,
+        3.0127046791565233,
+        2.7639191957665483,
+        2.5819644742398715
+      ],
+      "RF_numeric_plus_Jev_numeric": [
+        1.9800301247677192,
+        2.118823265178749,
+        2.725971383549729,
+        2.182784638045834,
+        2.428306959629425
+      ],
+      "Ridge_Jev_numeric_only": [
+        1.9987189178255858,
+        2.9317689939419957,
+        2.782947138974315,
+        2.6269871172872508,
+        2.70578973717662
+      ],
+      "Ridge_numeric_plus_Jev_numeric": [
+        1.9412619293570201,
+        2.6808273862371563,
+        3.157231019472737,
+        2.5271717032992536,
+        2.5007503105558824
+      ],
+      "Jev_numeric_band_midpoint_or_train_median": [
+        1.8514102564102564,
+        3.165256410256411,
+        2.887307692307693,
+        2.6882051282051287,
+        3.122307692307692
+      ],
+      "RF_Jev_narrative_only": [
+        1.9264831781086822,
+        2.531160213401504,
+        2.5846998672458534,
+        2.8696731301445775,
+        2.542805748937968
+      ],
+      "RF_numeric_plus_Jev_narrative": [
+        2.0883190496958184,
+        2.071401774760035,
+        2.5536353989858034,
+        2.2229429836727643,
+        2.3805091415641093
+      ],
+      "Ridge_Jev_narrative_only": [
+        1.7240314204635037,
+        2.7024903300882657,
+        2.451584354258004,
+        2.5059763453444543,
+        2.6042747494796292
+      ],
+      "Ridge_numeric_plus_Jev_narrative": [
+        1.8886926663238313,
+        2.527043571775942,
+        2.9102293824944265,
+        2.457963344136838,
+        2.5872905707624865
+      ],
+      "Jev_narrative_band_midpoint_or_train_median": [
+        1.8514102564102564,
+        3.165256410256411,
+        2.887307692307693,
+        2.6882051282051287,
+        3.122307692307692
+      ],
+      "existing_tuned_RF_pattern": [
+        2.092493448016237,
+        2.15112749459071,
+        2.6495385747595153,
+        2.173241595354878,
+        2.478490072210775
+      ]
+    }
+  },
+  "GDI": {
+    "metrics": {
+      "Median": {
+        "n": 695,
+        "MAE": 8.904708208633092,
+        "RMSE": 11.159351781159087,
+        "bias": -0.5747377769784168,
+        "predicted_range": [
+          73.75691,
+          74.544585
+        ],
+        "underprediction": 4.7397229928057545,
+        "overprediction": 4.164985215827338
+      },
+      "RF_numeric": {
+        "n": 695,
+        "MAE": 7.0441875661938536,
+        "RMSE": 8.942408784104376,
+        "bias": 0.3521630049275665,
+        "predicted_range": [
+          58.3907587366955,
+          90.3636230348328
+        ],
+        "underprediction": 3.346012280633143,
+        "overprediction": 3.6981752855607097
+      },
+      "Ridge_numeric": {
+        "n": 695,
+        "MAE": 7.03520823168742,
+        "RMSE": 8.868246277016734,
+        "bias": 0.07998796146590675,
+        "predicted_range": [
+          45.47104103317894,
+          93.51899698584805
+        ],
+        "underprediction": 3.477610135110757,
+        "overprediction": 3.5575980965766636
+      },
+      "RF_Jev_numeric_only": {
+        "n": 695,
+        "MAE": 8.208561171164872,
+        "RMSE": 10.282631591071057,
+        "bias": 0.1404056641158349,
+        "predicted_range": [
+          61.04508298621936,
+          88.96380657495871
+        ],
+        "underprediction": 4.034077753524518,
+        "overprediction": 4.174483417640354
+      },
+      "RF_numeric_plus_Jev_numeric": {
+        "n": 695,
+        "MAE": 7.04339177677103,
+        "RMSE": 8.913489654119358,
+        "bias": 0.3730304168941611,
+        "predicted_range": [
+          59.666033790941285,
+          90.80337526728833
+        ],
+        "underprediction": 3.3351806799384343,
+        "overprediction": 3.7082110968325956
+      },
+      "Ridge_Jev_numeric_only": {
+        "n": 695,
+        "MAE": 8.374699628778496,
+        "RMSE": 10.461357242429798,
+        "bias": 0.00508965713983934,
+        "predicted_range": [
+          56.169222931062535,
+          84.38017340033917
+        ],
+        "underprediction": 4.184804985819327,
+        "overprediction": 4.1898946429591675
+      },
+      "Ridge_numeric_plus_Jev_numeric": {
+        "n": 695,
+        "MAE": 6.878466551971017,
+        "RMSE": 8.662628408483302,
+        "bias": 0.060828093333308214,
+        "predicted_range": [
+          45.52271007401715,
+          92.79191345982782
+        ],
+        "underprediction": 3.4088192293188544,
+        "overprediction": 3.4696473226521625
+      },
+      "Jev_numeric_band_midpoint_or_train_median": {
+        "n": 695,
+        "MAE": 8.979631568345324,
+        "RMSE": 11.28959675148958,
+        "bias": -0.4865076402877693,
+        "predicted_range": [
+          73.75691,
+          105.0
+        ],
+        "underprediction": 4.7330696043165466,
+        "overprediction": 4.246561964028777
+      },
+      "RF_Jev_narrative_only": {
+        "n": 695,
+        "MAE": 8.02449905825974,
+        "RMSE": 10.077638189426457,
+        "bias": 0.2249522985493897,
+        "predicted_range": [
+          60.50403481724919,
+          91.3330867202803
+        ],
+        "underprediction": 3.8997733798551755,
+        "overprediction": 4.124725678404565
+      },
+      "RF_numeric_plus_Jev_narrative": {
+        "n": 695,
+        "MAE": 7.06620321679861,
+        "RMSE": 8.94911941967055,
+        "bias": 0.3736030171541836,
+        "predicted_range": [
+          58.211932909822416,
+          91.0460212716196
+        ],
+        "underprediction": 3.346300099822214,
+        "overprediction": 3.719903116976397
+      },
+      "Ridge_Jev_narrative_only": {
+        "n": 695,
+        "MAE": 7.991463967299132,
+        "RMSE": 10.091650789180518,
+        "bias": -0.0003707011318218526,
+        "predicted_range": [
+          53.426708744631824,
+          89.35393238532166
+        ],
+        "underprediction": 3.9959173342154775,
+        "overprediction": 3.9955466330836553
+      },
+      "Ridge_numeric_plus_Jev_narrative": {
+        "n": 695,
+        "MAE": 6.968956663147023,
+        "RMSE": 8.747303100267992,
+        "bias": 0.04724493946317725,
+        "predicted_range": [
+          45.974952685005505,
+          93.23210807698537
+        ],
+        "underprediction": 3.4608558618419227,
+        "overprediction": 3.5081008013051
+      },
+      "Jev_narrative_band_midpoint_or_train_median": {
+        "n": 695,
+        "MAE": 8.904708208633092,
+        "RMSE": 11.159351781159087,
+        "bias": -0.5747377769784168,
+        "predicted_range": [
+          73.75691,
+          74.544585
+        ],
+        "underprediction": 4.7397229928057545,
+        "overprediction": 4.164985215827338
+      },
+      "existing_PLS_person_mean": {
+        "n": 695,
+        "MAE": 6.478633079136692,
+        "RMSE": 8.231789017943091,
+        "bias": -0.02348982733812935,
+        "predicted_range": [
+          44.23414,
+          90.42006
+        ],
+        "underprediction": 3.25106145323741,
+        "overprediction": 3.22757162589928
+      }
+    },
+    "direct": {
+      "numeric": {
+        "coverage": {
+          "accepted": 2,
+          "total": 695,
+          "fraction": 0.0028776978417266188
+        },
+        "accepted_only": {
+          "n": 2,
+          "MAE": 31.859970000000004,
+          "RMSE": 32.42533623258979,
+          "bias": 31.859970000000004,
+          "predicted_range": [
+            105.0,
+            105.0
+          ],
+          "underprediction": 0.0,
+          "overprediction": 31.859970000000004
+        },
+        "accepted_bin_accuracy": 0.0,
+        "trait_unknown_rate": {
+          "asymmetry": 0.0,
+          "irregularity": 0.0,
+          "restriction": 0.0,
+          "trunk_motion": 0.0,
+          "measurement_problem": 0.0
+        }
+      },
+      "narrative": {
+        "coverage": {
+          "accepted": 0,
+          "total": 695,
+          "fraction": 0.0
+        },
+        "accepted_only": null,
+        "accepted_bin_accuracy": null,
+        "trait_unknown_rate": {
+          "asymmetry": 0.0,
+          "irregularity": 0.0014388489208633094,
+          "restriction": 0.0,
+          "trunk_motion": 0.0,
+          "measurement_problem": 0.0
+        }
+      }
+    },
+    "groups": {
+      "all": {
+        "Median": {
+          "n": 695,
+          "MAE": 8.904708208633092,
+          "RMSE": 11.159351781159087,
+          "bias": -0.5747377769784168,
+          "predicted_range": [
+            73.75691,
+            74.544585
+          ],
+          "underprediction": 4.7397229928057545,
+          "overprediction": 4.164985215827338
+        },
+        "RF_numeric": {
+          "n": 695,
+          "MAE": 7.0441875661938536,
+          "RMSE": 8.942408784104376,
+          "bias": 0.3521630049275665,
+          "predicted_range": [
+            58.3907587366955,
+            90.3636230348328
+          ],
+          "underprediction": 3.346012280633143,
+          "overprediction": 3.6981752855607097
+        },
+        "Ridge_numeric": {
+          "n": 695,
+          "MAE": 7.03520823168742,
+          "RMSE": 8.868246277016734,
+          "bias": 0.07998796146590675,
+          "predicted_range": [
+            45.47104103317894,
+            93.51899698584805
+          ],
+          "underprediction": 3.477610135110757,
+          "overprediction": 3.5575980965766636
+        },
+        "RF_Jev_numeric_only": {
+          "n": 695,
+          "MAE": 8.208561171164872,
+          "RMSE": 10.282631591071057,
+          "bias": 0.1404056641158349,
+          "predicted_range": [
+            61.04508298621936,
+            88.96380657495871
+          ],
+          "underprediction": 4.034077753524518,
+          "overprediction": 4.174483417640354
+        },
+        "RF_numeric_plus_Jev_numeric": {
+          "n": 695,
+          "MAE": 7.04339177677103,
+          "RMSE": 8.913489654119358,
+          "bias": 0.3730304168941611,
+          "predicted_range": [
+            59.666033790941285,
+            90.80337526728833
+          ],
+          "underprediction": 3.3351806799384343,
+          "overprediction": 3.7082110968325956
+        },
+        "Ridge_Jev_numeric_only": {
+          "n": 695,
+          "MAE": 8.374699628778496,
+          "RMSE": 10.461357242429798,
+          "bias": 0.00508965713983934,
+          "predicted_range": [
+            56.169222931062535,
+            84.38017340033917
+          ],
+          "underprediction": 4.184804985819327,
+          "overprediction": 4.1898946429591675
+        },
+        "Ridge_numeric_plus_Jev_numeric": {
+          "n": 695,
+          "MAE": 6.878466551971017,
+          "RMSE": 8.662628408483302,
+          "bias": 0.060828093333308214,
+          "predicted_range": [
+            45.52271007401715,
+            92.79191345982782
+          ],
+          "underprediction": 3.4088192293188544,
+          "overprediction": 3.4696473226521625
+        },
+        "Jev_numeric_band_midpoint_or_train_median": {
+          "n": 695,
+          "MAE": 8.979631568345324,
+          "RMSE": 11.28959675148958,
+          "bias": -0.4865076402877693,
+          "predicted_range": [
+            73.75691,
+            105.0
+          ],
+          "underprediction": 4.7330696043165466,
+          "overprediction": 4.246561964028777
+        },
+        "RF_Jev_narrative_only": {
+          "n": 695,
+          "MAE": 8.02449905825974,
+          "RMSE": 10.077638189426457,
+          "bias": 0.2249522985493897,
+          "predicted_range": [
+            60.50403481724919,
+            91.3330867202803
+          ],
+          "underprediction": 3.8997733798551755,
+          "overprediction": 4.124725678404565
+        },
+        "RF_numeric_plus_Jev_narrative": {
+          "n": 695,
+          "MAE": 7.06620321679861,
+          "RMSE": 8.94911941967055,
+          "bias": 0.3736030171541836,
+          "predicted_range": [
+            58.211932909822416,
+            91.0460212716196
+          ],
+          "underprediction": 3.346300099822214,
+          "overprediction": 3.719903116976397
+        },
+        "Ridge_Jev_narrative_only": {
+          "n": 695,
+          "MAE": 7.991463967299132,
+          "RMSE": 10.091650789180518,
+          "bias": -0.0003707011318218526,
+          "predicted_range": [
+            53.426708744631824,
+            89.35393238532166
+          ],
+          "underprediction": 3.9959173342154775,
+          "overprediction": 3.9955466330836553
+        },
+        "Ridge_numeric_plus_Jev_narrative": {
+          "n": 695,
+          "MAE": 6.968956663147023,
+          "RMSE": 8.747303100267992,
+          "bias": 0.04724493946317725,
+          "predicted_range": [
+            45.974952685005505,
+            93.23210807698537
+          ],
+          "underprediction": 3.4608558618419227,
+          "overprediction": 3.5081008013051
+        },
+        "Jev_narrative_band_midpoint_or_train_median": {
+          "n": 695,
+          "MAE": 8.904708208633092,
+          "RMSE": 11.159351781159087,
+          "bias": -0.5747377769784168,
+          "predicted_range": [
+            73.75691,
+            74.544585
+          ],
+          "underprediction": 4.7397229928057545,
+          "overprediction": 4.164985215827338
+        },
+        "existing_PLS_person_mean": {
+          "n": 695,
+          "MAE": 6.478633079136692,
+          "RMSE": 8.231789017943091,
+          "bias": -0.02348982733812935,
+          "predicted_range": [
+            44.23414,
+            90.42006
+          ],
+          "underprediction": 3.25106145323741,
+          "overprediction": 3.22757162589928
+        }
+      },
+      "GDI_lt60": {
+        "Median": {
+          "n": 63,
+          "MAE": 18.881908095238096,
+          "RMSE": 19.41795261124336,
+          "bias": 18.881908095238096,
+          "predicted_range": [
+            73.75691,
+            74.544585
+          ],
+          "underprediction": 0.0,
+          "overprediction": 18.881908095238096
+        },
+        "RF_numeric": {
+          "n": 63,
+          "MAE": 12.954304376357952,
+          "RMSE": 14.441331782318699,
+          "bias": 12.936343600791703,
+          "predicted_range": [
+            58.3907587366955,
+            83.99467869249858
+          ],
+          "underprediction": 0.008980387783124242,
+          "overprediction": 12.94532398857483
+        },
+        "Ridge_numeric": {
+          "n": 63,
+          "MAE": 10.869252080838804,
+          "RMSE": 12.76861903142508,
+          "bias": 10.210761864128216,
+          "predicted_range": [
+            45.47104103317894,
+            84.13211757305903
+          ],
+          "underprediction": 0.3292451083552932,
+          "overprediction": 10.54000697248351
+        },
+        "RF_Jev_numeric_only": {
+          "n": 63,
+          "MAE": 16.181062379048882,
+          "RMSE": 17.254892838872905,
+          "bias": 16.181062379048882,
+          "predicted_range": [
+            61.04508298621936,
+            87.83220611713243
+          ],
+          "underprediction": 0.0,
+          "overprediction": 16.181062379048882
+        },
+        "RF_numeric_plus_Jev_numeric": {
+          "n": 63,
+          "MAE": 13.240646222299132,
+          "RMSE": 14.71099043757835,
+          "bias": 13.240646222299132,
+          "predicted_range": [
+            59.666033790941285,
+            88.6939422911326
+          ],
+          "underprediction": 0.0,
+          "overprediction": 13.240646222299132
+        },
+        "Ridge_Jev_numeric_only": {
+          "n": 63,
+          "MAE": 16.215676717819264,
+          "RMSE": 17.41882243504799,
+          "bias": 16.215676717819264,
+          "predicted_range": [
+            56.169222931062535,
+            79.50802239978451
+          ],
+          "underprediction": 0.0,
+          "overprediction": 16.215676717819264
+        },
+        "Ridge_numeric_plus_Jev_numeric": {
+          "n": 63,
+          "MAE": 10.484438882048964,
+          "RMSE": 12.373627812953194,
+          "bias": 9.401666880958546,
+          "predicted_range": [
+            45.52271007401715,
+            84.16901823847108
+          ],
+          "underprediction": 0.5413860005452111,
+          "overprediction": 9.943052881503755
+        },
+        "Jev_numeric_band_midpoint_or_train_median": {
+          "n": 63,
+          "MAE": 18.881908095238096,
+          "RMSE": 19.41795261124336,
+          "bias": 18.881908095238096,
+          "predicted_range": [
+            73.75691,
+            74.544585
+          ],
+          "underprediction": 0.0,
+          "overprediction": 18.881908095238096
+        },
+        "RF_Jev_narrative_only": {
+          "n": 63,
+          "MAE": 15.902224755997747,
+          "RMSE": 17.269404063303497,
+          "bias": 15.902224755997747,
+          "predicted_range": [
+            61.04920581595893,
+            89.00439106562727
+          ],
+          "underprediction": 0.0,
+          "overprediction": 15.902224755997747
+        },
+        "RF_numeric_plus_Jev_narrative": {
+          "n": 63,
+          "MAE": 13.19492579986695,
+          "RMSE": 14.669930010188496,
+          "bias": 13.19492579986695,
+          "predicted_range": [
+            58.211932909822416,
+            88.0979725634504
+          ],
+          "underprediction": 0.0,
+          "overprediction": 13.19492579986695
+        },
+        "Ridge_Jev_narrative_only": {
+          "n": 63,
+          "MAE": 15.843185163696951,
+          "RMSE": 17.014960786218957,
+          "bias": 15.723797932938462,
+          "predicted_range": [
+            55.514802231107545,
+            81.55161302587419
+          ],
+          "underprediction": 0.05969361537924533,
+          "overprediction": 15.783491548317706
+        },
+        "Ridge_numeric_plus_Jev_narrative": {
+          "n": 63,
+          "MAE": 10.447394473714734,
+          "RMSE": 12.324095975655501,
+          "bias": 9.309978947455122,
+          "predicted_range": [
+            45.974952685005505,
+            84.27866385113427
+          ],
+          "underprediction": 0.568707763129805,
+          "overprediction": 9.878686710584928
+        },
+        "Jev_narrative_band_midpoint_or_train_median": {
+          "n": 63,
+          "MAE": 18.881908095238096,
+          "RMSE": 19.41795261124336,
+          "bias": 18.881908095238096,
+          "predicted_range": [
+            73.75691,
+            74.544585
+          ],
+          "underprediction": 0.0,
+          "overprediction": 18.881908095238096
+        },
+        "existing_PLS_person_mean": {
+          "n": 63,
+          "MAE": 9.068490476190474,
+          "RMSE": 11.275749895665898,
+          "bias": 7.729529206349205,
+          "predicted_range": [
+            44.23414,
+            81.63175
+          ],
+          "underprediction": 0.6694806349206349,
+          "overprediction": 8.39900984126984
+        }
+      },
+      "GDI_ge90": {
+        "Median": {
+          "n": 68,
+          "MAE": 20.480535,
+          "RMSE": 20.897137504199307,
+          "bias": -20.480535,
+          "predicted_range": [
+            73.75691,
+            74.544585
+          ],
+          "underprediction": 20.480535,
+          "overprediction": 0.0
+        },
+        "RF_numeric": {
+          "n": 68,
+          "MAE": 13.612980471065505,
+          "RMSE": 14.636746954965451,
+          "bias": -13.612980471065505,
+          "predicted_range": [
+            68.72582792723544,
+            90.22309193435392
+          ],
+          "underprediction": 13.612980471065505,
+          "overprediction": 0.0
+        },
+        "Ridge_numeric": {
+          "n": 68,
+          "MAE": 13.294168046536194,
+          "RMSE": 14.23345100613484,
+          "bias": -13.294168046536194,
+          "predicted_range": [
+            63.05258183551467,
+            89.49282535875041
+          ],
+          "underprediction": 13.294168046536194,
+          "overprediction": 0.0
+        },
+        "RF_Jev_numeric_only": {
+          "n": 68,
+          "MAE": 16.195179513483218,
+          "RMSE": 17.20448844451439,
+          "bias": -16.195179513483218,
+          "predicted_range": [
+            67.0334376922284,
+            88.96380657495871
+          ],
+          "underprediction": 16.195179513483218,
+          "overprediction": 0.0
+        },
+        "RF_numeric_plus_Jev_numeric": {
+          "n": 68,
+          "MAE": 13.407071412003507,
+          "RMSE": 14.441612649594461,
+          "bias": -13.407071412003507,
+          "predicted_range": [
+            68.88991136982669,
+            90.80337526728833
+          ],
+          "underprediction": 13.407071412003507,
+          "overprediction": 0.0
+        },
+        "Ridge_Jev_numeric_only": {
+          "n": 68,
+          "MAE": 17.5339742382028,
+          "RMSE": 18.157063211558004,
+          "bias": -17.5339742382028,
+          "predicted_range": [
+            66.41433124050366,
+            82.34720667130594
+          ],
+          "underprediction": 17.5339742382028,
+          "overprediction": 0.0
+        },
+        "Ridge_numeric_plus_Jev_numeric": {
+          "n": 68,
+          "MAE": 12.674987212627569,
+          "RMSE": 13.699685967693478,
+          "bias": -12.674987212627569,
+          "predicted_range": [
+            63.82774587129116,
+            89.62769343191458
+          ],
+          "underprediction": 12.674987212627569,
+          "overprediction": 0.0
+        },
+        "Jev_numeric_band_midpoint_or_train_median": {
+          "n": 68,
+          "MAE": 20.480535,
+          "RMSE": 20.897137504199307,
+          "bias": -20.480535,
+          "predicted_range": [
+            73.75691,
+            74.544585
+          ],
+          "underprediction": 20.480535,
+          "overprediction": 0.0
+        },
+        "RF_Jev_narrative_only": {
+          "n": 68,
+          "MAE": 15.434235904037651,
+          "RMSE": 16.494987933091497,
+          "bias": -15.434235904037651,
+          "predicted_range": [
+            67.19794551294261,
+            91.3330867202803
+          ],
+          "underprediction": 15.434235904037651,
+          "overprediction": 0.0
+        },
+        "RF_numeric_plus_Jev_narrative": {
+          "n": 68,
+          "MAE": 13.623043124203587,
+          "RMSE": 14.596794538244842,
+          "bias": -13.623043124203587,
+          "predicted_range": [
+            69.86623821725107,
+            90.32813752097587
+          ],
+          "underprediction": 13.623043124203587,
+          "overprediction": 0.0
+        },
+        "Ridge_Jev_narrative_only": {
+          "n": 68,
+          "MAE": 16.335996675414137,
+          "RMSE": 17.10646011807661,
+          "bias": -16.335996675414137,
+          "predicted_range": [
+            67.46453689699423,
+            87.79284801644916
+          ],
+          "underprediction": 16.335996675414137,
+          "overprediction": 0.0
+        },
+        "Ridge_numeric_plus_Jev_narrative": {
+          "n": 68,
+          "MAE": 13.043534830500993,
+          "RMSE": 13.898060963792448,
+          "bias": -13.043534830500993,
+          "predicted_range": [
+            64.36924640851258,
+            88.90343470783012
+          ],
+          "underprediction": 13.043534830500993,
+          "overprediction": 0.0
+        },
+        "Jev_narrative_band_midpoint_or_train_median": {
+          "n": 68,
+          "MAE": 20.480535,
+          "RMSE": 20.897137504199307,
+          "bias": -20.480535,
+          "predicted_range": [
+            73.75691,
+            74.544585
+          ],
+          "underprediction": 20.480535,
+          "overprediction": 0.0
+        },
+        "existing_PLS_person_mean": {
+          "n": 68,
+          "MAE": 13.215322941176469,
+          "RMSE": 14.16053689040551,
+          "bias": -13.215322941176469,
+          "predicted_range": [
+            69.63814,
+            90.42006
+          ],
+          "underprediction": 13.215322941176469,
+          "overprediction": 0.0
+        }
+      }
+    },
+    "paired": {
+      "RF_numeric_plus_Jev_numeric": {
+        "MAE_difference_new_minus_baseline": -0.0007957894228221987,
+        "conditional_bootstrap95": [
+          -0.1115099129610554,
+          0.11519609680873477
+        ],
+        "people_improved_equal_worse": [
+          339,
+          0,
+          356
+        ]
+      },
+      "RF_numeric_plus_Jev_narrative": {
+        "MAE_difference_new_minus_baseline": 0.02201565060475738,
+        "conditional_bootstrap95": [
+          -0.0823504786613455,
+          0.12370089656958931
+        ],
+        "people_improved_equal_worse": [
+          333,
+          0,
+          362
+        ]
+      },
+      "Ridge_numeric_plus_Jev_numeric": {
+        "MAE_difference_new_minus_baseline": -0.15674167971640401,
+        "conditional_bootstrap95": [
+          -0.31951284309229566,
+          0.008195107911118151
+        ],
+        "people_improved_equal_worse": [
+          372,
+          0,
+          323
+        ]
+      },
+      "Ridge_numeric_plus_Jev_narrative": {
+        "MAE_difference_new_minus_baseline": -0.06625156854039829,
+        "conditional_bootstrap95": [
+          -0.22270943807835747,
+          0.09445486569878019
+        ],
+        "people_improved_equal_worse": [
+          354,
+          0,
+          341
+        ]
+      }
+    },
+    "fold_MAE": {
+      "Median": [
+        9.331162302158273,
+        9.971562769784171,
+        7.973918992805757,
+        8.571213381294964,
+        8.675683597122303
+      ],
+      "RF_numeric": [
+        7.45200598418263,
+        7.171711049139945,
+        6.383527302958216,
+        7.073590004579774,
+        7.1401034901086975
+      ],
+      "Ridge_numeric": [
+        7.364655911266454,
+        7.36458331026589,
+        6.635054665626286,
+        6.918877053876651,
+        6.892870217401823
+      ],
+      "RF_Jev_numeric_only": [
+        8.275994659697922,
+        8.273243172240218,
+        7.981572843383069,
+        8.079233942404715,
+        8.432761238098433
+      ],
+      "RF_numeric_plus_Jev_numeric": [
+        7.3809866243396405,
+        7.18212619037142,
+        6.548447820923443,
+        7.0832709461846415,
+        7.022127302036007
+      ],
+      "Ridge_Jev_numeric_only": [
+        8.773889547778868,
+        8.59276790621113,
+        7.938617137005285,
+        8.148333844009771,
+        8.41988970888742
+      ],
+      "Ridge_numeric_plus_Jev_numeric": [
+        7.29177192606957,
+        6.83539718337245,
+        6.775591719169033,
+        6.9671774451218145,
+        6.522394486122217
+      ],
+      "Jev_numeric_band_midpoint_or_train_median": [
+        9.331162302158273,
+        10.124132589928058,
+        7.973918992805757,
+        8.793260359712232,
+        8.675683597122303
+      ],
+      "RF_Jev_narrative_only": [
+        8.959312294184825,
+        7.9256110717623995,
+        7.467729618237067,
+        7.816127598439943,
+        7.953714708674469
+      ],
+      "RF_numeric_plus_Jev_narrative": [
+        7.567700024198423,
+        7.252097109816085,
+        6.336826597112398,
+        7.064842365004386,
+        7.109549987861757
+      ],
+      "Ridge_Jev_narrative_only": [
+        8.40280152773692,
+        7.970506307732697,
+        7.672083463771769,
+        7.776621239440724,
+        8.135307297813553
+      ],
+      "Ridge_numeric_plus_Jev_narrative": [
+        7.423696689089139,
+        7.121102551011273,
+        6.614683434599189,
+        7.00345008035325,
+        6.6818505606822605
+      ],
+      "Jev_narrative_band_midpoint_or_train_median": [
+        9.331162302158273,
+        9.971562769784171,
+        7.973918992805757,
+        8.571213381294964,
+        8.675683597122303
+      ],
+      "existing_PLS_person_mean": [
+        6.445059712230216,
+        6.56420669064748,
+        6.564418561151079,
+        6.097327841726618,
+        6.722152589928058
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "frozen_before_results": true,
+  "date": "2026-11-05",
+  "authorization": "User approved the unseen-source normal-gait test proposed after reviewing ljmu100-mixed. The input-perturbation test was proposed in the same plan as step 2.",
+  "question": "Does the LJMU-mixed GDI model give high scores because a walk is normal, or because the input looks like LJMU?",
+  "training": false,
+  "models": "Existing baseline (Stanford only) and mixed (Stanford + LJMU881 assumed100) checkpoints from studies/20261104-ljmu100-mixed. Fixed fusion rule and weights from bundle/ensemble.json. No retraining, recalibration or weight search.",
+  "primary_model": "fusion",
+  "test_sets": {
+    "live": "LIVE-GaitNeuroKids typically developing children, 9 people, 12 records, 5-10y, from matched-normal100/child/data.npz. Not used by either arm. All 5 outer-fold models are averaged.",
+    "self": "Self-recorded Test01, 3 adults, 13 videos: 6 normal, 7 imitated abnormal. Labels were corrected by the user after an earlier scoring and are used for reporting only. Not used by either arm. All 5 outer-fold models are averaged.",
+    "ljmu": "LJMU 64 people, 881 records, all 3305 windows. Each record is scored only by the outer fold that held that person out."
+  },
+  "excluded_sets": {
+    "kuopio": "Public OpenPose sequences last about 1 s at 100 Hz, so the 124-frame input cannot be formed without changing time.",
+    "movi": "No BODY25 pose was extracted and the strict side-view 124-frame count was 0."
+  },
+  "perturbations_on_ljmu": {
+    "original": "No change. Also serves as replay of saved predictions.",
+    "frame_shuffle": "Feature level. One random time permutation per window, same for both sides, seed 20261105. Keeps each frame pose, destroys temporal order.",
+    "static_mean": "Feature level. Every frame replaced by that window time mean. Removes all motion.",
+    "left_leg_stiff": "Raw BODY25 before unchanged preprocessing. Left knee, ankle and foot points follow the left hip at their mean offset. Removes left-leg motion.",
+    "both_amp50": "Raw BODY25 before unchanged preprocessing. Both knees, ankles and feet keep 50 percent of motion around their mean offset from the hip. Mimics small steps."
+  },
+  "aggregation": "Window to record before calibration; left-right mean; record to person (live, ljmu) or video (self); equal weight per person or video.",
+  "preregistered_criteria": {
+    "live_and_self_normal": {
+      "generalizes": "Mixed fusion group mean >= 90 in that set.",
+      "source_recognition_leaning": "Mixed fusion group mean < 90 in that set.",
+      "overall": "Both >= 90: supports learning normal gait. Both < 90: supports source recognition. One each: inconclusive."
+    },
+    "self_discrimination": "Report mixed normal minus abnormal gap and whether video score ranges overlap, against baseline gap 12.67 and non-overlap.",
+    "perturbations": {
+      "appearance_dependent": "Mixed person mean stays >= 95 under frame_shuffle or static_mean.",
+      "motion_responsive": "Mixed person mean falls by >= 10 from original under that condition.",
+      "partial": "Anything between."
+    }
+  },
+  "validation": {
+    "checkpoint_hashes": "Every checkpoint SHA-256 must match the stored member record.",
+    "replay_tolerance_points": 0.005,
+    "replay_self": "Baseline fusion on self features must reproduce saved Test01 predictions.",
+    "replay_ljmu": "Baseline and mixed fusion on ljmu original must reproduce comparison-predictions.npz. Tolerance is above the earlier 0.001 because a CPU/GPU difference of 0.0012 is already recorded."
+  },
+  "limitations": [
+    "Live has 9 children and self has 3 adults, so group means are descriptive.",
+    "LIVE and self differ from LJMU in camera and possibly pose pipeline; a low score could reflect camera difference as well as source recognition. Both are parts of the same source question.",
+    "Perturbed inputs are not real pathology and can behave as out-of-distribution inputs; a score fall alone does not prove gait-quality sensing.",
+    "No measured GDI exists for any test set, so no accuracy is claimed.",
+    "RF is not tested here."
+  ]
+}

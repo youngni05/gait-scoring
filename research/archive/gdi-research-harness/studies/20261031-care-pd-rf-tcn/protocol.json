@@ -1,0 +1,55 @@
+{
+  "people": 110,
+  "walks": 2953,
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "outer_folds": 6,
+  "inner": "For outer f, validation=(f+1)%6; remaining four folds train; refit on five outer-train folds",
+  "input": "All complete original walks, 23 local SMPL rotations represented by first two matrix columns, 25 Hz bin means; no global orientation, translation, body shape, cohort or medication input",
+  "rf_features": "698: mean/std/p10/p90/mean absolute temporal difference per 138 channels plus 8 global normalized autocorrelations (missing lag=0)",
+  "model": "Three masked Conv1d layers, width32, kernel5, dilation1/2/4, global masked mean, sigmoid score 0..3",
+  "rf": "RandomForestRegressor 200 trees, max_features=.5, min_samples_leaf in [2,8], selected by inner person-equal MAE",
+  "optimizer": "AdamW lr .001 weight_decay .001, SmoothL1 beta .5, batch32, max60 epochs, patience10",
+  "weights": "Each participant equal total training weight; evaluation averages walk errors within each person before averaging people",
+  "baselines": "Outer-training person-weighted mean and median, plus person-weighted mode for classification",
+  "high_score": "Observed y>=2 and y==3 separately; continuous absolute error >=2 is large error",
+  "evaluation": "MAE, RMSE, signed error, large-error rate, rounded accuracy, macro recall; seed-level results, no seed ensemble",
+  "source_files": [
+    {
+      "cohort": "3DGait",
+      "path": "C:\\Users\\jun\\Desktop\\D_P\\outputs\\gait-public-access-20261015\\CARE-PD\\3DGait.pkl",
+      "bytes": 8066161,
+      "sha256": "b5349f34ace0c3bd50d3dcf2ceed243ce6b2b7987b4e5caa8a3ccad7d527e550",
+      "matches_current_remote": true
+    },
+    {
+      "cohort": "BMCLab",
+      "path": "C:\\Users\\jun\\Desktop\\D_P\\outputs\\dataset-compatibility-20261030\\CARE-PD\\BMCLab.pkl",
+      "bytes": 127210064,
+      "sha256": "ab6484b69efa9797f025449c4cec2ac9f0057f1ba6ad0b2733adddbac5144eae",
+      "matches_current_remote": true
+    },
+    {
+      "cohort": "PD-GaM",
+      "path": "C:\\Users\\jun\\Desktop\\D_P\\outputs\\dataset-compatibility-20261030\\CARE-PD\\PD-GaM.pkl",
+      "bytes": 84704001,
+      "sha256": "94101283255fc0083b1f8712d9f413d2f5fb0268af9569e1a283c4492247851e",
+      "matches_current_remote": true
+    },
+    {
+      "cohort": "T-SDU-PD",
+      "path": "C:\\Users\\jun\\Desktop\\D_P\\outputs\\dataset-compatibility-20261030\\CARE-PD\\T-SDU-PD.pkl",
+      "bytes": 27019026,
+      "sha256": "2cc1b56ea628f50d62e3b25d79313acc9b4cbc99d8acac2e338d9b7e982c2938",
+      "matches_current_remote": true
+    }
+  ],
+  "prepared_frames": 449105,
+  "max_frames": 1490,
+  "data_sha256": "84f4058cd20167a4b8d6054952f4e37a0e1f9eac6a7e02c93dad6be025fb4efb"
+}

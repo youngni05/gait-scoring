@@ -1,0 +1,16 @@
+{
+  "declared_before_predictions": true,
+  "request": "Apply the same prior frozen GDI workflow to all thirteen Test01 MP4s and report by filename number",
+  "source_labels": "Not supplied at protocol declaration; never infer normal/abnormal from appearance or predicted score",
+  "primary": "Exact existing whole-record preprocessing (up to first1499 native frames), windows starts0,31,...,372 with124 consecutive frames; same25percent required-coordinate missing limit; average accepted windows, anatomical sides and five frozen folds",
+  "model": "Exact prior54-checkpoint CNN/STT/bilateral-STT ensemble and existing calibrations/weights from20261101-self-video-gdi/results.json; no fitting, new model selection, score clipping, mirroring, side swap or time resampling",
+  "confidence": "Reuse user-approved separate official-OpenPose adapter, preserving finite nonnegative raw confidence even above1; existing coordinate/missing/model criteria retained",
+  "secondary": "Representative video and pose overlays reviewed before scores; no newly picked best-scoring intervals; only original first500-frame schedule is the primary per-video number",
+  "exclusions": "Retain every source video in results. Missing/ineligible input yields no score plus reason rather than fake values or changed cutoffs",
+  "comparison": "Report numbered per-video mean, left/right, range of accepted-window scores, fold variation and quality flags. Normal/abnormal comparisons require user-supplied labels; no trueGDI errors or clinical cutoffs",
+  "execution": "Same previously approved school ABRM02 own-account BODY25 inference route, isolated Test01 directory, zero training and no changes to existing jobs",
+  "storage": {
+    "small": "C:/Users/jun/Desktop/D_P/gdi-research-harness/studies/20261101-self-video-test01",
+    "large": "D:/gait-research-data/D_P/self-video-test01-20261101"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "code_sha256": "625e23b8271766c463070134306e4e2836bf6595aaf71501f31db70b311bc97a",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\clips.json": "3c33928ac646e7748e31e78a687ef4ba27444b2b37cc1faf99c59c7c5fa45adf",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\protocol.json": "87d7a70f229b7464d81af99ad24b9bf38fac834f004202565f40f988b7ed6d9f",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\availability.json": "d83c387a5ef12c0ce452745c8fb040382380be76f897c08927ec189e1945179e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-reference-audit\\study.py": "d890f8d66f5dcada54d812255e6fab3462d899db02cf6c6249ba1dd4373ff8c2",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-reference-audit\\verify.py": "f498bb93428e2da6c3dcd8aa9f57ae00d305bc925fada03b97eaaa9940c0fcc0",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\study.py": "2b19b5ba16f246973ba4051dde7ac51171a6fc25b6fbf48a9c34a2cd8a16c819",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\verify.py": "f07e725d2075e73b7721de20b970968aa58db91b81eafe68cde99530847086ec"
+  },
+  "hypothesis": "At equal2sec duration in the same14people, disagreement between spectral and optical-event proxies may be smaller during preselected straight walking than turning. Diagnose geometric assumptions,not retune a proxy until it agrees.",
+  "selection": "Reuse all56 clips previously frozen before cadence outcomes:14people x straight/turn x PG1/PG2. Source geometry selected by reference visibility/heading/path,never by current cadence. Same actual frames bothviews. No reselection or person exclusion by disagreement.",
+  "inputs": "Cached RGB image/local3D ankle difference;ProjectedReference2D evaluator-only control;Reference3D spectral proxy. No reference coordinates enter RGB inputs. Raw6physicalmarkers feed only optical event comparator.",
+  "algorithms": "Import frozen camera-cadence estimate() and cadence-reference-audit derive() unchanged. Spectral281frequencygrid .4..1.8Hz,2steps/stride;qualityR2>=.5,cycles>=1.5,boundarymargin.02. Optical120Hz heelAPrelativeposteriorwaist/dynamicpelvicaxis,SavGol9degree2,positivepeaks48samplesapart;quality allvalid,>=3events,alternation>=.8,interval.2..1.5. Opticalcontext±.5sec clippedproviderwalking,RGBexact60frames.",
+  "primary": "Withinperson Reference3D raw finite spectral-vs-event absolute discrepancy contrast straightminus turn,among event-quality people available in BOTHconditions. Raw finite spectral primary avoids structural2sec1.5cycle selection. Original quality rules retained and all/quality counts reported separately,not relaxed.",
+  "success": "Exploratory consistency target,not clinical:>=10pairedpeople,straight mean absolute proxy discrepancy<=5steps/min and improvement>=5steps/min vs turns. Components reported even if joint criterion fails. Does not adjudicate true contacts.",
+  "limits": "Both quantities are proxies without expert/force contacts. Dynamicwaist-axis event adaptation unvalidated.2sec spectral resolution and quality gate exclude estimated<91.525spm;report raw and gated. Same14people differ from previous27;within14 contrast only. NoSPPB/TUGlabels,phonevalidation,newscoretraining/seeds. Original scorepeople/bouts/5seeds unchanged.",
+  "expected": {
+    "main_tasks": 14,
+    "pilot_tasks": 2,
+    "people": 14,
+    "event_segments": 28,
+    "period_estimates": 224,
+    "detail_rows": 140,
+    "metric_rows": 10,
+    "geometry_pairs": 5,
+    "view_pairs": 4,
+    "new_model_fits": 0
+  },
+  "verification": "Source/code/arraysSHA,rawMAT/12joint/frame mapping,independent manualpeak and SVD spectral replays;event indices exact,numerics1e-10,R2 1e-9,gridexact. Independently recompute all tables. Pilot2people then main.",
+  "resources": "CPU1,2-5min,noGPU/newinference/download;selectedarrays<10MB D,code/reportsC",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-straight-control",
+    "large": "D:\\gait-research-data\\D_P\\cadence-straight-control-20261101"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "scope": "computational and source consistency only; no clinical stopwatch or independent tracking truth",
+  "people_and_exact6s_windows_rebuilt": 179,
+  "pair_distances_checked": 15931,
+  "selection_reproduced": true,
+  "download_crc_sha_files": 20,
+  "label_task_index_checked_people": 179,
+  "waveform_differences_checked": 50,
+  "external_download_hashes": 2,
+  "plos_person_intersections_verified": true,
+  "original_splits_hash_verified": true,
+  "gait2care_raw_worksheet_counts_verified": [
+    [
+      93,
+      83,
+      84
+    ],
+    [
+      93,
+      86,
+      85
+    ]
+  ],
+  "new_models_trained": 0,
+  "artifact_sha256": {
+    "acquire.py": "71f875e66cee69e11827ceda9c5b44b9a7280e37726f535606d0a7dbdd52394d",
+    "acquisition-plan.json": "3c3e12d40ccbb9d899be45ac85ea0ed015e658a86f70efca2c3ae7c2b64c6669",
+    "acquisition.json": "e6609a52edceb505851d99e70b706759e9ce899144ae88f85ea1d539d1b02db9",
+    "all-pairs.csv": "93f7731d2adf07d65aadde0bf6ddf6cf1c4e6181eea67cecbf52d64f3435010f",
+    "all-primary-discordant-pairs.csv": "89511cb2ae436f4ab3270e4400788cfaf936285308f065b457a011fc24df5965",
+    "audit-summary.json": "3b0842b7a482b9d7906d54aac30ec67112b41f19b1b3b09ff04a57c649fb8723",
+    "audit.py": "9fc863e23d9b2f865d09767fef019ec2440248b96fef752c07cf64db10134fcb",
+    "chair-audit.json": "30664557dd6b067f628aba0d8e155408e98efb3661524915c4e3d2d553ea32f2",
+    "common.py": "98487367b0af98820572363f51721b7862119f8acf025c18c6cf1ee50a6dd769",
+    "cycle-waveforms.npz": "f56bd71367a385c6a31ed7deaf9ad8c4f6b0ca348c21bed3dc56f84189c8fe61",
+    "data_sources.py": "d0f890b578cc3ef1b04af1ccb8a50379d865d7768adbad4b8aea242a1e8576e6",
+    "external-acquisition.json": "3bbb85e04775759f4a4dbb87df45e9e5c3c2241920b7e2c9b51870aa434d0efe",
+    "external-audit.json": "f62a8748444e37c5ecfa0dc3bd9261ad897a870d0dff0188eb472c7d47b0b37c",
+    "external_audit.py": "b65e1639277b70c5852fe7ce461952a58028468aeca9d0802e109724051fad08",
+    "extra-features-all.csv": "327667f0fb40a98cdfa71a1315bb392a55cf144ab2052fd7d41af988a11e0317",
+    "interpretation-checks.json": "bbaff292fcf52c8e07705b24a6b8b92352e051c1253037fd4d299079576fbb5e",
+    "label-provenance-all.csv": "8692162e1041e05d83ee701964cc5a0587ceb8c5f89e1086a49a7b840e87f5b7",
+    "match.py": "3cfba27de8275443c61d7fa4dc4bd8fdeeb9193079152772e16d180f71e42d08",
+    "matching-summary.json": "e9d94d4e4d2422cf934e3ed269e1cdbbbf39a4f434e7af942690498d9345506a",
+    "nearest-input-neighbors.csv": "12e3107f0faa954de614189f24f085b2ca853e11296781c5447815b1b3e81ee0",
+    "pair-existing-differences.csv": "59885ab1dd58f2aa068ad02f81154f648753dd9534fb736e543db0a212d5d87d",
+    "pair-extra-differences.csv": "e129a7b1df9b7769bd98369786a8ca3461f15592a267a34df4cae2f064f1943e",
+    "pair-waveform-differences.csv": "5e1734e422c177701511d061c95c3c5c89bdab5d6103143f6e088311e0dcc853",
+    "person-audit.csv": "24962d7ad7ba92418d58ea41e0d17e47e8d9c68ecd5cd8bf37236b8ad6b49725",
+    "protocol.json": "a84aa19e2280fd3341af92f3996e4fa49016fc667f9dfc73dcdc048e94b0a545",
+    "selected-pairs.csv": "e7dc8058cf914bf7e436801a337eba99590037d6f45ee305c3535a4ff2749642",
+    "summarize.py": "795c24405c822bc4c87ace2203eccfed659b8a52cfbda671192035661e5ee924",
+    "verify.py": "19023b98f4d8a4cb546ce16ca9a261ef755f4a9fa204e8b98fa8507864d10c61",
+    "external\\gait2care-availability.csv": "9c663d2e25b93b5514fb34300855e44213a6376c3376ed74497e65d7e6064348",
+    "external\\gait2care-cells.json": "e9923c488e39d6a45fefd15c0baaca8c381c333412309ec89280d2f3d0547439",
+    "external\\plos-linked-scores.csv": "4617967e06dcd3bf0ab6538d53e1f05c7f13de7ebd318d4f4cbb3adfab05f110"
+  }
+}

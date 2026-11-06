@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "arms": {
+    "arm0": {
+      "change": {
+        "people": 229,
+        "pairs": 581,
+        "person_mean_absolute_delta_error": 8.17133900451625,
+        "person_mean_signed_delta_error": -0.046287835400521844,
+        "person_mean_direction_agreement": 0.6738927011852776,
+        "direction_people": 229,
+        "changed_side_pair_entries": 1162,
+        "independent_final_validation": false,
+        "clinical_improvement_measured": false
+      },
+      "sides": {
+        "left": {
+          "people": 229,
+          "pairs": 581,
+          "person_mean_absolute_delta_error": 7.870223370515676,
+          "person_mean_signed_delta_error": -1.0249380809233573,
+          "person_mean_direction_agreement": 0.6926180079018507,
+          "direction_people": 229,
+          "changed_side_pair_entries": 581,
+          "independent_final_validation": false,
+          "clinical_improvement_measured": false
+        },
+        "right": {
+          "people": 229,
+          "pairs": 581,
+          "person_mean_absolute_delta_error": 8.472454638516824,
+          "person_mean_signed_delta_error": 0.9323624101223136,
+          "person_mean_direction_agreement": 0.6551673944687045,
+          "direction_people": 229,
+          "changed_side_pair_entries": 581,
+          "independent_final_validation": false,
+          "clinical_improvement_measured": false
+        }
+      },
+      "first_available_or_lower_age_visit_mae": 6.791666600946267,
+      "all_visit_mae": 6.866655321854305
+    },
+    "arm1": {
+      "change": {
+        "people": 229,
+        "pairs": 581,
+        "person_mean_absolute_delta_error": 8.241085747512711,
+        "person_mean_signed_delta_error": -0.9420955941162007,
+        "person_mean_direction_agreement": 0.6263048450821377,
+        "direction_people": 229,
+        "changed_side_pair_entries": 1162,
+        "independent_final_validation": false,
+        "clinical_improvement_measured": false
+      },
+      "sides": {
+        "left": {
+          "people": 229,
+          "pairs": 581,
+          "person_mean_absolute_delta_error": 8.171304363292725,
+          "person_mean_signed_delta_error": -1.7591994960932733,
+          "person_mean_direction_agreement": 0.6341235184029944,
+          "direction_people": 229,
+          "changed_side_pair_entries": 581,
+          "independent_final_validation": false,
+          "clinical_improvement_measured": false
+        },
+        "right": {
+          "people": 229,
+          "pairs": 581,
+          "person_mean_absolute_delta_error": 8.3108671317327,
+          "person_mean_signed_delta_error": -0.12499169213912827,
+          "person_mean_direction_agreement": 0.618486171761281,
+          "direction_people": 229,
+          "changed_side_pair_entries": 581,
+          "independent_final_validation": false,
+          "clinical_improvement_measured": false
+        }
+      },
+      "first_available_or_lower_age_visit_mae": 7.2874208707305055,
+      "all_visit_mae": 7.288413743755795
+    }
+  },
+  "people": 692,
+  "change_people": 229,
+  "change_pairs": 581,
+  "paired_minus_baseline_change_mae": 0.06974674299646111,
+  "paired_minus_baseline_first_visit_mae": 0.4957542697842383,
+  "success_threshold": null,
+  "clinical_validation": false,
+  "independent_final_validation": false,
+  "source_sha256": {
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-pairloss-cnn\\revision2\\received\\full\\seed0\\unpacked\\runs\\main\\oof_predictions.npz": "6ca5dd5cc1a12af42c103f26752b1a33da2f53de54230335ddad268ef1c75b30",
+    "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261101-gdi-pairloss-cnn\\revision2\\received\\full\\seed1\\unpacked\\runs\\main\\oof_predictions.npz": "83a05ac080291c704862ec2e5a7c4b3c956b32d5b2f1cdb60a3847c848d4980f"
+  },
+  "full_receipt_sha256": "8a4bfeb436a1ec225b5ab713083f304aa5b5ef64f146a1446ca6eb11fcbbf31f",
+  "script_sha256": "d614043004158f10543b43384a9452916183e16dd5cddffd992c8e242fd18250"
+}

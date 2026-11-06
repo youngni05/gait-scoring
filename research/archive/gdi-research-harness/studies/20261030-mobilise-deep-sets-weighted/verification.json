@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "weighted_model_replays": 600,
+  "reference_model_replays": 300,
+  "independent_numpy_and_permutation_checks": 600,
+  "max_numpy_difference": 1.52587890625e-05,
+  "max_order_difference": 2.288818359375e-05,
+  "independent_weighted_training_refits_exact": 4,
+  "factor1_reference_controls_exact": 2,
+  "loss_weight_audits": 600,
+  "seed_subgroup_metrics_checked": 4320,
+  "paired_metrics_checked": 2880,
+  "aggregate_rows_checked": 864,
+  "joint_tradeoffs_checked": 360,
+  "bootstrap_point_estimates_checked": 72,
+  "same_people_bouts_folds_seeds_scalers_widths_epochs": true,
+  "source_hashes_unchanged": true,
+  "evaluation_weights_unboosted": true,
+  "artifacts_sha256": {
+    "protocol.json": "fe63b1b78a35182acba33c521095126a5f8d4dda5d4ed75aacecf4162ce961b0",
+    "completion.json": "18cbb8c22a678c3ff4ed0716eeeb4f441cb3382cc2ecc9664e9ed0d272a6cf84",
+    "predictions.csv": "193e4db9b75a98c33f506c6370b0510a26b1c363a0d69167116ad54275a18642",
+    "seed-metrics.csv": "41e6dcd82a6fbe7e0b94f907dc9c3c01a538b4f11b6da7ecef3d36e918952350",
+    "paired-metrics.csv": "43bed04c38ac0232bb6115552697d49ae5905fbb2d3c6bdd0927db81d5f49261",
+    "aggregate-metrics.csv": "b006a13dbae1d81df773dd08d42b222e35cb9adc8c2f7144dc95cd7f539699c6",
+    "joint-tradeoffs.csv": "c8589a1ccdd3a52afe05b5ec037fbfec08a88eb9de874159f92800e2336a56e8",
+    "condition-tradeoffs.csv": "ac52a5e509bb2e4ab0f846b4784524630fb59a08c404cf2e232a3121844c92d6",
+    "paired-bootstrap.json": "695158d555d115239a00a2d76485c29d564743b90561320ffb788259d333dad4",
+    "summary.json": "b10ba5a0c8dadfeed4d6a3132f44656d1b531f9c9db8fb022dabb5a6e6213235"
+  },
+  "scripts_sha256": {
+    "train.py": "1191a28e1ed01d8d47dba6cc4b73ebd8561a9026cd079d4411e7570bc60b2c09",
+    "analyze.py": "b8c7ccb1789bcf82421f03cecd3764db1f23250369347158682736862133dd33",
+    "verify.py": "4144a65a88b4fe45dcfff4e65d6e3afd8529edb091d4d394c58f4845446ebf98"
+  }
+}

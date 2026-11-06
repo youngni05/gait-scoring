@@ -1,0 +1,39 @@
+{
+  "code_sha256": "5ef0e8c8d9d4cc0dcd99987f8a77ecdd2223b83eb5f6aefb57c21dc61f6509fe",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed\\study.py": "71a5d84a7cb1c845a937d1351a0d2eae028a48ab960c97fa274f985d9b6de327",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed\\verify.py": "4796591e32e96df398e52d5d0048c18bd8caa6444a060b1dd06b20bbb378a94b",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed\\protocol.json": "3980de7f74ac94c09bd8709a39c50b71ec16233723d393b003ca3ae5fc5684db",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed\\main-verification.json": "3cac7fd1fc255596b54dd50c6baec032a8daa8133c987e774ca4afb3cfbfac00",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed\\main-clips.csv": "3b29ecce4f2020d898583281af2db5773ce6fad52dddd2c33366ef761b49138b",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed\\metrics.csv": "29c9fd4e3d6998d5b8ed33098f6113412d48f3f590abd639cb31efd833725606",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed\\paired.csv": "4534a178abb6b1654b85c8e053dc3cf52f2f1ee46fd0a93d3fb66c407a4716ee",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-height-speed\\README.md": "5677c4f34ad281738326a833ba9b02db7ccca2ca8e1bf0d088659c900544e627"
+  },
+  "hypothesis": "Pinhole height-based speed retains approximately0.10m/s positive bias after reducing camera differences. Test whether a common multiplicative scale learned from other people in one camera transfers to an unseen person in the other camera.",
+  "inputs": "Same existing14people56clips2sec straight/turn,RGB-only MediaPipe,height,extra real camera intrinsics. No new image model. Reference speeds in13trainingpeople used to fit one scalar; held-outperson references evaluation only.",
+  "label": "Provider horizontal hip-midpoint OLS translation speed,not Mobilise-D mean stride speed or SPPB/TUG.",
+  "models": "RawPinhole frozen previous estimator; ScaledPinhole alpha*x. No offset,grid,feature/epoch/threshold search. Alpha=sum(x*y)/sum(x*x),each trainingperson one straight clip in one trainingcamera. Sameview and oppositeview evaluated separately.",
+  "split": "14 leave-one-person-out folds,each trained separately on PG1 or PG2. All4clips of held-outperson excluded from alpha fit. Training13distinctpeople; no turn labels in fit. Predict sameperson4clips from both28scalar models =>112rows. Oppositecamera is within same recording system,not new phone/hospital domain.",
+  "seeds": "Deterministic fit; no new5seed repetition. Existing Mobilise-D people/bouts/5seeds unchanged.14people reused exploratory development data,not independent external clinical validation.",
+  "selection": "No hyperparameters or model selection. Same/opposite camera and straight/turn reported all,primary is opposite-camera straight. Each testperson has two oppositecamera predictions,person-equal.",
+  "success": "Before this new experiment: opposite-camera straight MAE decreases>=0.02m/s vsRawPinhole; both per-targetcamera MAE<=0.10m/s; corrected paired-camera mean difference<=0.10m/s. Engineering targets,not clinical standards. Report each component and failures,not retune.",
+  "expected": {
+    "pilot_tasks": 4,
+    "pilot_predictions": 16,
+    "main_tasks": 28,
+    "main_predictions": 112,
+    "people": 14,
+    "scalar_models": 28,
+    "metric_rows": 8,
+    "camera_metric_rows": 16,
+    "paired_rows": 8
+  },
+  "verification": "Source hashes,person/clip links,28 savedalpha replay and independent lstsq refit,112predictions recalculated,tolerance1e-12. Independent MAE/bias/paired recalculation. Pilot first2heldpeople4tasks then main.",
+  "resource": "CPU1,noGPU,estimate1-3min,scalar models/predictions<1MB D;smallcode/protocol/summary C.",
+  "limitations": "Shared scale can correct more than headtop/span geometry and does not identify cause. Requires research reference-speed calibration in trainingpeople plus actual intrinsic calibration; not height-only ready phone estimator.2sec and14healthy-sourcepeople do not establish gait scores or clinical accuracy.",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-scale-transfer",
+    "large": "D:\\gait-research-data\\D_P\\camera-scale-transfer-20261101"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "sample_size_small_cnn_v1",
+  "declared_before_training": true,
+  "owner": "01a1929b-43f3-7bc1-b921-b17bc551d7fe",
+  "question": "Sample-size learning curves and smaller CNN vs original CNN and RF under matched participant plans.",
+  "data": "Same immutable OlderAdults44 target.npz:44people220trials, Vicon sagittal projection, actual SPPB5..12, no new people.",
+  "sizes": [
+    8,
+    16,
+    24,
+    "full"
+  ],
+  "full_people": "35 or36 per outer fold; inner optimizer groups23 or24 in full condition; small sets have smaller inner train groups.",
+  "subset_draws": 3,
+  "subset_policy": "Nested prefixes of deterministic proportional score-band ordering using outer-training labels only. No outer-test labels used. Separate draw variance, do not average draws into an unfair larger ensemble.",
+  "outer_folds": "Exact prior5 participant folds",
+  "inner_folds": 3,
+  "inner_seed": 20261031,
+  "seeds": [
+    20261101,
+    20261102,
+    20261103
+  ],
+  "models": {
+    "CNN_channels": [
+      32,
+      16,
+      8
+    ],
+    "CNN": "Same six conv blocks/kernel8/pool2,2,3/hidden10. Change channels only. Scratch only. AdamW lr.001 wd.001 dropout.5 weighted normalized MSE,batch32,max80,patience12. Choose median best inner epoch, refit subset.",
+    "RF": "Same coordinate temporal36features;128trees;leaf2or5 chosen within each subset inner3 folds;train-only weighted scaler, equal person weights; same3seeds."
+  },
+  "bn_policy": {
+    "transfer": "Only learned backbone weights/affine parameters are retained; old running statistics reset before target fitting.",
+    "optimization": "Regular training-mode mini-batch BN and dropout; no validation/test data in optimization.",
+    "inference_statistics": "After every epoch before validation, disable dropout and recompute all BN buffers in one full training-only no-gradient pass with momentum1. Each layer observes current training-batch activations. Save the calibrated checkpoint.",
+    "refit": "After the fixed selected epochs, perform the identical training-only calibration before checkpointing and inference.",
+    "source_pretrain": "Retrain HealthGait source selection/refit under the identical policy. GDI source weights remain the fixed prior fold0 weights.",
+    "scope": "Source-pretraining selection and target selection are both BN-corrected, so compare corrected complete pipelines rather than attributing every change solely to target calibration.",
+    "max_calibration_windows": 3000,
+    "no_statistics_from_validation_test": true,
+    "verify": "Independent CPU recomputation of every saved BN buffer, training IDs/window-index hash, epoch choice and prediction replay; test batch-size invariance and no parameter updates during calibration.",
+    "buffer_tolerance": {
+      "atol": 0.0001,
+      "rtol": 1e-05
+    },
+    "prediction_atol": 0.0001
+  },
+  "expected": {
+    "CNN_inner_fits": 1350,
+    "CNN_final_models": 450,
+    "CNN_total_fits": 1800,
+    "RF_inner_fits": 900,
+    "RF_final_models": 150,
+    "RF_total_fits": 1050
+  },
+  "primary": "Mean across draw-specific MAE of the three-seed ensemble; also report each seed/draw,RMSE,within1,within2,rounded exact,score-band errors and conditional paired person intervals. Full condition uses one identical whole subset, not three duplicate runs.",
+  "controls": "Constant train-person mean/median per subset. Check full CNN32/RF against prior verified predictions. No output clipping, no outer-label selection.",
+  "verification": "SHA256 archive/model/input/plan, independently expected splits, train-only label/scaler/BN stats, all saved CNN/RF prediction replay, nested epoch/leaf selection, count checks; actual CUDA pilot before main.",
+  "scope": "Exploratory repeatedly inspected44-person development CV. Learning curves cannot guarantee benefit at hundreds of people or RGB/clinical generalization. No further automatic optimization round authorized."
+}

@@ -1,0 +1,35 @@
+{
+  "reference": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability",
+  "source_hashes": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability\\train.py": "24868cb285153745c9ab4a39616efc33dd664198eccbb67543151cec6999e58e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability\\verification.json": "eb754b3e6bc4e859d6b091070f9653510f2cf1670411b17ce40830149ddba8d1",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability\\predictions.csv": "00eac609f647f447702c72c0b5afebeb928ed629513531fcb597df3c9528865a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability\\protocol.json": "9a3bbac714b92e06f811b1f9c37a5da08c4d4cc69f4b3a2b488dee787f636f58",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets\\train.py": "741c98f1f612e8e181048efa03be714e9bed232e9a460b61510e322185f07314",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\person-folds.csv": "f5883374906327b6bf0e6ce1f9aaffb9f86f9e6d8679bc02b5775dcc702bea5a"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "loss_factors": [
+    2,
+    4
+  ],
+  "unweighted_reference": "same-seed budget600 predictions and weights",
+  "frozen_hyperparameters": "reuse each reference fold/seed width and epoch selected using only that fold training people; no weighted retuning or test-based selection",
+  "scope": "same 4..10 and 30..60 bands, 1/3/5 bouts, people, visits, folds and three draws; primary draw0",
+  "loss_weight": "base equal-person visit weight multiplied by factor iff training SPPB<=3 or TUG>20, then normalize globally; not normalized again within person",
+  "thresholds": "descriptive visit groups, not diagnostic categories",
+  "preprocessing": "unchanged base person-weighted train-only X/y scaler; no target boost in scalers",
+  "architecture_optimizer": "unchanged mean-pooled Deep Sets, full-batch AdamW lr .01 decay .001, standardized-target SmoothL1 beta .5",
+  "evaluation": "unchanged equal-person visit weighting, no tail boost in metrics; all, tail, non-tail, score bands, cohorts",
+  "comparisons": "paired same-seed/fold reference; report all five seeds, mean/range and MAE/bias/RMSE/p90; no best seed or ensemble",
+  "interpretation": "no chosen allowable global degradation margin; quantify tradeoffs, no automatic adoption or winner selection",
+  "device": "CPU four single-thread workers"
+}

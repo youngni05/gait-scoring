@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "internal": 165,
+  "final": 15,
+  "blends": 5,
+  "old_baselines": 15,
+  "person_overlap": 0,
+  "same297_source_and_windows": true,
+  "train_only_norm_target_and_epoch_selection": true,
+  "max_saved_prediction_difference": 0.0,
+  "max_TCN_CPU64_difference": 2.408451173607773e-06,
+  "CPU64_tolerance": 2e-05,
+  "results_sha256": "7f182d9d32922628e93d6756ca932d73819078568a04fb2ae96dd2cc8f65ec4e",
+  "prediction_table_sha256": "58732714b4168137936ba24ec42cbbde6300a4f7514f23ed611399f77be05d01",
+  "input_sha256": "28fc847721f0a9065497bed7a441ef6afa38e4b6f5df22c699f4c989ca6569ab",
+  "review_code_sha256": "00ede4dfe74e561edd3176bfc9b7e55ed8c18b25a977d7bee610cd05620031e1"
+}

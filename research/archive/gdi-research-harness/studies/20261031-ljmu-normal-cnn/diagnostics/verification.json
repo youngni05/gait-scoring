@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "five_fold_membership_checked_against_training_identity": true,
+  "oof_replay_max_error": 3.0433353970238386e-05,
+  "time_baseline_vs_original_window_csv_max_error": 9.134676361099991e-06,
+  "adult_development_people": 87,
+  "age_records": 1061,
+  "age_groups_can_share_people_across_visits": true,
+  "all_six_prediction_files_finite": true,
+  "original_inputs_and_model_manifest_unchanged": true
+}

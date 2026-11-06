@@ -1,0 +1,33 @@
+{
+  "question": "Does frozen GDI pretraining improve real TUG prediction on the same Toronto walking intervals?",
+  "primary_contrast": "C_GDI_features_Ridge versus A_basic_Ridge; compare both with A_basic_RF before any adoption claim",
+  "participants": [
+    "1",
+    "2",
+    "3",
+    "5",
+    "6",
+    "7",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14"
+  ],
+  "input": "One visually fixed frontal approach per person, native124frames, unchanged BODY25->2x124x12 GDI preprocessing; source FPS28..30, actual spans4.1..4.393sec; no duplication or angle-to-pixel conversion",
+  "quality": "Frozen required-coordinate missingness<=25%; all tracks manually reviewed before any cohort GDI inference; exclusions common to all conditions and no score-driven replacement windows",
+  "target": "Actual participant TUG seconds from original Toronto Table1, exact agreement with existing audited Toronto input; no GDI ground truth is assumed",
+  "split": "Reuse original12-person outer fold assignments; inner3-fold people KFold shuffle seed20261031, all choices training-only. If quality exclusions break folds, stop and report rather than silently change split",
+  "A": "72 summary features: mean,std,mean absolute frame difference of same12 GDI input features for both legs; Ridge alpha[1,100], RF128trees leaf[2,5]. These are image-space joint summaries, not calibrated m/s",
+  "B": "A72 plus left/right calibrated GDI predictions averaged over five fixed source folds; same Ridge grid",
+  "C": "A72 plus ten penultimate activations per leg per GDI fold, concatenate100 (neurons not aligned across folds); same Ridge grid",
+  "E_control": "A72 plus same100 activations from five randomly initialized frozen copies, seeds20261031..20261035; same Ridge grid",
+  "D": "Same GdiCNN architecture, independent random initialization, output0 mean across legs predicts standardized TUG; five seeds20261031..20261035. Training-only channel/target normalization, AdamW lr0.001 decay0.001, max80epochs patience12, inner3fold best-epoch median then refit. Report individual seeds and their prediction ensemble. GDI initialization never used",
+  "pretraining": "Original audited multiwindow GDI bundle fixed; no high-score candidates selected using TUG results; training/evaluation reference data untouched",
+  "provenance": "Separate Toronto and Gillette source cohorts; no shared participant identifier available across sources. Do not claim a cross-dataset identity match audit beyond available provenance",
+  "aggregation": "One interval and one actual clinical label per person; no repeat-count inflation",
+  "metrics": "person MAE,RMSE,bias,per-person predictions; TUG>=20sec descriptive subgroup. Paired person bootstrap10000 seed20261031 conditional on fitted predictions, not full uncertainty of model selection; source12 cohort has only one slow case",
+  "gates": "source member CRC/SHA; frame/target QA; original CPU versus GPU+official-decoder coordinate tolerance0.01pixel on first5 reference frames; frozen API and feature reconstruction tolerance1e-5; scalar CPU checkpoint replay tolerance1e-5sec; fitted inputs/scalers/person splits hashed and audited",
+  "interpretation": "Small development feasibility experiment with frontal-vs-sagittal and age/domain shift. No clinical validity, independent final validation, or new0-100 score claimed"
+}

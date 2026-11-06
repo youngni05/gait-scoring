@@ -1,0 +1,13 @@
+{
+  "verified": true,
+  "people": 175,
+  "records": 203,
+  "prediction_rows": 3248,
+  "feature_windows": 609,
+  "no_missing_pool_controls": 69,
+  "person_metrics_and_fold_metrics_independently_recomputed": true,
+  "scalar_saved_model_replay": true,
+  "source_hashes_unchanged": true,
+  "bootstrap_independently_recomputed": false,
+  "raw_feature_formula_checks": "synthetic invariances and known signals, not clinical ground truth"
+}

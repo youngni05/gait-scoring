@@ -1,0 +1,29 @@
+{
+  "verified": true,
+  "independent_inner_refits": 120,
+  "independent_outer_refits": 5,
+  "selected_components": [
+    32,
+    32,
+    32,
+    32,
+    32
+  ],
+  "candidate_score_rows_checked": 30,
+  "metric_rows_checked": 60,
+  "paired_bootstrap_comparisons_checked": 3,
+  "max_inner_prediction_difference": 6.130562724138144e-11,
+  "max_outer_prediction_difference": 4.234834705130197e-12,
+  "max_latent_prediction_difference": 1.2931877790833823e-11,
+  "old_candidate_reproduction": true,
+  "old_reference_predictions_unchanged": true,
+  "outer_and_inner_splits_unchanged": true,
+  "person_overlap": 0,
+  "protected_ID_overlap": 0,
+  "protected_numeric_data_read": false,
+  "parent_artifacts_preserved": 43,
+  "original_source_hashes_verified": 20,
+  "max_inner_component_iterations": 183,
+  "GPU_used": false,
+  "independent_final_evaluation": false
+}

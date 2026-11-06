@@ -1,0 +1,63 @@
+{
+  "created_utc": "2026-11-04T00:42:07.662620+00:00",
+  "code_sha256": "050d047a20714c74bbd8f05706746ef8d0c7f6b94205cb9a17832d030a10128b",
+  "parent_verification_sha256": "d918b9f8e43023f3f25547c1d393eccd8408416115dfbb7b4e51e0bd00912492",
+  "source_data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "independent_audit_library_sha256": "a3079fa45bfa342164f645c828720acb2044fea27fc9813cc3178d02d355ac98",
+  "source_model_library_sha256": "48c10269347c1b29d935e5663792dbb1cdfdbf08528f11eb316c4fdb724de2b6",
+  "feature_sets": {
+    "timing_plus_availability": [
+      "speed",
+      "stride_time",
+      "swing_fraction",
+      "bilateral_features_available",
+      "repeat_features_available"
+    ]
+  },
+  "candidates": {
+    "timing_plus_availability": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 5
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 5
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 5
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 5
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 5
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 5
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 5
+      }
+    ]
+  },
+  "feature_matrix_sha256": "449b9e5d8c0e9bde0a6c0ef81cc41689bd9a958edad1b11d4afc6060c9b7475b",
+  "purpose": "Posthocdiagnosticaftermainresult/availabilitysubgroups. Add onlytwo binary availabilityflagstocomplete3physicalfeatures;do notincludeactualasymmetry/variationvalues. Distinguish usefulnessofsourceIMUdetectoravailabilityfromtheproposedposequantities. Flagsareextractor-specificmetadata,notrecommendedcamerahealthfeatures. Keepprimaryfixedcomparisonunchanged.",
+  "primary": "SamefixednonnegativeRidgealpha10stackoninnerOOF,tail1;reporttail4andinnerMAEselected/top3asdescriptivesecondaries. Same594/outer5/inner3. No new outer-based hyperparameter/model selection.",
+  "expected_new_base_models": 140,
+  "expected_meta_models": 10
+}

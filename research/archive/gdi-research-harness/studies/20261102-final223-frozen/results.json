@@ -1,0 +1,167 @@
+{
+  "protocol_sha256": "e313a7523a03a755e2d09288f6808c149b68ee3ec7c53b222c876879557d5233",
+  "models_sha256": "3ce5009b3a592d65332a734de88acfccd1c3fcfc13c4135bee2353a29ff04113",
+  "predictions_sha256": "d4645addbaec4b406c5160a61503cbf9afabea1c21fb9d25242e3e51f8bc03d2",
+  "scored_sha256": "413c78f7fa667952974171d0e2648f207337a45b68cc46e6347e53e04e1a34d3",
+  "reservation_people": 223,
+  "reservation_records": 378,
+  "input_eligible_people": 222,
+  "input_eligible_records": 377,
+  "evaluated_people": 222,
+  "evaluated_records": 377,
+  "evaluated_record_sides": 754,
+  "label_exclusions": {},
+  "input_eligible_records_excluded_for_labels": 0,
+  "metrics": {
+    "CNN_refit": {
+      "person_equal_mae": 6.355386146100794,
+      "mae95": [
+        5.9179473254690835,
+        6.7997430839179
+      ],
+      "pearson": 0.7585044063390921,
+      "pearson95": [
+        0.7219835860174597,
+        0.7912865915523087
+      ],
+      "person_equal_bias": -0.256659641294097,
+      "per_origin_fold_mae": [
+        6.927862896947293,
+        6.399695921464313,
+        6.728842544793026,
+        6.394039758086708,
+        6.6266631570248755
+      ],
+      "per_origin_fold_mae_sample_sd": 0.22702298103167134
+    },
+    "CNN_bag": {
+      "person_equal_mae": 6.266755350774388,
+      "mae95": [
+        5.837120109383904,
+        6.708337968346766
+      ],
+      "pearson": 0.7668313831686834,
+      "pearson95": [
+        0.7316476519304008,
+        0.7978731399985228
+      ],
+      "person_equal_bias": -0.27575177574344356,
+      "per_origin_fold_mae": [
+        6.465904368333454,
+        6.230683121826546,
+        6.361157039859136,
+        6.330330863657022,
+        6.488896942407926
+      ],
+      "per_origin_fold_mae_sample_sd": 0.10517801607616677
+    },
+    "fusion": {
+      "person_equal_mae": 6.248558628185189,
+      "mae95": [
+        5.82647614759524,
+        6.684468522289418
+      ],
+      "pearson": 0.7681335809958362,
+      "pearson95": [
+        0.7328512335005308,
+        0.7997991327590855
+      ],
+      "person_equal_bias": -0.26467491015590944,
+      "per_origin_fold_mae": [
+        6.377060299451732,
+        6.201263335379346,
+        6.305044868242028,
+        6.296390924925409,
+        6.377317257481308
+      ],
+      "per_origin_fold_mae_sample_sd": 0.07254671513899512
+    }
+  },
+  "comparisons": {
+    "fusion_minus_CNN_bag": {
+      "mae_delta": -0.018196722589200708,
+      "relative_mae_reduction_percent": 0.2903691235840589,
+      "paired_person_bootstrap95": [
+        -0.12698323047994245,
+        0.08955263817944276
+      ],
+      "verdict": "inconclusive",
+      "people_improved": 113,
+      "people_worsened": 109,
+      "people_tied": 0
+    },
+    "fusion_minus_CNN_refit": {
+      "mae_delta": -0.1068275179156059,
+      "relative_mae_reduction_percent": 1.6808973594963628,
+      "paired_person_bootstrap95": [
+        -0.23183209944623834,
+        0.01970420833826122
+      ],
+      "verdict": "inconclusive",
+      "people_improved": 121,
+      "people_worsened": 101,
+      "people_tied": 0
+    }
+  },
+  "person_mean_truth_bands": [
+    {
+      "band": "below60",
+      "people": 15,
+      "mae": {
+        "CNN_refit": 6.560849864790087,
+        "CNN_bag": 6.522188325344416,
+        "fusion": 6.4273055575403095
+      }
+    },
+    {
+      "band": "60to70",
+      "people": 55,
+      "mae": {
+        "CNN_refit": 5.973850489692958,
+        "CNN_bag": 5.8631560149839155,
+        "fusion": 5.884953583550175
+      }
+    },
+    {
+      "band": "70to80",
+      "people": 62,
+      "mae": {
+        "CNN_refit": 5.934903784048326,
+        "CNN_bag": 5.74084983865866,
+        "fusion": 5.593876573183131
+      }
+    },
+    {
+      "band": "80to90",
+      "people": 64,
+      "mae": {
+        "CNN_refit": 5.946309855023923,
+        "CNN_bag": 6.061779583485011,
+        "fusion": 6.0634159797679565
+      }
+    },
+    {
+      "band": "90plus",
+      "people": 26,
+      "mae": {
+        "CNN_refit": 9.053589776803268,
+        "CNN_bag": 8.731796108759816,
+        "fusion": 8.93150056754786
+      }
+    }
+  ],
+  "bootstrap": {
+    "method": "paired person bootstrap percentile95, two-sided; fixed prediction resampling only",
+    "draws": 10000,
+    "seed": 20261102,
+    "decision": "Evidence favoring fusion only if observed delta<0 and upper95<0; if lower95>0 evidence favoring CNN_bag; otherwise inconclusive. Do not claim equivalence from crossing zero."
+  },
+  "numeric_reserved_labels_opened": true,
+  "optimizer_steps": 0,
+  "post_evaluation_tuning": false,
+  "notes": [
+    "Primary predictions average five frozen fold predictors; per-fold SD is a diagnostic, not five independent holdout repetitions.",
+    "Same-source unseen-person evaluation, not older-adult or external-domain validation.",
+    "Confidence intervals resample fixed predictions, not uncertainty from retraining or all prior model selection."
+  ]
+}

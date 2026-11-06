@@ -1,0 +1,38 @@
+{
+  "code_sha256": "8006c911a5ab86965f98333bc5a5324a8baffec51d3ce7710943894db9f78445",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-hgb\\study.py": "8207576f7273e4e4d990cddc69acc760af48b5fae978dd3fc65baf4a6a684ed5",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-hgb\\main-verification.json": "5667518022459b49c4f959bee6bdd49da8576a03d983bef4dd04810f6ca58e4a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-hgb\\summary.json": "8f1cff4690c7ded6bef6ecbf169f88a67f0112de9dfd016deae989c23e149eec",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-hgb\\paired-bootstrap.json": "3796dab81163c9e7d195cd5a8ce44409e2f681cd0c4eab0515c88b80bae4658f"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "hypothesis": "four-class HGB worsened RF in all seeds; test objective mismatch by learning low function directly, separating binary calibration from classifier changes",
+  "target": "SPPB<=3 or TUG>20 seconds; retain original measured scores and labels, output binary probability not a fabricated four-class distribution",
+  "data": "same2174 SPPB/1939 TUG people, primary30-60sec5bouts, draw0,25columns original4+turns/sec, original outer5/inner3 person folds and5seeds",
+  "methods": [
+    "OriginalRF",
+    "MultiRF",
+    "MultiHGB",
+    "BinaryRF",
+    "BinaryHGB"
+  ],
+  "controls": "OriginalRF exact previous multiclass temperature/threshold baseline; MultiRF/MultiHGB reuse raw multiclass low probability with common binary Platt calibration; BinaryRF/BinaryHGB learn binary labels with same calibration",
+  "models": "RF128 leaf20 max_features1; HGB lr.05 iterations200 minleaf20 L2=1 early_stoppingFalse leaves7/15 chosen inner person logloss. No class weighting, person-equal sample weights",
+  "calibration": "LR C1 on logit risk clipped1e-6; train-inner OOF fit, cross-fit3 calibrators for internal fpr10/sens80 threshold selection; final calibrator on all inner OOF only",
+  "selection_limit": "inner OOF reused for model setting and calibration; inner metrics are selection only; outer held-out people never used for parameter or threshold tuning",
+  "criteria": "binary Brier/AUROC/AP/calibration, fpr10 miss and actual FPR, same-cohort nearest-speed ordering and5seed stability; call joint improvement only if miss lower without higher FPR and binary Brier; report tradeoffs and person-cluster95% intervals",
+  "resource": "CPU4single-thread fits; estimate full15-45min; pilot first2tasks then same full50 tasks, no GPU needed for25columns",
+  "deliverables": "50tasks,100newfinal classifiers+300selectedinner classifiers,450candidateinner fits;16calibrators per task, source multiclass models reused;50global metric rows and100match rows; replay, train-only scaler/calibration, source identity and selected refits",
+  "limits": "same development evaluation people reused; binary warning experiment does not test four-band accuracy or video clinical validity",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-binary-objective",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-binary-objective-20261101"
+  }
+}

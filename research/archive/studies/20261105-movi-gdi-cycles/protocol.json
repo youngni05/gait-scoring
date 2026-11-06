@@ -1,0 +1,21 @@
+{
+  "purpose": "Feasibility audit only: complete cycles and exploratory nine-angle GDI reconstruction; no training labels accepted",
+  "selection": "All 28 subjects with one previously frozen PG1 run of at least 60 frames; preserve exact interval boundaries",
+  "event_method": "Zeni-style maxima of heel-minus-midpelvis anterior position and minima of toe-minus-midpelvis position; constant progression direction from interval displacement",
+  "sampling_hz": 120,
+  "lowpass": "fourth-order Butterworth, 6 Hz, forward/backward on finite contiguous runs only",
+  "event_min_separation_s": 0.35,
+  "event_prominence_mm": 50,
+  "cycle_duration_s": [
+    0.6,
+    1.6
+  ],
+  "cycle_checks": "Both same-side contacts within frozen interval; exactly one opposite contact and one same-side toe-off between; toe-off phase 0.2 to 0.85; heel vertical excursion >=20 mm; heel progression >=200 mm; no required 120-Hz marker gaps or nonfinite coordinates",
+  "main_geometry": "Anatomical marker frames using provided global LHIP/RHIP, LKJC/RKJC, LAJC/RAJC; pelvis ASIS/PSIS; thigh epicondyles; shank long axis plus projected knee mediolateral axis; foot heel/toe and MT1/MT5. Shank torsion and foot neutral alignment remain assumptions.",
+  "axes": "Every frame columns: anterior X, left Y, superior Z; right-handed orthonormal",
+  "rotations": "Intrinsic YXZ for pelvis/hip/knee; YZX for ankle; foot progression from horizontal heel-toe direction; side signs explicit in code and checked on synthetic known rotations",
+  "cycle_normalization": "51 equally spaced samples, 0 to100 percent inclusive, degrees; angle-major flattening",
+  "reference": "Original 2008 supplement fixed 166-entry center and15-feature basis; never re-center MoVi to100",
+  "sensitivity": "Compare alternative ankle frame projected from heel-toe and shank transverse axis; shift complete cycle boundaries by +/-8 mocap samples (2 video frames) only when still within frozen interval; no best-score selection",
+  "validation_limits": "No forceplate contacts or independently measured clinical angles/GDI available. Numeric reconstruction and physical plausibility are not clinical measurement validity. Do not use as Stanford-compatible labels."
+}

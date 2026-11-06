@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "frozen_before_results": true,
+  "date": "2026-11-05",
+  "authorization": "User approved applying the unseen normal test to matched-normal100 when it finishes.",
+  "question": "Does adding only 9 people (about 1 percent of training weight) raise unseen normal gait scores while keeping Stanford error near baseline?",
+  "training": false,
+  "arms": {
+    "baseline": "Stanford-only models.",
+    "adult": "matched-normal100 adult arm: Stanford + LJMU 9 people, 12 records, assumed 100, Stanford-only calibration by design.",
+    "child": "matched-normal100 child arm: Stanford + LIVE 9 people, 12 records, assumed 100, Stanford-only calibration by design.",
+    "reference_full_mixed": "Parent study mixed models with Stanford-only calibration, for context only."
+  },
+  "test_sets": {
+    "adult": "live 9 children; self 13 videos; LJMU 55 people not in the adult arm training set.",
+    "child": "self 13 videos; LJMU all 64 people. LIVE is excluded because it was trained on.",
+    "baseline": "live, self, LJMU, same subsets as each compared arm."
+  },
+  "prediction": "All 5 outer-fold models are averaged for external sets, because added people were in every training split and external sets were in none.",
+  "stages": {
+    "interim": "CNN bag only, while STT and bilateral are unfinished. Descriptive. No verdict is issued.",
+    "final": "Fixed fusion after all 15 family-folds of both arms are collected and pass audit_results.py. Criteria below apply only here."
+  },
+  "preregistered_criteria_final": {
+    "D1_external": "Adult arm: live mean >= 90 and self normal mean >= 90. Child arm: self normal mean >= 90 and LJMU 64 mean >= 90.",
+    "D2_discrimination": "Self normal minus abnormal gap >= 12.67 and video ranges do not overlap.",
+    "D3_stanford_high": "Stanford actual GDI >= 90 MAE: paired 95% upper bound of (arm minus baseline) <= +0.5.",
+    "D4_stanford_overall": "Stanford overall MAE: paired 95% upper bound of (arm minus baseline) <= +0.1. Tighter than D3 because the full mixed model missed this with +0.224.",
+    "overall": "All four pass for an arm: a small dose is enough on this development comparison. Otherwise report which failed."
+  },
+  "uncertainty": "Paired person bootstrap, 10000 draws, seed 20261105. Exploratory, not adjusted for multiple comparisons.",
+  "validation": {
+    "audit": "Interim uses only families and folds that pass audit_results.py for that arm.",
+    "replay_tolerance_points": 0.005,
+    "replay": "Raw refit output on the added training records must reproduce saved train_raw in replay.npz."
+  },
+  "limitations": [
+    "The 9 adults are one fixed hash-ranked draw; other draws may differ.",
+    "Live and self were already seen in the parent study.",
+    "No measured GDI exists for the external sets.",
+    "Added children are 5-10y, added adults 18-47y, and sources differ, so arm differences are not pure age effects."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "asset": "gdi-frozen54-20261106.tar.gz",
+  "sha256": "f545ad9501658ebf6d15030180b2a8f658a1d8472c6b09b564748c7b71813eb4",
+  "bytes": 7011692,
+  "checkpoints": 54,
+  "exact_tensor_equality": true,
+  "synthetic_replay_max_error": 0.0,
+  "synthetic_records": 2,
+  "synthetic_windows": 3,
+  "tested_modes": [
+    "cnn_refit",
+    "cnn_bag",
+    "fusion"
+  ],
+  "new_performance_evaluation": false
+}

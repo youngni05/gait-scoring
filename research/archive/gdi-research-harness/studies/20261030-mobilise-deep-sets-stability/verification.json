@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "models_replayed_exact_float32": 600,
+  "independent_numpy_and_permutation_checks": 600,
+  "max_numpy_forward_difference": 1.52587890625e-05,
+  "max_permutation_difference": 1.52587890625e-05,
+  "paired_inner_searches_checked": 300,
+  "original_seed_120_models_weights_and_predictions_exact": 60,
+  "new_seed_600_parameter_refits_exact": 2,
+  "seed_subgroup_metrics_checked": 2700,
+  "aggregate_rows_checked": 540,
+  "paired_budget_rows_checked": 1350,
+  "source_hashes_unchanged": true,
+  "same_people_visits_bouts_folds_and_draws": true,
+  "training_only_scalers_and_inner_selection": true,
+  "no_best_seed_selection_or_prediction_ensemble": true,
+  "artifacts_sha256": {
+    "protocol.json": "9a3bbac714b92e06f811b1f9c37a5da08c4d4cc69f4b3a2b488dee787f636f58",
+    "predictions.csv": "00eac609f647f447702c72c0b5afebeb928ed629513531fcb597df3c9528865a",
+    "completion.json": "da5b98b3a83cbbb9c2f21052ed5bbebea372ec8b420559c1c69be42a62388ba8",
+    "seed-metrics.csv": "e47b87792251427453fa610eae73ea424a41386021c95262d92c058495dd9cec",
+    "aggregate-metrics.csv": "8d025d77bb7f1fb9091e6c2aee6426e88087df49dedaf2a62972d66975b51ea0",
+    "reference-metrics.csv": "bfff7539e9ff3e1d6e919b57c436eaa2f0607543bec461d3e77e8bfb04d717ed",
+    "paired-budgets.csv": "778714eb778223a509f941722213419bd79abf694727db35b58e78e58709f4c2",
+    "paired-bootstrap.json": "ffe954280815b8fc7df0bd5c93363aa31ce52653e5604990b34cacf6d9dd9e13",
+    "selections.csv": "602581e38606c252d423211c1456ab84f983195ac568e2ca35e72a93a2eb9fb0",
+    "summary.json": "479534cf93ed541249db5791a9cebbc102bfcedb771e8f26c6fed126f1bf0045"
+  },
+  "scripts_sha256": {
+    "train.py": "24868cb285153745c9ab4a39616efc33dd664198eccbb67543151cec6999e58e",
+    "analyze.py": "dc7fa4c45998e0c223a17f7697505564d77dc201e56bf4c295c5f2115f89c1d7",
+    "verify.py": "00c691b690bb07ea4fec372bc552c1afd0f156b3beebf30dcfbd31275e442036"
+  },
+  "bootstrap_point_estimates_checked": 96
+}

@@ -1,0 +1,52 @@
+{
+  "code_sha256": "07c742ef0f82fb5711dd163fb3c738f695ab8f4f6725972cd0f401c0819843c8",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns\\study.py": "b24d2470d0084a9128d91271638ac8e70ec00cfec3ec77e3c9e062ecc6b80b8d",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns\\main-verification.json": "07d9e100776e52e6bab0b1afa0f67d6325ef87ca8e58239b0c6a136db13a5acb",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-input-classification\\study.py": "eed2351f06ec1b40b22522b40d8fc70326cd14fdbca94174f03c824b0817eebd",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-input-classification\\verification.json": "333e71d6aad31930bddef85a7e0bcf63be110c19d654c304dfb9c7c6667586e1",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\audited-bouts.csv": "f826fbf2b9010b36cb0c8f181636242504e862e46f125d31db68c205a2a5d202"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "user_constraint": "fixed single smartphone, no floor distance marks; one-time height entry allowed. Aim four-band accuracy with one anchor plus camera-feasible extras.",
+  "anchor": "walking speed is the selected anchor, NOT proven globally best individual feature. Height aids metric-scale estimation but is not a validation of video speed or world translation.",
+  "hypothesis": "previous median-speed vs full-bout comparison mixes information preservation with extra features. Separate five speed values from adding cadence; Core4 is a no-turn/no-duration reference.",
+  "inputs": {
+    "SpeedMedian": "one median speed",
+    "SpeedBouts": "five sorted speeds",
+    "SpeedCadence": "five speeds+corresponding cadences,10columns",
+    "Core4": "five bouts original4,20columns"
+  },
+  "data": "sameSPPB2174people7356visits,TUG1939people5688visits,draw0,30-60sec5bouts; exact original outer5/inner3 person folds and5seeds; all visits of a person grouped",
+  "evaluation_scope": "restores original mixed-cohort person5fold for the original speed comparison; different question from subsequent cohort-held-out4fold diagnostics. No protected final data.",
+  "model": "all RF128,minleaf20,max_features1,person equal weights. No HP search in this input ablation. Reuse SpeedMedian/Core4 verified models; new SpeedBouts/SpeedCadence.",
+  "selection": "train-only scaler,temperature andwarning thresholds from original inner3 people. No selecting features or rules using outer outcomes.",
+  "primary": "overall four-class accuracy,per-class recall and balanced recall; compare SpeedBouts-SpeedMedian thenSpeedCadence-SpeedBouts;5seed direction and person bootstrap. No changing class boundaries or merging classes.",
+  "guardrails": "report lowclass miss/FPR and opposite-extreme errors; an aggregate accuracy gain with subgroup deterioration is not uniform improvement.",
+  "camera_limits": "released sensor averages only; no pixel extraction or height-based video reconstruction tested. No within-bout step variability,left-right asymmetry,trunk sway available in this table. Bout duration andturn frequency excluded.",
+  "next_stage": "compare RF/DeepSets with identical retained camera-feasible features and internal accuracy selection; validate metric video speed andcadence against reference before claiming camera-score accuracy.",
+  "expected": {
+    "tasks": 50,
+    "new_final_models": 100,
+    "new_inner_models": 300,
+    "reused_final_models": 100,
+    "reused_inner_models": 300,
+    "model_replays": 800,
+    "selected_refits": 16,
+    "metric_rows": 90,
+    "matched_rows": 40
+  },
+  "resource": "CPU4single-thread workers,estimate5-20min training+audit,pilot2targets fold0 firstseed,noGPU",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-camera-inputs",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-camera-inputs-20261101"
+  }
+}

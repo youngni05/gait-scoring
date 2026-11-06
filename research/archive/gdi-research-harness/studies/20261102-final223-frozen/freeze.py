@@ -1,0 +1,51 @@
+"""Freeze the already selected three predictors before opening reserved inputs/labels."""
+from pathlib import Path
+import hashlib,json,datetime
+
+HERE=Path(__file__).resolve().parent
+HARNESS=HERE.parents[1]
+STUDY=HARNESS/'studies/20261030-gpu-motionbert-study'
+def sha(p):
+    h=hashlib.sha256()
+    with Path(p).open('rb') as f:
+        for chunk in iter(lambda:f.read(2**20),b''):h.update(chunk)
+    return h.hexdigest()
+def read(p):return json.loads(Path(p).read_text(encoding='utf-8-sig'))
+def save(p,x):Path(p).write_text(json.dumps(x,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+
+def main():
+    assert not (HERE/'protocol.json').exists(),'Do not overwrite the frozen protocol'
+    source=HARNESS/'studies/20261101-self-video-gdi/results.json'
+    reference=read(source)
+    members=reference['members']
+    assert len(members)==54
+    for m in members:assert sha(m['checkpoint'])==m['checkpoint_sha256']
+    selections=read(STUDY/'mean-difference692/analysis/selection.json')['folds']
+    manifest=dict(source=str(source.resolve()),source_sha256=sha(source),members=members,selections=selections)
+    save(HERE/'models.json',manifest)
+    protocol={
+      'frozen_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+      'authorization':'2026-11-02 user explicitly authorized freezing three models and one final evaluation of the previously reserved 223 people, including fusion vs CNN-only averaging comparison.',
+      'reserved_cohort':'Existing reserved 223-person / 378-record membership only; no replacement with development people. Actual eligible counts must be reported.',
+      'predictors':{
+        'CNN_refit':'For each of five existing outer refit CNNs: windows mean then its frozen training-only calibration; equal mean across five predictions. No retraining.',
+        'CNN_bag':'Within each fold, equal mean of the existing refit and eligible inner CNNs (4 members for fold0; 5 for others), then equal mean across five folds. Frozen existing exclusion retained.',
+        'fusion':'Within each fold, existing CNN_bag and STT_bag; fixed fold CNN weights and bilateral-STT difference fractions from models.json; equal mean of five fold outputs. Exactly the previously applied 54-checkpoint predictor.'},
+      'models_manifest_sha256':sha(HERE/'models.json'),
+      'input':'Same pinned Stanford full-record processing, native frames 1..1499 stopping at missing file; one eligible person with max x<320, multiple candidates remain missing; no new mirroring, time resampling, clipping, scaling fit or calibration.',
+      'eligibility':'Same canonical contiguous 124-frame input gate as retained development692: original prepared frame IDs must lie in converter extent; maximum required-coordinate missingness <=0.25; canonical 12 features finite. Sliding 124-frame windows at starts range(0,500-124,31), each max required-coordinate missingness <=0.25 and finite features. If no such window, reuse original canonical124 exactly, as in development. Exclusions depend only on input/identity/label validity, never score or error.',
+      'features':'Per side ankle,knee,hip,big-toe xy (8), knee and ankle projected angles (2), toe-ankle and bilateral ankle distances (2). CNN12; STT first8; bilateral STT both sides.',
+      'inference':'CPU float32 deterministic torch, four threads, existing forward functions. Reproduce existing development/self-video predictions within absolute1e-4 before final inference. All checkpoint train/validation people must be disjoint from reserved people. All predictions fixed and hashed before numeric reserved GDI labels are opened.',
+      'primary_metric':'Mean absolute error: mean across left/right and records within each person, then equal mean across eligible people; no clipping. Same complete-case people/records for all three models.',
+      'primary_comparison':'fusion minus CNN_bag person-equal MAE. Negative favors fusion.',
+      'uncertainty':{'method':'paired person bootstrap percentile95, two-sided; fixed prediction resampling only','draws':10000,'seed':20261102,'decision':'Evidence favoring fusion only if observed delta<0 and upper95<0; if lower95>0 evidence favoring CNN_bag; otherwise inconclusive. Do not claim equivalence from crossing zero.'},
+      'secondary':['MAE95 per model','Pearson across pooled record-side values with person bootstrap95','mean signed prediction-minus-truth bias','fusion vs CNN_refit (descriptive secondary)','people improved/worsened/tied','per-origin-fold predictor MAEs and sample SD: diagnostic, not five independent final tests','predeclared person-mean trueGDI bands below60,60to70,70to80,80to90,90plus; counts and MAE'],
+      'audit':'Verify existing reservation hash/provenance and development identity disjointness; report input/label exclusions, prediction hashes, checkpoint hashes, pre/post protocol hash. Independent metric and ensemble reconstruction. No old37/38 cohort use.',
+      'one_time':'One locked reporting run; fixed three-model comparison, no post-result tuning, exclusion changes or model selection. Technical replay/recalculation may verify identical predictions and metrics, but does not create a new independent test.',
+      'scope':'Same-source unseen-person holdout; not external-population, older-adult, RGB capture or clinical validation. Development OOF values differ from this five-fold-averaged deployment predictor.',
+      'storage':{'small':str(HERE.resolve()),'large':'D:/gait-research-data/D_P/final223-frozen-20261102'}
+    }
+    save(HERE/'protocol.json',protocol)
+    save(HERE/'freeze.json',{'protocol_sha256':sha(HERE/'protocol.json'),'models_sha256':sha(HERE/'models.json'),'freeze_code_sha256':sha(__file__),'reserved_inputs_opened':False,'reserved_numeric_labels_opened':False})
+    print(json.dumps({'protocol_sha256':sha(HERE/'protocol.json'),'checkpoints':len(members),'reserved_inputs_opened':False,'reserved_numeric_labels_opened':False}))
+if __name__=='__main__':main()

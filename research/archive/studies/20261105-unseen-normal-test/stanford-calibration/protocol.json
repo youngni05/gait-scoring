@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "frozen_before_results": true,
+  "date": "2026-11-05",
+  "authorization": "User approved applying Stanford-only calibration to the mixed model and repeating the unseen normal test.",
+  "question": "Can the mixed model keep high scores for unseen normal gait while recovering Stanford high-GDI error, if only the final calibration is fitted on Stanford training rows?",
+  "training": false,
+  "arms": {
+    "baseline": "Stanford-only trained models, original calibration.",
+    "mixed": "Mixed trained models, calibration fitted on Stanford + LJMU training rows.",
+    "mixed_stanford_cal": "Same mixed networks, selected epochs and bag members. Each member slope and intercept refitted by least squares on that member's Stanford training rows only."
+  },
+  "fusion": "Fixed fold weights from bundle/ensemble.json in every arm, including the bilateral refit term. No weight search.",
+  "calibration_data": "Each member's train_raw from replay.npz, restricted to Stanford rows. Held-out people are never used.",
+  "stanford_evaluation": "Held-out raw outputs in replay.npz, 692 people, equal person weight. Thresholds apply to the actual record-side GDI. Same rule as compare_high_gdi.py.",
+  "external_sets": "live, self, ljmu_original from the parent study inputs. Perturbation sets are not rerun.",
+  "preregistered_criteria": {
+    "C1_stanford_high_recovery": "Stanford actual GDI >= 90 MAE: paired 95% upper bound of (mixed_stanford_cal minus baseline) <= +0.5 points. Margin chosen before results.",
+    "C2_external_kept": "Live person mean >= 90 and self normal video mean >= 90 under mixed_stanford_cal.",
+    "C3_discrimination_kept": "Self normal minus abnormal gap >= 12.67 and video score ranges do not overlap under mixed_stanford_cal.",
+    "overall": "C1 and C2 and C3 all pass: both effects can coexist on this development comparison. Otherwise report which failed.",
+    "reported_without_threshold": "Stanford overall MAE, GDI >= 100 MAE, GDI < 70 MAE, prediction slope, LJMU mean."
+  },
+  "uncertainty": "Paired person bootstrap, 10000 draws, seed 20261105. Exploratory, not adjusted for multiple comparisons, conditional on fitted models.",
+  "validation": {
+    "checkpoint_hashes": "Every checkpoint SHA-256 must match complete.json.",
+    "replay_tolerance_points": 0.005,
+    "replay_external": "Member outputs with stored mixed calibration must reproduce parent results for live, self and ljmu_original.",
+    "replay_stanford": "Member held-out raw outputs with stored mixed calibration must reproduce comparison-predictions.npz mixed fusion on Stanford rows.",
+    "ols": "Stanford-only coefficients must match an independent closed-form slope and intercept."
+  },
+  "limitations": [
+    "The parent study already showed this calibration direction helped CNN and STT, so C1 is a confirmation on the same development data, not an independent test.",
+    "Live and self were already seen in the parent study.",
+    "No measured GDI exists for the external sets.",
+    "Calibration only rescales outputs; it cannot change a network's ranking within one member."
+  ]
+}

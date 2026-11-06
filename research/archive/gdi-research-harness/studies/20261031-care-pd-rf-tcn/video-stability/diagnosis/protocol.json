@@ -1,0 +1,11 @@
+{
+  "scope": "Post-hoc explanation of frozen predictions; no retraining, calibration, or camera correction fitted.",
+  "people_CARE": 110,
+  "people_video": 5,
+  "models": 30,
+  "reference_5s": "First125 existing25Hz frames of each eligible original walk; same-frame-length diagnostic only; original RF trained on full walks.",
+  "distribution": "Person-equal summaries; training-fold-only weighted scale for nearest-neighbor distances. Compare raw features and five-second RGB-derived cohort subset.",
+  "leaf": "Exact bootstrap multiplicity times original person weight; reconstruct label/cohort composition in each leaf and assert leaf prediction equals weighted label mean.",
+  "path": "Exact root-to-leaf value differences allocated to split feature; tree-order-dependent explanation, not causal importance.",
+  "limitations": "HMR2 vs WHAM is confounded with people, population, acquisition and motion. Five paired people cannot identify clinical accuracy or estimator-only causal effects."
+}

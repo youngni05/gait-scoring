@@ -1,0 +1,245 @@
+{
+  "passed": true,
+  "primary_experimental_models": 45,
+  "independent_sklearn_solver_checks": [
+    {
+      "alpha": 1e-06,
+      "fold": 0,
+      "independent_prediction_max_error": 8.412825991399586e-11
+    },
+    {
+      "alpha": 0.0001,
+      "fold": 0,
+      "independent_prediction_max_error": 6.480149750132114e-12
+    },
+    {
+      "alpha": 0.01,
+      "fold": 0,
+      "independent_prediction_max_error": 3.268496584496461e-13
+    },
+    {
+      "alpha": 0.1,
+      "fold": 0,
+      "independent_prediction_max_error": 8.526512829121202e-14
+    },
+    {
+      "alpha": 1,
+      "fold": 0,
+      "independent_prediction_max_error": 2.842170943040401e-14
+    },
+    {
+      "alpha": 10,
+      "fold": 0,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 100,
+      "fold": 0,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1000,
+      "fold": 0,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 10000,
+      "fold": 0,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1e-06,
+      "fold": 1,
+      "independent_prediction_max_error": 7.275957614183426e-11
+    },
+    {
+      "alpha": 0.0001,
+      "fold": 1,
+      "independent_prediction_max_error": 5.9117155615240335e-12
+    },
+    {
+      "alpha": 0.01,
+      "fold": 1,
+      "independent_prediction_max_error": 4.121147867408581e-13
+    },
+    {
+      "alpha": 0.1,
+      "fold": 1,
+      "independent_prediction_max_error": 9.947598300641403e-14
+    },
+    {
+      "alpha": 1,
+      "fold": 1,
+      "independent_prediction_max_error": 4.973799150320701e-14
+    },
+    {
+      "alpha": 10,
+      "fold": 1,
+      "independent_prediction_max_error": 2.842170943040401e-14
+    },
+    {
+      "alpha": 100,
+      "fold": 1,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1000,
+      "fold": 1,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 10000,
+      "fold": 1,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1e-06,
+      "fold": 2,
+      "independent_prediction_max_error": 8.617462299298495e-11
+    },
+    {
+      "alpha": 0.0001,
+      "fold": 2,
+      "independent_prediction_max_error": 5.5706550483591855e-12
+    },
+    {
+      "alpha": 0.01,
+      "fold": 2,
+      "independent_prediction_max_error": 2.5579538487363607e-13
+    },
+    {
+      "alpha": 0.1,
+      "fold": 2,
+      "independent_prediction_max_error": 8.526512829121202e-14
+    },
+    {
+      "alpha": 1,
+      "fold": 2,
+      "independent_prediction_max_error": 4.973799150320701e-14
+    },
+    {
+      "alpha": 10,
+      "fold": 2,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 100,
+      "fold": 2,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1000,
+      "fold": 2,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 10000,
+      "fold": 2,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1e-06,
+      "fold": 3,
+      "independent_prediction_max_error": 5.502442945726216e-11
+    },
+    {
+      "alpha": 0.0001,
+      "fold": 3,
+      "independent_prediction_max_error": 5.9117155615240335e-12
+    },
+    {
+      "alpha": 0.01,
+      "fold": 3,
+      "independent_prediction_max_error": 2.4158453015843406e-13
+    },
+    {
+      "alpha": 0.1,
+      "fold": 3,
+      "independent_prediction_max_error": 8.526512829121202e-14
+    },
+    {
+      "alpha": 1,
+      "fold": 3,
+      "independent_prediction_max_error": 3.552713678800501e-14
+    },
+    {
+      "alpha": 10,
+      "fold": 3,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 100,
+      "fold": 3,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1000,
+      "fold": 3,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 10000,
+      "fold": 3,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1e-06,
+      "fold": 4,
+      "independent_prediction_max_error": 7.275957614183426e-11
+    },
+    {
+      "alpha": 0.0001,
+      "fold": 4,
+      "independent_prediction_max_error": 4.547473508864641e-12
+    },
+    {
+      "alpha": 0.01,
+      "fold": 4,
+      "independent_prediction_max_error": 2.7711166694643907e-13
+    },
+    {
+      "alpha": 0.1,
+      "fold": 4,
+      "independent_prediction_max_error": 9.237055564881302e-14
+    },
+    {
+      "alpha": 1,
+      "fold": 4,
+      "independent_prediction_max_error": 2.842170943040401e-14
+    },
+    {
+      "alpha": 10,
+      "fold": 4,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 100,
+      "fold": 4,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 1000,
+      "fold": 4,
+      "independent_prediction_max_error": 1.4210854715202004e-14
+    },
+    {
+      "alpha": 10000,
+      "fold": 4,
+      "independent_prediction_max_error": 0.0
+    }
+  ],
+  "independent_solver_max_prediction_error": 8.617462299298495e-11,
+  "alpha1_baseline_max_error": 1.4921397450962104e-13,
+  "all_36_aggregate_rows_independently_checked": true,
+  "tail_band_rows_independently_checked": 72,
+  "saved_coefficients_replayed": true,
+  "training_MSE_monotone_with_regularization": true,
+  "coefficient_norm_monotone_with_regularization": true,
+  "source_and_previous_results_unchanged": true,
+  "fixed_grid_not_extended": true,
+  "all_180_fold_role_window_combinations_present_once": true,
+  "protected_cohorts_used": false,
+  "encoder_reinference": false,
+  "GPU_used": false,
+  "independent_final_evaluation": false
+}

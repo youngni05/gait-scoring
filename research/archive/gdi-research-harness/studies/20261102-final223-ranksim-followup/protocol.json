@@ -1,0 +1,58 @@
+{
+  "frozen_utc": "2026-11-02T00:56:34.882417+00:00",
+  "authorization": "User authorized supplemental fixed-weight general-CNN and RankSim additions on the same222 people/377records; preserve completed original evaluation.",
+  "classification": "post-hoc supplemental comparison after original holdout outcomes were observed; not a new untouched final test",
+  "cohort": "Exact original scored222 people/377records, same row order and outcomes; no new exclusions or samples",
+  "baseline": "Reuse original frozen CNN_bag and fusion outputs and each fusion_f; do not recalibrate or recompute them",
+  "added_models": "Five pre-existing refit CNN checkpoints per arm, native12features124frames, window mean then each existing training-only calibration; no training",
+  "weights": {
+    "scratch_control": [
+      0.35,
+      0.2,
+      0.2,
+      0.1,
+      0.2
+    ],
+    "ranksim": [
+      0.45,
+      0.05,
+      0.15,
+      0.35,
+      0.3
+    ]
+  },
+  "formula": "For each f: (1-w[f])*original_fusion_f + w[f]*added_refit_f; then equal average across five f. Never combine global averages using a mean weight.",
+  "precision": "Additional CNNs CPU float64 to match their previously qualified replay path; original fixed float32 predictions unchanged. Require every new model development replay max absolute error<1e-4.",
+  "primary_metric": "Mean absolute error across record-sides within person, then equal mean across222 people",
+  "primary_comparisons": [
+    "plus_general minus CNN_bag",
+    "plus_ranksim minus CNN_bag"
+  ],
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20261103,
+    "unit": "paired person, fixed prediction errors",
+    "individual95": [
+      2.5,
+      97.5
+    ],
+    "familywise95_Bonferroni_two_comparisons": [
+      1.25,
+      98.75
+    ]
+  },
+  "decision": "For each primary comparison, evidence favoring added model only if observed difference<0 and upper Bonferroni97.5 interval<0; otherwise inconclusive unless lower interval>0. Report individual95 too; not equivalence testing.",
+  "secondary": [
+    "each addition vs original fusion, descriptive95",
+    "RankSim addition vs general addition, descriptive95",
+    "per-model MAE95/Pearson/bias",
+    "original true-person-meanGDI>=90 subgroup count/MAE",
+    "five-origin-fold diagnostic MAEs and SD"
+  ],
+  "one_pass": "Lock new predictions before re-reading original scored outcomes. Do not retune any weights or select strength/epoch after outcomes. Preserve all original artifacts byte-for-byte.",
+  "scope": "same-source post-hoc supplemental comparison; no older-adult or external capture validity claim",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261102-final223-ranksim-followup",
+    "large": "D:\\gait-research-data\\D_P\\final223-ranksim-followup-20261102"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "cohorts": {
+    "exclude283": {
+      "people": 82,
+      "long_people": 6,
+      "views": [
+        "Gait_10",
+        "Reallocated_10",
+        "Core_10",
+        "Prep_10",
+        "LearnPrep_10",
+        "Gait_20",
+        "Reallocated_20",
+        "Core_20",
+        "Prep_20",
+        "LearnPrep_20",
+        "Gait_30",
+        "Reallocated_30",
+        "Core_30",
+        "Prep_30",
+        "LearnPrep_30"
+      ],
+      "hashes": {
+        "input.npz": "3da2af77dd7bba3837f4e6aed1b7c5b11c9088c75c08140c3644ca3612f2dc0f",
+        "manifest.json": "995895678e51fcf453642b26c2abbd2f05ac15fb374b04706d98b3b26037564f",
+        "splits.json": "b99176e4fd9c69fb26787002a152476374019dd903a3738a4c1b194778f0ddee"
+      }
+    },
+    "include283": {
+      "people": 83,
+      "long_people": 7,
+      "views": [
+        "Gait_10",
+        "Reallocated_10",
+        "Core_10",
+        "Prep_10",
+        "LearnPrep_10",
+        "Gait_20",
+        "Reallocated_20",
+        "Core_20",
+        "Prep_20",
+        "LearnPrep_20",
+        "Gait_30",
+        "Reallocated_30",
+        "Core_30",
+        "Prep_30",
+        "LearnPrep_30"
+      ],
+      "hashes": {
+        "input.npz": "4aaa61a9dab34a2869abb7e4b8f536c2193e4823a74e2e8cc667d6d3b95868d3",
+        "manifest.json": "2910f68ce009940f2ff2bd0a29a23babc76ada35dc63bace5b9b0da6ed4bb163",
+        "splits.json": "ce020cac9fee95393c03f92e5f199fca8c0de693906e5ae043f32aaba0a95f43"
+      }
+    }
+  },
+  "primary": "maximum20s, Prep versus Gait; Core and Reallocated diagnose allocation and rise-only effects; include283 and exclude283 both reported; 10/30 caps sensitivity",
+  "selection": "common people passing input-only existing rise detector; vertical<=3m/s and angle step<=45deg; phase ends before mandatory3s gait; >=1 frame spare at every budget; no target or model performance exclusions",
+  "observation": "exact same per-person previous actual duration at each10/20/30 cap; allocate earliest discarded gait context to latest part of prep-rise, retain original contiguous3s+turn; reduced gait begins no earlier than rise end to avoid double counting; summed nonoverlapping clips, NOT contiguous capture time; full-record segmentation retained",
+  "models": "all Ridge SVD alpha .1,1,10,100 train-only scaling, inner finalTUG MAE; subtract last-column fixed offset in training and add to max(predicted remainder,0); no upper clamp",
+  "views": {
+    "Gait": "previous full gait window, observed gait stop added",
+    "Reallocated": "shorter gait plus selected prep clip, ignore prep time value (ablation)",
+    "Core": "same as Reallocated plus observed core rise duration fixed1",
+    "Prep": "same as Reallocated plus observed prep+rise duration fixed1",
+    "LearnPrep": "same clips, model learns core and preparatory seconds coefficients; gaitstop fixed1"
+  },
+  "split": "same previous5x5 outer and3inner memberships restricted to retained people, no reshuffle",
+  "metrics": "person equal MAE/under/over/bias; >=20s descriptive group; paired conditional10000person bootstrap seed20261031; 28.03 and42.59 prediction mean SD range; no independent test set",
+  "limits": [
+    "automatic prep includes possible unrelated posture changes and instruction wait",
+    "exact clinically timed trial and command timestamp unverified",
+    "repeated development-set analyses; no confirmatory p-values",
+    "observed rise duration includes previous boundary margins",
+    "residual is not independently annotated pure moving time"
+  ],
+  "source_hashes": {
+    "20261031-opencap-additive-stop\\study.py": "1664bfced6e3cc10d3df66a489038ade6812f089d484c881c417e5e4b871e54a",
+    "20261031-opencap-long-observation\\study.py": "d532cb3578adda5fd7ea3db840a432b3b3518f325f58d011c9a3f3679247f231",
+    "20261031-opencap-chair\\segment.py": "b16522df8c4b149497fbef01508722e6f86bac08f556aa59d5099e14c1b3b0e5",
+    "20261031-opencap-chair\\preparation_phase.py": "6c1d75633f57b8795f97cfb0edd94702a6b2c8ab5b4fd21e109767125c27d465",
+    "20261031-opencap-additive-stop\\include283\\manifest.json": "79403e0de2f377c09dd643d0e58a5ab9ae10b72f4dd47ed0d7fc095660fcc49a",
+    "20261031-opencap-additive-stop\\include283\\input.npz": "132adaed0d54a355b5c342f7527c9d836af9d22c543484e8deaa46c0474452ac",
+    "20261031-opencap-additive-stop\\include283\\splits.json": "53a66e3096a7398cee071257dbe68605fc2163fd470c4dcc2005413dbcb75716"
+  },
+  "code_sha256": "362f1457742b45fe095275a54a91308477fb6727fbcd96781e78bde35844e75e"
+}

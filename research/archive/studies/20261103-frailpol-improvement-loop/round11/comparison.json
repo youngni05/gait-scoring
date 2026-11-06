@@ -1,0 +1,170 @@
+{
+  "speed/tail1/plain": {
+    "mae": 1.0797946577080997,
+    "p95": 3.10030298221279,
+    "slow_mae": 7.387191832689151,
+    "slow_bias": -7.387191832689151,
+    "goal_met": false
+  },
+  "speed/tail1/guarded": {
+    "mae": 1.0913056439510673,
+    "p95": 3.10030298221279,
+    "slow_mae": 7.387191832689151,
+    "slow_bias": -7.387191832689151,
+    "goal_met": false
+  },
+  "speed/tail4/plain": {
+    "mae": 1.1514652418298192,
+    "p95": 3.039041712772584,
+    "slow_mae": 5.057523566620422,
+    "slow_bias": -5.057523566620422,
+    "goal_met": false
+  },
+  "speed/tail4/guarded": {
+    "mae": 1.1419486355714605,
+    "p95": 3.039041712772584,
+    "slow_mae": 5.057523566620422,
+    "slow_bias": -5.057523566620422,
+    "goal_met": false
+  },
+  "speed/tail8/plain": {
+    "mae": 1.2238018213902397,
+    "p95": 3.4619892147983395,
+    "slow_mae": 3.8752851252629674,
+    "slow_bias": -3.8752851252629674,
+    "goal_met": false
+  },
+  "speed/tail8/guarded": {
+    "mae": 1.1892610038395754,
+    "p95": 3.4619892147983395,
+    "slow_mae": 3.8752851252629674,
+    "slow_bias": -3.8752851252629674,
+    "goal_met": false
+  },
+  "speed/tail16/plain": {
+    "mae": 1.3235715336065808,
+    "p95": 3.6605741015795834,
+    "slow_mae": 3.0993284568422164,
+    "slow_bias": -2.79332909983778,
+    "goal_met": false
+  },
+  "speed/tail16/guarded": {
+    "mae": 1.2375353535988167,
+    "p95": 3.6605741015795834,
+    "slow_mae": 3.0993284568422164,
+    "slow_bias": -2.79332909983778,
+    "goal_met": false
+  },
+  "speed_duration/tail1/plain": {
+    "mae": 0.9972441030976825,
+    "p95": 2.903199899030715,
+    "slow_mae": 5.196991452153856,
+    "slow_bias": -5.196991452153856,
+    "goal_met": false
+  },
+  "speed_duration/tail1/guarded": {
+    "mae": 0.9971909740165136,
+    "p95": 2.903199899030715,
+    "slow_mae": 5.196991452153856,
+    "slow_bias": -5.196991452153856,
+    "goal_met": false
+  },
+  "speed_duration/tail4/plain": {
+    "mae": 1.0560278394740932,
+    "p95": 3.441574482303429,
+    "slow_mae": 3.675735279098957,
+    "slow_bias": -3.320654272917633,
+    "goal_met": false
+  },
+  "speed_duration/tail4/guarded": {
+    "mae": 1.0494239639106284,
+    "p95": 3.441574482303429,
+    "slow_mae": 3.675735279098957,
+    "slow_bias": -3.320654272917633,
+    "goal_met": false
+  },
+  "speed_duration/tail8/plain": {
+    "mae": 1.1218046564752735,
+    "p95": 3.8885944669150057,
+    "slow_mae": 3.5204805803145915,
+    "slow_bias": -2.509573290143547,
+    "goal_met": false
+  },
+  "speed_duration/tail8/guarded": {
+    "mae": 1.0930891503427744,
+    "p95": 3.7433719027055403,
+    "slow_mae": 3.5204805803145915,
+    "slow_bias": -2.509573290143547,
+    "goal_met": false
+  },
+  "speed_duration/tail16/plain": {
+    "mae": 1.195715394335448,
+    "p95": 3.8023388858275378,
+    "slow_mae": 3.4349801288848183,
+    "slow_bias": -1.8151885552524962,
+    "goal_met": false
+  },
+  "speed_duration/tail16/guarded": {
+    "mae": 1.138591402905918,
+    "p95": 3.675092100617171,
+    "slow_mae": 3.4349801288848183,
+    "slow_bias": -1.8151885552524962,
+    "goal_met": false
+  },
+  "combined/tail1/plain": {
+    "mae": 0.8932336300279681,
+    "p95": 2.540451999469206,
+    "slow_mae": 4.664178235623306,
+    "slow_bias": -4.664178235623306,
+    "goal_met": false
+  },
+  "combined/tail1/guarded": {
+    "mae": 0.888023369504273,
+    "p95": 2.540451999469206,
+    "slow_mae": 4.664178235623306,
+    "slow_bias": -4.664178235623306,
+    "goal_met": false
+  },
+  "combined/tail4/plain": {
+    "mae": 0.9367107417319958,
+    "p95": 2.939741129191197,
+    "slow_mae": 3.461342290267403,
+    "slow_bias": -3.4317311237157813,
+    "goal_met": false
+  },
+  "combined/tail4/guarded": {
+    "mae": 0.9021982150981114,
+    "p95": 2.8038818284247156,
+    "slow_mae": 3.461342290267403,
+    "slow_bias": -3.4317311237157813,
+    "goal_met": false
+  },
+  "combined/tail8/plain": {
+    "mae": 0.9833323871676517,
+    "p95": 2.910379526582156,
+    "slow_mae": 3.047119182490878,
+    "slow_bias": -2.8669092951048487,
+    "goal_met": false
+  },
+  "combined/tail8/guarded": {
+    "mae": 0.931439917809301,
+    "p95": 2.7926668914086608,
+    "slow_mae": 3.047119182490878,
+    "slow_bias": -2.8669092951048487,
+    "goal_met": false
+  },
+  "combined/tail16/plain": {
+    "mae": 1.0254365286372262,
+    "p95": 3.040435092623407,
+    "slow_mae": 2.6412523478050933,
+    "slow_bias": -2.336010022867595,
+    "goal_met": false
+  },
+  "combined/tail16/guarded": {
+    "mae": 0.9614041983296824,
+    "p95": 2.994829300117799,
+    "slow_mae": 2.6412523478050933,
+    "slow_bias": -2.336010022867595,
+    "goal_met": false
+  }
+}

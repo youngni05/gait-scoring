@@ -1,0 +1,90 @@
+{
+  "round": 2,
+  "created": "2026-11-03T14:51:32.785562+00:00",
+  "code_sha256": "f4cfa20fa537cd6ae3e6eefbcd04d999c8eafc95daf9c6ce6dbda5ef9eb716d3",
+  "round1_library_sha256": "22e2bd1e26fbf2b3d8a715bcc85d16799f1ba5b59bcb6d5ae4eb5fa8bbb9d653",
+  "factory_sha256": "cc18a7abe68fdf5acbef27d7d306cbae79dde3c1f15aae73a908e821ba969390",
+  "features_sha256": "37e1cfb213047e72bd682aecabaac176de693688af6f4672a83b4c4fec2340da",
+  "source_sha256": "62b83914b235ebe5199640d59e972f8bcd8e7bb7de59219c94d18ab8fac345f0",
+  "candidates": [
+    {
+      "kind": "ridge",
+      "alpha": 10,
+      "k": 16
+    },
+    {
+      "kind": "ridge",
+      "alpha": 10,
+      "k": 32
+    },
+    {
+      "kind": "ridge",
+      "alpha": 10,
+      "k": 187
+    },
+    {
+      "kind": "svr",
+      "C": 100,
+      "gamma": 0.03,
+      "k": 16
+    },
+    {
+      "kind": "svr",
+      "C": 100,
+      "gamma": 0.03,
+      "k": 32
+    },
+    {
+      "kind": "extra",
+      "leaf": 2,
+      "k": 32
+    },
+    {
+      "kind": "extra",
+      "leaf": 2,
+      "k": 187
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 15,
+      "rounds": 150,
+      "linear_lambda": 10,
+      "k": 32
+    },
+    {
+      "kind": "linear_tree",
+      "leaf": 15,
+      "rounds": 150,
+      "linear_lambda": 10,
+      "k": 187
+    },
+    {
+      "kind": "residual",
+      "alpha": 10,
+      "leaf": 15,
+      "k": 32
+    },
+    {
+      "kind": "residual",
+      "alpha": 10,
+      "leaf": 15,
+      "k": 187
+    },
+    {
+      "kind": "TabICLv2",
+      "k": 32
+    },
+    {
+      "kind": "TabPFNv2",
+      "k": 32
+    }
+  ],
+  "design": "Same594 people/folds/windows, expanded187 sensor features including previous19. Train-only median imputation and f_regression top-k with speed always retained. Fixed pre-trained models8ensembles32selectedfeatures, same verified weights. Preserve native units/no target clipping.",
+  "selection": "Inner3 stratified by<12/12..20/>=20 seed20261103; minimize max(MAE/.9,p95/3,slowMAE/3), first tie. Evaluate selected and equal top3 average; no outer tuning.",
+  "conditions": [
+    "speed",
+    "expanded"
+  ],
+  "verification": "Every candidate inner state/context saved; all final and inner contexts replayed independently. For foundation store training context plus fixed global weights, no duplicate checkpoint.",
+  "expected_additional_GB": 1
+}

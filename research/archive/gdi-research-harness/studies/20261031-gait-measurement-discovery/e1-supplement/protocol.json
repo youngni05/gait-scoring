@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "status": "frozen_before_supplement_execution",
+  "authorization": "2026-10-31 user approved preserving existing conditions and supplementing E1, recording protocol first, and preparing slide 8 results.",
+  "question": "Do predefined gait feature families add predictive information beyond the existing speed family for actual TUG/SPPB?",
+  "prior_results_already_seen": true,
+  "scope": "Exploratory follow-up on repeatedly analyzed development data. This is not preregistration before the original discovery results, independent confirmation, causal analysis, measurement-accuracy validation or clinical validation.",
+  "parent_protocol": "../comparison-protocol.json",
+  "primary_datasets": [
+    "mobilise_sppb",
+    "mobilise_tug",
+    "opencap_tug"
+  ],
+  "supporting_datasets": [
+    "opencap_patterns_tug",
+    "older44_sppb",
+    "mobilise_nonwalk"
+  ],
+  "fixed_people": {
+    "mobilise_sppb": 2232,
+    "mobilise_tug": 1980,
+    "opencap_tug": 298,
+    "opencap_patterns_tug": 195,
+    "older44_sppb": 44,
+    "mobilise_nonwalk": 2231
+  },
+  "inputs_and_groups": "Reuse the exact frozen input.npz, metadata.json groups/features, people, visits, targets and source linkage from the parent experiment. No new extraction, subjects, clinical endpoints or target-based exclusions. OpenCap STS and turn/chair features are not in these frozen inputs; do not infer results for them.",
+  "split": "Exact stored three person-5fold assignments, seeds17/41/89. Reuse stored fold ledgers and outer RF seeds9000+100*repeat+fold. No tuning or reselection.",
+  "model": {
+    "name": "RF",
+    "trees": 128,
+    "min_samples_leaf": "10 for population>=500, else2",
+    "max_features": 1.0,
+    "n_jobs_per_fit": 2,
+    "sample_weight": "ones, as parent",
+    "preprocessing": "Parent train-only median imputation plus missing indicators and StandardScaler; retain all-missing columns; no output clipping or rounding."
+  },
+  "comparisons": {
+    "addition": "For EVERY existing non-speed family X: RF(speed+X) minus RF(speed). The speed family is exactly the original family, including its existing summaries and missingness indicators, not a newly selected scalar.",
+    "removal": "For EVERY family X including speed: RF(all-X) minus RF(all). Positive values indicate worse predictions after removal. This is supporting evidence of nonredundant information, not a required gate for addition evidence.",
+    "all_vs_speed": "RF(all) minus RF(speed), descriptive combined-input contrast.",
+    "reuse": "Reuse exact saved fixed-candidate outer predictions wherever present. New fits are only shuffled controls and deterministic verification replays. Do not change parent files."
+  },
+  "shuffle_control": {
+    "seeds": [
+      51001,
+      51002,
+      51003,
+      51004,
+      51005
+    ],
+    "design": "For each speed+X comparison, shuffle ALL raw columns of X as one block across people, separately within the outer training set and held-out test set, preserving each block's within-row relationships and NaNs. Keep speed, IDs, targets, RF seed and train/test membership fixed. Apply imputation/scaling only after shuffling and fit on outer training people only.",
+    "rng": "numpy default_rng SeedSequence([shuffle_seed,dataset_index,repeat,fold,family_index,partition]); dataset order matches primary_datasets+supporting_datasets; partition0=train,1=test; indices follow frozen metadata order.",
+    "aggregation": "Average ABSOLUTE ERRORS across the five shuffled fits and three repeats within person. Do not ensemble predictions before measuring error. Compare real speed+X error minus this average shuffled-control error.",
+    "interpretation": "A negative control for extra feature count/disrupted person linkage. Five seeds are sensitivity checks, not an exact permutation test; block shuffling also disrupts speed-X dependence. Do not claim a causal or conditional-independence result."
+  },
+  "metrics": {
+    "primary": "Equal-person MAE in original score points or seconds; first compute per-person absolute errors, average three repeats, then average people. Repeat MAEs are separately reported; repeats share people and are not independent cohorts.",
+    "uncertainty": "10000 paired person bootstrap draws, seed20261031, percentile95 intervals of per-person repeat-averaged error differences. Paired bootstrap uses identical resampled person indices across candidates/controls within dataset. Conditional on fitted models and observed cohort; not full retraining or new-site uncertainty.",
+    "repeat_direction": "Number of the three repeat-level MAE differences in the improvement direction, plus all five individual shuffle-seed contrasts. No selective omission."
+  },
+  "judgment": {
+    "additional_information": "Use the phrase exploratory evidence of additional information only if (1) addition delta<0 and its95 upper bound<0, (2) addition delta<0 in at least2/3 repeats, (3) real-minus-mean-shuffled delta<0 and its95 upper bound<0, and (4) real MAE is lower than shuffled MAE in at least4/5 seeds (each averaged over repeats).",
+    "inconclusive": "If any gate fails, say additional information not established by this comparison; this is not equivalence or proof of no useful information.",
+    "removal_support": "Report nonredundant removal support only if removal delta>0, its95 lower bound>0 and removal delta>0 in at least2/3 repeats.",
+    "multiplicity": "Intervals are unadjusted and families/endpoints are multiple exploratory comparisons. No confirmatory significance claim or winner selection from these held-out results. Publish every planned comparison."
+  },
+  "verification": "Before execution freeze hashes of protocol, parent protocol/preparation, all input/metadata files and all90 prediction/ledger/complete triplets. Verify stored people/target/fold coverage for every reused prediction. Refit speed/full and one addition per dataset in repeat0/fold0 using independent sklearn Pipeline construction and compare to saved predictions within1e-9. Independently reconstruct at least one shuffled block/fit per dataset and reload a saved control model for prediction equality. Independently recompute all MAEs, contrasts,10000-draw intervals and decision gates from saved predictions. Check protocol/source hashes unchanged at completion. Inspect final figure visually and check slide text/table numbers.",
+  "resources": {
+    "device": "local CPU only; no GPU or network",
+    "new_packages": false,
+    "small_outputs_C": "C:/Users/jun/Desktop/D_P/gdi-research-harness/studies/20261031-gait-measurement-discovery/e1-supplement",
+    "large_outputs_D": "D:/gait-research-data/D_P/gdi-research-harness/studies/20261031-gait-measurement-discovery/e1-supplement",
+    "estimated_additional_storage": "under150MB including compressed control predictions and one representative serialized model per dataset; no full forest archive",
+    "concurrency": "at most2 independent fits, each RF uses2 threads"
+  },
+  "deliverables": [
+    "all planned group-addition/removal tables with10000-draw intervals, repeat direction and shuffle contrasts",
+    "source/protocol hashes and fresh verification JSON",
+    "slide8-ready Korean text/table and static figure; update the existing storyline slide8 only"
+  ],
+  "presentation_limits": "Distinguish weekly sensor summaries from short multi-camera OpenCap kinematics and full-trial Vicon measurements. Never merge the larger weekly-summary cohorts with the earlier2174/1939-person bout experiments or interpret between-dataset MAE differences as modality/duration effects. Keep turn evidence separate from walking-only E1."
+}

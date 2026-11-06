@@ -1,0 +1,31 @@
+{
+  "approved": true,
+  "owner_thread": "01a19552-3eb5-7020-9424-1e27c9d7f936",
+  "automation_id": "gdi",
+  "arms": [
+    0,
+    1
+  ],
+  "expected_fits": 50,
+  "expected_outer_folds": 10,
+  "people": 692,
+  "records": 1061,
+  "windows": 11261,
+  "max_epochs": 100,
+  "same_seed": 20261028,
+  "pair_loss_weight": 1,
+  "epoch_selection": "unchanged: inner calibrated person visit MAE",
+  "scope": "Existing CNN only; compare matched loss arms, not a new version of the old CNN/STT ensemble",
+  "primary_report": [
+    "same-person change MAE",
+    "change direction",
+    "left/right",
+    "first age-ordered visit MAE",
+    "all-visit MAE"
+  ],
+  "clinical_threshold": null,
+  "success_threshold": null,
+  "protected_final_opened": false,
+  "data_sha256": "7c1912cd27c63a82ed0d0324f98c0c0fae9a608174d52bd7a502f05e9a8c7a1e",
+  "approval": "User selected 기존 CNN으로 새 학습 비교 진행"
+}

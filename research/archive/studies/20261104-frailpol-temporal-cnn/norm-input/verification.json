@@ -1,0 +1,16 @@
+{
+  "status": "passed_input_invariance_only_no_model_fitted",
+  "people": 594,
+  "shape": [
+    594,
+    6,
+    208
+  ],
+  "original_norm_max_delta": 0.0,
+  "rotation_max_delta": 2.2737367544323206e-13,
+  "left_right_swap_exact": true,
+  "first_derivative_explicitly_missing": true,
+  "output_sha256": "4567ac4558a8f530e9dded45b2f1810ad10348ba02bf4ef7382b483e3cbbf447",
+  "protocol_sha256": "fb52e2d92770505cdaee410c0816f134b0b97f7d32724802e6633b12bc7c9ecf",
+  "TUG_labels_accessed": false
+}

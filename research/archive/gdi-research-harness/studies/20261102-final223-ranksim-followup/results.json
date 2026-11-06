@@ -1,0 +1,142 @@
+{
+  "post_hoc_supplement": true,
+  "people": 222,
+  "records": 377,
+  "metrics": {
+    "CNN_bag": {
+      "mae": 6.266755350774388,
+      "mae95": [
+        5.832307960977807,
+        6.704704392901683
+      ],
+      "pearson": 0.7668313831686834,
+      "person_equal_bias": -0.27575177574344356,
+      "high90_people": 26,
+      "high90_mae": 8.731796108759816
+    },
+    "fusion": {
+      "mae": 6.248558628185189,
+      "mae95": [
+        5.820594185650582,
+        6.670788587868391
+      ],
+      "pearson": 0.7681335809958362,
+      "person_equal_bias": -0.26467491015590944,
+      "high90_people": 26,
+      "high90_mae": 8.93150056754786
+    },
+    "plus_general": {
+      "mae": 6.223335934616173,
+      "mae95": [
+        5.792202619262489,
+        6.651692754273978
+      ],
+      "pearson": 0.7692468244832827,
+      "person_equal_bias": -0.25444490655955154,
+      "high90_people": 26,
+      "high90_mae": 8.901214771177445
+    },
+    "plus_ranksim": {
+      "mae": 6.22710352983914,
+      "mae95": [
+        5.795574518436889,
+        6.6561568173590775
+      ],
+      "pearson": 0.7682549378452919,
+      "person_equal_bias": -0.26812246763119063,
+      "high90_people": 26,
+      "high90_mae": 8.907913086020603
+    }
+  },
+  "comparisons": {
+    "plus_general_minus_CNN_bag": {
+      "primary": true,
+      "mae_delta": -0.043419416158214444,
+      "reduction_percent": 0.6928532187370148,
+      "paired_person95": [
+        -0.13933676685440038,
+        0.05419306305529579
+      ],
+      "familywise95_Bonferroni_interval": [
+        -0.15367623355838897,
+        0.06621771573702881
+      ],
+      "verdict": "inconclusive",
+      "people_improved": 119,
+      "people_worsened": 103
+    },
+    "plus_ranksim_minus_CNN_bag": {
+      "primary": true,
+      "mae_delta": -0.039651820935249577,
+      "reduction_percent": 0.6327328691768662,
+      "paired_person95": [
+        -0.13144076277326106,
+        0.05340547091846063
+      ],
+      "familywise95_Bonferroni_interval": [
+        -0.14410593274995742,
+        0.0648223670722347
+      ],
+      "verdict": "inconclusive",
+      "people_improved": 115,
+      "people_worsened": 107
+    },
+    "plus_general_minus_fusion": {
+      "primary": false,
+      "mae_delta": -0.025222693569013733,
+      "reduction_percent": 0.4036561880886013,
+      "paired_person95": [
+        -0.05789505053977127,
+        0.00794316724694676
+      ],
+      "familywise95_Bonferroni_interval": null,
+      "verdict": "inconclusive",
+      "people_improved": 124,
+      "people_worsened": 98
+    },
+    "plus_ranksim_minus_fusion": {
+      "primary": false,
+      "mae_delta": -0.021455098346048876,
+      "reduction_percent": 0.3433607592200863,
+      "paired_person95": [
+        -0.05931949655377726,
+        0.016988115789955044
+      ],
+      "familywise95_Bonferroni_interval": null,
+      "verdict": "inconclusive",
+      "people_improved": 125,
+      "people_worsened": 97
+    },
+    "plus_ranksim_minus_plus_general": {
+      "primary": false,
+      "mae_delta": 0.0037675952229648643,
+      "reduction_percent": -0.06053980152362179,
+      "paired_person95": [
+        -0.028045423822382985,
+        0.03531582845976666
+      ],
+      "familywise95_Bonferroni_interval": null,
+      "verdict": "inconclusive",
+      "people_improved": 106,
+      "people_worsened": 116
+    }
+  },
+  "protocol_sha256": "847d026034b3aca7dffbf0f9a1390b0dabcf2a83ed61faaf42bf044b49baa759",
+  "predictions_sha256": "aac1d7559588ef3616a10caec527fa1be18d3654e8ddd1536c1b86b0e010b274",
+  "old_primary_results_preserved": true,
+  "no_training_or_retuning": true,
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20261103,
+    "unit": "paired person, fixed prediction errors",
+    "individual95": [
+      2.5,
+      97.5
+    ],
+    "familywise95_Bonferroni_two_comparisons": [
+      1.25,
+      98.75
+    ]
+  },
+  "scored_sha256": "a749500e6d0336bf3f5e90d931997ab833f56a95f321fe5e2245368fc8d838b9"
+}

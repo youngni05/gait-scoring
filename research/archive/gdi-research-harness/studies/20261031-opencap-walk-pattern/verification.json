@@ -1,0 +1,12 @@
+{
+  "source_hashes_checked": 6,
+  "raw_files_checked": 297,
+  "windows_reconstructed": 1321,
+  "inner_split_checks": 450,
+  "same_common_people_start_and_seconds": true,
+  "synthetic_cycle_flat_jump_checks": true,
+  "final_models_replayed": 1200,
+  "inner_fit_selections_checked": 8100,
+  "max_prediction_delta": 3.552713678800501e-15,
+  "passed": true
+}

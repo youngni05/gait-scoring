@@ -1,0 +1,25 @@
+{
+  "status": "COMPUTATION_PASS_NATIVE_SOURCE_CROSSCHECK_FAILED",
+  "raw_files": 220,
+  "prior44_labels_and_folds_match": true,
+  "native_C3D_crosscheck": {
+    "source_sha256": "8d39ca76fc61af49cd1abcab11227dcd74223c61aaff8cead44b07231974d7fc",
+    "source_hash_matches": true,
+    "status": "FAILED_SOURCE_FORMAT",
+    "reason": "The format is not standard. If you want to ignore this error, set ignoreBadFormatting to true: iostream stream error",
+    "other_parser": "python-c3d also lacks POINT:LABELS and EVENT data on this exact published file; permissive ezc3d also fails"
+  },
+  "feature_equation_max_error": 2.6645352591003757e-15,
+  "rejected_cycles": 11,
+  "saved_SPPB_fits_recomputed": 2240,
+  "fit_coefficient_max_error": 1.199040866595169e-14,
+  "saved_SPPB_prediction_replay_max_error": 0.0,
+  "frozen_GDI_models": 54,
+  "prior_GDI_replay_max_error": 1.3865322955552983e-05,
+  "person_split_and_inner_selection": true,
+  "independent_bootstrap_and_metrics": true,
+  "anatomical_equivalence": false,
+  "clinical_validation": false,
+  "comparison_sha256": "1a73bbfa0985614f196446d1f983d0e3234657af8a995b835dc629305b8830bb",
+  "protocol_sha256": "97b0485492f5c6cb874477156251cb8cda01b382237460c85d0cce1481af1805"
+}

@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "numpy_forward_models": 60,
+  "max_numpy_vs_torch_error": 7.102050780360969e-06,
+  "inner_person_splits_checked": 180,
+  "independent_metric_rows": 36,
+  "exact_seeded_outer_refits": 2,
+  "unchanged_reference_artifacts": true,
+  "same_people_visits_and_draws": true,
+  "train_only_x_and_y_scalers": true,
+  "selected_maximum_epoch_count": 0,
+  "parameter_counts": [
+    705,
+    2433
+  ],
+  "limitations": [
+    "one initialization seed schedule",
+    "bounded width/epoch search",
+    "no new video inputs or GPU use"
+  ],
+  "artifacts_sha256": {
+    "protocol.json": "dfdef080c4c12a5934da7a42b35461d4b39b5335c340698ca08aa8fa5dac4a2c",
+    "predictions.csv": "30e0fad6482012d25fb1f6e1917a3d4c92860da6eebafcd2be7a35a1a2e1e0c1",
+    "metrics.csv": "d2222ab3117b5b09f4afd6556d350e1a69c5470619208c6a225d9ac8594f7116",
+    "completion.json": "79bcfecd39d3664c35149cdf21dc9e072c2210fe0c802e7484d7c938b7cc86c4"
+  },
+  "scripts_sha256": {
+    "train.py": "124404aa51c6f919b7a027226e8d537e222897e8ef44ba4e298c863e19941ec5",
+    "verify.py": "b36992805ee115f0a7ccef631bc2ae909ab85b1fecce9c5647322fcb173f9365"
+  }
+}

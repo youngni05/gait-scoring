@@ -1,0 +1,222 @@
+{
+  "scope": "Exploratory nested leave-one-person-out Toronto prediction; no independent clinical validation.",
+  "people": 12,
+  "windows": 59,
+  "training_people_per_outer": 11,
+  "inner_training_people": 10,
+  "metrics": {
+    "POMA_Gait": {
+      "mean": {
+        "MAE": 0.5454545454545451,
+        "RMSE": 0.6803013430498073,
+        "R2": -0.1900826446280981,
+        "Spearman": -1.0,
+        "prediction_range": [
+          11.636363636363637,
+          11.818181818181818
+        ],
+        "MAE_difference_from_median": 0.2121212121212118,
+        "difference_bootstrap_95_percentiles": [
+          0.053030303030302615,
+          0.3636363636363633
+        ],
+        "people_better_equal_worse_than_median": [
+          3,
+          0,
+          9
+        ]
+      },
+      "median": {
+        "MAE": 0.3333333333333333,
+        "RMSE": 0.7071067811865476,
+        "R2": -0.2857142857142856,
+        "Spearman": null,
+        "prediction_range": [
+          12.0,
+          12.0
+        ],
+        "MAE_difference_from_median": 0.0,
+        "difference_bootstrap_95_percentiles": [
+          0.0,
+          0.0
+        ],
+        "people_better_equal_worse_than_median": [
+          0,
+          12,
+          0
+        ]
+      },
+      "ridge": {
+        "MAE": 0.9333601919718663,
+        "RMSE": 1.0928272036184086,
+        "R2": -2.070983335061679,
+        "Spearman": -0.4511293544281788,
+        "prediction_range": [
+          9.896483574795422,
+          13.220392832725324
+        ],
+        "MAE_difference_from_median": 0.6000268586385329,
+        "difference_bootstrap_95_percentiles": [
+          0.2750254269157438,
+          0.970914767560497
+        ],
+        "people_better_equal_worse_than_median": [
+          2,
+          0,
+          10
+        ]
+      },
+      "pls": {
+        "MAE": 0.6614207628771974,
+        "RMSE": 0.9825443136064183,
+        "R2": -1.4824399868007907,
+        "Spearman": -0.18413443037884852,
+        "prediction_range": [
+          9.68138824260025,
+          12.050617644604037
+        ],
+        "MAE_difference_from_median": 0.32808742954386405,
+        "difference_bootstrap_95_percentiles": [
+          -0.00032402858534196204,
+          0.7766660456705946
+        ],
+        "people_better_equal_worse_than_median": [
+          2,
+          0,
+          10
+        ]
+      }
+    },
+    "TUG_seconds": {
+      "mean": {
+        "MAE": 3.095909090909091,
+        "RMSE": 4.5333594534168915,
+        "R2": -0.19008264462809943,
+        "Spearman": -0.9999999999999999,
+        "prediction_range": [
+          11.488181818181818,
+          12.942727272727273
+        ],
+        "MAE_difference_from_median": -0.3082575757575749,
+        "difference_bootstrap_95_percentiles": [
+          -1.0211420454545446,
+          0.34926893939394005
+        ],
+        "people_better_equal_worse_than_median": [
+          6,
+          0,
+          6
+        ]
+      },
+      "median": {
+        "MAE": 3.4041666666666663,
+        "RMSE": 4.9148490990738125,
+        "R2": -0.3988050330373858,
+        "Spearman": -0.8721028496007165,
+        "prediction_range": [
+          10.38,
+          12.0
+        ],
+        "MAE_difference_from_median": 0.0,
+        "difference_bootstrap_95_percentiles": [
+          0.0,
+          0.0
+        ],
+        "people_better_equal_worse_than_median": [
+          0,
+          12,
+          0
+        ]
+      },
+      "ridge": {
+        "MAE": 4.906452807729498,
+        "RMSE": 6.045204354423426,
+        "R2": -1.1162101003491527,
+        "Spearman": -0.03157914176201267,
+        "prediction_range": [
+          3.559349563493468,
+          24.960019452192157
+        ],
+        "MAE_difference_from_median": 1.502286141062832,
+        "difference_bootstrap_95_percentiles": [
+          -0.3484776235403813,
+          3.4668140125410254
+        ],
+        "people_better_equal_worse_than_median": [
+          5,
+          0,
+          7
+        ]
+      },
+      "pls": {
+        "MAE": 4.305378723556666,
+        "RMSE": 5.72866482249252,
+        "R2": -0.9003939350215786,
+        "Spearman": 0.10175501234426305,
+        "prediction_range": [
+          8.26166687098692,
+          24.432803378053052
+        ],
+        "MAE_difference_from_median": 0.9012120568900005,
+        "difference_bootstrap_95_percentiles": [
+          -0.6849204889830985,
+          2.750836445625335
+        ],
+        "people_better_equal_worse_than_median": [
+          7,
+          0,
+          5
+        ]
+      }
+    }
+  },
+  "target_distributions": {
+    "POMA_Gait": {
+      "12.0": 9,
+      "11.0": 2,
+      "10.0": 1
+    },
+    "TUG_seconds": {
+      "9.0": 1,
+      "10.22": 1,
+      "10.38": 1,
+      "12.0": 2,
+      "10.2": 2,
+      "10.12": 1,
+      "12.38": 1,
+      "14.4": 1,
+      "15.47": 1,
+      "25.0": 1
+    }
+  },
+  "PLS_selected_components": {
+    "POMA_Gait": {
+      "2": 11,
+      "4": 1
+    },
+    "TUG_seconds": {
+      "2": 10,
+      "8": 1,
+      "4": 1
+    }
+  },
+  "fit_warnings": {},
+  "all_predictions_finite": true,
+  "scaler_and_selection_training_only": true,
+  "protected_GDI_numeric_data_used": false,
+  "encoder_finetuned": false,
+  "sklearn": "1.9.1",
+  "elapsed_seconds": 1.172000000020489,
+  "finished_utc": "2026-10-30T07:12:10.701960+00:00",
+  "sha256": {
+    "protocol.json": "6e75c7e156dd658ee8056c38e277c9bb102b855f2ac69f7063ba61f0094600da",
+    "features.npz": "b5aaa0935ba7e1d4d0c961a0998febb89dda16cec32b64da52fb7532a4a414ac",
+    "folds.json": "d342480e0803de966819b6aa06dfe69999f195c1d9122653de5b210827528b37",
+    "inner_selection.json": "5b15b17f9449bcf6add78e4e65d40c3c787ae6fa55858f9f8e5c0fc5a2c82f6f",
+    "fit_trace.json": "6690fb067dfc68fa944f3bd9cf30005310fbe4a0ca2adf465dd2e35c64c9effe",
+    "predictions.npz": "29594f1ff1be9c6e9ca58650a2bb37a7845eff59467867a2395c76bb790dd66b",
+    "predictions.csv": "dab97f56b366338989b1947a0444bd5e6320d0ae31e43507bb3c9795e8cd9ec5",
+    "prepare.py": "ebb960d3989301d0be3b5ae96383431b4aa80f2eae4815ad952d7dd681a69615",
+    "evaluate.py": "a7942f8ccb63ac8a84ee1255d934370f581116ae044e29eff46a9568394f2648"
+  }
+}

@@ -1,0 +1,498 @@
+{
+  "removed_id": "sub-283",
+  "purpose": "evaluation-only deletion then complete train/inner/test deletion; remaining person memberships frozen",
+  "cohorts": {
+    "prep": {
+      "source": "20261031-opencap-chair\\prep_event",
+      "people": 100,
+      "long_people": 3,
+      "ridge_views": [
+        "Full",
+        "NoWalk",
+        "NoTurnTime",
+        "Context",
+        "NoTurn",
+        "NoRise",
+        "NoSit",
+        "NoPhaseTime",
+        "NoRiseMotion",
+        "NoSitMotion",
+        "ChairTimeOnly",
+        "CoreRise"
+      ],
+      "rf_views": [
+        "Full",
+        "Context"
+      ],
+      "mapping": {
+        "Full": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ]
+        },
+        "NoWalk": {
+          "source_view": "PrepAll",
+          "columns": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ]
+        },
+        "NoTurnTime": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ]
+        },
+        "Context": {
+          "source_view": "TurnContext",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ]
+        },
+        "NoTurn": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ]
+        },
+        "NoRise": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ]
+        },
+        "NoSit": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ]
+        },
+        "NoPhaseTime": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ]
+        },
+        "NoRiseMotion": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ]
+        },
+        "NoSitMotion": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        "ChairTimeOnly": {
+          "source_view": "PrepAll",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            21
+          ]
+        },
+        "CoreRise": {
+          "source_view": "event_strict/ChairAll mapped by participant",
+          "replaced_columns": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ]
+        }
+      },
+      "hashes": {
+        "input.npz": "a5439ddf99484bb384e6b063742ef4ef30ad2a72d60477516097ecdf2a3be74d",
+        "manifest.json": "0e34365b3a994fb3096a99fcee70bfa95f285085612ede87280e1b3038295429",
+        "splits.json": "5dcd3646fe33beeef6cda0ddd4940fc63015d690941a3b609265138f4fc3f924"
+      }
+    },
+    "geometry": {
+      "source": "20261031-opencap-turn\\geometry",
+      "people": 237,
+      "long_people": 8,
+      "ridge_views": [
+        "Full",
+        "NoWalk",
+        "NoTurnTime",
+        "MatchedWalk",
+        "TurnTimeOnly"
+      ],
+      "rf_views": [
+        "Full",
+        "MatchedWalk"
+      ],
+      "mapping": {
+        "Full": {
+          "source_view": "Walk3Turn",
+          "columns": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        "NoWalk": {
+          "source_view": "Walk3Turn",
+          "columns": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        "NoTurnTime": {
+          "source_view": "Walk3Turn",
+          "columns": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        "MatchedWalk": {
+          "source_view": "WalkMatchedSpeed",
+          "columns": [
+            0,
+            1,
+            2
+          ]
+        },
+        "TurnTimeOnly": {
+          "source_view": "Walk3Turn",
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "hashes": {
+        "input.npz": "e684d40c574c8e68cbb40d967ed0463cc57b359e2ac4e69f90cdb929bbb363df",
+        "manifest.json": "3f538076928ff625f9903461516c87881474be4038ff0be4beebf7d52efa0168",
+        "splits.json": "f2fd9e494167ad935ff2977650aef108622f1836dfb689a415a53fe70d5e89d2"
+      }
+    }
+  },
+  "source_hashes": {
+    "20261031-opencap-chair\\event_strict\\input.npz": "18824e6cf7079e499bf759a12f51961020babecbc97ff4854c52b2cdfa2c7f79",
+    "20261031-opencap-chair\\event_strict\\manifest.json": "13391e75f200c68352182877afc34b13e6eb58c6980a516d3b0cfb7fd9ff15fe",
+    "20261031-opencap-chair\\prep_event\\input.npz": "b8f4b7e0aee64313ce8a08e39a2c807f5bcf3e24a0b45d5cb3a1935d92169abe",
+    "20261031-opencap-chair\\prep_event\\manifest.json": "5b2242e78f828968de7400794d6a7239539e57834b0ac94bd00b442cb5fba897",
+    "20261031-opencap-chair\\prep_event\\splits.json": "bc996b38bad76b3f020736a616fba55a7b5586d45253b690bb310214d8308f65",
+    "20261031-opencap-chair\\prep_event\\predictions.csv": "64bdce8743856e29fa80c6303d00360e9890f98c201e7edfa144ab197ad0a134",
+    "20261031-opencap-extrapolation\\prep_event\\predictions.csv": "236e6a43d18ca44ce1f88c476a0f0f48b8e540ea3312ca26d1c27fd87a22398c",
+    "20261031-opencap-extrapolation\\prep_event\\person-results.csv": "658cc1eecb45b4515c4f5b90a1e1626718e31c25ab9fcf1077d7af87cf311d53",
+    "20261031-opencap-turn\\geometry\\input.npz": "93cd108c7f31c455e1d75c19f7e9bc253d9f4ae4cff10dac0b860cbd6f5c5d58",
+    "20261031-opencap-turn\\geometry\\manifest.json": "bb03f951047f1617eff89e359ba0a34ada4d3b3d432279b4270a6b1323eb8064",
+    "20261031-opencap-turn\\geometry\\splits.json": "7abee35d1f0a6a1815b8f153e666ac729fbfec59c09fc560dc176cb9c326279b",
+    "20261031-opencap-turn\\geometry\\predictions.csv": "715dac8ead1b23cabd98632385c61291675d643f94d754a1d2d67abf5ebf026e",
+    "20261031-opencap-extrapolation\\geometry\\predictions.csv": "300b797cb84bf9ab5feb602b315590095d41ac3a51906c2631e3768818a0d191",
+    "20261031-opencap-extrapolation\\geometry\\person-results.csv": "c3123bb0d48e04d2f8bc82a002059afef8e8f36b32c444fe43dfea455c78e9de"
+  },
+  "Ridge_alpha": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "RF_leaf": [
+    2,
+    5
+  ],
+  "RF_seeds": [
+    20261030,
+    20261031,
+    20261032
+  ],
+  "selection": "same inner MAE, train-only standardization; each ablation refits and retunes using only training people",
+  "observation": "original windows unchanged; context controls same duration; column ablations acquire same clips but withhold feature groups, not claims of equal informative frames",
+  "CoreRise": "same acquired preparation clip; withhold pre-core frames by replacing rise descriptors with already extracted core descriptors; no new video or extra seconds",
+  "interpretation": "leave-one-block-out measures conditional model utility, not biological causality; correlated features and retuning affect differences",
+  "metrics": "person-equal MAE, under/overprediction, five frozen partitions; >=20 descriptive band; paired-person conditional bootstrap 10000 draws seed20261031; report each long person",
+  "no_external_validation": true,
+  "fit_code_sha256": "94ba54fa7afab3512d8e11e9a714989b52bc0564fe89b5e4d99f433165bffb75"
+}

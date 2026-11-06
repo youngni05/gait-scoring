@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "protocol_sha256": "d2302a7a64fb51cf03ec438b31d913889a298578d0f6e9d9563720c855a5da62",
+  "independent_replays": [
+    {
+      "reference": "age65plus",
+      "fold": 0,
+      "reference_n": 26,
+      "independent_closed_form_max_difference": 3.552713678800501e-15
+    },
+    {
+      "reference": "age65plus",
+      "fold": 1,
+      "reference_n": 26,
+      "independent_closed_form_max_difference": 5.329070518200751e-15
+    },
+    {
+      "reference": "age65plus",
+      "fold": 2,
+      "reference_n": 26,
+      "independent_closed_form_max_difference": 1.5987211554602254e-14
+    },
+    {
+      "reference": "age65plus",
+      "fold": 3,
+      "reference_n": 27,
+      "independent_closed_form_max_difference": 1.7763568394002505e-15
+    },
+    {
+      "reference": "age65plus",
+      "fold": 4,
+      "reference_n": 27,
+      "independent_closed_form_max_difference": 1.4210854715202004e-14
+    },
+    {
+      "reference": "allhealthy",
+      "fold": 0,
+      "reference_n": 68,
+      "independent_closed_form_max_difference": 5.329070518200751e-15
+    },
+    {
+      "reference": "allhealthy",
+      "fold": 1,
+      "reference_n": 68,
+      "independent_closed_form_max_difference": 5.329070518200751e-15
+    },
+    {
+      "reference": "allhealthy",
+      "fold": 2,
+      "reference_n": 68,
+      "independent_closed_form_max_difference": 1.7763568394002505e-14
+    },
+    {
+      "reference": "allhealthy",
+      "fold": 3,
+      "reference_n": 70,
+      "independent_closed_form_max_difference": 1.7763568394002505e-15
+    },
+    {
+      "reference": "allhealthy",
+      "fold": 4,
+      "reference_n": 70,
+      "independent_closed_form_max_difference": 1.1546319456101628e-14
+    }
+  ],
+  "frozen_prior_replays": 54,
+  "frozen_prior_max_error": 1.3865322955552983e-05,
+  "ensemble_max_error": 0.0,
+  "partial_correlation_checks": [
+    {
+      "model": "fusion",
+      "partial": 0.04141392649205851
+    },
+    {
+      "model": "new_age65plus",
+      "partial": 0.10139558169067994
+    }
+  ],
+  "subgroups": {
+    "healthy65plus": {
+      "n": 33,
+      "mae": 2.120543819319316,
+      "bias": -0.13635977486998874,
+      "p90_absolute_error": 3.992615823092765,
+      "max_absolute_error": 5.070270281266742
+    },
+    "stroke65plus": {
+      "n": 28,
+      "mae": 1.990150786769864,
+      "bias": -0.15075498709501617,
+      "p90_absolute_error": 3.518469811940098,
+      "max_absolute_error": 6.394745255225779
+    },
+    "all": {
+      "n": 134,
+      "mae": 1.8110135302200725,
+      "bias": 0.015172325047542427,
+      "p90_absolute_error": 3.7197989741285165,
+      "max_absolute_error": 10.991049340545612
+    }
+  },
+  "source_archives_provider_md5_verified": true,
+  "new_model_gpu_jobs": 0,
+  "clinical_validation": false,
+  "skill_validation": "Both installed and project copies passed quick_validate; SHA equality checked"
+}

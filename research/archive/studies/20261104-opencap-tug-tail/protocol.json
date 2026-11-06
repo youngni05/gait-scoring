@@ -1,0 +1,59 @@
+{
+  "question": "Can camera-compatible short-walk features identify underpredicted high-TUG cases and reduce tail error?",
+  "people": 297,
+  "source_features_sha256": "0bc5b2eab32a0fe563c6ca36656fecfa943c572c56e0d3d9a987f4f7f66c9486",
+  "source_splits_sha256": "d29f38644cd05dd8ccc5238c6988962078984477c26ebd1f5398b69e0233ad4a",
+  "source_result_sha256": "9bbd9efd6d7fd9f6e3d54f19283ca8f5da0c860e146b606c505c81bf90a94857",
+  "source_verification_sha256": "69c069056f50c8d67b9944f2973b4e7c9a47ae795efa1f58ccf58222f6f86def",
+  "code_sha256": "889e4431c5caa7cb3085c4c90c314e0a773bc0589e776498e69db23537f8ecde",
+  "views": {
+    "all": "same64 features, plus deterministic inverse speed 6/v",
+    "core": [
+      "speed_mean",
+      "speed_std",
+      "pelvis_bob_std",
+      "trunk_lean_mean",
+      "trunk_lean_std",
+      "L_knee_flexion_2d_std",
+      "R_knee_flexion_2d_std",
+      "ankle_separation_range",
+      "extrema_cadence",
+      "extrema_step_time_cv"
+    ]
+  },
+  "target": "same-visit clinical TUG seconds, no TUG video duration or other clinical scores as predictor",
+  "methods": [
+    "base",
+    "lds05",
+    "lds1",
+    "extrap",
+    "extrap_lds",
+    "predgate10",
+    "predgate12",
+    "logitgate03",
+    "logitgate05",
+    "logitgate07",
+    "treegate03",
+    "treegate05",
+    "softgate",
+    "quantilegate"
+  ],
+  "fit": "ET128 leaf10; high/low experts ET128 leaf3 trained on >=12/<12 training TUG; balanced logisticC0.1 and balanced tree gate; q90 HGB; Ridgealpha100; all preprocessing training-only",
+  "LDS": "training-only1-second target histogram, Gaussian sigma2bins, inverse density power0.5/1.0, normalized then capped10; practical adaptation, not full DIR neural method",
+  "inverse_speed": "6/max(speed,0.1), illustrative standardized walking component; not measured TUG walking duration",
+  "selection": "same original25 outer folds and3 inner folds each; all thresholds/model variants selected using inner OOF predictions; never true outer group as routing input",
+  "policies": {
+    "overall_selected": "minimum inner overall MAE",
+    "tail_balanced": "minimum equally weighted mean MAE of true training TUG<12,12-20,>=20 groups",
+    "tail_constrained": "minimum balanced inner MAE, requiring overall and <12 inner MAE <= fixedall-feature baseline+0.1s",
+    "two_stage_constrained": "same constraints, restricted to routing methods and baseline fallback"
+  },
+  "constraint_note": "0.1s is an exploratory model-selection allowance, not a clinical acceptable-error standard; outer tradeoffs always reported",
+  "evaluation": "same297 people in every arm; five person-disjoint5-fold partitions; repeated errors first averaged per person; 10000 paired person bootstraps",
+  "groups": "<12,12-20,>=20 are descriptive experiment strata, not universal diagnoses or future-fall labels",
+  "routing_metrics": "referral rate; recall for actualTUG>=20; fraction of actualTUG<12 referred; scores not calibrated clinical probabilities",
+  "success": "report overall, low-range, high-range MAE and pairedCI together; do not claim improvement from tail alone or outer-picked best candidate",
+  "scope": "further development on previously evaluated data; ideal lateral projection not actual monocular phone/MediaPipe validation;9 severe people",
+  "storage_estimate": "<=2GB models and replay files on heavy data drive; no new GPU or external transfer",
+  "additional_tasks": "file availability audit only unless separately acquired for linkage/pilot; no trial-duration feature"
+}

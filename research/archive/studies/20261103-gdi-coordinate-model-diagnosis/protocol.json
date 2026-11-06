@@ -1,0 +1,46 @@
+{
+  "created_utc": "2026-11-03T06:15:26.124301+00:00",
+  "frozen_before_new_predictions": true,
+  "question": "Which currently testable input perturbations, candidate preprocessing changes and model choices affect original reference GDI error?",
+  "scope": "Exploratory diagnosis on repeatedly inspected CP development692; no decomposition of true coordinate error, no irreducible error-floor estimate, no protected223 labels or inputs",
+  "cohort": "Existing1061 records,692 people,11261 windows and five original person folds; no outcome-based exclusion; same windows and target labels every arm",
+  "labels": "Original linked visit/limb GDI. Video and mocap are separate walking trials. No188 pseudo-GDI or POMA targets.",
+  "conditions": [
+    "baseline",
+    "smooth2",
+    "spike_repair",
+    "stable_scale",
+    "jitter01_s0",
+    "jitter01_s1",
+    "jitter03_s0",
+    "jitter03_s1",
+    "jitter05_s0",
+    "jitter05_s1",
+    "knee_bias03"
+  ],
+  "perturbations": {
+    "jitter": "Add Gaussian noise independently per frame,joint,axis, SD1/3/5% of per-record median observed hip-knee distance; seeds20261103/20261104 salted by video_id. Same realization scaled across doses. Only valid nonzero existing x/y pairs; missing/confidence unchanged. Perturb all8 input joints; full record before preprocessing; overlapping windows share perturbation.",
+    "knee_bias03": "Add +3% thigh-length horizontal offset to both knees at every valid frame; systematic observation bias, no physical motion change"
+  },
+  "candidate_preprocessing": {
+    "smooth2": "Official Gaussian sigma1 replaced by sigma2 frames; all other processing identical",
+    "spike_repair": "Single-frame joint deviation from midpoint of valid neighbors exceeds25% median thigh length AND neighbors differ by<10% thigh length; replace midpoint. Only8 input joints. Simultaneous nonrecursive replacement. This is unvalidated repair, may remove real motion.",
+    "stable_scale": "Replace per-frame mean bilateral thigh pixel-length divisor with its full-record median after official imputation/filter; same hip centering, no limb reshaping"
+  },
+  "frozen_models": "Five CNN refit and five STT refit checkpoints. Apply only held-out outer fold model. Preserve training-only original linear calibration; no recalibration on outer people. Replay baseline against cached raw predictions. Fixed-model perturbation results include distribution-shift sensitivity.",
+  "fixed_input_model_comparison": "Original CNN,STT,inner-bagged CNN,inner-bagged STT and existing best ensemble OOF predictions on same records; error correlations and conditional paired intervals, not newly confirmed external results.",
+  "paired_retraining_control": "For baseline and3 candidate preprocessing arms, same96features per leg: mean SD p05 p25 p50 p75 p95 first-differenceRMS of12 channels, window averages per recording; shared left/right ridge predicts GDI. Five outer folds and four original remaining folds for inner alpha selection [.1,1,10,100,1000,10000]. Person-equal loss via inverse per-person recording count, sides equal. Standardization fit within each training split; alpha chosen by inner person-equal MAE. Diagnostic simple-model control, not retraining CNN/STT. No GDI clipping.",
+  "quality_diagnostics": "On identical windows record required-coordinate missing rate, confidence<.3 fraction, isolated-spike fraction, median normalized second-difference, and observed thigh-length coefficient variation. Indicators not ground-truth coordinate errors. Associations with person GDI error; severity-adjusted rank association exploratory; no selective removal.",
+  "aggregation": "Window mean per record-side; record/side mean error per person; headline mean across692 people. Quality and sensitivity similarly person-equal.",
+  "uncertainty": "10000 paired person bootstraps seed20261103 conditional on fitted models. Report95% plus98.333% intervals for3 candidate preprocessing comparisons within each model. Multiple model families remain exploratory.",
+  "subgroups": "Person mean trueGDI <60,60..75,75..90,>=90; MAE,bias,p90,max,error>10 and>20. Describe bands not clinical risk classes.",
+  "interpretation_rules": [
+    "Noise effect demonstrates sensitivity to specified artificial error, not magnitude of real measurement error",
+    "Candidate repair improvement supports that preprocessing choice in this development cohort; does not prove corrected anatomical truth",
+    "No improvement does not prove coordinates are already accurate",
+    "Model differences on same inputs show achievable changes within tested modeling choices; not absolute model limit",
+    "Repeated visits not identical gait truth; no residual variance treated as a noise floor"
+  ],
+  "runtime": "CPU only; no GPU training/submission or automation; new stored arrays approximately1.6GB plus compact predictions and ridge models",
+  "checks": "SHA256 source/checkpoints; source JSON CRC and per-record content hashes; exact baseline feature reproduction; outer people excluded from trained checkpoints and all inner fits; independent matrix-solve ridge replay and metric recomputation; saved neural inference subset replay; coordinate invariance and perturbation dose checks"
+}

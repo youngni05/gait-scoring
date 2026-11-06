@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-01T09:26:08.300653+09:00",
+  "source_files_verified": 41,
+  "actual_samples_verified": 3,
+  "npz_finite_and_json_match": true,
+  "video_decoded": false,
+  "checkpoint_loaded": false,
+  "whole_checkpoint_sha256_verified": false,
+  "source_code_executed": false,
+  "gpu_jobs_submitted": 0,
+  "readme_local_links_exist": true,
+  "probe_script_syntax": "passed",
+  "readme_sha256": "ff832865db63860d71173377ccde6faf53b36c6e3a56f929b1cf7677bc4e133e"
+}

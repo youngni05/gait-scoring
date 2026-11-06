@@ -1,0 +1,192 @@
+{
+  "status": "completed_and_independently_verified",
+  "people": 692,
+  "records": 1061,
+  "metrics": {
+    "baseline": {
+      "mae": 6.866655321854305,
+      "ci95": [
+        6.594586580213304,
+        7.139944591392231
+      ],
+      "bias": 0.1479034631072319,
+      "p90": 11.885704777445733,
+      "maximum": 26.08405346921641,
+      "people_over10": 125,
+      "people_over20": 2,
+      "bands": {
+        "below60": {
+          "people": 62,
+          "mae": 8.532997349758924,
+          "bias": 7.510696943687525,
+          "people_over10": 22
+        },
+        "60to75": {
+          "people": 310,
+          "mae": 6.343574835436678,
+          "bias": 1.9715808914608712,
+          "people_over10": 38
+        },
+        "75to90": {
+          "people": 252,
+          "mae": 6.714953583049115,
+          "bias": -1.8737341908681042,
+          "people_over10": 43
+        },
+        "90plus": {
+          "people": 68,
+          "mae": 8.294163898887925,
+          "bias": -7.387104033713676,
+          "people_over10": 22
+        }
+      },
+      "raw_mae": 7.015247712413112,
+      "fold_mae": [
+        7.294249988437542,
+        6.3942355483442075,
+        6.683579035111437,
+        6.653001527695196,
+        7.306570931311418
+      ]
+    },
+    "stable_scale": {
+      "mae": 6.770317862556794,
+      "ci95": [
+        6.496499283651799,
+        7.050053808838548
+      ],
+      "bias": -0.011563787766121601,
+      "p90": 11.398943570341197,
+      "maximum": 26.608642702394295,
+      "people_over10": 111,
+      "people_over20": 3,
+      "bands": {
+        "below60": {
+          "people": 62,
+          "mae": 8.582325881577967,
+          "bias": 7.921548607794501,
+          "people_over10": 21
+        },
+        "60to75": {
+          "people": 310,
+          "mae": 6.052074709178107,
+          "bias": 1.6928891301790254,
+          "people_over10": 30
+        },
+        "75to90": {
+          "people": 252,
+          "mae": 6.674064651942159,
+          "bias": -2.012661705612857,
+          "people_over10": 37
+        },
+        "90plus": {
+          "people": 68,
+          "mae": 8.749239766129865,
+          "bias": -7.599162284683426,
+          "people_over10": 23
+        }
+      },
+      "raw_mae": 7.186063565959794,
+      "fold_mae": [
+        6.870088457824341,
+        6.505037345207168,
+        6.860278751180352,
+        6.586352324067888,
+        7.0292889162779035
+      ]
+    }
+  },
+  "delta_mae": -0.09633745929751068,
+  "delta_ci95": [
+    -0.25529762655236593,
+    0.05980301890612567
+  ],
+  "people_improved": 370,
+  "people_worsened": 322,
+  "development_improvement_supported": false,
+  "single_seed_only": true,
+  "independent_final_validation": false,
+  "protocol_sha256": "3368f7271ced712a6abc2db635b27eceee87701383d92f0b329a8b8cd867ca0b",
+  "audits": [
+    {
+      "variant": "baseline",
+      "fold": 0,
+      "selected_epoch": 78,
+      "checkpoint_sha256": "4b0fac84c14c6de93f35e3db38a4d01f672231a73bc0ff8c3500170f723a7993",
+      "raw_replay_max_error": 1.872669565727847e-05,
+      "calibrated_replay_max_error": 2.0387520436315754e-05
+    },
+    {
+      "variant": "baseline",
+      "fold": 1,
+      "selected_epoch": 90,
+      "checkpoint_sha256": "aa2a61011129e757fb9cb37900c671b614c05b9746cb6d6a2e9fce019e66f725",
+      "raw_replay_max_error": 2.913041548424644e-05,
+      "calibrated_replay_max_error": 2.7875036764157812e-05
+    },
+    {
+      "variant": "baseline",
+      "fold": 2,
+      "selected_epoch": 95,
+      "checkpoint_sha256": "283228430c48fa44ab0a004b5ac599565693b5d3090d25ab7e1acd21b32243b2",
+      "raw_replay_max_error": 1.743861606939845e-05,
+      "calibrated_replay_max_error": 2.116383450356807e-05
+    },
+    {
+      "variant": "baseline",
+      "fold": 3,
+      "selected_epoch": 76,
+      "checkpoint_sha256": "273b71decc9176f2d1928917122fa97e786e530ca621dec433c76a1fe6fcef21",
+      "raw_replay_max_error": 2.288818359375e-05,
+      "calibrated_replay_max_error": 2.6472060696391964e-05
+    },
+    {
+      "variant": "baseline",
+      "fold": 4,
+      "selected_epoch": 76,
+      "checkpoint_sha256": "ec0b735cf21a8cce3ee9bab81a270e2231f0c5756e1b48b07696c3c6fb300b20",
+      "raw_replay_max_error": 1.7801920577653618e-05,
+      "calibrated_replay_max_error": 1.7144007159686225e-05
+    },
+    {
+      "variant": "stable_scale",
+      "fold": 0,
+      "selected_epoch": 82,
+      "checkpoint_sha256": "c5f51ebb9f8341c3bd2a11714eb466ca4a5ce2872e55e1b087d6e6a7161c7e50",
+      "raw_replay_max_error": 1.2079874665005264e-05,
+      "calibrated_replay_max_error": 1.2900066522547604e-05
+    },
+    {
+      "variant": "stable_scale",
+      "fold": 1,
+      "selected_epoch": 72,
+      "checkpoint_sha256": "3e7170be05154b6202ae5a943d5e7b4b22291f34efdf963a8de90508a9c8a407",
+      "raw_replay_max_error": 1.2874603271484375e-05,
+      "calibrated_replay_max_error": 1.602815052592632e-05
+    },
+    {
+      "variant": "stable_scale",
+      "fold": 2,
+      "selected_epoch": 89,
+      "checkpoint_sha256": "d72e121e299ebedaf795a5d6e04f9381cce911fae84a7009e5ae6a8acce4be05",
+      "raw_replay_max_error": 1.0967254638671875e-05,
+      "calibrated_replay_max_error": 1.1523193037987767e-05
+    },
+    {
+      "variant": "stable_scale",
+      "fold": 3,
+      "selected_epoch": 95,
+      "checkpoint_sha256": "98cd5070a93005b9a3327fa7d45ac08af8f30823fcf88db9eb84fc644a4256f5",
+      "raw_replay_max_error": 3.509521484090783e-05,
+      "calibrated_replay_max_error": 3.1217583597253906e-05
+    },
+    {
+      "variant": "stable_scale",
+      "fold": 4,
+      "selected_epoch": 55,
+      "checkpoint_sha256": "924db38a947d1fdafc74e8b72504943a3f8e3e8e4f27c3b9eae2ab339870571b",
+      "raw_replay_max_error": 1.33514404296875e-05,
+      "calibrated_replay_max_error": 1.1487383929420503e-05
+    }
+  ]
+}

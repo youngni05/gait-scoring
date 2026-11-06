@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "people": 692,
+  "records": 1061,
+  "same124frames_verified": true,
+  "matching_labels_and_folds": true,
+  "actual_CPU_feature_check": {
+    "passed": true,
+    "actual_records": [
+      0,
+      1060
+    ],
+    "shape": [
+      2,
+      124,
+      512
+    ],
+    "pooled_reference_max_error": 2.2351741790771484e-08,
+    "batch_max_error": 5.587935447692871e-08,
+    "encoder_unchanged": true,
+    "requires_grad_parameters": 0,
+    "real_GDI_optimizer_steps": 0,
+    "device": "cpu",
+    "seconds": 1.1741401000181213,
+    "peak_allocated_bytes": null,
+    "torch": "2.14.1+cpu",
+    "python": "3.12.14"
+  },
+  "frozen_feature_cache_resume_exact": true,
+  "corrupt_feature_cache_rejected": true,
+  "model_uses_added_features": true,
+  "train_only_normalization_and_calibration": true,
+  "held_inputs_and_labels_poison_test": true,
+  "CNN_resume_exact": true,
+  "synthetic_nested_fits": 25,
+  "independent_checkpoint_reinference": true,
+  "synthetic_optimizer_steps": 50,
+  "actual_GDI_optimizer_steps": 0,
+  "actual_GPU_execution": false,
+  "full_real_temporal_cache_created": false,
+  "trainable_parameters": 178912,
+  "bundle_sha256": "6f3ea22bccc6419f35297f42e834d424eb2982ff3da7d849196609b8f0665c14",
+  "details": "checks/verification-1793360048862895800"
+}

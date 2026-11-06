@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": {
+    "omitted_for_public_snapshot": true,
+    "count": 5
+  },
+  "synthetic_only": true,
+  "remote_mutations": 0,
+  "worker_sha256": "af5506960e23a99820654f3dfc981fb623289ac55f1a7157b6bdb2c98cdae8fb"
+}

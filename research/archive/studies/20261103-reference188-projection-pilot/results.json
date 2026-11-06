@@ -1,0 +1,408 @@
+{
+  "protocol_sha256": "ebf1765afbdecbfc78cc5d8386c7514a6e68e78a23536aa90210cc2d2053a65e",
+  "data_sha256": "f88657e593654cbb20d9cdc60bd2b8d33fa6f5f6c7e2e2c9ca545e520c3f4336",
+  "source_names": [
+    "LFHD",
+    "RFHD",
+    "LBHD",
+    "RBHD",
+    "C7",
+    "T10",
+    "CLAV",
+    "STRN",
+    "LSHO",
+    "LELB",
+    "LWRA",
+    "LWRB",
+    "LFIN",
+    "RSHO",
+    "RELB",
+    "RWRA",
+    "RWRB",
+    "RFIN",
+    "LASI",
+    "RASI",
+    "LTHI",
+    "LKNE",
+    "LTIB",
+    "LANK",
+    "LHEE",
+    "LTOE",
+    "RTHI",
+    "RKNE",
+    "RTIB",
+    "RANK",
+    "RHEE",
+    "RTOE",
+    "LFEO",
+    "LFEP",
+    "LTIO",
+    "LTIP",
+    "RFEO",
+    "RFEP",
+    "RTIO",
+    "RTIP"
+  ],
+  "trials": [
+    {
+      "person": "SUBJ01",
+      "age": 86.0,
+      "group": "healthy",
+      "source_frames": 337,
+      "source_rate": 100.0,
+      "source_first_frame_zero_based": 248,
+      "source_last_frame_zero_based": 584,
+      "source_elapsed_s": 3.36,
+      "target_frames": 101,
+      "target_last_s": 3.3333333333333335,
+      "source_valid_fraction": 1.0,
+      "duration_pass": false,
+      "strict_gdi_input_pass": false,
+      "inference_count": 0,
+      "reasons": [
+        "anatomical_landmark_mismatch",
+        "fewer_than_124_frames"
+      ],
+      "source_gdi": {
+        "analysis": [],
+        "processing": {},
+        "usable_as_ground_truth": false,
+        "reason": "Reference implementation, trial linkage and conflicting-field provenance unresolved"
+      },
+      "cameras": {
+        "side_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 0.9969059405940595,
+          "all_physical_markers_in_frame_fraction": 0.9702970297029703,
+          "yaw_deg_min": 0.0,
+          "yaw_deg_max": 0.0
+        },
+        "side_pan": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": -27.325894569915718,
+          "yaw_deg_max": 27.32589456991572,
+          "paired_pixel_displacement_rms": 170.1081204859695
+        },
+        "oblique_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 0.9904084158415841,
+          "all_physical_markers_in_frame_fraction": 0.9504950495049505,
+          "yaw_deg_min": 15.000000000000002,
+          "yaw_deg_max": 15.000000000000002,
+          "paired_pixel_displacement_rms": 20.519766355568198
+        }
+      }
+    },
+    {
+      "person": "SUBJ02",
+      "age": 85.0,
+      "group": "healthy",
+      "source_frames": 392,
+      "source_rate": 100.0,
+      "source_first_frame_zero_based": 246,
+      "source_last_frame_zero_based": 637,
+      "source_elapsed_s": 3.91,
+      "target_frames": 118,
+      "target_last_s": 3.9,
+      "source_valid_fraction": 1.0,
+      "duration_pass": false,
+      "strict_gdi_input_pass": false,
+      "inference_count": 0,
+      "reasons": [
+        "anatomical_landmark_mismatch",
+        "fewer_than_124_frames"
+      ],
+      "source_gdi": {
+        "analysis": [],
+        "processing": {},
+        "usable_as_ground_truth": false,
+        "reason": "Reference implementation, trial linkage and conflicting-field provenance unresolved"
+      },
+      "cameras": {
+        "side_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 0.9925847457627118,
+          "all_physical_markers_in_frame_fraction": 0.9322033898305084,
+          "yaw_deg_min": 0.0,
+          "yaw_deg_max": 0.0
+        },
+        "side_pan": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": -27.889277797104235,
+          "yaw_deg_max": 27.889277797104242,
+          "paired_pixel_displacement_rms": 170.65713604258198
+        },
+        "oblique_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 0.9827860169491526,
+          "all_physical_markers_in_frame_fraction": 0.9322033898305084,
+          "yaw_deg_min": 15.000000000000002,
+          "yaw_deg_max": 15.000000000000002,
+          "paired_pixel_displacement_rms": 20.666385349192083
+        }
+      }
+    },
+    {
+      "person": "SUBJ03",
+      "age": 85.0,
+      "group": "healthy",
+      "source_frames": 318,
+      "source_rate": 100.0,
+      "source_first_frame_zero_based": 182,
+      "source_last_frame_zero_based": 499,
+      "source_elapsed_s": 3.17,
+      "target_frames": 96,
+      "target_last_s": 3.1666666666666665,
+      "source_valid_fraction": 1.0,
+      "duration_pass": false,
+      "strict_gdi_input_pass": false,
+      "inference_count": 0,
+      "reasons": [
+        "anatomical_landmark_mismatch",
+        "fewer_than_124_frames"
+      ],
+      "source_gdi": {
+        "analysis": [],
+        "processing": {},
+        "usable_as_ground_truth": false,
+        "reason": "Reference implementation, trial linkage and conflicting-field provenance unresolved"
+      },
+      "cameras": {
+        "side_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": 0.0,
+          "yaw_deg_max": 0.0
+        },
+        "side_pan": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": -21.48284224533424,
+          "yaw_deg_max": 21.482842245334243,
+          "paired_pixel_displacement_rms": 126.9366592976156
+        },
+        "oblique_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": 15.000000000000002,
+          "yaw_deg_max": 15.000000000000002,
+          "paired_pixel_displacement_rms": 14.985023809491421
+        }
+      }
+    },
+    {
+      "person": "TVC04",
+      "age": 77.0,
+      "group": "stroke",
+      "source_frames": 420,
+      "source_rate": 100.0,
+      "source_first_frame_zero_based": 83,
+      "source_last_frame_zero_based": 502,
+      "source_elapsed_s": 4.19,
+      "target_frames": 126,
+      "target_last_s": 4.166666666666667,
+      "source_valid_fraction": 1.0,
+      "duration_pass": true,
+      "strict_gdi_input_pass": false,
+      "inference_count": 0,
+      "reasons": [
+        "anatomical_landmark_mismatch"
+      ],
+      "source_gdi": {
+        "analysis": [
+          {
+            "index": 0,
+            "name": "GDI",
+            "context": "Left",
+            "value": 83.96894073486328,
+            "units": ""
+          },
+          {
+            "index": 1,
+            "name": "GDI",
+            "context": "Right",
+            "value": 85.90348815917969,
+            "units": ""
+          }
+        ],
+        "processing": {},
+        "usable_as_ground_truth": false,
+        "reason": "Reference implementation, trial linkage and conflicting-field provenance unresolved"
+      },
+      "cameras": {
+        "side_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 0.9784226190476191,
+          "all_physical_markers_in_frame_fraction": 0.873015873015873,
+          "yaw_deg_min": 0.0,
+          "yaw_deg_max": 0.0
+        },
+        "side_pan": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": -29.036910574231605,
+          "yaw_deg_max": 29.036910574231598,
+          "paired_pixel_displacement_rms": 181.49307630690248
+        },
+        "oblique_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 0.9769345238095238,
+          "all_physical_markers_in_frame_fraction": 0.9206349206349206,
+          "yaw_deg_min": 15.000000000000002,
+          "yaw_deg_max": 15.000000000000002,
+          "paired_pixel_displacement_rms": 23.796833885065855
+        }
+      }
+    },
+    {
+      "person": "TVC08",
+      "age": 71.0,
+      "group": "stroke",
+      "source_frames": 1349,
+      "source_rate": 100.0,
+      "source_first_frame_zero_based": 3144,
+      "source_last_frame_zero_based": 4492,
+      "source_elapsed_s": 13.48,
+      "target_frames": 405,
+      "target_last_s": 13.466666666666667,
+      "source_valid_fraction": 1.0,
+      "duration_pass": true,
+      "strict_gdi_input_pass": false,
+      "inference_count": 0,
+      "reasons": [
+        "anatomical_landmark_mismatch"
+      ],
+      "source_gdi": {
+        "analysis": [
+          {
+            "index": 22,
+            "name": "GDI",
+            "context": "Left",
+            "value": 63.04297637939453,
+            "units": ""
+          },
+          {
+            "index": 23,
+            "name": "GDI",
+            "context": "Right",
+            "value": 66.30006408691406,
+            "units": ""
+          }
+        ],
+        "processing": {
+          "LGDI": [
+            58.019901275634766
+          ],
+          "RGDI": [
+            70.4729995727539
+          ]
+        },
+        "usable_as_ground_truth": false,
+        "reason": "Reference implementation, trial linkage and conflicting-field provenance unresolved"
+      },
+      "cameras": {
+        "side_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": 0.0,
+          "yaw_deg_max": 0.0
+        },
+        "side_pan": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": -11.749744383786467,
+          "yaw_deg_max": 11.749744383786467,
+          "paired_pixel_displacement_rms": 69.82934522838099
+        },
+        "oblique_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": 15.000000000000002,
+          "yaw_deg_max": 15.000000000000002,
+          "paired_pixel_displacement_rms": 9.709788154521176
+        }
+      }
+    },
+    {
+      "person": "TVC09",
+      "age": 81.0,
+      "group": "stroke",
+      "source_frames": 397,
+      "source_rate": 100.0,
+      "source_first_frame_zero_based": 237,
+      "source_last_frame_zero_based": 633,
+      "source_elapsed_s": 3.96,
+      "target_frames": 119,
+      "target_last_s": 3.933333333333333,
+      "source_valid_fraction": 1.0,
+      "duration_pass": false,
+      "strict_gdi_input_pass": false,
+      "inference_count": 0,
+      "reasons": [
+        "anatomical_landmark_mismatch",
+        "fewer_than_124_frames"
+      ],
+      "source_gdi": {
+        "analysis": [
+          {
+            "index": 22,
+            "name": "GDI",
+            "context": "Left",
+            "value": 64.55858612060547,
+            "units": ""
+          },
+          {
+            "index": 23,
+            "name": "GDI",
+            "context": "Right",
+            "value": 88.45793151855469,
+            "units": ""
+          }
+        ],
+        "processing": {},
+        "usable_as_ground_truth": false,
+        "reason": "Reference implementation, trial linkage and conflicting-field provenance unresolved"
+      },
+      "cameras": {
+        "side_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 0.9976365546218487,
+          "all_physical_markers_in_frame_fraction": 0.9663865546218487,
+          "yaw_deg_min": 0.0,
+          "yaw_deg_max": 0.0
+        },
+        "side_pan": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 1.0,
+          "all_physical_markers_in_frame_fraction": 1.0,
+          "yaw_deg_min": -25.25406044281885,
+          "yaw_deg_max": 25.25406044281885,
+          "paired_pixel_displacement_rms": 156.46503705363338
+        },
+        "oblique_fixed": {
+          "valid_point_fraction": 1.0,
+          "in_frame_given_valid": 0.9997373949579832,
+          "all_physical_markers_in_frame_fraction": 0.9915966386554622,
+          "yaw_deg_min": 15.000000000000002,
+          "yaw_deg_max": 15.000000000000002,
+          "paired_pixel_displacement_rms": 19.014482174813953
+        }
+      }
+    }
+  ],
+  "gdi_inference_runs": 0,
+  "training_runs": 0,
+  "eligible_duration_trials": 2,
+  "strict_eligible_trials": 0
+}

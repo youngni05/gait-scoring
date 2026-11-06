@@ -1,0 +1,27 @@
+{
+  "round": 9,
+  "code_sha256": "d10d5f72bbb8317ca28e012881cc764b19cd13a2a6285422bd8faa19b3e1bc8f",
+  "source_verification_sha256": "fece38a03234981cf5e9d9ec4d6838910be6316130e80ccf984b79ad1be6701f",
+  "data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "conditions": [
+    "speed",
+    "combined"
+  ],
+  "alpha": [
+    10,
+    100
+  ],
+  "tail": [
+    1,
+    4,
+    16
+  ],
+  "knots": [
+    12,
+    20
+  ],
+  "design": "Same594/frozen5outerfolds; verifiedround07innerOOF+finaltestbasepredictions. InputpredictedTUGvalues pluspositivehinges at12/20secondsand1/observedspeed. No sourceTUGlabelsincalibrationfeatures. Sameexpansionbothconditions; allpreprocessing/metaoptimizationoutertrainingonly. FixednonnegativeRidgeweights produce piecewise monotone correction of basepredictions. Noperformance-basedknotselection orclipping.",
+  "selection": "All6fixedalpha/tailvariantsreported, no meta search/outerchoice/fitontest. Weightedcentering,NNLSridge withalpha10or100;TUG>=20tail,12..20sqrt(tail),else1. No metafittrainingperformanceusedasvalidation.",
+  "verification": "Save60models/10contexts; independentsourcejoin/nonlinearfeaturerebuild, training-onlymoments/weights/KKToptimum andsavedmodelinference/metrics;paired5000personbootstrapwith9severeseparately. Reuseddevelopmentfolds,notclinical/external.",
+  "expected_additional_GB": 0.01
+}

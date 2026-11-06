@@ -1,0 +1,48 @@
+{
+  "target": "unchanged same-person same-visit tft_tug seconds; exact timed trial unresolved",
+  "population": "same selected TUG and walking files of previous238; no trial substitution",
+  "phase_detection": "local positive/negative smoothed pelvis-height velocity peaks near chair; net change>=0.08m; 0.25s margins; sitting endpoint within0.12m of initial height; no manual labels",
+  "fixed": "2 seconds around peak, boundary shift only if source supports full2s; actual full transition duration not a model input",
+  "event": "local transition core plus0.25s margins; includes duration features",
+  "quality": "native vertical speed<=3m/s in selected chair clips; previous horizontal<=6m/s in turn and added context; flagged sensitivity retains vertical failures; no imputed missing phases",
+  "observation": "same original walking3s and complete turn D; augmented adds rise/sit clips, control adds exactly same total seconds of non-chair TUG walking around original turn; windows disjoint; no padding or elapsed wholeTUG",
+  "views_both": [
+    "TurnBase",
+    "TurnContext",
+    "ChairTime",
+    "ChairMotion",
+    "ChairAll"
+  ],
+  "views_rise": [
+    "TurnBase",
+    "TurnContext",
+    "RiseMotion"
+  ],
+  "feature_note": "TurnContext retains original13features and per-side vertical summaries excluding explicit duration, plus horizontal context summaries; ChairMotion omits explicit phase durations; other motion summaries can still encode timing",
+  "training": "reuse same frozen outer and inner person folds restricted to each common cohort; RF128 leaf2/5 innerMAE; 5partitions x3seeds; localCPU",
+  "metrics": "MAE, bias, positive underprediction; paired person bootstrap conditional on fits; 20s descriptive threshold",
+  "configs": {
+    "fixed_strict": [
+      "fixed",
+      false,
+      false
+    ],
+    "fixed_flagged": [
+      "fixed",
+      true,
+      false
+    ],
+    "event_strict": [
+      "event",
+      false,
+      false
+    ],
+    "rise_strict": [
+      "fixed",
+      false,
+      true
+    ]
+  },
+  "source_code": "b16522df8c4b149497fbef01508722e6f86bac08f556aa59d5099e14c1b3b0e5",
+  "source_manifest": "bb03f951047f1617eff89e359ba0a34ada4d3b3d432279b4270a6b1323eb8064"
+}

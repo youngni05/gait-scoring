@@ -1,0 +1,49 @@
+{
+  "label_rows_exact": 7356,
+  "people": 2174,
+  "lookup_folds_recomputed": 5,
+  "non_unique_weighted_medians": [
+    {
+      "fold": 1,
+      "component": "chair",
+      "gait_score": 0,
+      "prediction": 1.0,
+      "other_optimal_median": 0.0
+    },
+    {
+      "fold": 4,
+      "component": "balance",
+      "gait_score": 0,
+      "prediction": 1.0,
+      "other_optimal_median": 0.0
+    },
+    {
+      "fold": 4,
+      "component": "remaining",
+      "gait_score": 0,
+      "prediction": 1.0,
+      "other_optimal_median": 0.0
+    }
+  ],
+  "DS_replays": 150,
+  "RF_forest_replays": 600,
+  "inner_selections_checked": 750,
+  "scalers_checked": 150,
+  "numpy_max_abs_difference": 1.2850908190920052e-06,
+  "DS_outer_refits": 6,
+  "RF_outer_refits": 4,
+  "DS_inner_curves": 3,
+  "RF_inner_curves": 9,
+  "model_files_hashed": 300,
+  "status": "passed",
+  "scope": "all requested fitted models and metrics",
+  "elapsed_seconds": 221.1470808982849,
+  "metric_rows_independently_recomputed": 28080,
+  "primary_total_contrasts_checked": 1080,
+  "primary_component_matched_deltas_checked": 8190,
+  "joint_criteria_rows_checked": 108,
+  "bootstrap_centers_checked": 288,
+  "original_predictions_unchanged": true,
+  "prediction_rows": 662040,
+  "metrics_elapsed_seconds": 276.49819135665894
+}

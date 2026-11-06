@@ -1,0 +1,46 @@
+{
+  "seed": 20261028,
+  "people": 692,
+  "records": 1061,
+  "windows": 11261,
+  "data_sha256": "7c1912cd27c63a82ed0d0324f98c0c0fae9a608174d52bd7a502f05e9a8c7a1e",
+  "groups": [
+    "regression",
+    "ordinal10",
+    "ordinal20",
+    "joint10",
+    "joint20"
+  ],
+  "joint_lambdas": [
+    0.25,
+    1.0
+  ],
+  "max_epochs": 100,
+  "pilot_epochs": 3,
+  "batch_records": 2,
+  "learning_rate": 0.001,
+  "lr_drop_every": 10,
+  "lr_drop_factor": 0.8,
+  "rmsprop_alpha": 0.9,
+  "rmsprop_eps": 1e-08,
+  "input": "unchanged 124x12 per-side coordinates/features; all original windows; hidden10 mean pooled per record and side",
+  "weighting": "training: global equal-person record weights; evaluation: people then recordings then sides equal",
+  "selection": "ordinal/joint: highest inner person-equal exact-band accuracy, then lowest NLL, then earliest epoch/lambda order; regression: lowest raw person MAE then earliest epoch",
+  "probability_calibration": "none; raw probabilities explicitly uncalibrated",
+  "point_calibration": "none; keep joint regression head separate from probability argmax",
+  "boundaries": "10 or20 step from0 through160; open tails; never clip GDI100",
+  "ordinal_output": "learned strictly ordered cutpoints with shared latent score; CORAL-inspired cumulative BCE, not official CORAL reproduction",
+  "joint_objective": "train-only minmax-scaled record MSE + lambda * mean cumulative BCE + historical kernel L2",
+  "initialization": "all models start fresh per fit; same CNN seed; no cross-fold pretrained weights",
+  "main_fits": 165,
+  "outer_predictions": 25,
+  "pilot_fits": 7,
+  "pilot_main_gate": "all7 3epoch pilots, finite losses and gradients, identity/metric audits, GPU and CPU64 replay <=1e-4 unchanged",
+  "parallel": "one Slurm job2GPUs,2processes each bound to1GPU, unique outer task partition and locks; no DDP/batch enlargement",
+  "limitations": [
+    "Repeated development cohort, not protected final validation",
+    "Feature pooling and person training weights differ from historical CNN; new regression control isolates objective",
+    "Raw probabilities are not calibrated",
+    "No guarantee of improved clinical scores or domain transfer"
+  ]
+}

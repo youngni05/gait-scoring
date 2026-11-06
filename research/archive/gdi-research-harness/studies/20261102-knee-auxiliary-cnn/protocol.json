@@ -1,0 +1,73 @@
+{
+  "name": "matched_GDI_CNN_with_clinical_knee_auxiliary",
+  "stage": "knee_auxiliary_nested_comparison",
+  "seed": 20261028,
+  "batch_size": 32,
+  "max_epochs": 100,
+  "learning_rate": 0.001,
+  "lr_drop_every": 10,
+  "lr_drop_factor": 0.8,
+  "dropout": 0.5,
+  "kernel_l2": 0.00031622776601683794,
+  "optimizer": "RMSprop",
+  "rmsprop_alpha": 0.9,
+  "rmsprop_eps": 1e-08,
+  "target_scaling": "training_only_pooled_sides_minmax",
+  "loss": "mean_of_global_mean_one_inverse_record_window_count_weighted_side_MSE_plus_L2",
+  "selection": "lowest_inner_person_weighted_GDI_calibrated_MAE; ties smaller_lambda_then_earlier_epoch",
+  "input": "sliding124_stride31_official12_separate_sides",
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "inner_folds": "remaining_four_original_folds",
+  "pilot_epochs": 3,
+  "wall_time_seconds": 27000,
+  "note": "Same 692 people and original folds; all windows per epoch; more optimizer steps than single-window. Not exact paper reproduction.",
+  "calibration": "one_slope_and_intercept_fit_on_current_training_record_sides_only",
+  "primary_prediction": "calibrated",
+  "window_aggregation": "uniform_mean_per_record_side_before_training_only_OLS",
+  "window_starts": "range(0,500-124,31), zero based; original canonical window fallback for four records",
+  "auxiliary_target": "KneeFlex_maxExtension",
+  "auxiliary_weights": [
+    0.1,
+    0.3,
+    1.0
+  ],
+  "auxiliary_scaling": "independent_train_only_pooled_sides_minmax",
+  "auxiliary_output": "existing_unused_output_index_1_no_architecture_change",
+  "auxiliary_loss": "same_record_window_weights_MSE_on_output1",
+  "total_loss": "original_GDI_MSE_plus_original_kernel_L2_plus_lambda_knee_MSE",
+  "expected_fits": 90,
+  "expected_outer_predictions": 10,
+  "fit_counts": {
+    "gdi_only": 25,
+    "knee_auxiliary": 65
+  },
+  "data_sha256": "7c1912cd27c63a82ed0d0324f98c0c0fae9a608174d52bd7a502f05e9a8c7a1e",
+  "auxiliary_sha256": "62cf6de98601c85d4039dbbf63944bfa522beab906d4597119ca5dc41abee47f",
+  "baseline_manifest_sha256": "cdddbbca96dae2723714cb8e9a1f7fe6f603967914febc952c8a3872c135f4a0",
+  "clinical_table_sha256": "0c3d16e8382c2c0ddeb52eb3f675550023efab172b92c59a6bb21ff775caae76",
+  "primary_comparison": "knee_auxiliary_minus_same_condition_gdi_only",
+  "uncertainty": {
+    "draws": 10000,
+    "seed": 20261102,
+    "unit": "person",
+    "paired": true,
+    "confidence": 0.95
+  },
+  "decision": "CI_upper_below_zero_improved; CI_lower_above_zero_worse; otherwise_inconclusive",
+  "reserved_holdout_used": false,
+  "independent_final_evaluation": false,
+  "authorization": "2026-11-02 user approved target, three inner-selected weights, 90 fits, school GPU",
+  "inference_inputs": "video features only; true knee targets never required at inference",
+  "notes": [
+    "Repeated development-data exploration; no new confirmatory holdout claim.",
+    "Record-balanced original CNN loss and original initialization retained; no ensemble.",
+    "Original second output is reused; same parameter count and random initialization.",
+    "External paper predicts knee separately; this experiment tests joint learning."
+  ]
+}

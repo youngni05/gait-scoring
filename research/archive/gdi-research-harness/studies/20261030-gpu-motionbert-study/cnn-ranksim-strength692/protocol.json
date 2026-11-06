@@ -1,0 +1,81 @@
+{
+  "name": "cnn_ranksim_strength",
+  "stage": "ranksim_strength",
+  "seed": 20261028,
+  "max_epochs": 100,
+  "learning_rate": 0.001,
+  "lr_drop_every": 10,
+  "lr_drop_factor": 0.8,
+  "dropout": 0.5,
+  "kernel_l2": 0.00031622776601683794,
+  "optimizer": "RMSprop",
+  "rmsprop_alpha": 0.9,
+  "rmsprop_eps": 1e-08,
+  "target_scaling": "training_only_pooled_sides_minmax",
+  "loss": "MSE vs MSE+mean official RankSim regularizer",
+  "selection": "earliest_minimum_inner_person_weighted_calibrated_MAE",
+  "input": "sliding124_stride31_official12_separate_sides",
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "inner_folds": "remaining_four_original_folds",
+  "pilot_epochs": 3,
+  "wall_time_seconds": 82000,
+  "note": "Only rank-loss strength changes; reuse verified exact MSE0/RankSim1 controls. Choose strength/epoch on inner people only.",
+  "calibration": "one_slope_and_intercept_fit_on_current_training_record_sides_only",
+  "primary_prediction": "calibrated",
+  "window_aggregation": "uniform_mean_per_record_side_before_training_only_OLS",
+  "window_starts": "range(0,500-124,31), zero based; original canonical window fallback for four records",
+  "variants": [
+    "rank01",
+    "rank03"
+  ],
+  "batch_size": 32,
+  "sigma_gdi": 5.0,
+  "data_sha256": "7c1912cd27c63a82ed0d0324f98c0c0fae9a608174d52bd7a502f05e9a8c7a1e",
+  "workers": 3,
+  "expected_fits": 50,
+  "expected_outer_folds": 10,
+  "rank_weight": 0.1,
+  "rank_interpolation": 2.0,
+  "rank_weights": {
+    "rank01": 0.1,
+    "rank03": 0.3
+  },
+  "primary_strength_grid": [
+    0,
+    0.1,
+    0.3,
+    1
+  ],
+  "hypothesis": "Weaker rank regularization may retain complementary ranking information while reducing point-regression cost",
+  "same_cohort_people": 692,
+  "same_records": 1061,
+  "same_windows": 11261,
+  "selection_over_strength": "minimum of each fixed-strength mean inner calibrated MAE curve; ties1e-12 prefer smaller strength then earlier epoch",
+  "reuse_control_remote": "/abr/RESEARCH_USER/gdi-cnn-ranksim692-20261101",
+  "reuse_control_manifest_sha256": "e5c5252ab031cfa777ac25f53a01acc34ba4925715de95016d7dd399a42ea131",
+  "source_result_digest": "b679cd53072f3111c2954d29cbea8d8a03c7273cbb6e8cd10615de73ee908038",
+  "source_ensemble_digest": "566ac232723b72ade89d2bd6de87e97e52e6ccc0800fb03c13b1539818dcfe43",
+  "primary_metric": "person_equal_MAE",
+  "secondary_metrics": [
+    "person_mean90/100 MAE and bias",
+    "observation90/100 MAE and bias",
+    "low-score error",
+    "same10/20band accuracy",
+    "5fold changes",
+    "paired person bootstrap10000 seed20261101"
+  ],
+  "promotion": "overall delta<0,95%upper<0,4/5fold improvement; high90 MAE and absolute bias not worse for joint promotion",
+  "expected_GPU_hours_total": [
+    7,
+    12
+  ],
+  "expected_GPU_memory_GiB_below": 1,
+  "pilot_gate": "all3device synthetic checks + both3epoch GDI pilots + source GPU/CPU64 + local CPU64 and hashes, before any full training",
+  "protected_final_or_LJMU": false
+}

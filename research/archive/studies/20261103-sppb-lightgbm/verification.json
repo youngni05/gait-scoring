@@ -1,0 +1,50 @@
+{
+  "status": "PASS_WITH_MEASUREMENT_AND_GENERALIZATION_LIMITS",
+  "source_hashes": 478,
+  "label_sources": {
+    "sources": {
+      "D:\\Projects\\D_P\\outputs\\gait-public-access-20261015\\OlderAdults44\\01_demography_sppb_mmse.xlsx": "e16ad2b720dadb30b50ed2937856c586feb8e5f2b554da1b662b5d14791af867",
+      "D:\\gait-research-data\\D_P\\larger-older-sppb-20261103\\Gait2Care_DDBB.xlsx": "5dbdfe90f0dd1ca6f58b08bc50f66d028af4bb6b5786ab1de9d6a42fe6823213",
+      "D:\\gait-research-data\\D_P\\larger-older-sppb-20261103\\GSTRIDE_DDBB.xlsx": "4f22d761d02857f02e4e1a87c313cb74cc52c14f51071f144e00d566a3f90d81"
+    },
+    "published_total_checked_all_people": true,
+    "subscore_sum_unavailable": [
+      {
+        "dataset": "gstride",
+        "id": "gstride-V140",
+        "raw_subscores": [
+          "Incapable",
+          1,
+          "Incapable"
+        ]
+      }
+    ]
+  },
+  "fit_split_records": 3340,
+  "saved_final_models_replayed": 85,
+  "independent_prediction_max_error": 1.5987211554602254e-14,
+  "feature_checks": {
+    "person_aggregate_checks": 1056,
+    "independent_knee_cycle_checks": 40,
+    "independent_imu_statistics": 240,
+    "measurement_accuracy": "not validated against independent optical or clinical ground truth"
+  },
+  "gdi": {
+    "checkpoint_hashes": 54,
+    "cached_member_outputs_reaggregated": 54,
+    "people": 37,
+    "max_aggregation_error": 0,
+    "new_checkpoint_forward": false,
+    "prior_forward_replay_max": 1.3865322955552983e-05,
+    "geometry": "previous audited virtual yaw-pan side camera; TOE/body25 equivalence remains unresolved; no RGB validity claimed"
+  },
+  "protocol_sha256": "9af62305913a1838530a5bf2079b33c461666a9eefbc02722651ef119ec049c9",
+  "comparison_sha256": "65e0fb4be0d167cb926ae8352ed71b9f78dc502ce7d21d7b2c778569a81298ab",
+  "code_sha256": "7348a322682fbc2f5c8f283a15cf783b19fdbd6e5ea943a8a55e09cb08c7a277",
+  "notes": [
+    "Inner model selection recomputed from all saved inner predictions; inner trees not independently retrained.",
+    "All final trees reloaded and independently traversed; all final Ridge fits independently solved.",
+    "Frozen GDI cached outputs reaggregated and checkpoint hashes verified; no new CP-model forward pass in this run.",
+    "No independent sensor/marker/RGB measurement accuracy validation."
+  ]
+}

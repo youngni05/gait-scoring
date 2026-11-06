@@ -1,0 +1,945 @@
+{
+  "scores": [
+    {
+      "kind": "primary",
+      "Full": {
+        "clip0": {
+          "n_windows": 13,
+          "left_right": [
+            61.74536082924924,
+            64.36788135535556
+          ],
+          "mean": 63.05662109230241,
+          "window_means": [
+            63.52892484902941,
+            61.761629827978986,
+            60.033578806539126,
+            61.184110774461644,
+            61.663932881354015,
+            63.165026905816376,
+            64.54852241122663,
+            64.5905201173934,
+            63.97488308904851,
+            63.880691923719226,
+            62.67149400758814,
+            63.57099698055034,
+            65.16176162522545
+          ],
+          "starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ]
+        },
+        "clip1": {
+          "n_windows": 13,
+          "left_right": [
+            73.87402645428348,
+            73.86684299344208
+          ],
+          "mean": 73.87043472386276,
+          "window_means": [
+            71.58359922489396,
+            74.49816248095982,
+            76.14725338674921,
+            74.80818125203541,
+            74.72195235900725,
+            76.40586823427506,
+            73.95087526778752,
+            72.12308267247055,
+            71.32907931013017,
+            73.65921993382192,
+            75.2637196566368,
+            74.15742874818679,
+            71.6672288832615
+          ],
+          "starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ]
+        },
+        "normal_minus_abnormal": 10.81381363156035,
+        "fold_differences": [
+          13.230138333880312,
+          9.175339328584947,
+          11.131002209360915,
+          12.494033672341054,
+          8.038554613634574
+        ]
+      },
+      "Lite": {
+        "clip0": {
+          "n_windows": 13,
+          "left_right": [
+            62.69231580203025,
+            65.45960728214837
+          ],
+          "mean": 64.0759615420893,
+          "window_means": [
+            63.51650861129954,
+            63.11218622444733,
+            61.3923797536845,
+            61.45474602799756,
+            63.362060548339514,
+            63.954620757166715,
+            65.11386371337132,
+            63.959892809452796,
+            63.70338904320792,
+            64.86881591108457,
+            64.00152174369832,
+            66.68110273467721,
+            67.86641216873376
+          ],
+          "starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ]
+        },
+        "clip1": {
+          "n_windows": 13,
+          "left_right": [
+            71.21546411833208,
+            71.75519337163406
+          ],
+          "mean": 71.48532874498306,
+          "window_means": [
+            70.57766954611057,
+            72.56898861100754,
+            74.17357610639439,
+            73.74842354944542,
+            72.6803449925983,
+            73.40988258784259,
+            70.53127370397381,
+            70.5018232544939,
+            68.98469692296838,
+            70.00832157253362,
+            72.0901715376057,
+            71.30320527799815,
+            68.73089602180752
+          ],
+          "starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ]
+        },
+        "normal_minus_abnormal": 7.409367202893762,
+        "fold_differences": [
+          8.352460832759448,
+          6.939924027181476,
+          7.346300135713889,
+          8.640762722016134,
+          5.767388296797861
+        ]
+      },
+      "OpenPose": {
+        "clip0": {
+          "n_windows": 13,
+          "left_right": [
+            64.03195543184835,
+            65.13807032219287
+          ],
+          "mean": 64.5850128770206,
+          "window_means": [
+            63.553057295331655,
+            62.826343775177456,
+            62.008356712639426,
+            64.40439150453685,
+            66.39040123799745,
+            67.18958040295402,
+            68.29951275806164,
+            65.7842355444243,
+            64.0475928682146,
+            63.905091940615975,
+            61.71459826980353,
+            62.95616262730601,
+            66.52584246420497
+          ],
+          "starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ]
+        },
+        "clip1": {
+          "n_windows": 13,
+          "left_right": [
+            75.72197205890197,
+            75.09131780815027
+          ],
+          "mean": 75.4066449335261,
+          "window_means": [
+            70.80971758252002,
+            75.76468261283829,
+            78.94336666887313,
+            77.98666487644155,
+            76.5689784617723,
+            76.91395863007526,
+            74.95797185441629,
+            74.6105183999056,
+            74.35913998770488,
+            74.60362438337435,
+            75.91202468275702,
+            75.99074220657634,
+            72.86499378858429
+          ],
+          "starts": [
+            0,
+            31,
+            62,
+            93,
+            124,
+            155,
+            186,
+            217,
+            248,
+            279,
+            310,
+            341,
+            372
+          ]
+        },
+        "normal_minus_abnormal": 10.821632056505493,
+        "fold_differences": [
+          10.904439197711852,
+          10.633010747434284,
+          10.728304969665416,
+          13.680894276680114,
+          8.161511091035791
+        ]
+      },
+      "gap_change": -3.4044464286665885,
+      "gap_reduction_fraction": 0.31482384888996395,
+      "normal_shift": -2.385105978879693,
+      "abnormal_shift": 1.0193404497868954
+    },
+    {
+      "kind": "straight",
+      "Full": {
+        "clip0": {
+          "n_windows": 3,
+          "left_right": [
+            66.39998431432937,
+            65.59704453762006
+          ],
+          "mean": 65.99851442597473,
+          "window_means": [
+            64.42036144396886,
+            67.36554634757137,
+            66.20963548638393
+          ],
+          "starts": [
+            180,
+            570,
+            810
+          ]
+        },
+        "clip1": {
+          "n_windows": 3,
+          "left_right": [
+            75.54948151260143,
+            74.98310463314392
+          ],
+          "mean": 75.26629307287267,
+          "window_means": [
+            74.42472622578998,
+            75.15726474853065,
+            76.21688824429741
+          ],
+          "starts": [
+            30,
+            315,
+            600
+          ]
+        },
+        "normal_minus_abnormal": 9.267778646897938,
+        "fold_differences": [
+          10.257891443620679,
+          8.166816872101279,
+          9.910732778188006,
+          11.535611559756404,
+          6.467840580823392
+        ]
+      },
+      "Lite": {
+        "clip0": {
+          "n_windows": 3,
+          "left_right": [
+            66.46126302921392,
+            65.75601766198245
+          ],
+          "mean": 66.10864034559818,
+          "window_means": [
+            64.8947444262939,
+            66.9115223731842,
+            66.51965423731649
+          ],
+          "starts": [
+            180,
+            570,
+            810
+          ]
+        },
+        "clip1": {
+          "n_windows": 3,
+          "left_right": [
+            72.06561001416242,
+            74.04586074808037
+          ],
+          "mean": 73.05573538112141,
+          "window_means": [
+            72.97219384649912,
+            71.98537368449284,
+            74.20963861237222
+          ],
+          "starts": [
+            30,
+            315,
+            600
+          ]
+        },
+        "normal_minus_abnormal": 6.947095035523233,
+        "fold_differences": [
+          6.843689071110731,
+          6.992416782743092,
+          7.991624934602456,
+          8.864717458154317,
+          4.043026931005414
+        ]
+      },
+      "OpenPose": {
+        "clip0": {
+          "n_windows": 3,
+          "left_right": [
+            67.47347475901273,
+            67.29347178332016
+          ],
+          "mean": 67.38347327116644,
+          "window_means": [
+            68.59645831082317,
+            68.95423750275334,
+            64.59972399992282
+          ],
+          "starts": [
+            180,
+            570,
+            810
+          ]
+        },
+        "clip1": {
+          "n_windows": 3,
+          "left_right": [
+            75.88066428246773,
+            77.11788775884582
+          ],
+          "mean": 76.4992760206568,
+          "window_means": [
+            75.52247884611845,
+            76.039489892868,
+            77.9358593229839
+          ],
+          "starts": [
+            30,
+            315,
+            600
+          ]
+        },
+        "normal_minus_abnormal": 9.115802749490356,
+        "fold_differences": [
+          8.877494418281074,
+          8.746034946755685,
+          9.641682847027255,
+          11.071941239333512,
+          7.241860296054213
+        ]
+      },
+      "gap_change": -2.3206836113747045,
+      "gap_reduction_fraction": 0.2504034353638206,
+      "normal_shift": -2.210557691751262,
+      "abnormal_shift": 0.11012591962344231
+    }
+  ],
+  "benchmark": {
+    "Full": {
+      "median_seconds": 1.7942910499841673,
+      "minimum_seconds": 1.7165117000549799,
+      "maximum_seconds": 1.914920199997141,
+      "fps": 27.866159172137206,
+      "passes": 4
+    },
+    "Lite": {
+      "median_seconds": 1.358900149964029,
+      "minimum_seconds": 1.1913402000209317,
+      "maximum_seconds": 1.4576051000185544,
+      "fps": 36.794462051772925,
+      "passes": 4
+    }
+  },
+  "speed_ratio": 1.3203994789695648,
+  "model_bytes": {
+    "Full": 9398198,
+    "Lite": 5777746
+  },
+  "model_size_reduction_fraction": 0.3852283171731432,
+  "pose": {
+    "reference": "Full",
+    "candidate": "Lite",
+    "legacy_metric_keys": {
+      "openpose": "Full",
+      "mediapipe": "Lite"
+    },
+    "scale": "mean Full hip-knee-ankle chain length",
+    "ground_truth": false,
+    "clips": [
+      {
+        "clip": "clip0",
+        "reference": "MediaPipe Full",
+        "candidate": "MediaPipe Lite",
+        "metrics": {
+          "joints": {
+            "left_hip": {
+              "pixel_distance": {
+                "n": 1029,
+                "median": 8.482472201355714,
+                "p90": 20.943533026137317,
+                "mean": 10.479782556351662
+              },
+              "leg_length_fraction": {
+                "n": 1029,
+                "median": 0.02298118420504045,
+                "p90": 0.04892731945657678,
+                "mean": 0.026307339472324973
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1029,
+                "median": 0.9997493028640747,
+                "p90": 0.9998849272727967,
+                "mean": 0.9997499632650029
+              }
+            },
+            "left_knee": {
+              "pixel_distance": {
+                "n": 1029,
+                "median": 11.686414525589509,
+                "p90": 25.70107360646301,
+                "mean": 14.439659382111913
+              },
+              "leg_length_fraction": {
+                "n": 1029,
+                "median": 0.032536945377453774,
+                "p90": 0.06001839555910727,
+                "mean": 0.03667935840323722
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 1,
+              "visibility": {
+                "n": 1029,
+                "median": 0.9382627010345459,
+                "p90": 0.982151472568512,
+                "mean": 0.876006142941346
+              }
+            },
+            "left_ankle": {
+              "pixel_distance": {
+                "n": 1029,
+                "median": 9.027006237551102,
+                "p90": 21.939232331035953,
+                "mean": 13.267219537033132
+              },
+              "leg_length_fraction": {
+                "n": 1029,
+                "median": 0.02429638077365443,
+                "p90": 0.05409759323617853,
+                "mean": 0.032849812792418144
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1029,
+                "median": 0.9551037549972534,
+                "p90": 0.9822706818580628,
+                "mean": 0.9235603158860907
+              }
+            },
+            "left_foot_proxy": {
+              "pixel_distance": {
+                "n": 1029,
+                "median": 10.282114573381834,
+                "p90": 28.350462445303332,
+                "mean": 16.0415865228108
+              },
+              "leg_length_fraction": {
+                "n": 1029,
+                "median": 0.027880239824484225,
+                "p90": 0.0677770362839775,
+                "mean": 0.039973767389398555
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1029,
+                "median": 0.9286779761314392,
+                "p90": 0.9795762062072754,
+                "mean": 0.9188180196852911
+              }
+            },
+            "right_hip": {
+              "pixel_distance": {
+                "n": 1029,
+                "median": 9.566705734532919,
+                "p90": 21.37684681273061,
+                "mean": 11.419695381495522
+              },
+              "leg_length_fraction": {
+                "n": 1029,
+                "median": 0.026996164482296345,
+                "p90": 0.05106258149661637,
+                "mean": 0.029459037939402084
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1029,
+                "median": 0.9996920824050903,
+                "p90": 0.9999306201934814,
+                "mean": 0.999628544433008
+              }
+            },
+            "right_knee": {
+              "pixel_distance": {
+                "n": 1029,
+                "median": 9.908945794025746,
+                "p90": 19.620849478957222,
+                "mean": 11.860183891775923
+              },
+              "leg_length_fraction": {
+                "n": 1029,
+                "median": 0.02660184898333804,
+                "p90": 0.05025815419149698,
+                "mean": 0.030481959080819708
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 83,
+              "visibility": {
+                "n": 1029,
+                "median": 0.8941633105278015,
+                "p90": 0.9944788098335267,
+                "mean": 0.8083029162895343
+              }
+            },
+            "right_ankle": {
+              "pixel_distance": {
+                "n": 1029,
+                "median": 8.88331625382272,
+                "p90": 21.504273567180416,
+                "mean": 13.241345930114633
+              },
+              "leg_length_fraction": {
+                "n": 1029,
+                "median": 0.024596095429967126,
+                "p90": 0.05259871410151628,
+                "mean": 0.03301885138233314
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 9,
+              "visibility": {
+                "n": 1029,
+                "median": 0.9189528822898865,
+                "p90": 0.992521059513092,
+                "mean": 0.8729659290540785
+              }
+            },
+            "right_foot_proxy": {
+              "pixel_distance": {
+                "n": 1029,
+                "median": 12.676035003937429,
+                "p90": 32.19588023557181,
+                "mean": 18.155724334017233
+              },
+              "leg_length_fraction": {
+                "n": 1029,
+                "median": 0.03198421896287125,
+                "p90": 0.0853731064065077,
+                "mean": 0.04593975460399531
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1029,
+                "median": 0.9035192728042603,
+                "p90": 0.9875616073608399,
+                "mean": 0.8717533140302979
+              }
+            }
+          },
+          "pooled_pixel_distance": {
+            "n": 8232,
+            "median": 9.990700430399148,
+            "p90": 23.80239400969615,
+            "mean": 13.613149691963851
+          },
+          "pooled_leg_length_fraction": {
+            "n": 8232,
+            "median": 0.02684168652239383,
+            "p90": 0.05806631414554123,
+            "mean": 0.03433873513299114
+          },
+          "left_right_diagnostic": {
+            "jointly_observed_frames": 1029,
+            "swapped_correspondence_closer_frames": 11,
+            "interpretation": "Alternative correspondence distance only; neither estimator is ground truth; no actual swap applied"
+          }
+        }
+      },
+      {
+        "clip": "clip1",
+        "reference": "MediaPipe Full",
+        "candidate": "MediaPipe Lite",
+        "metrics": {
+          "joints": {
+            "left_hip": {
+              "pixel_distance": {
+                "n": 1353,
+                "median": 9.112444163384566,
+                "p90": 21.570278333943307,
+                "mean": 11.139112945535459
+              },
+              "leg_length_fraction": {
+                "n": 1353,
+                "median": 0.027352387789973974,
+                "p90": 0.059644467480096754,
+                "mean": 0.03280821565439992
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1353,
+                "median": 0.9998932480812073,
+                "p90": 0.999949860572815,
+                "mean": 0.9998206927083813
+              }
+            },
+            "left_knee": {
+              "pixel_distance": {
+                "n": 1353,
+                "median": 10.705553496159748,
+                "p90": 36.58011649984603,
+                "mean": 17.319547336331404
+              },
+              "leg_length_fraction": {
+                "n": 1353,
+                "median": 0.033035165188348974,
+                "p90": 0.09995775448130048,
+                "mean": 0.049755620588777395
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1353,
+                "median": 0.9736126065254211,
+                "p90": 0.9881604075431824,
+                "mean": 0.8994986078339159
+              }
+            },
+            "left_ankle": {
+              "pixel_distance": {
+                "n": 1353,
+                "median": 9.930042100945968,
+                "p90": 51.66152250878051,
+                "mean": 25.525169949274634
+              },
+              "leg_length_fraction": {
+                "n": 1353,
+                "median": 0.03079763390371403,
+                "p90": 0.14976762594728396,
+                "mean": 0.07309181498878756
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1353,
+                "median": 0.97641921043396,
+                "p90": 0.990747606754303,
+                "mean": 0.939515503749791
+              }
+            },
+            "left_foot_proxy": {
+              "pixel_distance": {
+                "n": 1353,
+                "median": 12.31394366325479,
+                "p90": 66.1084656911675,
+                "mean": 29.758370874409202
+              },
+              "leg_length_fraction": {
+                "n": 1353,
+                "median": 0.03824776485077309,
+                "p90": 0.18669970245534173,
+                "mean": 0.08562646131718807
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1353,
+                "median": 0.9686630368232727,
+                "p90": 0.9875315666198731,
+                "mean": 0.9458160617575325
+              }
+            },
+            "right_hip": {
+              "pixel_distance": {
+                "n": 1353,
+                "median": 8.572080354687914,
+                "p90": 21.843493200948338,
+                "mean": 11.035858499671601
+              },
+              "leg_length_fraction": {
+                "n": 1353,
+                "median": 0.02563829253902429,
+                "p90": 0.06203192481455668,
+                "mean": 0.03274968229626174
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1353,
+                "median": 0.9998143911361694,
+                "p90": 0.9998900532722473,
+                "mean": 0.9998020969402852
+              }
+            },
+            "right_knee": {
+              "pixel_distance": {
+                "n": 1353,
+                "median": 10.865659073599154,
+                "p90": 33.998443186394745,
+                "mean": 17.05825779175004
+              },
+              "leg_length_fraction": {
+                "n": 1353,
+                "median": 0.03472585161994114,
+                "p90": 0.09632862194629664,
+                "mean": 0.049170198713711775
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1353,
+                "median": 0.9019936323165894,
+                "p90": 0.9911851763725281,
+                "mean": 0.8845794898707692
+              }
+            },
+            "right_ankle": {
+              "pixel_distance": {
+                "n": 1353,
+                "median": 10.903273524730649,
+                "p90": 53.69316175466124,
+                "mean": 25.097941194309737
+              },
+              "leg_length_fraction": {
+                "n": 1353,
+                "median": 0.03543066701360293,
+                "p90": 0.15170807864326344,
+                "mean": 0.07233508264073986
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1353,
+                "median": 0.9436284303665161,
+                "p90": 0.988675844669342,
+                "mean": 0.9320595231835083
+              }
+            },
+            "right_foot_proxy": {
+              "pixel_distance": {
+                "n": 1353,
+                "median": 12.29846494023966,
+                "p90": 69.0762438189716,
+                "mean": 29.6316559141823
+              },
+              "leg_length_fraction": {
+                "n": 1353,
+                "median": 0.037583089728159685,
+                "p90": 0.1922649166575607,
+                "mean": 0.0853024414151234
+              },
+              "openpose_missing_frames": 0,
+              "mediapipe_missing_frames": 0,
+              "mediapipe_visibility_below_half_frames": 0,
+              "visibility": {
+                "n": 1353,
+                "median": 0.9424417018890381,
+                "p90": 0.984852397441864,
+                "mean": 0.9372433738098793
+              }
+            }
+          },
+          "pooled_pixel_distance": {
+            "n": 10824,
+            "median": 10.507610036561157,
+            "p90": 38.12339052139428,
+            "mean": 20.820739313183047
+          },
+          "pooled_leg_length_fraction": {
+            "n": 10824,
+            "median": 0.03244668777116112,
+            "p90": 0.10848644458510737,
+            "mean": 0.060104939701873715
+          },
+          "left_right_diagnostic": {
+            "jointly_observed_frames": 1353,
+            "swapped_correspondence_closer_frames": 97,
+            "interpretation": "Alternative correspondence distance only; neither estimator is ground truth; no actual swap applied"
+          }
+        }
+      }
+    ],
+    "review_frames": [
+      {
+        "clip": "clip0",
+        "frames": [
+          180,
+          200,
+          221,
+          242,
+          262,
+          282,
+          303,
+          570,
+          590,
+          611,
+          632,
+          652,
+          672,
+          693,
+          810,
+          830,
+          851,
+          872,
+          892,
+          912,
+          933
+        ]
+      },
+      {
+        "clip": "clip1",
+        "frames": [
+          30,
+          50,
+          71,
+          92,
+          112,
+          132,
+          153,
+          315,
+          336,
+          356,
+          376,
+          397,
+          418,
+          438,
+          600,
+          620,
+          641,
+          662,
+          682,
+          702,
+          723
+        ]
+      }
+    ]
+  },
+  "lite_full_video_loop_seconds": 86.74898669999675,
+  "verification": {
+    "passed": true,
+    "original_full_artifacts_unchanged": 30,
+    "original_videos_sha256_verified": 2,
+    "pose_frames": 2382,
+    "windows": 32,
+    "mapping_max_error": 0.0,
+    "features_max_error": 0.0,
+    "pose_median_recalculation_max_error": 0.0,
+    "checkpoint_calibration_and_combination_unchanged": true,
+    "checkpoint_sha256_verified": 54,
+    "summary_recalculation_max_error": 2.842170943040401e-14,
+    "independently_rebuilt_ensemble": true,
+    "benchmark_passes_verified": 8,
+    "identical_full_lite_timestamps": true,
+    "optimizer_steps": 0,
+    "results_sha256": "b749823558e95fc50f21b98b1541fff9bf47bf0dd539056f6eb7816ba8cb9bbe",
+    "predictions_sha256": "cc7cab581ffd846f2035488dbc2508467c3987dfefa818ea253fec871b95c547",
+    "task_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+    "no_ground_truth": true,
+    "smartphone_tested": false
+  }
+}

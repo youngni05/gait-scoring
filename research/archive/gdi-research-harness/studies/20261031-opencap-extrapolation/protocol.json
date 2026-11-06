@@ -1,0 +1,142 @@
+{
+  "cohorts": {
+    "geometry": {
+      "study": "20261031-opencap-turn",
+      "folder": "geometry",
+      "views": [
+        "WalkMatchedSpeed",
+        "Walk3Turn"
+      ],
+      "people": 238,
+      "long_people": 9,
+      "hashes": {
+        "input.npz": "93cd108c7f31c455e1d75c19f7e9bc253d9f4ae4cff10dac0b860cbd6f5c5d58",
+        "splits.json": "7abee35d1f0a6a1815b8f153e666ac729fbfec59c09fc560dc176cb9c326279b",
+        "manifest.json": "bb03f951047f1617eff89e359ba0a34ada4d3b3d432279b4270a6b1323eb8064",
+        "predictions.csv": "715dac8ead1b23cabd98632385c61291675d643f94d754a1d2d67abf5ebf026e",
+        "selections.json": "0a53ba7cee08b9fc8fc86e3d49ba2cf6d296094de2de805d5e848e7420fd10b4",
+        "completion.json": "9ad70a7c28a9a0a64212d9f2802e28a52ca400ab62fed6e4a49ede1289209701"
+      }
+    },
+    "event_strict": {
+      "study": "20261031-opencap-chair",
+      "folder": "event_strict",
+      "views": [
+        "TurnContext",
+        "ChairAll"
+      ],
+      "people": 117,
+      "long_people": 4,
+      "hashes": {
+        "input.npz": "18824e6cf7079e499bf759a12f51961020babecbc97ff4854c52b2cdfa2c7f79",
+        "splits.json": "c2c11e73b427664cd02a351d35caeb0f60e2c5298466227b25249b22c334dacb",
+        "manifest.json": "13391e75f200c68352182877afc34b13e6eb58c6980a516d3b0cfb7fd9ff15fe",
+        "predictions.csv": "ac6288667626ec2ec9fc6efc1f9856ec2fbb819344cea7fe9e9f981322819fb3",
+        "selections.json": "47d5ee73d9e911f45b0b35ea3d12b6c7e893b2425ccc354a35ad26a74e5b9493",
+        "completion.json": "3aad8bcd80b0a1c008d91449b584af8af3995efb49405b321df2aa898624c56e"
+      }
+    },
+    "fixed_strict": {
+      "study": "20261031-opencap-chair",
+      "folder": "fixed_strict",
+      "views": [
+        "TurnContext",
+        "ChairMotion"
+      ],
+      "people": 40,
+      "long_people": 4,
+      "hashes": {
+        "input.npz": "96d0cb370eb5681e9d43ea6655b1143466bc590a3a0dfa351db84f4c017eaa90",
+        "splits.json": "a4973846e807f2df24f9c1656c087f30dd2d91b2fc028374e13ae96bcc744cc7",
+        "manifest.json": "769b10ac4b986a6e33b9eab6c9fbecc7fc3b29135ab99f33dd87ac05179746d8",
+        "predictions.csv": "149ea86b89aa43da2dbc6189e44b2a6d72bb881f503ea261a2d66d169174fe6b",
+        "selections.json": "77116d731cf6d4d0f990d7b1df3494b143b4fcc5d43b6583c2e06f846c3d6f38",
+        "completion.json": "80946199ba45b14026e3742a05405b84580f94bf28fd4f4864ac932ff406dfe7"
+      }
+    },
+    "fixed_flagged": {
+      "study": "20261031-opencap-chair",
+      "folder": "fixed_flagged",
+      "views": [
+        "TurnContext",
+        "ChairMotion"
+      ],
+      "people": 45,
+      "long_people": 6,
+      "hashes": {
+        "input.npz": "596464836cab9939a6e91c8a37a2705876303fe757e4db4876da58e960dc7f6e",
+        "splits.json": "15f06889cb586f4928a621ad324d38664726445b34d6b621d6492d671eb8a4f4",
+        "manifest.json": "0b6247da457fa5a7f7fe52a60cb7460280b89c44d5604b191aefd50eae01b5ab",
+        "predictions.csv": "25122094e2e5c235c25cc9bffed77392ec60807d6040c74979b4ffd136260f92",
+        "selections.json": "25b0fd2418c0047b3cbd5e903d9fff8384ddbf019d0a2c10356342b0e00fdb08",
+        "completion.json": "34c197d8a54b574634f860fa9a8161e253c596b89370834b4c00ceacc1090395"
+      }
+    },
+    "rise_strict": {
+      "study": "20261031-opencap-chair",
+      "folder": "rise_strict",
+      "views": [
+        "TurnContext",
+        "RiseMotion"
+      ],
+      "people": 134,
+      "long_people": 6,
+      "hashes": {
+        "input.npz": "1d8113bb00eb0c984cabd2769d779d91f0a6d8641ffbcb359aead5d14dbc939a",
+        "splits.json": "6492f3369a2b37afe60223553483253809f20e6af4b9b1438aee22024289dfb5",
+        "manifest.json": "25cc0b16052b732b0b2a96ad6d00440f9d982cff40e2ee0abe23ffe752c47311",
+        "predictions.csv": "7d21537e462c751aa851ab413df6728f3bd6c83f85fc6d309357ae4d3340dd8e",
+        "selections.json": "d5679c39f2b458b7d353b81ee23369b1b13f7b83777a645a7311982b5f37122a",
+        "completion.json": "4268c769bf1ad0595f9659c9c4dcf588b24ac81b1eed11e0bff613e33a58bef3"
+      }
+    },
+    "prep_event": {
+      "study": "20261031-opencap-chair",
+      "folder": "prep_event",
+      "views": [
+        "TurnContext",
+        "PrepAll"
+      ],
+      "people": 101,
+      "long_people": 4,
+      "hashes": {
+        "input.npz": "b8f4b7e0aee64313ce8a08e39a2c807f5bcf3e24a0b45d5cb3a1935d92169abe",
+        "splits.json": "bc996b38bad76b3f020736a616fba55a7b5586d45253b690bb310214d8308f65",
+        "manifest.json": "5b2242e78f828968de7400794d6a7239539e57834b0ac94bd00b442cb5fba897",
+        "predictions.csv": "64bdce8743856e29fa80c6303d00360e9890f98c201e7edfa144ab197ad0a134",
+        "selections.json": "c3a532921d9321100bedb69c3d4ed393a842408da00155ce9de1fd397edd03a8",
+        "completion.json": "7638f1ab746de20fedce49187a6eb4fd826716f597cfb1ca8360c3f53e7e1d7c"
+      }
+    }
+  },
+  "models": {
+    "Ridge": [
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "Huber": [
+      0.01,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "Gamma": [
+      0.001,
+      0.01,
+      0.1,
+      1.0
+    ]
+  },
+  "primary_model": "CVSelect chooses among three tuned families by inner MAE only; all family results also reported",
+  "splits": "exact previous outer5partitions x5fold and inner3fold; no person or feature/window changes",
+  "determinism": "new solvers deterministic, one fit per partition/fold, no artificial3seed replication; RF comparison averages errors across its3seeds before averaging5partitions",
+  "target": "unchanged clinical tft_tug seconds; no reweighting or target transform",
+  "postprocessing": "negative linear outputs floored at0; raw stored; no upper clipping, including above training maximum",
+  "selection": "train-only scaling; alpha and family selected by inner validation MAE with floor0; convergence failures recorded as ineligible candidates; no test-driven tuning",
+  "metrics": "all/under20/20plus MAE, positive underprediction, overprediction, bias, above-training-max frequency; paired person bootstrap conditional on fits",
+  "scope": "development evidence, same-visit timed-trial and phase uncertainties persist",
+  "fit_code_sha256": "bbeec042ba4853078fe04e515b65cf8dc57d97c5c3b9ecac5400433751b74162",
+  "optimizer_revision": "Gamma L-BFGS, same model objective; see optimization-note.json"
+}

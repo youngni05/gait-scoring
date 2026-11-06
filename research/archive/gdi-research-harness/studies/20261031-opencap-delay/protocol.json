@@ -1,0 +1,62 @@
+{
+  "cohorts": {
+    "common176": {
+      "people": 176,
+      "long_people": 8,
+      "views": [
+        "Current",
+        "SameTUG",
+        "ResampledSpeed",
+        "Delay",
+        "Delay05",
+        "Delay15",
+        "CleanSpeed",
+        "CleanDelay"
+      ],
+      "hashes": {
+        "input.npz": "c1372eb46538156a80669d58235bd2c5f5a645b9727597e5e9e3fae5709af409",
+        "manifest.json": "e6b8fe3b59c69ed13898c005cba4abb7b231d9d1881a8cc64bf057df7400ee61",
+        "splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8"
+      }
+    }
+  },
+  "primary": [
+    "Delay minus ResampledSpeed isolates extra delay descriptors on identical frames",
+    "Delay minus SameTUG measures combined window and feature change"
+  ],
+  "comparison": "Current uses prior separate10m walking3s; SameTUG original within-TUG3s; ResampledSpeed uses same3s budget reallocated; Delay adds low axial and horizontal speed seconds in those same3s",
+  "selection": "eligible non-turn legs from previous chair-distance mask; lowest mean smoothed absolute axial speed1.5s on0.1s search grid; remaining1.5s from original selected3s excluding overlap; no clinical target used",
+  "observation": "exact3seconds nonturn plus identical original turn D per person in every model; full recording is scanned to select windows, so this is NOT a3second total acquisition protocol; no full-record delay length, absolute timestamps, total recording length or label-derived duration enters features",
+  "delay_features": "two totals in selected3s: |axial velocity|<0.1m/s; horizontal speed<0.1m/s;7sample nearest-edge smoothing separately inside each30Hz window, no unobserved samples used; sensitivity0.05 and0.15, not used to select winner",
+  "qc": "proposed windows native root speed>6m/s or all MOT coordinates exactly frozen>=0.25s => use original3s for all resampled arms; thresholds are flags, not proof of validity; TRC is retrospective quality review only",
+  "model": "same train-only StandardScaler/Ridge SVD alpha.1/1/10/100, inner MAE, floor0/no uppercap",
+  "split": "byte-identical previous176 outer5 partitions x5 folds and inner3fold; excludedsub283 everywhere",
+  "metrics": "person-equal errors averaged over5 held-out predictions; all and target>=20 subgroup8; conditional pairedperson bootstrap10000 seed20261031; not external validation",
+  "limitations": [
+    "176 common population retained; audit237 but cannot imply all237 training",
+    "same-visit clinical TUG; exact timed trial uncertain",
+    "no RGB in public archive; real stop versus tracking artifact cannot be proved from correlated pipeline outputs",
+    "window search sees fullrecord; only feature observation budget matched",
+    "chosen slow windows can include near-chair transitional movement; no confirmed clinical pause annotation",
+    "reused development population; only8long cases"
+  ],
+  "source_hashes": {
+    "20261031-opencap-speed-turn-refinement\\common176\\input.npz": "706022abd070503b71a749bf363287ea5a4b9115a45dfbd01e45a8e8f7fc7d8b",
+    "20261031-opencap-speed-turn-refinement\\common176\\manifest.json": "b5dd355764bbd87bb05d0a058f57dd793df401f8db14397b7eaf56e083d703e7",
+    "20261031-opencap-speed-turn-refinement\\common176\\splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8",
+    "20261031-opencap-speed-turn-refinement\\common176\\predictions.csv": "7c3af5eb346ef3d7ca76e81790cc673c9becb6efaf5052f90890c69cc24a80f1",
+    "20261031-opencap-turn\\geometry.py": "8fd7fe9861603e4085268413405126a6cf37587f0d28112cd6207b27ce6b46c6",
+    "20261031-opencap-speed-turn-refinement\\scout.py": "8a247ca1d2d4be1740a19fde00721253023146b9f0c485bd1a7482e42298539f",
+    "20261031-opencap-extrapolation\\study.py": "bbeec042ba4853078fe04e515b65cf8dc57d97c5c3b9ecac5400433751b74162"
+  },
+  "code_sha256": "92c5b758a189cb8f6afc37a0efcf2cb26a82183972c6cc0190a404ade223f7e4",
+  "audit_code_sha256": "2d29a895d1eb7a02476c9d2d5fe4f46ad71816a116d18d8f8c0e95208bef3303",
+  "audit_sha256": "4dafcc7af3b15b2258737b10618e29d9ea2f13f01f83eefd64e52b4ccf8b2f0e",
+  "input_only_amendment": {
+    "reason": "TRC review found sub268 candidate has both knees~95deg and seated-like height; prevent returned-to-chair stillness being interpreted as walking pause. Added before any model fit or new performance inspection.",
+    "gate": "reject candidate if median pelvis height < first0.5s median+0.12m AND mean bilateral knee flexion median>60deg AND mean bilateral hip flexion median>30deg; same rule applied to all176; heuristic, not validated posture classifier",
+    "primary": "CleanDelay minus CleanSpeed; CleanDelay minus SameTUG; raw Delay retained as sensitivity to phase contamination",
+    "fallback": "if no nonseated1.5s candidate or speed/freeze QC fail, use original3s, all people retained",
+    "code_sha256": "054bc1bb3a1cb641ee4748c9b504bf9bdeee988229890f24b502d33842c94bcc"
+  }
+}

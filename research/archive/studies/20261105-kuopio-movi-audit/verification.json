@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "kuopio_model_files": 51,
+  "kuopio_crc_and_sha256_verified_samples": 132,
+  "kuopio_paired_trials": 3003,
+  "kuopio_conservative_trials": 2885,
+  "movi_original_mats": 90,
+  "movi_original_archive_checksums_match_current_provider": true,
+  "movi_pg1_videos_decoded": 87,
+  "movi_walking_frames_decoded": 24202,
+  "gdi_labels_computed": 0,
+  "complete_gait_cycles_verified": 0,
+  "video_source_range_hashes_verified": true
+}

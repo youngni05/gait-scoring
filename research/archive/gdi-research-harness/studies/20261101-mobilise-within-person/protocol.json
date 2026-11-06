@@ -1,0 +1,56 @@
+{
+  "code_sha256": "626bc9a723fc7af4f81b897750b80dbc7cc05a7e1435c2fb83762bb2b2d7c8cd",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-transfer\\study.py": "13c489ddf464ee889d571d5bd7cec20ac0c25799bb90662ee74e4871eabf429a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-transfer\\main-verification.json": "c3cba142415ca85e30b182fb98ee1114c3b134a1f2519e1296da90e4ac00dbe3",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-transfer\\summary.json": "0664d8deb62cc508ed6cf90f222321b45fadd83b3173c05da8f206f0d81a0b32",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-calibration\\main-verification.json": "6b7edf0e78fde236c33dfae72eb05066f01515f5a7a5b0833b37b9531e688aa3",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-cohort-calibration\\summary.json": "a382512ffb11aebb4930d708cd1ada4ba6a8f5b323af47f12fe14b8537e3cea9",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "counts": [
+    {
+      "target": "sppb",
+      "all_people": 2174,
+      "paired_people": 1834,
+      "pairs": 11055,
+      "class_changed_pairs": 3413
+    },
+    {
+      "target": "tug",
+      "all_people": 1939,
+      "paired_people": 1653,
+      "pairs": 6721,
+      "class_changed_pairs": 1810
+    }
+  ],
+  "hypothesis": "Between-person gait discrimination may reflect stable traits; test whether the SAME frozen RFs also order different-visit functional score bands within a held-out person.",
+  "input_labels": "same2174/1939people,7356/5688visits,30-60sec5bouts,draw0; core20/turn25inputs and four score classes unchanged",
+  "evaluation": "same disease-cohort holdout4 and5seeds as transfer study; only people with2+eligiblevisits contribute pairs; all person visits remain excluded from model/calibration",
+  "pairing": "all unordered distinct visit pairs within a person; canonical lexical visit IDs, NOT an assumed chronological interval. People, not pairs, are independent units.",
+  "methods": "NoChange zero expected-class difference; Speed signed speed difference only; frozen CoreRF/TurnRF expected class differences and original fpr10 warnings. Speed is an ordering control, not a calibrated score-difference model.",
+  "metrics": "direction on nonzero true class changes,half credit for ties; direction for>=2classchanges; expected-class deltaMAE vs NoChange/Core; false argmax switches when true class same; exact low-warning switch and false warning switches. Person equal means and paired person bootstrap,5seedstability.",
+  "success": "diagnostic, no selection/tuning. TurnRF signal beyond speed/Core requires direction better in>=4/5seeds for both targets; show uncertainty and deltaMAE/false transitions as well. Null result is retained.",
+  "calibration": "reuse train-only frozen source probabilities and warning thresholds; no new calibration/model training or held-out label selection",
+  "expected": {
+    "tasks": 40,
+    "frozen_final_model_replays": 80,
+    "new_models": 0,
+    "metric_rows": 40,
+    "cohort_metric_rows": 160
+  },
+  "resource": "CPU4workers; model replay80,personpair metrics and2000bootstrap replicates,estimate2-10min; pilot2tasks heldMS firstseed",
+  "limits": "repeat visits are not independent people; no causal/clinical change threshold,no claim of temporal improvement or test-retest reliability; band changes include measurement noise; same development data reused",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-within-person",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-within-person-20261101"
+  }
+}

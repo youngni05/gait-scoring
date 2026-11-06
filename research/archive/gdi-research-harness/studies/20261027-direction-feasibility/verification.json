@@ -1,0 +1,9 @@
+{
+  "all_poma_subjects_in_sheet": 44,
+  "with_numeric_total_any_rating": 39,
+  "without_numeric_total_any_rating": 5,
+  "rows_with_subject_id": 176,
+  "numeric_total_rows": 156,
+  "aggregate_checks_passed": true,
+  "first_run_issue": "JSON serialization of NumPy integer failed; converted NumPy scalars to built-in types, reran successfully. No source edits."
+}

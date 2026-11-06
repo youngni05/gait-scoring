@@ -1,0 +1,31 @@
+{
+  "status": "declared_before_blend_evaluation",
+  "purpose": "Compare paired held-person errors and fixed equal blending of PLS32 and GPU last_stage",
+  "people": 695,
+  "records": 1064,
+  "window": "front124_only",
+  "methods": [
+    "ridge",
+    "pls32",
+    "gpu_last_stage",
+    "equal_blend"
+  ],
+  "blend": {
+    "pls32": 0.5,
+    "gpu_last_stage": 0.5
+  },
+  "selection": "No weight search, calibration, clipping or person-specific model selection",
+  "reference_selection_limit": "PLS dimension was selected inside training people; PLS candidate expansion and choice of GPU last_stage followed prior development results. This is exploratory reuse of development OOF predictions, not independent final validation.",
+  "aggregation": "Absolute errors and bin indicators averaged within person across records and sides, then equally over people. Bias uses prediction minus truth. Population SD uses person-mean scores.",
+  "bands": "floor(actual GDI / 10); within-band record-sides first averaged per person; a person may occur in more than one band",
+  "bootstrap": {
+    "unit": "person",
+    "seed": 20261029,
+    "draws": 10000,
+    "interpretation": "paired conditional exploratory interval; does not include model selection or training uncertainty"
+  },
+  "training": false,
+  "GPU_used": false,
+  "protected_numeric_data_used": false,
+  "independent_final_evaluation": false
+}

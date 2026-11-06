@@ -1,0 +1,131 @@
+{
+  "status": "passed",
+  "fits": 60,
+  "inner_checkpoint_replays": 180,
+  "final_checkpoint_replays": 15,
+  "checks": [
+    {
+      "condition": "phase_tail4",
+      "fold": 0,
+      "epoch": 50,
+      "cpu64_max_delta": 2.108408414969176e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "phase_tail4",
+      "fold": 1,
+      "epoch": 100,
+      "cpu64_max_delta": 3.064975278022075e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "phase_tail4",
+      "fold": 2,
+      "epoch": 50,
+      "cpu64_max_delta": 3.2787807704437455e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "phase_tail4",
+      "fold": 3,
+      "epoch": 100,
+      "cpu64_max_delta": 1.996272860793624e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "phase_tail4",
+      "fold": 4,
+      "epoch": 50,
+      "cpu64_max_delta": 2.698991355742919e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail4",
+      "fold": 0,
+      "epoch": 100,
+      "cpu64_max_delta": 2.5774455707505695e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail4",
+      "fold": 1,
+      "epoch": 100,
+      "cpu64_max_delta": 3.847777790610962e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail4",
+      "fold": 2,
+      "epoch": 100,
+      "cpu64_max_delta": 3.4998454410128943e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail4",
+      "fold": 3,
+      "epoch": 100,
+      "cpu64_max_delta": 3.7852892624812284e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail4",
+      "fold": 4,
+      "epoch": 100,
+      "cpu64_max_delta": 4.6263668451729245e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail16",
+      "fold": 0,
+      "epoch": 100,
+      "cpu64_max_delta": 3.2964488347886345e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail16",
+      "fold": 1,
+      "epoch": 100,
+      "cpu64_max_delta": 2.1355348494012105e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail16",
+      "fold": 2,
+      "epoch": 100,
+      "cpu64_max_delta": 2.74996025595442e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail16",
+      "fold": 3,
+      "epoch": 100,
+      "cpu64_max_delta": 3.3510952555104723e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    },
+    {
+      "condition": "native_tail16",
+      "fold": 4,
+      "epoch": 50,
+      "cpu64_max_delta": 3.2485428143047557e-06,
+      "checkpoint_replays": 13,
+      "people_and_training_only_normalization_verified": true
+    }
+  ],
+  "comparison_sha256": "72a8f84570996e5f56df528430178882784402e9b2374928f6d42c2b6670effc",
+  "heldout_sha256": "3ed0f1b184dbc86ea2c370f0729ca259104eb0d209d2f78a50f2e79bcd0636fb",
+  "review_code_sha256": "3720cdfeec8adb9215400c22c8a2112d6c2e934aaada17bbcd914d4bcad4defb"
+}

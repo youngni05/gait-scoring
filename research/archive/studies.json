@@ -1,0 +1,1458 @@
+[
+  {
+    "id": "20261027-direction-feasibility",
+    "source": "gdi-research-harness/studies/20261027-direction-feasibility",
+    "files": 6,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261027-direction-feasibility/plan.md",
+      "archive/gdi-research-harness/studies/20261027-direction-feasibility/prior_review.md",
+      "archive/gdi-research-harness/studies/20261027-direction-feasibility/report.md",
+      "archive/gdi-research-harness/studies/20261027-direction-feasibility/review_snapshot.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261027-gdi-linkage",
+    "source": "gdi-research-harness/studies/20261027-gdi-linkage",
+    "files": 11,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261027-gdi-linkage/plan.md",
+      "archive/gdi-research-harness/studies/20261027-gdi-linkage/prior_review.md",
+      "archive/gdi-research-harness/studies/20261027-gdi-linkage/report.md",
+      "archive/gdi-research-harness/studies/20261027-gdi-linkage/review_snapshot.md",
+      "archive/gdi-research-harness/studies/20261027-gdi-linkage/transfer_plan.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261027-window-ablation",
+    "source": "gdi-research-harness/studies/20261027-window-ablation",
+    "files": 18,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261027-window-ablation/expansion_plan.md",
+      "archive/gdi-research-harness/studies/20261027-window-ablation/failure_diagnosis_plan.md",
+      "archive/gdi-research-harness/studies/20261027-window-ablation/new_cohort_plan.md",
+      "archive/gdi-research-harness/studies/20261027-window-ablation/plan.md",
+      "archive/gdi-research-harness/studies/20261027-window-ablation/recovery_plan.md",
+      "archive/gdi-research-harness/studies/20261027-window-ablation/report.md",
+      "archive/gdi-research-harness/studies/20261027-window-ablation/review_snapshot.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261028-cycle-alignment",
+    "source": "gdi-research-harness/studies/20261028-cycle-alignment",
+    "files": 12,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261028-cycle-alignment/plan.md",
+      "archive/gdi-research-harness/studies/20261028-cycle-alignment/prior_review.md",
+      "archive/gdi-research-harness/studies/20261028-cycle-alignment/report.md",
+      "archive/gdi-research-harness/studies/20261028-cycle-alignment/review_snapshot.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261028-missing-augmentation-learning",
+    "source": "gdi-research-harness/studies/20261028-missing-augmentation-learning",
+    "files": 11,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261028-missing-augmentation-learning/plan.md",
+      "archive/gdi-research-harness/studies/20261028-missing-augmentation-learning/prior_review.md",
+      "archive/gdi-research-harness/studies/20261028-missing-augmentation-learning/report.md",
+      "archive/gdi-research-harness/studies/20261028-missing-augmentation-learning/review_snapshot.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261028-position-quality",
+    "source": "gdi-research-harness/studies/20261028-position-quality",
+    "files": 14,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261028-position-quality/plan.md",
+      "archive/gdi-research-harness/studies/20261028-position-quality/plan_before_alternative_header.md",
+      "archive/gdi-research-harness/studies/20261028-position-quality/prior_review.md",
+      "archive/gdi-research-harness/studies/20261028-position-quality/report.md",
+      "archive/gdi-research-harness/studies/20261028-position-quality/review_snapshot.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261028-repeat-record-readiness",
+    "source": "gdi-research-harness/studies/20261028-repeat-record-readiness",
+    "files": 2,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261028-repeat-record-readiness/plan.md",
+      "archive/gdi-research-harness/studies/20261028-repeat-record-readiness/report.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261028-rhythm-versus-missing-pooling",
+    "source": "gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling",
+    "files": 14,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/interpretation_plan.md",
+      "archive/gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/plan.md",
+      "archive/gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/prior_review.md",
+      "archive/gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/report.md",
+      "archive/gdi-research-harness/studies/20261028-rhythm-versus-missing-pooling/review_snapshot.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261028-sppb-tug-scope",
+    "source": "gdi-research-harness/studies/20261028-sppb-tug-scope",
+    "files": 0,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261028-sppb-tug-scope/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261028-window-cause-controls",
+    "source": "gdi-research-harness/studies/20261028-window-cause-controls",
+    "files": 11,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261028-window-cause-controls/plan.md",
+      "archive/gdi-research-harness/studies/20261028-window-cause-controls/prior_review.md",
+      "archive/gdi-research-harness/studies/20261028-window-cause-controls/report.md",
+      "archive/gdi-research-harness/studies/20261028-window-cause-controls/review_snapshot.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-cpu-head-study",
+    "source": "gdi-research-harness/studies/20261030-cpu-head-study",
+    "files": 76,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/STATUS.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/artifact_contract.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls-study/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls64-study/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/input-error-diagnostic695/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/linear-calibration695/CNN_EXPORT.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/linear-calibration695/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/mean-leg-followup695/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/pca-ridge-study/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/pls-gpu-equal-blend695/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/ridge-alpha-study/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/side-gap-learning695/report.md",
+      "archive/gdi-research-harness/studies/20261030-cpu-head-study/followup/train_eval_diagnostic/report.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-gdi-fusion695",
+    "source": "gdi-research-harness/studies/20261030-gdi-fusion695",
+    "files": 16,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-gpu-motionbert-study",
+    "source": "gdi-research-harness/studies/20261030-gpu-motionbert-study",
+    "files": 560,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/STATUS.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/report.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/bundle-py38/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/report.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/sources/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-frozen-residual692/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-huber-point692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-mae-point692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-mae-point692-v2/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/report.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-motionbert-fusion692/bundle/sources/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-multiwindow695/bundle/sources/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ordinal692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-paper-input695/bundle/sources/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-person-bmc692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim-seed692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim-seed692-v2/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim-strength692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/bundle/sources/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-stt-ensemble692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/report.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/expansion695/gpu-bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/high-score-method-review/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/inner-bagging692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/large-error692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/mean-difference692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/probability-bands692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/ranksim-ensemble692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/robust-aggregation692/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/bilateral/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/bilateral/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/calibration-and-regularization/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/full/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/full/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/multiwindow/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/multiwindow/bundle/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/official/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/self-supervised/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/window-attention/README.md",
+      "archive/gdi-research-harness/studies/20261030-gpu-motionbert-study/stt692/window-attention/bundle/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-mobilise-bout-regression",
+    "source": "gdi-research-harness/studies/20261030-mobilise-bout-regression",
+    "files": 8,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-mobilise-deep-sets",
+    "source": "gdi-research-harness/studies/20261030-mobilise-deep-sets",
+    "files": 5,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-mobilise-deep-sets-constrained",
+    "source": "gdi-research-harness/studies/20261030-mobilise-deep-sets-constrained",
+    "files": 5,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-mobilise-deep-sets-stability",
+    "source": "gdi-research-harness/studies/20261030-mobilise-deep-sets-stability",
+    "files": 5,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-mobilise-deep-sets-weighted",
+    "source": "gdi-research-harness/studies/20261030-mobilise-deep-sets-weighted",
+    "files": 5,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-mobilise-error-diagnosis",
+    "source": "gdi-research-harness/studies/20261030-mobilise-error-diagnosis",
+    "files": 3,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-mobilise-factorial",
+    "source": "gdi-research-harness/studies/20261030-mobilise-factorial",
+    "files": 7,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-mobilise-small-models",
+    "source": "gdi-research-harness/studies/20261030-mobilise-small-models",
+    "files": 4,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-older44-sppb-timeseries",
+    "source": "gdi-research-harness/studies/20261030-older44-sppb-timeseries",
+    "files": 14,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-older44-sppb-timeseries/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-opencap-tug-pilot",
+    "source": "gdi-research-harness/studies/20261030-opencap-tug-pilot",
+    "files": 5,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-opencap-tug-pilot/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-opencap415-speed-stability",
+    "source": "gdi-research-harness/studies/20261030-opencap415-speed-stability",
+    "files": 73,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-opencap415-speed-stability/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-opencap415-tug-timeseries",
+    "source": "gdi-research-harness/studies/20261030-opencap415-tug-timeseries",
+    "files": 40,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-opencap415-tug-timeseries/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-score-analysis",
+    "source": "gdi-research-harness/studies/20261030-score-analysis",
+    "files": 5,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-score-analysis/STATUS.md",
+      "archive/gdi-research-harness/studies/20261030-score-analysis/report.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-sppb-timeseries",
+    "source": "gdi-research-harness/studies/20261030-sppb-timeseries",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-sppb-timeseries/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-toronto-poma-tug",
+    "source": "gdi-research-harness/studies/20261030-toronto-poma-tug",
+    "files": 6,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261030-tug-toronto-timeseries",
+    "source": "gdi-research-harness/studies/20261030-tug-toronto-timeseries",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261030-tug-toronto-timeseries/STATUS.md",
+      "archive/gdi-research-harness/studies/20261030-tug-toronto-timeseries/sources-and-limits.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-care-pd-rf-tcn",
+    "source": "gdi-research-harness/studies/20261031-care-pd-rf-tcn",
+    "files": 50,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-care-pd-rf-tcn/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-cnn-high-gdi",
+    "source": "gdi-research-harness/studies/20261031-cnn-high-gdi",
+    "files": 44,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-cnn-high-gdi/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-gait-measurement-discovery",
+    "source": "gdi-research-harness/studies/20261031-gait-measurement-discovery",
+    "files": 19,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-gait-measurement-discovery/STATUS.md",
+      "archive/gdi-research-harness/studies/20261031-gait-measurement-discovery/e1-supplement/RESULTS.md",
+      "archive/gdi-research-harness/studies/20261031-gait-measurement-discovery/e1-supplement/slide8.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-gavd-cnn",
+    "source": "gdi-research-harness/studies/20261031-gavd-cnn",
+    "files": 46,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-gavd-cnn/README.md",
+      "archive/gdi-research-harness/studies/20261031-gavd-cnn/STATUS.md",
+      "archive/gdi-research-harness/studies/20261031-gavd-cnn/cause/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-gdi-external-association",
+    "source": "gdi-research-harness/studies/20261031-gdi-external-association",
+    "files": 8,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-gdi-tug-transfer",
+    "source": "gdi-research-harness/studies/20261031-gdi-tug-transfer",
+    "files": 18,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-gdi-tug-transfer/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-jev-feasibility",
+    "source": "gdi-research-harness/studies/20261031-jev-feasibility",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-jev-feasibility/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-ljmu-normal-cnn",
+    "source": "gdi-research-harness/studies/20261031-ljmu-normal-cnn",
+    "files": 12,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-ljmu-normal-cnn/RESULT.md",
+      "archive/gdi-research-harness/studies/20261031-ljmu-normal-cnn/input/normal_cnn_v2/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-mobilise-adaptive-bands",
+    "source": "gdi-research-harness/studies/20261031-mobilise-adaptive-bands",
+    "files": 7,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-mobilise-adaptive-bands/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-mobilise-components",
+    "source": "gdi-research-harness/studies/20261031-mobilise-components",
+    "files": 7,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-mobilise-input-classification",
+    "source": "gdi-research-harness/studies/20261031-mobilise-input-classification",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-mobilise-input-classification/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-mobilise-ordinal-bands",
+    "source": "gdi-research-harness/studies/20261031-mobilise-ordinal-bands",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-mobilise-ordinal-bands/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-mobilise-selective-classification",
+    "source": "gdi-research-harness/studies/20261031-mobilise-selective-classification",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-mobilise-selective-classification/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-mobilised-function-models",
+    "source": "gdi-research-harness/studies/20261031-mobilised-function-models",
+    "files": 7,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-mobilised-function-models/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-mobilised-uncertainty-review",
+    "source": "gdi-research-harness/studies/20261031-mobilised-uncertainty-review",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-mobilised-uncertainty-review/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-motionbert-jev-vs-ridge",
+    "source": "gdi-research-harness/studies/20261031-motionbert-jev-vs-ridge",
+    "files": 7,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-motionbert-jev-vs-ridge/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-additive-stop",
+    "source": "gdi-research-harness/studies/20261031-opencap-additive-stop",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-additive-stop/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-chair",
+    "source": "gdi-research-harness/studies/20261031-opencap-chair",
+    "files": 18,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-chair/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-delay",
+    "source": "gdi-research-harness/studies/20261031-opencap-delay",
+    "files": 16,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-delay/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-directional-pace",
+    "source": "gdi-research-harness/studies/20261031-opencap-directional-pace",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-directional-pace/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-extrapolation",
+    "source": "gdi-research-harness/studies/20261031-opencap-extrapolation",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-extrapolation/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-leave283",
+    "source": "gdi-research-harness/studies/20261031-opencap-leave283",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-leave283/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-long-observation",
+    "source": "gdi-research-harness/studies/20261031-opencap-long-observation",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-long-observation/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-near-chair",
+    "source": "gdi-research-harness/studies/20261031-opencap-near-chair",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-near-chair/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-preparation-offset",
+    "source": "gdi-research-harness/studies/20261031-opencap-preparation-offset",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-preparation-offset/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-sit-simple",
+    "source": "gdi-research-harness/studies/20261031-opencap-sit-simple",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-sit-simple/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-speed-turn-refinement",
+    "source": "gdi-research-harness/studies/20261031-opencap-speed-turn-refinement",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-speed-turn-refinement/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-tail-diagnosis",
+    "source": "gdi-research-harness/studies/20261031-opencap-tail-diagnosis",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-tail-diagnosis/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-timing-confirmation",
+    "source": "gdi-research-harness/studies/20261031-opencap-timing-confirmation",
+    "files": 15,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-timing-confirmation/STATUS.md",
+      "archive/gdi-research-harness/studies/20261031-opencap-timing-confirmation/author-readme.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-tug-tail",
+    "source": "gdi-research-harness/studies/20261031-opencap-tug-tail",
+    "files": 12,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-tug-tail/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-turn",
+    "source": "gdi-research-harness/studies/20261031-opencap-turn",
+    "files": 22,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-turn/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-walk-matched",
+    "source": "gdi-research-harness/studies/20261031-opencap-walk-matched",
+    "files": 11,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-walk-matched/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-walk-pattern",
+    "source": "gdi-research-harness/studies/20261031-opencap-walk-pattern",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-walk-pattern/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-opencap-walk-quality",
+    "source": "gdi-research-harness/studies/20261031-opencap-walk-quality",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-opencap-walk-quality/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-speed-central-evidence",
+    "source": "gdi-research-harness/studies/20261031-speed-central-evidence",
+    "files": 1,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261031-video-caption-jev",
+    "source": "gdi-research-harness/studies/20261031-video-caption-jev",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261031-video-caption-jev/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-autogait-gdi",
+    "source": "gdi-research-harness/studies/20261101-autogait-gdi",
+    "files": 6,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-cadence-reference-audit",
+    "source": "gdi-research-harness/studies/20261101-cadence-reference-audit",
+    "files": 9,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-cadence-reference-audit/README.md",
+      "archive/gdi-research-harness/studies/20261101-cadence-reference-audit/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-cadence-straight-control",
+    "source": "gdi-research-harness/studies/20261101-cadence-straight-control",
+    "files": 7,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-cadence-straight-control/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-camera-cadence",
+    "source": "gdi-research-harness/studies/20261101-camera-cadence",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-camera-cadence/README.md",
+      "archive/gdi-research-harness/studies/20261101-camera-cadence/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-camera-gate-components",
+    "source": "gdi-research-harness/studies/20261101-camera-gate-components",
+    "files": 5,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-camera-gate-components/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-camera-height-speed",
+    "source": "gdi-research-harness/studies/20261101-camera-height-speed",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-camera-height-speed/README.md",
+      "archive/gdi-research-harness/studies/20261101-camera-height-speed/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-camera-scale-transfer",
+    "source": "gdi-research-harness/studies/20261101-camera-scale-transfer",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-camera-scale-transfer/README.md",
+      "archive/gdi-research-harness/studies/20261101-camera-scale-transfer/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-camera-straight-gate",
+    "source": "gdi-research-harness/studies/20261101-camera-straight-gate",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-camera-straight-gate/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-clemson-step-reference",
+    "source": "gdi-research-harness/studies/20261101-clemson-step-reference",
+    "files": 2,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-cnn-stt-input-gate",
+    "source": "gdi-research-harness/studies/20261101-cnn-stt-input-gate",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-cnn-stt-input-gate/report.md",
+      "archive/gdi-research-harness/studies/20261101-cnn-stt-input-gate/mamba-sources/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-gdi-cnn-multiseed",
+    "source": "gdi-research-harness/studies/20261101-gdi-cnn-multiseed",
+    "files": 20,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-gdi-cnn-multiseed/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-gdi-longitudinal-audit",
+    "source": "gdi-research-harness/studies/20261101-gdi-longitudinal-audit",
+    "files": 13,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-gdi-longitudinal-audit/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-gdi-pairloss-cnn",
+    "source": "gdi-research-harness/studies/20261101-gdi-pairloss-cnn",
+    "files": 57,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-gdi-pairloss-cnn/README.md",
+      "archive/gdi-research-harness/studies/20261101-gdi-pairloss-cnn/revision2/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-healthgait-bn-consistent",
+    "source": "gdi-research-harness/studies/20261101-healthgait-bn-consistent",
+    "files": 15,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-healthgait-bn-consistent/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-healthgait-transfer",
+    "source": "gdi-research-harness/studies/20261101-healthgait-transfer",
+    "files": 14,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-healthgait-transfer/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-binary-objective",
+    "source": "gdi-research-harness/studies/20261101-mobilise-binary-objective",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-binary-objective/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-binary-objective/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-camera-inputs",
+    "source": "gdi-research-harness/studies/20261101-mobilise-camera-inputs",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-camera-inputs/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-camera-inputs/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-camera-models",
+    "source": "gdi-research-harness/studies/20261101-mobilise-camera-models",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-camera-models/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-camera-models/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-cohort-calibration",
+    "source": "gdi-research-harness/studies/20261101-mobilise-cohort-calibration",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-cohort-calibration/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-cohort-calibration/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-cohort-transfer",
+    "source": "gdi-research-harness/studies/20261101-mobilise-cohort-transfer",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-cohort-transfer/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-cohort-transfer/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-duration-turns",
+    "source": "gdi-research-harness/studies/20261101-mobilise-duration-turns",
+    "files": 6,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-duration-turns/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-input-factorial",
+    "source": "gdi-research-harness/studies/20261101-mobilise-input-factorial",
+    "files": 7,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-input-factorial/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-noise-training",
+    "source": "gdi-research-harness/studies/20261101-mobilise-noise-training",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-noise-training/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-noise-training/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-speed-error",
+    "source": "gdi-research-harness/studies/20261101-mobilise-speed-error",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-speed-error/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-speed-error/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-turn-hgb",
+    "source": "gdi-research-harness/studies/20261101-mobilise-turn-hgb",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-turn-hgb/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-turn-hgb/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-turn-ordinal",
+    "source": "gdi-research-harness/studies/20261101-mobilise-turn-ordinal",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-turn-ordinal/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-turn-ordinal/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-mobilise-within-person",
+    "source": "gdi-research-harness/studies/20261101-mobilise-within-person",
+    "files": 8,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-mobilise-within-person/README.md",
+      "archive/gdi-research-harness/studies/20261101-mobilise-within-person/STATUS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-self-video-gdi",
+    "source": "gdi-research-harness/studies/20261101-self-video-gdi",
+    "files": 15,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-self-video-gdi/EXPERIMENT_RECORD.md",
+      "archive/gdi-research-harness/studies/20261101-self-video-gdi/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-self-video-mediapipe",
+    "source": "gdi-research-harness/studies/20261101-self-video-mediapipe",
+    "files": 14,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-self-video-mediapipe/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-self-video-mediapipe-lite",
+    "source": "gdi-research-harness/studies/20261101-self-video-mediapipe-lite",
+    "files": 13,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-self-video-mediapipe-lite/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-self-video-test01",
+    "source": "gdi-research-harness/studies/20261101-self-video-test01",
+    "files": 17,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-self-video-test01/README.md",
+      "archive/gdi-research-harness/studies/20261101-self-video-test01/before-label-correction/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-sppb-sample-size-cnn",
+    "source": "gdi-research-harness/studies/20261101-sppb-sample-size-cnn",
+    "files": 15,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-sppb-sample-size-cnn/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-synthgait-conv-transfer",
+    "source": "gdi-research-harness/studies/20261101-synthgait-conv-transfer",
+    "files": 20,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-synthgait-conv-transfer/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-synthgait-feasibility",
+    "source": "gdi-research-harness/studies/20261101-synthgait-feasibility",
+    "files": 40,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/README.md",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/metadata/README.md",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/sagittal20/README.md",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/source/README.md",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/source/requirements.txt",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/source/docs/data-preparation.md",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/source/docs/downloads-and-environment.md",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/source/docs/evaluation.md",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/source/docs/pd4t.md",
+      "archive/gdi-research-harness/studies/20261101-synthgait-feasibility/source/docs/training.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261102-final223-extra-baselines",
+    "source": "gdi-research-harness/studies/20261102-final223-extra-baselines",
+    "files": 5,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261102-final223-extra-baselines/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261102-final223-frozen",
+    "source": "gdi-research-harness/studies/20261102-final223-frozen",
+    "files": 10,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261102-final223-frozen/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261102-final223-ranksim-followup",
+    "source": "gdi-research-harness/studies/20261102-final223-ranksim-followup",
+    "files": 5,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261102-final223-ranksim-followup/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261102-knee-auxiliary-cnn",
+    "source": "gdi-research-harness/studies/20261102-knee-auxiliary-cnn",
+    "files": 15,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261102-knee-auxiliary-cnn/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261102-multiwindow-baseline-analysis",
+    "source": "gdi-research-harness/studies/20261102-multiwindow-baseline-analysis",
+    "files": 4,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261102-note20-local-score",
+    "source": "gdi-research-harness/studies/20261102-note20-local-score",
+    "files": 2,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261102-note20-local-score/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-common-joints-gdi",
+    "source": "gdi-research-harness/studies/20261103-common-joints-gdi",
+    "files": 20,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-gdi-case-audit",
+    "source": "gdi-research-harness/studies/20261105-gdi-case-audit",
+    "files": 12,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261105-gdi-case-audit/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-gdi-unused-audit",
+    "source": "gdi-research-harness/studies/20261105-gdi-unused-audit",
+    "files": 11,
+    "reports": [
+      "archive/gdi-research-harness/studies/20261105-gdi-unused-audit/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261101-healthgait-transfer",
+    "source": "studies/20261101-healthgait-transfer",
+    "files": 0,
+    "reports": [
+      "archive/studies/20261101-healthgait-transfer/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261102-sideview-reference-audit",
+    "source": "studies/20261102-sideview-reference-audit",
+    "files": 4,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-cnn-stable-scale",
+    "source": "studies/20261103-cnn-stable-scale",
+    "files": 23,
+    "reports": [
+      "archive/studies/20261103-cnn-stable-scale/RESULTS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-common-joints-gdi",
+    "source": "studies/20261103-common-joints-gdi",
+    "files": 0,
+    "reports": [
+      "archive/studies/20261103-common-joints-gdi/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-frailpol-improvement-loop",
+    "source": "studies/20261103-frailpol-improvement-loop",
+    "files": 90,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-frailpol-objective-threshold",
+    "source": "studies/20261103-frailpol-objective-threshold",
+    "files": 8,
+    "reports": [
+      "archive/studies/20261103-frailpol-objective-threshold/RESULTS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-frailpol-short-walk",
+    "source": "studies/20261103-frailpol-short-walk",
+    "files": 24,
+    "reports": [
+      "archive/studies/20261103-frailpol-short-walk/RESULTS.md",
+      "archive/studies/20261103-frailpol-short-walk/author-source/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-frozen-transfer-and-deviation",
+    "source": "studies/20261103-frozen-transfer-and-deviation",
+    "files": 10,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-gdi-coordinate-model-diagnosis",
+    "source": "studies/20261103-gdi-coordinate-model-diagnosis",
+    "files": 11,
+    "reports": [
+      "archive/studies/20261103-gdi-coordinate-model-diagnosis/RESULTS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-larger-older-sppb",
+    "source": "studies/20261103-larger-older-sppb",
+    "files": 10,
+    "reports": [
+      "archive/studies/20261103-larger-older-sppb/RESULTS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-older44-coordination-sppb",
+    "source": "studies/20261103-older44-coordination-sppb",
+    "files": 9,
+    "reports": [
+      "archive/studies/20261103-older44-coordination-sppb/RESULTS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-poma-incremental-prediction",
+    "source": "studies/20261103-poma-incremental-prediction",
+    "files": 7,
+    "reports": [
+      "archive/studies/20261103-poma-incremental-prediction/RESULTS.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-reference188-pilot",
+    "source": "studies/20261103-reference188-pilot",
+    "files": 14,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-reference188-projection-pilot",
+    "source": "studies/20261103-reference188-projection-pilot",
+    "files": 6,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-sppb-lightgbm",
+    "source": "studies/20261103-sppb-lightgbm",
+    "files": 10,
+    "reports": [
+      "archive/studies/20261103-sppb-lightgbm/RESULTS.md",
+      "archive/studies/20261103-sppb-lightgbm/requirements-lock.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261103-sppb-tabular-foundation",
+    "source": "studies/20261103-sppb-tabular-foundation",
+    "files": 17,
+    "reports": [
+      "archive/studies/20261103-sppb-tabular-foundation/RESULTS.md",
+      "archive/studies/20261103-sppb-tabular-foundation/requirements-lock.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-camera-transfer-audit",
+    "source": "studies/20261104-camera-transfer-audit",
+    "files": 2,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-camera-tug-data-search",
+    "source": "studies/20261104-camera-tug-data-search",
+    "files": 9,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-frailpol-temporal-cnn",
+    "source": "studies/20261104-frailpol-temporal-cnn",
+    "files": 54,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-harmonized-gait-video-validation",
+    "source": "studies/20261104-harmonized-gait-video-validation",
+    "files": 13,
+    "reports": [
+      "archive/studies/20261104-harmonized-gait-video-validation/RESULTS.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-ljmu-side-audit",
+    "source": "studies/20261104-ljmu-side-audit",
+    "files": 5,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-ljmu100-mixed",
+    "source": "studies/20261104-ljmu100-mixed",
+    "files": 45,
+    "reports": [
+      "archive/studies/20261104-ljmu100-mixed/README.md",
+      "archive/studies/20261104-ljmu100-mixed/bundle/CNN/sources/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-mediapipe-functional-loop",
+    "source": "studies/20261104-mediapipe-functional-loop",
+    "files": 22,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-opencap-camera-tug",
+    "source": "studies/20261104-opencap-camera-tug",
+    "files": 8,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-opencap-tug-tail",
+    "source": "studies/20261104-opencap-tug-tail",
+    "files": 8,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-planar-tug-improvement",
+    "source": "studies/20261104-planar-tug-improvement",
+    "files": 12,
+    "reports": [
+      "archive/studies/20261104-planar-tug-improvement/RESULTS.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-pose-compatible-tug",
+    "source": "studies/20261104-pose-compatible-tug",
+    "files": 14,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261104-tug-camera-dual-loop",
+    "source": "studies/20261104-tug-camera-dual-loop",
+    "files": 10,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-child100-train-only",
+    "source": "studies/20261105-child100-train-only",
+    "files": 35,
+    "reports": [
+      "archive/studies/20261105-child100-train-only/README.md",
+      "archive/studies/20261105-child100-train-only/bundle/CNN/sources/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-gdi-masked-pretrain",
+    "source": "studies/20261105-gdi-masked-pretrain",
+    "files": 12,
+    "reports": [
+      "archive/studies/20261105-gdi-masked-pretrain/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-gdi-masked-pretrain-v2",
+    "source": "studies/20261105-gdi-masked-pretrain-v2",
+    "files": 12,
+    "reports": [
+      "archive/studies/20261105-gdi-masked-pretrain-v2/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-gdi-masked-pretrain-v3",
+    "source": "studies/20261105-gdi-masked-pretrain-v3",
+    "files": 14,
+    "reports": [
+      "archive/studies/20261105-gdi-masked-pretrain-v3/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-kuopio-movi-audit",
+    "source": "studies/20261105-kuopio-movi-audit",
+    "files": 9,
+    "reports": [
+      "archive/studies/20261105-kuopio-movi-audit/README.md",
+      "archive/studies/20261105-kuopio-movi-audit/readme.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-matched-normal100",
+    "source": "studies/20261105-matched-normal100",
+    "files": 41,
+    "reports": [
+      "archive/studies/20261105-matched-normal100/README.md",
+      "archive/studies/20261105-matched-normal100/bundle/CNN/sources/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-mmu-frip-evaluation",
+    "source": "studies/20261105-mmu-frip-evaluation",
+    "files": 18,
+    "reports": [
+      "archive/studies/20261105-mmu-frip-evaluation/RESULTS.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-movi-gdi-cycles",
+    "source": "studies/20261105-movi-gdi-cycles",
+    "files": 9,
+    "reports": [
+      "archive/studies/20261105-movi-gdi-cycles/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-normal-label-sensitivity",
+    "source": "studies/20261105-normal-label-sensitivity",
+    "files": 14,
+    "reports": [
+      "archive/studies/20261105-normal-label-sensitivity/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-normal-transfer-followup",
+    "source": "studies/20261105-normal-transfer-followup",
+    "files": 9,
+    "reports": [
+      "archive/studies/20261105-normal-transfer-followup/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-opencap-motion-tug",
+    "source": "studies/20261105-opencap-motion-tug",
+    "files": 12,
+    "reports": [
+      "archive/studies/20261105-opencap-motion-tug/RESULTS.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-planar-measurement-validation",
+    "source": "studies/20261105-planar-measurement-validation",
+    "files": 14,
+    "reports": [
+      "archive/studies/20261105-planar-measurement-validation/RESULTS.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-standing-height-calibration",
+    "source": "studies/20261105-standing-height-calibration",
+    "files": 7,
+    "reports": [
+      "archive/studies/20261105-standing-height-calibration/RESULTS.txt"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-stanford-angle-access",
+    "source": "studies/20261105-stanford-angle-access",
+    "files": 0,
+    "reports": [
+      "archive/studies/20261105-stanford-angle-access/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-tug-sppb-resume",
+    "source": "studies/20261105-tug-sppb-resume",
+    "files": 1,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261105-unseen-normal-test",
+    "source": "studies/20261105-unseen-normal-test",
+    "files": 16,
+    "reports": [
+      "archive/studies/20261105-unseen-normal-test/README.md",
+      "archive/studies/20261105-unseen-normal-test/matched-dose/README.md",
+      "archive/studies/20261105-unseen-normal-test/stanford-calibration/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261106-meeting-demo",
+    "source": "studies/20261106-meeting-demo",
+    "files": 6,
+    "reports": [],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261106-older-normal100",
+    "source": "studies/20261106-older-normal100",
+    "files": 9,
+    "reports": [
+      "archive/studies/20261106-older-normal100/README.md"
+    ],
+    "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  }
+]

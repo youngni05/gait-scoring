@@ -1,0 +1,124 @@
+{
+  "schema": "healthgait_bn_consistent_v1",
+  "declared_before_training": true,
+  "question": "Compare scratch,GDI,HealthGait with training-only BN calibration before every inner validation and final prediction; include same-input Ridge/RF.",
+  "arms": [
+    "scratch",
+    "gdi",
+    "health"
+  ],
+  "pretraining": {
+    "dataset": "HealthGait 14039922 v1.0, public AlphaPose COCO17",
+    "labels": "OptoGait/MuscleLAB measured speed, cadence, step and stride by UGS/FGS; never pose-estimated labels or age/PA substitutes",
+    "caveat": "Measurements precede rather than synchronize with the videos; repeated condition-level person labels",
+    "selection": "Fixed label-independent participant 80/20 split; select epoch only in source validation people, refit all eligible source people for selected epochs",
+    "max_epochs": 60,
+    "patience": 10,
+    "seed": 20261101,
+    "loss": "smooth_l1 on training-person z-scored measured labels, to reduce influence of observed source outliers; labels are never corrected or clipped"
+  },
+  "target": {
+    "dataset": "OlderAdults44 xgw6bg3g8h v1, actual supplied SPPB total, 44 people / 220 trials",
+    "limitations": "Vicon 3D optical markers projected to sagittal plane, not markerless RGB; LASI/RASI surface-marker hip proxies differ from image hip centers; actual labels cover 5..12 only",
+    "outer_folds": "Reuse exact per-person folds in 20261030-older44-sppb-timeseries/input.npz",
+    "inner_folds": 3,
+    "inner_seed": 20261031,
+    "seeds": [
+      20261101,
+      20261102,
+      20261103
+    ],
+    "max_epochs": 80,
+    "patience": 12,
+    "epochs": "Median of inner-fold best epochs, then refit outer training people; no outer labels select epochs, candidates or calibration",
+    "aggregation": "Equal mean of left/right predictions, windows within trial, then trials within person; training weights give each person equal total loss mass"
+  },
+  "input": {
+    "features": [
+      "ankle_x",
+      "ankle_y",
+      "knee_x",
+      "knee_y",
+      "hip_x",
+      "hip_y"
+    ],
+    "shape": "window, side2, channel6, time124",
+    "duration_seconds": 3.0,
+    "window_stride_seconds": 1.0,
+    "health_window_origin": "Start at first frame with all six required joints observed, then stride30 frames within last observed frame; do not treat empty entry/exit frames as motion",
+    "health_fps": 30.0,
+    "older_fps": 100.0,
+    "resampling": "Linear interpolation to 124 positions in observed 3 seconds, never extrapolation; no assertion of added information",
+    "normalization": "Hip midpoint subtraction and per-frame mean thigh-length division; 1-frame Gaussian smoothing; no population standardization of inputs; screen raw missing coordinates <=25%, gaps interpolate only inside selected window",
+    "orientation": "No horizontal reflection (same policy as existing GDI model); OlderAdults44 projects +travel to image x and -vertical to image y",
+    "gdi_transfer": "Fixed existing multiwindow fold0 checkpoint chosen before target fitting. Slice first convolution to first six semantically matched coordinate channels, preserve remaining convolution/BN/hidden weights, reset output. No GDI output calibration or GDI labels transfer.",
+    "time_caveat": "Existing GDI public JSON native timebase remains unverified; transfer is exploratory, not a time-aligned reproduction"
+  },
+  "model": "Existing GdiCNN six convolution blocks, 32 channels, kernel8, pooling2/2/3, hidden10; first conv6 channels, output replaced for each target; mean side hidden representations before output",
+  "optimization": "AdamW, batch32 windows, loss per-person weighted training-person-only z-scored MSE; no output clipping/rounding/calibration; fixed identical target candidates across all arms",
+  "round0_candidates": [
+    {
+      "lr": 0.001,
+      "weight_decay": 0.001,
+      "dropout": 0.5,
+      "freeze_blocks": 0,
+      "loss": "mse"
+    }
+  ],
+  "metrics": [
+    "person_MAE",
+    "person_RMSE",
+    "bias",
+    "score_band_MAE",
+    "paired_person_bootstrap_difference"
+  ],
+  "baseline": "Same-input Ridge/RF and training-person mean/median, all selected within the same nested participant folds.",
+  "comparison": "Same people/trials/folds/seeds/hyperparameter-selection rules for three arms; report each seed and seed ensemble, not only best seed",
+  "verification": "Actual CUDA optimizer pilot; finite losses and parameters; checkpoint reload prediction equality; provenance SHA256; person-disjoint splits; expected fits; independent metrics and saved-model CPU replay; preserve protected final GDI sets",
+  "scope": "44person exploratory development comparison. New source pretraining uses395people; functional labels remain44. Prior post-hoc diagnostics are not the new result.",
+  "bn_policy": {
+    "transfer": "Only learned backbone weights/affine parameters are retained; old running statistics reset before target fitting.",
+    "optimization": "Regular training-mode mini-batch BN and dropout; no validation/test data in optimization.",
+    "inference_statistics": "After every epoch before validation, disable dropout and recompute all BN buffers in one full training-only no-gradient pass with momentum1. Each layer observes current training-batch activations. Save the calibrated checkpoint.",
+    "refit": "After the fixed selected epochs, perform the identical training-only calibration before checkpointing and inference.",
+    "source_pretrain": "Retrain HealthGait source selection/refit under the identical policy. GDI source weights remain the fixed prior fold0 weights.",
+    "scope": "Source-pretraining selection and target selection are both BN-corrected, so compare corrected complete pipelines rather than attributing every change solely to target calibration.",
+    "max_calibration_windows": 3000,
+    "no_statistics_from_validation_test": true,
+    "verify": "Independent CPU recomputation of every saved BN buffer, training IDs/window-index hash, epoch choice and prediction replay; test batch-size invariance and no parameter updates during calibration.",
+    "buffer_tolerance": {
+      "atol": 0.0001,
+      "rtol": 1e-05
+    },
+    "prediction_atol": 0.0001
+  },
+  "baselines": {
+    "input": "Identical target.npz; each trial side2*6coordinates summarized by temporal mean/std/mean_absolute_difference:36features. No speed,3D,age or extra input.",
+    "models": {
+      "Ridge": {
+        "alpha": [
+          1,
+          100
+        ]
+      },
+      "RF": {
+        "trees": 128,
+        "min_samples_leaf": [
+          2,
+          5
+        ],
+        "seeds": [
+          20261101,
+          20261102,
+          20261103
+        ]
+      }
+    },
+    "selection": "Same outer5 and inner3 participant folds; training-only StandardScaler and equal person weights; report all seeds and RF seed ensemble.",
+    "constants": [
+      "mean",
+      "median"
+    ],
+    "saved_models": "D received/baselines/models, joblib reload and metric replay"
+  }
+}

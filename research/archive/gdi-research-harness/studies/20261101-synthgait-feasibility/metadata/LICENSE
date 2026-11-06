@@ -1,0 +1,52 @@
+SynthGait-19K Research Use License
+Version 1.0, September 2026
+
+Copyright (c) 2026 SynthGait-19K authors. All rights reserved.
+
+1. Research permission
+
+Permission is granted, free of charge, to access, use, reproduce, and modify the
+SynthGait-19K dataset (the "Dataset") solely for non-commercial research.
+
+2. Research outputs
+
+You may publish research findings and distribute code, aggregate statistics, and
+trained model weights resulting from use of the Dataset, provided that those outputs
+do not contain or enable reconstruction of a substantial portion of the Dataset. Any
+publication or distributed research output must acknowledge SynthGait-19K and link to
+the official dataset repository.
+
+3. Prohibited uses
+
+Without prior written permission from the SynthGait-19K authors, you may not:
+
+- use the Dataset or a substantially equivalent derivative for commercial purposes,
+  including commercial product development or paid services;
+- use the Dataset in production systems;
+- use the Dataset for clinical, diagnostic, treatment, patient-care, or other medical
+  decision-making purposes;
+- sell, sublicense, publish, or redistribute the Dataset or a substantially equivalent
+  derivative; or
+- remove or obscure this license or notices included with the Dataset.
+
+4. No endorsement
+
+Use of the Dataset does not grant permission to use the names, trademarks, or logos of
+the SynthGait-19K authors or their institutions, except as necessary for attribution.
+
+5. Disclaimer
+
+THE DATASET IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, NON-INFRINGEMENT, ACCURACY, OR FITNESS FOR CLINICAL USE. TO THE MAXIMUM
+EXTENT PERMITTED BY LAW, THE AUTHORS AND COPYRIGHT HOLDERS SHALL NOT BE LIABLE FOR ANY
+CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM OR RELATED TO THE DATASET OR ITS USE.
+
+6. Termination
+
+Your rights under this license terminate automatically if you breach its terms. Upon
+termination, you must stop using the Dataset and delete all copies in your possession
+or control. Sections 3 through 5 survive termination.
+
+For permissions beyond this license, contact the SynthGait-19K authors through the
+official dataset repository.

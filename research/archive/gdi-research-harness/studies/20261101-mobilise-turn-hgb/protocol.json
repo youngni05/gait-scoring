@@ -1,0 +1,41 @@
+{
+  "code_sha256": "8207576f7273e4e4d990cddc69acc760af48b5fae978dd3fc65baf4a6a684ed5",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns\\study.py": "b24d2470d0084a9128d91271638ac8e70ec00cfec3ec77e3c9e062ecc6b80b8d",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns\\main-verification.json": "07d9e100776e52e6bab0b1afa0f67d6325ef87ca8e58239b0c6a136db13a5acb",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns\\summary.json": "2255e76b59e8de2f942890c37e950c7e781be1e614d6ed891586193d446b0a7e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns\\paired-bootstrap.json": "701ab4bddf1c41dcfadda375a3a90265486ceaece1eaf9c24d1aadfa72d6b00b"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "cuts": {
+    "sppb": [
+      3.5,
+      6.5,
+      9.5
+    ],
+    "tug": [
+      10.0,
+      15.0,
+      20.0
+    ]
+  },
+  "hypothesis": "turn-only RF retains nearly all six-feature benefit and improves same-cohort speed matching; test whether boosting reduces RF residual miss without increasing false alarms",
+  "input": "same sorted 5 bouts, original4 plus turns/sec (25 columns), duration excluded; FullRF uses prior30 columns as secondary reference",
+  "scope": "fixed primary [30,60) seconds x5, draw0; same2174 SPPB /1939 TUG people and original outer5 inner3 splits; five seeds",
+  "model": "HistGradientBoostingClassifier lr.05 max_iter200 min_leaf20 L2=1 early_stoppingFalse, leaves7/15 chosen only by inner person-equal OOF logloss; earlier candidate breaks ties",
+  "calibration": "unchanged train-only weighted scaling, OOF temperature calibration and cross-calibrated internal fpr10/sens80 thresholds",
+  "criteria": "report Brier, accuracy, tail miss/FPR, same-cohort speed ranking and each seed; strong improvement requires lower outer miss with nonworse FPR and Brier, separately report all tradeoffs; no outer-based parameter retuning",
+  "resource": "CPU four independent single-thread fits; no GPU required for 25-column tabular input; estimated full30-90min, pilot measures actual time",
+  "deliverables": "50 HGB final models +150 selected inner models,300 candidate inner fits;100 reused RF final models;70 global metric rows and60 matched rows; model/metric/split/scaler/calibration/threshold/refit verification",
+  "limits": "input choice motivated by reused outer development results; not external validation or a clinical video score; post-selection OOF used internally for calibration, outer people never used to tune",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-turn-hgb",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-turn-hgb-20261101"
+  }
+}

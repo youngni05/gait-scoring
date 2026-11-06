@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "captions": 36,
+  "requests": 60,
+  "prediction_methods": 23,
+  "shuffle_recomputations": 50,
+  "same_window_checks": true,
+  "caption_input_fingerprints_match": true,
+  "Jev_payload_fingerprints_match": true,
+  "reported_metrics_recomputed": true,
+  "clinical_label_and_fold_mapping_rechecked": true,
+  "bootstrap_intervals_recomputed": true,
+  "independent_Ridge_dual_solve_primary_views": true,
+  "independent_RF_retraining": false,
+  "results_sha256": "aebc6379c563cfbe06893d830feafe5c9f7c026f498ce4203c735cde7e9ca4a6",
+  "code_sha256": {
+    "bootstrap.py": "8345c263224e20980df3de81d7e49618cccdef1e3fa443ba15b3c38b2ac3e0e4",
+    "prepare_video.py": "a2d47980ada83cf00039924c284ce8760716fd22410604d1e3b9c3ac8b4ba77d",
+    "caption.py": "13658e7dd7d41d335d74aff32ddf96b3a2cf08eca40ab0fc9be69d69d8223c0b",
+    "jev_and_compare.py": "d49194898b2fce77653dbcf537a9bb64480e71c1dac73eaee1f76d34ba6f44cb",
+    "diagnostics.py": "d0702602b4d9d5758a844955d0031157e665a5f578bd5dfe46f8e2122581d0d3",
+    "verify.py": "888ec7da5f08dabef4beda954348317cd3a4399e772cf32f72f139d7e6045de6"
+  }
+}

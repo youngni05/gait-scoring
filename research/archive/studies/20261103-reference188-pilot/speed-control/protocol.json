@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "frozen_utc": "2026-11-03T03:22:14.598440+00:00",
+  "authorization": "User explicitly requested comparing whether the association merely reflects slower walking.",
+  "base_protocol_sha256": "9cab1d5ad86045401ad8d316b56378eeb2381e6b003b43a883be32fe5c8b41d7",
+  "source_scores_sha256": "cca7586ad40fa59de7ebea7dc7eb38620e6f92136d9bf484ba7805bb844d925f",
+  "participants_sha256": "1e0aa0e21f6792e1ee89846e329c5481c239e4aa703356b40f6768755c781e7f",
+  "people": [
+    "TVC04",
+    "TVC08",
+    "TVC09",
+    "TVC10",
+    "TVC12",
+    "TVC13",
+    "TVC14",
+    "TVC15",
+    "TVC17",
+    "TVC24",
+    "TVC25",
+    "TVC26",
+    "TVC27",
+    "TVC29",
+    "TVC30",
+    "TVC34",
+    "TVC35",
+    "TVC37",
+    "TVC38",
+    "TVC39",
+    "TVC42",
+    "TVC43",
+    "TVC47",
+    "TVC48",
+    "TVC49",
+    "TVC53",
+    "TVC54",
+    "TVC55"
+  ],
+  "n": 28,
+  "primary_reference": "same frozen age65plus healthy 40",
+  "secondary_reference": "same frozen all-healthy 138",
+  "primary_outcome": "POMA",
+  "statistics": [
+    "Spearman speed vs POMA",
+    "Spearman deviation vs speed",
+    "Spearman deviation vs POMA",
+    "Partial Spearman deviation vs POMA controlling speed: rank all three, regress ranked deviation and ranked POMA on intercept plus ranked speed, correlate residuals"
+  ],
+  "secondary_outcomes": [
+    "FAC",
+    "TIS"
+  ],
+  "bootstrap": {
+    "n": 5000,
+    "seed": 20261104,
+    "resample": "Independently resample healthy reference people and older stroke people; rebuild normal reference and deviations, then recompute ranks and partial correlation for each draw. Percentile 95% CI; count undefined draws."
+  },
+  "prediction_comparison": {
+    "models": [
+      "intercept + speed",
+      "intercept + speed + deviation"
+    ],
+    "method": "Leave-one-person-out ordinary least squares; train 27, predict 1, for all 28. No tuning, clipping, polynomial selection, or outcome-dependent exclusions. Score reference is healthy people only.",
+    "metrics": [
+      "MAE",
+      "RMSE",
+      "number of people with lower/higher absolute error after adding deviation"
+    ],
+    "scope": "Descriptive small-sample predictive comparison, no model deployment or causality claim."
+  },
+  "interpretation": "A partial correlation with CI spanning zero means no clear extra association demonstrated under this adjustment, not proof that speed causes or completely explains the association. Rank residualization controls a linear relation on ranks; complex nonlinear and measurement-error effects remain possible. Original total association already inspected; this is a follow-up exploratory analysis."
+}

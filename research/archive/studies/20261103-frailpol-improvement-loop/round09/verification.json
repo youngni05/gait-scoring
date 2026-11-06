@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "contexts": 10,
+  "models_replayed": 60,
+  "checks": [
+    {
+      "condition": "speed",
+      "fold": 0,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "speed",
+      "fold": 1,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "speed",
+      "fold": 2,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "speed",
+      "fold": 3,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "speed",
+      "fold": 4,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 0,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 1,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 2,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 3,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 4,
+      "models_replayed": 6,
+      "source_people_and_hinge_expansion_exact": true,
+      "training_only_moments_weights_KKT_passed": true
+    }
+  ],
+  "comparison_sha256": "2a35a1b54b439d414650520f4a50506e258b339c1873b65a9e85414a0503c1b6",
+  "heldout_sha256": "bf284c9c1539701a9993b43333c185883d7b10002e212c768b80af32849e9546",
+  "review_code_sha256": "dbb3242d62fe729d93f1283b996bce19ff36510a281143e06b50e07566af33f3"
+}

@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "outer_cases": 10,
+  "inner_models_replayed": 900,
+  "final_models_replayed": 30,
+  "checks": [
+    {
+      "condition": "speed",
+      "fold": 0,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        27,
+        28,
+        24
+      ]
+    },
+    {
+      "condition": "speed",
+      "fold": 1,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        22,
+        23,
+        27
+      ]
+    },
+    {
+      "condition": "speed",
+      "fold": 2,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        19,
+        18,
+        16
+      ]
+    },
+    {
+      "condition": "speed",
+      "fold": 3,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        18,
+        16,
+        17
+      ]
+    },
+    {
+      "condition": "speed",
+      "fold": 4,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        22,
+        20,
+        19
+      ]
+    },
+    {
+      "condition": "features",
+      "fold": 0,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        24,
+        27,
+        25
+      ]
+    },
+    {
+      "condition": "features",
+      "fold": 1,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        25,
+        24,
+        27
+      ]
+    },
+    {
+      "condition": "features",
+      "fold": 2,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        8,
+        14,
+        24
+      ]
+    },
+    {
+      "condition": "features",
+      "fold": 3,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        18,
+        16,
+        19
+      ]
+    },
+    {
+      "condition": "features",
+      "fold": 4,
+      "inner_models_replayed": 90,
+      "final_models_replayed": 3,
+      "top3": [
+        8,
+        20,
+        22
+      ]
+    }
+  ],
+  "review_sha256": "7857773a3842a7ea0bbfda85fc15d9e472a87832b61c373c35a7869a232646ea",
+  "comparison_sha256": "308483dc23be532d0a63c5d3ab59391e0736977efc0f8421fd5e5cfbd8d41165"
+}

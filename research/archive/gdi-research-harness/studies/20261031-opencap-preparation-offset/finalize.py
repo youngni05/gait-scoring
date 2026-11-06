@@ -1,0 +1,88 @@
+from study import *
+from collections import Counter
+import platform
+sys.path.insert(0,str(HERE.parents[1]/'control/manual-sessions/20261028-camera-step-pilot/deps'))
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+def main():
+    verified=json.loads((HERE/'results-verification.json').read_text());assert verified['passed'] and verified['models']==750 and verified['inner_fits']==9000
+    assert json.loads((HERE/'input-verification.json').read_text())['passed']
+    protocol=json.loads((HERE/'protocol.json').read_text());summary=json.loads((HERE/'summary.json').read_text());stability=json.loads((HERE/'stability.json').read_text());cov=pd.read_csv(HERE/'coverage.csv')
+    def metric(c,v,band):return next(r for r in summary[c]['metrics'] if r['view']==v and r['band']==band)
+    def case(c,v,id):return next(r for r in stability if r['cohort']==c and r['view']==v and r['id']==id)
+    names={'Gait':'보행 중 정지만 더함','Reallocated':'시간 재배분 후 준비 정보 미사용','Core':'일어서기 핵심 시간까지 더함','Prep':'준비·일어서기 시간까지 더함','LearnPrep':'준비·일어서기 영향은 학습'}
+    lines=['# 보행 정지와 준비·일어서기 시간 분해 비교 — 실행 완료','',
+      '같은 사람 분리와 관찰시간 합계를 유지한 실험에서, 준비·일어서기 후보 시간을 직접 더하면 평균 오차가 줄었다. 42.59초 사례를 제외해도 개선이 남았지만 긴 사람은 6명뿐이며 그중 3명은 악화했다. 28.03초 사례는 최대20초 조건에서 변동이 줄고 절대오차는 조금 늘었다. 연구 방향을 지지하는 탐색적 결과이며 임상적 성능 향상이나 원인 규명으로 확정하지 않는다.','',
+      '## 무엇을 비교했는가','',
+      '정답은 이전과 같은 사람·방문의 실제 임상 TUG다. Ridge로 정답에서 관찰한 시간을 뺀 나머지를 예측하고, 마지막에 관찰한 시간을 그대로 더한다. 기립 준비·기립 시간은 보행 저속 시간과 별개로 계산하며 겹친 구간을 두 번 더하지 않는다. 나머지 시간에는 앉기·미관찰 동작도 있으므로 순수 이동시간의 수동 정답은 아니다.','',
+      '- Gait: 이전 전체 보행 관찰 구간, 기존 속도·변동·변화량·회전 시간 4개 입력, 보행 중 수평 정지 후보 시간을 고정해 더함.',
+      '- Reallocated: 준비·일어서기 구간에 시간을 배분한 뒤 남은 보행 입력만 활용. 준비 구간은 관찰하지만 그 시간을 쓰지 않는 비교다.',
+      '- Core: Reallocated와 정확히 같은 구간·속도 입력을 쓰고 관찰한 일어서기 핵심 시간을 더함.',
+      '- Prep: 같은 구간에서 관찰한 준비 후보까지 포함해 그 시간을 더함. 주 추가 모델이다.',
+      '- LearnPrep: 같은 구간에서 준비와 일어서기 길이를 추가 입력으로 주고 영향은 모델이 학습. 보행 정지만 고정해 더함.','',
+      '같은 관찰시간 안에서 준비 구간을 넣으려면 보행 일부를 덜 보아야 한다. 기존 보행 3초와 전체 회전은 유지하고, 그 밖의 시간 범위에서 준비·일어서기 끝부분부터 확보했다. 각 사람의 이전 최대10·20·30초 조건의 실제 관찰 초수와 새 구간들의 합계는 같다. 구간 선택에는 전체 기록을 사용했다. 합계가 20초여도 구간 사이 빈 시간을 포함한 연속 촬영 길이는 더 길 수 있다.','',
+      '## 대상과 품질 조건','',
+      '177명에서 시작해 공통 비교에 83명(긴 TUG 7명)이 남았다. 42.59초를 제외한 조건은 82명(긴 6명)이다. 85명은 이전 보행 3초와 일어서기 구간이 겹쳐 두 구간을 그대로 보존하고 분리할 수 없었고, 5명은 기립 식별 실패, 4명은 준비 구간의 수직 추적 급변으로 제외됐다. 이는 85명이 임상적으로 잘못된 자료라는 뜻이 아니다. 이 엄격한 관찰 구성에 맞지 않는다는 뜻이며 선택 편향이 생길 수 있다.','',
+      '기존 준비 탐지 기준(초기0.75초 대비 골반 기울기·허리·고관절 중2개 이상의8도 변화가0.25초 유지)을 재사용했다. 수직 속도3m/s 초과 및 각도 한 프레임45도 초과를 제외 조건으로 적용했다. 핵심 기립 경계는 이전 국소 높이 변화 탐지와 같다. 처음 입력 점검 때 보행 시작과 기립 끝이 자주 겹친다는 것을 확인해, 기립 끝 이후의 보행으로 중복을 제거했다. 이 조정과 대상 확정은 모델 성능을 보기 전에 끝냈다.','',
+      '원래5가지 사람 분할×5묶음 평가 및 내부3분할을 공통 사람에게 제한 적용했다. 사람이 줄었으므로 기준 모델도 다시 학습했다. 이전176명에서 얻은 숫자를 이번 대조군으로 사용하지 않았다. Ridge alpha0.1/1/10/100은 학습 사람 내부의 최종 TUG 평균 절대오차로만 선택했다. 정규화 역시 학습 사람만 사용한다.','',
+      '## 최대20초 조건 결과','',
+      '단위는 초다. 각 사람의5개 평가 오차를 먼저 평균하고 사람끼리 평균했다. 과소예측은 max(실제−예측,0)으로 과대예측과 상쇄하지 않는다. 20초 이상 묶음은 오차 분석용이며 임상 판정선이 아니다.','',
+      '| 집단 | 방법 | 전체 절대오차 | 긴 사람 절대오차 | 긴 사람 과소예측 |','|---|---|---:|---:|---:|']
+    for c,label in [('exclude283','42.59 제외82명 / 긴6명'),('include283','포함83명 / 긴7명')]:
+        for kind in KINDS:
+            a=metric(c,kind+'_20','all');z=metric(c,kind+'_20','ge20');lines.append(f'| {label} | {names[kind]} | {a["MAE"]:.3f} | {z["MAE"]:.3f} | {z["underprediction"]:.3f} |')
+    lines+=['','42.59초 제외 조건에서 Prep는 Gait보다 전체 오차0.163초, 긴 사람 과소예측0.666초 감소했다. 평균은5가지 분할 모두 개선했다. 전체82명 중52명의 절대오차가 줄었고30명은 늘었다. 긴6명에서는3명 개선·3명 악화다. 긴 과소예측 차이의 조건부95% 재표집 범위는 −1.553~+0.077초로0을 포함한다. 전체 절대오차 차이도 −0.349~+0.029초로0을 포함한다.','',
+      '포함 조건에서는 긴7명 과소예측이1.469초 줄었다. 조건부95% 범위는 −3.889~+0.295초다. 긴 절대오차는5명 개선·2명 악화, 과소예측은4명 개선·2명 악화·1명 동일하다. 같은 자료로 여러 가설을 반복 검토했으므로 이러한 범위를 확증적 유의성 검정으로 해석하지 않는다.','',
+      'Reallocated만 사용하면 제외 조건의 긴 과소예측은5.931→6.490초로 악화했다. Core도6.522초여서 개선되지 않았다. 동일한 구간에서 Prep는5.265초로 낮아졌다. 이 비교는 짧은 높이 상승 자체보다 그 앞의 준비 후보 시간을 포함하는 것이 이번 설정에서 유용했음을 보여준다.','',
+      '## 관찰 밖에서 얼마나 빠졌는가','',
+      '다음은 전체 기록에서 자동으로 찾은 후보 길이와 최대20초 조건에서 실제 입력에 넣은 길이다. 수동 임상 정답이나 명령 시각은 없다.','',
+      '| 실제 TUG | 준비 후보 | 핵심 기립 | 기존 관찰 밖의 합계 | 새로 관찰한 준비+기립 | 여전히 미관찰 |','|---:|---:|---:|---:|---:|---:|']
+    for r in cov[(cov.target>=20)&(cov.budget==20)].sort_values('target').itertuples():lines.append(f'| {r.target:.2f} | {r.full_preparatory:.2f} | {r.full_core:.2f} | {r.outside_old_window:.2f} | {r.observed_prep_rise:.2f} | {r.still_unobserved:.2f} |')
+    lines+=['','42.59초 사례는 총13.43초 중20초 예산에서는10.40초를 확보하고3.03초는 놓쳤다. 최대30초 조건은 실제26.33초를 관찰하며13.43초 전체를 포함했다. 임상 계시가 이 준비 후보를 실제로 포함했는지는 미확인이다. 후보 길이가 누락 오차와 비슷하다는 이유로 시간 대응을 확정하지 않는다.','',
+      '## 28.03초와42.59초 사례','',
+      '| 집단 | 실제 | 관찰 상한 | 모델 | 예측 평균 | 분할 표준편차 | 예측 최소~최대 |','|---|---:|---:|---|---:|---:|---|']
+    for c,id in [('exclude283','sub-397'),('include283','sub-397'),('include283','sub-283')]:
+        for b in [20,30]:
+            for k in ['Gait','Prep']:
+                r=case(c,k+f'_{b}',id);lines.append(f'| {c} | {r["target"]:.2f} | {b} | {names[k]} | {r["mean"]:.2f} | {r["sd"]:.2f} | {r["min"]:.2f}~{r["max"]:.2f} |')
+    lines+=['','28.03초 사례는 제외82명·20초 조건에서 준비 구간4.67초를 확보하는 동안 보행 정지 관찰이6.83→3.90초로 줄었다. 예측 표준편차는0.692→0.409초로 작아졌지만 평균 절대오차는4.484→4.702초로 조금 늘었다. 최대30초 조건(이 사람 실제21.33초)에서는 정지5.07초를 확보하고 오차가4.606→3.322초로 줄었다. 준비 시간을 보는 것과 보행 중 지체를 유지하는 것의 균형이 중요하다.','',
+      '42.59초 사례의20초 조건 예측은22.83→30.92초로 올라가 오차가19.76→11.67초로 줄었다. 최대30초 조건(실제26.33초)에서는22.85→34.03초로 개선했으나 여전히8.56초 부족하다. 이 사례를 맞혔다거나 준비만으로 원인을 모두 설명했다고 볼 수 없다.','',
+      '## 특정 사람만 좋아진 것인가','',
+      '42.59초를 학습·평가에서 뺀 실험에서도 평균 개선이 남았다. 그 조건에서28.03초 사례를 평가 집계에서만 추가로 빼면 나머지 긴5명의 과소예측은평균0.843초 감소했다. 이 두 번째 제외는 재학습이 아니라 영향 분석이다. 개선은20.06초·23.22초·23.41초 사례에 나타났고,22.18초·22.50초·28.03초 사례에서는 조금 악화했다.','',
+      '반례도 있다. 실제9.15초인 sub-288은 준비 후보6.60초를 반영하자 평균 예측이10.42→14.22초로 과대예측됐다. 추적 급변 기준을 통과하더라도 준비 후보가 임상 계시 안에 있었다는 뜻은 아니다. 자세 바꿈·검사 안내 대기·진짜 준비 지체를 구분하는 검증이 필요하다.','',
+      '## 관찰시간별 결과','',
+      '| 집단 | 상한 | 보행 정지만: 긴 과소예측 | 준비까지: 긴 과소예측 |','|---|---:|---:|---:|']
+    for c in ['exclude283','include283']:
+        for b in [10,20,30]:lines.append(f'| {c} | {b} | {metric(c,f"Gait_{b}","ge20")["underprediction"]:.3f} | {metric(c,f"Prep_{b}","ge20")["underprediction"]:.3f} |')
+    lines+=['','10·20·30초는 상한이다. 실제 기록이 짧으면 이전 실험의 실제 관찰 길이에 맞췄다. 기존 사람의 최장 실제 관찰은21.33초,42.59초 사례는26.33초다. 최대30초 행을30초 연속 관찰 효과라고 해석하지 않는다.','',
+      '## 현재 의미와 남은 한계','',
+      '의미 있는 점은 관찰한 동작 시간을 직접 더하는 제한된 구조로 안정성을 높였고, 같은 시간 안에서도 어떤 동작을 관찰하느냐가 평균 오차에 영향을 주었다는 것이다. 이번에는 준비 후보가 긴 여러 사례에 이득이 있었다. 그러나 이것은 보행 하나로 SPPB의 다른 영역을 추론했다는 증거가 아니다. 준비·기립을 실제로 추가 관찰한 TUG 예측 실험이다.','',
+      '임상 계시 시행과 공개 기록의 정확한 일대일 대응, 명령 시각, 실제 준비 경계는 아직 검증하지 못했다. RGB 확인 없이 MOT 좌표의 자동 후보를 썼다. 이번 공통집단은83명으로 제한되고 긴 사람은6~7명이며, 이전에 여러 번 살펴본 개발 자료다. 조건부 재표집 범위도0을 포함한다. 따라서 지금은 후속 검증 가치가 있는 개선으로 판단하며 보편적인 성능 향상이나 임상 유용성 확정은 유보한다.','',
+      '## 재현·검산','',
+      'Windows CPU에서 기존 NumPy·scikit-learn·Matplotlib을 사용했다. GPU·새 패키지·새 데이터 다운로드는 없었다. 원본과 이전 실험을 변경하지 않았다. 실행 순서는 study.py → check_inputs.py → train.py → assess.py → check_results.py → finalize.py이며 review.py는 원본 구간 그림을 만든다.','',
+      '원본 좌표에서 속도·정지 특징과 준비 경계를 별도 계산했다. 최대 특징 차이는1.45e−15 미만이다. 같은 사람 분할·비중복 관찰시간 합계·기존 보행3초와 회전 보존·라벨·파일 해시를 검사했다. 최종750개 모델과내부9,000개 학습을 별도로 다시 실행해 예측·설정 선택을 재현했다. 사람별 지표·조건부 재표집 구간·분할별 변동·특정 사례 제외 집계도 검산했다.','',
+      '핵심 구현은 study.py의 extract와 fit이다. extract는 기존 관찰시간 안에서 준비·기립과 보행을 겹치지 않게 배분한다. fit는 입력의 마지막 열에 저장한 관찰시간을 학습 정답에서 빼고, 예측한 잔여시간에 다시 더한다. 사람 분리는 그 앞에서 확정되고 평가 정답은 특징 계산이나 설정 선택에 사용되지 않는다.','',
+      '근거: protocol.json, input-verification.json, results-verification.json, summary.json, coverage.csv, stability.csv, excluded.json, 각 집단의 predictions.csv. phase-review.png는42.59·28.03·20.06초 사례와9.15초 반례의 좌표 및 입력 구간을 보여준다. 그래프 검토는 RGB 동작 정답 검증이 아니다.','']
+    (HERE/'STATUS.md').write_text('\n'.join(lines),encoding='utf8')
+    fig,axes=plt.subplots(1,2,figsize=(12,4.5),layout='constrained')
+    for ax,c,title in zip(axes,['exclude283','include283'],['Exclude 42.59s: 82 people / 6 long','Include 42.59s: 83 people / 7 long']):
+        pp=pd.read_csv(HERE/c/'long-people.csv');ids=sorted(pp.id.unique());x=np.arange(len(ids))
+        for offset,k,col in [(-.23,'Gait','#377eb8'),(0,'Core','#e6ab02'),(.23,'Prep','#1b9e77')]:
+            z=pp[pp.view==k+'_20'].set_index('id').loc[ids];ax.bar(x+offset,z.underprediction,width=.22,label=k,color=col)
+        labels=[f'{id}\n{pp[pp.id==id].target.iloc[0]:.2f}s' for id in ids];ax.set_xticks(x,labels,fontsize=8);ax.set_title(title);ax.set_ylabel('Underprediction (s)');ax.grid(axis='y',alpha=.2);ax.legend()
+    fig.suptitle('Matched observation total, maximum20s; lower is better')
+    fig.savefig(HERE/'comparison.png',dpi=160);plt.close(fig)
+    # Descriptive audit, not a target-based eligibility rule.
+    residual={}
+    for c in protocol['cohorts']:
+        d=np.load(HERE/c/'input.npz');residual[c]={v:int(sum(d['y']-d[v][:,-1]<0)) for v in protocol['cohorts'][c]['views']}
+    save('residual-target-audit.json',residual)
+    save('visual-review.json',{'source_plot':'phase-review.png','reviewed_ids':['sub-283','sub-397','sub-310','sub-288'],'scope':'MOT trajectory and observation boundary review only, not RGB or clinical timing validation'})
+    import sklearn
+    save('environment.json',{'python':sys.version,'executable':sys.executable,'platform':platform.platform(),'numpy':np.__version__,'sklearn':sklearn.__version__,'matplotlib':matplotlib.__version__,'device':'CPU','packages_installed':False})
+    files=[p for p in HERE.rglob('*') if p.is_file() and '__pycache__' not in str(p) and p.name!='artifact-manifest.json']
+    save('artifact-manifest.json',{p.relative_to(HERE).as_posix():sha(p) for p in files})
+    print('REPORT AND FIGURE SAVED',verified['models'],verified['inner_fits'],len(files),flush=True)
+if __name__=='__main__':main()

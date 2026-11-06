@@ -1,0 +1,79 @@
+{
+  "code_sha256": "b24d2470d0084a9128d91271638ac8e70ec00cfec3ec77e3c9e062ecc6b80b8d",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-input-classification\\study.py": "eed2351f06ec1b40b22522b40d8fc70326cd14fdbca94174f03c824b0817eebd",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-input-classification\\verification.json": "333e71d6aad31930bddef85a7e0bcf63be110c19d654c304dfb9c7c6667586e1",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-input-factorial\\study.py": "bc1b5c9eb85123a0c128c6a717efe011f516cef28f584301e30421f1d2db3a1e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-input-factorial\\main-verification.json": "45d9871fce4562a6d5c9207062309165e7663a477b24646b7dcf21038364938a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\audited-bouts.csv": "f826fbf2b9010b36cb0c8f181636242504e862e46f125d31db68c205a2a5d202"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "cuts": {
+    "sppb": [
+      3.5,
+      6.5,
+      9.5
+    ],
+    "tug": [
+      10.0,
+      15.0,
+      20.0
+    ]
+  },
+  "design": "bout-level original4, +duration, +turns/sec, +both; same RF128 trees leaf20 max_features1, person-equal weights",
+  "features": {
+    "Bout4": [
+      "averagecadence",
+      "averagestrideduration",
+      "averagestridespeed",
+      "averagestridelength"
+    ],
+    "Length5": [
+      "averagecadence",
+      "averagestrideduration",
+      "averagestridespeed",
+      "averagestridelength",
+      "duration"
+    ],
+    "Turn5": [
+      "averagecadence",
+      "averagestrideduration",
+      "averagestridespeed",
+      "averagestridelength",
+      "turn_rate_per_second"
+    ],
+    "Bout6": [
+      "averagecadence",
+      "averagestrideduration",
+      "averagestridespeed",
+      "averagestridelength",
+      "duration",
+      "turn_rate_per_second"
+    ]
+  },
+  "people": {
+    "sppb": 2174,
+    "tug": 1939
+  },
+  "splits": "exact original outer5 inner3 people, draw0; [4,10)/[30,60) seconds x1/3/5 bouts",
+  "reuse": "Bout4/Bout6 verified prior models; newly fit Length5/Turn5, all conditions five seeds",
+  "ordering": "lexicographic speed then visible features only; excluded feature cannot affect sort order",
+  "selection": "unchanged RF, no hyperparameter tuning; train-only scaling, inner OOF temperature and fpr10 threshold selection",
+  "primary": "long5 draw0, five-seed metrics (not ensemble), all6 conditions reported",
+  "matching": "exact evaluation-only nearest nonlow from different person same fold within .05m/s; also same cohort; controls reusable and descriptive",
+  "contrasts": "Length5-Bout4, Turn5-Bout4, Bout6-Length5, Bout6-Turn5, Turn5-Length5, Bout6-Bout4; interaction Bout6-Length5-Turn5+Bout4",
+  "runner": "CPU four threads, same fixed random seeds per independent model",
+  "limits": "development people reused; no video/external clinical validation; turn count is released algorithm output, no new reference validation",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-duration-turns",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-duration-turns-20261101"
+  }
+}

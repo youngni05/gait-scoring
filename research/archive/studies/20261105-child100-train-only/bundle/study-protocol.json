@@ -1,0 +1,35 @@
+{
+  "status": "declared before child100 model fitting",
+  "authorization": "User requested healthy-child assumed100 added to training only, testing original held-out high-GDI accuracy.",
+  "data_counts": {
+    "Stanford_people": 692,
+    "Stanford_records": 1061,
+    "child_people": 7,
+    "child_records": 10,
+    "windows": 11271
+  },
+  "data_sha256": "dff0d3ef168c26738b790f99832892704cc397fd8297f3831d46437874aa7ffb",
+  "membership_sha256": "ea8e70540abc79cf9d7a31c08c6bb1b5a025ea5532c713a8f709d5e558c4a5bf",
+  "arms": [
+    "Stanford_only_frozen",
+    "Stanford_plus_child100_training_only"
+  ],
+  "reports": [
+    "CNN_refit",
+    "RF",
+    "STT_refit",
+    "CNN_bag",
+    "STT_bag",
+    "bilateral_refit",
+    "fusion"
+  ],
+  "split": "Same five Stanford outer folds and four inner folds. All accepted children in training of every fit (fold=-1); no child in validation or evaluation. No final223 access.",
+  "labels": "Child 100 is an experimental assumption, not measured GDI.",
+  "primary_metric": "Actual Stanford record-side GDI >=90 and >=100. Average eligible side-record absolute errors within each person, then equal-person mean. Also signed prediction minus truth and paired person bootstrap 10000 seed20261105.",
+  "guardrails": "Report whole-cohort and true side GDI <70 MAE. Supplementary age5<=age<13 based on contemporaneous record age.",
+  "training": "Original architectures, optimizers, seeds, maximum epochs, equal-record loss and training-only shared OLS calibration. No child duplication or extra weighting.",
+  "selection": "Epoch/RF hyperparameter selection uses Stanford inner-validation overall person MAE only. No outer high-score outcome used.",
+  "ensemble": "Keep original fold weights and bag-collapse rule fixed. No outer-data weight tuning.",
+  "limitation": "Small younger 5-10-year-old subset and fixed camera; not a full age match to Stanford. Adult LJMU experiment uses different validation inclusion and sample volume, so cross-experiment differences are not an isolated age effect.",
+  "qa": "Walking-centered124-frame crops retain original time and BODY25 feature extraction. Missing coordinates use unchanged <=25% threshold; some entry/exit occlusion remains."
+}

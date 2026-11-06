@@ -1,0 +1,12 @@
+{
+  "verified": true,
+  "inner_fits_checked": 20,
+  "outer_models_replayed": 5,
+  "actual_optimizer_steps": 53289,
+  "prediction_max_abs_difference": 0.0,
+  "training_target_scalers_checked": 25,
+  "nested_epoch_selection_recomputed": true,
+  "encoder_finetuned": false,
+  "protected_numeric_data_read": false,
+  "summary_sha256": "9c6fa4035d9a476e01bf5602097d0656a4224527b00582ee56dc3bf3feb54b14"
+}

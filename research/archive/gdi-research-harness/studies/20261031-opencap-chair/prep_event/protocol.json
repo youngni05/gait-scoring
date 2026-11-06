@@ -1,0 +1,15 @@
+{
+  "exploratory": true,
+  "reason": "Input audit showed posture change before pelvis rise in long cases and disagreement between core-boundary span and clinical time; added before reading model performance",
+  "detector": "0.25s smoothed pelvis tilt, lumbar extension, mean left/right hip flexion; deviation>=8deg in at least2of3 from initial0.75s median for0.25s; earliest crossing before core rise with0.25s margin; does not use clinical target",
+  "observation": "unchanged same3s walk+turnD; prep-rise and sit versus same added time of non-chair TUG context; max total30s; same raw files and original person folds",
+  "quality": "same vertical<=3m/s; unused angular jump recorded and flagged rather than silently repaired; phase boundaries are proxies without command timestamps or RGB labels",
+  "views": [
+    "TurnBase",
+    "TurnContext",
+    "PrepTime",
+    "PrepAll"
+  ],
+  "no_whole_TUG_elapsed_feature": true,
+  "code_sha256": "6c1d75633f57b8795f97cfb0edd94702a6b2c8ab5b4fd21e109767125c27d465"
+}

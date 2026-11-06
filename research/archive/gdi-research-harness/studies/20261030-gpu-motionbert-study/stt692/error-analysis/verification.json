@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "raw_records_hash_checked": 1061,
+  "predictions_aligned": true,
+  "group_partition_totals_checked": true,
+  "weighted_group_mae_reconstructs_overall": true,
+  "raw_missingness_matches_original_audit": true,
+  "input_sha256": "1448059f493156c0194a9d2518f5c6cf04e40c4bb2a39472d5d0c35885ab8967",
+  "predictions_sha256": {
+    "cpu_control": "092e5364766a951098f3a59f82dfe9af6e643168794370b6de1edf40b154cda9",
+    "mb20261028": "c183a43c9589ff760b666d03565c92ffaf19b2d0ffe5e273269f89edd1e09946",
+    "mb20261029": "689fd97543e02b8b9b685cfc803081fa5ed287036a5e8b2a23080ce8299c6a1f",
+    "mb20261030": "6704b29897595fbace789e56116ae53ce645d494fc3e282c1f5dfe32dfb54ea9"
+  },
+  "actual_training_steps": 0
+}

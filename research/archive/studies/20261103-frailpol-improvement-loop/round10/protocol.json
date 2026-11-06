@@ -1,0 +1,22 @@
+{
+  "round": 10,
+  "code_sha256": "2c0807e99758198934ba4b620cf876e849f970156688eb673daa45e034f85fb0",
+  "created_unix": 1793729716.7090619,
+  "data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "round07_verification_sha256": "fece38a03234981cf5e9d9ec4d6838910be6316130e80ccf984b79ad1be6701f",
+  "round08_protocol_sha256": "b0097c14af6358bfac5bfe3500be0350a006348e50a815fe175df22fa112422b",
+  "conditions": [
+    "speed",
+    "combined"
+  ],
+  "alpha": 10,
+  "tail": [
+    1,
+    4,
+    16
+  ],
+  "design": "Freezebeforeviewinground08outerresults. Same594/frozen5personfolds. Concatenateverifiedround07rawtargetbaseinnerOOF andround08speed-product/inverse-speed-residualbaseinnerOOF plus1/observedspeed. Preserveallbases,notchooseusingouterperformance. MatchedsourceIDs/order; testinputsfromcorrespondingbasefinalrefits. Noouterlabels infeatureconstruction,normalizers,weights,metafit. Round07combined17bases andround08bilateral8bases;speed8and8respectively. Originalsourcecandidatecounts differfromdeduplicatedfeaturecaps,so thisiswholepipelinecomparison,notisolatedequal-sizeensemblecausality.",
+  "models": "PositiveRidgealpha10,train-onlystandardization andweightedcentering;tail1/4/16withmiddle sqrt(tail). All3fixedvariantsreported;no outer/meta hyperparam selection, clipping orscore-basedposthocweights.",
+  "verification": "Round08fullindependentreplaymustpassfirst. All30meta models and10contexts saved; sourceprotocol/verifier/hash/IDmatches independentlyrebuilt,training-onlymoments/weights/NNLSKKT,savedmodelinference/metrics/paireduncertainty. Allsourcebase_replays coveredbytheirunchangedreceipts. Reuseddevelopmentfolds,notexternalclinicalvalidation.",
+  "expected_additional_GB": 0.01
+}

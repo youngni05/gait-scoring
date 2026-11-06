@@ -1,0 +1,29 @@
+{
+  "round": 11,
+  "created_unix": 1793733592.194219,
+  "code_sha256": "f529123706ecdc91a10ad931759a5d7a36aee5fb329e808ac38f5c52536729e9",
+  "data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "source_verification_hashes": {
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\round07\\verification.json": "fece38a03234981cf5e9d9ec4d6838910be6316130e80ccf984b79ad1be6701f",
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\round08\\verification.json": "5a88a03c06f074e4e6515f8f992c53cbe85a3775275ae830e2172fd98049ec4e",
+    "D:\\Projects\\D_P\\studies\\20261104-frailpol-temporal-cnn\\norm-aux\\verification.json": "6ca9702ab9926f347ce4c0daac82897eb999019eca08b4dd47616e2cc8417ad4",
+    "D:\\Projects\\D_P\\studies\\20261104-frailpol-temporal-cnn\\manual-controls\\verification.json": "9f1babc5d1c14a9f16d38174bd0c6203e5f40c28aa87bb9ed93c137d81e387a9"
+  },
+  "conditions": [
+    "speed",
+    "speed_duration",
+    "combined"
+  ],
+  "tail_weights": [
+    1,
+    4,
+    8,
+    16
+  ],
+  "alpha": 10,
+  "design": "Same594/outer5 andentiretraining-onlyinnerOOFsourceexperts. Fulluses17rawtargetbases+8speedadjustedtargetbases+5manualbases+4passedwavebases;speed19bases,speed_duration21bases. Rawmodeltargetexpertsfromround07,round08andverifiedCPUstudies. Failedauxiliarywaveconditionneverused. OnlytrainOOFvaluesfitmeta,onlyoutertrainingrowsfitnormalizers/weights. Morefamiliesinfull,so wholepipelinecomparisonnotisolatedequalensemble-sizecausality.",
+  "guard": "Computeobservedspeedmin/maxfromoutertrainingpeopleonly. If testpersonspeedstrictlyoutside[min,max],guardedpolicyusesfixedreviewedfallback:manualspeed_tail4/speed_duration_tail4/orderednorm_tail4for3conditions. Otherwiseusesmetafusion. Unrestrictedpolicyusesmetafusionforall. Samefittedmetaweightsinbothpolicies. All594retained;nooutput/targetclipping. Thisdoesnotprovevelocitymeasurementerror;rawsignalsarestillvalidandfallbackhypothesisistested.",
+  "models": "FixedpositiveRidgealpha10withtail1/4/8/16,middle sqrt(tail),else1;trainingstandardizationandweightedcentering,NNLS. All24fixedcondition/tail/guardpoliciesreported,noouter-basedhyperparameterchoiceandnofittedgateusingtestlabels. Sourceepochsselectedwithinoutertrainingpeopleaspreviouslyfrozen. Metaweightsfitalloutertrainingrows,norowsexcluded.",
+  "verification": "60savedmetamodels,15sourcecontexts,120policyfoldoutputs;independentrebuildsourceOOF/IDs/currentoriginalreceiptshashes,train-onlyscalers/weights/KKT,bounds/fallbackandmetrics/paireduncertainty. Source75+25wave/modelcheckpointscoveredbycondition-specificfullreviews. Failedauxiliaryconditionexcludedasmodel,notexcludingpeople. Reuseddevelopmentfolds/severe9/singleinit,notclinicalexternal.",
+  "expected_additional_GB": 0.02
+}

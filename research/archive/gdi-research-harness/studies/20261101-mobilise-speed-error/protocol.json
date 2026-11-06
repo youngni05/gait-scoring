@@ -1,0 +1,55 @@
+{
+  "code_sha256": "1eeb6beca91c732a8bd301481c77d3c76184687bff19a541a2661e4caf0f93ca",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-camera-models\\study.py": "a94a1cbeeb6e38c4c7a9d79ff85758c5e2401e99d42519f1d321131466fc1a5a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-camera-models\\protocol.json": "7594485868c1ea542efc4ecdb123d4e814e984d54100a09b79e87168035cc769",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-camera-models\\main-verification.json": "5cb41698d6cd36f3ad99219225a272b7d9394f44d362a25ab1896703c1dbf0f5",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-camera-models\\metrics-by-seed.csv": "d672f26becdc3d4a64cfde7cc132a7022049fb84b7438f7587991f83928201bc",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61"
+  },
+  "hypothesis": "Cadence had little clean-input accuracy gain. Does it protect the same frozen RF/DeepSets when speed measurement is biased or noisy?",
+  "data": "SameSPPB2174/TUG1939people7356/5688visits,originalperson5fold/inner3fixed,30–60sec5bouts,draw0,5seeds,fixed4scorebands. No newtraining/calibration/threshold/epoch choices.",
+  "methods": [
+    "SpeedFixedRF",
+    "CadenceFixedRF",
+    "SpeedDS",
+    "CadenceDS"
+  ],
+  "scenarios": [
+    "clean",
+    "bias_m10",
+    "bias_p10",
+    "scale_m10",
+    "scale_p10",
+    "jitter05",
+    "jitter10"
+  ],
+  "perturbation": "Speed only: additive +/-0.10m/s; common scale0.9/1.1; independent bout GaussianSD0.05/0.10m/s from fixedSHA256(participant,visit) seed,shared across all modelseeds/methods. Clip negative speed to0,report counts. Clean untouched. RF bags re-sort by perturbed speed with cadence paired; DS keeps paired bout data.",
+  "noise_scope": "Controlled synthetic scenarios,not empirical camera-error distribution. MoVi2sec pelvis slope differs from Mobilise-D mean stride speed. Cadence left exact is an optimistic extra-input upper bound. One fixed jitter draw,not an estimated expected noise effect. Repeated noisy records are not newpeople.",
+  "comparison": "Primary mean of +/-0.10m/s additive scenarios: cadence-minus-speed within fixed RF and DS,5seed direction; compare accuracy/macrorecall/Brier/extremeerrors/low-functionmiss/FPR and samecohort speed pairs. Also show changes from each model clean in all7conditions. Use unperturbed true speed for fixed matching; do not rematch on noisy input.",
+  "success": "Exploratory target: cadence adds>=0.5percentagepoint accuracy in primary symmetric bias scenarios,with no low-functionmiss increase and FPR increase<=1percentagepoint. Report all3components/5seeds,not select best condition or widen scorebands. Not clinical standard.",
+  "expected": {
+    "pilot_tasks": 2,
+    "main_tasks": 50,
+    "outer_folds": 5,
+    "seeds": [
+      20261030,
+      20262030,
+      20263030,
+      20264030,
+      20265030
+    ],
+    "unique_final_model_references": 200,
+    "new_model_fits": 0,
+    "model_scenario_replays": 1400,
+    "metric_rows": 280,
+    "matched_rows": 280
+  },
+  "verification": "Code/source/modelSHA,person/bout/score links,cleanexactreplay<=1e-12,all7perturbationmodelreplays1400,independentperson-equalmetrics andfixedpairs. No refits because frozen-weight sensitivitytest.",
+  "resources": "CPU4threads single BLASthread,no GPU,no download; estimate5-15min,total arrays<200MB D,small code/protocol/tables C.",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-mobilise-speed-error",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-speed-error-20261101"
+  }
+}

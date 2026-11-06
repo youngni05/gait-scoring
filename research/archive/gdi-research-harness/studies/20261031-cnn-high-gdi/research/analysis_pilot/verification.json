@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "records": 4,
+  "people": 2,
+  "folds": 5,
+  "maximum_prediction_difference": 0.0,
+  "age_weight_sums_match_target": true,
+  "candidate_inference_tested": false,
+  "continuous_walking_validated": false
+}

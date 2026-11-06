@@ -1,0 +1,15 @@
+{
+  "20261030-older44-sppb-timeseries\\candidate-audit\\nmd_opencap_participant_info.csv": "cb4e700230d2c16296907770e7487be4f0f47270e3d0c27a790acfad4f1bc25c",
+  "20261031-opencap-chair\\transition-audit.json": "d184ce82bcf61ef3b6fc84a0c030fac413a717616c6e6fb8c8a50a6646748c99",
+  "20261031-opencap-long-observation\\scout.json": "df0842eb5e7eafe75f1ccf5f04ece8204b3ebda81cf15ce7409d5f1832feef8a",
+  "20261031-opencap-directional-pace\\include283\\input.npz": "b1eeec739426fc4cce26900a06d6f4339dedd93ebc3dd14c4c1abe5447017e74",
+  "20261031-opencap-directional-pace\\include283\\manifest.json": "bc22c44dcf1baec729c190042994392d0d393c11f618d93059fc444060f1e28c",
+  "20261031-opencap-directional-pace\\include283\\splits.json": "53a66e3096a7398cee071257dbe68605fc2163fd470c4dcc2005413dbcb75716",
+  "20261031-opencap-directional-pace\\include283\\person-results.csv": "dcde247dc4b0b66253056d3c1d9ebda6d239faac969d59b12fcfd66249afe558",
+  "20261031-opencap-directional-pace\\include283\\selections.json": "e2fc6c8988bb7797ce2be4ef4d0bbf9d81a51cb0713b057acbbdc2d02da21d5a",
+  "20261031-opencap-directional-pace\\exclude283\\input.npz": "6c46f26a4aba0620ee038672f879044835c6cd1cfd8d9519d73ba566e429b03e",
+  "20261031-opencap-directional-pace\\exclude283\\manifest.json": "ef36798bc6297f8fce7495b94bd86e4d5daed7eaf20c5215e408401dce70feb6",
+  "20261031-opencap-directional-pace\\exclude283\\splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8",
+  "20261031-opencap-directional-pace\\exclude283\\person-results.csv": "82d6adecfc7b4a081bda6ba181490b28792822a6cf6cdcdc1551f91cf9999a0b",
+  "20261031-opencap-directional-pace\\exclude283\\selections.json": "65844c913583f79c1bb38281d2f4f9ed87728ac881df71ee5548d7d7b5b4b064"
+}

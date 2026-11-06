@@ -1,0 +1,40 @@
+{
+  "name": "official_STT_multiwindow_nested692",
+  "seed": 20261028,
+  "pilot_epochs": 3,
+  "batch_size": 128,
+  "learning_rate": 0.0003,
+  "eta_min": 8e-05,
+  "T_0": 40,
+  "T_mult": 1,
+  "optimizer": "Adam",
+  "weight_decay": 0.0,
+  "dropout": 0.0,
+  "joint_embed_dim": 12,
+  "num_heads": 2,
+  "pilot_outer_fold": 0,
+  "pilot_inner_fold": 1,
+  "target_scale": "current_training_pooled_sides_minmax",
+  "loss": "global_mean_one_inverse_record_window_count_weighted_side_MSE",
+  "calibration": "training_only_shared_slope_intercept",
+  "full_training_implemented": true,
+  "official_full_epochs": 200,
+  "proposed_full_selection": "existing_nested_person_weighted_calibrated_MAE",
+  "note": "Same CNN windows, record weights, nested splits and evaluation. STT Adam/200epochs/batch128 retained; not compute matched.",
+  "max_epochs": 200,
+  "selection": "earliest_minimum_inner_person_weighted_calibrated_MAE",
+  "input": "exact_CNN11261_windows_first8_xy",
+  "window_aggregation": "uniform_mean_per_record_side_before_training_only_OLS",
+  "primary_output": "mean_windows_then_training_only_OLS_corrected",
+  "parallel_workers": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ]
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "status": "passed",
+  "tasks": 300,
+  "replayed_models": 3900,
+  "final_max_error": 1.1102230246251565e-16,
+  "inner_max_error": 4.6607129300380024e-07,
+  "tolerance": {
+    "float64": 1e-12,
+    "float32_numpy": 1e-05,
+    "independent_metrics": 1e-10
+  },
+  "refits": [
+    {
+      "tag": "sppb-long-5-f0-s20261030",
+      "model": "SpeedRF",
+      "stage": 0
+    },
+    {
+      "tag": "sppb-long-5-f0-s20261030",
+      "model": "SpeedRF",
+      "stage": 9
+    },
+    {
+      "tag": "sppb-long-5-f0-s20261030",
+      "model": "BoutRF",
+      "stage": 0
+    },
+    {
+      "tag": "sppb-long-5-f0-s20261030",
+      "model": "BoutRF",
+      "stage": 9
+    },
+    {
+      "tag": "sppb-long-5-f0-s20261030",
+      "model": "DeepSets",
+      "stage": 0
+    },
+    {
+      "tag": "sppb-long-5-f0-s20261030",
+      "model": "DeepSets",
+      "stage": 9
+    },
+    {
+      "tag": "sppb-long-5-f0-s20265030",
+      "model": "SpeedRF",
+      "stage": 0
+    },
+    {
+      "tag": "sppb-long-5-f0-s20265030",
+      "model": "SpeedRF",
+      "stage": 9
+    },
+    {
+      "tag": "sppb-long-5-f0-s20265030",
+      "model": "BoutRF",
+      "stage": 0
+    },
+    {
+      "tag": "sppb-long-5-f0-s20265030",
+      "model": "BoutRF",
+      "stage": 9
+    },
+    {
+      "tag": "sppb-long-5-f0-s20265030",
+      "model": "DeepSets",
+      "stage": 0
+    },
+    {
+      "tag": "sppb-long-5-f0-s20265030",
+      "model": "DeepSets",
+      "stage": 9
+    },
+    {
+      "tag": "tug-long-5-f0-s20261030",
+      "model": "SpeedRF",
+      "stage": 0
+    },
+    {
+      "tag": "tug-long-5-f0-s20261030",
+      "model": "SpeedRF",
+      "stage": 9
+    },
+    {
+      "tag": "tug-long-5-f0-s20261030",
+      "model": "BoutRF",
+      "stage": 0
+    },
+    {
+      "tag": "tug-long-5-f0-s20261030",
+      "model": "BoutRF",
+      "stage": 9
+    },
+    {
+      "tag": "tug-long-5-f0-s20261030",
+      "model": "DeepSets",
+      "stage": 0
+    },
+    {
+      "tag": "tug-long-5-f0-s20261030",
+      "model": "DeepSets",
+      "stage": 9
+    },
+    {
+      "tag": "tug-long-5-f0-s20265030",
+      "model": "SpeedRF",
+      "stage": 0
+    },
+    {
+      "tag": "tug-long-5-f0-s20265030",
+      "model": "SpeedRF",
+      "stage": 9
+    },
+    {
+      "tag": "tug-long-5-f0-s20265030",
+      "model": "BoutRF",
+      "stage": 0
+    },
+    {
+      "tag": "tug-long-5-f0-s20265030",
+      "model": "BoutRF",
+      "stage": 9
+    },
+    {
+      "tag": "tug-long-5-f0-s20265030",
+      "model": "DeepSets",
+      "stage": 0
+    },
+    {
+      "tag": "tug-long-5-f0-s20265030",
+      "model": "DeepSets",
+      "stage": 9
+    }
+  ],
+  "metric_rows": 540,
+  "matched_metric_rows": 480,
+  "independent_metric_max_error": 4.440892098500626e-16,
+  "epoch600_count": 0,
+  "seconds": 1562.2024266719818,
+  "analysis_sha256": "d8d30fe7704aabddcdec76873158a83380f1f0fa08b8f372efcaa19d3c2e2c34",
+  "verify_sha256": "5f7f96c83461ee0136f3847d045d892cbfec7f1d2c7df69cd960b9d1aaafd962",
+  "checks": [
+    "source/model hashes",
+    "exact people visits bouts and outer/inner folds",
+    "no person overlap",
+    "training-only normalization",
+    "all final plus saved inner model predictions",
+    "same reference median RF",
+    "inner epoch minimizer",
+    "cross-calibration and thresholds",
+    "selected exact refits",
+    "independent global metrics",
+    "evaluation-only nearest-speed and cohort matching"
+  ],
+  "limits": "fixed development folds reused; matching descriptive with replacement, not external validity or independence of pairs; inner calibration uses epoch-selected OOF predictions"
+}

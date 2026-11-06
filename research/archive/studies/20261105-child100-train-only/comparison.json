@@ -1,0 +1,423 @@
+{
+  "metric": "Eligible measured-GDI side-record errors averaged within person, then equal-person mean. Negative after-minus-before MAE delta is improvement.",
+  "scope": "Five development outer folds only; this is not untouched final evaluation.",
+  "models": {
+    "CNN_refit": {
+      "status": "child_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "side_observations": 2122,
+          "before_mae": 6.866655269796397,
+          "before_bias": 0.14790322182606624
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "side_observations": 255,
+          "before_mae": 9.345523027902365,
+          "before_bias": -8.85261778558619
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "side_observations": 44,
+          "before_mae": 13.926935883288225,
+          "before_bias": -13.926935883288225
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "side_observations": 738,
+          "before_mae": 7.522788339341343,
+          "before_bias": 5.6336271423186135
+        },
+        "age5to12": {
+          "people": 454,
+          "records": 627,
+          "side_observations": 1254,
+          "before_mae": 7.071554654650745,
+          "before_bias": 0.02031722217106827
+        }
+      }
+    },
+    "RF": {
+      "status": "predictions_available",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "side_observations": 2122,
+          "before_mae": 7.181832938236777,
+          "before_bias": 0.20282715394914155,
+          "after_mae": 7.1613461984695945,
+          "after_bias": 0.2978253626036635,
+          "mae_delta": -0.020486739767182287,
+          "paired_person_bootstrap95": [
+            -0.07365992169698317,
+            0.03262756441096266
+          ]
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "side_observations": 255,
+          "before_mae": 12.286610983759678,
+          "before_bias": -12.272899332941442,
+          "after_mae": 12.193128579009302,
+          "after_bias": -12.169735912789843,
+          "mae_delta": -0.09348240475037506,
+          "paired_person_bootstrap95": [
+            -0.29007944207515535,
+            0.09508638534248391
+          ]
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "side_observations": 44,
+          "before_mae": 19.088386709920798,
+          "before_bias": -19.088386709920798,
+          "after_mae": 18.90198811330176,
+          "after_bias": -18.90198811330176,
+          "mae_delta": -0.1863985966190405,
+          "paired_person_bootstrap95": [
+            -0.5771065034879006,
+            0.1598439375972725
+          ]
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "side_observations": 738,
+          "before_mae": 8.151287590485481,
+          "before_bias": 7.533642446553652,
+          "after_mae": 8.2233625198628,
+          "after_bias": 7.592864268683728,
+          "mae_delta": 0.07207492937731823,
+          "paired_person_bootstrap95": [
+            -0.012431844751942768,
+            0.15689617809605233
+          ]
+        },
+        "age5to12": {
+          "people": 454,
+          "records": 627,
+          "side_observations": 1254,
+          "before_mae": 7.395445930128856,
+          "before_bias": 0.2540129458893651,
+          "after_mae": 7.400758140313478,
+          "after_bias": 0.3736673855713645,
+          "mae_delta": 0.005312210184621535,
+          "paired_person_bootstrap95": [
+            -0.06584038845560906,
+            0.07542868272687897
+          ]
+        }
+      }
+    },
+    "STT_refit": {
+      "status": "child_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "side_observations": 2122,
+          "before_mae": 6.9449881808715,
+          "before_bias": 0.07029532314583027
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "side_observations": 255,
+          "before_mae": 10.215969873329751,
+          "before_bias": -9.97590297388095
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "side_observations": 44,
+          "before_mae": 15.995272064551383,
+          "before_bias": -15.995272064551383
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "side_observations": 738,
+          "before_mae": 7.682954494228248,
+          "before_bias": 5.772312037817511
+        },
+        "age5to12": {
+          "people": 454,
+          "records": 627,
+          "side_observations": 1254,
+          "before_mae": 7.171921253511627,
+          "before_bias": 0.026384617392737546
+        }
+      }
+    },
+    "CNN_bag": {
+      "status": "child_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "side_observations": 2122,
+          "before_mae": 6.590389059228339,
+          "before_bias": 0.11283425937512699
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "side_observations": 255,
+          "before_mae": 9.290799903837106,
+          "before_bias": -8.819545789818342
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "side_observations": 44,
+          "before_mae": 14.144258351623202,
+          "before_bias": -14.144258351623202
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "side_observations": 738,
+          "before_mae": 7.155153446183936,
+          "before_bias": 5.6231732210909176
+        },
+        "age5to12": {
+          "people": 454,
+          "records": 627,
+          "side_observations": 1254,
+          "before_mae": 6.785011494293937,
+          "before_bias": 0.2029787965002707
+        }
+      }
+    },
+    "STT_bag": {
+      "status": "child_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "side_observations": 2122,
+          "before_mae": 6.752031430243927,
+          "before_bias": 0.09386516490331011
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "side_observations": 255,
+          "before_mae": 10.039643372840443,
+          "before_bias": -9.808794414920273
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "side_observations": 44,
+          "before_mae": 15.660030954685563,
+          "before_bias": -15.660030954685563
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "side_observations": 738,
+          "before_mae": 7.383615238230629,
+          "before_bias": 5.771768245598477
+        },
+        "age5to12": {
+          "people": 454,
+          "records": 627,
+          "side_observations": 1254,
+          "before_mae": 7.005409493071571,
+          "before_bias": 0.1720937013002603
+        }
+      }
+    },
+    "bilateral_refit": {
+      "status": "child_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "side_observations": 2122,
+          "before_mae": 7.003698215105391,
+          "before_bias": 0.09750684370298619
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "side_observations": 255,
+          "before_mae": 9.977468214318701,
+          "before_bias": -9.772616243874047
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "side_observations": 44,
+          "before_mae": 15.07975068009416,
+          "before_bias": -15.07975068009416
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "side_observations": 738,
+          "before_mae": 7.8222873619624345,
+          "before_bias": 5.722754354540795
+        },
+        "age5to12": {
+          "people": 454,
+          "records": 627,
+          "side_observations": 1254,
+          "before_mae": 7.188688796761649,
+          "before_bias": 0.05458522344036168
+        }
+      }
+    },
+    "fusion": {
+      "status": "child_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "side_observations": 2122,
+          "before_mae": 6.51581659390443,
+          "before_bias": 0.09763149206692788
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "side_observations": 255,
+          "before_mae": 9.757169941110112,
+          "before_bias": -9.502380811825656
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "side_observations": 44,
+          "before_mae": 15.07944706951184,
+          "before_bias": -15.07944706951184
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "side_observations": 738,
+          "before_mae": 7.177689868191158,
+          "before_bias": 5.780126501610145
+        },
+        "age5to12": {
+          "people": 454,
+          "records": 627,
+          "side_observations": 1254,
+          "before_mae": 6.751425957418188,
+          "before_bias": 0.20230647210960084
+        }
+      }
+    }
+  },
+  "provenance": [
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold0\\predictions.npz",
+      "sha256": "ce6a9e9c1b41dad349f88a065724fd3f54d770f4deb49308bff9a4553950963b"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold1\\predictions.npz",
+      "sha256": "b6915af65735af07343f54556af5f241afac7a4456a471b0eca7b897dbb332da"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold2\\predictions.npz",
+      "sha256": "ab6a969dc19e27b9288ba4b5f13e611548b73483c7c1a6b6ca41dfabb4368e4d"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold3\\predictions.npz",
+      "sha256": "63f48aade10000e8c7bc6ba4b37eb2b2bf2cc707da785c841e246e36cfaab703"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold4\\predictions.npz",
+      "sha256": "75bf5e28d7b20792984671dc829a1cd359f56a6ee31d18d287fbfd129ade3fa2"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold0\\predictions.npz",
+      "sha256": "074d39024219db4128c527700685f156570add54af5010968758eb3c2305b2de"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold1\\predictions.npz",
+      "sha256": "288e9d645323a29ffd7ebc98d306c4199fd2701abff56b58f7732602cf1eba7a"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold2\\predictions.npz",
+      "sha256": "8d95ee284453d34c7aa48c04b5cf4fa98551307a7462c55dcbb3281dce0913fc"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold3\\predictions.npz",
+      "sha256": "a353bf81273c0a0b610f7fe7b599358cf4a1b0444ae466cd48aa5afb2a6af28d"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold4\\predictions.npz",
+      "sha256": "0e205fc702984d9d54f6a88ecf09f8da06ba9699fe06c5c5dcbded1e82da4cf4"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold0\\predictions.npz",
+      "sha256": "fa0a99bd79438fe60964b5983300fd2adb150c45699bffd4224e9ef28f9fa628"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold1\\predictions.npz",
+      "sha256": "cc62657b6b6399fa5d5109f7796d4b6f101b15e991bb63bfc10cac854f7c555a"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold2\\predictions.npz",
+      "sha256": "64ba5b2ebcf5c3df41ef86823382b58820d042ddba6cc6458e347fec446492ca"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold3\\predictions.npz",
+      "sha256": "67b3b531578dafacb4bea19295d66c6f9354957fb9e68feca2b247e02c467d7a"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold4\\predictions.npz",
+      "sha256": "4b4b22194d4f21ab93e82e9f553e725eb14bb7ae75857d9f654ef8437cf08e6c"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold0\\predictions.npz",
+      "sha256": "59930d0c1dee971725becafd1330156742fcb94dfb463804d4fc6a653b05c4e4"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold1\\predictions.npz",
+      "sha256": "94917de880e437a68db7a11efd9eb28200b88d1acd2d012301a809356817bb48"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold2\\predictions.npz",
+      "sha256": "2bed19b17fc034f1e917b02e7f52e173af61345da531372a3d0726db596c1f3d"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold3\\predictions.npz",
+      "sha256": "05d38803874fe5a67a8d068d245322be7bd06f331d38321214f16859a6e50e30"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold4\\predictions.npz",
+      "sha256": "e8f91e067d7a7055092535d19e1b8e2140b01471d7041dc8820bee9b10135ba7"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\child100-train-only-20261105\\runs\\mixed\\RF\\fold0\\predictions.npz",
+      "sha256": "f854d313a8145efb9a38fd6b5c680f1943097c01fa4ed6b17298a55fea18e5ae"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\child100-train-only-20261105\\runs\\mixed\\RF\\fold1\\predictions.npz",
+      "sha256": "a2a4fa17b3e18ed849adcb5f28a7a8e44ac87ebdf4707c5e21e5c31947207380"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\child100-train-only-20261105\\runs\\mixed\\RF\\fold2\\predictions.npz",
+      "sha256": "c1fa078e1f2231d467e5a0eb1214f3d88f44987410d5b294f9ac4836081ae422"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\child100-train-only-20261105\\runs\\mixed\\RF\\fold3\\predictions.npz",
+      "sha256": "3a1e585ab2071123b311540c72f4d8442640900ba96877dd12e8c3f52974e4ec"
+    },
+    {
+      "path": "D:\\gait-research-data\\D_P\\child100-train-only-20261105\\runs\\mixed\\RF\\fold4\\predictions.npz",
+      "sha256": "b557381346b38991f125bce54a3ddd79663363e93a5d3b24a0dc0aeca2b3c0b6"
+    }
+  ]
+}

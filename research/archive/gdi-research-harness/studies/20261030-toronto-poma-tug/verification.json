@@ -1,0 +1,20 @@
+{
+  "verified": true,
+  "checks": [
+    "source, configuration, code, weight and output fingerprints unchanged",
+    "all person labels and feature averaging independently rejoined",
+    "all outer and inner fits have disjoint participant sets",
+    "every CSV/NPZ prediction, baseline, MAE, RMSE and R2 independently recalculated",
+    "every saved real input rebuilt from original CSV at 30Hz without extrapolation",
+    "synthetic missing-frame, time-gap and invalid-confidence cases cannot be bridged",
+    "three real frozen-encoder feature vectors reproduced exactly"
+  ],
+  "real_people": 12,
+  "real_windows": 59,
+  "prediction_rows_checked": 96,
+  "fit_trace_entries_checked": 840,
+  "synthetic_tests_are_not_clinical_data": true,
+  "original_sources_and_encoder_unchanged": true,
+  "results_sha256": "ce02e3a927d5b3312db6d4ff5ea2b2fef236afdb54141d0be925b8ea43467497",
+  "verification_code_sha256": "06f623862c7565acaac691e1c77c0c7023e890f56872d10d4d7c54eb42fd523f"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS_LOCAL_REPRODUCIBILITY",
+  "saved_fits": 2112,
+  "final_models": 132,
+  "max_saved_prediction_error": 0.0,
+  "max_closed_form_prediction_error": 4.618527782440651e-14,
+  "max_CV_recalculation_error": 3.4283687000424834e-13,
+  "max_stride_speed_identity_error": 9.592326932761353e-14,
+  "max_PCI_recalculation_error": 7.105427357601002e-15,
+  "source_files_rehashed": 878,
+  "protocol_sha256": "60515aef366fb2f2b4334482bbd3eeb4438958fc98c2a8b89b92f026ae07535e",
+  "scope": "Source integrity, joins as recorded, person splits, inner selection, train-only scales, saved-fit replay, metric/bootstrap recomputation, stride feature algebra. Does not establish cross-cohort independence or IMU measurement accuracy.",
+  "cross_cohort_independence": "UNRESOLVED",
+  "camera_GDI_applicability": false
+}

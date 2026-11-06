@@ -1,0 +1,1796 @@
+{
+  "summary": {
+    "PG1": {
+      "speed": {
+        "registered_people": 14,
+        "baseline_available_people": 14,
+        "paired_people": 14,
+        "paired_ids": [
+          1,
+          8,
+          18,
+          27,
+          31,
+          45,
+          49,
+          54,
+          61,
+          72,
+          80,
+          85,
+          89,
+          90
+        ],
+        "baseline_MAE": 0.09061590494935581,
+        "standing_MAE": 0.07930241100762218,
+        "MAE_change_standing_minus_baseline": -0.011313493941733628,
+        "paired_change_CI95": [
+          -0.022088341903227966,
+          0.0013843411059961158
+        ],
+        "baseline_bias": 0.08547093579493574,
+        "standing_bias": 0.07171153869261979,
+        "baseline_p95AE": 0.14262314299948664,
+        "standing_p95AE": 0.1507987064445147,
+        "improved_people": 10,
+        "worse_people": 4,
+        "interpretation": "inconclusive"
+      },
+      "step_length": {
+        "registered_people": 14,
+        "baseline_available_people": 8,
+        "paired_people": 8,
+        "paired_ids": [
+          8,
+          27,
+          45,
+          54,
+          61,
+          72,
+          85,
+          89
+        ],
+        "baseline_MAE": 0.05529515362391936,
+        "standing_MAE": 0.04959008717871863,
+        "MAE_change_standing_minus_baseline": -0.005705066445200732,
+        "paired_change_CI95": [
+          -0.013834302455497105,
+          0.0036489512283577885
+        ],
+        "baseline_bias": 0.05363846819512626,
+        "standing_bias": 0.04236392220264251,
+        "baseline_p95AE": 0.09353605625049888,
+        "standing_p95AE": 0.07726439122166659,
+        "improved_people": 5,
+        "worse_people": 3,
+        "interpretation": "inconclusive"
+      },
+      "stride_length": {
+        "registered_people": 14,
+        "baseline_available_people": 9,
+        "paired_people": 9,
+        "paired_ids": [
+          8,
+          27,
+          45,
+          49,
+          54,
+          61,
+          72,
+          85,
+          89
+        ],
+        "baseline_MAE": 0.08983704974356738,
+        "standing_MAE": 0.08338202870738197,
+        "MAE_change_standing_minus_baseline": -0.0064550210361854115,
+        "paired_change_CI95": [
+          -0.025408675463436076,
+          0.014156624531862139
+        ],
+        "baseline_bias": 0.08879579465076752,
+        "standing_bias": 0.06475571421955822,
+        "baseline_p95AE": 0.1542914964772441,
+        "standing_p95AE": 0.1261714950692137,
+        "improved_people": 5,
+        "worse_people": 4,
+        "interpretation": "inconclusive"
+      }
+    },
+    "PG2": {
+      "speed": {
+        "registered_people": 14,
+        "baseline_available_people": 14,
+        "paired_people": 6,
+        "paired_ids": [
+          1,
+          8,
+          49,
+          80,
+          85,
+          90
+        ],
+        "baseline_MAE": 0.7179562204618447,
+        "standing_MAE": 0.703414688100522,
+        "MAE_change_standing_minus_baseline": -0.014541532361322737,
+        "paired_change_CI95": [
+          -0.022173061945394718,
+          -0.006638344108612415
+        ],
+        "baseline_bias": -0.7179562204618447,
+        "standing_bias": -0.703414688100522,
+        "baseline_p95AE": 0.8520397001877118,
+        "standing_p95AE": 0.831996890725079,
+        "improved_people": 5,
+        "worse_people": 1,
+        "interpretation": "reduction_supported"
+      },
+      "step_length": {
+        "registered_people": 14,
+        "baseline_available_people": 3,
+        "paired_people": 1,
+        "paired_ids": [
+          80
+        ],
+        "baseline_MAE": 0.5792912636977556,
+        "standing_MAE": 0.5792530884125155,
+        "MAE_change_standing_minus_baseline": -3.817528524008296e-05,
+        "paired_change_CI95": null,
+        "baseline_bias": -0.5792912636977556,
+        "standing_bias": -0.5792530884125155,
+        "baseline_p95AE": 0.5792912636977556,
+        "standing_p95AE": 0.5792530884125155,
+        "improved_people": 1,
+        "worse_people": 0,
+        "interpretation": "inconclusive"
+      },
+      "stride_length": {
+        "registered_people": 14,
+        "baseline_available_people": 2,
+        "paired_people": 0,
+        "paired_ids": [],
+        "baseline_MAE": null,
+        "standing_MAE": null,
+        "MAE_change_standing_minus_baseline": null,
+        "paired_change_CI95": null,
+        "baseline_bias": null,
+        "standing_bias": null,
+        "baseline_p95AE": null,
+        "standing_p95AE": null,
+        "improved_people": 0,
+        "worse_people": 0,
+        "interpretation": "inconclusive"
+      }
+    }
+  },
+  "calibrations": [
+    {
+      "key": "s01_PG1_primary2s_1349",
+      "subject": 1,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.84,
+      "standing_span_pixels": 359.62667763233185,
+      "standing_span_cv": 0.0030746973795146636,
+      "standing_scale": 0.005116416869054258,
+      "walking_scale": 0.004886640117729899,
+      "scale_ratio": 1.047021418763922,
+      "median_heel_visibility": [
+        0.9321022927761078,
+        0.9078544080257416
+      ],
+      "standing_hip_xy": [
+        0.5395023996631304,
+        0.5485702022910118
+      ],
+      "walking_hip_xy": [
+        0.5712570287287235,
+        0.5631640821695327
+      ]
+    },
+    {
+      "key": "s01_PG2_primary2s_1349",
+      "subject": 1,
+      "camera": "PG2",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.84,
+      "standing_span_pixels": 389.5462095737457,
+      "standing_span_cv": 0.004419252150339866,
+      "standing_scale": 0.004723444753867298,
+      "walking_scale": 0.004734208584627623,
+      "scale_ratio": 0.997726371669538,
+      "median_heel_visibility": [
+        0.5823023915290833,
+        0.6700953245162964
+      ],
+      "standing_hip_xy": [
+        0.5241393849253655,
+        0.4160438321530819
+      ],
+      "walking_hip_xy": [
+        0.646972709397475,
+        0.41948713436722757
+      ]
+    },
+    {
+      "key": "s08_PG1_primary2s_2030",
+      "subject": 8,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.6,
+      "standing_span_pixels": 312.63123750686646,
+      "standing_span_cv": 0.002081631006461487,
+      "standing_scale": 0.005117850707304508,
+      "walking_scale": 0.005060291488770441,
+      "scale_ratio": 1.0113746843757516,
+      "median_heel_visibility": [
+        0.9019900560379028,
+        0.8734426200389862
+      ],
+      "standing_hip_xy": [
+        0.5550443068146705,
+        0.5687585244576137
+      ],
+      "walking_hip_xy": [
+        0.4499329779297113,
+        0.5879084661602973
+      ]
+    },
+    {
+      "key": "s08_PG2_primary2s_2030",
+      "subject": 8,
+      "camera": "PG2",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.6,
+      "standing_span_pixels": 338.4933829307556,
+      "standing_span_cv": 0.00315693926676489,
+      "standing_scale": 0.004726827999256064,
+      "walking_scale": 0.00414581608969595,
+      "scale_ratio": 1.1401441590726047,
+      "median_heel_visibility": [
+        0.7456156015396118,
+        0.8159708976745605
+      ],
+      "standing_hip_xy": [
+        0.47875880847374597,
+        0.45248299340407055
+      ],
+      "walking_hip_xy": [
+        0.5643031075596809,
+        0.48675750742355983
+      ]
+    },
+    {
+      "key": "s18_PG1_primary2s_1135",
+      "subject": 18,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.7,
+      "standing_span_pixels": 353.7221610546112,
+      "standing_span_cv": 0.003589390902997617,
+      "standing_scale": 0.004806031928934011,
+      "walking_scale": 0.004962498471472226,
+      "scale_ratio": 0.9684702084166494,
+      "median_heel_visibility": [
+        0.9184316098690033,
+        0.8839212656021118
+      ],
+      "standing_hip_xy": [
+        0.5035278424620628,
+        0.5676506062348684
+      ],
+      "walking_hip_xy": [
+        0.44836063459515574,
+        0.5707051912943523
+      ]
+    },
+    {
+      "key": "s18_PG2_primary2s_1135",
+      "subject": 18,
+      "camera": "PG2",
+      "standing_quality": false,
+      "reason": "standing_pose_or_heel_visibility",
+      "height": 1.7,
+      "standing_span_pixels": 391.4280652999878,
+      "standing_span_cv": 0.003282006971422792,
+      "standing_scale": null,
+      "walking_scale": 0.0042109037852342554,
+      "scale_ratio": null,
+      "median_heel_visibility": [
+        0.41505570709705353,
+        0.6985249519348145
+      ],
+      "standing_hip_xy": [
+        0.5384922906756401,
+        0.442832833280166
+      ],
+      "walking_hip_xy": [
+        0.5437015483776728,
+        0.4747207038104534
+      ]
+    },
+    {
+      "key": "s27_PG1_primary2s_3474",
+      "subject": 27,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.63,
+      "standing_span_pixels": 344.7976291179657,
+      "standing_span_cv": 0.0015499551084926448,
+      "standing_scale": 0.004727410696441673,
+      "walking_scale": 0.004896330520431245,
+      "scale_ratio": 0.9655007309484708,
+      "median_heel_visibility": [
+        0.9354003369808197,
+        0.9268722832202911
+      ],
+      "standing_hip_xy": [
+        0.4740635506808758,
+        0.5670898800094922
+      ],
+      "walking_hip_xy": [
+        0.5342369591196378,
+        0.5668098211288453
+      ]
+    },
+    {
+      "key": "s27_PG2_primary2s_3474",
+      "subject": 27,
+      "camera": "PG2",
+      "standing_quality": false,
+      "reason": "standing_pose_or_heel_visibility",
+      "height": 1.63,
+      "standing_span_pixels": 391.97768568992615,
+      "standing_span_cv": 0.0023081742160679275,
+      "standing_scale": null,
+      "walking_scale": 0.004303832273741228,
+      "scale_ratio": null,
+      "median_heel_visibility": [
+        0.31759679317474365,
+        0.6247537434101105
+      ],
+      "standing_hip_xy": [
+        0.5334595426917076,
+        0.4508342814942201
+      ],
+      "walking_hip_xy": [
+        0.5459076330065727,
+        0.45115845998128257
+      ]
+    },
+    {
+      "key": "s31_PG1_primary2s_3307",
+      "subject": 31,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.75,
+      "standing_span_pixels": 332.1572631597519,
+      "standing_span_cv": 0.0019217679566421216,
+      "standing_scale": 0.005268588690045694,
+      "walking_scale": 0.005376665257312599,
+      "scale_ratio": 0.9798989592815147,
+      "median_heel_visibility": [
+        0.835840493440628,
+        0.8328633010387421
+      ],
+      "standing_hip_xy": [
+        0.5299076333642005,
+        0.5522379954655965
+      ],
+      "walking_hip_xy": [
+        0.5274416282773018,
+        0.5655767465631167
+      ]
+    },
+    {
+      "key": "s31_PG2_primary2s_3307",
+      "subject": 31,
+      "camera": "PG2",
+      "standing_quality": false,
+      "reason": "standing_pose_or_heel_visibility",
+      "height": 1.75,
+      "standing_span_pixels": 371.1605966091156,
+      "standing_span_cv": 0.0029537376529324127,
+      "standing_scale": null,
+      "walking_scale": 0.004848161559061563,
+      "scale_ratio": null,
+      "median_heel_visibility": [
+        0.3368542641401291,
+        0.5145315825939178
+      ],
+      "standing_hip_xy": [
+        0.49278751264015835,
+        0.4480189827581247
+      ],
+      "walking_hip_xy": [
+        0.5393234205742677,
+        0.4555395486454169
+      ]
+    },
+    {
+      "key": "s45_PG1_primary2s_484",
+      "subject": 45,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.65,
+      "standing_span_pixels": 336.00760102272034,
+      "standing_span_cv": 0.0024107167998903734,
+      "standing_scale": 0.004910603197599775,
+      "walking_scale": 0.005060113307438334,
+      "scale_ratio": 0.9704532090973574,
+      "median_heel_visibility": [
+        0.8502206802368164,
+        0.8407782316207886
+      ],
+      "standing_hip_xy": [
+        0.45895569225152333,
+        0.5740725229183833
+      ],
+      "walking_hip_xy": [
+        0.4637485978504022,
+        0.5917826876044273
+      ]
+    },
+    {
+      "key": "s45_PG2_primary2s_484",
+      "subject": 45,
+      "camera": "PG2",
+      "standing_quality": false,
+      "reason": "standing_pose_or_heel_visibility",
+      "height": 1.65,
+      "standing_span_pixels": 377.37014293670654,
+      "standing_span_cv": 0.0019343348244774457,
+      "standing_scale": null,
+      "walking_scale": 0.004471637606698771,
+      "scale_ratio": null,
+      "median_heel_visibility": [
+        0.2765801101922989,
+        0.5141089558601379
+      ],
+      "standing_hip_xy": [
+        0.5663107802470525,
+        0.47630788187185924
+      ],
+      "walking_hip_xy": [
+        0.5936622768640518,
+        0.4769508754213651
+      ]
+    },
+    {
+      "key": "s49_PG1_primary2s_1738",
+      "subject": 49,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.55,
+      "standing_span_pixels": 306.589338183403,
+      "standing_span_cv": 0.004668338504398351,
+      "standing_scale": 0.00505562264227461,
+      "walking_scale": 0.005222786382374938,
+      "scale_ratio": 0.9679933798049932,
+      "median_heel_visibility": [
+        0.9220273196697235,
+        0.9090909659862518
+      ],
+      "standing_hip_xy": [
+        0.5433203925689062,
+        0.575120159983635
+      ],
+      "walking_hip_xy": [
+        0.41231026152769723,
+        0.5918188119928042
+      ]
+    },
+    {
+      "key": "s49_PG2_primary2s_1738",
+      "subject": 49,
+      "camera": "PG2",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.55,
+      "standing_span_pixels": 342.95952022075653,
+      "standing_span_cv": 0.005571685341953486,
+      "standing_scale": 0.004519483812556929,
+      "walking_scale": 0.004235770657562704,
+      "scale_ratio": 1.06698029188329,
+      "median_heel_visibility": [
+        0.7962555885314941,
+        0.9759271144866943
+      ],
+      "standing_hip_xy": [
+        0.5007994922498862,
+        0.4674852649370829
+      ],
+      "walking_hip_xy": [
+        0.5571660185853641,
+        0.49606304441889126
+      ]
+    },
+    {
+      "key": "s54_PG1_primary2s_992",
+      "subject": 54,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.65,
+      "standing_span_pixels": 365.4180318117142,
+      "standing_span_cv": 0.004348230500398782,
+      "standing_scale": 0.0045153765177362165,
+      "walking_scale": 0.0046700818563986096,
+      "scale_ratio": 0.9668730991405585,
+      "median_heel_visibility": [
+        0.9267711937427521,
+        0.8957682251930237
+      ],
+      "standing_hip_xy": [
+        0.5355484281977018,
+        0.5428027202685674
+      ],
+      "walking_hip_xy": [
+        0.5090409688651562,
+        0.563640969991684
+      ]
+    },
+    {
+      "key": "s54_PG2_primary2s_992",
+      "subject": 54,
+      "camera": "PG2",
+      "standing_quality": false,
+      "reason": "standing_pose_or_heel_visibility",
+      "height": 1.65,
+      "standing_span_pixels": 388.7289226055145,
+      "standing_span_cv": 0.004309604369193308,
+      "standing_scale": null,
+      "walking_scale": 0.004116152300157398,
+      "scale_ratio": null,
+      "median_heel_visibility": [
+        0.36178557574748993,
+        0.6839099526405334
+      ],
+      "standing_hip_xy": [
+        0.5588683237632116,
+        0.41507191906372704
+      ],
+      "walking_hip_xy": [
+        0.5691904683907827,
+        0.43271804178754486
+      ]
+    },
+    {
+      "key": "s61_PG1_primary2s_1851",
+      "subject": 61,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.67,
+      "standing_span_pixels": 322.55352437496185,
+      "standing_span_cv": 0.0029826427603282866,
+      "standing_scale": 0.005177435289960308,
+      "walking_scale": 0.0052753084384202864,
+      "scale_ratio": 0.9814469334632332,
+      "median_heel_visibility": [
+        0.9107594192028046,
+        0.8730886578559875
+      ],
+      "standing_hip_xy": [
+        0.5430269713203112,
+        0.5520430545012156
+      ],
+      "walking_hip_xy": [
+        0.4155840219308933,
+        0.5702483271559079
+      ]
+    },
+    {
+      "key": "s61_PG2_primary2s_1851",
+      "subject": 61,
+      "camera": "PG2",
+      "standing_quality": false,
+      "reason": "standing_pose_or_heel_visibility",
+      "height": 1.67,
+      "standing_span_pixels": 354.4019490480423,
+      "standing_span_cv": 0.0038262704330431353,
+      "standing_scale": null,
+      "walking_scale": 0.004159508558944721,
+      "scale_ratio": null,
+      "median_heel_visibility": [
+        0.44325031340122223,
+        0.7093967795372009
+      ],
+      "standing_hip_xy": [
+        0.5061302728950977,
+        0.4392211906611919
+      ],
+      "walking_hip_xy": [
+        0.5258743474880855,
+        0.47648185268044474
+      ]
+    },
+    {
+      "key": "s72_PG1_primary2s_3761",
+      "subject": 72,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.58,
+      "standing_span_pixels": 302.6352882385254,
+      "standing_span_cv": 0.010875771656434965,
+      "standing_scale": 0.005220805574909379,
+      "walking_scale": 0.005378451224441656,
+      "scale_ratio": 0.9706893968256369,
+      "median_heel_visibility": [
+        0.9266996085643768,
+        0.9081124067306519
+      ],
+      "standing_hip_xy": [
+        0.5549546976884207,
+        0.5925095756848653
+      ],
+      "walking_hip_xy": [
+        0.42588891424238684,
+        0.5976186906298001
+      ]
+    },
+    {
+      "key": "s72_PG2_primary2s_3761",
+      "subject": 72,
+      "camera": "PG2",
+      "standing_quality": false,
+      "reason": "standing_pose_or_heel_visibility",
+      "height": 1.58,
+      "standing_span_pixels": 321.3683769106865,
+      "standing_span_cv": 0.013770109494374374,
+      "standing_scale": null,
+      "walking_scale": 0.004210118657903559,
+      "scale_ratio": null,
+      "median_heel_visibility": [
+        0.3445204049348831,
+        0.5257287919521332
+      ],
+      "standing_hip_xy": [
+        0.544427564740181,
+        0.45906631698211037
+      ],
+      "walking_hip_xy": [
+        0.5352662625412147,
+        0.50712042649587
+      ]
+    },
+    {
+      "key": "s80_PG1_primary2s_2562",
+      "subject": 80,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.55,
+      "standing_span_pixels": 352.91278660297394,
+      "standing_span_cv": 0.002496633740821723,
+      "standing_scale": 0.00439201995178414,
+      "walking_scale": 0.004371201262605818,
+      "scale_ratio": 1.0047626928909494,
+      "median_heel_visibility": [
+        0.8493864238262177,
+        0.8380008339881897
+      ],
+      "standing_hip_xy": [
+        0.5439229483405749,
+        0.5437685991326968
+      ],
+      "walking_hip_xy": [
+        0.43464258710543313,
+        0.5587197149793307
+      ]
+    },
+    {
+      "key": "s80_PG2_primary2s_2562",
+      "subject": 80,
+      "camera": "PG2",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.55,
+      "standing_span_pixels": 378.333243727684,
+      "standing_span_cv": 0.003293842092467392,
+      "standing_scale": 0.004096917269886164,
+      "walking_scale": 0.0037319326526452506,
+      "scale_ratio": 1.0978004297537918,
+      "median_heel_visibility": [
+        0.507861465215683,
+        0.6171153783798218
+      ],
+      "standing_hip_xy": [
+        0.5415426040689151,
+        0.4128668688237667
+      ],
+      "walking_hip_xy": [
+        0.5862013349930445,
+        0.45315931737422943
+      ]
+    },
+    {
+      "key": "s85_PG1_primary2s_2898",
+      "subject": 85,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.74,
+      "standing_span_pixels": 328.6241054534912,
+      "standing_span_cv": 0.005538563609517036,
+      "standing_scale": 0.005294803306041269,
+      "walking_scale": 0.0052620847665341116,
+      "scale_ratio": 1.0062177902787204,
+      "median_heel_visibility": [
+        0.8786235153675079,
+        0.9049600958824158
+      ],
+      "standing_hip_xy": [
+        0.5256588784356911,
+        0.5558640018105507
+      ],
+      "walking_hip_xy": [
+        0.4277462131033341,
+        0.5751926978429158
+      ]
+    },
+    {
+      "key": "s85_PG2_primary2s_2898",
+      "subject": 85,
+      "camera": "PG2",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.74,
+      "standing_span_pixels": 367.8710639476776,
+      "standing_span_cv": 0.004777497312050622,
+      "standing_scale": 0.00472991808958228,
+      "walking_scale": 0.004353185806243258,
+      "scale_ratio": 1.0865417420958048,
+      "median_heel_visibility": [
+        0.5055103600025177,
+        0.7360296845436096
+      ],
+      "standing_hip_xy": [
+        0.49945119122664133,
+        0.4451051168143749
+      ],
+      "walking_hip_xy": [
+        0.5551999221245448,
+        0.4796950802206993
+      ]
+    },
+    {
+      "key": "s89_PG1_primary2s_3577",
+      "subject": 89,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.65,
+      "standing_span_pixels": 323.45024943351746,
+      "standing_span_cv": 0.0028315568336176743,
+      "standing_scale": 0.005101248191614531,
+      "walking_scale": 0.005240268946674553,
+      "scale_ratio": 0.9734706831892198,
+      "median_heel_visibility": [
+        0.90585657954216,
+        0.9185943603515625
+      ],
+      "standing_hip_xy": [
+        0.5293722445766131,
+        0.5703998590509097
+      ],
+      "walking_hip_xy": [
+        0.531900521616141,
+        0.5794296801090241
+      ]
+    },
+    {
+      "key": "s89_PG2_primary2s_3577",
+      "subject": 89,
+      "camera": "PG2",
+      "standing_quality": false,
+      "reason": "standing_pose_or_heel_visibility",
+      "height": 1.65,
+      "standing_span_pixels": 353.6013811826706,
+      "standing_span_cv": 0.0035396562858840156,
+      "standing_scale": null,
+      "walking_scale": 0.004599131696949017,
+      "scale_ratio": null,
+      "median_heel_visibility": [
+        0.47949711978435516,
+        0.7119380533695221
+      ],
+      "standing_hip_xy": [
+        0.5388330698013306,
+        0.4489227257668972
+      ],
+      "walking_hip_xy": [
+        0.5481774722536404,
+        0.4560221366584301
+      ]
+    },
+    {
+      "key": "s90_PG1_primary2s_3114",
+      "subject": 90,
+      "camera": "PG1",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.65,
+      "standing_span_pixels": 321.3716447353363,
+      "standing_span_cv": 0.0028136787926264658,
+      "standing_scale": 0.005134242634750329,
+      "walking_scale": 0.005270529617620712,
+      "scale_ratio": 0.9741416911092311,
+      "median_heel_visibility": [
+        0.9592686593532562,
+        0.9479539096355438
+      ],
+      "standing_hip_xy": [
+        0.5332067588965098,
+        0.5693462828795115
+      ],
+      "walking_hip_xy": [
+        0.3594621866941452,
+        0.579186316827933
+      ]
+    },
+    {
+      "key": "s90_PG2_primary2s_3114",
+      "subject": 90,
+      "camera": "PG2",
+      "standing_quality": true,
+      "reason": null,
+      "height": 1.65,
+      "standing_span_pixels": 351.9691228866577,
+      "standing_span_cv": 0.015916578478814176,
+      "standing_scale": 0.004687911219221745,
+      "walking_scale": 0.003961430582922778,
+      "scale_ratio": 1.183388455531881,
+      "median_heel_visibility": [
+        0.5699138343334198,
+        0.7662840485572815
+      ],
+      "standing_hip_xy": [
+        0.5039138431350391,
+        0.45120553771654764
+      ],
+      "walking_hip_xy": [
+        0.5384649490316709,
+        0.5083312307794888
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "key": "s01_PG1_primary2s_1349",
+      "subject": 1,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.8338097433372504,
+      "baseline": 0.9488220062979918,
+      "standing": 0.9934369631885543,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s01_PG1_primary2s_1349",
+      "subject": 1,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s01_PG1_primary2s_1349",
+      "subject": 1,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s01_PG2_primary2s_1349",
+      "subject": 1,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.8338097433372504,
+      "baseline": 0.1883515938198736,
+      "standing": 0.18792335230007706,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s01_PG2_primary2s_1349",
+      "subject": 1,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s01_PG2_primary2s_1349",
+      "subject": 1,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s08_PG1_primary2s_2030",
+      "subject": 8,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 1.0341832077533477,
+      "baseline": 1.1354143059583806,
+      "standing": 1.1483292853243703,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s08_PG1_primary2s_2030",
+      "subject": 8,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5102542512144178,
+      "baseline": 0.5617319346265404,
+      "standing": 0.5681214580866976,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s08_PG1_primary2s_2030",
+      "subject": 8,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.1205795126194569,
+      "baseline": 1.1864109494692858,
+      "standing": 1.1999059995594348,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s08_PG2_primary2s_2030",
+      "subject": 8,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 1.0341832077533477,
+      "baseline": 0.180593800404471,
+      "standing": 0.20590296669588143,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s08_PG2_primary2s_2030",
+      "subject": 8,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5102542512144178,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s08_PG2_primary2s_2030",
+      "subject": 8,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.1205795126194569,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s18_PG1_primary2s_1135",
+      "subject": 18,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.82475090455439,
+      "baseline": 0.8778852764689027,
+      "standing": 0.8502057366677461,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s18_PG1_primary2s_1135",
+      "subject": 18,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s18_PG1_primary2s_1135",
+      "subject": 18,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s18_PG2_primary2s_1135",
+      "subject": 18,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.82475090455439,
+      "baseline": 0.15678038001333094,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s18_PG2_primary2s_1135",
+      "subject": 18,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s18_PG2_primary2s_1135",
+      "subject": 18,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s27_PG1_primary2s_3474",
+      "subject": 27,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.9026141622232202,
+      "baseline": 0.9542039099956428,
+      "standing": 0.9212845725746819,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s27_PG1_primary2s_3474",
+      "subject": 27,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5351889871746858,
+      "baseline": 0.5285622454595134,
+      "standing": 0.5103272343429252,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s27_PG1_primary2s_3474",
+      "subject": 27,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.1346107950623394,
+      "baseline": 1.1305335402346446,
+      "standing": 1.0915309594583118,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s27_PG2_primary2s_3474",
+      "subject": 27,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.9026141622232202,
+      "baseline": 0.1392384978219265,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s27_PG2_primary2s_3474",
+      "subject": 27,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5351889871746858,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s27_PG2_primary2s_3474",
+      "subject": 27,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.1346107950623394,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s31_PG1_primary2s_3307",
+      "subject": 31,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.6017432857907105,
+      "baseline": 0.690739792790875,
+      "standing": 0.6768552040901076,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s31_PG1_primary2s_3307",
+      "subject": 31,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s31_PG1_primary2s_3307",
+      "subject": 31,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s31_PG2_primary2s_3307",
+      "subject": 31,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.6017432857907105,
+      "baseline": 0.10875220873452317,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s31_PG2_primary2s_3307",
+      "subject": 31,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s31_PG2_primary2s_3307",
+      "subject": 31,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": null,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s45_PG1_primary2s_484",
+      "subject": 45,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.9712242531350204,
+      "baseline": 1.0837126486165487,
+      "standing": 1.0516924175893265,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s45_PG1_primary2s_484",
+      "subject": 45,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5162524335027112,
+      "baseline": 0.5453100830371377,
+      "standing": 0.5291979200365368,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s45_PG1_primary2s_484",
+      "subject": 45,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.136256600484015,
+      "baseline": 1.235543299252192,
+      "standing": 1.1990369597380264,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s45_PG2_primary2s_484",
+      "subject": 45,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.9712242531350204,
+      "baseline": 0.19228737418122932,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s45_PG2_primary2s_484",
+      "subject": 45,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5162524335027112,
+      "baseline": 0.07822815649132031,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s45_PG2_primary2s_484",
+      "subject": 45,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.136256600484015,
+      "baseline": 0.14083155634304245,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s49_PG1_primary2s_1738",
+      "subject": 49,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.5497278099609233,
+      "baseline": 0.6293321276754952,
+      "standing": 0.6091893332884701,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s49_PG1_primary2s_1738",
+      "subject": 49,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.32464576340268203,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s49_PG1_primary2s_1738",
+      "subject": 49,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 0.6858740106264403,
+      "baseline": 0.7560620785845169,
+      "standing": 0.7318630867914149,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s49_PG2_primary2s_1738",
+      "subject": 49,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.5497278099609233,
+      "baseline": 0.09239238759688058,
+      "standing": 0.09858085668591371,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s49_PG2_primary2s_1738",
+      "subject": 49,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.32464576340268203,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s49_PG2_primary2s_1738",
+      "subject": 49,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 0.6858740106264403,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s54_PG1_primary2s_992",
+      "subject": 54,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.8766697938531216,
+      "baseline": 0.8842885658764179,
+      "standing": 0.8549948262234921,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s54_PG1_primary2s_992",
+      "subject": 54,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.569312808469159,
+      "baseline": 0.5846371172174265,
+      "standing": 0.5652699013966151,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s54_PG1_primary2s_992",
+      "subject": 54,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.2120162054762285,
+      "baseline": 1.211407812386324,
+      "standing": 1.1712776258850492,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s54_PG2_primary2s_992",
+      "subject": 54,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.8766697938531216,
+      "baseline": 0.13067171556904492,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s54_PG2_primary2s_992",
+      "subject": 54,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.569312808469159,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s54_PG2_primary2s_992",
+      "subject": 54,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.2120162054762285,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s61_PG1_primary2s_1851",
+      "subject": 61,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.9004305940413407,
+      "baseline": 1.0039897831062197,
+      "standing": 0.9853626938580159,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s61_PG1_primary2s_1851",
+      "subject": 61,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5111334946115063,
+      "baseline": 0.5907897723756325,
+      "standing": 0.5798288104195061,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s61_PG1_primary2s_1851",
+      "subject": 61,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.1213368823878067,
+      "baseline": 1.263956307159356,
+      "standing": 1.2405060416930624,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s61_PG2_primary2s_1851",
+      "subject": 61,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.9004305940413407,
+      "baseline": 0.18415839364449024,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s61_PG2_primary2s_1851",
+      "subject": 61,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5111334946115063,
+      "baseline": 0.039624331493254505,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s61_PG2_primary2s_1851",
+      "subject": 61,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.1213368823878067,
+      "baseline": 0.04973991186199922,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s72_PG1_primary2s_3761",
+      "subject": 72,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 1.0041628025055693,
+      "baseline": 1.1535948104437528,
+      "standing": 1.1197822507308313,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s72_PG1_primary2s_3761",
+      "subject": 72,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5295330412377065,
+      "baseline": 0.6216931902537146,
+      "standing": 0.6034709878579841,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s72_PG1_primary2s_3761",
+      "subject": 72,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.1493913526226969,
+      "baseline": 1.2952065795490713,
+      "standing": 1.2572432934670843,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s72_PG2_primary2s_3761",
+      "subject": 72,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 1.0041628025055693,
+      "baseline": 0.19002459111393039,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s72_PG2_primary2s_3761",
+      "subject": 72,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5295330412377065,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s72_PG2_primary2s_3761",
+      "subject": 72,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.1493913526226969,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s80_PG1_primary2s_2562",
+      "subject": 80,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.9921220976989169,
+      "baseline": 0.9561073136179764,
+      "standing": 0.9606609591235296,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s80_PG1_primary2s_2562",
+      "subject": 80,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5796816023224036,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s80_PG1_primary2s_2562",
+      "subject": 80,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.2781013491489446,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s80_PG2_primary2s_2562",
+      "subject": 80,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.9921220976989169,
+      "baseline": 0.14473151899469966,
+      "standing": 0.15888632375130035,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s80_PG2_primary2s_2562",
+      "subject": 80,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5796816023224036,
+      "baseline": 0.0003903386246479901,
+      "standing": 0.0004285139098880675,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s80_PG2_primary2s_2562",
+      "subject": 80,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.2781013491489446,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s85_PG1_primary2s_2898",
+      "subject": 85,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 1.0010077070972907,
+      "baseline": 1.1399645382067098,
+      "standing": 1.1470525986304574,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s85_PG1_primary2s_2898",
+      "subject": 85,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5161471685750598,
+      "baseline": 0.5899286579995283,
+      "standing": 0.5935967106743764,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s85_PG1_primary2s_2898",
+      "subject": 85,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.1161640649957858,
+      "baseline": 1.2363286666517959,
+      "standing": 1.2440158990166068,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s85_PG2_primary2s_2898",
+      "subject": 85,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 1.0010077070972907,
+      "baseline": 0.17431908443382002,
+      "standing": 0.1894049616812685,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s85_PG2_primary2s_2898",
+      "subject": 85,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5161471685750598,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s85_PG2_primary2s_2898",
+      "subject": 85,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.1161640649957858,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s89_PG1_primary2s_3577",
+      "subject": 89,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.9821100001273068,
+      "baseline": 1.1073908387253655,
+      "standing": 1.0780125163314647,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s89_PG1_primary2s_3577",
+      "subject": 89,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5599573997170442,
+      "baseline": 0.6542343290938073,
+      "standing": 0.6368779393087894,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s89_PG1_primary2s_3577",
+      "subject": 89,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.208029416908512,
+      "baseline": 1.3679717597530026,
+      "standing": 1.3316804035503147,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s89_PG2_primary2s_3577",
+      "subject": 89,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.9821100001273068,
+      "baseline": 0.1580733107596107,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s89_PG2_primary2s_3577",
+      "subject": 89,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5599573997170442,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s89_PG2_primary2s_3577",
+      "subject": 89,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.208029416908512,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": false
+    },
+    {
+      "key": "s90_PG1_primary2s_3114",
+      "subject": 90,
+      "camera": "PG1",
+      "metric": "speed",
+      "reference": 0.824171620607939,
+      "baseline": 0.9298751660351692,
+      "standing": 0.9058301667619768,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s90_PG1_primary2s_3114",
+      "subject": 90,
+      "camera": "PG1",
+      "metric": "step_length",
+      "reference": 0.5221935888583258,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s90_PG1_primary2s_3114",
+      "subject": 90,
+      "camera": "PG1",
+      "metric": "stride_length",
+      "reference": 1.1231380095301229,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s90_PG2_primary2s_3114",
+      "subject": 90,
+      "camera": "PG2",
+      "metric": "speed",
+      "reference": 0.824171620607939,
+      "baseline": 0.1468964784348548,
+      "standing": 0.17383559673809507,
+      "paired_available": true,
+      "standing_quality": true
+    },
+    {
+      "key": "s90_PG2_primary2s_3114",
+      "subject": 90,
+      "camera": "PG2",
+      "metric": "step_length",
+      "reference": 0.5221935888583258,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    },
+    {
+      "key": "s90_PG2_primary2s_3114",
+      "subject": 90,
+      "camera": "PG2",
+      "metric": "stride_length",
+      "reference": 1.1231380095301229,
+      "baseline": null,
+      "standing": null,
+      "paired_available": false,
+      "standing_quality": true
+    }
+  ],
+  "protocol_sha256": "7064a3f4178188f7693b321746508f86f3bccb3366f42e8603ffc7a88389ddfb",
+  "inference_sha256": "b9f1fc7cc10482bca1d561879b2b5442dae9bc6e2a8d665cbeea66e8a152544f",
+  "code_sha256": "b746940c0fda2a9051df487667e45bb9406183f981bd3548122a534fd27725ce"
+}

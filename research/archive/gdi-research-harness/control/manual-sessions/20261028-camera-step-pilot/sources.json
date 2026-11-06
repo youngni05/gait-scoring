@@ -1,0 +1,21 @@
+[
+  {
+    "url": "https://www.tnt.uni-hannover.de/project/TNT15/",
+    "status": "two synchronized RGB files acquired and inspected",
+    "use": "research only; cite von Marcard et al. 2016",
+    "ground_truth": "no provided foot-contact annotation acquired"
+  },
+  {
+    "url": "https://cecas.clemson.edu/~ahoover/pedometer/",
+    "status": "HTML and reference images acquired; zip HEAD 11714615325 bytes; videos and event labels not acquired",
+    "limitation": "follow-camera close legs view; app full-body pipeline mismatch"
+  },
+  {
+    "url": "https://github.com/AVAuco/healthgait",
+    "status": "metadata inspected only; RGB/event labels not acquired"
+  },
+  {
+    "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/pose_landmarker_full.task",
+    "status": "official model downloaded; SHA256 recorded in HTTP metadata"
+  }
+]

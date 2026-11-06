@@ -1,0 +1,35 @@
+{
+  "declared_before_fitting": true,
+  "data": "same 695 people, 1064 records, front124, fixed five outer and four inner person folds",
+  "mean_target": "(left+right)/2; mean tasks preserve previous leg-gap prediction",
+  "gap_target": "left-right; gap tasks preserve original joint PLS mean",
+  "selection": "Per task minimize inner person-macro target MAE. Mean tasks include training-mean control; gap tasks include zero and training-mean controls. StandardScaler and estimator fit on current training slice only.",
+  "ridge_alphas": [
+    0.01,
+    0.1,
+    1,
+    10,
+    100,
+    1000,
+    10000
+  ],
+  "pls_components": [
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "main": "Mean Ridge and mean PLS on frozen MB512, leg164, and concatenation676",
+  "ablation": "Mean and gap Ridge using position108, angle18, length36, and no_length128; compare leg164. No causal attribution.",
+  "temporal": "Append 80 features to leg164 or MB512+leg164; mean and gap Ridge. No FPS available: differences are per frame, not physical velocity.",
+  "temporal_definition": "Per side 7 signals: root-relative hip/knee/ankle xy and image-plane knee flexion. Per signal mean absolute first difference, SD of first difference, mean absolute second difference (21 per side). Add L-R differences of these 21 plus 7 zero-lag L/R correlations, 7 maximum correlations across lags -15..15, and 3 selected lag/15 for knee_x,ankle_x,knee_flexion: 80. Near-constant signals use correlation0; lag ties use ascending lag order. No alignment or label modification.",
+  "joint_temporal": "Also combine independently selected temporal mean and gap for leg and combined families",
+  "inner_selected_mean": "Choose among original PLS mean and ALL inner candidate predictions of the six main mean tasks using reconstructed overall person MAE and previous selected leg gap. Original fallback first on ties. No outer held scores used.",
+  "prior_reference": "Original PLS count32 and previous leg-gap alpha1000 were selected within each outer training set. Reuse their inner OOF predictions; they are not newly nested inside each inner fold. Outer held people remain excluded.",
+  "bootstrap": "10000 paired person resamples, seed20261029, conditional on stored OOF; exploratory, not selection-adjusted",
+  "GPU_used": false,
+  "protected_numeric_data_used": false,
+  "independent_final_evaluation": false
+}

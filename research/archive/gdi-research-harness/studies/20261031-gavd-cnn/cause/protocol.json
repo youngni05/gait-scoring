@@ -1,0 +1,14 @@
+{
+  "scope": "Diagnose fixed CNN vs acquisition and pose errors; no training or score-based selection",
+  "cohort": "All 25 frozen reviewed records for numerical sensitivity, four previously matched records for re-extraction",
+  "tests": [
+    "Development held-out high-score underprediction and train-vs-OOF comparison, independently recomputed",
+    "GAVD coordinate translation, uniform scale0.5/2, horizontal reflection, temporal rate0.8/1.2 (fixed sample count124, varied observed time span), confidence<0.1 masking, deterministic missing/jitter perturbations",
+    "Same four videos/frames official BODY25 net height368 vs544, identical weights/postprocessing/target rule, manual image QC before new scores"
+  ],
+  "interpretation": "Sensitivity is not proof of real acquisition error. Re-extraction is not anatomical ground truth. High-score development bias is not a normal-vs-abnormal diagnostic accuracy metric. No source FPS assumed from unused constant25",
+  "source_pair_sha256": "3126b91149fe698df1d37171c7a63af69f9b4d68dd98ceb07236a61db7b08ba7",
+  "no_new_clinical_success_threshold": true,
+  "existing_replay_tolerance": 0.0001,
+  "static_pose_probe": "Middle fully observed pose repeated; synthetic out-of-distribution stress test, not a healthy walking control"
+}

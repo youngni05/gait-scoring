@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "new_models_replayed": 575,
+  "baseline_models_replayed": 75,
+  "maximum_prediction_delta": 7.105427357601002e-15,
+  "same_previous_people_inputs_splits": true,
+  "nested_objectives_recomputed": true,
+  "training_weights_checked": true,
+  "all_methods_predict_all_people": true,
+  "baseline_exactly_reproduced": true,
+  "forest_label_influence_reconstructed": true,
+  "robust_features_independently_reconstructed": true
+}

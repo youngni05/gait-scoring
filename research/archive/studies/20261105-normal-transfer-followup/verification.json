@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "source_rows": 40,
+  "external_rows": 10,
+  "frozen_checkpoints": 20,
+  "max_checkpoint_replay_error": 2.09808349609375e-05,
+  "source_results_sha256": "befa8b149b88b150c4603561a28843f6b220bb909b895a842539766b985d33bf",
+  "external_results_sha256": "701f7d265be5cfbb07fcd7f3f5bee019f03fe3f04ad50c0dadf4f28cd537aca6",
+  "protocol_sha256": "f88b26cb06ac8016c8389a0fcad0632faa4679a855cecc1200286db1515ae870"
+}

@@ -1,0 +1,65 @@
+{
+  "primary": "STS_common6: speed versus speed+patterns, RF",
+  "secondary": [
+    "STS_common3",
+    "STS_expanded3",
+    "TUG_common6",
+    "TUG_common3",
+    "TUG_expanded3"
+  ],
+  "exclusion": "sub-283 (42.59 s TUG) excluded from every training, validation and test set",
+  "cohort": "existing frozen person/visit/session/start; actual positive same-visit target; no new visit selection",
+  "split": "restrict all five existing outer partitions AND each existing inner fold by person ID; same across views and common3/common6",
+  "views": [
+    "speed (mean, SD, mean absolute adjacent change)",
+    "pattern (same speed plus 14 predeclared features)"
+  ],
+  "pattern_features": [
+    "cycle_seconds",
+    "cycle_cv",
+    "cycle_time_asymmetry",
+    "knee_cycle_rom",
+    "knee_cycle_rom_asymmetry",
+    "hip_cycle_rom",
+    "hip_cycle_rom_asymmetry",
+    "ankle_cycle_rom",
+    "ankle_cycle_rom_asymmetry",
+    "hip_knee_cycle_correlation",
+    "pelvis_list_rom",
+    "lumbar_extension_rom",
+    "lumbar_bending_rom",
+    "lumbar_rotation_rom"
+  ],
+  "cycle_proxy": "5-point moving mean; knee flexion peaks distance>=0.4s prominence>=8deg; complete max-to-max cycles 0.6..2.5s; both legs >=1 cycle; CV requires >=2 per leg",
+  "quality": "any 17-angle change >1000deg/s masks both frames and +/-3frames; exclude intersecting cycles; noncycle ROM requires >=80% clean samples",
+  "missing": "no person dropped for pattern availability; training-only median imputation plus missing indicators; no outcome supplied to extraction",
+  "models": {
+    "RF": {
+      "trees": 128,
+      "leaf_grid": [
+        2,
+        5
+      ],
+      "seeds": [
+        20261030,
+        20261031,
+        20261032
+      ]
+    },
+    "Ridge": {
+      "alpha_grid": [
+        1,
+        10,
+        100
+      ],
+      "seeds": [
+        -1
+      ]
+    }
+  },
+  "selection": "mean absolute error on pooled inner validation people only; no tail-based tuning; no clipping or output calibration",
+  "tail": "actual test score >=20 seconds, descriptive subgroup for both outcomes, not a clinical threshold",
+  "uncertainty": "paired person bootstrap of repeat-averaged absolute errors; conditional on fitted models, not independent repeated cohorts",
+  "success_interpretation": "report paired overall error, tail underprediction AND overprediction, repeat consistency; no improvement inferred from correlation alone",
+  "scope": "exploratory reused OpenCap multi-camera kinematics; not single-camera accuracy, no SPPB conversion, missing STS cause unknown"
+}

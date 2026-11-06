@@ -1,0 +1,15 @@
+{
+  "verified": true,
+  "people": 695,
+  "records": 1064,
+  "independent_calibration_refits": 20,
+  "max_prediction_difference": 8.526512829121202e-14,
+  "metric_rows_checked": 144,
+  "bootstrap_comparisons_checked": 4,
+  "sources_unchanged": 180,
+  "CNN_calibrated": false,
+  "CNN_reason": "train predictions absent",
+  "GPU_used": false,
+  "protected_numeric_data_used": false,
+  "independent_final_evaluation": false
+}

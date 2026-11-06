@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "contexts": 10,
+  "models_replayed": 30,
+  "checks": [
+    {
+      "condition": "speed",
+      "fold": 0,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "speed",
+      "fold": 1,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "speed",
+      "fold": 2,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "speed",
+      "fold": 3,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "speed",
+      "fold": 4,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 0,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 1,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 2,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 3,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    },
+    {
+      "condition": "combined",
+      "fold": 4,
+      "models_replayed": 3,
+      "training_only_source_matrices_and_IDs_exact": true,
+      "meta_KKT_optimum_passed": true
+    }
+  ],
+  "comparison_sha256": "d870fb304087048ca11f5a4569c120128c29aac30b587d513f1ea399051a3e10",
+  "heldout_sha256": "817ee9be6504fe5f371e9cfd4354e095f1debd5192b70d1cf70c0d3a613850a1",
+  "review_code_sha256": "c856cace19c1468b728c85d1b0c32a014cc354d2d3939b8e9f8ced3f372f37a0"
+}

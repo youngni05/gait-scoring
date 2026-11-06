@@ -1,0 +1,42 @@
+{
+  "cohorts": {
+    "cohort176": {
+      "people": 176,
+      "long_people": 8,
+      "views": [
+        "Original",
+        "Matched",
+        "AddDeparture",
+        "AddReturn",
+        "AddRotation",
+        "AddBoth",
+        "LearnBoth",
+        "AddBothStrict"
+      ],
+      "hashes": {
+        "input.npz": "4e46a1085424a67715aa1cb72219679e5fac17741e5f1b7025ddc7f13974ef14",
+        "manifest.json": "b8edd23e132ef1484cefadf922a76666dae14f19e2a42944a85ef456477fd538",
+        "splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8"
+      }
+    }
+  },
+  "primary": "AddBoth versus Matched: same176, original person splits, same relocated maximum20s observation, same per-person actual observation duration as old20 cap. Original distinguishes relocation from added information. Large-under4 predefined246,266,310,406; all176 and long8 also reported.",
+  "window": "shift original window backward toward automatic rise-end only when departure candidate>=0.5s; preserve original full turn+adjacent3s, retain exact original duration; never use clinical score or clock onset; no padding; full-record motion selection, not online validation",
+  "candidates": "after automatic core-rise END before prior away-from-chair start; after prior away-from-chair end before automatic sit START; at least0.5s; missing boundary means no added evidence, not true zero delay",
+  "quality": "native MOT pelvis and TRC RHip/LHip midpoint jumps horizontal>6m/s or vertical>3m/s masked with0.15s margin; widths deviate>25percent masked;30Hz7point smoothing within observed window; MOT/TRC horizontal velocity vector difference<=0.3m/s; abs vertical speed both<=0.05m/s; both heights>=adjacent gait0.5s median minus0.05m; knee mean<60deg and abs hip mean<60deg; valid runs>=0.5s without bridging; window edge0.15s excluded",
+  "rotation": "subset of quality-passed return: hip angular speed20..180deg/s, hip/shoulder same sign, difference<=45deg/s, runs>=0.25s; includes no seated frames; surrogate rotation, not manually labelled final turn",
+  "strict_sensitivity": "before training: vertical<=0.03m/s, height tolerance0.03m, velocity agreement<=0.2m/s, contiguous support>=0.75s; same window and baseline",
+  "model": "same4 baseline speed/turn inputs, fixed observed gait-stop offset; Add views add accepted extra duration with coefficient1 while learning remainder. LearnBoth learns two duration coefficients; same train-only scaler/Ridge alpha0.1/1/10/100 inner3fold MAE,5partitionsx5outerfold; floor residual0, no upper cap",
+  "boundary_limit": "computational quality checks using same OpenCap pipeline are not independent RGB/clinical confirmation; conservative height/velocity gates reduce but cannot prove zero residual rise; no preparation time, clinical-derived onset, rise or sit duration feature",
+  "fallback": "retain all176 and score same test people; zero added accepted time if no confirmed support is an observation omission, not a statement that true near-chair time is zero; no new failure-based exclusions",
+  "source_hashes": {
+    "20261031-opencap-directional-pace\\exclude283\\input.npz": "6c46f26a4aba0620ee038672f879044835c6cd1cfd8d9519d73ba566e429b03e",
+    "20261031-opencap-directional-pace\\exclude283\\splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8",
+    "20261031-opencap-directional-pace\\exclude283\\manifest.json": "ef36798bc6297f8fce7495b94bd86e4d5daed7eaf20c5215e408401dce70feb6",
+    "20261031-opencap-directional-pace\\exclude283\\predictions.csv": "cf1b851d630c7b3d163b7f4b3660870dd84353ceaeea8b7eb2a8a00af0507a3e",
+    "20261031-opencap-tail-diagnosis\\person-audit.json": "2bae59b1539350973f4e8cc527fc86435ecd32d524181e8dff586d8b18af9189",
+    "20261031-opencap-long-observation\\study.py": "d532cb3578adda5fd7ea3db840a432b3b3518f325f58d011c9a3f3679247f231",
+    "20261031-opencap-near-chair\\acquisition.json": "acf08ce14758f7512e799eb0e71e25b0dd959b4d011a48518e566e9234e5d8ba"
+  },
+  "code_sha256": "148d8993f81aef9353c4a0de598fa83305a909ef4cc1407eaa1d25fe7033dae1"
+}

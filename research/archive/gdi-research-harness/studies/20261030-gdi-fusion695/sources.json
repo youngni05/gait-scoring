@@ -1,0 +1,21 @@
+{
+  "sha256": {
+    "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/data.npz": "8d146d1f11d401de7653a2369d49096750722adf9a0b70f8b65cf6462c0d5fc4",
+    "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/input_contract.json": "0f9020cc72c9825555b2bbfdc0fe6a7df5309553f441abef8c217f213afccef0",
+    "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/run.py": "f61eb8f53ef8b6c085c1cd17847b9dd42ce2f243ba8ccecd00fd757f235ba7e2",
+    "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/model.py": "73b29c6ab639d43ef4bf6c906516aeb5e19b865941df7262180eb424d85b27bc",
+    "gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-followup695/bundle/protocol.json": "33a9d99ed98817ef8c57ac7a74ee4abdc83e5ffc6ca0a90271b6f59a5504b0e6",
+    "gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls-study/development695.npz": "831ff22f92421b987407882db5b3da2ecaff36dd325e1e8157ad0730ab8702bb",
+    "gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls64-study/oof_predictions.npz": "2612f3a909c3d688b191702ce3c6499f4e92919665378c3fa7393719a9d531a3",
+    "gdi-research-harness/studies/20261030-gdi-fusion695/protocol.json": "568056a8e8d7d5485c6b0b3727ca00265b1e3219be493b9a1cce2602ebda10b1",
+    "gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls64-study/models/fold0_inner.npz": "b3a42a62d73aeb5bf5ec4bbd98b30cc5f480bd9c97176020a8c040c8d5ae71a1",
+    "gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls64-study/models/fold1_inner.npz": "5ccf70d4648c598621bf55de15116f8c47b04bad5727fba699c310b166add594",
+    "gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls64-study/models/fold2_inner.npz": "da3db5da089776d5812de803510221f1c37f6d256517b77821fbb94b3dd13f69",
+    "gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls64-study/models/fold3_inner.npz": "0813f2984813be1646c5289951698f1c190758d30b0eeeb727ee083e73aaeb7f",
+    "gdi-research-harness/studies/20261030-cpu-head-study/followup/expanded695-pls64-study/models/fold4_inner.npz": "0120f85393342eb59ec1a30fcbd93b3152d6a2ef351e989e566514f5872525bd"
+  },
+  "dataset_people": 695,
+  "dataset_records": 1064,
+  "local_dataset_sha256": "05ea3daac71fe99ae0c3cc88be6aa25290c51ed8a58e001fed8836de3c49332b",
+  "protected_numeric_data_read": false
+}

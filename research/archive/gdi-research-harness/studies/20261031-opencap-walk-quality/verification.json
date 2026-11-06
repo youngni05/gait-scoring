@@ -1,0 +1,13 @@
+{
+  "source_hashes_checked": 9,
+  "windows_checked": 374,
+  "original_features_exactly_reproduced": true,
+  "people_and_splits_unchanged": true,
+  "shared_quality_columns_identical": true,
+  "synthetic_checks": true,
+  "passed": true,
+  "final_models_replayed": 800,
+  "inner_fit_selections_checked": 5400,
+  "max_prediction_delta": 3.552713678800501e-15,
+  "prior_speed_baseline_max_delta": 0.0
+}

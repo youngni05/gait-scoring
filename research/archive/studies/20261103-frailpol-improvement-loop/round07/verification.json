@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "contexts": 10,
+  "models_replayed": 60,
+  "checks": [
+    {
+      "condition": "speed",
+      "fold": 0,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "speed",
+      "fold": 1,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "speed",
+      "fold": 2,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "speed",
+      "fold": 3,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "speed",
+      "fold": 4,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "combined",
+      "fold": 0,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "combined",
+      "fold": 1,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "combined",
+      "fold": 2,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "combined",
+      "fold": 3,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    },
+    {
+      "condition": "combined",
+      "fold": 4,
+      "people_separated": true,
+      "meta_inputs_independently_rebuilt": true,
+      "training_only_normalization_and_weights": true,
+      "models_replayed": 6
+    }
+  ],
+  "comparison_sha256": "bc57504357797f3c47471839d6e978bc14261fae53b801b53871948f5fdaa066",
+  "heldout_sha256": "d4870531e6c73223b6371e6acac3cb2624ef87a5c662bc3390b2a9af41f8baa5",
+  "review_code_sha256": "ce14655147212517092116f9c03fa0d07e8d530e9fc474123f37c7fcb5bdef19"
+}

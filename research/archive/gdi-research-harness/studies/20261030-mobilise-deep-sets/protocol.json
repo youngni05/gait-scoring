@@ -1,0 +1,53 @@
+{
+  "reference_study": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression",
+  "reference_mlp": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-small-models",
+  "source_hashes": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\person-folds.csv": "f5883374906327b6bf0e6ce1f9aaffb9f86f9e6d8679bc02b5775dcc702bea5a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\predictions.csv": "c91bd1d36786f1148de0a960a686d249f624e70148bd0a1732928463df5c89bf",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-small-models\\predictions.csv": "30e0fad6482012d25fb1f6e1917a3d4c92860da6eebafcd2be7a35a1a2e1e0c1",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-small-models\\train.py": "124404aa51c6f919b7a027226e8d537e222897e8ef44ba4e298c863e19941ec5"
+  },
+  "features": [
+    "averagecadence",
+    "averagestrideduration",
+    "averagestridespeed",
+    "averagestridelength"
+  ],
+  "input": "same selected bouts, rank<=k, [visits,k,4]; no metadata as predictors",
+  "architecture": "Linear(4,width), ReLU per bout; mean across bouts; Linear(width,width/2), ReLU, Linear(width/2,1)",
+  "parameter_matched_to_mlp": true,
+  "width_candidates": [
+    32,
+    64
+  ],
+  "epoch_candidates": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100,
+    110,
+    120
+  ],
+  "optimizer": "full-batch AdamW lr=.01 weight_decay=.001",
+  "loss": "person-weighted SmoothL1 beta=.5 on training-standardized target",
+  "preprocessing": "training-only person-weighted X mean/std across raw selected bouts, each visit contributes weight/k to each bout; training-only weighted y mean/std",
+  "outer_folds": "unchanged person 5-fold",
+  "inner_folds": "same seed and person 3-fold as reference MLP",
+  "selection": "minimum combined inner-validation person MAE over width and epoch",
+  "draws": "fit draw0; evaluate draw0/1/2 separately, no averaging predictions",
+  "seed": 20261030,
+  "torch": "2.14.1+cpu",
+  "numpy": "2.3.5",
+  "device": "CPU",
+  "primary_draw": 0,
+  "uncertainty": "paired person bootstrap of fixed OOF predictions; not refitting and not independent final validation",
+  "scope": "small mean-pooled Deep Sets, not all possible set architectures; raw bout summaries, not raw motion time series"
+}

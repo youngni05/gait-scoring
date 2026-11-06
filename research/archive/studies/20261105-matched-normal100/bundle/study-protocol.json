@@ -1,0 +1,44 @@
+{
+  "status": "frozen before training",
+  "matched_people": 9,
+  "counts": {
+    "child": {
+      "records": 1073,
+      "extra_records": 12,
+      "extra_windows": 12,
+      "extra_people": 9,
+      "total_windows": 11273
+    },
+    "adult": {
+      "records": 1073,
+      "extra_records": 12,
+      "extra_windows": 12,
+      "extra_people": 9,
+      "total_windows": 11273
+    }
+  },
+  "data_sha256": {
+    "child": "fcd6bdfb3d551a79e5eabf3d86ce5f5e82f636278ce0dc0155f7392b557b7078",
+    "adult": "5d464894c03882d30b085895e6742574c441fba2919dcba543db355fbbef8895"
+  },
+  "membership_sha256": "d6248310003eeced05659874fedd703e3e30c106cc27dcfd669a33ded193c23b",
+  "arms": [
+    "Stanford_only_frozen",
+    "adult",
+    "child"
+  ],
+  "reports": [
+    "CNN_refit",
+    "RF",
+    "STT_refit",
+    "CNN_bag",
+    "STT_bag",
+    "bilateral_refit",
+    "fusion"
+  ],
+  "training": "Stanford original equal-record objective retained. Each external person has total weight1 divided across their recordings; one124-frame window per external recording. Exact matched people, records, windows and per-person mass across arms. Native frames; no stretching, repetition or joining.",
+  "calibration": "Neural shared OLS and target scale use Stanford training rows only at EVERY epoch and refit. RF retains original uncalibrated output.",
+  "selection": "All external people train-only fold=-1; epoch and RF candidate selection use Stanford inner overall equal-person MAE only. Same original5 outer folds, seeds, max epochs, architecture. Bag-collapse SD uses Stanford training rows only. Frozen ensemble weights.",
+  "metrics": "Stanford measured-GDI only. Overall, record-side>=90,>=100,<70; person-equal MAE, prediction-truth bias, max(truth-prediction,0) shortfall, paired10000 bootstrap seed20261105. Final223 not accessed.",
+  "limits": "Single deterministic adult sample and one initialization schedule; domain/camera/disease differences remain. Matching volume does not isolate a purely biological age effect. All added100labels assumed."
+}

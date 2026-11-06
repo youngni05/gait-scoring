@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "unique_new_models": 165,
+  "original_prediction_vs_replay_max_difference": 1.9073486328125e-06,
+  "full_array_bootstrap_primary_CIs": {
+    "features_LGBM minus speed_profile_LGBM": [
+      -0.09479738034530429,
+      -0.04912835371123706
+    ],
+    "features_TabICLv2 minus speed_profile_TabICLv2": [
+      -0.12272863525590161,
+      -0.06657177992832705
+    ],
+    "features_TabPFNv2 minus speed_profile_TabPFNv2": [
+      -0.12304176093323636,
+      -0.06652330930455948
+    ]
+  },
+  "code_sha256": "5ce61fc380f54877d514ee5faece6e94bce1314c9797d269b59c3829475a56d9",
+  "data_bytes": 203250205,
+  "artifact_sha256": {
+    "verification-large.json": "40b7c0c639efe31bd5d8ec659eb752bb0adf29df3c4b3f5da338fc87e006d3ce",
+    "verification-small.json": "72f55a95b0f3f975d1a4261ee0db2676ffff00b3523a02fff63798cf39920d30"
+  }
+}

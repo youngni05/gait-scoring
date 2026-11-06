@@ -1,0 +1,974 @@
+{
+  "status": "Only completed and audited models reported",
+  "scope": "Same Stanford measured-GDI development OOF people; all added people excluded. Original final223 unopened.",
+  "uncertainty": "Paired10000 person bootstrap conditional on fitted models; descriptive multiple comparisons, no seed or adult-sample uncertainty.",
+  "models": {
+    "CNN_refit": {
+      "status": "neural_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "sides": 2122,
+          "arms": {
+            "baseline": {
+              "mae": 6.866655269796397,
+              "bias": 0.14790322182606624,
+              "shortfall": 3.359376023985166,
+              "underprediction_fraction": 0.4829944260941371
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "sides": 255,
+          "arms": {
+            "baseline": {
+              "mae": 9.345523027902365,
+              "bias": -8.85261778558619,
+              "shortfall": 9.099070406744278,
+              "underprediction_fraction": 0.9030864197530865
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "sides": 44,
+          "arms": {
+            "baseline": {
+              "mae": 13.926935883288225,
+              "bias": -13.926935883288225,
+              "shortfall": 13.926935883288225,
+              "underprediction_fraction": 1.0
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "sides": 738,
+          "arms": {
+            "baseline": {
+              "mae": 7.522788339341343,
+              "bias": 5.6336271423186135,
+              "shortfall": 0.9445805985113649,
+              "underprediction_fraction": 0.22381781259065853
+            }
+          },
+          "contrasts": {}
+        }
+      }
+    },
+    "RF": {
+      "status": "verified_three_arm_comparison",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "sides": 2122,
+          "arms": {
+            "baseline": {
+              "mae": 7.181832938236777,
+              "bias": 0.20282715394914155,
+              "shortfall": 3.4895028921438174,
+              "underprediction_fraction": 0.4787967932837875
+            },
+            "adult": {
+              "mae": 7.177867404318537,
+              "bias": 0.24921128183985214,
+              "shortfall": 3.4643280612393426,
+              "underprediction_fraction": 0.4772742912193779
+            },
+            "child": {
+              "mae": 7.146144103731394,
+              "bias": 0.3090365840905289,
+              "shortfall": 3.4185537598204325,
+              "underprediction_fraction": 0.47022949353151666
+            }
+          },
+          "contrasts": {
+            "adult_minus_baseline": {
+              "mae": {
+                "delta": -0.003965533918240139,
+                "paired95": [
+                  -0.07120549444825386,
+                  0.06542557284084476
+                ]
+              },
+              "bias": {
+                "delta": 0.04638412789071064,
+                "paired95": [
+                  -0.03451873538344402,
+                  0.12637589253847717
+                ]
+              },
+              "shortfall": {
+                "delta": -0.0251748309044754,
+                "paired95": [
+                  -0.07952055837579876,
+                  0.02778298594638343
+                ]
+              }
+            },
+            "child_minus_baseline": {
+              "mae": {
+                "delta": -0.03568883450538434,
+                "paired95": [
+                  -0.10518291584429708,
+                  0.031624948921791005
+                ]
+              },
+              "bias": {
+                "delta": 0.10620943014138734,
+                "paired95": [
+                  0.028444275031135384,
+                  0.18324642998824595
+                ]
+              },
+              "shortfall": {
+                "delta": -0.07094913232338586,
+                "paired95": [
+                  -0.12329637764619411,
+                  -0.019225255007907494
+                ]
+              }
+            },
+            "child_minus_adult": {
+              "mae": {
+                "delta": -0.03172330058714422,
+                "paired95": [
+                  -0.0947647679822565,
+                  0.030030178874642186
+                ]
+              },
+              "bias": {
+                "delta": 0.059825302250676705,
+                "paired95": [
+                  -0.01089127205054784,
+                  0.13154915816084048
+                ]
+              },
+              "shortfall": {
+                "delta": -0.04577430141891045,
+                "paired95": [
+                  -0.09285759318484366,
+                  0.0006040875021433235
+                ]
+              }
+            }
+          }
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "sides": 255,
+          "arms": {
+            "baseline": {
+              "mae": 12.286610983759678,
+              "bias": -12.272899332941442,
+              "shortfall": 12.279755158350559,
+              "underprediction_fraction": 0.9938271604938271
+            },
+            "adult": {
+              "mae": 11.960357615201914,
+              "bias": -11.941315833452437,
+              "shortfall": 11.950836724327175,
+              "underprediction_fraction": 0.9938271604938271
+            },
+            "child": {
+              "mae": 12.03047055529401,
+              "bias": -12.022615473839638,
+              "shortfall": 12.026543014566824,
+              "underprediction_fraction": 0.9969135802469136
+            }
+          },
+          "contrasts": {
+            "adult_minus_baseline": {
+              "mae": {
+                "delta": -0.3262533685577612,
+                "paired95": [
+                  -0.5514910125908103,
+                  -0.1061539790248386
+                ]
+              },
+              "bias": {
+                "delta": 0.331583499489004,
+                "paired95": [
+                  0.1051618252286606,
+                  0.5642360046611887
+                ]
+              },
+              "shortfall": {
+                "delta": -0.3289184340233826,
+                "paired95": [
+                  -0.5568164669104539,
+                  -0.10648609486812062
+                ]
+              }
+            },
+            "child_minus_baseline": {
+              "mae": {
+                "delta": -0.2561404284656676,
+                "paired95": [
+                  -0.4576284410926387,
+                  -0.053786472215819205
+                ]
+              },
+              "bias": {
+                "delta": 0.2502838591018032,
+                "paired95": [
+                  0.04669476537646642,
+                  0.4547582903578976
+                ]
+              },
+              "shortfall": {
+                "delta": -0.2532121437837354,
+                "paired95": [
+                  -0.4540522858134277,
+                  -0.05107048172371628
+                ]
+              }
+            },
+            "child_minus_adult": {
+              "mae": {
+                "delta": 0.07011294009209357,
+                "paired95": [
+                  -0.13303613165939943,
+                  0.2671426209760821
+                ]
+              },
+              "bias": {
+                "delta": -0.08129964038720079,
+                "paired95": [
+                  -0.28024031967033564,
+                  0.12428941470248737
+                ]
+              },
+              "shortfall": {
+                "delta": 0.07570629023964717,
+                "paired95": [
+                  -0.12891747280552987,
+                  0.27313582121109564
+                ]
+              }
+            }
+          }
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "sides": 44,
+          "arms": {
+            "baseline": {
+              "mae": 19.088386709920798,
+              "bias": -19.088386709920798,
+              "shortfall": 19.088386709920798,
+              "underprediction_fraction": 1.0
+            },
+            "adult": {
+              "mae": 18.415477701837414,
+              "bias": -18.415477701837414,
+              "shortfall": 18.415477701837414,
+              "underprediction_fraction": 1.0
+            },
+            "child": {
+              "mae": 18.872697237615892,
+              "bias": -18.872697237615892,
+              "shortfall": 18.872697237615892,
+              "underprediction_fraction": 1.0
+            }
+          },
+          "contrasts": {
+            "adult_minus_baseline": {
+              "mae": {
+                "delta": -0.6729090080833858,
+                "paired95": [
+                  -1.2309270177162335,
+                  -0.10784951252398203
+                ]
+              },
+              "bias": {
+                "delta": 0.6729090080833858,
+                "paired95": [
+                  0.10784951252398192,
+                  1.230927017716233
+                ]
+              },
+              "shortfall": {
+                "delta": -0.6729090080833858,
+                "paired95": [
+                  -1.2309270177162335,
+                  -0.10784951252398203
+                ]
+              }
+            },
+            "child_minus_baseline": {
+              "mae": {
+                "delta": -0.21568947230491237,
+                "paired95": [
+                  -0.6831476846568085,
+                  0.24231447723281316
+                ]
+              },
+              "bias": {
+                "delta": 0.21568947230491237,
+                "paired95": [
+                  -0.24231447723281316,
+                  0.6831476846568084
+                ]
+              },
+              "shortfall": {
+                "delta": -0.21568947230491237,
+                "paired95": [
+                  -0.6831476846568085,
+                  0.24231447723281316
+                ]
+              }
+            },
+            "child_minus_adult": {
+              "mae": {
+                "delta": 0.4572195357784735,
+                "paired95": [
+                  -0.07362194566840245,
+                  0.9576664031106152
+                ]
+              },
+              "bias": {
+                "delta": -0.4572195357784735,
+                "paired95": [
+                  -0.9576664031106152,
+                  0.07362194566840223
+                ]
+              },
+              "shortfall": {
+                "delta": 0.4572195357784735,
+                "paired95": [
+                  -0.07362194566840245,
+                  0.9576664031106152
+                ]
+              }
+            }
+          }
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "sides": 738,
+          "arms": {
+            "baseline": {
+              "mae": 8.151287590485481,
+              "bias": 7.533642446553652,
+              "shortfall": 0.3088225719659149,
+              "underprediction_fraction": 0.11408471134319698
+            },
+            "adult": {
+              "mae": 8.249118913508601,
+              "bias": 7.529492016203344,
+              "shortfall": 0.35981344865262876,
+              "underprediction_fraction": 0.11176385262547144
+            },
+            "child": {
+              "mae": 8.247614075716488,
+              "bias": 7.5406697174654,
+              "shortfall": 0.35347217912554413,
+              "underprediction_fraction": 0.11560777487670439
+            }
+          },
+          "contrasts": {
+            "adult_minus_baseline": {
+              "mae": {
+                "delta": 0.09783132302311905,
+                "paired95": [
+                  -0.012458619088837952,
+                  0.20861853673011002
+                ]
+              },
+              "bias": {
+                "delta": -0.00415043035030862,
+                "paired95": [
+                  -0.12169151492036341,
+                  0.11343498914739907
+                ]
+              },
+              "shortfall": {
+                "delta": 0.05099087668671384,
+                "paired95": [
+                  0.007040025384469971,
+                  0.09664295749810621
+                ]
+              }
+            },
+            "child_minus_baseline": {
+              "mae": {
+                "delta": 0.09632648523100781,
+                "paired95": [
+                  -0.01354683580766898,
+                  0.20582928766083225
+                ]
+              },
+              "bias": {
+                "delta": 0.007027270911749253,
+                "paired95": [
+                  -0.10690157804734805,
+                  0.11997906814352903
+                ]
+              },
+              "shortfall": {
+                "delta": 0.04464960715962928,
+                "paired95": [
+                  0.0015679969197081231,
+                  0.0909934124705104
+                ]
+              }
+            },
+            "child_minus_adult": {
+              "mae": {
+                "delta": -0.001504837792111245,
+                "paired95": [
+                  -0.09777029615623618,
+                  0.09490137333813004
+                ]
+              },
+              "bias": {
+                "delta": 0.011177701262057861,
+                "paired95": [
+                  -0.0877327338002534,
+                  0.10902318660262415
+                ]
+              },
+              "shortfall": {
+                "delta": -0.006341269527084553,
+                "paired95": [
+                  -0.03772811356917194,
+                  0.028019919595507425
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "STT_refit": {
+      "status": "neural_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "sides": 2122,
+          "arms": {
+            "baseline": {
+              "mae": 6.9449881808715,
+              "bias": 0.07029532314583027,
+              "shortfall": 3.4373464288628353,
+              "underprediction_fraction": 0.48275357830993665
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "sides": 255,
+          "arms": {
+            "baseline": {
+              "mae": 10.215969873329751,
+              "bias": -9.97590297388095,
+              "shortfall": 10.095936423605352,
+              "underprediction_fraction": 0.9377572016460904
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "sides": 44,
+          "arms": {
+            "baseline": {
+              "mae": 15.995272064551383,
+              "bias": -15.995272064551383,
+              "shortfall": 15.995272064551383,
+              "underprediction_fraction": 1.0
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "sides": 738,
+          "arms": {
+            "baseline": {
+              "mae": 7.682954494228248,
+              "bias": 5.772312037817511,
+              "shortfall": 0.9553212282053686,
+              "underprediction_fraction": 0.2003916449086162
+            }
+          },
+          "contrasts": {}
+        }
+      }
+    },
+    "CNN_bag": {
+      "status": "neural_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "sides": 2122,
+          "arms": {
+            "baseline": {
+              "mae": 6.590389059228339,
+              "bias": 0.11283425937512699,
+              "shortfall": 3.238777399926606,
+              "underprediction_fraction": 0.490600055050922
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "sides": 255,
+          "arms": {
+            "baseline": {
+              "mae": 9.290799903837106,
+              "bias": -8.819545789818342,
+              "shortfall": 9.055172846827723,
+              "underprediction_fraction": 0.9157407407407407
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "sides": 44,
+          "arms": {
+            "baseline": {
+              "mae": 14.144258351623202,
+              "bias": -14.144258351623202,
+              "shortfall": 14.144258351623202,
+              "underprediction_fraction": 1.0
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "sides": 738,
+          "arms": {
+            "baseline": {
+              "mae": 7.155153446183936,
+              "bias": 5.6231732210909176,
+              "shortfall": 0.7659901125465096,
+              "underprediction_fraction": 0.2065709312445605
+            }
+          },
+          "contrasts": {}
+        }
+      }
+    },
+    "STT_bag": {
+      "status": "neural_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "sides": 2122,
+          "arms": {
+            "baseline": {
+              "mae": 6.752031430243927,
+              "bias": 0.09386516490331011,
+              "shortfall": 3.3290831326703074,
+              "underprediction_fraction": 0.4866260666116158
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "sides": 255,
+          "arms": {
+            "baseline": {
+              "mae": 10.039643372840443,
+              "bias": -9.808794414920273,
+              "shortfall": 9.924218893880356,
+              "underprediction_fraction": 0.9459876543209876
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "sides": 44,
+          "arms": {
+            "baseline": {
+              "mae": 15.660030954685563,
+              "bias": -15.660030954685563,
+              "shortfall": 15.660030954685563,
+              "underprediction_fraction": 1.0
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "sides": 738,
+          "arms": {
+            "baseline": {
+              "mae": 7.383615238230629,
+              "bias": 5.771768245598477,
+              "shortfall": 0.805923496316076,
+              "underprediction_fraction": 0.2099941978532057
+            }
+          },
+          "contrasts": {}
+        }
+      }
+    },
+    "bilateral_refit": {
+      "status": "neural_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "sides": 2122,
+          "arms": {
+            "baseline": {
+              "mae": 7.003698215105391,
+              "bias": 0.09750684370298619,
+              "shortfall": 3.4530956857012023,
+              "underprediction_fraction": 0.4939719240297275
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "sides": 255,
+          "arms": {
+            "baseline": {
+              "mae": 9.977468214318701,
+              "bias": -9.772616243874047,
+              "shortfall": 9.875042229096374,
+              "underprediction_fraction": 0.9588477366255145
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "sides": 44,
+          "arms": {
+            "baseline": {
+              "mae": 15.07975068009416,
+              "bias": -15.07975068009416,
+              "shortfall": 15.07975068009416,
+              "underprediction_fraction": 1.0
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "sides": 738,
+          "arms": {
+            "baseline": {
+              "mae": 7.8222873619624345,
+              "bias": 5.722754354540795,
+              "shortfall": 1.04976650371082,
+              "underprediction_fraction": 0.23027270089933274
+            }
+          },
+          "contrasts": {}
+        }
+      }
+    },
+    "fusion": {
+      "status": "neural_training_pending",
+      "groups": {
+        "all": {
+          "people": 692,
+          "records": 1061,
+          "sides": 2122,
+          "arms": {
+            "baseline": {
+              "mae": 6.51581659390443,
+              "bias": 0.09763149206692788,
+              "shortfall": 3.2090925509187507,
+              "underprediction_fraction": 0.4903230800990917
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge90": {
+          "people": 162,
+          "records": 194,
+          "sides": 255,
+          "arms": {
+            "baseline": {
+              "mae": 9.757169941110112,
+              "bias": -9.502380811825656,
+              "shortfall": 9.629775376467883,
+              "underprediction_fraction": 0.9506172839506173
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_ge100": {
+          "people": 36,
+          "records": 39,
+          "sides": 44,
+          "arms": {
+            "baseline": {
+              "mae": 15.07944706951184,
+              "bias": -15.07944706951184,
+              "shortfall": 15.07944706951184,
+              "underprediction_fraction": 1.0
+            }
+          },
+          "contrasts": {}
+        },
+        "GDI_lt70": {
+          "people": 383,
+          "records": 495,
+          "sides": 738,
+          "arms": {
+            "baseline": {
+              "mae": 7.177689868191158,
+              "bias": 5.780126501610145,
+              "shortfall": 0.6987816832905067,
+              "underprediction_fraction": 0.20596170583115755
+            }
+          },
+          "contrasts": {}
+        }
+      }
+    }
+  },
+  "prediction_provenance": [
+    {
+      "arm": "baseline",
+      "family": "CNN",
+      "fold": 0,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold0\\predictions.npz",
+      "sha256": "074d39024219db4128c527700685f156570add54af5010968758eb3c2305b2de"
+    },
+    {
+      "arm": "baseline",
+      "family": "CNN",
+      "fold": 1,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold1\\predictions.npz",
+      "sha256": "288e9d645323a29ffd7ebc98d306c4199fd2701abff56b58f7732602cf1eba7a"
+    },
+    {
+      "arm": "baseline",
+      "family": "CNN",
+      "fold": 2,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold2\\predictions.npz",
+      "sha256": "8d95ee284453d34c7aa48c04b5cf4fa98551307a7462c55dcbb3281dce0913fc"
+    },
+    {
+      "arm": "baseline",
+      "family": "CNN",
+      "fold": 3,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold3\\predictions.npz",
+      "sha256": "a353bf81273c0a0b610f7fe7b599358cf4a1b0444ae466cd48aa5afb2a6af28d"
+    },
+    {
+      "arm": "baseline",
+      "family": "CNN",
+      "fold": 4,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold4\\predictions.npz",
+      "sha256": "0e205fc702984d9d54f6a88ecf09f8da06ba9699fe06c5c5dcbded1e82da4cf4"
+    },
+    {
+      "arm": "baseline",
+      "family": "RF",
+      "fold": 0,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold0\\predictions.npz",
+      "sha256": "ce6a9e9c1b41dad349f88a065724fd3f54d770f4deb49308bff9a4553950963b"
+    },
+    {
+      "arm": "baseline",
+      "family": "RF",
+      "fold": 1,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold1\\predictions.npz",
+      "sha256": "b6915af65735af07343f54556af5f241afac7a4456a471b0eca7b897dbb332da"
+    },
+    {
+      "arm": "baseline",
+      "family": "RF",
+      "fold": 2,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold2\\predictions.npz",
+      "sha256": "ab6a969dc19e27b9288ba4b5f13e611548b73483c7c1a6b6ca41dfabb4368e4d"
+    },
+    {
+      "arm": "baseline",
+      "family": "RF",
+      "fold": 3,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold3\\predictions.npz",
+      "sha256": "63f48aade10000e8c7bc6ba4b37eb2b2bf2cc707da785c841e246e36cfaab703"
+    },
+    {
+      "arm": "baseline",
+      "family": "RF",
+      "fold": 4,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold4\\predictions.npz",
+      "sha256": "75bf5e28d7b20792984671dc829a1cd359f56a6ee31d18d287fbfd129ade3fa2"
+    },
+    {
+      "arm": "baseline",
+      "family": "STT",
+      "fold": 0,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold0\\predictions.npz",
+      "sha256": "fa0a99bd79438fe60964b5983300fd2adb150c45699bffd4224e9ef28f9fa628"
+    },
+    {
+      "arm": "baseline",
+      "family": "STT",
+      "fold": 1,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold1\\predictions.npz",
+      "sha256": "cc62657b6b6399fa5d5109f7796d4b6f101b15e991bb63bfc10cac854f7c555a"
+    },
+    {
+      "arm": "baseline",
+      "family": "STT",
+      "fold": 2,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold2\\predictions.npz",
+      "sha256": "64ba5b2ebcf5c3df41ef86823382b58820d042ddba6cc6458e347fec446492ca"
+    },
+    {
+      "arm": "baseline",
+      "family": "STT",
+      "fold": 3,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold3\\predictions.npz",
+      "sha256": "67b3b531578dafacb4bea19295d66c6f9354957fb9e68feca2b247e02c467d7a"
+    },
+    {
+      "arm": "baseline",
+      "family": "STT",
+      "fold": 4,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold4\\predictions.npz",
+      "sha256": "4b4b22194d4f21ab93e82e9f553e725eb14bb7ae75857d9f654ef8437cf08e6c"
+    },
+    {
+      "arm": "baseline",
+      "family": "bilateral",
+      "fold": 0,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold0\\predictions.npz",
+      "sha256": "59930d0c1dee971725becafd1330156742fcb94dfb463804d4fc6a653b05c4e4"
+    },
+    {
+      "arm": "baseline",
+      "family": "bilateral",
+      "fold": 1,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold1\\predictions.npz",
+      "sha256": "94917de880e437a68db7a11efd9eb28200b88d1acd2d012301a809356817bb48"
+    },
+    {
+      "arm": "baseline",
+      "family": "bilateral",
+      "fold": 2,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold2\\predictions.npz",
+      "sha256": "2bed19b17fc034f1e917b02e7f52e173af61345da531372a3d0726db596c1f3d"
+    },
+    {
+      "arm": "baseline",
+      "family": "bilateral",
+      "fold": 3,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold3\\predictions.npz",
+      "sha256": "05d38803874fe5a67a8d068d245322be7bd06f331d38321214f16859a6e50e30"
+    },
+    {
+      "arm": "baseline",
+      "family": "bilateral",
+      "fold": 4,
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold4\\predictions.npz",
+      "sha256": "e8f91e067d7a7055092535d19e1b8e2140b01471d7041dc8820bee9b10135ba7"
+    },
+    {
+      "arm": "adult",
+      "family": "RF",
+      "fold": 0,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\adult\\runs\\mixed\\RF\\fold0\\predictions.npz",
+      "sha256": "87a7b4d5e27d9d69627e200d3d458f464012fc3c1015ca975d2cf294ee0bbf2c"
+    },
+    {
+      "arm": "adult",
+      "family": "RF",
+      "fold": 1,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\adult\\runs\\mixed\\RF\\fold1\\predictions.npz",
+      "sha256": "6c9d8a08c11b330016c97439dcbdf7d0cc32401c484a4a9179e821caeb95aa1c"
+    },
+    {
+      "arm": "adult",
+      "family": "RF",
+      "fold": 2,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\adult\\runs\\mixed\\RF\\fold2\\predictions.npz",
+      "sha256": "ead649091ba386935454fa0bf957898d5ae027227f576cb4ebb75770e44c291b"
+    },
+    {
+      "arm": "adult",
+      "family": "RF",
+      "fold": 3,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\adult\\runs\\mixed\\RF\\fold3\\predictions.npz",
+      "sha256": "f88e01da3260fe493a85dc5e318678ea7db7da67e7849689de00960bc8723442"
+    },
+    {
+      "arm": "adult",
+      "family": "RF",
+      "fold": 4,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\adult\\runs\\mixed\\RF\\fold4\\predictions.npz",
+      "sha256": "b2d8ef8e0144ad0364cc5b97e5135a393f2b0a622c5d2fcad7035964a953a330"
+    },
+    {
+      "arm": "child",
+      "family": "RF",
+      "fold": 0,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\child\\runs\\mixed\\RF\\fold0\\predictions.npz",
+      "sha256": "e286a2a99a461a53f2dc970f74b51349e5698aa130da7ba84440b83a13ee2986"
+    },
+    {
+      "arm": "child",
+      "family": "RF",
+      "fold": 1,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\child\\runs\\mixed\\RF\\fold1\\predictions.npz",
+      "sha256": "e8d9c7a8e7863207a3e1ed2412b8326e256feb58b3d8334c5b21dda95233e511"
+    },
+    {
+      "arm": "child",
+      "family": "RF",
+      "fold": 2,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\child\\runs\\mixed\\RF\\fold2\\predictions.npz",
+      "sha256": "e51529b3852066085de0830cdea54549b00562d5db180ae3b9bde16656870da2"
+    },
+    {
+      "arm": "child",
+      "family": "RF",
+      "fold": 3,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\child\\runs\\mixed\\RF\\fold3\\predictions.npz",
+      "sha256": "c75535fbabcf6d9a242946fb85f478c2cb2f385c114c91c16f15759b25921a92"
+    },
+    {
+      "arm": "child",
+      "family": "RF",
+      "fold": 4,
+      "path": "D:\\gait-research-data\\D_P\\matched-normal100-20261105\\child\\runs\\mixed\\RF\\fold4\\predictions.npz",
+      "sha256": "765a3ab6a472a48297c0a0a5f20f75cdd4e35f08830b5f6398aa2112e9824b6d"
+    }
+  ]
+}

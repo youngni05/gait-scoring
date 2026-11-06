@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-11-03T04:11:26.398845+00:00",
+  "joint_mapping": {
+    "Lhip": "LFEP",
+    "Rhip": "RFEP",
+    "Lknee": "LFEO",
+    "Rknee": "RFEO",
+    "Lankle": "LTIO",
+    "Rankle": "RTIO"
+  },
+  "joint_source": "https://help.vicon.com/download/attachments/11611993/Plug-in%20Gait%20Reference%20Guide.pdf page43",
+  "hip_check": "Independent Newington-Gage/Davis formula using LASI RASI SACR or mean PSIS, C3D anthropometry; zero AsisTrocanterDistance replaced per documented formula; marker radius7mm from source paper. No fitting to FEP. Missing parameters remain unchecked.",
+  "gdi_recipe": "Original 2008 workbook basis/center/logdistance mean/sampleSD; 9 variables pelvisXYZ hipXYZ kneeX ankleX footprogressZ; side-specific variables; 51 linear samples across consecutive ipsilateral Foot Strike events",
+  "gdi_primary": "Mean of all eligible cycle GDI values per side. Secondary score of mean angle curve also reported, not selected by closest match.",
+  "event_alignment": "round(event seconds * rate) minus C3D first frame (one-based field); require both events inside acquired range; no completion of partial cycles. +1 sample shift is a separate alignment diagnostic, not automatic replacement.",
+  "gdi_reference_age": "Original pediatric control reference; not the 65plus40 reference; not interchangeable",
+  "label_acceptance": "Replay alone is not clinical validity. Record both metadata namespaces; do not pick by model prediction or function correlation.",
+  "source_identity": "Same six IDs and all three dynamic trials; static files for metadata only; no new participants"
+}

@@ -1,0 +1,22 @@
+{
+  "verified": true,
+  "people": 695,
+  "records": 1064,
+  "source_files_preserved": 81,
+  "aligned_person_video_side_fold_truth": true,
+  "PLS_saved_models_repredicted": 5,
+  "raw_GPU_prediction_files_verified": 5,
+  "GPU_model_reinference": false,
+  "max_PLS_prediction_difference": 0.0,
+  "equal_blend_verified": true,
+  "independent_metric_rows": 68,
+  "max_metric_difference": 1.4210854715202004e-14,
+  "paired_bootstrap_comparisons": 4,
+  "person_rows_checked": 695,
+  "record_side_rows_checked": 2128,
+  "complementarity_metrics_verified": true,
+  "training": false,
+  "GPU_used": false,
+  "protected_numeric_data_used": false,
+  "independent_final_evaluation": false
+}

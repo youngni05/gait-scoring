@@ -1,0 +1,34 @@
+{
+  "people": 692,
+  "records": 1061,
+  "windows": 11261,
+  "methods": [
+    "mean",
+    "median",
+    "trim10",
+    "trim20",
+    "winsor10",
+    "winsor20"
+  ],
+  "tail_rule": "k=floor(n*p) independently per recording and side; trim k at each end or replace by boundary order statistics; k=0 means mean",
+  "selection": "36 CNN/STT method pairs, lowest inner person-equal MAE of frozen mean-difference ensemble; ties use listed method order",
+  "fixed_comparisons": "same aggregation on CNN and STT for all six predefined methods",
+  "calibration": "OLS slope and intercept refitted using only each base model training recordings, same unweighted recording/side OLS as original",
+  "ensemble": "Keep previous fold-specific CNN weights and bilateral-difference fractions; do not refit them",
+  "inner_epochs": {
+    "CNN": 100,
+    "STT": 200
+  },
+  "outer_epochs": "Original inner-selected refit models",
+  "control_diagnostic": "Five window_control outer refits; fixed six aggregators, training-only calibration; no outer-based selection",
+  "band_width": 10,
+  "band_rule": "[10k,10(k+1)) without clipping GDI to 0..100",
+  "neural_training": false,
+  "protected_final_data": false,
+  "limitations": [
+    "Repeatedly inspected development cohort, not independent final confirmation",
+    "Inner terminal checkpoints and outer selected-epoch checkpoints have different training lengths",
+    "Existing blend weights and new aggregation use the same inner validation people; outer people excluded",
+    "No probability classifier trained in this comparison"
+  ]
+}

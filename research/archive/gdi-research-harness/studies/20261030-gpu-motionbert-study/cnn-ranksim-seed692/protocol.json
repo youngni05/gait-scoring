@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "id": "cnn-ranksim-seed-692",
+  "state": "plan_frozen_before_new_seed_predictions",
+  "owner_thread": "01a18b12-4a31-7283-a35d-17f28017111a",
+  "automation_id": "gdi-2",
+  "decision_date": "2026-11-02",
+  "purpose": "Test random-seed stability and fixed two-seed averaging after weaker RankSim strengths failed to improve the existing RankSim ensemble",
+  "hypothesis": "An independently initialized RankSim1 model can reduce seed-specific errors when averaged with the original; matched MSE distinguishes generic model averaging from RankSim-specific value",
+  "single_change": "Base training RNG seed20261028 to seed20261102; this changes initialization, dropout and training draws as one RNG factor",
+  "old_seed": 20261028,
+  "new_seed": 20261102,
+  "seed_selection": "Fixed now, no seed search or selecting the best seed using outer outcomes",
+  "source_study": "cnn-ranksim692",
+  "source_manifest_sha256": "e5c5252ab031cfa777ac25f53a01acc34ba4925715de95016d7dd399a42ea131",
+  "data_path": "C:/Users/jun/Desktop/D_P/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-record-loss692/bundle/data.npz",
+  "data_sha256": "7c1912cd27c63a82ed0d0324f98c0c0fae9a608174d52bd7a502f05e9a8c7a1e",
+  "cohort": {
+    "people": 692,
+    "records": 1061,
+    "windows": 11261,
+    "person_folds": 5,
+    "input": "side-view OpenPose, separate sides124x12, stride31"
+  },
+  "labels": "Original left/right GDI only; no synthetic or normal=100 labels",
+  "arms": [
+    "mse",
+    "ranksim"
+  ],
+  "rank_weight": 1.0,
+  "rank_interpolation": 2.0,
+  "unchanged": [
+    "GdiCNN topology",
+    "features",
+    "records and person folds",
+    "uniform person sampling counts",
+    "RMSprop and schedule",
+    "batch32",
+    "dropout0.5",
+    "kernel regularization",
+    "training-only minmax",
+    "training-only OLS",
+    "record-side window averaging",
+    "max100epochs"
+  ],
+  "paired_control": "Each new-seed MSE/RankSim pair uses exactly equal initial states and extracted windows/sides/order. The two arms then optimize their own frozen objectives",
+  "fit_seed_formula": "base_seed+outer*100+(inner if inner is not None else 50)",
+  "epoch_selection": "For each seed/arm/outer, choose earliest minimum internal MAE weighted by the actual validation-person counts138/139. Use only the other four folds; refit on all outer-training people",
+  "training": {
+    "new_fits_per_arm": 25,
+    "new_fits_total": 50,
+    "new_outer_predictions": 10,
+    "reuse_old_fits": 50,
+    "workers_max": 3,
+    "gpus_per_job": 1,
+    "time_limit_hours_per_job": 24
+  },
+  "tasks": {
+    "worker0": [
+      [
+        "mse",
+        0
+      ],
+      [
+        "ranksim",
+        1
+      ],
+      [
+        "mse",
+        3
+      ],
+      [
+        "ranksim",
+        4
+      ]
+    ],
+    "worker1": [
+      [
+        "ranksim",
+        0
+      ],
+      [
+        "mse",
+        2
+      ],
+      [
+        "ranksim",
+        3
+      ]
+    ],
+    "worker2": [
+      [
+        "mse",
+        1
+      ],
+      [
+        "ranksim",
+        2
+      ],
+      [
+        "mse",
+        4
+      ]
+    ]
+  },
+  "ensemble": {
+    "fixed_arms": [
+      "old_rank1",
+      "new_rank1",
+      "mean_old_new_rank1",
+      "old_mse",
+      "new_mse",
+      "mean_old_new_mse"
+    ],
+    "between_seeds_weights": [
+      0.5,
+      0.5
+    ],
+    "formula": "(1-w)*existing_best+w*additional_CNN",
+    "additional_weight_grid": {
+      "start": 0,
+      "stop": 1,
+      "step": 0.05
+    },
+    "weight_selection": "Only outer-training inner OOF person-equal MAE, tie1e-12 smaller w; no cross-arm winner selected on outer labels",
+    "inner_predictions": "Every component excludes both outer f and inner j. Average old/new same(f,j) predictions before choosing w. Fixed epoch100 inner cache, each model uses its own frozen train-only OLS",
+    "outer_predictions": "Actual fixed existing-best bagged predictions; each additional arm uses own internally selected refit predictions, average corrected seed predictions without refitting another calibrator",
+    "same_weight_for_both_sides": true,
+    "known_mismatch": "Inner single-model baseline vs outer bagged baseline; fixed100 inner epoch vs selected outer refit epoch. Keep explicit and unchanged from the existing comparison"
+  },
+  "primary_comparison": "existing_best+mean_old_new_rank1 vs existing_best+old_rank1",
+  "secondary_comparisons": [
+    "primary candidate vs fixed existing_best",
+    "new RankSim vs matched new MSE",
+    "mean_old_new_rank1 vs mean_old_new_mse",
+    "old/new standalone model stability",
+    "MSE ensemble gain vs RankSim ensemble gain"
+  ],
+  "metrics": [
+    "person-equal overall MAE",
+    "person-mean90/100 MAE bias and counts",
+    "observation90/100 MAE bias and counts",
+    "low person-mean60 errors",
+    "fold changes",
+    "same10/20band accuracy",
+    "paired-person error correlation and disagreement"
+  ],
+  "bootstrap": {
+    "unit": "paired person",
+    "replicates": 10000,
+    "seed": 20261101,
+    "interval": [
+      0.025,
+      0.975
+    ]
+  },
+  "success": {
+    "primary_overall_delta_ci_upper_below_zero": true,
+    "improved_outer_folds_at_least": 4,
+    "high90_mae_and_absolute_bias_not_worse_for_joint_improvement": true,
+    "otherwise_preserve_tradeoff_without_replacing_default": true
+  },
+  "pilot": {
+    "real_epochs": 3,
+    "arms": [
+      "mse",
+      "ranksim"
+    ],
+    "outer": 0,
+    "inner": 1,
+    "expected_train_people": 416,
+    "expected_valid_people": 138,
+    "device_checks": "Each assigned physical GPU synthetic train/save/resume/replay; UUIDs distinct",
+    "local_gate": "Server GPU/CPU64 and localCPU64 score difference<1e-4, real per-epoch samples/IDs/scale/OLS/checkpoint SHA; all checks before main",
+    "runtime_gate": "Estimate remaining full tasks and fixed max100epochs from actual pilot; must fit remaining allocation with margin, otherwise hold and report, never shorten silently"
+  },
+  "submission_order": [
+    "implement unchanged trainer plus isolated seed setting",
+    "CPU synthetic end-to-end and full person-boundary checks",
+    "check actual resources and account limits",
+    "held submit with absolute /usr/bin/env and /usr/bin/python3.8",
+    "register real jobIDs/unique task locks and update own automation",
+    "release to GPU checks/pilot",
+    "verify fixed pilot archive/proofs locally",
+    "approve same manifest for main"
+  ],
+  "expected_resources": {
+    "total_gpu_hours_range": [
+      20,
+      40
+    ],
+    "parallel_elapsed_hours_range": [
+      10,
+      18
+    ],
+    "memory_upper_estimate_GiB": 1,
+    "basis": "Prior RankSim strength pilot26.23sec/epoch and182.2MiB; conservative schedule estimate, not a reservation or measured new pilot",
+    "excludes": [
+      "queue",
+      "local gate wait",
+      "I/O",
+      "final all-fit summaries"
+    ],
+    "reestimate_after_pilot": true
+  },
+  "artifacts": [
+    "50newlatest/fit_complete",
+    "all4823-like actual epoch raw predictions/metrics and sampled-index fingerprints",
+    "10outer predictions",
+    "old/new provenance",
+    "pilot models/proofs",
+    "logs/control/manifest/licenses",
+    "server-local SHA receipt",
+    "50fit audit and10finalCPU64 replay",
+    "fixed ensemble comparisons and selection audit"
+  ],
+  "verification": {
+    "score_tolerance": 0.0001,
+    "original_coefficient_tolerance": 1e-10,
+    "preserve_original_exact_failure": true,
+    "qualified_output_audit_separate": true
+  },
+  "storage": {
+    "small": "C:/Users/jun/Desktop/D_P/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim-seed692",
+    "large": "D:/gait-research-data/D_P/gdi-research-harness/studies/20261030-gpu-motionbert-study/cnn-ranksim-seed692"
+  },
+  "boundaries": {
+    "other_chats_untouched": true,
+    "protected_final_opened": false,
+    "LJMU_as_labels": false,
+    "same_development_cohort_not_external_validation": true,
+    "two_seeds_not_population_of_initializations": true,
+    "uncertainty_or_clinical_calibration_claim": false
+  },
+  "method_sources": [
+    "https://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles.pdf",
+    "https://proceedings.mlr.press/v162/gong22a.html"
+  ],
+  "method_adaptation": "Use only independent RNG initialization/shuffling and equal prediction averaging, not the paper's NLL variance head/adversarial training. No claim to reproduce its full method or uncertainty estimates",
+  "submission": null
+}

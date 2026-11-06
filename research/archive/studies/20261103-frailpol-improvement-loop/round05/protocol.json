@@ -1,0 +1,135 @@
+{
+  "round": 5,
+  "created": "2026-11-03T15:40:02.735935+00:00",
+  "code_sha256": "2d35d23eaaaede6dc553da6d513ea06501a76789baf5d870ce514677e49474e1",
+  "round3_library_sha256": "85975d7fc141e0c827add04cabcd809f8aec49d49ea88fe78cc0fb06baec8c51",
+  "round1_library_sha256": "22e2bd1e26fbf2b3d8a715bcc85d16799f1ba5b59bcb6d5ae4eb5fa8bbb9d653",
+  "review2_library_sha256": "a239fd0cfa3f9a2c17887a8b8b102e80237ca5dd3afed1a22b5d6d70d0b1e8cd",
+  "factory_sha256": "cc18a7abe68fdf5acbef27d7d306cbae79dde3c1f15aae73a908e821ba969390",
+  "features_sha256": "aff9375f8e6e7c43cd58194be05934b4e8b8173f9c2e4be69e5c4d4ae326afc6",
+  "source_sha256": "62b83914b235ebe5199640d59e972f8bcd8e7bb7de59219c94d18ab8fac345f0",
+  "candidates_by_condition": {
+    "speed": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 1
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 1
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 1
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 1
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 1
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 1
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 1
+      }
+    ],
+    "bilateral": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 16
+      },
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 32
+      },
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 213
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 16
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 32
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 32
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 213
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 32
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 213
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 32
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 213
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 32
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 32
+      }
+    ]
+  },
+  "conditions": [
+    "speed",
+    "bilateral"
+  ],
+  "design": "Same594people/folds. Bilateral complete-cycle mean and213short-window features, max4s core, original anchor fallback. Train-only median imputation/f_regression, speed always retained. Same classical/fixed-foundation families asround03. Deduplicate effective configs after clipping feature cap to actual input width, avoiding duplicated speed-only forests. No target clipping or new clinical inputs.",
+  "selection": "Inner3 stratified TUG<12/12..20/>=20 seed20261103; exact outer-training person order; minimize max(MAE/.9,p95/3,slowMAE/3),first tie. Report selected and equal top3 average. Also two predeclared learned combinations without choosing among them from test results.",
+  "stacking": "Fit positive Ridge alpha10 on training-only inner out-of-fold predictions of all effective candidates; standardize using that training matrix only. Unweighted and fixed tailweight4 (12..20weight2,>=20weight4). No meta hyperparameter search or performance claim on its training fit. Predict outer test using all base candidates refitted on outer training people. Save all base and meta models and contexts. Outer people never train preprocessing/base/meta or select candidates.",
+  "verification": "300inner+100final base models and20meta models saved/replayed independently. Exact fixed inner partitions, imputer/ranking, original selection, training-only meta context/weights/coefficient optimality and independent metrics. Float32 foundation replay point tolerance1e-6 abs+rel retained; metric reconstruction uses original stored predictions at1e-12. No replay candidate reselection.",
+  "expected_additional_GB": 1,
+  "limitations": "Repeated development folds; not external clinical/camera validation. Short-window symmetry/variation proxies are not validated long-term variability. Slowgroup9people."
+}

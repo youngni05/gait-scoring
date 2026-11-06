@@ -1,0 +1,80 @@
+{
+  "people": 692,
+  "records": 1061,
+  "outer_folds": 5,
+  "boundaries": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100,
+    110,
+    120,
+    130,
+    140,
+    150
+  ],
+  "bins": "[a,b); below 0 and at least 150 are explicit open tail classes; no GDI clipping",
+  "base_models": "For each outer f, reuse four fixed-terminal CNN/STT pairs trained excluding BOTH f and inner j",
+  "meta_partition": "Only base-held-out inner j people; deterministic 60% train,20% select,remainder probability calibration; person IDs shuffled with seed 20261031+100*f+j",
+  "after_selection": "Refit head and its standardizer on train+select; calibrate only on disjoint calibration people; never refit using calibration people",
+  "features": [
+    "fixed_half_CNN_STT_mean",
+    "CNN_minus_STT",
+    "opposite_leg_mean_minus_self",
+    "log1p_CNN_window_std",
+    "log1p_CNN_window_IQR",
+    "log1p_STT_window_std",
+    "log1p_STT_window_IQR"
+  ],
+  "families": [
+    "score_only",
+    "score_spread"
+  ],
+  "heads": "Fixed-boundary ordinal logistic location-scale; score_only learns location from first3 features and constant scale; score_spread learns location from7 and scale from4 spread features",
+  "ridge_grid": [
+    1.0,
+    0.1,
+    0.01
+  ],
+  "selection_metric": "person-equal negative log likelihood; ties follow family/grid order",
+  "calibration": "Temperature scaling of log probabilities; T in [0.25,4], person-equal NLL on calibration-only people",
+  "probability_baseline": "Fixed-half point score plus a single logistic residual scale fitted on meta train+select, then same disjoint temperature calibration",
+  "ensemble": "Equal average of four experts per outer fold; no outer labels used for weights or post-ensemble calibration",
+  "comparators": [
+    "legacy CNN/STT hard bins",
+    "legacy mean-difference hard bins",
+    "legacy robust hard bins",
+    "matched four-expert hard bins",
+    "matched residual probability baseline",
+    "score-only probabilities before/after calibration",
+    "score+spread probabilities before/after calibration",
+    "inner-selected head before/after calibration"
+  ],
+  "metrics": [
+    "exact band accuracy",
+    "two-or-more band error",
+    "NLL",
+    "multiclass Brier sum",
+    "ranked probability score normalized by K-1",
+    "top-label ECE with fixed 0.1 bins",
+    "reliability tables",
+    "person bootstrap paired differences"
+  ],
+  "weighting": "equal people; equal records within person; equal left/right within record",
+  "neural_retraining": false,
+  "protected_final_data": false,
+  "limitations": [
+    "Development cohort already explored, not independent final validation",
+    "Four inner base models differ from original outer-refit pipeline; include matched-model baseline",
+    "Each head uses about110 people for refit and about28 people for calibration",
+    "Independent expert calibration does not guarantee calibration after averaging",
+    "No claim of transfer reliability on unlabelled external adults"
+  ]
+}

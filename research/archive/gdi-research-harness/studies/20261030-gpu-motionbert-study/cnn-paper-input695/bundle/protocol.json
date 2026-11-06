@@ -1,0 +1,32 @@
+{
+  "name": "cnn_official12_matched124_calibrated_v1",
+  "stage": "paper_feature_matched_window_no_search",
+  "seed": 20261028,
+  "batch_size": 32,
+  "max_epochs": 100,
+  "learning_rate": 0.001,
+  "lr_drop_every": 10,
+  "lr_drop_factor": 0.8,
+  "dropout": 0.5,
+  "kernel_l2": 0.00031622776601683794,
+  "optimizer": "RMSprop",
+  "rmsprop_alpha": 0.9,
+  "rmsprop_eps": 1e-08,
+  "target_scaling": "training_only_pooled_sides_minmax",
+  "loss": "equal_side_example_scaled_GDI_MSE_plus_kernel_L2",
+  "selection": "earliest_minimum_inner_person_weighted_calibrated_MAE",
+  "input": "matched124_official12_separate_sides",
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "inner_folds": "remaining_four_original_folds",
+  "pilot_epochs": 3,
+  "wall_time_seconds": 10800,
+  "note": "Pinned public preprocessing and side-wise CNN; current person folds and person-MAE selection retained. Not full-paper reproduction.",
+  "calibration": "one_slope_and_intercept_fit_on_current_training_record_sides_only",
+  "primary_prediction": "calibrated"
+}

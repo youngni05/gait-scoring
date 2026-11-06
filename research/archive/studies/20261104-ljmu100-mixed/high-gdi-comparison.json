@@ -1,0 +1,1055 @@
+{
+  "status": "verified_completed_models_only",
+  "evaluation_source": "Stanford measured GDI only; all LJMU and all child data excluded",
+  "grouping": "Threshold applied to actual GDI of each record-side, not to predictions or person mean. Within-person eligible errors averaged first, then equal-person mean.",
+  "underprediction_definition": "mean(max(actual GDI - predicted GDI, 0)); overshoots contribute zero, so cannot cancel undershoots. Bias is reported separately.",
+  "uncertainty": "Paired person bootstrap10000 seed20261105; descriptive 95% intervals, not adjusted for multiple comparisons; conditional on fitted development OOF models, not independent final validation.",
+  "data_sha256": "306f6f2139a58c0b7716175b6edb05d5072e35f98fdaec0f01b9d40693a08ca9",
+  "counts": [
+    {
+      "threshold": 90,
+      "people": 162,
+      "records": 194,
+      "side_observations": 255
+    },
+    {
+      "threshold": 100,
+      "people": 36,
+      "records": 39,
+      "side_observations": 44
+    }
+  ],
+  "rows": [
+    {
+      "model": "CNN_refit",
+      "threshold": 90,
+      "people": 162,
+      "records": 194,
+      "side_observations": 255,
+      "metrics": {
+        "mae": {
+          "before": 9.345523027902365,
+          "after": 11.375689113698307,
+          "delta": 2.030166085795941,
+          "delta95": [
+            1.5137526664936642,
+            2.528639622917813
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 9.099070406744278,
+          "after": 11.33323187035505,
+          "delta": 2.234161463610772,
+          "delta95": [
+            1.73222004200476,
+            2.7155391644420828
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -8.85261778558619,
+          "after": -11.290774627011793,
+          "delta": -2.4381568414256023,
+          "delta95": [
+            -2.9438099135202074,
+            -1.9223091380557469
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 0.9030864197530865,
+          "after": 0.9645061728395061,
+          "delta": 0.06141975308641975,
+          "delta95": [
+            0.028395061728395066,
+            0.09969135802469135
+          ]
+        }
+      }
+    },
+    {
+      "model": "RF",
+      "threshold": 90,
+      "people": 162,
+      "records": 194,
+      "side_observations": 255,
+      "metrics": {
+        "mae": {
+          "before": 12.286610983759678,
+          "after": 11.509253153952939,
+          "delta": -0.7773578298067388,
+          "delta95": [
+            -1.160611014525749,
+            -0.4123164068062081
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 12.279755158350559,
+          "after": 11.34713156048263,
+          "delta": -0.9326235978679289,
+          "delta95": [
+            -1.3456351125188506,
+            -0.5470899782924938
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -12.272899332941442,
+          "after": -11.185009967012324,
+          "delta": 1.087889365929119,
+          "delta95": [
+            0.653974682943306,
+            1.5660846104768602
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 0.9938271604938271,
+          "after": 0.9521604938271605,
+          "delta": -0.041666666666666664,
+          "delta95": [
+            -0.07253086419753087,
+            -0.015432098765432098
+          ]
+        }
+      }
+    },
+    {
+      "model": "STT_refit",
+      "threshold": 90,
+      "people": 162,
+      "records": 194,
+      "side_observations": 255,
+      "metrics": {
+        "mae": {
+          "before": 10.215969873329751,
+          "after": 11.168686838680626,
+          "delta": 0.952716965350875,
+          "delta95": [
+            0.5117866405965089,
+            1.4006618477157258
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 10.095936423605352,
+          "after": 11.037494919714016,
+          "delta": 0.9415584961086642,
+          "delta95": [
+            0.4931753794004959,
+            1.4008682525741252
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -9.97590297388095,
+          "after": -10.906303000747403,
+          "delta": -0.9304000268664534,
+          "delta95": [
+            -1.4199503526614923,
+            -0.4442657539757059
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 0.9377572016460904,
+          "after": 0.9444444444444444,
+          "delta": 0.00668724279835391,
+          "delta95": [
+            -0.02161779835390945,
+            0.03446502057613169
+          ]
+        }
+      }
+    },
+    {
+      "model": "CNN_bag",
+      "threshold": 90,
+      "people": 162,
+      "records": 194,
+      "side_observations": 255,
+      "metrics": {
+        "mae": {
+          "before": 9.290799903837106,
+          "after": 10.922957947204143,
+          "delta": 1.6321580433670377,
+          "delta95": [
+            1.3039056976112315,
+            1.9514512720145847
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 9.055172846827723,
+          "after": 10.899807455858367,
+          "delta": 1.8446346090306438,
+          "delta95": [
+            1.5635422731429836,
+            2.12200099508745
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -8.819545789818342,
+          "after": -10.876656964512593,
+          "delta": -2.05711117469425,
+          "delta95": [
+            -2.350124122310922,
+            -1.755466995314623
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 0.9157407407407407,
+          "after": 0.9737654320987654,
+          "delta": 0.058024691358024696,
+          "delta95": [
+            0.029012345679012348,
+            0.09012345679012347
+          ]
+        }
+      }
+    },
+    {
+      "model": "STT_bag",
+      "threshold": 90,
+      "people": 162,
+      "records": 194,
+      "side_observations": 255,
+      "metrics": {
+        "mae": {
+          "before": 10.039643372840443,
+          "after": 11.239440444909482,
+          "delta": 1.1997970720690383,
+          "delta95": [
+            0.8856881056874428,
+            1.50022183102988
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 9.924218893880356,
+          "after": 11.140590618792386,
+          "delta": 1.216371724912028,
+          "delta95": [
+            0.9032300183325531,
+            1.5153680090135169
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -9.808794414920273,
+          "after": -11.041740792675292,
+          "delta": -1.2329463777550178,
+          "delta95": [
+            -1.544101377176193,
+            -0.9031214901529278
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 0.9459876543209876,
+          "after": 0.9583333333333334,
+          "delta": 0.012345679012345678,
+          "delta95": [
+            -0.015432098765432098,
+            0.040123456790123455
+          ]
+        }
+      }
+    },
+    {
+      "model": "bilateral_refit",
+      "threshold": 90,
+      "people": 162,
+      "records": 194,
+      "side_observations": 255,
+      "metrics": {
+        "mae": {
+          "before": 9.977468214318701,
+          "after": 10.65366091099661,
+          "delta": 0.6761926966779108,
+          "delta95": [
+            0.22558851993640947,
+            1.1124183001111532
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 9.875042229096374,
+          "after": 10.539560263791763,
+          "delta": 0.6645180346953877,
+          "delta95": [
+            0.19885577503076005,
+            1.112947401232591
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -9.772616243874047,
+          "after": -10.425459616586913,
+          "delta": -0.6528433727128646,
+          "delta95": [
+            -1.1182431819725311,
+            -0.1718530616782335
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 0.9588477366255145,
+          "after": 0.9442386831275719,
+          "delta": -0.014609053497942387,
+          "delta95": [
+            -0.039717078189300405,
+            0.00823045267489712
+          ]
+        }
+      }
+    },
+    {
+      "model": "fusion",
+      "threshold": 90,
+      "people": 162,
+      "records": 194,
+      "side_observations": 255,
+      "metrics": {
+        "mae": {
+          "before": 9.757169941110112,
+          "after": 11.169002824901279,
+          "delta": 1.411832883791169,
+          "delta95": [
+            1.1327574939612333,
+            1.678099754960268
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 9.629775376467883,
+          "after": 11.144050016814946,
+          "delta": 1.514274640347062,
+          "delta95": [
+            1.2624776481767879,
+            1.7541923246636286
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -9.502380811825656,
+          "after": -11.119097208728613,
+          "delta": -1.616716396902955,
+          "delta95": [
+            -1.8605982657375566,
+            -1.3575962714567877
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 0.9506172839506173,
+          "after": 0.9629629629629629,
+          "delta": 0.012345679012345678,
+          "delta95": [
+            -0.0030864197530864196,
+            0.030864197530864196
+          ]
+        }
+      }
+    },
+    {
+      "model": "CNN_refit",
+      "threshold": 100,
+      "people": 36,
+      "records": 39,
+      "side_observations": 44,
+      "metrics": {
+        "mae": {
+          "before": 13.926935883288225,
+          "after": 17.301687082526872,
+          "delta": 3.374751199238644,
+          "delta95": [
+            2.1549637504315116,
+            4.470867526202437
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 13.926935883288225,
+          "after": 17.301687082526872,
+          "delta": 3.374751199238644,
+          "delta95": [
+            2.1549637504315116,
+            4.470867526202437
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -13.926935883288225,
+          "after": -17.301687082526872,
+          "delta": -3.374751199238644,
+          "delta95": [
+            -4.470867526202437,
+            -2.1549637504315116
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0,
+          "delta95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "model": "RF",
+      "threshold": 100,
+      "people": 36,
+      "records": 39,
+      "side_observations": 44,
+      "metrics": {
+        "mae": {
+          "before": 19.088386709920798,
+          "after": 17.379372943891045,
+          "delta": -1.7090137660297553,
+          "delta95": [
+            -2.666141126867496,
+            -0.7805213313892856
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 19.088386709920798,
+          "after": 17.379372943891045,
+          "delta": -1.7090137660297553,
+          "delta95": [
+            -2.666141126867496,
+            -0.7805213313892856
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -19.088386709920798,
+          "after": -17.379372943891045,
+          "delta": 1.7090137660297553,
+          "delta95": [
+            0.7805213313892851,
+            2.666141126867496
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0,
+          "delta95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "model": "STT_refit",
+      "threshold": 100,
+      "people": 36,
+      "records": 39,
+      "side_observations": 44,
+      "metrics": {
+        "mae": {
+          "before": 15.995272064551383,
+          "after": 16.324083663537653,
+          "delta": 0.3288115989862759,
+          "delta95": [
+            -0.5595510087589814,
+            1.2579981740595032
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 15.995272064551383,
+          "after": 16.324083663537653,
+          "delta": 0.3288115989862759,
+          "delta95": [
+            -0.5595510087589814,
+            1.2579981740595032
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -15.995272064551383,
+          "after": -16.324083663537653,
+          "delta": -0.3288115989862759,
+          "delta95": [
+            -1.2579981740595043,
+            0.5595510087589814
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0,
+          "delta95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "model": "CNN_bag",
+      "threshold": 100,
+      "people": 36,
+      "records": 39,
+      "side_observations": 44,
+      "metrics": {
+        "mae": {
+          "before": 14.144258351623202,
+          "after": 16.943179347306152,
+          "delta": 2.7989209956829484,
+          "delta95": [
+            2.161622481811906,
+            3.371726151575198
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 14.144258351623202,
+          "after": 16.943179347306152,
+          "delta": 2.7989209956829484,
+          "delta95": [
+            2.161622481811906,
+            3.371726151575198
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -14.144258351623202,
+          "after": -16.943179347306152,
+          "delta": -2.7989209956829484,
+          "delta95": [
+            -3.3717261515751984,
+            -2.1616224818119063
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0,
+          "delta95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "model": "STT_bag",
+      "threshold": 100,
+      "people": 36,
+      "records": 39,
+      "side_observations": 44,
+      "metrics": {
+        "mae": {
+          "before": 15.660030954685563,
+          "after": 16.68653034376905,
+          "delta": 1.0264993890834866,
+          "delta95": [
+            0.25526459898813897,
+            1.7285606149501807
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 15.660030954685563,
+          "after": 16.68653034376905,
+          "delta": 1.0264993890834866,
+          "delta95": [
+            0.25526459898813897,
+            1.7285606149501807
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -15.660030954685563,
+          "after": -16.68653034376905,
+          "delta": -1.0264993890834866,
+          "delta95": [
+            -1.7285606149501807,
+            -0.25526459898813897
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0,
+          "delta95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "model": "bilateral_refit",
+      "threshold": 100,
+      "people": 36,
+      "records": 39,
+      "side_observations": 44,
+      "metrics": {
+        "mae": {
+          "before": 15.07975068009416,
+          "after": 15.554374269503294,
+          "delta": 0.47462358940913124,
+          "delta95": [
+            -0.34802409041199334,
+            1.292389794034301
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 15.07975068009416,
+          "after": 15.554374269503294,
+          "delta": 0.47462358940913124,
+          "delta95": [
+            -0.34802409041199334,
+            1.292389794034301
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -15.07975068009416,
+          "after": -15.554374269503294,
+          "delta": -0.47462358940913124,
+          "delta95": [
+            -1.2923897940343012,
+            0.348024090411993
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0,
+          "delta95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "model": "fusion",
+      "threshold": 100,
+      "people": 36,
+      "records": 39,
+      "side_observations": 44,
+      "metrics": {
+        "mae": {
+          "before": 15.07944706951184,
+          "after": 16.887988529576482,
+          "delta": 1.8085414600646432,
+          "delta95": [
+            1.2537146794820382,
+            2.302186124516181
+          ]
+        },
+        "underprediction_shortfall": {
+          "before": 15.07944706951184,
+          "after": 16.887988529576482,
+          "delta": 1.8085414600646432,
+          "delta95": [
+            1.2537146794820382,
+            2.302186124516181
+          ]
+        },
+        "bias_prediction_minus_truth": {
+          "before": -15.07944706951184,
+          "after": -16.887988529576482,
+          "delta": -1.8085414600646432,
+          "delta95": [
+            -2.302186124516181,
+            -1.2537146794820384
+          ]
+        },
+        "underprediction_fraction": {
+          "before": 1.0,
+          "after": 1.0,
+          "delta": 0.0,
+          "delta95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  ],
+  "prediction_provenance": [
+    {
+      "model": "CNN_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold0\\predictions.npz",
+      "sha256": "074d39024219db4128c527700685f156570add54af5010968758eb3c2305b2de"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold1\\predictions.npz",
+      "sha256": "288e9d645323a29ffd7ebc98d306c4199fd2701abff56b58f7732602cf1eba7a"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold2\\predictions.npz",
+      "sha256": "8d95ee284453d34c7aa48c04b5cf4fa98551307a7462c55dcbb3281dce0913fc"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold3\\predictions.npz",
+      "sha256": "a353bf81273c0a0b610f7fe7b599358cf4a1b0444ae466cd48aa5afb2a6af28d"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold4\\predictions.npz",
+      "sha256": "0e205fc702984d9d54f6a88ecf09f8da06ba9699fe06c5c5dcbded1e82da4cf4"
+    },
+    {
+      "model": "RF",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold0\\predictions.npz",
+      "sha256": "ce6a9e9c1b41dad349f88a065724fd3f54d770f4deb49308bff9a4553950963b"
+    },
+    {
+      "model": "RF",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold1\\predictions.npz",
+      "sha256": "b6915af65735af07343f54556af5f241afac7a4456a471b0eca7b897dbb332da"
+    },
+    {
+      "model": "RF",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold2\\predictions.npz",
+      "sha256": "ab6a969dc19e27b9288ba4b5f13e611548b73483c7c1a6b6ca41dfabb4368e4d"
+    },
+    {
+      "model": "RF",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold3\\predictions.npz",
+      "sha256": "63f48aade10000e8c7bc6ba4b37eb2b2bf2cc707da785c841e246e36cfaab703"
+    },
+    {
+      "model": "RF",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\baseline\\RF\\fold4\\predictions.npz",
+      "sha256": "75bf5e28d7b20792984671dc829a1cd359f56a6ee31d18d287fbfd129ade3fa2"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold0\\predictions.npz",
+      "sha256": "fa0a99bd79438fe60964b5983300fd2adb150c45699bffd4224e9ef28f9fa628"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold1\\predictions.npz",
+      "sha256": "cc62657b6b6399fa5d5109f7796d4b6f101b15e991bb63bfc10cac854f7c555a"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold2\\predictions.npz",
+      "sha256": "64ba5b2ebcf5c3df41ef86823382b58820d042ddba6cc6458e347fec446492ca"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold3\\predictions.npz",
+      "sha256": "67b3b531578dafacb4bea19295d66c6f9354957fb9e68feca2b247e02c467d7a"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold4\\predictions.npz",
+      "sha256": "4b4b22194d4f21ab93e82e9f553e725eb14bb7ae75857d9f654ef8437cf08e6c"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold0\\predictions.npz",
+      "sha256": "074d39024219db4128c527700685f156570add54af5010968758eb3c2305b2de"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold1\\predictions.npz",
+      "sha256": "288e9d645323a29ffd7ebc98d306c4199fd2701abff56b58f7732602cf1eba7a"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold2\\predictions.npz",
+      "sha256": "8d95ee284453d34c7aa48c04b5cf4fa98551307a7462c55dcbb3281dce0913fc"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold3\\predictions.npz",
+      "sha256": "a353bf81273c0a0b610f7fe7b599358cf4a1b0444ae466cd48aa5afb2a6af28d"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\CNN\\fold4\\predictions.npz",
+      "sha256": "0e205fc702984d9d54f6a88ecf09f8da06ba9699fe06c5c5dcbded1e82da4cf4"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold0\\predictions.npz",
+      "sha256": "fa0a99bd79438fe60964b5983300fd2adb150c45699bffd4224e9ef28f9fa628"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold1\\predictions.npz",
+      "sha256": "cc62657b6b6399fa5d5109f7796d4b6f101b15e991bb63bfc10cac854f7c555a"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold2\\predictions.npz",
+      "sha256": "64ba5b2ebcf5c3df41ef86823382b58820d042ddba6cc6458e347fec446492ca"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold3\\predictions.npz",
+      "sha256": "67b3b531578dafacb4bea19295d66c6f9354957fb9e68feca2b247e02c467d7a"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\STT\\fold4\\predictions.npz",
+      "sha256": "4b4b22194d4f21ab93e82e9f553e725eb14bb7ae75857d9f654ef8437cf08e6c"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold0\\predictions.npz",
+      "sha256": "59930d0c1dee971725becafd1330156742fcb94dfb463804d4fc6a653b05c4e4"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold1\\predictions.npz",
+      "sha256": "94917de880e437a68db7a11efd9eb28200b88d1acd2d012301a809356817bb48"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold2\\predictions.npz",
+      "sha256": "2bed19b17fc034f1e917b02e7f52e173af61345da531372a3d0726db596c1f3d"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold3\\predictions.npz",
+      "sha256": "05d38803874fe5a67a8d068d245322be7bd06f331d38321214f16859a6e50e30"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "baseline",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\baseline\\bilateral\\fold4\\predictions.npz",
+      "sha256": "e8f91e067d7a7055092535d19e1b8e2140b01471d7041dc8820bee9b10135ba7"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold0\\predictions.npz",
+      "sha256": "34372a78ef6997770b34282d20baa4d1878f2714ef9ea1c7498904e6d5491b33"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold1\\predictions.npz",
+      "sha256": "696e860b2dfbdce8a7fdb298cf891660024feb490c4984f4bc6e14912dde65ee"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold2\\predictions.npz",
+      "sha256": "9ac4d649c5e156a7fce631bcb7f588d7ca81f9df6e141b4b903ba9c083df0985"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold3\\predictions.npz",
+      "sha256": "0e9a1afe2bf71ba280278d654eafb3c4b855f475669a544c844463c6d07849ee"
+    },
+    {
+      "model": "CNN_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold4\\predictions.npz",
+      "sha256": "73dae965831c279eb92e7b11afc5a88daeecdae3fd8b58be68100b44fe62eb55"
+    },
+    {
+      "model": "RF",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\mixed\\RF\\fold0\\predictions.npz",
+      "sha256": "20bd1d30d9e47767682a7d54c215bde2ebfbee0d5fdc9f5ae1e9ab298ab9d918"
+    },
+    {
+      "model": "RF",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\mixed\\RF\\fold1\\predictions.npz",
+      "sha256": "00abe02952b625eca42e12a8628068267c5ba3137ce7ea5e5c17bc9c405053ee"
+    },
+    {
+      "model": "RF",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\mixed\\RF\\fold2\\predictions.npz",
+      "sha256": "63dfcd858a6ee6912b9a3aaa5ce18aa785ad0495ecdc3c3fa8509116bf93bc49"
+    },
+    {
+      "model": "RF",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\mixed\\RF\\fold3\\predictions.npz",
+      "sha256": "313fa6a7c1a19dbcc01365da826bed5ddafa1150aff3c2b4db158bbb251c38ec"
+    },
+    {
+      "model": "RF",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\runs\\mixed\\RF\\fold4\\predictions.npz",
+      "sha256": "5d7331548c5daa332c36aa41963a354095729b9ddbc0e7ca22630b12f8b9b5f5"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold0\\predictions.npz",
+      "sha256": "63140136d4434935a328ad27e20fe6e9d9ae531eb2be7745ec445314f3959c9f"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold1\\predictions.npz",
+      "sha256": "e0f76d32267fe4aae2b0c12b8a99f8c9673a6b726782f374b4872e77c6fb70ac"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold2\\predictions.npz",
+      "sha256": "a000b6ea37126e88ebfc081236cbfdf4e97e01b0c80bf051365e3f016c0c5749"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold3\\predictions.npz",
+      "sha256": "20851e75ffb6f859ea9b89ebb60ee5ea764911268b2373489519f0117c566154"
+    },
+    {
+      "model": "STT_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold4\\predictions.npz",
+      "sha256": "bc1a033956651fd9d68c98faa828bdcb507a82d0efbaecf421672640034f06d2"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold0\\predictions.npz",
+      "sha256": "34372a78ef6997770b34282d20baa4d1878f2714ef9ea1c7498904e6d5491b33"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold1\\predictions.npz",
+      "sha256": "696e860b2dfbdce8a7fdb298cf891660024feb490c4984f4bc6e14912dde65ee"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold2\\predictions.npz",
+      "sha256": "9ac4d649c5e156a7fce631bcb7f588d7ca81f9df6e141b4b903ba9c083df0985"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold3\\predictions.npz",
+      "sha256": "0e9a1afe2bf71ba280278d654eafb3c4b855f475669a544c844463c6d07849ee"
+    },
+    {
+      "model": "CNN_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\CNN\\fold4\\predictions.npz",
+      "sha256": "73dae965831c279eb92e7b11afc5a88daeecdae3fd8b58be68100b44fe62eb55"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold0\\predictions.npz",
+      "sha256": "63140136d4434935a328ad27e20fe6e9d9ae531eb2be7745ec445314f3959c9f"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold1\\predictions.npz",
+      "sha256": "e0f76d32267fe4aae2b0c12b8a99f8c9673a6b726782f374b4872e77c6fb70ac"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold2\\predictions.npz",
+      "sha256": "a000b6ea37126e88ebfc081236cbfdf4e97e01b0c80bf051365e3f016c0c5749"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold3\\predictions.npz",
+      "sha256": "20851e75ffb6f859ea9b89ebb60ee5ea764911268b2373489519f0117c566154"
+    },
+    {
+      "model": "STT_bag",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\STT\\fold4\\predictions.npz",
+      "sha256": "bc1a033956651fd9d68c98faa828bdcb507a82d0efbaecf421672640034f06d2"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\bilateral\\fold0\\predictions.npz",
+      "sha256": "58a5da68851086ad0d4781d39639387e380215c5f4c2517d1db3b072b4437e9f"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\bilateral\\fold1\\predictions.npz",
+      "sha256": "a81cacd5f3899f913f4af5d08a980fc8c47db873208b9b332e01adea369824b4"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\bilateral\\fold2\\predictions.npz",
+      "sha256": "e7d382f79c8fd72c54bec45362645f7011f585af4fe602a4f8b1ce424ee86eb9"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\bilateral\\fold3\\predictions.npz",
+      "sha256": "56393c1d31da344487e614ab595539a923a346c7d504d25843d4d9cb11614e77"
+    },
+    {
+      "model": "bilateral_refit",
+      "arm": "mixed",
+      "path": "D:\\gait-research-data\\D_P\\ljmu100-mixed-20261104\\received\\data\\runs\\mixed\\bilateral\\fold4\\predictions.npz",
+      "sha256": "45e87b248eb5dc89a441d590dc8aea17d09d380d0a60571c9a1ea75bc09a55fa"
+    }
+  ],
+  "audit_provenance": [
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\bilateral-0_1_2_3.json",
+      "sha256": "b9fdeec1ed02e8aa3584c87cb061ecc452d1a0d31ec9f5164e30e7ff587f1c38"
+    },
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\bilateral-4.json",
+      "sha256": "a2ee3f9650abe3c53303892c4e6abe7ff58cc2f8a19f8f91bac420c5f0bc0252"
+    },
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\CNN-0.json",
+      "sha256": "0f49ff3737965c01f00a83481e5adb5ec90197bffecf12c92893cb07e7e06e69"
+    },
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\CNN-1.json",
+      "sha256": "2d98d2077294ca6a07a3d1910d69f99bd516a4704ce8788fafb4d27748014201"
+    },
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\CNN-2.json",
+      "sha256": "6f4dbeb8065d9ff6c8113aaeca425b49a356b7dc156a05bc98e4be561265a93b"
+    },
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\CNN-3.json",
+      "sha256": "c0b9b6037e566992c623c3f67890cbc6fa2653a2a0db93c052cba8c4289ba175"
+    },
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\CNN-4.json",
+      "sha256": "0fcb102bf615f242f6bb4b7cc0a7bcd86b21720cc9cfc43e633b3d998f47c48a"
+    },
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\RF-0_1_2_3_4.json",
+      "sha256": "bcddc34047e71ea87698af3c857e2f11a73d8ba88db8fb9dae74adf2882788d1"
+    },
+    {
+      "path": "D:\\Projects\\D_P\\studies\\20261104-ljmu100-mixed\\audits\\STT-0_1_2_3_4.json",
+      "sha256": "c0528dae11e0d9b78b53dd6a7af360152a3cbb5c064e80b815890e52c4bfb733"
+    }
+  ],
+  "independent_weighted_recalculation_passed": true
+}

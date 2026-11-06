@@ -1,0 +1,16 @@
+{
+  "asset": "gdi-normal100-paper75-20261106.tar.gz",
+  "sha256": "b0cb2393dafdfa01665d6e2f41c1a9618d252aa4d7c5b9aad5b3a2689c7bafda",
+  "bytes": 9485471,
+  "checkpoints": 75,
+  "exact_tensor_equality": true,
+  "synthetic_replay_max_error": 0.0,
+  "synthetic_records": 2,
+  "synthetic_windows": 3,
+  "tested_modes": [
+    "cnn_refit",
+    "cnn_bag",
+    "fusion"
+  ],
+  "new_performance_evaluation": false
+}

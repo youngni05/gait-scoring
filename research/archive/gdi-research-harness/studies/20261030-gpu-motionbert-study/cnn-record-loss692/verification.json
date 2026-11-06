@@ -1,0 +1,226 @@
+{
+  "passed": true,
+  "standalone_extraction_checked": true,
+  "two_variants_input_check": true,
+  "corrupted_bundle_rejected": true,
+  "baseline_files_unchanged": true,
+  "zip_sha256": "2958a3318d29636ac188c4dd01e91eb5c2744589a8469cdfa7b037ef30daaeb0",
+  "bundle_sha256": "128b153bd8cacbeda749d6574167bb2e2c7237cf888912be2204f08ca616074b",
+  "cpu_verification": {
+    "passed": true,
+    "environment": {
+      "torch": "2.14.1+cpu",
+      "numpy": "2.3.5",
+      "device": "cpu"
+    },
+    "people": 692,
+    "records": 1061,
+    "windows": 11261,
+    "all_25_training_subsets_checked": true,
+    "loss_and_gradient_independent": true,
+    "variance_decomposition": true,
+    "packing_order_verified": true,
+    "variants": {
+      "window_control": {
+        "resume_exact": true,
+        "validation_poison_invariant": true,
+        "training_change_resume_rejected": true,
+        "synthetic_nested_fits": 25,
+        "outer_poison_invariant": true,
+        "stored_model_reinference": true
+      },
+      "record_mean": {
+        "resume_exact": true,
+        "validation_poison_invariant": true,
+        "training_change_resume_rejected": true,
+        "synthetic_nested_fits": 25,
+        "outer_poison_invariant": true,
+        "stored_model_reinference": true
+      }
+    },
+    "real_data_optimizer_steps": 0,
+    "bundle_sha256": "128b153bd8cacbeda749d6574167bb2e2c7237cf888912be2204f08ca616074b",
+    "training_subsets": [
+      {
+        "outer": 0,
+        "inner": null,
+        "records": 846,
+        "windows": 8931,
+        "steps_per_epoch": 423
+      },
+      {
+        "outer": 0,
+        "inner": 1,
+        "records": 636,
+        "windows": 6696,
+        "steps_per_epoch": 318
+      },
+      {
+        "outer": 0,
+        "inner": 2,
+        "records": 653,
+        "windows": 6903,
+        "steps_per_epoch": 327
+      },
+      {
+        "outer": 0,
+        "inner": 3,
+        "records": 615,
+        "windows": 6509,
+        "steps_per_epoch": 308
+      },
+      {
+        "outer": 0,
+        "inner": 4,
+        "records": 634,
+        "windows": 6685,
+        "steps_per_epoch": 317
+      },
+      {
+        "outer": 1,
+        "inner": null,
+        "records": 851,
+        "windows": 9026,
+        "steps_per_epoch": 426
+      },
+      {
+        "outer": 1,
+        "inner": 0,
+        "records": 636,
+        "windows": 6696,
+        "steps_per_epoch": 318
+      },
+      {
+        "outer": 1,
+        "inner": 2,
+        "records": 658,
+        "windows": 6998,
+        "steps_per_epoch": 329
+      },
+      {
+        "outer": 1,
+        "inner": 3,
+        "records": 620,
+        "windows": 6604,
+        "steps_per_epoch": 310
+      },
+      {
+        "outer": 1,
+        "inner": 4,
+        "records": 639,
+        "windows": 6780,
+        "steps_per_epoch": 320
+      },
+      {
+        "outer": 2,
+        "inner": null,
+        "records": 868,
+        "windows": 9233,
+        "steps_per_epoch": 434
+      },
+      {
+        "outer": 2,
+        "inner": 0,
+        "records": 653,
+        "windows": 6903,
+        "steps_per_epoch": 327
+      },
+      {
+        "outer": 2,
+        "inner": 1,
+        "records": 658,
+        "windows": 6998,
+        "steps_per_epoch": 329
+      },
+      {
+        "outer": 2,
+        "inner": 3,
+        "records": 637,
+        "windows": 6811,
+        "steps_per_epoch": 319
+      },
+      {
+        "outer": 2,
+        "inner": 4,
+        "records": 656,
+        "windows": 6987,
+        "steps_per_epoch": 328
+      },
+      {
+        "outer": 3,
+        "inner": null,
+        "records": 830,
+        "windows": 8839,
+        "steps_per_epoch": 415
+      },
+      {
+        "outer": 3,
+        "inner": 0,
+        "records": 615,
+        "windows": 6509,
+        "steps_per_epoch": 308
+      },
+      {
+        "outer": 3,
+        "inner": 1,
+        "records": 620,
+        "windows": 6604,
+        "steps_per_epoch": 310
+      },
+      {
+        "outer": 3,
+        "inner": 2,
+        "records": 637,
+        "windows": 6811,
+        "steps_per_epoch": 319
+      },
+      {
+        "outer": 3,
+        "inner": 4,
+        "records": 618,
+        "windows": 6593,
+        "steps_per_epoch": 309
+      },
+      {
+        "outer": 4,
+        "inner": null,
+        "records": 849,
+        "windows": 9015,
+        "steps_per_epoch": 425
+      },
+      {
+        "outer": 4,
+        "inner": 0,
+        "records": 634,
+        "windows": 6685,
+        "steps_per_epoch": 317
+      },
+      {
+        "outer": 4,
+        "inner": 1,
+        "records": 639,
+        "windows": 6780,
+        "steps_per_epoch": 320
+      },
+      {
+        "outer": 4,
+        "inner": 2,
+        "records": 656,
+        "windows": 6987,
+        "steps_per_epoch": 328
+      },
+      {
+        "outer": 4,
+        "inner": 3,
+        "records": 618,
+        "windows": 6593,
+        "steps_per_epoch": 309
+      }
+    ]
+  },
+  "real_GDI_optimizer_steps": 0,
+  "gpu_execution": false,
+  "server_submitted": false,
+  "bash_syntax_check_passed": true,
+  "bash_check_note": "Local Git Bash -n passed outside restricted sandbox; no scripts executed."
+}

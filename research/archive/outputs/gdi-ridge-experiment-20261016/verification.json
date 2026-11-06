@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "label_sides_matched_to_original_table": 570,
+  "people_in_multiple_splits": 0,
+  "exact_input_duplicates_across_splits": 0,
+  "baseline_recomputed_from_training_only": true,
+  "MAE_recomputed_from_predictions": {
+    "train_ridge_person_MAE": 7.6884347805631945,
+    "train_baseline_person_MAE": 9.51262838426882,
+    "test_ridge_person_MAE": 8.866301754247466,
+    "test_baseline_person_MAE": 10.357432027909136,
+    "validation_ridge_person_MAE": 7.718474433643967,
+    "validation_baseline_person_MAE": 9.94562159248891
+  },
+  "source_archive_sha256_unchanged": true
+}

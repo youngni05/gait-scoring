@@ -1,0 +1,60 @@
+{
+  "status": "posthoc_diagnostic_not_primary_or_camera_validation",
+  "diagnostic": {
+    "selected_inner_MAE": {
+      "mae": 0.9744970655475915,
+      "p95": 3.0529917887840634,
+      "slow_mae": 5.327377493013194,
+      "slow_bias": -4.18808519104632
+    },
+    "ensemble3_inner_MAE": {
+      "mae": 0.941137532346207,
+      "p95": 2.7569144665874314,
+      "slow_mae": 5.027703387563037,
+      "slow_bias": -4.4257990654546315
+    },
+    "stacked": {
+      "mae": 0.946778526855741,
+      "p95": 2.985216303297749,
+      "slow_mae": 4.934314720896201,
+      "slow_bias": -4.015081315245315
+    },
+    "tail_stacked": {
+      "mae": 0.9785977129847022,
+      "p95": 3.255119970086585,
+      "slow_mae": 4.2524190442940615,
+      "slow_bias": -2.4836632617940717
+    }
+  },
+  "contrasts": {
+    "speed": {
+      "diagnostic_mae_minus_reference": -0.12827451489456765,
+      "paired_ci95": [
+        -0.21917547580058772,
+        -0.049828646282720136
+      ]
+    },
+    "timing_core": {
+      "diagnostic_mae_minus_reference": -0.10181142960067764,
+      "paired_ci95": [
+        -0.20519759049388847,
+        -0.024090052316733033
+      ]
+    },
+    "timing": {
+      "diagnostic_mae_minus_reference": -0.038736860657148764,
+      "paired_ci95": [
+        -0.08296947273895537,
+        0.0015051163891392002
+      ]
+    },
+    "calibrated_spatiotemporal": {
+      "diagnostic_mae_minus_reference": -0.03530713357883821,
+      "paired_ci95": [
+        -0.07949795685199484,
+        0.006783070457679054
+      ]
+    }
+  },
+  "interpretation": "Similarerrorsfromavailabilityflagsalonewouldmakegait-quantityinterpretationuncertain. These flags belong to sourceIMUevent detection and may not transfer to MediaPipe. No diagnostic result changes the original six-arm results,features or primarymodel. Conditionalbootstrapdoesnotadjustforposthocsearch."
+}

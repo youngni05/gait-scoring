@@ -1,0 +1,102 @@
+{
+  "checks": {
+    "source_archives_md5_sha256_crc": 5,
+    "source_form_weekly_join_and_first_visit_selection": true,
+    "heldout_prediction_sets_recomputed": 160,
+    "auroc_max_absolute_difference": 2.220446049250313e-16,
+    "same_people_targets_excluded283": true,
+    "six_second_manifest_and_person_disjoint_outer_folds": true
+  },
+  "new_models_trained": 0,
+  "source_linkage_recomputation": {
+    "TUG": {
+      "people": 1984,
+      "tail_people": 277,
+      "positive_under3_people": 4,
+      "t2": {
+        "COPD": {
+          "people": 422,
+          "tail_people": 2
+        },
+        "MS": {
+          "people": 450,
+          "tail_people": 91
+        },
+        "PD": {
+          "people": 430,
+          "tail_people": 9
+        },
+        "PFF": {
+          "people": 369,
+          "tail_people": 79
+        }
+      }
+    },
+    "STS": {
+      "people": 1972,
+      "tail_people": 408,
+      "positive_under3_people": 1,
+      "t2": {
+        "COPD": {
+          "people": 411,
+          "tail_people": 20
+        },
+        "MS": {
+          "people": 384,
+          "tail_people": 109
+        },
+        "PD": {
+          "people": 355,
+          "tail_people": 54
+        },
+        "PFF": {
+          "people": 290,
+          "tail_people": 52
+        }
+      }
+    },
+    "SPPB": {
+      "people": 2232,
+      "tail_people": 500,
+      "positive_under3_people": null,
+      "t2": {
+        "COPD": {
+          "people": 425,
+          "tail_people": 11
+        },
+        "MS": {
+          "people": 458,
+          "tail_people": 159
+        },
+        "PD": {
+          "people": 430,
+          "tail_people": 22
+        },
+        "PFF": {
+          "people": 373,
+          "tail_people": 99
+        }
+      }
+    }
+  },
+  "input_preservation": {
+    "STS": {
+      "input.npz": "192bd01266254b87c30e1f99fc77bc1125c7acc541e6a079d5d7de64cbede063",
+      "manifest.csv": "6b26107cf5b1d60bd1408519452b1199598c9f2d42601b7904c431168f50714d",
+      "splits.json": "0755e063d6033f57f1583d5c7a211c0f9b6837635645a2a8bdcdcef1015b644e",
+      "predictions.csv": "6020060811ada747952966ee7a80c46a2a5f0980da5599020a093adfaa7938d4"
+    },
+    "TUG": {
+      "input.npz": "494b8f20f524f03ba7da4c6967d7a1a34fd314c8f966dc38476c5367827ab798",
+      "manifest.csv": "0f08d186abde10feb8eeae1a85b3a38236d2265d7547da3e72e0d4ae99e55d0c",
+      "splits.json": "999e6dbef60bf3f32394521d161fc2f0577ae99678cdd6eaaad5180f473ab6df",
+      "predictions.csv": "484856929868b7d96d49477e1d8e3d9f1ea2cfc8b183b0dc8bd6ef9901732014"
+    }
+  },
+  "limits": [
+    "No new probability calibration, intervals, classifier, or external prediction evaluated.",
+    "Linked Mobilise-D records precede label-quality adjudication; positive under3s and dictionary-range contradictions remain.",
+    "Checks verify file linkage and calculations, not correctness of original stopwatch labels or exact temporal boundaries."
+  ],
+  "passed": true
+}

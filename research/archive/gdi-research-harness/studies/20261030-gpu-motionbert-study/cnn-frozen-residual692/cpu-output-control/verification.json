@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "synthetic": {
+    "passed": true,
+    "known_affine_relation_recovered": true,
+    "heldout_labels_do_not_change_fit": true
+  },
+  "device": "cpu",
+  "motionbert_features_loaded": false,
+  "baseline_checkpoints_verified": 25,
+  "all_splits_disjoint": true,
+  "training_only_normalization": true,
+  "outer_selection_forbidden": true,
+  "all_records_evaluated_once": true,
+  "baseline_replay_max_error": 2.82518534220344e-05,
+  "oof_sha256": "092e5364766a951098f3a59f82dfe9af6e643168794370b6de1edf40b154cda9"
+}

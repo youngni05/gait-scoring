@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "unique_people": 692,
+  "unique_exams": 1061,
+  "repeated_people": 229,
+  "unordered_pairs": 581,
+  "same_person_fold_consistent": true,
+  "existing_predictions_linked": true,
+  "prediction_path": "D:\\gait-research-data\\D_P\\gdi-research-harness\\studies\\20261030-gpu-motionbert-study\\inner-bagging692\\cache\\evaluation.npz",
+  "prediction_sha256": "b18cb8b3e6de07a000a1a32bf5e88a22ce987da209d8d8638cf79de2cd4f54ab",
+  "prediction_report_sha256": "bfeaf0f89ea9c6220f316034a5acb7e7293ef315e8c027ffe6e704b2d86ae210",
+  "source_artifacts": {
+    "audit.py": "2b66ff6b41a9ecaf6345ca75c365567aaa3b8c62ddde69a6b26e59bf244f0377",
+    "summary.json": "4a50de6449a6d4ac15ad7b11db99d82435a7c2096cc900af8270ba4122ac199c",
+    "development-visits.json": "e18e95193320c8c89182615166cca057a27ded568df119fd12de41c055222ead",
+    "candidate-pairs.json": "f2ebc3852b67b879adca93932405660f1e72aa116c448ebbdb63c3dc8e5b95f8"
+  },
+  "verification_script_sha256": "50fc36be54605cce0634f24f0b3afaee83c4801b1c0e8ab2c7b750b4e5f2d011",
+  "training_provenance_reaudited": false,
+  "change_prediction_metrics_computed": false,
+  "note": "Metadata and existing prediction identity linkage only; no new performance or clinical-change claim."
+}

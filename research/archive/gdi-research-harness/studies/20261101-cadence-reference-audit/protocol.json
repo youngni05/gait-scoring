@@ -1,0 +1,44 @@
+{
+  "code_sha256": "d890f8d66f5dcada54d812255e6fab3462d899db02cf6c6249ba1dd4373ff8c2",
+  "accepted_output_code_sha256": [
+    "d890f8d66f5dcada54d812255e6fab3462d899db02cf6c6249ba1dd4373ff8c2",
+    "ae38906e887a4209d1ba8062991a6fa1b5d02345cbd865f53218714fc497876a"
+  ],
+  "revision_note": "Normalize MATLAB marker labels to strings without changing column indices;13completed old-revision outputs preserved and independently replayed.",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\study.py": "2b19b5ba16f246973ba4051dde7ac51171a6fc25b6fbf48a9c34a2cd8a16c819",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\protocol.json": "8347372059dce6b66b30d876807fe832cd279e2f272e08aa24d3baaeb46c70a2",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\availability.json": "249caf9f7353c8bac1fdd7cd49a38ec1bdcdc7c090837c0daa66768ab6179a5d",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\main-estimates.csv": "ecec320d86dd2610ecc3081c366b58db587f068a66536e926696017f1e5f79d5",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\main-verification.json": "5c67e2a662ac950213dfce85ef647f22034bd334dca33a4e93d70b06dd0f2659",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-cadence\\README.md": "94102b4f9f0e9f4e25f0fdc384e82a8af2a99f9ce547adad7cf957a10f4d92ed",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-reference-audit\\study-before-marker-name-fix.py": "ae38906e887a4209d1ba8062991a6fa1b5d02345cbd865f53218714fc497876a"
+  },
+  "hypothesis": "Current4sec spectral reference may select a slow envelope or half-period. Audit it with opticalheel/pelvis event candidates derived without spectral fitting,not retuneRGBperiods.",
+  "method_source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2384115/ (Zeni etal.2008).Coordinate principle: maxima of heel AP displacement relative to sacrum. Adaptation here: posteriorwaist midpoint instead of sacrum and instantaneous front-minus-back pelvic direction. This is not exact paper reproduction or new forceplate validation.",
+  "algorithm": "Nativeoptical120Hz,physicalLFWT/RFWT/LBWT/RBWT/LHEE/RHEE;meters. Same4secvideo window,0.5seccontextclippedtoproviderwalking. Validruns only,no gap interpolation. SavitzkyGolay9framesdegree2;positive peaks above runmean;48sample samefoot refractory. MergeL/Rwithinwindow;cadence60/medianintereventseconds. Eventquality:allmarkersvalid,>=3events,alternation>=.8,allintervals.2..1.5sec. No parameter selection by period agreement.",
+  "mapping": "Same27people4secwindows. Opticalindex=(video_onebased-1)*4;verifyflags120 andsame12exportedreferencejoints atallvideo timestamps. No timeoffsetsearch. Independent savedmarkers are never added toRGB estimator inputs.",
+  "evaluation": "All27people retained in availability. Compare old4secReference3D/RGB2D/RGB3D toeventproxy,reportquality/sample counts andboth-available discrepancy. Separate heading<=30deg/path>=.95/speed>=.2 geometry subgroup,not select by agreement. Flaghalfproxy ifabs(spectral-event/2)<=5andabs(spectral-event)>5. Not true cadence MAE.",
+  "success": "Reference-consistency diagnostic only: eventquality>=80%of27andoldreference/eventproxy discrepancy<=5steps/min among bothquality,all andstraightgroupsseparate. Failure means references disagree or lackcoverage,not which one isgroundtruth. No clinical standard.",
+  "limitations": "No independent foot-contact groundtruth acquired. Markerheuristic is anotherproxy;turns,backwardwalk,gaps,abnormalfeet can invalidate adaptation. SameMoVi27people,notnewclinicalpeople;noSPPB/TUGlabels/no scoretraining/newseeds. Existingperson/bout/5seedscoreexperimentsunchanged.",
+  "external_access": {
+    "ForcePose": "Officialv1.1HTTPScertificateexpired viaWindowscurl;didnotdisablecertificateverification.Downloadnotacquired;codeMITnotdata-licenseproof.",
+    "BioCV": "Separateaccessrequestcontradicts immediate-noapplication condition,notacquired.",
+    "OpenCap_validation": "SimTKdownloadpage403,rawvideos/forcesnotacquired."
+  },
+  "expected": {
+    "main_tasks": 27,
+    "people": 27,
+    "pilot_tasks": 2,
+    "comparison_rows": 5,
+    "paired_rows": 2,
+    "detail_rows": 135,
+    "new_model_fits": 0
+  },
+  "verification": "Source/code/marker/frameSHA,mappingwithoutoffset,independentAPsignals/smoothing+localmaxgreedyselection,exacteventindices/sides,independentcadenceandmetrics. Signals/cadence1e-10,events exact. Pilot2peoplethenmain.",
+  "resource": "CPU1,estimate3-8min,noGPU/download/inference,newselectedarrays<10MBD,smallcode/tablesC.",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-reference-audit",
+    "large": "D:\\gait-research-data\\D_P\\cadence-reference-audit-20261101"
+  }
+}

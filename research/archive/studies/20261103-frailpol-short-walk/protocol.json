@@ -1,0 +1,85 @@
+{
+  "owner_thread": "01a19c6f-49f7-7300-97b0-a303b71ffe91",
+  "frozen_at": "2026-11-03T13:45:53.435291+00:00",
+  "frozen_before_full_extraction_and_model_fit": true,
+  "purpose": "Predict stopwatch TUG and official frailty from a short straight walking cycle; compare speed alone versus speed plus gait/trunk features in the same people.",
+  "source": "FRAILPOL Figshare article29315771 v3 CC BY4.0; 668 people, five100Hz IMUs; no RGB/full-body joints/GDI.",
+  "pilot": "12 fixed people, IDs1/9/source examples,63 extreme slow case,9 seeded random. No prediction inspected. All-axis template missed cycles; gyro units empirically radians/s despite documentation deg/s. External Barth template gyr_ml only used after unit correction. Bilateral-cycle requirement retained only as coverage audit, rejected as primary before modeling (6/12). Single-cycle pilot10/12. Pilot participants retained; sensitivity exclude these12 reported.",
+  "extraction": {
+    "code_sha256": "f8c4d9bd276e198d3649edf22d1d1c20e4f5b4a0856e63b76633122ac5de3a9c",
+    "helper_sha256": "fcc60a62bba16bca202df627072ad1d0ad148a9a63ed57cb79b3381fa6566ab5",
+    "sampling_rate_hz": 100,
+    "gyro_conversion": "raw rad/s multiplied by180/pi; orientation derivative slope required0.8..1.2 in all three used sensors",
+    "template": "external gaitmap BarthOriginalTemplate(use_cols=[gyr_ml]), default BarthDtw settings",
+    "events": "Herzer130ms; prominence0.03rad/s converted todeg/s;2peaks",
+    "window": "Earliest-ending single complete min-velocity cycle, duration0.6..3s. Trunk projected heading smoothed sigma5frames; range<=20deg and forward horizontal projection>=0.5.80ms margins either side. Selected once, no search for a better speed after failure. Raw support<=3.17s.",
+    "quality": "All3used sensors equal packet counters,no missing/duplicate packets modulo65536,no NaN. Speed0.05..2.5m/s,stride0.1..3m,sensor lift0..1m. Mark failures unmeasurable. No target-based exclusion. Stride speed=horizontal stride length/(end-start), not fullTUG distance/time.",
+    "features": "11 single-ankle descriptors including speed/time/swing fraction/length/lift/lateral excursion/sensor angle range/IC andTC angles/angular velocityRMS/acceleration normSD;8 sacrum acceleration/angular velocity SD descriptors. No global times/counts/record duration,age,sex,site,clinical items,other-window values. One cycle cannot estimate long-term gait variability or reliable bilateral asymmetry.",
+    "limits": "No motion capture/speed ground truth; ankle trajectory and phase identification remain exploratory. Whole record used only for outcome-blind localization; feature calculations cropped to selected support. Same-test TUG prediction, not independent-day screening."
+  },
+  "targets": {
+    "tug": "Valid positive provider TUG seconds; train log(TUG), exponentiate predictions; no clipping or exclusion of extreme values. MAE seconds primary.",
+    "frailty": "Official Targets0robust/1pre-frail/2frail; retain even when component sums disagree. Primary logloss; report balanced accuracy,macroF1,confusion,rare-frail recall/PR-AUC.",
+    "non_slowness": "Secondary numeric sum of Weight loss,Weakness,Physical Activity,Muscular strength (0..4); all5 components present and FI equals5-item sum required; not an official new frailty diagnosis."
+  },
+  "split": "Sorted participant IDs stratified5fold(seed20261103) by official frailty over all668 before missingness/quality filtering. Same assigned fold across every target/model/condition. Each person once. Inner3fold shuffle20261031 training only, stratifyclass for classification,KFold for regression.",
+  "conditions": [
+    "speed",
+    "features"
+  ],
+  "models": [
+    "LGBM",
+    "TabICLv2",
+    "TabPFNv2"
+  ],
+  "LGBM": {
+    "fixed": {
+      "objective": "regression",
+      "learning_rate": 0.03,
+      "max_depth": 3,
+      "max_bin": 31,
+      "min_data_in_bin": 1,
+      "feature_pre_filter": false,
+      "verbosity": -1,
+      "num_threads": 2,
+      "seed": 20261103,
+      "deterministic": true,
+      "force_col_wise": true
+    },
+    "grid": {
+      "num_leaves": [
+        3,
+        7
+      ],
+      "min_data_in_leaf": [
+        3,
+        8
+      ],
+      "lambda_l2": [
+        1,
+        10
+      ],
+      "num_boost_round": [
+        50,
+        150
+      ]
+    }
+  },
+  "selection": "LGBM16grid inner pooled MAE seconds/TUG,MAE4item,logloss3class; first tie. No class weighting or probability recalibration. Fixed foundation8ensemble CPUfloat32,seed20261103,no gradient tuning. Class probabilities argmax; no test threshold selection.",
+  "baselines": "Training median for regression and training class prevalence probabilities for classification, independent of condition.",
+  "metrics": "All held-out predictions. Person paired bootstrap10000 seed20261103 conditional fixed predictions; feature-minus-speed MAE(logloss/classification) and BA differences. Age>=65,non-pilot,officialfrailty classes,TUG<8/8..12/12..20/>=20 subgroups descriptive. Report missingness and feature coverage by label/age; show raw-label inconsistencies. No best subgroup claim.",
+  "verification": "SHA256 input/protocol/weights/code; saved contexts include train/testIDs and features; final LightGBM saved and reloaded; all foundation contexts reconstructed and predicted again; independent inner selection and held-out metrics; raw short-window replay and perturbation outside window; no precision relaxation.",
+  "source_hashes": {
+    "D:\\gait-research-data\\D_P\\frailpol-short-walk-20261103\\raw\\gait_parameters_3_class.csv": "2f16d061d8e3dc0ec462cb2fc34f848a799bd971b86fbeb31583a7359eb0a555",
+    "D:\\gait-research-data\\D_P\\frailpol-short-walk-20261103\\raw\\gait_parameters_2_class.csv": "d44fb7ad55aab68d791d22685e0fb4547eafc5b995d04dee2921ea0c655c67c7",
+    "D:\\gait-research-data\\D_P\\frailpol-short-walk-20261103\\raw\\gait_parameters_description.txt": "4069f2b0871916c5fceefa79c8009b8b76b8bb6bdd83dc5d42ad297c527c2cdf",
+    "D:\\gait-research-data\\D_P\\frailpol-short-walk-20261103\\raw\\raw_IMU_signals_description.txt": "15cb051e2c86c195ed75abcc25a63647bb7d90d72ad73e5fb041ef1830561bb5",
+    "D:\\gait-research-data\\D_P\\frailpol-short-walk-20261103\\raw\\IMU_signals.zip": "591941d1deb6da4978973c1c023706a06568789545d4afdf15c021bac44c565b",
+    "D:\\gait-research-data\\D_P\\frailpol-short-walk-20261103\\raw\\participants.xlsx": "3b1ebc9ddb9ea840bab295493539cb4531a0fdf3e1e3140f2d4a6a7c75a11b3c"
+  },
+  "storage": {
+    "small": "D:\\Projects\\D_P\\studies\\20261103-frailpol-short-walk",
+    "large": "D:\\gait-research-data\\D_P\\frailpol-short-walk-20261103",
+    "additional_expected_GB": 2
+  }
+}

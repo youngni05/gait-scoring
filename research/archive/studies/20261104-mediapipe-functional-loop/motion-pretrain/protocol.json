@@ -1,0 +1,53 @@
+{
+  "code_sha256": "708e42441c197c72207c6b2fdc109f22e38f20162e8b122d1ab4d06422989fae",
+  "base_library_sha256": "3c8b13b1aa3f7a30f278f5797af43d8d3457e2be119fbba1205bbeccc50047e9",
+  "input_sha256": "3ba3ad4c2ae4a3764c8313d5829a44065308390bad86627eae8e0ede2b142feb",
+  "label_sha256": "f7f69fb4344c5cc7ee31a41d87495eb46cccf16300438c3a1f0463c62e45b3b2",
+  "baseline_verification_sha256": "9edfd8af1bdba7a40a96c241255952b7264c871dfb51e3c683d593695957876b",
+  "people": 14,
+  "ids": [
+    "OAW01",
+    "OAW02",
+    "OAW03",
+    "OAW04",
+    "OAW05",
+    "OAW06",
+    "OAW07",
+    "OAW08",
+    "OAW09",
+    "OAW10",
+    "OAW11",
+    "OAW12",
+    "OAW13",
+    "OAW14"
+  ],
+  "window_indices": [
+    0,
+    10,
+    15,
+    22,
+    30,
+    35,
+    43,
+    47,
+    51,
+    58,
+    66,
+    72,
+    81,
+    82
+  ],
+  "variants": [
+    "pelvis_stable_xy",
+    "pair_mean_absdiff"
+  ],
+  "conditions": [
+    "supervised",
+    "masked_pretrain"
+  ],
+  "design": "Same14people/earliestpreviouslyreviewed4s/outerleaveonepersonout/inner3exactseedpartitions fromfirst4s study. Two geometry-motivated representations, pelvisstablexy andpairmeanabsdiff,predeclaredwithoutchoosinglowestpreviousouterMAE. MatchedsameCPUNetarchitecture+seed+supervisedsteps. All scaling/unsupervised/supervised/pretraining andepochselection excludesoutertestperson; innerpretraining excludesinnervalidpeople too.",
+  "pretraining": "100full-batchAdamW.001/decay.01passes;random25percentobservedjointxyhidden,preserveoriginalmissingmask;encoderconv16and1x1decoder reconstructoriginalstandardizedMediaPipeestimatedcoordinatesonlyonhiddenobservedtrainingentries. DecoderdiscardedbeforeTUGfit;supervisedoptimizerreset. No anatomicaltruth orpose-error-correctionclaim. Fixedmaskrngfitseed+77777;savepretrainedencoder/decoder andfinalcorruption/reconstruction forCPU64replay.",
+  "supervised": "SamefixedCPUNet16convkernel5dilation1/2,meanstdpool,head16. FullbatchAdamW.001,decay.01,SmoothL1.5,gradclip5,50innerpasses,grid5/20/50. MininnerOOFMAE/earliesttie;finalrefitselectedepochs,with100train-onlypretrainingpasses inpretrainedcondition. No outputsclipped orrepresentationchosenfromoutertest.",
+  "verification": "224fits;504innergrid+56finalcheckpointsCPU64replay,plus112pretrainedstates/probes;sourcehashes/personboundaries/exacttraining-onlyscalers/epochselection/metrics/paireduncertainty. Reused14developmentpeople,1severe;notclinicalvalidation. Original releasedcaptureclockunverified,CPGDIviewmismatchunchanged.",
+  "expected_additional_GB": 0.06
+}

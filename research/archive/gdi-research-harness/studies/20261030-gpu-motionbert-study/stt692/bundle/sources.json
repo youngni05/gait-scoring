@@ -1,0 +1,33 @@
+{
+  "repository": "https://github.com/vinuni-vishc/transformer-gait-analysis",
+  "commit": "549d58bc32449b24a0eae0c37ca573f9aa58a1dd",
+  "upstream_files": {
+    "config.py": "39cb6c894d23e44eac15d9e136473ce1b48b736c86d59191bf357bb31d80f1f1",
+    "GaitDataset.py": "e15da9a40eb2aa2323be30a3bac3c1203743439bf53c5dfeceabce3e3948f32c",
+    "main.py": "a28237b3c20fe3000a95a5942bf029171c18a7d86baca3938639a786f670706e",
+    "model/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model/Attention.py": "fbb68b78cc4bcb3d2431189bea904d17d56dacc10c3ffdb2b3524518daca00e8",
+    "model/MLP.py": "010346d9be42b4198bd97c51107a4d2c0611093933d8881abe274c27d4bd4475",
+    "model/Transformer.py": "72c0952ff497ac999e261bb2eb188a882ca98644dba3a088e49658659d5f7385",
+    "test.py": "1cae869181cd86774c29809d129eb56e6409f50ef5ae641587297d3c47a14e09",
+    "transformer_model.py": "36e9f604692cf1b358e60628af356750954ebd44564d68ba5312e39dc9664a2f"
+  },
+  "base_data_sha256": "1448059f493156c0194a9d2518f5c6cf04e40c4bb2a39472d5d0c35885ab8967",
+  "data_sha256": "fb57752bbc6af366cb68a7cc6e7f3672c08d814af3f6f2e3dec4f26f3af08749",
+  "model_source_unmodified": true,
+  "input_coordinates_exact_existing_cnn_first8": true,
+  "joint_order": [
+    "ankle",
+    "knee",
+    "hip",
+    "big_toe"
+  ],
+  "sides": [
+    "left",
+    "right"
+  ],
+  "frames": 124,
+  "normalization": "Existing pelvis-center/mean-thigh-length; full-clip interpolation/smoothing preserved",
+  "independent_final_data_used": false,
+  "license_file_present": false
+}

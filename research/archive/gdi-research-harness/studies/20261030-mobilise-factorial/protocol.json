@@ -1,0 +1,76 @@
+{
+  "reference": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability",
+  "source_hashes": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability\\train.py": "24868cb285153745c9ab4a39616efc33dd664198eccbb67543151cec6999e58e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability\\verification.json": "eb754b3e6bc4e859d6b091070f9653510f2cf1670411b17ce40830149ddba8d1",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets-stability\\predictions.csv": "00eac609f647f447702c72c0b5afebeb928ed629513531fcb597df3c9528865a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-deep-sets\\train.py": "741c98f1f612e8e181048efa03be714e9bed232e9a460b61510e322185f07314",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\person-folds.csv": "f5883374906327b6bf0e6ce1f9aaffb9f86f9e6d8679bc02b5775dcc702bea5a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\quality.json": "b725d4a2d8e5253ef2a6ed2240e0529df95a470c2f4c79d432a2dad5704dc403",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\audited-bouts.csv": "f826fbf2b9010b36cb0c8f181636242504e862e46f125d31db68c205a2a5d202",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\label-review-flags.csv": "b3e94b030ad3b61b45d06d80ce6848b3229c92f74492a5445c1d14f6c6f2c632",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\train.py": "2393f15817082ef4a88e81d43cb2e07ebbd4fbf2412f67d337a2676ca929c088",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\quality.py": "6d159d69b729e8052bccdebfc1c8d0b8daf6daa6e82c40d5030336f6c5af600d"
+  },
+  "variants": {
+    "A": "original 4 features, mean pool (reuse verified 600-epoch-search reference)",
+    "B": "original 4 + duration seconds + turns/second, mean pool",
+    "C": "original 4, concatenate latent mean and maximum; half-sized downstream hidden layer",
+    "D": "expanded 6, concatenate latent mean and maximum; half-sized downstream hidden layer"
+  },
+  "feature_order": [
+    "averagecadence",
+    "averagestrideduration",
+    "averagestridespeed",
+    "averagestridelength",
+    "duration",
+    "turn_rate_per_second"
+  ],
+  "turn_quality": "all 205307 selected unique bouts have true original turn/duration flags and nonnegative integer turns; no clipping, imputation or bout removal",
+  "people_bouts": "exact reference people, visits, selected days/bouts, ranks <=k, folds and 3 draws; no exclusions or label corrections",
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "outer": "original 5 person folds",
+  "inner": "original 3 person folds; candidate epochs 10..600 step10; choose minimum combined overall person MAE, earlier epoch breaks ties",
+  "width": "fix per fold/seed/condition to the reference 600-search-selected encoder width (32 or64); do not choose width on test outcomes",
+  "head": "mean: Linear(width,width/2); meanmax: Linear(2width,width/4); ReLU then scalar output. Parameter counts nearly matched across architecture axis. The architecture change includes pooling AND head-width adjustment.",
+  "parameter_counts": {
+    "A": {
+      "32": 705,
+      "64": 2433
+    },
+    "B": {
+      "32": 769,
+      "64": 2561
+    },
+    "C": {
+      "32": 689,
+      "64": 2401
+    },
+    "D": {
+      "32": 753,
+      "64": 2529
+    }
+  },
+  "optimization": "unchanged full-batch AdamW lr .01 weight_decay .001, person-weighted SmoothL1 beta .5; train-only person-weighted input/label scaling; no tail label weighting",
+  "seed_schedule": "inner seed+fold*10+inner; outer seed+fold*10+9",
+  "primary_draw": 0,
+  "replication": "train draw0, evaluate draw0/1/2 separately; no seed ensemble or draw averaging",
+  "tail_definitions": {
+    "sppb": "actual<=3",
+    "tug": "actual>20 seconds"
+  },
+  "criteria": "paired overall MAE difference<=0 and tail MAE difference<0; separately assess tail p90/RMSE and all5 seeds. No noninferiority margin. Outer results assess hypotheses, never tune or select epochs.",
+  "uncertainty": "paired person bootstrap of mean across five seed-specific per-person errors; fixed OOF predictions, not retraining; 3 draws are sensitivity checks, not independent samples",
+  "label_sensitivity": "evaluate identical trained predictions on unflagged visits only, without replacing primary all-record results",
+  "scope": "observational ablation within reference-selected widths, not exhaustive architecture optimization or independent final validation; four input summaries plus two gait features, not videos or raw movement sequences",
+  "device": "CPU, 6 independent single-thread workers",
+  "torch": "2.14.1+cpu"
+}

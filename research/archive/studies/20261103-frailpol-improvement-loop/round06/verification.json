@@ -1,0 +1,150 @@
+{
+  "status": "passed",
+  "outer_cases": 10,
+  "inner_models_replayed": 480,
+  "final_models_replayed": 30,
+  "checks": [
+    {
+      "condition": "speed",
+      "fold": 0,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        7,
+        15,
+        3
+      ]
+    },
+    {
+      "condition": "speed",
+      "fold": 1,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        1,
+        9,
+        15
+      ]
+    },
+    {
+      "condition": "speed",
+      "fold": 2,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        11,
+        3,
+        9
+      ]
+    },
+    {
+      "condition": "speed",
+      "fold": 3,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        9,
+        1,
+        13
+      ]
+    },
+    {
+      "condition": "speed",
+      "fold": 4,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        11,
+        3,
+        15
+      ]
+    },
+    {
+      "condition": "bilateral",
+      "fold": 0,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        7,
+        15,
+        10
+      ]
+    },
+    {
+      "condition": "bilateral",
+      "fold": 1,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        7,
+        10,
+        11
+      ]
+    },
+    {
+      "condition": "bilateral",
+      "fold": 2,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        10,
+        11,
+        3
+      ]
+    },
+    {
+      "condition": "bilateral",
+      "fold": 3,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        11,
+        15,
+        10
+      ]
+    },
+    {
+      "condition": "bilateral",
+      "fold": 4,
+      "inner_models_replayed": 48,
+      "final_models_replayed": 3,
+      "training_only_quantization_rebuilt": true,
+      "training_leaf_weight_sums_verified": true,
+      "max_replay_delta": 0.0,
+      "top3": [
+        3,
+        11,
+        15
+      ]
+    }
+  ],
+  "review_sha256": "3f5c393040fab864e3d98579c1a6119df9383eabdcd78779cf0c156d37acfa1c",
+  "comparison_sha256": "c93f0651718393b987fe754a7a0090cc8c4e3ef1df466cb74a5dba84db651336"
+}

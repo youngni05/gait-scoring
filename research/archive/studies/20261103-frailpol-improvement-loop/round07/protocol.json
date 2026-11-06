@@ -1,0 +1,26 @@
+{
+  "round": 7,
+  "code_sha256": "bde9dcd4ee626a0fafce2c47863d33b1786dcdb58e873fc360f136e047d251f8",
+  "data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "classical_verification_sha256": "6ab58ec6dd9b3237c85b8a0a755fceac7da6e0e29c94e69b0d95779087609807",
+  "neural_verification_sha256": "22afc7649db1ee3bd3182b4e55bad49ec3bd28e299a519d1c973245fa3095318",
+  "conditions": [
+    "speed",
+    "combined"
+  ],
+  "fusion": [
+    "positive_ridge",
+    "rbf_ridge"
+  ],
+  "tail_weights": [
+    1,
+    4,
+    16
+  ],
+  "alpha": 10,
+  "gamma": "1/number_of_columns after training-onlystandardization",
+  "design": "Frozen594 and sameouter5; allmeta inputs are training-only innerOOF base predictions plus measuredspeed. Combined uses13bilateralclassical/foundation bases+4neural bases. Speed uses7speedbases+speedMLP. Samefinal refits fromverifiedpreviousstudies supply outertestfeatures. CNN epoch selected withinoutertrain as previouslyspecified, not reselected. Meta models fixed inadvance, no meta candidate selection on outertest or reported meta training performance.",
+  "weights": "TUG>=20weighttail;12..20sqrt(tail),else1. positiveRidge centered by weightedmeans and NNLS withalpha10;RBFkernel regression K+alpha*diag(1/weight),target centeredweightedmean. No output clipping. Every preprocessing/meta fit onlyoutertrain.",
+  "verification": "Save60models+10contexts; independent rebuildfromsaved verifiedbasepredictions and exactIDs; trainingnormalization/weights/NNLSKKT or kernel equation checked; modelreloadand metrics rebuilt;pairedpersonbootstrap including9severeseparately. Reuseddevelopmentfolds,notclinical/externalvalidation.",
+  "expected_additional_GB": 0.03
+}

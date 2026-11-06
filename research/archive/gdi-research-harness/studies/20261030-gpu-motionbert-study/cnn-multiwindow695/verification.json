@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "people": 692,
+  "records": 1061,
+  "windows": 11261,
+  "fallback_records": 4,
+  "all_window_geometry_and_provenance": true,
+  "same_labels_people_and_folds": true,
+  "record_weight_sums_all20_splits": true,
+  "weighted_loss_and_gradient_independent": true,
+  "broadcast_shape_error_rejected": true,
+  "known_window_average_and_prediction": true,
+  "checkpoint_resume_exact": true,
+  "validation_label_poison_test": true,
+  "synthetic_nested_fits": 25,
+  "synthetic_nested_optimizer_steps": 75,
+  "independent_checkpoint_reinference": true,
+  "actual_GDI_optimizer_steps": 0,
+  "actual_GPU_execution": false,
+  "bundle_sha256": "cdddbbca96dae2723714cb8e9a1f7fe6f603967914febc952c8a3872c135f4a0",
+  "details": "checks/verification-1793358312515924900"
+}

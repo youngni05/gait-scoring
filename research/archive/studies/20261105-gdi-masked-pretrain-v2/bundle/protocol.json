@@ -1,0 +1,81 @@
+{
+  "version": 2,
+  "study": "gdi-masked-pretrain-v2-20261105",
+  "data_sha256": "4c357517dfe21426f90e57a6503eabf10c5db836a954135a25ca095989678654",
+  "conditions": [
+    "A",
+    "B_adult",
+    "B_child",
+    "C",
+    "D_adult",
+    "D_child"
+  ],
+  "families": [
+    "CNN",
+    "STT"
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "gdi_epochs": {
+    "CNN": {
+      "0": 78,
+      "1": 90,
+      "2": 95,
+      "3": 76,
+      "4": 76
+    },
+    "STT": {
+      "0": 115,
+      "1": 108,
+      "2": 157,
+      "3": 139,
+      "4": 183
+    }
+  },
+  "seed": 20261028,
+  "pretrain_steps": 2000,
+  "pretrain_batch_pairs": 32,
+  "pretrain_lr": 0.0003,
+  "masking": "Four nonoverlapping8-frame spans, one random position within each31-frame quarter.32/124 frames; same both sides; all input features hidden. Learned mask token.",
+  "target": "Existing smoothed/normalized 2D xy, only original observed finite nonzero points with confidence>0; not anatomical ground truth.",
+  "pretrained_keys": {
+    "CNN": [
+      "convs.",
+      "norms."
+    ],
+    "STT": [
+      "joint_embedding.",
+      "spatial_positional_enc",
+      "temporal_positional_enc",
+      "spatial_block.",
+      "temporal_block.",
+      "spatial_norm.",
+      "temporal_norm."
+    ]
+  },
+  "training": "Fresh models. Same initial GDI head, seed, per-fold Stanford-derived epochs, batch size and exact GDI example/update counts across A-D within each family. C/D add equal2000 pretraining updates. A/B have no pretraining; total two-stage compute is not equal.",
+  "supervised_sampling": "A/C/D: identical shuffled Stanford windows/sides and original equal-record loss. B: shuffle Stanford+matched external window-sides, take exactly Stanford sample count without replacement; original record weights, external total1 per person.",
+  "pretrain_sampling": "Uniform person then record then window. D replaces same Stanford draws by external draws at probability9/(Stanford training people+9); identical external flags/counts across adult/child. C has no external. No GDI labels passed to pretraining.",
+  "model_selection": "No arm-specific selection. Reuse already selected baseline inner-CV epoch per outer fold for every arm. Each outer fold starts independently; no pretraining on held-out Stanford coordinates. Final223 unopened.",
+  "calibration": "Stanford training rows only; same shared OLS and target min/max. Final unmasked Stanford training predictions determine calibration.",
+  "evaluation": "Same692 Stanford people,1061 records. all, actual record-side>=90,>=100,<70. Equal-person MAE, mean(max(y-p,0)), signed bias, underprediction rate. Paired10000 person bootstrap. No normal100 MAE endpoint.",
+  "expected_gdi_fits": 60,
+  "expected_pretraining_fits": 30,
+  "cohorts": {
+    "adult": {
+      "people": 9,
+      "records": 12
+    },
+    "child": {
+      "people": 9,
+      "records": 12
+    }
+  },
+  "limits": "Fixed single seed schedule, single normal sample; source differences remain. No final-test or clinical validation. Matched training budget comparison rather than per-arm optimum hyperparameters.",
+  "revision": "Only deterministic matrix implementation of same10-to124 linear interpolation replaces CUDA unsupported backward. Prior sealed bundle and failed job35917 retained."
+}

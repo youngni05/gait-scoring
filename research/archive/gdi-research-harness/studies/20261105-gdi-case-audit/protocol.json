@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "created_at": "2026-11-05T13:58:37.777465+09:00",
+  "authorization": "User requested robustness/case comparisons of existing models and explicitly included previous7 plus MAE/Huber; no retraining",
+  "classification": "Post-hoc descriptive stress audit on already-used same-source heldout222; not a new untouched final evaluation, not model selection",
+  "cohort": {
+    "people": 222,
+    "records": 377,
+    "source": "Exact previously eligible records, labels, order and exclusions preserved",
+    "train_overlap_required": 0
+  },
+  "models": {
+    "core": [
+      "single_CNN",
+      "multi_STT",
+      "multi_CNN",
+      "CNN_bag",
+      "fusion",
+      "plus_general",
+      "plus_ranksim"
+    ],
+    "matched_controls": [
+      "MSE",
+      "Rank1"
+    ],
+    "additional_standalone": [
+      "HuberOnly",
+      "HuberRank1",
+      "MAEOnly",
+      "MAERank1"
+    ],
+    "additional_ensembles": [
+      "plus_HuberOnly",
+      "plus_HuberRank1",
+      "plus_MAEOnly",
+      "plus_MAERank1"
+    ],
+    "fixed_fold_averages": true,
+    "no_new_weights_or_calibration": true
+  },
+  "case_tests": {
+    "extremes": {
+      "person_mean_truth": [
+        "below50",
+        "below60",
+        "90plus",
+        "100plus"
+      ],
+      "observation_truth": [
+        "below60",
+        "90plus",
+        "100plus"
+      ],
+      "empty_groups": "report zero and null, never redefine bands"
+    },
+    "native_window": {
+      "frames": 124,
+      "same_windows_for_all_models": true,
+      "positions": "all eligible native124 windows and earliest/lower-middle/latest fixed positions",
+      "primary_stability": "person-equal mean within-record side-averaged sampleSD and range; report records with>=3 windows separately",
+      "model_response": "Within-record centered native-window score-change correlation and absolute disagreement, person/record/window balanced"
+    },
+    "shorter_input": {
+      "budgets_frames": [
+        124,
+        186,
+        248,
+        372,
+        496
+      ],
+      "anchor": "Earliest already-eligible window start per record; retain whole windows ending<=anchor+budget",
+      "reference": "All existing eligible windows of same record",
+      "models": "All multiwindow configurations; original single-windowCNN excluded from budget-aggregation because its fixed canonical selection is a different system, but included in common native-window tests",
+      "same_people_records_for_all_budgets": true,
+      "padding_or_resampling": false,
+      "under124": "unsupported native contract; measurement unavailable, do not manufacture frames",
+      "limitation": "Prepared whole-record preprocessing is reused. This tests information/averaging dependence after preprocessing, not end-to-end shortened raw-video capture or preprocessing boundary robustness",
+      "clock_seconds": "No conversion from frames to seconds without verified source FPS"
+    },
+    "asymmetry": {
+      "record_absolute_true_side_gap": [
+        5,
+        10
+      ],
+      "metric": "person-equal absolute error of predicted L-R difference; thresholds descriptive, not clinical"
+    },
+    "repeat_records": {
+      "all_unordered_record_pairs_within_person": true,
+      "primary": "person-equal |predicted record difference - true record difference| across sides/pairs",
+      "direction_true_delta_min": 5,
+      "tie_epsilon": 1e-08,
+      "limitation": "Different visits may reflect true gait change; no recapture repeatability/ICC/MDC claim or temporal ordering without dates"
+    },
+    "model_agreement": {
+      "person_equal_MAD": true,
+      "signed_error_correlation_descriptive": true,
+      "no_outcome_based_model_or_blend_selection": true
+    }
+  },
+  "statistics": {
+    "unit": "person; records/sides/windows/pairs first averaged within person",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261105,
+    "interval": [
+      0.025,
+      0.975
+    ],
+    "scope": "Descriptive intervals, no confirmatory superiority or familywise discovery claim; no selecting best short clip"
+  },
+  "verification": {
+    "previous7_full_prediction_max_error": 0.0001,
+    "development_or_existing_prediction_replay_max_error": 0.0001,
+    "original_file_hashes_unchanged": true,
+    "all_models_train_eval_disjoint": true,
+    "independent_metric_loops": true,
+    "independent_linear_ensemble_formula": true,
+    "all_window_membership_and_no_padding_checked": true
+  },
+  "compute": {
+    "device": "cpu",
+    "threads": 4,
+    "optimizer_steps": 0,
+    "new_training": false,
+    "gpu_jobs": 0,
+    "pilot_members": [
+      "base_CNN_0_refit",
+      "base_STT_0_refit",
+      "base_bilateral_0",
+      "Rank1_0",
+      "HuberOnly_0",
+      "MAEOnly_0"
+    ]
+  },
+  "storage": {
+    "small": "D:\\Projects\\D_P\\gdi-research-harness\\studies\\20261105-gdi-case-audit",
+    "large": "D:\\gait-research-data\\D_P\\gdi-case-audit-20261105"
+  },
+  "figures": {
+    "predeclared_representatives": [
+      "fusion",
+      "plus_ranksim",
+      "plus_HuberRank1",
+      "plus_MAERank1"
+    ],
+    "case_indices": [
+      0,
+      1,
+      2
+    ],
+    "purpose": "illustrate fixed same-record native-window response, not select favorable examples"
+  }
+}

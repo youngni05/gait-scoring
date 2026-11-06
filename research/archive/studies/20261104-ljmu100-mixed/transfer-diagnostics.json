@@ -1,0 +1,3471 @@
+{
+  "scope": "Post-hoc diagnostic. Original models, epoch choices, predictions and main results unchanged. No final223 accessed.",
+  "age": {
+    "Stanford": {
+      "people": 692,
+      "records": 1061,
+      "earliest_observed_age_mean": 11.455293372396863,
+      "earliest_observed_age_median": 9.826027397260276,
+      "age_min": 3.08767123287671,
+      "age_max": 57.0493150684932,
+      "earliest_observed_under18_people": 628
+    },
+    "LJMU": {
+      "people": 64,
+      "records": 881,
+      "earliest_observed_age_mean": 34.875,
+      "earliest_observed_age_median": 31.0,
+      "age_min": 18.0,
+      "age_max": 65.0,
+      "earliest_observed_under18_people": 0
+    }
+  },
+  "overall_LJMU_record_share": 0.45365602471678684,
+  "overall_LJMU_person_share": 0.08465608465608465,
+  "models": {
+    "CNN_refit": {
+      "baseline": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.866655269796397,
+          "bias": 0.14790322182606624,
+          "shortfall": 3.359376023985166
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 9.345523027902365,
+          "bias": -8.85261778558619,
+          "shortfall": 9.099070406744278
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 13.926935883288225,
+          "bias": -13.926935883288225,
+          "shortfall": 13.926935883288225
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.522788339341343,
+          "bias": 5.6336271423186135,
+          "shortfall": 0.9445805985113649
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 22.644181902826656,
+          "bias": -22.64088105496468,
+          "shortfall": 22.64253147889567
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.877067868468249,
+          "bias": 0.27652417139079066,
+          "shortfall": 3.3002718485387286
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 9.337614501983841,
+          "bias": -8.908892464131949,
+          "shortfall": 9.123253483057896
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 13.902042412247264,
+          "bias": -13.902042412247264,
+          "shortfall": 13.902042412247264
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.961952893670053,
+          "bias": -0.7427100703121696,
+          "shortfall": 3.85233148199111
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.524414909025404,
+          "bias": -8.51684013971977,
+          "shortfall": 9.020627524372587
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 14.350124890984578,
+          "bias": -14.350124890984578,
+          "shortfall": 14.350124890984578
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.071554654650745,
+          "bias": 0.02031722217106827,
+          "shortfall": 3.525618716239838
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 9.618072246783147,
+          "bias": -9.338977287029739,
+          "shortfall": 9.478524766906443
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 13.720572992291,
+          "bias": -13.720572992291,
+          "shortfall": 13.720572992291
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.550462618656529,
+          "bias": 0.7260003212932902,
+          "shortfall": 2.9122311486816197
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 8.337964322244577,
+          "bias": -7.509527222356447,
+          "shortfall": 7.923745772300513
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 14.234736348833744,
+          "bias": -14.234736348833744,
+          "shortfall": 14.234736348833744
+        }
+      },
+      "mixed": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.873173230300491,
+          "bias": -0.13252263297476247,
+          "shortfall": 3.5028479316376275
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 11.375689113698307,
+          "bias": -11.290774627011793,
+          "shortfall": 11.33323187035505
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 17.301687082526872,
+          "bias": -17.301687082526872,
+          "shortfall": 17.301687082526872
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.606965092841908,
+          "bias": 6.787938876696022,
+          "shortfall": 0.40951310807294256
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 0.9648377816482571,
+          "bias": 0.46269879443664524,
+          "shortfall": 0.2510694936058059
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.894293853071212,
+          "bias": -0.012357087087085343,
+          "shortfall": 3.453325470079148
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 11.380976940155218,
+          "bias": -11.297583201738437,
+          "shortfall": 11.33928007094683
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 16.967577660384737,
+          "bias": -16.967577660384737,
+          "shortfall": 16.967577660384737
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.756106987545705,
+          "bias": -1.0772312031510067,
+          "shortfall": 3.9166690953483556
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 11.478956979599134,
+          "bias": -11.401377490113711,
+          "shortfall": 11.440167234856423
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 22.98154725894315,
+          "bias": -22.98154725894315,
+          "shortfall": 22.98154725894315
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.078446046879387,
+          "bias": -0.08112123708870955,
+          "shortfall": 3.5797836419840485
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 11.382982365200991,
+          "bias": -11.351876453682543,
+          "shortfall": 11.367429409441767
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 16.571267159802577,
+          "bias": -16.571267159802577,
+          "shortfall": 16.571267159802577
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.507611574182034,
+          "bias": -0.27641086287560623,
+          "shortfall": 3.3920112185288196
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 11.07643033042975,
+          "bias": -10.804816375159673,
+          "shortfall": 10.940623352794711
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 17.694146911452023,
+          "bias": -17.694146911452023,
+          "shortfall": 17.694146911452023
+        }
+      },
+      "mixed_Stanford_only_calibration": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.890794566977292,
+          "bias": 0.43871347478321615,
+          "shortfall": 3.2260405460970376
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 9.341937218762164,
+          "bias": -8.596797547626942,
+          "shortfall": 8.969367383194552
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 13.768988390513057,
+          "bias": -13.768988390513057,
+          "shortfall": 13.768988390513057
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.6760464290620005,
+          "bias": 6.127139542655059,
+          "shortfall": 0.7744534432034702
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 7.475904877278847,
+          "bias": 7.2573538463976215,
+          "shortfall": 0.10927551544061284
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.8866559253244874,
+          "bias": 0.6210914005616162,
+          "shortfall": 3.1327822623814363
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 9.311493915664997,
+          "bias": -8.547224870047586,
+          "shortfall": 8.929359392856291
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 13.390037600659113,
+          "bias": -13.390037600659113,
+          "shortfall": 13.390037600659113
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.940521033365488,
+          "bias": -0.8930558654995421,
+          "shortfall": 3.9167884494325156
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.75141405540478,
+          "bias": -9.397547333026324,
+          "shortfall": 9.574480694215554
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 20.2111518180301,
+          "bias": -20.2111518180301,
+          "shortfall": 20.2111518180301
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.041659066214381,
+          "bias": 0.6290826811951279,
+          "shortfall": 3.2062881925096263
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 9.141935877146494,
+          "bias": -8.628400083028804,
+          "shortfall": 8.885167980087648
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 12.509623105489709,
+          "bias": -12.509623105489709,
+          "shortfall": 12.509623105489709
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.664255443154081,
+          "bias": 0.38789294070924457,
+          "shortfall": 3.1381812512224183
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 9.637936043585796,
+          "bias": -7.884677128011829,
+          "shortfall": 8.761306585798813
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 15.004130841803025,
+          "bias": -15.004130841803025,
+          "shortfall": 15.004130841803025
+        }
+      }
+    },
+    "CNN_bag": {
+      "baseline": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.590389059228339,
+          "bias": 0.11283425937512699,
+          "shortfall": 3.238777399926606
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 9.290799903837106,
+          "bias": -8.819545789818342,
+          "shortfall": 9.055172846827723
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 14.144258351623202,
+          "bias": -14.144258351623202,
+          "shortfall": 14.144258351623202
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.155153446183936,
+          "bias": 5.6231732210909176,
+          "shortfall": 0.7659901125465096
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 22.320643666353668,
+          "bias": -20.657503377354487,
+          "shortfall": 21.489073521854074
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.577067495862729,
+          "bias": 0.2735909590856603,
+          "shortfall": 3.151738268388535
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 9.237579278625365,
+          "bias": -8.843866065422597,
+          "shortfall": 9.04072267202398
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 13.995747508048149,
+          "bias": -13.995747508048149,
+          "shortfall": 13.995747508048149
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.727808122069807,
+          "bias": -1.0204519840194843,
+          "shortfall": 3.874130053044647
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.793701463192592,
+          "bias": -8.667536711364505,
+          "shortfall": 9.230619087278548
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 16.66894269239913,
+          "bias": -16.66894269239913,
+          "shortfall": 16.66894269239913
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 6.785011494293937,
+          "bias": 0.2029787965002707,
+          "shortfall": 3.291016348896833
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 9.389786840505504,
+          "bias": -9.116401453223924,
+          "shortfall": 9.253094146864713
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 13.761118105555374,
+          "bias": -13.761118105555374,
+          "shortfall": 13.761118105555374
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.236791516450197,
+          "bias": 0.38559561366351525,
+          "shortfall": 2.925597951393341
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 8.49512187140621,
+          "bias": -7.812482353831315,
+          "shortfall": 8.153802112618763
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 14.425901412618238,
+          "bias": -14.425901412618238,
+          "shortfall": 14.425901412618238
+        }
+      },
+      "mixed": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.697039304944174,
+          "bias": -0.09095626751068744,
+          "shortfall": 3.393997786227431
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 10.922957947204143,
+          "bias": -10.876656964512593,
+          "shortfall": 10.899807455858367
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 16.943179347306152,
+          "bias": -16.943179347306152,
+          "shortfall": 16.943179347306152
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.421932045017661,
+          "bias": 6.479454065239537,
+          "shortfall": 0.47123898988906204
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 0.8572876132431002,
+          "bias": 0.22454884380021822,
+          "shortfall": 0.316369384721441
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.7292040689725985,
+          "bias": 0.023689661614407068,
+          "shortfall": 3.352757203679096
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 10.95618853895329,
+          "bias": -10.906514636992823,
+          "shortfall": 10.931351587973055
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 16.730026755349762,
+          "bias": -16.730026755349762,
+          "shortfall": 16.730026755349762
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.4847082026896645,
+          "bias": -0.9493586066977685,
+          "shortfall": 3.7170334046937183
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 10.498307228412246,
+          "bias": -10.498307228412246,
+          "shortfall": 10.498307228412246
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 20.566773410564785,
+          "bias": -20.566773410564785,
+          "shortfall": 20.566773410564785
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 6.842297012511556,
+          "bias": -0.0782932835094231,
+          "shortfall": 3.4602951480104895
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 10.968127062547055,
+          "bias": -10.943253893401446,
+          "shortfall": 10.955690477974251
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 16.37180113261463,
+          "bias": -16.37180113261463,
+          "shortfall": 16.37180113261463
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.471178411347789,
+          "bias": -0.0902684794701176,
+          "shortfall": 3.2807234454089538
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 10.591585874322368,
+          "bias": -10.451449227302467,
+          "shortfall": 10.521517550812417
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 17.38677373036417,
+          "bias": -17.38677373036417,
+          "shortfall": 17.38677373036417
+        }
+      },
+      "mixed_Stanford_only_calibration": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.685157703320252,
+          "bias": 0.3630226225215416,
+          "shortfall": 3.161067540399355
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 9.339255245270442,
+          "bias": -8.910982812690866,
+          "shortfall": 9.125119028980654
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 14.455392786316187,
+          "bias": -14.455392786316187,
+          "shortfall": 14.455392786316187
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.479013313420047,
+          "bias": 6.04686768117122,
+          "shortfall": 0.7160728161244132
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 5.1508993419753555,
+          "bias": 4.929197719620747,
+          "shortfall": 0.11085081117730414
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.703249126966433,
+          "bias": 0.5165436286318357,
+          "shortfall": 3.093352749167299
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 9.305358816659698,
+          "bias": -8.923725513477871,
+          "shortfall": 9.114542165068784
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 14.216167183495482,
+          "bias": -14.216167183495482,
+          "shortfall": 14.216167183495482
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.587206384651456,
+          "bias": -0.7547297533592849,
+          "shortfall": 3.6709680690053714
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.569230198551656,
+          "bias": -8.78566317872264,
+          "shortfall": 9.177446688637149
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 18.522228034268135,
+          "bias": -18.522228034268135,
+          "shortfall": 18.522228034268135
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 6.801626886527262,
+          "bias": 0.4649018408493084,
+          "shortfall": 3.1683625228389762
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 9.26162629599207,
+          "bias": -8.969091940053826,
+          "shortfall": 9.115359118022948
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 13.67689850074243,
+          "bias": -13.67689850074243,
+          "shortfall": 13.67689850074243
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.533835496473067,
+          "bias": 0.4341627860557181,
+          "shortfall": 3.0498363552086745
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 9.17291295289664,
+          "bias": -8.436271230388432,
+          "shortfall": 8.804592091642535
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 15.204826435209407,
+          "bias": -15.204826435209407,
+          "shortfall": 15.204826435209407
+        }
+      }
+    },
+    "CNN_refit_raw": {
+      "baseline": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 7.015247712347486,
+          "bias": -1.691551459518108,
+          "shortfall": 4.353399585932797
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 11.634517045216485,
+          "bias": -11.505599538651722,
+          "shortfall": 11.570058291934103
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 16.640615726365304,
+          "bias": -16.640615726365304,
+          "shortfall": 16.640615726365304
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 6.652699455836135,
+          "bias": 4.278111546725864,
+          "shortfall": 1.1872939545551355
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 24.589683196188716,
+          "bias": -24.589683196188716,
+          "shortfall": 24.589683196188716
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 7.017653575994764,
+          "bias": -1.5930747422958909,
+          "shortfall": 4.305364159145328
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 11.65972010515589,
+          "bias": -11.568791689460273,
+          "shortfall": 11.61425589730808
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 16.51268655184588,
+          "bias": -16.51268655184588,
+          "shortfall": 16.51268655184588
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 7.140590131871308,
+          "bias": -2.354958562217116,
+          "shortfall": 4.747774347044212
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 11.6356038849717,
+          "bias": -11.158640865408131,
+          "shortfall": 11.397122375189918
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 18.815411693195518,
+          "bias": -18.815411693195518,
+          "shortfall": 18.815411693195518
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.2802512881277135,
+          "bias": -1.8559133654370588,
+          "shortfall": 4.5680823267823865
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 12.022147040877034,
+          "bias": -11.954964333292816,
+          "shortfall": 11.988555687084926
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 16.214939573861383,
+          "bias": -16.214939573861383,
+          "shortfall": 16.214939573861383
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.636543887730055,
+          "bias": -1.2525451799846166,
+          "shortfall": 3.944544533857336
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 10.419178274034142,
+          "bias": -10.275727812864021,
+          "shortfall": 10.347453043449082
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 17.058556011484132,
+          "bias": -17.058556011484132,
+          "shortfall": 17.058556011484132
+        }
+      },
+      "mixed": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 7.032803637986875,
+          "bias": -2.078773749551247,
+          "shortfall": 4.555788693769061
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 12.918761073591948,
+          "bias": -12.888300898857361,
+          "shortfall": 12.903530986224652
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 18.780710716244673,
+          "bias": -18.780710716244673,
+          "shortfall": 18.780710716244673
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 6.34432883872679,
+          "bias": 4.6485336194072335,
+          "shortfall": 0.8478976096597781
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 0.7267636357116025,
+          "bias": -0.5007815148176366,
+          "shortfall": 0.6137725752646195
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 7.017180945024668,
+          "bias": -1.941707702677598,
+          "shortfall": 4.479444323851133
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 12.934902253871947,
+          "bias": -12.90275953178969,
+          "shortfall": 12.918830892830817
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 18.42144821975365,
+          "bias": -18.42144821975365,
+          "shortfall": 18.42144821975365
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 7.195523619134765,
+          "bias": -3.1161953335445483,
+          "shortfall": 5.155859476339657
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 12.882101213012994,
+          "bias": -12.876701394840847,
+          "shortfall": 12.879401303926922
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 24.88817315659199,
+          "bias": -24.88817315659199,
+          "shortfall": 24.88817315659199
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.183814495761429,
+          "bias": -1.9940896798532188,
+          "shortfall": 4.588952087807323
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 12.990576867057303,
+          "bias": -12.982003442366869,
+          "shortfall": 12.986290154712087
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 18.03554654773539,
+          "bias": -18.03554654773539,
+          "shortfall": 18.03554654773539
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.713187535826833,
+          "bias": -2.1648962980448987,
+          "shortfall": 4.4390419169358655
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 12.426951525225226,
+          "bias": -12.292114010807236,
+          "shortfall": 12.35953276801623
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 19.128934618453794,
+          "bias": -19.128934618453794,
+          "shortfall": 19.128934618453794
+        }
+      }
+    },
+    "STT_refit": {
+      "baseline": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.9449881808715,
+          "bias": 0.07029532314583027,
+          "shortfall": 3.4373464288628353
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 10.215969873329751,
+          "bias": -9.97590297388095,
+          "shortfall": 10.095936423605352
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 15.995272064551383,
+          "bias": -15.995272064551383,
+          "shortfall": 15.995272064551383
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.682954494228248,
+          "bias": 5.772312037817511,
+          "shortfall": 0.9553212282053686
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 17.83393627725672,
+          "bias": -17.805469203350153,
+          "shortfall": 17.819702740303438
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 7.020903082762042,
+          "bias": 0.17827168760490278,
+          "shortfall": 3.42131569757857
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 10.308822708537205,
+          "bias": -10.07260987010336,
+          "shortfall": 10.190716289320282
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 15.808547197837292,
+          "bias": -15.808547197837292,
+          "shortfall": 15.808547197837292
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.374026286626335,
+          "bias": -0.875662784190207,
+          "shortfall": 3.6248445354082706
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.691447996548778,
+          "bias": -9.464498126827163,
+          "shortfall": 9.577973061687969
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 19.16959479869087,
+          "bias": -19.16959479869087,
+          "shortfall": 19.16959479869087
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.171921253511627,
+          "bias": 0.026384617392737546,
+          "shortfall": 3.5727683180594445
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 10.396552864662947,
+          "bias": -10.263600683755218,
+          "shortfall": 10.330076774209083
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 16.201905319446507,
+          "bias": -16.201905319446507,
+          "shortfall": 16.201905319446507
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.68545154277163,
+          "bias": 0.5901588542714197,
+          "shortfall": 3.0476463442501056
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 9.57226551750808,
+          "bias": -9.042241459204384,
+          "shortfall": 9.307253488356233
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 15.087390641553739,
+          "bias": -15.087390641553739,
+          "shortfall": 15.087390641553739
+        }
+      },
+      "mixed": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 7.115339706355198,
+          "bias": 0.1300655352085051,
+          "shortfall": 3.492637085573347
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 11.168686838680626,
+          "bias": -10.906303000747403,
+          "shortfall": 11.037494919714016
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 16.324083663537653,
+          "bias": -16.324083663537653,
+          "shortfall": 16.324083663537653
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.970762644924493,
+          "bias": 6.496311570723679,
+          "shortfall": 0.7372255371004071
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 1.2606560973644054,
+          "bias": -0.24858426865479816,
+          "shortfall": 0.7546201830096018
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 7.164964131915205,
+          "bias": 0.20915464157803437,
+          "shortfall": 3.477904745168586
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 11.315982087089093,
+          "bias": -11.038671107224568,
+          "shortfall": 11.17732659715683
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 16.19626771573212,
+          "bias": -16.19626771573212,
+          "shortfall": 16.19626771573212
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.89347948718796,
+          "bias": -0.5832800993735413,
+          "shortfall": 3.7383797932807505
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 10.069703381790456,
+          "bias": -10.027555129414555,
+          "shortfall": 10.048629255602505
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 18.496954776231746,
+          "bias": -18.496954776231746,
+          "shortfall": 18.496954776231746
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.409722271013097,
+          "bias": 0.14136834913675794,
+          "shortfall": 3.63417696093817
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 11.37476873437792,
+          "bias": -11.10260652038942,
+          "shortfall": 11.238687627383669
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 15.58028188440249,
+          "bias": -15.58028188440249,
+          "shortfall": 15.58028188440249
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.754093681632337,
+          "bias": 0.16483040637934035,
+          "shortfall": 3.2946316376264986
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 10.67480703787385,
+          "bias": -10.433752247543746,
+          "shortfall": 10.554279642708797
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 17.325575073169777,
+          "bias": -17.325575073169777,
+          "shortfall": 17.325575073169777
+        }
+      },
+      "mixed_Stanford_only_calibration": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 7.198777841750793,
+          "bias": 0.4791108066163611,
+          "shortfall": 3.3598335175672167
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 10.173725525559545,
+          "bias": -9.568176316332298,
+          "shortfall": 9.870950920945923
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 14.528764850072033,
+          "bias": -14.528764850072033,
+          "shortfall": 14.528764850072033
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 8.15263158988229,
+          "bias": 6.205648905140365,
+          "shortfall": 0.9734913423709626
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 3.580327634541562,
+          "bias": 2.812989915364951,
+          "shortfall": 0.38366885958830543
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 7.239250754377825,
+          "bias": 0.5794932025723044,
+          "shortfall": 3.32987877590276
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 10.288056583334807,
+          "bias": -9.7017652716847,
+          "shortfall": 9.994910927509752
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 14.377689693021011,
+          "bias": -14.377689693021011,
+          "shortfall": 14.377689693021011
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 7.041468543918102,
+          "bias": -0.36189279897992704,
+          "shortfall": 3.7016806714490134
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.372118111370272,
+          "bias": -8.734185855660428,
+          "shortfall": 9.05315198351535
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 17.097042519939453,
+          "bias": -17.097042519939453,
+          "shortfall": 17.097042519939453
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.487376700171057,
+          "bias": 0.5352184604305915,
+          "shortfall": 3.4760791198702328
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 10.305995059551952,
+          "bias": -9.79128847180142,
+          "shortfall": 10.048641765676686
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 13.621887625920522,
+          "bias": -13.621887625920522,
+          "shortfall": 13.621887625920522
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.840320623066228,
+          "bias": 0.5932360588049563,
+          "shortfall": 3.1235422821306353
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 9.69754276622125,
+          "bias": -8.981614335852994,
+          "shortfall": 9.339578551037123
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 15.763326816038573,
+          "bias": -15.763326816038573,
+          "shortfall": 15.763326816038573
+        }
+      }
+    },
+    "STT_bag": {
+      "baseline": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.752031430243927,
+          "bias": 0.09386516490331011,
+          "shortfall": 3.3290831326703074
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 10.039643372840443,
+          "bias": -9.808794414920273,
+          "shortfall": 9.924218893880356
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 15.660030954685563,
+          "bias": -15.660030954685563,
+          "shortfall": 15.660030954685563
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.383615238230629,
+          "bias": 5.771768245598477,
+          "shortfall": 0.805923496316076
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 18.23403788169363,
+          "bias": -18.23076441095352,
+          "shortfall": 18.232401146323575
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.783991945113772,
+          "bias": 0.2275913678238188,
+          "shortfall": 3.278200288644976
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 10.078510000948015,
+          "bias": -9.875191141150482,
+          "shortfall": 9.976850571049248
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 15.51025930240872,
+          "bias": -15.51025930240872,
+          "shortfall": 15.51025930240872
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.538624436601777,
+          "bias": -0.9331753039879829,
+          "shortfall": 3.735899870294882
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.83408340879209,
+          "bias": -9.38765785188273,
+          "shortfall": 9.610870630337411
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 18.20614904339194,
+          "bias": -18.20614904339194,
+          "shortfall": 18.20614904339194
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.005409493071571,
+          "bias": 0.1720937013002603,
+          "shortfall": 3.4166578958856557
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 10.154906285005167,
+          "bias": -10.082359366289298,
+          "shortfall": 10.11863282564723
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 15.586855504531156,
+          "bias": -15.586855504531156,
+          "shortfall": 15.586855504531156
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.510667173197002,
+          "bias": 0.33003739011632766,
+          "shortfall": 3.0903148915403373
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 9.364698756738298,
+          "bias": -8.81800451283896,
+          "shortfall": 9.09135163478863
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 15.369832931850917,
+          "bias": -15.369832931850917,
+          "shortfall": 15.369832931850917
+        }
+      },
+      "mixed": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.919538290185698,
+          "bias": 0.06741209929852648,
+          "shortfall": 3.4260630954435856
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 11.239440444909482,
+          "bias": -11.041740792675292,
+          "shortfall": 11.140590618792386
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 16.68653034376905,
+          "bias": -16.68653034376905,
+          "shortfall": 16.68653034376905
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.5900311437135555,
+          "bias": 6.468222651877976,
+          "shortfall": 0.56090424591779
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 1.2186036708258974,
+          "bias": -0.43831083998327847,
+          "shortfall": 0.828457255404588
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.964916254398088,
+          "bias": 0.1728344375837081,
+          "shortfall": 3.39604090840719
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 11.32745251519769,
+          "bias": -11.115350901542467,
+          "shortfall": 11.221401708370077
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 16.513700441552103,
+          "bias": -16.513700441552103,
+          "shortfall": 16.513700441552103
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.736678509146221,
+          "bias": -0.8382765191467118,
+          "shortfall": 3.7874775141464667
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 10.783459006107117,
+          "bias": -10.783459006107117,
+          "shortfall": 10.783459006107117
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 19.624638681457128,
+          "bias": -19.624638681457128,
+          "shortfall": 19.624638681457128
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.188970492332053,
+          "bias": 0.07215837246468017,
+          "shortfall": 3.558406059933687
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 11.319452747299689,
+          "bias": -11.158674770697495,
+          "shortfall": 11.23906375899859
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 15.892594769359873,
+          "bias": -15.892594769359873,
+          "shortfall": 15.892594769359873
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.655823642430541,
+          "bias": 0.15580880348549733,
+          "shortfall": 3.2500074194725217
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 10.865668066663904,
+          "bias": -10.552910973131489,
+          "shortfall": 10.709289519897697
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 17.65239417390453,
+          "bias": -17.65239417390453,
+          "shortfall": 17.65239417390453
+        }
+      },
+      "mixed_Stanford_only_calibration": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.963663932074222,
+          "bias": 0.4356822981976073,
+          "shortfall": 3.2639908169383074
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 10.130493396595647,
+          "bias": -9.61766271118078,
+          "shortfall": 9.874078053888214
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 14.87121551255077,
+          "bias": -14.87121551255077,
+          "shortfall": 14.87121551255077
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 7.72065947824485,
+          "bias": 6.1916879857082225,
+          "shortfall": 0.7644857462683141
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 3.478780066417924,
+          "bias": 2.752065530288547,
+          "shortfall": 0.3633572680646886
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 6.9972623530223945,
+          "bias": 0.5646627969042004,
+          "shortfall": 3.2162997780590974
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 10.201976775076348,
+          "bias": -9.684483588825383,
+          "shortfall": 9.943230181950865
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 14.684428096310603,
+          "bias": -14.684428096310603,
+          "shortfall": 14.684428096310603
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.868810453879139,
+          "bias": -0.6280759337665315,
+          "shortfall": 3.748443193822837
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.843829270009547,
+          "bias": -9.514689275788678,
+          "shortfall": 9.679259272899115
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 18.04660158863359,
+          "bias": -18.04660158863359,
+          "shortfall": 18.04660158863359
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.223647901720529,
+          "bias": 0.49860667799043434,
+          "shortfall": 3.3625206118650475
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 10.128765394954215,
+          "bias": -9.735450770756268,
+          "shortfall": 9.932108082855242
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 13.90177174236357,
+          "bias": -13.90177174236357,
+          "shortfall": 13.90177174236357
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.726406700257615,
+          "bias": 0.5954948474464583,
+          "shortfall": 3.0654559264055785
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 9.877193064992209,
+          "bias": -9.060925949622744,
+          "shortfall": 9.469059507307477
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 16.119298078546837,
+          "bias": -16.119298078546837,
+          "shortfall": 16.119298078546837
+        }
+      }
+    },
+    "STT_refit_raw": {
+      "baseline": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 6.9929829293319345,
+          "bias": 0.4408605730994049,
+          "shortfall": 3.2760611781162647
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 11.172538717447985,
+          "bias": -11.158717393093475,
+          "shortfall": 11.165628055270732
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 17.68647502548879,
+          "bias": -17.68647502548879,
+          "shortfall": 17.68647502548879
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 8.135817545450278,
+          "bias": 7.157650902779051,
+          "shortfall": 0.48908332133561344
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 18.562721910464802,
+          "bias": -18.557708474385777,
+          "shortfall": 18.56021519242529
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 7.067845260086463,
+          "bias": 0.5017337078349653,
+          "shortfall": 3.283055776125749
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 11.282425710863539,
+          "bias": -11.267597535065988,
+          "shortfall": 11.275011622964765
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 17.50897840516072,
+          "bias": -17.50897840516072,
+          "shortfall": 17.50897840516072
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.40726576850029,
+          "bias": -0.18309451633593773,
+          "shortfall": 3.2951801424181135
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 10.460480193621702,
+          "bias": -10.460480193621702,
+          "shortfall": 10.460480193621702
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 20.70391757106601,
+          "bias": -20.70391757106601,
+          "shortfall": 20.70391757106601
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.240188712866454,
+          "bias": 0.32841643428744693,
+          "shortfall": 3.4558861392895035
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 11.424313605971616,
+          "bias": -11.40715878840694,
+          "shortfall": 11.415736197189277
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 17.944147839381376,
+          "bias": -17.944147839381376,
+          "shortfall": 17.944147839381376
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.688989257237938,
+          "bias": 0.757169669538203,
+          "shortfall": 2.965909793849868
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 10.4627805380596,
+          "bias": -10.45648264154721,
+          "shortfall": 10.459631589803404
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 16.711167775756188,
+          "bias": -16.711167775756188,
+          "shortfall": 16.711167775756188
+        }
+      },
+      "mixed": {
+        "Stanford_all": {
+          "people": 692,
+          "side_observations": 2122,
+          "mae": 7.183237432494573,
+          "bias": 0.9442329977189031,
+          "shortfall": 3.1195022173878346
+        },
+        "Stanford_ge90": {
+          "people": 162,
+          "side_observations": 255,
+          "mae": 10.831630508357721,
+          "bias": -10.587902651135192,
+          "shortfall": 10.709766579746457
+        },
+        "Stanford_ge100": {
+          "people": 36,
+          "side_observations": 44,
+          "mae": 16.288150679267535,
+          "bias": -16.288150679267535,
+          "shortfall": 16.288150679267535
+        },
+        "Stanford_lt70": {
+          "people": 383,
+          "side_observations": 738,
+          "mae": 8.592113104570508,
+          "bias": 7.580661632166732,
+          "shortfall": 0.5057257362018874
+        },
+        "LJMU": {
+          "people": 64,
+          "side_observations": 1762,
+          "mae": 1.1796858616387031,
+          "bias": -0.7165221301238446,
+          "shortfall": 0.9481039958812738
+        },
+        "under18_all": {
+          "people": 628,
+          "side_observations": 1922,
+          "mae": 7.242743199855537,
+          "bias": 0.999314288785976,
+          "shortfall": 3.121714455534781
+        },
+        "under18_ge90": {
+          "people": 151,
+          "side_observations": 232,
+          "mae": 10.9777731877458,
+          "bias": -10.720162666014605,
+          "shortfall": 10.848967926880201
+        },
+        "under18_ge100": {
+          "people": 34,
+          "side_observations": 41,
+          "mae": 16.169962651521786,
+          "bias": -16.169962651521786,
+          "shortfall": 16.169962651521786
+        },
+        "adult_all": {
+          "people": 87,
+          "side_observations": 200,
+          "mae": 6.848446922939188,
+          "bias": 0.3642391462912421,
+          "shortfall": 3.2421038883239723
+        },
+        "adult_ge90": {
+          "people": 15,
+          "side_observations": 23,
+          "mae": 9.815090621613637,
+          "bias": -9.776109015704328,
+          "shortfall": 9.795599818658982
+        },
+        "adult_ge100": {
+          "people": 2,
+          "side_observations": 3,
+          "mae": 18.297347150945317,
+          "bias": -18.297347150945317,
+          "shortfall": 18.297347150945317
+        },
+        "age5to12_all": {
+          "people": 454,
+          "side_observations": 1254,
+          "mae": 7.469293609488218,
+          "bias": 0.9082497988853855,
+          "shortfall": 3.2805219053014163
+        },
+        "age5to12_ge90": {
+          "people": 114,
+          "side_observations": 162,
+          "mae": 11.03260725338951,
+          "bias": -10.757135833000666,
+          "shortfall": 10.894871543195089
+        },
+        "age5to12_ge100": {
+          "people": 22,
+          "side_observations": 28,
+          "mae": 15.6375887453911,
+          "bias": -15.6375887453911,
+          "shortfall": 15.6375887453911
+        },
+        "age13to17_all": {
+          "people": 244,
+          "side_observations": 572,
+          "mae": 6.852303370947408,
+          "bias": 0.9060144344795513,
+          "shortfall": 2.973144468233929
+        },
+        "age13to17_ge90": {
+          "people": 45,
+          "side_observations": 70,
+          "mae": 10.404945805721011,
+          "bias": -10.23838032000808,
+          "shortfall": 10.321663062864543
+        },
+        "age13to17_ge100": {
+          "people": 12,
+          "side_observations": 13,
+          "mae": 17.145981479428034,
+          "bias": -17.145981479428034,
+          "shortfall": 17.145981479428034
+        }
+      }
+    }
+  },
+  "calibration_diagnostics": [
+    {
+      "family": "CNN",
+      "fold": 0,
+      "member": "inner1",
+      "mixed_coef": [
+        0.9931058719247207,
+        1.3037390575168013
+      ],
+      "Stanford_only_coef": [
+        1.1264004764766937,
+        -8.129189938219307
+      ],
+      "LJMU_training_record_fraction": 0.45030250648228176,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.5606336095921874
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "member": "inner2",
+      "mixed_coef": [
+        0.9550309887496811,
+        4.603448416538842
+      ],
+      "Stanford_only_coef": [
+        1.1254228195956868,
+        -7.321377249163449
+      ],
+      "LJMU_training_record_fraction": 0.44614079728583544,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.6890852106202215
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "member": "inner3",
+      "mixed_coef": [
+        1.0620533850892744,
+        -5.068982812069379
+      ],
+      "Stanford_only_coef": [
+        1.1576859903751953,
+        -11.915494701947122
+      ],
+      "LJMU_training_record_fraction": 0.4652173913043478,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.4124225445841416
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "member": "inner4",
+      "mixed_coef": [
+        1.0148042341209704,
+        -0.6148249265101333
+      ],
+      "Stanford_only_coef": [
+        1.206058288077979,
+        -14.238905140534882
+      ],
+      "LJMU_training_record_fraction": 0.45672664952870606,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.6354421869840451
+    },
+    {
+      "family": "CNN",
+      "fold": 0,
+      "member": "refit",
+      "mixed_coef": [
+        0.9852201097210755,
+        2.459981649050749
+      ],
+      "Stanford_only_coef": [
+        1.077691805993893,
+        -4.023750054759493
+      ],
+      "LJMU_training_record_fraction": 0.45454545454545453,
+      "LJMU_training_person_fraction": 0.08429752066115702,
+      "posthoc_evaluation_shift_stanford": 0.39902880912827304
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "member": "inner0",
+      "mixed_coef": [
+        1.0255367375226891,
+        -0.4372887362161656
+      ],
+      "Stanford_only_coef": [
+        1.215654078997722,
+        -13.831231402683455
+      ],
+      "LJMU_training_record_fraction": 0.45030250648228176,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.6946917699425493
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "member": "inner2",
+      "mixed_coef": [
+        0.9542131365101753,
+        5.4435326663067585
+      ],
+      "Stanford_only_coef": [
+        1.2220492816737782,
+        -13.261036738866055
+      ],
+      "LJMU_training_record_fraction": 0.44047619047619047,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.8219948103278499
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "member": "inner3",
+      "mixed_coef": [
+        0.97426815095587,
+        2.629093414984138
+      ],
+      "Stanford_only_coef": [
+        0.9893167615983082,
+        1.5633627591771393
+      ],
+      "LJMU_training_record_fraction": 0.4594594594594595,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.07144664972975003
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "member": "inner4",
+      "mixed_coef": [
+        0.9848296824336653,
+        2.6967944853008077
+      ],
+      "Stanford_only_coef": [
+        1.134112565483316,
+        -7.8024688076852335
+      ],
+      "LJMU_training_record_fraction": 0.45103092783505155,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.5010474338383
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "member": "refit",
+      "mixed_coef": [
+        0.9554333204020177,
+        5.282016476485086
+      ],
+      "Stanford_only_coef": [
+        1.159689859730279,
+        -8.990117586802851
+      ],
+      "LJMU_training_record_fraction": 0.4502583979328165,
+      "LJMU_training_person_fraction": 0.08429752066115702,
+      "posthoc_evaluation_shift_stanford": 0.7556734815613577
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "member": "inner0",
+      "mixed_coef": [
+        1.0048940210550734,
+        0.3415632754249151
+      ],
+      "Stanford_only_coef": [
+        1.2375779619132061,
+        -16.17261343403404
+      ],
+      "LJMU_training_record_fraction": 0.44614079728583544,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.5746419851437047
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "member": "inner1",
+      "mixed_coef": [
+        0.9314455803056648,
+        7.648149452300048
+      ],
+      "Stanford_only_coef": [
+        1.0503077137559018,
+        -0.5423691778314409
+      ],
+      "LJMU_training_record_fraction": 0.44047619047619047,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.3210525513548936
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "member": "inner3",
+      "mixed_coef": [
+        1.0913799937896018,
+        -8.066302568963257
+      ],
+      "Stanford_only_coef": [
+        1.236537283026443,
+        -18.58355082896618
+      ],
+      "LJMU_training_record_fraction": 0.4550898203592814,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.4408701508364644
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "member": "inner4",
+      "mixed_coef": [
+        1.0549220415193545,
+        -4.241998337474882
+      ],
+      "Stanford_only_coef": [
+        1.2511608787559896,
+        -18.377012284400955
+      ],
+      "LJMU_training_record_fraction": 0.4468802698145025,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.4008674989055254
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "member": "refit",
+      "mixed_coef": [
+        0.9306656498581682,
+        7.941384609018977
+      ],
+      "Stanford_only_coef": [
+        1.1769177794130952,
+        -9.016364166629288
+      ],
+      "LJMU_training_record_fraction": 0.44713375796178345,
+      "LJMU_training_person_fraction": 0.08429752066115702,
+      "posthoc_evaluation_shift_stanford": 0.5400755481164201
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "member": "inner0",
+      "mixed_coef": [
+        1.0827316562036644,
+        -7.732158644279665
+      ],
+      "Stanford_only_coef": [
+        1.1020402622263417,
+        -9.133154088387876
+      ],
+      "LJMU_training_record_fraction": 0.4652173913043478,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.09464261941712178
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "member": "inner1",
+      "mixed_coef": [
+        0.9457901435498933,
+        6.405123920715615
+      ],
+      "Stanford_only_coef": [
+        1.109098696960845,
+        -4.837691762251091
+      ],
+      "LJMU_training_record_fraction": 0.4594594594594595,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.6967469105433715
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "member": "inner2",
+      "mixed_coef": [
+        0.969486281930169,
+        4.136147097558009
+      ],
+      "Stanford_only_coef": [
+        1.0606730867598924,
+        -2.1438845445626846
+      ],
+      "LJMU_training_record_fraction": 0.4550898203592814,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.39903206348192166
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "member": "inner4",
+      "mixed_coef": [
+        1.0047793447933817,
+        -0.15838471543479118
+      ],
+      "Stanford_only_coef": [
+        1.1179659575308176,
+        -8.201019494168275
+      ],
+      "LJMU_training_record_fraction": 0.4658599827139153,
+      "LJMU_training_person_fraction": 0.08609271523178808,
+      "posthoc_evaluation_shift_stanford": 0.40650866198345526
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "member": "refit",
+      "mixed_coef": [
+        0.9465496114247433,
+        5.770860028735986
+      ],
+      "Stanford_only_coef": [
+        1.224937676106371,
+        -13.69421302333583
+      ],
+      "LJMU_training_record_fraction": 0.46138870863075926,
+      "LJMU_training_person_fraction": 0.08443708609271523,
+      "posthoc_evaluation_shift_stanford": 0.878198018581124
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "member": "inner0",
+      "mixed_coef": [
+        0.9854402516225323,
+        2.3811804506254033
+      ],
+      "Stanford_only_coef": [
+        1.1702952758690248,
+        -10.643053165312086
+      ],
+      "LJMU_training_record_fraction": 0.45672664952870606,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.36133194081456305
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "member": "inner1",
+      "mixed_coef": [
+        0.9695592107773556,
+        3.5726441738622152
+      ],
+      "Stanford_only_coef": [
+        1.1719962689975816,
+        -10.719790887623653
+      ],
+      "LJMU_training_record_fraction": 0.45103092783505155,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.5128432731417639
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "member": "inner2",
+      "mixed_coef": [
+        1.0314409923284988,
+        -2.394727981019083
+      ],
+      "Stanford_only_coef": [
+        1.2070610154060013,
+        -15.011731471179614
+      ],
+      "LJMU_training_record_fraction": 0.4468802698145025,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.40689334517740433
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "member": "inner3",
+      "mixed_coef": [
+        0.9574339556808174,
+        5.006988201846253
+      ],
+      "Stanford_only_coef": [
+        1.0176815957423324,
+        0.8473354899231746
+      ],
+      "LJMU_training_record_fraction": 0.4658599827139153,
+      "LJMU_training_person_fraction": 0.08609271523178808,
+      "posthoc_evaluation_shift_stanford": 0.19227626638231204
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "member": "refit",
+      "mixed_coef": [
+        1.0063046431018823,
+        0.9598712033820035
+      ],
+      "Stanford_only_coef": [
+        1.3419275277740508,
+        -22.851384686433526
+      ],
+      "LJMU_training_record_fraction": 0.45507060333761234,
+      "LJMU_training_person_fraction": 0.0859504132231405,
+      "posthoc_evaluation_shift_stanford": 0.5491764731685352
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "member": "inner1",
+      "mixed_coef": [
+        1.0104086837280055,
+        -0.6964004295960623
+      ],
+      "Stanford_only_coef": [
+        1.1035946334826063,
+        -7.378994829672996
+      ],
+      "LJMU_training_record_fraction": 0.45030250648228176,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.3427887861332965
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "member": "inner2",
+      "mixed_coef": [
+        1.0467220229775134,
+        -4.234584882140185
+      ],
+      "Stanford_only_coef": [
+        1.1564348127492399,
+        -12.146001210628942
+      ],
+      "LJMU_training_record_fraction": 0.44614079728583544,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.4177775827590302
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "member": "inner3",
+      "mixed_coef": [
+        1.028468537821933,
+        -2.472723923529199
+      ],
+      "Stanford_only_coef": [
+        1.1686543553713784,
+        -12.50392248821821
+      ],
+      "LJMU_training_record_fraction": 0.4652173913043478,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.539099923500817
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "member": "inner4",
+      "mixed_coef": [
+        1.0659365880271048,
+        -6.599479025463374
+      ],
+      "Stanford_only_coef": [
+        1.1240767083281205,
+        -10.887718231049522
+      ],
+      "LJMU_training_record_fraction": 0.45672664952870606,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.18830154057137188
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "member": "refit",
+      "mixed_coef": [
+        1.0615068013219602,
+        -5.91474624739055
+      ],
+      "Stanford_only_coef": [
+        1.1690034596553587,
+        -13.742491540500795
+      ],
+      "LJMU_training_record_fraction": 0.45454545454545453,
+      "LJMU_training_person_fraction": 0.08429752066115702,
+      "posthoc_evaluation_shift_stanford": 0.4128967120896564
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "member": "inner0",
+      "mixed_coef": [
+        1.0071619804775505,
+        -0.17603798386627706
+      ],
+      "Stanford_only_coef": [
+        1.1529089482204147,
+        -10.551399010827401
+      ],
+      "LJMU_training_record_fraction": 0.45030250648228176,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.6194780869234408
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "member": "inner2",
+      "mixed_coef": [
+        1.0689086430601573,
+        -5.868374862511537
+      ],
+      "Stanford_only_coef": [
+        1.220660651620244,
+        -16.91883265064488
+      ],
+      "LJMU_training_record_fraction": 0.44047619047619047,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.5411421548483416
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "member": "inner3",
+      "mixed_coef": [
+        1.0786047236183967,
+        -6.726130602826995
+      ],
+      "Stanford_only_coef": [
+        1.2243291471591586,
+        -17.282675978505452
+      ],
+      "LJMU_training_record_fraction": 0.4594594594594595,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.6217206773782228
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "member": "inner4",
+      "mixed_coef": [
+        1.04352817889376,
+        -3.8513052972494553
+      ],
+      "Stanford_only_coef": [
+        1.1680274502054955,
+        -12.869024664845801
+      ],
+      "LJMU_training_record_fraction": 0.45103092783505155,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.48566865105862833
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "member": "refit",
+      "mixed_coef": [
+        1.0689730970428286,
+        -6.3862971633490915
+      ],
+      "Stanford_only_coef": [
+        1.1619046943348015,
+        -13.18411198016195
+      ],
+      "LJMU_training_record_fraction": 0.4502583979328165,
+      "LJMU_training_person_fraction": 0.08429752066115702,
+      "posthoc_evaluation_shift_stanford": 0.36397199136368796
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "member": "inner0",
+      "mixed_coef": [
+        1.0719225087047743,
+        -6.667505673819896
+      ],
+      "Stanford_only_coef": [
+        1.1841527184837284,
+        -14.804389392082479
+      ],
+      "LJMU_training_record_fraction": 0.44614079728583544,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.32696467683114394
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "member": "inner1",
+      "mixed_coef": [
+        1.0608616068499168,
+        -5.337615317109636
+      ],
+      "Stanford_only_coef": [
+        1.171985428930205,
+        -13.432195130881922
+      ],
+      "LJMU_training_record_fraction": 0.44047619047619047,
+      "LJMU_training_person_fraction": 0.08370044052863436,
+      "posthoc_evaluation_shift_stanford": 0.2474678119930769
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "member": "inner3",
+      "mixed_coef": [
+        1.0592034915863915,
+        -5.486971048513318
+      ],
+      "Stanford_only_coef": [
+        1.1746163045076055,
+        -13.824245336469408
+      ],
+      "LJMU_training_record_fraction": 0.4550898203592814,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.3049804413701576
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "member": "inner4",
+      "mixed_coef": [
+        1.0458644963248853,
+        -3.974225846846861
+      ],
+      "Stanford_only_coef": [
+        1.1686284100708682,
+        -12.820035567884212
+      ],
+      "LJMU_training_record_fraction": 0.4468802698145025,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.2828724545578228
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "member": "refit",
+      "mixed_coef": [
+        1.0662810634599564,
+        -6.619408722142176
+      ],
+      "Stanford_only_coef": [
+        1.1604999939245835,
+        -13.522424372645325
+      ],
+      "LJMU_training_record_fraction": 0.44713375796178345,
+      "LJMU_training_person_fraction": 0.08429752066115702,
+      "posthoc_evaluation_shift_stanford": 0.2329502928000626
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "member": "inner0",
+      "mixed_coef": [
+        1.0469254285555418,
+        -4.169034769971451
+      ],
+      "Stanford_only_coef": [
+        1.1425136012549642,
+        -11.040763325004372
+      ],
+      "LJMU_training_record_fraction": 0.4652173913043478,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.4200654463972326
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "member": "inner1",
+      "mixed_coef": [
+        1.067779204207263,
+        -5.953595766473411
+      ],
+      "Stanford_only_coef": [
+        1.2057089964638577,
+        -15.946718822696315
+      ],
+      "LJMU_training_record_fraction": 0.4594594594594595,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.5649581997987732
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "member": "inner2",
+      "mixed_coef": [
+        1.0280872673996255,
+        -1.9103030179575664
+      ],
+      "Stanford_only_coef": [
+        1.15660496109041,
+        -11.070220388203294
+      ],
+      "LJMU_training_record_fraction": 0.4550898203592814,
+      "LJMU_training_person_fraction": 0.08388520971302428,
+      "posthoc_evaluation_shift_stanford": 0.488370787663571
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "member": "inner4",
+      "mixed_coef": [
+        1.0213299337846915,
+        -1.3702506701401265
+      ],
+      "Stanford_only_coef": [
+        1.1917130106949145,
+        -13.523985396988984
+      ],
+      "LJMU_training_record_fraction": 0.4658599827139153,
+      "LJMU_training_person_fraction": 0.08609271523178808,
+      "posthoc_evaluation_shift_stanford": 0.687591678137021
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "member": "refit",
+      "mixed_coef": [
+        1.044003635048365,
+        -3.4238718194669726
+      ],
+      "Stanford_only_coef": [
+        1.1517747683463342,
+        -11.205101925782428
+      ],
+      "LJMU_training_record_fraction": 0.46138870863075926,
+      "LJMU_training_person_fraction": 0.08443708609271523,
+      "posthoc_evaluation_shift_stanford": 0.3710642349644662
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "member": "inner0",
+      "mixed_coef": [
+        1.0565356960263619,
+        -5.024927213713854
+      ],
+      "Stanford_only_coef": [
+        1.202524999765071,
+        -15.60768428725723
+      ],
+      "LJMU_training_record_fraction": 0.45672664952870606,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.3789401257591773
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "member": "inner1",
+      "mixed_coef": [
+        1.0316912601916275,
+        -2.6360436334278936
+      ],
+      "Stanford_only_coef": [
+        1.1169462979082887,
+        -8.81388935616932
+      ],
+      "LJMU_training_record_fraction": 0.45103092783505155,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.20965338633660313
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "member": "inner2",
+      "mixed_coef": [
+        1.0110932909419468,
+        -0.456603124512314
+      ],
+      "Stanford_only_coef": [
+        1.151504907556918,
+        -10.524014660511503
+      ],
+      "LJMU_training_record_fraction": 0.4468802698145025,
+      "LJMU_training_person_fraction": 0.08590308370044053,
+      "posthoc_evaluation_shift_stanford": 0.3244509993303666
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "member": "inner3",
+      "mixed_coef": [
+        1.077747370964198,
+        -7.1947765697775115
+      ],
+      "Stanford_only_coef": [
+        1.143053557634356,
+        -11.996124126708605
+      ],
+      "LJMU_training_record_fraction": 0.4658599827139153,
+      "LJMU_training_person_fraction": 0.08609271523178808,
+      "posthoc_evaluation_shift_stanford": 0.15071178572543648
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "member": "refit",
+      "mixed_coef": [
+        1.0342301994834555,
+        -2.597058443399953
+      ],
+      "Stanford_only_coef": [
+        1.2078621325434675,
+        -15.045373226602507
+      ],
+      "LJMU_training_record_fraction": 0.45507060333761234,
+      "LJMU_training_person_fraction": 0.0859504132231405,
+      "posthoc_evaluation_shift_stanford": 0.44342731178938405
+    }
+  ],
+  "STT_epoch_diagnostics": [
+    {
+      "family": "STT",
+      "fold": 0,
+      "original_epoch": 181,
+      "Stanford_only_validation_epoch": 199,
+      "Stanford_inner_mae_at_original": 7.10508544092067,
+      "Stanford_inner_min_mae": 7.0970754511224845,
+      "note": "Diagnostic selection from inner Stanford rows only. Alternate refit not trained; not an OOF performance result."
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "original_epoch": 160,
+      "Stanford_only_validation_epoch": 160,
+      "Stanford_inner_mae_at_original": 7.101023657738003,
+      "Stanford_inner_min_mae": 7.101023657738003,
+      "note": "Diagnostic selection from inner Stanford rows only. Alternate refit not trained; not an OOF performance result."
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "original_epoch": 194,
+      "Stanford_only_validation_epoch": 194,
+      "Stanford_inner_mae_at_original": 7.1128119677505905,
+      "Stanford_inner_min_mae": 7.1128119677505905,
+      "note": "Diagnostic selection from inner Stanford rows only. Alternate refit not trained; not an OOF performance result."
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "original_epoch": 158,
+      "Stanford_only_validation_epoch": 158,
+      "Stanford_inner_mae_at_original": 7.198538967737996,
+      "Stanford_inner_min_mae": 7.198538967737996,
+      "note": "Diagnostic selection from inner Stanford rows only. Alternate refit not trained; not an OOF performance result."
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "original_epoch": 183,
+      "Stanford_only_validation_epoch": 183,
+      "Stanford_inner_mae_at_original": 7.110903703747559,
+      "Stanford_inner_min_mae": 7.110903703747559,
+      "note": "Diagnostic selection from inner Stanford rows only. Alternate refit not trained; not an OOF performance result."
+    }
+  ],
+  "train_heldout_diagnostics": [
+    {
+      "family": "CNN",
+      "fold": 0,
+      "baseline": {
+        "train_ge90": {
+          "people": 129,
+          "side_observations": 201,
+          "mae": 7.787064305309817,
+          "bias": -7.641981972710773,
+          "shortfall": 7.7145231390102955
+        },
+        "train_ge100": {
+          "people": 31,
+          "side_observations": 39,
+          "mae": 13.09480990106876,
+          "bias": -13.09480990106876,
+          "shortfall": 13.09480990106876
+        },
+        "heldout_ge90": {
+          "people": 33,
+          "side_observations": 54,
+          "mae": 9.905200290114337,
+          "bias": -9.803982590034511,
+          "shortfall": 9.854591440074426
+        },
+        "heldout_ge100": {
+          "people": 5,
+          "side_observations": 5,
+          "mae": 13.788425599449178,
+          "bias": -13.788425599449178,
+          "shortfall": 13.788425599449178
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 129,
+          "side_observations": 201,
+          "mae": 8.49172276225171,
+          "bias": -8.00252770410469,
+          "shortfall": 8.2471252331782
+        },
+        "train_ge100": {
+          "people": 31,
+          "side_observations": 39,
+          "mae": 12.79846897524874,
+          "bias": -12.79846897524874,
+          "shortfall": 12.79846897524874
+        },
+        "heldout_ge90": {
+          "people": 33,
+          "side_observations": 54,
+          "mae": 9.652151800230524,
+          "bias": -9.520371944396091,
+          "shortfall": 9.586261872313306
+        },
+        "heldout_ge100": {
+          "people": 5,
+          "side_observations": 5,
+          "mae": 14.254252589546848,
+          "bias": -14.254252589546848,
+          "shortfall": 14.254252589546848
+        }
+      }
+    },
+    {
+      "family": "CNN",
+      "fold": 1,
+      "baseline": {
+        "train_ge90": {
+          "people": 127,
+          "side_observations": 197,
+          "mae": 6.617122156524242,
+          "bias": -6.2431689615128905,
+          "shortfall": 6.430145559018566
+        },
+        "train_ge100": {
+          "people": 26,
+          "side_observations": 32,
+          "mae": 10.63621250977163,
+          "bias": -10.63621250977163,
+          "shortfall": 10.63621250977163
+        },
+        "heldout_ge90": {
+          "people": 35,
+          "side_observations": 58,
+          "mae": 8.127054690501065,
+          "bias": -7.514720088745652,
+          "shortfall": 7.820887389623359
+        },
+        "heldout_ge100": {
+          "people": 10,
+          "side_observations": 12,
+          "mae": 12.637073295336588,
+          "bias": -12.637073295336588,
+          "shortfall": 12.637073295336588
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 127,
+          "side_observations": 197,
+          "mae": 9.532702962209752,
+          "bias": -9.5230004689422,
+          "shortfall": 9.527851715575977
+        },
+        "train_ge100": {
+          "people": 26,
+          "side_observations": 32,
+          "mae": 14.882454279367153,
+          "bias": -14.882454279367153,
+          "shortfall": 14.882454279367153
+        },
+        "heldout_ge90": {
+          "people": 35,
+          "side_observations": 58,
+          "mae": 10.329912533173742,
+          "bias": -10.307660131314984,
+          "shortfall": 10.318786332244363
+        },
+        "heldout_ge100": {
+          "people": 10,
+          "side_observations": 12,
+          "mae": 16.546894079965256,
+          "bias": -16.546894079965256,
+          "shortfall": 16.546894079965256
+        }
+      }
+    },
+    {
+      "family": "CNN",
+      "fold": 2,
+      "baseline": {
+        "train_ge90": {
+          "people": 133,
+          "side_observations": 218,
+          "mae": 5.959219434348094,
+          "bias": -4.915063163140876,
+          "shortfall": 5.437141298744485
+        },
+        "train_ge100": {
+          "people": 32,
+          "side_observations": 37,
+          "mae": 8.973604620769915,
+          "bias": -8.79319817190639,
+          "shortfall": 8.883401396338153
+        },
+        "heldout_ge90": {
+          "people": 29,
+          "side_observations": 37,
+          "mae": 8.85972189072946,
+          "bias": -8.381454358216942,
+          "shortfall": 8.620588124473201
+        },
+        "heldout_ge100": {
+          "people": 4,
+          "side_observations": 7,
+          "mae": 11.042464107164578,
+          "bias": -11.042464107164578,
+          "shortfall": 11.042464107164578
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 133,
+          "side_observations": 218,
+          "mae": 9.649844414748626,
+          "bias": -9.618328899392516,
+          "shortfall": 9.63408665707057
+        },
+        "train_ge100": {
+          "people": 32,
+          "side_observations": 37,
+          "mae": 15.423273367183466,
+          "bias": -15.423273367183466,
+          "shortfall": 15.423273367183466
+        },
+        "heldout_ge90": {
+          "people": 29,
+          "side_observations": 37,
+          "mae": 12.205875871056355,
+          "bias": -12.205875871056355,
+          "shortfall": 12.205875871056355
+        },
+        "heldout_ge100": {
+          "people": 4,
+          "side_observations": 7,
+          "mae": 17.80439735944614,
+          "bias": -17.80439735944614,
+          "shortfall": 17.80439735944614
+        }
+      }
+    },
+    {
+      "family": "CNN",
+      "fold": 3,
+      "baseline": {
+        "train_ge90": {
+          "people": 126,
+          "side_observations": 195,
+          "mae": 7.30441757242382,
+          "bias": -6.756714649324452,
+          "shortfall": 7.030566110874136
+        },
+        "train_ge100": {
+          "people": 29,
+          "side_observations": 36,
+          "mae": 10.908724011235527,
+          "bias": -10.908724011235527,
+          "shortfall": 10.908724011235527
+        },
+        "heldout_ge90": {
+          "people": 36,
+          "side_observations": 60,
+          "mae": 9.276754233834495,
+          "bias": -8.678744254797882,
+          "shortfall": 8.97774924431619
+        },
+        "heldout_ge100": {
+          "people": 7,
+          "side_observations": 8,
+          "mae": 15.307780909168603,
+          "bias": -15.307780909168603,
+          "shortfall": 15.307780909168603
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 126,
+          "side_observations": 195,
+          "mae": 10.34826294535239,
+          "bias": -10.293102129473642,
+          "shortfall": 10.320682537413017
+        },
+        "train_ge100": {
+          "people": 29,
+          "side_observations": 36,
+          "mae": 14.823961154010956,
+          "bias": -14.823961154010956,
+          "shortfall": 14.823961154010956
+        },
+        "heldout_ge90": {
+          "people": 36,
+          "side_observations": 60,
+          "mae": 11.972664060855584,
+          "bias": -11.775046843717925,
+          "shortfall": 11.873855452286755
+        },
+        "heldout_ge100": {
+          "people": 7,
+          "side_observations": 8,
+          "mae": 19.850084410964648,
+          "bias": -19.850084410964648,
+          "shortfall": 19.850084410964648
+        }
+      }
+    },
+    {
+      "family": "CNN",
+      "fold": 4,
+      "baseline": {
+        "train_ge90": {
+          "people": 133,
+          "side_observations": 209,
+          "mae": 6.679176302395624,
+          "bias": -5.7451120284868455,
+          "shortfall": 6.212144165441235
+        },
+        "train_ge100": {
+          "people": 26,
+          "side_observations": 32,
+          "mae": 10.259130081156725,
+          "bias": -10.259130081156725,
+          "shortfall": 10.259130081156725
+        },
+        "heldout_ge90": {
+          "people": 29,
+          "side_observations": 46,
+          "mae": 10.75038373208139,
+          "bias": -10.071741506051534,
+          "shortfall": 10.41106261906646
+        },
+        "heldout_ge100": {
+          "people": 10,
+          "side_observations": 12,
+          "mae": 15.4732508264072,
+          "bias": -15.4732508264072,
+          "shortfall": 15.4732508264072
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 133,
+          "side_observations": 209,
+          "mae": 10.324817422418523,
+          "bias": -10.255678257179403,
+          "shortfall": 10.290247839798962
+        },
+        "train_ge100": {
+          "people": 26,
+          "side_observations": 32,
+          "mae": 15.307331636807236,
+          "bias": -15.307331636807236,
+          "shortfall": 15.307331636807236
+        },
+        "heldout_ge90": {
+          "people": 29,
+          "side_observations": 46,
+          "mae": 13.027840755138005,
+          "bias": -12.975621523459843,
+          "shortfall": 13.001731139298922
+        },
+        "heldout_ge100": {
+          "people": 10,
+          "side_observations": 12,
+          "mae": 17.595235090904346,
+          "bias": -17.595235090904346,
+          "shortfall": 17.595235090904346
+        }
+      }
+    },
+    {
+      "family": "STT",
+      "fold": 0,
+      "baseline": {
+        "train_ge90": {
+          "people": 129,
+          "side_observations": 201,
+          "mae": 8.115827912785033,
+          "bias": -7.62670184207966,
+          "shortfall": 7.871264877432346
+        },
+        "train_ge100": {
+          "people": 31,
+          "side_observations": 39,
+          "mae": 11.743503338400274,
+          "bias": -11.743503338400274,
+          "shortfall": 11.743503338400274
+        },
+        "heldout_ge90": {
+          "people": 33,
+          "side_observations": 54,
+          "mae": 9.857422387641446,
+          "bias": -9.800989878158266,
+          "shortfall": 9.829206132899856
+        },
+        "heldout_ge100": {
+          "people": 5,
+          "side_observations": 5,
+          "mae": 14.191760614391947,
+          "bias": -14.191760614391947,
+          "shortfall": 14.191760614391947
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 129,
+          "side_observations": 201,
+          "mae": 8.226384869335726,
+          "bias": -7.952021085478242,
+          "shortfall": 8.089202977406984
+        },
+        "train_ge100": {
+          "people": 31,
+          "side_observations": 39,
+          "mae": 11.786836490623875,
+          "bias": -11.786836490623875,
+          "shortfall": 11.786836490623875
+        },
+        "heldout_ge90": {
+          "people": 33,
+          "side_observations": 54,
+          "mae": 11.323036731290916,
+          "bias": -11.323036731290916,
+          "shortfall": 11.323036731290916
+        },
+        "heldout_ge100": {
+          "people": 5,
+          "side_observations": 5,
+          "mae": 16.34221968616024,
+          "bias": -16.34221968616024,
+          "shortfall": 16.34221968616024
+        }
+      }
+    },
+    {
+      "family": "STT",
+      "fold": 1,
+      "baseline": {
+        "train_ge90": {
+          "people": 127,
+          "side_observations": 197,
+          "mae": 9.646489240232478,
+          "bias": -9.596307497237703,
+          "shortfall": 9.62139836873509
+        },
+        "train_ge100": {
+          "people": 26,
+          "side_observations": 32,
+          "mae": 14.617896718435112,
+          "bias": -14.617896718435112,
+          "shortfall": 14.617896718435112
+        },
+        "heldout_ge90": {
+          "people": 35,
+          "side_observations": 58,
+          "mae": 9.826175968367604,
+          "bias": -9.782364327829557,
+          "shortfall": 9.804270148098578
+        },
+        "heldout_ge100": {
+          "people": 10,
+          "side_observations": 12,
+          "mae": 17.043732778553654,
+          "bias": -17.043732778553654,
+          "shortfall": 17.043732778553654
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 127,
+          "side_observations": 197,
+          "mae": 8.718706866595628,
+          "bias": -8.54225538530809,
+          "shortfall": 8.630481125951857
+        },
+        "train_ge100": {
+          "people": 26,
+          "side_observations": 32,
+          "mae": 11.915985674411726,
+          "bias": -11.915985674411726,
+          "shortfall": 11.915985674411726
+        },
+        "heldout_ge90": {
+          "people": 35,
+          "side_observations": 58,
+          "mae": 9.354700707581,
+          "bias": -9.159681489798883,
+          "shortfall": 9.257191098689942
+        },
+        "heldout_ge100": {
+          "people": 10,
+          "side_observations": 12,
+          "mae": 15.550767827904133,
+          "bias": -15.550767827904133,
+          "shortfall": 15.550767827904133
+        }
+      }
+    },
+    {
+      "family": "STT",
+      "fold": 2,
+      "baseline": {
+        "train_ge90": {
+          "people": 133,
+          "side_observations": 218,
+          "mae": 7.170232092492003,
+          "bias": -6.66652715155371,
+          "shortfall": 6.918379622022857
+        },
+        "train_ge100": {
+          "people": 32,
+          "side_observations": 37,
+          "mae": 11.355557225395572,
+          "bias": -11.355557225395572,
+          "shortfall": 11.355557225395572
+        },
+        "heldout_ge90": {
+          "people": 29,
+          "side_observations": 37,
+          "mae": 9.884644804419223,
+          "bias": -9.53573692726349,
+          "shortfall": 9.710190865841358
+        },
+        "heldout_ge100": {
+          "people": 4,
+          "side_observations": 7,
+          "mae": 12.975372751762901,
+          "bias": -12.975372751762901,
+          "shortfall": 12.975372751762901
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 133,
+          "side_observations": 218,
+          "mae": 7.810214005466705,
+          "bias": -7.617154243926777,
+          "shortfall": 7.713684124696741
+        },
+        "train_ge100": {
+          "people": 32,
+          "side_observations": 37,
+          "mae": 11.255992058333938,
+          "bias": -11.255992058333938,
+          "shortfall": 11.255992058333938
+        },
+        "heldout_ge90": {
+          "people": 29,
+          "side_observations": 37,
+          "mae": 11.350316509336224,
+          "bias": -10.557520491438167,
+          "shortfall": 10.953918500387196
+        },
+        "heldout_ge100": {
+          "people": 4,
+          "side_observations": 7,
+          "mae": 13.28273651563244,
+          "bias": -13.28273651563244,
+          "shortfall": 13.28273651563244
+        }
+      }
+    },
+    {
+      "family": "STT",
+      "fold": 3,
+      "baseline": {
+        "train_ge90": {
+          "people": 126,
+          "side_observations": 195,
+          "mae": 8.263987319620618,
+          "bias": -7.954672999391802,
+          "shortfall": 8.109330159506209
+        },
+        "train_ge100": {
+          "people": 29,
+          "side_observations": 36,
+          "mae": 12.166519087595026,
+          "bias": -12.166519087595026,
+          "shortfall": 12.166519087595026
+        },
+        "heldout_ge90": {
+          "people": 36,
+          "side_observations": 60,
+          "mae": 10.410216908417748,
+          "bias": -9.971689190969178,
+          "shortfall": 10.190953049693464
+        },
+        "heldout_ge100": {
+          "people": 7,
+          "side_observations": 8,
+          "mae": 16.155972423991344,
+          "bias": -16.155972423991344,
+          "shortfall": 16.155972423991344
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 126,
+          "side_observations": 195,
+          "mae": 9.843692575869962,
+          "bias": -9.655214588059497,
+          "shortfall": 9.74945358196473
+        },
+        "train_ge100": {
+          "people": 29,
+          "side_observations": 36,
+          "mae": 13.338143922193876,
+          "bias": -13.338143922193876,
+          "shortfall": 13.338143922193876
+        },
+        "heldout_ge90": {
+          "people": 36,
+          "side_observations": 60,
+          "mae": 11.439439809973594,
+          "bias": -11.158084087059484,
+          "shortfall": 11.298761948516539
+        },
+        "heldout_ge100": {
+          "people": 7,
+          "side_observations": 8,
+          "mae": 17.486324212494274,
+          "bias": -17.486324212494274,
+          "shortfall": 17.486324212494274
+        }
+      }
+    },
+    {
+      "family": "STT",
+      "fold": 4,
+      "baseline": {
+        "train_ge90": {
+          "people": 133,
+          "side_observations": 209,
+          "mae": 6.1548698265057755,
+          "bias": -5.518402829458813,
+          "shortfall": 5.836636327982294
+        },
+        "train_ge100": {
+          "people": 26,
+          "side_observations": 32,
+          "mae": 9.11277979320786,
+          "bias": -9.11277979320786,
+          "shortfall": 9.11277979320786
+        },
+        "heldout_ge90": {
+          "people": 29,
+          "side_observations": 46,
+          "mae": 11.184605762078151,
+          "bias": -10.853923618148913,
+          "shortfall": 11.019264690113532
+        },
+        "heldout_ge100": {
+          "people": 10,
+          "side_observations": 12,
+          "mae": 16.94403829902555,
+          "bias": -16.94403829902555,
+          "shortfall": 16.94403829902555
+        }
+      },
+      "mixed": {
+        "train_ge90": {
+          "people": 133,
+          "side_observations": 209,
+          "mae": 7.546813230419685,
+          "bias": -7.346477805960708,
+          "shortfall": 7.446645518190197
+        },
+        "train_ge100": {
+          "people": 26,
+          "side_observations": 32,
+          "mae": 10.95015245452274,
+          "bias": -10.95015245452274,
+          "shortfall": 10.95015245452274
+        },
+        "heldout_ge90": {
+          "people": 29,
+          "side_observations": 46,
+          "mae": 12.664604104776778,
+          "bias": -12.576306912402412,
+          "shortfall": 12.620455508589597
+        },
+        "heldout_ge100": {
+          "people": 10,
+          "side_observations": 12,
+          "mae": 17.491301962752342,
+          "bias": -17.491301962752342,
+          "shortfall": 17.491301962752342
+        }
+      }
+    }
+  ],
+  "verification": {
+    "original_high_gdi_metric_matches": 16,
+    "Stanford_only_OLS_closed_form_verified": true,
+    "calibration_train_evaluation_person_disjoint": true
+  }
+}

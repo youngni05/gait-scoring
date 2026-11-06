@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "contexts": 15,
+  "meta_models_replayed": 60,
+  "policy_fold_outputs_checked": 120,
+  "checks": [
+    {
+      "condition": "speed",
+      "fold": 0,
+      "source_experts": 19,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 3,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed",
+      "fold": 1,
+      "source_experts": 19,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed",
+      "fold": 2,
+      "source_experts": 19,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed",
+      "fold": 3,
+      "source_experts": 19,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 1,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed",
+      "fold": 4,
+      "source_experts": 19,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 0,
+      "source_experts": 21,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 3,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 1,
+      "source_experts": 21,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 2,
+      "source_experts": 21,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 3,
+      "source_experts": 21,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 1,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "speed_duration",
+      "fold": 4,
+      "source_experts": 21,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "combined",
+      "fold": 0,
+      "source_experts": 34,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 3,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "combined",
+      "fold": 1,
+      "source_experts": 34,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "combined",
+      "fold": 2,
+      "source_experts": 34,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "combined",
+      "fold": 3,
+      "source_experts": 34,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 1,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    },
+    {
+      "condition": "combined",
+      "fold": 4,
+      "source_experts": 34,
+      "models_replayed": 4,
+      "policies_checked": 8,
+      "guarded_people": 0,
+      "source_OOF_and_IDs_rebuilt": true,
+      "training_only_normalizers_weights_KKT_bounds_and_fallback_verified": true
+    }
+  ],
+  "comparison_sha256": "9f7b596e02ba2211ee7a5e34a726cbf98b0983d888c5026b56f0b777d451a14e",
+  "heldout_sha256": "9339994dacc855c320a151f689bafbcb754a40a4a920de220f71f8990e0f0020",
+  "review_code_sha256": "0fae32c3e8a47875e65ff37a8dc2b3be6d3fdedfc8f90f0fd6f0095f287e8062"
+}

@@ -1,0 +1,86 @@
+{
+  "speed/positive_ridge/tail1": {
+    "mae": 1.0865562665447868,
+    "p95": 3.151273905038218,
+    "slow_mae": 7.328248952005225,
+    "slow_bias": -7.328248952005225,
+    "goal_met": false
+  },
+  "speed/positive_ridge/tail4": {
+    "mae": 1.146963165874637,
+    "p95": 3.0913846725654195,
+    "slow_mae": 4.960171223424488,
+    "slow_bias": -4.960171223424488,
+    "goal_met": false
+  },
+  "speed/positive_ridge/tail16": {
+    "mae": 1.2380784851281967,
+    "p95": 3.6561495297548414,
+    "slow_mae": 2.956664737129289,
+    "slow_bias": -2.599228830489677,
+    "goal_met": false
+  },
+  "speed/rbf_ridge/tail1": {
+    "mae": 1.06494318772877,
+    "p95": 3.358404630471374,
+    "slow_mae": 10.949799180079324,
+    "slow_bias": -10.949799180079324,
+    "goal_met": false
+  },
+  "speed/rbf_ridge/tail4": {
+    "mae": 1.0381946710097856,
+    "p95": 2.9849180826363906,
+    "slow_mae": 7.982251286081385,
+    "slow_bias": -7.982251286081385,
+    "goal_met": false
+  },
+  "speed/rbf_ridge/tail16": {
+    "mae": 1.1325620751162375,
+    "p95": 3.1721021979990045,
+    "slow_mae": 5.424857214134377,
+    "slow_bias": -5.424857214134377,
+    "goal_met": false
+  },
+  "combined/positive_ridge/tail1": {
+    "mae": 0.9424907651999357,
+    "p95": 2.5961481222057934,
+    "slow_mae": 5.2703516708612455,
+    "slow_bias": -4.951876820750114,
+    "goal_met": false
+  },
+  "combined/positive_ridge/tail4": {
+    "mae": 0.952395462764226,
+    "p95": 2.7521748689387433,
+    "slow_mae": 3.9058353628213762,
+    "slow_bias": -3.230783547982811,
+    "goal_met": false
+  },
+  "combined/positive_ridge/tail16": {
+    "mae": 0.9927363892046017,
+    "p95": 3.0301361478738444,
+    "slow_mae": 3.2146513287397918,
+    "slow_bias": -1.7877601253438324,
+    "goal_met": false
+  },
+  "combined/rbf_ridge/tail1": {
+    "mae": 1.060256180006094,
+    "p95": 3.2816897671101435,
+    "slow_mae": 12.942056114427222,
+    "slow_bias": -12.942056114427222,
+    "goal_met": false
+  },
+  "combined/rbf_ridge/tail4": {
+    "mae": 0.9840834301194658,
+    "p95": 2.7089360968792686,
+    "slow_mae": 10.530090574994075,
+    "slow_bias": -10.530090574994075,
+    "goal_met": false
+  },
+  "combined/rbf_ridge/tail16": {
+    "mae": 1.0413158915927991,
+    "p95": 3.172116881965627,
+    "slow_mae": 7.936781513443246,
+    "slow_bias": -7.936781513443246,
+    "goal_met": false
+  }
+}

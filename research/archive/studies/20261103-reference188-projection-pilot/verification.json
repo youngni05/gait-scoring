@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "trials": 6,
+  "camera_sequences": 18,
+  "source_files_crc_verified_in_fetch": true,
+  "checks": [
+    {
+      "person": "SUBJ01",
+      "raw_second_reader_max_error_m": 0.0,
+      "c3d_frame_start_one_based": 249,
+      "c3d_frame_end_one_based": 585,
+      "reader_index_convention": "ezc3d header 0-based, c3d/TRIAL fields 1-based; coordinate arrays align",
+      "resampling_max_error_m": 8.881784197001252e-16,
+      "cameras": {
+        "side_fixed": {
+          "opencv_max_pixel_error": 2.2737367544323206e-13,
+          "all_markers_in_frame_fraction": 0.9702970297029703
+        },
+        "side_pan": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 1.0
+        },
+        "oblique_fixed": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 0.9504950495049505
+        }
+      },
+      "preview_frames": 34,
+      "duration_eligible": false
+    },
+    {
+      "person": "SUBJ02",
+      "raw_second_reader_max_error_m": 0.0,
+      "c3d_frame_start_one_based": 247,
+      "c3d_frame_end_one_based": 638,
+      "reader_index_convention": "ezc3d header 0-based, c3d/TRIAL fields 1-based; coordinate arrays align",
+      "resampling_max_error_m": 8.881784197001252e-16,
+      "cameras": {
+        "side_fixed": {
+          "opencv_max_pixel_error": 2.2737367544323206e-13,
+          "all_markers_in_frame_fraction": 0.9322033898305084
+        },
+        "side_pan": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 1.0
+        },
+        "oblique_fixed": {
+          "opencv_max_pixel_error": 2.2737367544323206e-13,
+          "all_markers_in_frame_fraction": 0.9322033898305084
+        }
+      },
+      "preview_frames": 40,
+      "duration_eligible": false
+    },
+    {
+      "person": "SUBJ03",
+      "raw_second_reader_max_error_m": 0.0,
+      "c3d_frame_start_one_based": 183,
+      "c3d_frame_end_one_based": 500,
+      "reader_index_convention": "ezc3d header 0-based, c3d/TRIAL fields 1-based; coordinate arrays align",
+      "resampling_max_error_m": 7.771561172376096e-16,
+      "cameras": {
+        "side_fixed": {
+          "opencv_max_pixel_error": 1.1368683772161603e-13,
+          "all_markers_in_frame_fraction": 1.0
+        },
+        "side_pan": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 1.0
+        },
+        "oblique_fixed": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 1.0
+        }
+      },
+      "preview_frames": 32,
+      "duration_eligible": false
+    },
+    {
+      "person": "TVC04",
+      "raw_second_reader_max_error_m": 0.0,
+      "c3d_frame_start_one_based": 84,
+      "c3d_frame_end_one_based": 503,
+      "reader_index_convention": "ezc3d header 0-based, c3d/TRIAL fields 1-based; coordinate arrays align",
+      "resampling_max_error_m": 6.938893903907228e-16,
+      "cameras": {
+        "side_fixed": {
+          "opencv_max_pixel_error": 1.1368683772161603e-13,
+          "all_markers_in_frame_fraction": 0.873015873015873
+        },
+        "side_pan": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 1.0
+        },
+        "oblique_fixed": {
+          "opencv_max_pixel_error": 2.2737367544323206e-13,
+          "all_markers_in_frame_fraction": 0.9206349206349206
+        }
+      },
+      "preview_frames": 42,
+      "duration_eligible": true
+    },
+    {
+      "person": "TVC08",
+      "raw_second_reader_max_error_m": 0.0,
+      "c3d_frame_start_one_based": 3145,
+      "c3d_frame_end_one_based": 4493,
+      "reader_index_convention": "ezc3d header 0-based, c3d/TRIAL fields 1-based; coordinate arrays align",
+      "resampling_max_error_m": 1.6653345369377348e-15,
+      "cameras": {
+        "side_fixed": {
+          "opencv_max_pixel_error": 1.1368683772161603e-13,
+          "all_markers_in_frame_fraction": 1.0
+        },
+        "side_pan": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 1.0
+        },
+        "oblique_fixed": {
+          "opencv_max_pixel_error": 1.1368683772161603e-13,
+          "all_markers_in_frame_fraction": 1.0
+        }
+      },
+      "preview_frames": 135,
+      "duration_eligible": true
+    },
+    {
+      "person": "TVC09",
+      "raw_second_reader_max_error_m": 0.0,
+      "c3d_frame_start_one_based": 238,
+      "c3d_frame_end_one_based": 634,
+      "reader_index_convention": "ezc3d header 0-based, c3d/TRIAL fields 1-based; coordinate arrays align",
+      "resampling_max_error_m": 8.881784197001252e-16,
+      "cameras": {
+        "side_fixed": {
+          "opencv_max_pixel_error": 1.1368683772161603e-13,
+          "all_markers_in_frame_fraction": 0.9663865546218487
+        },
+        "side_pan": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 1.0
+        },
+        "oblique_fixed": {
+          "opencv_max_pixel_error": 1.7053025658242404e-13,
+          "all_markers_in_frame_fraction": 0.9915966386554622
+        }
+      },
+      "preview_frames": 40,
+      "duration_eligible": false
+    }
+  ],
+  "strict_gdi_eligible": 0,
+  "model_prediction_artifacts": [],
+  "protocol_sha256": "ebf1765afbdecbfc78cc5d8386c7514a6e68e78a23536aa90210cc2d2053a65e",
+  "projections_sha256": "f88657e593654cbb20d9cdc60bd2b8d33fa6f5f6c7e2e2c9ca545e520c3f4336",
+  "code_sha256": {
+    "fetch.py": "ca228cd215a86117a8631d6ce62a477733ff24ae945ad7d7febebf5469350547",
+    "project.py": "518046d52cf76da8d4cd0eb0d61c28a1588f50c3a02f929f621ffe1752b7a9d7",
+    "verify.py": "e6c7ffbb0ef6a480ac806bb7b0ceb01d75fa40458bb6d84245f3da2cfeba1f49"
+  }
+}

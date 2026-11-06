@@ -1,0 +1,225 @@
+{
+  "dataset": "MoVi F synchronized PG1/PG2",
+  "doi": "10.5683/SP2/JRHDRN",
+  "selection": "First five ascending IDs with 150 consecutive frames where all 12 reference major joints are visible in both cameras; earliest eligible interval. Reference is used only for clip eligibility, never pose or RF input.",
+  "candidates": [
+    {
+      "subject": 1,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 8,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 12,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 13,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 18,
+      "eligible": true,
+      "start_one_based": 1006
+    },
+    {
+      "subject": 22,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 23,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 27,
+      "eligible": true,
+      "start_one_based": 3364
+    },
+    {
+      "subject": 31,
+      "eligible": true,
+      "start_one_based": 3205
+    },
+    {
+      "subject": 33,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 36,
+      "eligible": true,
+      "start_one_based": 778
+    },
+    {
+      "subject": 40,
+      "eligible": true,
+      "start_one_based": 3752
+    },
+    {
+      "subject": 42,
+      "eligible": true,
+      "start_one_based": 1917
+    },
+    {
+      "subject": 45,
+      "eligible": true,
+      "start_one_based": 471
+    },
+    {
+      "subject": 49,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 52,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 54,
+      "eligible": true,
+      "start_one_based": 885
+    },
+    {
+      "subject": 58,
+      "eligible": true,
+      "start_one_based": 3654
+    },
+    {
+      "subject": 61,
+      "eligible": true,
+      "start_one_based": 1845
+    },
+    {
+      "subject": 63,
+      "eligible": true,
+      "start_one_based": 4165
+    },
+    {
+      "subject": 67,
+      "eligible": true,
+      "start_one_based": 4407
+    },
+    {
+      "subject": 71,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 72,
+      "eligible": true,
+      "start_one_based": 3761
+    },
+    {
+      "subject": 76,
+      "eligible": true,
+      "start_one_based": 3230
+    },
+    {
+      "subject": 80,
+      "eligible": true,
+      "start_one_based": 2557
+    },
+    {
+      "subject": 81,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 85,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 89,
+      "eligible": false,
+      "start_one_based": null
+    },
+    {
+      "subject": 90,
+      "eligible": true,
+      "start_one_based": 3114
+    }
+  ],
+  "selected": [
+    {
+      "subject": 18,
+      "eligible": true,
+      "start_one_based": 1006
+    },
+    {
+      "subject": 27,
+      "eligible": true,
+      "start_one_based": 3364
+    },
+    {
+      "subject": 31,
+      "eligible": true,
+      "start_one_based": 3205
+    },
+    {
+      "subject": 36,
+      "eligible": true,
+      "start_one_based": 778
+    },
+    {
+      "subject": 40,
+      "eligible": true,
+      "start_one_based": 3752
+    }
+  ],
+  "frames": 150,
+  "fps": 30,
+  "duration_seconds": 5,
+  "estimator": "HMR2.0b official image backbone and SMPL rotation head only, no mesh or SMPL body model. Different estimator from CARE-PD WHAM.",
+  "roi": "Existing MediaPipe Heavy RGB detection, all 33 landmark extents, padded 10 percent on each side; no reference-coordinate input.",
+  "conditions": [
+    {
+      "name": "clean",
+      "sigma": 0.0,
+      "seed": 0
+    },
+    {
+      "name": "jitter2_s11",
+      "sigma": 0.02,
+      "seed": 11
+    },
+    {
+      "name": "jitter2_s22",
+      "sigma": 0.02,
+      "seed": 22
+    },
+    {
+      "name": "jitter2_s33",
+      "sigma": 0.02,
+      "seed": 33
+    },
+    {
+      "name": "jitter5_s11",
+      "sigma": 0.05,
+      "seed": 11
+    },
+    {
+      "name": "jitter5_s22",
+      "sigma": 0.05,
+      "seed": 22
+    },
+    {
+      "name": "jitter5_s33",
+      "sigma": 0.05,
+      "seed": 33
+    }
+  ],
+  "perturbation": "Independent per-frame center x/y shifts with Gaussian SD sigma times baseline box height; isotropic scale exp(Gaussian SD sigma); Gaussian draws clipped at +/-3 SD. Synthetic detector-box noise, not observed detection error.",
+  "rf": "Frozen motion3d 128-feature models, all 6 folds x 5 seeds. No refitting, calibration, smoothing, or score-based clip selection.",
+  "scope": "Paired view and detector-box sensitivity only. No gait score labels, clinical accuracy or healthy score assumption. Five healthy source participants are not PD external validation.",
+  "numerical_checks": "SO(3) orthogonality and determinant errors <=1e-5; finite features; exact count; stored input/code hashes; RF replay <=1e-12. No clinical stability pass threshold specified."
+}

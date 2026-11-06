@@ -1,0 +1,35 @@
+{
+  "code_sha256": "aa50334b94e24c19d8b0f49a9d5fbec294e7fb65359f713dff16efb25408bf60",
+  "sources": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-straight-control\\study.py": "625e23b8271766c463070134306e4e2836bf6595aaf71501f31db70b311bc97a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-straight-control\\protocol.json": "c6b124577a737d4baa5f5527ada78b2206f22067e8937e5d3f64ec1e32d1bd72",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-straight-control\\main-verification.json": "a59cc03cb07dd57dca1ea7e07f43685efbbfd3f2696a9491f294447e41c28fef",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-straight-control\\main-estimates.csv": "625b4343860b9d211441cf97c895fd9c645d03d0799c021e07fc1001e17f415b",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-straight-control\\main-events.csv": "cdb02a3c1048df484432b87458d50c32989d8ccad6f71d6910358c49a176635f",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-cadence-straight-control\\geometry-paired.csv": "4988782ce658d3d3039b46d4b713981e9653c48fdaf0c89b88572d2ed2a03ec8",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-care-pd-rf-tcn\\video-stability\\straight-followup\\clips.json": "3c33928ac646e7748e31e78a687ef4ba27444b2b37cc1faf99c59c7c5fa45adf"
+  },
+  "hypothesis": "Cadence-proxy disagreement increases on preselected turns. A fixed RGB-only torso-vector orientation-stability gate may reject turns while preserving straight clips,without using optical geometry as an input.",
+  "inputs": "Same14people x2secstraight/turn xPG1/PG2=56clips;existingMediaPipeimage/local3D. Gateonly shoulder11/12 andhip23/24 local3D x/z axis vectors;imagevisibilitycolumn3. Opticalsourcegeometry is evaluator label only. No video refitting/inference or thresholdsearch.",
+  "algorithm": "All4joint xyzfinite/imagefinite andvisibility>=.5 forall60frames;both left-right x/z vectornorm>1e-6. Unwrapatan2(z,x) pervector;maxshoulder/hip p95-p05span<=30deg.30deg transferred from prior physicalgeometry diagnostic,not chosen after RGBgate outcomes. Operational axis stability,not validated anatomical yaw. No cadence/score outcome entersgate.",
+  "evaluation": "Retain all14people and56clips. Report straightretention andturnfalseacceptance perview,pairedbothviewrates anddisagreement. Report oldperiodquality/intersection counts separately;gated spectral-vs-event discrepancies only where eventquality andfiniteperiod. All denominators,do not call accepted-only accuracy an overall gain.",
+  "success": "Exploratory capturequality engineering target:straightretention>=80% andturnrejection>=80% inEACHview,reportcomponents/joint. No clinical standard. No tuning iffails.",
+  "limits": "Same14developmentpeople previously examined,not independentvalidation. Straight/turnlabels selected by referencebodygeometry,not clinicalscore/contacttruth. Local3Dorientation is RGBprediction,depthnoisecanrejectstraightwalks. Gatecannotprove truecadence,phonegeneralization,SPPB/TUGaccuracy or classifylowfunction. Reject=measurementunavailable,never low score. Originalscorepeople/bouts/5seeds unchanged.",
+  "expected": {
+    "main_tasks": 14,
+    "pilot_tasks": 2,
+    "people": 14,
+    "clips": 56,
+    "gate_replays": 56,
+    "metric_rows": 2,
+    "paired_rows": 2,
+    "proxy_rows": 8,
+    "new_model_fits": 0
+  },
+  "verification": "Frozenarray/source/codeSHA,frame/person/view/condition links,independentmanualphaseunwrap/quantiles/norm/visibility andgate,1e-10span/exactboolean;independent counts/discrepancy recomputation. Pilot2people8clips thenmain.",
+  "resources": "CPU1,noGPU/download/newinference/training,estimate1-3min;selectedarraysD<5MB;code/reportsC",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261101-camera-straight-gate",
+    "large": "D:\\gait-research-data\\D_P\\camera-straight-gate-20261101"
+  }
+}

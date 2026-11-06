@@ -1,0 +1,23 @@
+{
+  "task": "Predict dataset source from 48 pooled motion features. No age, GDI, person ID or image background used as inputs.",
+  "design": "Five fixed person-disjoint folds; train-only standardization; fixed regularized logistic regression; equal person and source fit weights.",
+  "limitation": "Dataset discrimination does not prove the GDI model uses a shortcut or identify age/camera/disease effects separately.",
+  "results": [
+    {
+      "group": "all_sources",
+      "people": 756,
+      "Stanford_people": 692,
+      "LJMU_people": 64,
+      "person_auc": 1.0,
+      "person_balanced_accuracy": 0.9978323699421965
+    },
+    {
+      "group": "adults_only",
+      "people": 151,
+      "Stanford_people": 87,
+      "LJMU_people": 64,
+      "person_auc": 1.0,
+      "person_balanced_accuracy": 1.0
+    }
+  ]
+}

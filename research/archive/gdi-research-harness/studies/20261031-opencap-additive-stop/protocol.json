@@ -1,0 +1,89 @@
+{
+  "cohorts": {
+    "exclude283": {
+      "people": 176,
+      "long_people": 8,
+      "views": [
+        "Speed_10",
+        "Learned10_10",
+        "Learned15_10",
+        "Add10_10",
+        "Add15_10",
+        "Move10_10",
+        "Move15_10",
+        "Speed_20",
+        "Learned10_20",
+        "Learned15_20",
+        "Add10_20",
+        "Add15_20",
+        "Move10_20",
+        "Move15_20",
+        "Speed_30",
+        "Learned10_30",
+        "Learned15_30",
+        "Add10_30",
+        "Add15_30",
+        "Move10_30",
+        "Move15_30"
+      ],
+      "hashes": {
+        "input.npz": "1af700c7e6be7047e66ac0268bc03598c166dacace94af55b75cd5a24bb7651d",
+        "manifest.json": "1adafc8db42198c7fa2e0c77ee19fb26af3d1671194bfe329806e3d8c7482c66",
+        "splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8"
+      }
+    },
+    "include283": {
+      "people": 177,
+      "long_people": 9,
+      "views": [
+        "Speed_10",
+        "Learned10_10",
+        "Learned15_10",
+        "Add10_10",
+        "Add15_10",
+        "Move10_10",
+        "Move15_10",
+        "Speed_20",
+        "Learned10_20",
+        "Learned15_20",
+        "Add10_20",
+        "Add15_20",
+        "Move10_20",
+        "Move15_20",
+        "Speed_30",
+        "Learned10_30",
+        "Learned15_30",
+        "Add10_30",
+        "Add15_30",
+        "Move10_30",
+        "Move15_30"
+      ],
+      "hashes": {
+        "input.npz": "132adaed0d54a355b5c342f7527c9d836af9d22c543484e8deaa46c0474452ac",
+        "manifest.json": "79403e0de2f377c09dd643d0e58a5ab9ae10b72f4dd47ed0d7fc095660fcc49a",
+        "splits.json": "53a66e3096a7398cee071257dbe68605fc2163fd470c4dcc2005413dbcb75716"
+      }
+    }
+  },
+  "primary": "exclude283, maximum20s, Add10 versus Learned10 and Speed; Move10 secondary moving-only input; all10/20/30 and0.15 sensitivity reported",
+  "additive": "training target=clinical TUG-observed horizontal low-speed episode total; Ridge on same4 speed/turn inputs; final=max(predicted remainder,0)+observed episode total; offset coefficient fixed1; no maximum clipping",
+  "moving_only": "Move removes those same horizontal stop episodes from speed mean/std/within-contiguous-interval differences; same observed window, no extra recording; turn unchanged; residual target and fixed addition identical",
+  "controls": "Speed predicts whole TUG from4features; Learned predicts whole TUG from4+4delay features with unconstrained coefficients; previous inputs exactly reproduced for176",
+  "semantics": "remainder includes rise/sit and unobserved pauses, NOT independently labelled pure moving time; automatic low-speed episodes are stop candidates, not RGB-confirmed clinical pauses",
+  "selection": "same alphas0.1/1/10/100, train-only scaler, inner finalTUG MAE; fixed offset measured from input, no evaluation target access",
+  "split": "exclude176 byte-equivalent old membership/order; include177 restores original sub283 memberships in outer+inner folds; all other people unchanged; no random reshuffle",
+  "observation": "exact previous nested windows and QC for176, same10/20/30 caps; same algorithm for283; no padding; caps are not fixed observed duration",
+  "metrics": "person-equal MAE/under/over/bias over5 held-out partitions, >=20 subgroup8/9; conditional pairedperson bootstrap10000seed20261031; sub397 prediction populationSD and range across5partitions",
+  "inclusion_analysis": "within each cohort compare models; include-vs-exclude also evaluate same176 and same8long; report283 separately; avoid interpreting subgroup9 vs8 as pure inclusion effect",
+  "source_hashes": {
+    "20261031-opencap-long-observation\\capped176\\input.npz": "d9499a655a0fee017a13f6d5d9b9a359c32b144ee07d5b136ed2d33291f8bbd2",
+    "20261031-opencap-long-observation\\capped176\\manifest.json": "11b4a8c76ba19c55e2ce78b2889ad80d11b088762a67bbcc65f9e5f327d8ab40",
+    "20261031-opencap-long-observation\\capped176\\splits.json": "4cd15e9bc0ae48937fd90c39f93f8b1fb05345a7e72b7138a71d51c6ebab8ab8",
+    "20261031-opencap-long-observation\\capped176\\predictions.csv": "d473aba07625b8e0d31d6ebe26653af7f4436e2f649704212cded5dffad674bd",
+    "20261031-opencap-long-observation\\study.py": "d532cb3578adda5fd7ea3db840a432b3b3518f325f58d011c9a3f3679247f231",
+    "20261031-opencap-long-observation\\scout.py": "755bc4b6b57464a820d13d5e81bc839e298a591ea17c736756f5aea5a3eec3a6",
+    "20261031-opencap-turn\\geometry\\manifest.json": "bb03f951047f1617eff89e359ba0a34ada4d3b3d432279b4270a6b1323eb8064",
+    "20261031-opencap-turn\\geometry\\splits.json": "7abee35d1f0a6a1815b8f153e666ac729fbfec59c09fc560dc176cb9c326279b"
+  },
+  "code_sha256": "1664bfced6e3cc10d3df66a489038ade6812f089d484c881c417e5e4b871e54a"
+}

@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "model": "ridge",
+      "role": "train_people",
+      "window": "front",
+      "independent_weights_sum": 1.0,
+      "metrics_and_spread_checked": true
+    },
+    {
+      "model": "ridge",
+      "role": "train_people",
+      "window": "back",
+      "independent_weights_sum": 1.0,
+      "metrics_and_spread_checked": true
+    },
+    {
+      "model": "ridge",
+      "role": "held_people",
+      "window": "front",
+      "independent_weights_sum": 1.0,
+      "metrics_and_spread_checked": true
+    },
+    {
+      "model": "ridge",
+      "role": "held_people",
+      "window": "back",
+      "independent_weights_sum": 1.0,
+      "metrics_and_spread_checked": true
+    },
+    {
+      "model": "cpu_head_only",
+      "role": "train_people",
+      "window": "front",
+      "independent_weights_sum": 1.0,
+      "metrics_and_spread_checked": true
+    },
+    {
+      "model": "cpu_head_only",
+      "role": "train_people",
+      "window": "back",
+      "independent_weights_sum": 1.0,
+      "metrics_and_spread_checked": true
+    },
+    {
+      "model": "cpu_head_only",
+      "role": "held_people",
+      "window": "front",
+      "independent_weights_sum": 1.0,
+      "metrics_and_spread_checked": true
+    },
+    {
+      "model": "cpu_head_only",
+      "role": "held_people",
+      "window": "back",
+      "independent_weights_sum": 1.0,
+      "metrics_and_spread_checked": true
+    }
+  ],
+  "all_64_band_rows_checked": true,
+  "OOF_predictions_reproduce_prior_results": true,
+  "training_record_MSE_reproduces_first_study": true,
+  "person_weighting_checks_training_model_views": 4,
+  "person_weighting_checks_held_model_views": 1,
+  "no_700_person_claim": true,
+  "GPU_metadata_refusal_cases": [
+    "wrong_dataset",
+    "wrong_model_order",
+    "wrong_sides",
+    "wrong_window",
+    "missing_fold",
+    "person_leakage"
+  ],
+  "source_and_primary_artifacts_unchanged": true,
+  "additional_training_updates": 0,
+  "external_cli_route_checked_with_completed_CPU_artifact": true,
+  "pose_encoder_loaded": false,
+  "gpu_used": false,
+  "source_hashes": {
+    "train_only.npz": "9086b881c7ae2de17c517eb1f3d2cfef583c54893edc8455c9d0a81e668147ca",
+    "baseline_heads.npz": "a01574d2b2c14b0514905e53439b6b17e0dcc300fb746e43c26d6cf10db9050c",
+    "baseline_predictions.npz": "d33a379296d71dc4d9bc635d720978924bb7b485ffdb69ab02b22b867f2f0d97",
+    "run.py": "e53407e2f0743570b4bea15960a05442c1ce9d616deb5f0fc7357410956c572c",
+    "protocol.draft.json": "86877ba3e062595faab3ed78cb86f50893d7739853f47f2c044852e88a9a3ad4"
+  }
+}

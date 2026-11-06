@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "original_full_artifacts_unchanged": 30,
+  "original_videos_sha256_verified": 2,
+  "pose_frames": 2382,
+  "windows": 32,
+  "mapping_max_error": 0.0,
+  "features_max_error": 0.0,
+  "pose_median_recalculation_max_error": 0.0,
+  "checkpoint_calibration_and_combination_unchanged": true,
+  "checkpoint_sha256_verified": 54,
+  "summary_recalculation_max_error": 2.842170943040401e-14,
+  "independently_rebuilt_ensemble": true,
+  "benchmark_passes_verified": 8,
+  "identical_full_lite_timestamps": true,
+  "optimizer_steps": 0,
+  "results_sha256": "b749823558e95fc50f21b98b1541fff9bf47bf0dd539056f6eb7816ba8cb9bbe",
+  "predictions_sha256": "cc7cab581ffd846f2035488dbc2508467c3987dfefa818ea253fec871b95c547",
+  "task_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "no_ground_truth": true,
+  "smartphone_tested": false
+}

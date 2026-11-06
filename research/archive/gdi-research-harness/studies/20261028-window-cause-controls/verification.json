@@ -1,0 +1,18 @@
+{
+  "verified": true,
+  "records": 203,
+  "people": 175,
+  "prediction_rows": 2030,
+  "independent_transplant_input_max": 0.0,
+  "normalized_input_knee_angle_max_deg": 3.2038376133414204e-05,
+  "independent_scalar_model_prediction_max": 7.105427357601002e-14,
+  "score_decomposition_max": 0.0,
+  "sources_unchanged": true,
+  "source_hashes": 219,
+  "new_training": 0,
+  "limits": [
+    "bootstrap and all exploratory correlations not independently reimplemented",
+    "no video or 3D pose ground truth",
+    "synthetic hybrids not verified real camera trajectories"
+  ]
+}

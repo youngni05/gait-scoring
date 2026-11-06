@@ -1,0 +1,32 @@
+{
+  "question": "Does averaging the existing inner CNN/STT models with each outer refit model lower the person-equal left/right GDI MAE of the current best mean-difference ensemble?",
+  "people": 692,
+  "records": 1061,
+  "members": "Per outer fold f and family (CNN, STT): the outer refit model plus the four inner models j != f. Inner model (f,j) was trained without fold f and fold j people.",
+  "member_prediction": "Mean of window predictions per recording and side, then that model's own OLS calibration fitted only on its training recordings (reused from robust-aggregation692 cache, mean aggregator).",
+  "exclusion_rule": "Drop a member whose uncalibrated mean-aggregated predictions on its own training recordings have standard deviation < 0.01 GDI points on either side. Uses training data only.",
+  "bagging": "Equal-weight mean of the remaining members, separately for CNN and STT.",
+  "ensemble": "Keep mean-difference692 fold weights (cnn_weight, fraction) and the outer bilateral STT difference; no refitting and no new selection.",
+  "primary_comparison": "bagged vs existing_mean_difference (6.605589), single pre-declared candidate",
+  "success_rule": "Report as improvement candidate only if MAE is lower, the paired person bootstrap 95% range (10000 draws, seed 20261031) is entirely below 0, and at least 4 of 5 outer folds improve. Otherwise report no clear improvement.",
+  "diagnostics": [
+    "CNN bag vs CNN refit",
+    "STT bag vs STT refit",
+    "fold MAE",
+    "people with mean GDI >= 90",
+    "absolute MAE bootstrap 95% range"
+  ],
+  "inner_epochs": {
+    "CNN": 100,
+    "STT": 200
+  },
+  "neural_training": false,
+  "protected_final_data": false,
+  "device": "cpu float32",
+  "limitations": [
+    "Repeatedly inspected development cohort, not independent confirmation",
+    "Inner members are terminal-epoch checkpoints while refit models use inner-selected epochs",
+    "Ensemble weights were selected with non-bagged inner predictions",
+    "Original study 6.5 used a different evaluation set and is not directly comparable"
+  ]
+}

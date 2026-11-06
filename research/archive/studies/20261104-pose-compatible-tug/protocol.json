@@ -1,0 +1,468 @@
+{
+  "created_utc": "2026-11-04T00:21:29.642441+00:00",
+  "code_sha256": "48c10269347c1b29d935e5663792dbb1cdfdbf08528f11eb316c4fdb724de2b6",
+  "source_data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "feature_audit_sha256": "c73abdbb72cd21869032f262b404b1937d5b28bce2b306dc0d8ba030d03219c8",
+  "source_R5_protocol_sha256": "f7dca200cec5c53872c683a93c133d5d4388bc513389164e0643012238469d30",
+  "source_R5_verification_sha256": "6ab58ec6dd9b3237c85b8a0a755fceac7da6e0e29c94e69b0d95779087609807",
+  "source_R5_receipt_sha256": "ef60cbc95bf23c90c53db334ae94af9df82d9c880070937648418dfe0b45d2dc",
+  "library_hashes": {
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\round1.py": "22e2bd1e26fbf2b3d8a715bcc85d16799f1ba5b59bcb6d5ae4eb5fa8bbb9d653",
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\round3.py": "85975d7fc141e0c827add04cabcd809f8aec49d49ea88fe78cc0fb06baec8c51",
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\round5.py": "2d35d23eaaaede6dc553da6d513ea06501a76789baf5d870ce514677e49474e1",
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\review2.py": "a239fd0cfa3f9a2c17887a8b8b102e80237ca5dd3afed1a22b5d6d70d0b1e8cd",
+    "D:\\Projects\\D_P\\studies\\20261103-frailpol-improvement-loop\\review5.py": "723bfb862b9270b2c8f3a0c0a16ebf53c96ab5c8be5f68532b74c76fa3579f73"
+  },
+  "factory_sha256": "cc18a7abe68fdf5acbef27d7d306cbae79dde3c1f15aae73a908e821ba969390",
+  "conditions": [
+    "speed",
+    "timing",
+    "calibrated_spatiotemporal",
+    "all_sensor"
+  ],
+  "feature_sets": {
+    "speed": [
+      "speed"
+    ],
+    "timing": [
+      "speed",
+      "stride_time",
+      "swing_fraction",
+      "bilateral_asymmetry_stride_time",
+      "within_foot_relative_std_stride_time",
+      "bilateral_asymmetry_swing_fraction",
+      "within_foot_relative_std_swing_fraction"
+    ],
+    "calibrated_spatiotemporal": [
+      "speed",
+      "stride_time",
+      "swing_fraction",
+      "stride_length",
+      "bilateral_asymmetry_speed",
+      "within_foot_relative_std_speed",
+      "bilateral_asymmetry_stride_time",
+      "within_foot_relative_std_stride_time",
+      "bilateral_asymmetry_swing_fraction",
+      "within_foot_relative_std_swing_fraction",
+      "bilateral_asymmetry_stride_length",
+      "within_foot_relative_std_stride_length"
+    ],
+    "all_sensor": [
+      "speed",
+      "stride_time",
+      "swing_fraction",
+      "stride_length",
+      "max_sensor_lift",
+      "max_lateral_excursion",
+      "max_orientation_change",
+      "ic_angle",
+      "tc_angle",
+      "ankle_gyro_rms",
+      "ankle_acc_std",
+      "sacrum_Acc_X_std",
+      "sacrum_Acc_Y_std",
+      "sacrum_Acc_Z_std",
+      "sacrum_Acc_norm_std",
+      "sacrum_Gyr_X_std",
+      "sacrum_Gyr_Y_std",
+      "sacrum_Gyr_Z_std",
+      "sacrum_Gyr_norm_std",
+      "left ankle_Acc_X_std",
+      "left ankle_Acc_X_iqrange",
+      "left ankle_Acc_X_jerk_rms",
+      "left ankle_Acc_X_high_frequency_fraction",
+      "left ankle_Acc_Y_std",
+      "left ankle_Acc_Y_iqrange",
+      "left ankle_Acc_Y_jerk_rms",
+      "left ankle_Acc_Y_high_frequency_fraction",
+      "left ankle_Acc_Z_std",
+      "left ankle_Acc_Z_iqrange",
+      "left ankle_Acc_Z_jerk_rms",
+      "left ankle_Acc_Z_high_frequency_fraction",
+      "left ankle_Acc_norm_std",
+      "left ankle_Acc_norm_iqrange",
+      "left ankle_Acc_norm_jerk_rms",
+      "left ankle_Acc_norm_high_frequency_fraction",
+      "left ankle_Gyr_X_std",
+      "left ankle_Gyr_X_iqrange",
+      "left ankle_Gyr_X_jerk_rms",
+      "left ankle_Gyr_X_high_frequency_fraction",
+      "left ankle_Gyr_Y_std",
+      "left ankle_Gyr_Y_iqrange",
+      "left ankle_Gyr_Y_jerk_rms",
+      "left ankle_Gyr_Y_high_frequency_fraction",
+      "left ankle_Gyr_Z_std",
+      "left ankle_Gyr_Z_iqrange",
+      "left ankle_Gyr_Z_jerk_rms",
+      "left ankle_Gyr_Z_high_frequency_fraction",
+      "left ankle_Gyr_norm_std",
+      "left ankle_Gyr_norm_iqrange",
+      "left ankle_Gyr_norm_jerk_rms",
+      "left ankle_Gyr_norm_high_frequency_fraction",
+      "right ankle_Acc_X_std",
+      "right ankle_Acc_X_iqrange",
+      "right ankle_Acc_X_jerk_rms",
+      "right ankle_Acc_X_high_frequency_fraction",
+      "right ankle_Acc_Y_std",
+      "right ankle_Acc_Y_iqrange",
+      "right ankle_Acc_Y_jerk_rms",
+      "right ankle_Acc_Y_high_frequency_fraction",
+      "right ankle_Acc_Z_std",
+      "right ankle_Acc_Z_iqrange",
+      "right ankle_Acc_Z_jerk_rms",
+      "right ankle_Acc_Z_high_frequency_fraction",
+      "right ankle_Acc_norm_std",
+      "right ankle_Acc_norm_iqrange",
+      "right ankle_Acc_norm_jerk_rms",
+      "right ankle_Acc_norm_high_frequency_fraction",
+      "right ankle_Gyr_X_std",
+      "right ankle_Gyr_X_iqrange",
+      "right ankle_Gyr_X_jerk_rms",
+      "right ankle_Gyr_X_high_frequency_fraction",
+      "right ankle_Gyr_Y_std",
+      "right ankle_Gyr_Y_iqrange",
+      "right ankle_Gyr_Y_jerk_rms",
+      "right ankle_Gyr_Y_high_frequency_fraction",
+      "right ankle_Gyr_Z_std",
+      "right ankle_Gyr_Z_iqrange",
+      "right ankle_Gyr_Z_jerk_rms",
+      "right ankle_Gyr_Z_high_frequency_fraction",
+      "right ankle_Gyr_norm_std",
+      "right ankle_Gyr_norm_iqrange",
+      "right ankle_Gyr_norm_jerk_rms",
+      "right ankle_Gyr_norm_high_frequency_fraction",
+      "sacrum back_Acc_X_std",
+      "sacrum back_Acc_X_iqrange",
+      "sacrum back_Acc_X_jerk_rms",
+      "sacrum back_Acc_X_high_frequency_fraction",
+      "sacrum back_Acc_Y_std",
+      "sacrum back_Acc_Y_iqrange",
+      "sacrum back_Acc_Y_jerk_rms",
+      "sacrum back_Acc_Y_high_frequency_fraction",
+      "sacrum back_Acc_Z_std",
+      "sacrum back_Acc_Z_iqrange",
+      "sacrum back_Acc_Z_jerk_rms",
+      "sacrum back_Acc_Z_high_frequency_fraction",
+      "sacrum back_Acc_norm_std",
+      "sacrum back_Acc_norm_iqrange",
+      "sacrum back_Acc_norm_jerk_rms",
+      "sacrum back_Acc_norm_high_frequency_fraction",
+      "sacrum back_Gyr_X_std",
+      "sacrum back_Gyr_X_iqrange",
+      "sacrum back_Gyr_X_jerk_rms",
+      "sacrum back_Gyr_X_high_frequency_fraction",
+      "sacrum back_Gyr_Y_std",
+      "sacrum back_Gyr_Y_iqrange",
+      "sacrum back_Gyr_Y_jerk_rms",
+      "sacrum back_Gyr_Y_high_frequency_fraction",
+      "sacrum back_Gyr_Z_std",
+      "sacrum back_Gyr_Z_iqrange",
+      "sacrum back_Gyr_Z_jerk_rms",
+      "sacrum back_Gyr_Z_high_frequency_fraction",
+      "sacrum back_Gyr_norm_std",
+      "sacrum back_Gyr_norm_iqrange",
+      "sacrum back_Gyr_norm_jerk_rms",
+      "sacrum back_Gyr_norm_high_frequency_fraction",
+      "left wrist_Acc_X_std",
+      "left wrist_Acc_X_iqrange",
+      "left wrist_Acc_X_jerk_rms",
+      "left wrist_Acc_X_high_frequency_fraction",
+      "left wrist_Acc_Y_std",
+      "left wrist_Acc_Y_iqrange",
+      "left wrist_Acc_Y_jerk_rms",
+      "left wrist_Acc_Y_high_frequency_fraction",
+      "left wrist_Acc_Z_std",
+      "left wrist_Acc_Z_iqrange",
+      "left wrist_Acc_Z_jerk_rms",
+      "left wrist_Acc_Z_high_frequency_fraction",
+      "left wrist_Acc_norm_std",
+      "left wrist_Acc_norm_iqrange",
+      "left wrist_Acc_norm_jerk_rms",
+      "left wrist_Acc_norm_high_frequency_fraction",
+      "left wrist_Gyr_X_std",
+      "left wrist_Gyr_X_iqrange",
+      "left wrist_Gyr_X_jerk_rms",
+      "left wrist_Gyr_X_high_frequency_fraction",
+      "left wrist_Gyr_Y_std",
+      "left wrist_Gyr_Y_iqrange",
+      "left wrist_Gyr_Y_jerk_rms",
+      "left wrist_Gyr_Y_high_frequency_fraction",
+      "left wrist_Gyr_Z_std",
+      "left wrist_Gyr_Z_iqrange",
+      "left wrist_Gyr_Z_jerk_rms",
+      "left wrist_Gyr_Z_high_frequency_fraction",
+      "left wrist_Gyr_norm_std",
+      "left wrist_Gyr_norm_iqrange",
+      "left wrist_Gyr_norm_jerk_rms",
+      "left wrist_Gyr_norm_high_frequency_fraction",
+      "right wrist_Acc_X_std",
+      "right wrist_Acc_X_iqrange",
+      "right wrist_Acc_X_jerk_rms",
+      "right wrist_Acc_X_high_frequency_fraction",
+      "right wrist_Acc_Y_std",
+      "right wrist_Acc_Y_iqrange",
+      "right wrist_Acc_Y_jerk_rms",
+      "right wrist_Acc_Y_high_frequency_fraction",
+      "right wrist_Acc_Z_std",
+      "right wrist_Acc_Z_iqrange",
+      "right wrist_Acc_Z_jerk_rms",
+      "right wrist_Acc_Z_high_frequency_fraction",
+      "right wrist_Acc_norm_std",
+      "right wrist_Acc_norm_iqrange",
+      "right wrist_Acc_norm_jerk_rms",
+      "right wrist_Acc_norm_high_frequency_fraction",
+      "right wrist_Gyr_X_std",
+      "right wrist_Gyr_X_iqrange",
+      "right wrist_Gyr_X_jerk_rms",
+      "right wrist_Gyr_X_high_frequency_fraction",
+      "right wrist_Gyr_Y_std",
+      "right wrist_Gyr_Y_iqrange",
+      "right wrist_Gyr_Y_jerk_rms",
+      "right wrist_Gyr_Y_high_frequency_fraction",
+      "right wrist_Gyr_Z_std",
+      "right wrist_Gyr_Z_iqrange",
+      "right wrist_Gyr_Z_jerk_rms",
+      "right wrist_Gyr_Z_high_frequency_fraction",
+      "right wrist_Gyr_norm_std",
+      "right wrist_Gyr_norm_iqrange",
+      "right wrist_Gyr_norm_jerk_rms",
+      "right wrist_Gyr_norm_high_frequency_fraction",
+      "coordination_left ankle_right ankle_Acc",
+      "coordination_left wrist_right wrist_Acc",
+      "coordination_left ankle_left wrist_Acc",
+      "coordination_right ankle_right wrist_Acc",
+      "coordination_left ankle_right ankle_Gyr",
+      "coordination_left wrist_right wrist_Gyr",
+      "coordination_left ankle_left wrist_Gyr",
+      "coordination_right ankle_right wrist_Gyr",
+      "bilateral_asymmetry_speed",
+      "within_foot_relative_std_speed",
+      "bilateral_asymmetry_stride_time",
+      "within_foot_relative_std_stride_time",
+      "bilateral_asymmetry_swing_fraction",
+      "within_foot_relative_std_swing_fraction",
+      "bilateral_asymmetry_stride_length",
+      "within_foot_relative_std_stride_length",
+      "bilateral_asymmetry_max_sensor_lift",
+      "within_foot_relative_std_max_sensor_lift",
+      "bilateral_asymmetry_max_lateral_excursion",
+      "within_foot_relative_std_max_lateral_excursion",
+      "bilateral_asymmetry_max_orientation_change",
+      "within_foot_relative_std_max_orientation_change",
+      "bilateral_asymmetry_ic_angle",
+      "within_foot_relative_std_ic_angle",
+      "bilateral_asymmetry_tc_angle",
+      "within_foot_relative_std_tc_angle",
+      "bilateral_asymmetry_ankle_gyro_rms",
+      "within_foot_relative_std_ankle_gyro_rms",
+      "bilateral_asymmetry_ankle_acc_std",
+      "within_foot_relative_std_ankle_acc_std",
+      "alternating_min_velocity_phase_deviation",
+      "alternating_min_velocity_phase_std",
+      "observed_feet",
+      "short_window_cycle_count"
+    ]
+  },
+  "candidates": {
+    "speed": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 1
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 1
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 1
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 1
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 1
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 1
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 1
+      }
+    ],
+    "timing": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 7
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 7
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 7
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 7
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 7
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 7
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 7
+      }
+    ],
+    "calibrated_spatiotemporal": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 12
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 12
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 12
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 12
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 12
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 12
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 12
+      }
+    ],
+    "all_sensor": [
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 16
+      },
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 32
+      },
+      {
+        "kind": "ridge",
+        "alpha": 10,
+        "k": 213
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 16
+      },
+      {
+        "kind": "svr",
+        "C": 100,
+        "gamma": 0.03,
+        "k": 32
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 32
+      },
+      {
+        "kind": "extra",
+        "leaf": 2,
+        "k": 213
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 32
+      },
+      {
+        "kind": "linear_tree",
+        "leaf": 15,
+        "rounds": 150,
+        "linear_lambda": 10,
+        "k": 213
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 32
+      },
+      {
+        "kind": "residual",
+        "alpha": 10,
+        "leaf": 15,
+        "k": 213
+      },
+      {
+        "kind": "TabICLv2",
+        "k": 32
+      },
+      {
+        "kind": "TabPFNv2",
+        "k": 32
+      }
+    ]
+  },
+  "people": 594,
+  "slow20plus_people": 9,
+  "split": "Unchanged outer5 person folds; inner3StratifiedKFold(seed20261103) on outer-training people only. All594 in allarms; missing optional repeated-cycle/bilateral features remain missing and use fit-training-onlymedian imputation. No outcome-based exclusions.",
+  "primary": "Fixed nonnegative Ridge stacking alpha10 on all candidate innerOOF predictions,tailweight1,exactly originalR5 procedure. Compare each retained-feature arm against same-procedure speed arm with paired person bootstrap; no outer-based model selection.",
+  "secondary": "Fixed tailweight4 stack; selected single candidate by innerMAE and equal top3byinnerMAE. Report every arm/policy. Primary remains fixed even if a secondary arm looks better.",
+  "models": "OriginalR5 candidate template: Ridge,SVR,ExtraTrees,linear-leafLightGBM,residualLightGBM,TabICLv2,TabPFNv2. Feature caps clipped/deduplicated exactly as original. All new feature-arm bases trained on their own inputs; no retained full-sensor predictions or latent motion/CNN scores in the reduced arms.",
+  "reference_reuse": "Speed and213-feature arms reuse exact originalR5 base models/innerOOF/test matrices after protocol/IDs/input/hash checks and current source artifact fingerprints. Their historical full saved-model review is retained, not relabeled as new fitting. All new7/12-feature inner/final models and all40meta models saved and independently replayed. Existing reference source models are not retrained just to duplicate passed work.",
+  "verification": "280new base fits(210inner+70final),40meta models; independent selected feature list, unchanged IDs/labels/folds, all new modelsCPUreplay1e-6abs+relative, inner selection, training-only scalers/metaNNLSKKT, point predictions and independent metrics. Source reference400 base models rely on unchanged hashes plus original complete replay receipts.5000pairedperson bootstrap, bands and large errors. No new model uses age,wholeTUGtime,fullrecordlength,otherclinicaltests or raw waveform.",
+  "interpretation": "Question is information availability conditional on faithful measurement of retained quantities. A positive result does not establish actual MediaPipe extraction accuracy, camera-only TUG performance, SPPB validity or clinical/external validation. Reused594developmentcohort,9slowpeople,single recipe; inputcompatibility/measurement domain gap remains.",
+  "expected_additional_GB": 0.8
+}

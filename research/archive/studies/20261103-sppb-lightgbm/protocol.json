@@ -1,0 +1,64 @@
+{
+  "owner_thread": "01a19c6f-49f7-7300-97b0-a303b71ffe91",
+  "authorization": "User requested expanded gait features + LightGBM SPPB prediction, speed baseline and incremental frozen GDI comparison, and current data scale.",
+  "frozen_before_fit": true,
+  "scope": "Local CPU only. Existing raw sources and frozen GDI reused. No new CP training, GPU jobs, protected223 data or automation changes. No pooling across datasets.",
+  "cohorts": {
+    "older37": "All 37 with prior primary virtual-camera frozen GDI; means/within-cycle kinematic ranges and bilateral asymmetry only. Five original trials/person; native 100Hz. Ages54-87, report >=65 subset. Exploratory simulation, not RGB validation.",
+    "older24": "Previously defined >=15 valid cycles per side and GDI available; same core features plus existing PCI and pooled within-trial-side CV. Secondary sensitivity.",
+    "older44": "All44, core features, speed vs expanded only; excludes GDI condition because seven cannot provide continuous124frames.",
+    "gait2care": "92 previously accepted Week0 participants; retain one missing PCI as native missing value; prior stride quality gate. No GDI possible.",
+    "gstride": "158 previously accepted participants; one observed foot; prior stride quality gate. No GDI possible.",
+    "mobilised": "Inventory only: first eligible SPPB visit, weekly sensor summaries. Separate scope from current short-walk/GDI question."
+  },
+  "features": {
+    "older_core": "Previous speed. Per valid annotated cycle: stride time, step length at heel strike, swing percentage, cadence120/stride time, absolute lateral heel separation at strike; knee flexion ROM, sagittal thigh ROM, foot pitch ROM, toe vertical excursion, ankle relative-forward velocity95th percentile absolute, pelvis vertical excursion, pelvis obliquity ROM. Angles in degrees, displacement metres, speed m/s. For each, side means then bilateral mean and absolute left-right mean difference. Kinematic ranges use p95-p5. Require all needed cycle coordinates finite and >=90% nominal cycle frames. Velocity uses fixed 11frame/2nd-order Savitzky-Golay smoothing at100Hz, no across-trial derivatives. No arm/trunk/turn variables because unavailable or task mismatch.",
+    "older24_extra": "Existing PCI and stride/step length/swing CV only under original>=15 per-side gate.",
+    "imu": "Re-read released stride parameters, same finite positive duration/length/speed, swing(0,100), absolute turn<20deg gate. For cadence,duration,length,speed,swing,stance,foot path2D/3D,clearance,loading/flat/pushing fractions,pitchTO/HS,peak angular velocity,pitchROM calculate grand mean and pooled within-foot SD; bilateral absolute side-mean difference where both feet. Preserve previous CV, and PCI only if previously available. No double-support metric because prior independent reproduction unresolved. Additional nonfinite values excluded feature-by-feature, require15 values per observed foot; otherwise native missing. No clinical, demographic, SPPB subscore or test speed inputs.",
+    "gdi": "One previously frozen primary ensemble person score; trial/window averaging unchanged. Recheck source hashes and reconstruct from saved54-member prediction aggregation; no choice of camera/toe variant using SPPB. Prior camera3.5m,height1m,FOV60,yawpan,29.97Hz,124frames; toe proxy/body-centre mismatch remains."
+  },
+  "conditions": [
+    "speed_LGBM",
+    "features_LGBM",
+    "features_GDI_LGBM where available",
+    "speed_Ridge control"
+  ],
+  "evaluation": "One row/person. Existing44 outerfolds reused on subsets. For gait2care92 and gstride158 reproduce prior sorted-ID KFold5 seed20261103. InnerKFold3 shuffle seed20261031 exclusively on outer training people. Same folds and search budget for all LGBM conditions. Candidate choose pooled inner MAE, first tie. No target-based feature screening; native LGBM NaNs; no target calibration/output clipping/early stopping using outer people.",
+  "LGBM": {
+    "fixed": {
+      "objective": "regression",
+      "learning_rate": 0.03,
+      "max_depth": 3,
+      "max_bin": 31,
+      "min_data_in_bin": 1,
+      "feature_pre_filter": false,
+      "verbosity": -1,
+      "num_threads": 2,
+      "seed": 20261103,
+      "deterministic": true,
+      "force_col_wise": true
+    },
+    "grid": {
+      "num_leaves": [
+        3,
+        7
+      ],
+      "min_data_in_leaf": [
+        3,
+        8
+      ],
+      "lambda_l2": [
+        1,
+        10
+      ],
+      "num_boost_round": [
+        50,
+        150
+      ]
+    }
+  },
+  "ridge": "Training-only StandardScaler; alpha0.1,1,10,100,1000 selected in same inner splits. Speed only, preserves a strong simple baseline rather than comparing only tree step functions.",
+  "metrics": "Person MAE primary,RMSE,bias,R2,Spearman,within1,error>2,SPPB bands0-4/5-8/9-10/11-12. Fixed predicted<=8 confusion counts descriptive. Paired10000-person bootstrap seed20261103, conditional on fixed OOF predictions (not complete training uncertainty). Report all comparisons, no favourable subset/seed selection. Primary addition contrast features_GDI vs features in older37; feature contrasts within each cohort separately. Reused development data, not external confirmation.",
+  "verification": "Hash source/preparation/model artifacts; verify original labels and one-row/person, same outerfolds and no overlap, all inner predictions and selected settings; reload every final tree model, independently traverse JSON trees and recompute metrics/CIs, independently solve Ridge and replay coefficients. Recompute GDI aggregation from source member outputs; verify model manifest/checkpoint hashes. Feature numerical checks on source cycles/strides. Preserve raw data and prior results.",
+  "storage": "Small code/protocol/summary D:/Projects/D_P/studies/20261103-sppb-lightgbm; source-derived arrays,models,fit logs D:/gait-research-data/D_P/sppb-lightgbm-20261103. Expected<1GB including isolated environment; availableD~72GB at start."
+}

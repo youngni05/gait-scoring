@@ -1,0 +1,61 @@
+{
+  "code_sha256": "eed2351f06ec1b40b22522b40d8fc70326cd14fdbca94174f03c824b0817eebd",
+  "source_hashes": {
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\features.csv": "00f755e983278559dcb157c1fafff5a002879a032d94dec7362cf5dd2a2f151e",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\selected-bouts.csv": "59a16c31630d41e3fe1e5cd457002de4faf7c3cdef46e17105be11e05f6f6c61",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-bout-regression\\person-folds.csv": "f5883374906327b6bf0e6ce1f9aaffb9f86f9e6d8679bc02b5775dcc702bea5a",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\audited-bouts.csv": "f826fbf2b9010b36cb0c8f181636242504e862e46f125d31db68c205a2a5d202",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261030-mobilise-factorial\\quality.json": "b725d4a2d8e5253ef2a6ed2240e0529df95a470c2f4c79d432a2dad5704dc403",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-ordinal-bands\\study.py": "b69e278aa969b5999e324fc00f9df02e3746844fac2baccb5b80eea4b293ccf7",
+    "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-ordinal-bands\\verification.json": "9ed4dc08fdf6d3210351a6d27c8807b0b565dc9104e4ffead2d640d6418bf15a"
+  },
+  "seeds": [
+    20261030,
+    20262030,
+    20263030,
+    20264030,
+    20265030
+  ],
+  "cuts": {
+    "sppb": [
+      3.5,
+      6.5,
+      9.5
+    ],
+    "tug": [
+      10.0,
+      15.0,
+      20.0
+    ]
+  },
+  "primary": "long5 draw0; all six duration/count conditions reported",
+  "people": {
+    "sppb": 2174,
+    "tug": 1939
+  },
+  "folds": "exact preceding outer5 / inner3 person splits; repeated visits stay together",
+  "methods": {
+    "SpeedRF": "median stride speed only, 128 trees, leaf20, max_features1",
+    "MedianRF": "reuse exact preceding four-class RF, median four features",
+    "BoutRF": "same RF; all k x6 values sorted lexicographically by speed then all features and flattened; no bout removed",
+    "DeepSets": "six features per bout -> Linear6,32 ReLU mean pooling -> Linear32,16 ReLU -> Linear16,4"
+  },
+  "extended_features": [
+    "averagecadence",
+    "averagestrideduration",
+    "averagestridespeed",
+    "averagestridelength",
+    "duration",
+    "turn_rate_per_second"
+  ],
+  "training": "person-equal weights; no metadata/class weighting; CPU fullbatch AdamW lr.01 wd.001 CE; DS epoch10..600 step10 selected by inner person log loss, earlier tie; fixed width32",
+  "calibration": "same reference temperature [.25,4] on inner OOF; cross-fitted temperature for internal fpr10/sens80 thresholds; raw also retained",
+  "selection_limit": "DS epoch chosen over inner validation predictions reused for calibration, all inside outer training; inner metrics are selection metrics, not generalization estimates",
+  "speed_analysis": "outer-test only, each low-function visit matched to nearest-speed nonlow visit from different person in SAME outer fold, max gap .05m/s; ties participantid/visit; with-replacement controls; repeated visits person weighted; repeat with same cohort; descriptive paired risk-order accuracy and coverage; no model/threshold selection on these pairs",
+  "metrics": "Brier, RPS, logloss, accuracy, perclass recall, extreme error, low miss/fpr, calibrated fpr10 miss/fpr; paired person bootstrap long5 differences; five seeds separate, not ensemble",
+  "storage": {
+    "small": "C:\\Users\\jun\\Desktop\\D_P\\gdi-research-harness\\studies\\20261031-mobilise-input-classification",
+    "large": "D:\\gait-research-data\\D_P\\mobilise-input-classification-20261031"
+  },
+  "limits": "development dataset reused; no video/external clinical validity; matched comparisons descriptive, controls reusable; six summaries not raw step dynamics"
+}

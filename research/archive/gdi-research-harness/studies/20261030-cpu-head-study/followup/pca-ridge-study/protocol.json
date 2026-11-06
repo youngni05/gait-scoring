@@ -1,0 +1,35 @@
+{
+  "status": "predeclared_nested_dimension_selection",
+  "candidate_components": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "ridge_alpha": 1.0,
+  "whiten": false,
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "inner_folds": 4,
+  "inner_split_seed_base": 20261030,
+  "inner_split": "Permute unique outer-training person IDs using seed_base+outer_fold, then split into four equal 35-person groups. No labels used in split.",
+  "selection_metric": "front-window person-macro MAE pooled over inner out-of-person predictions for 140 outer-training people",
+  "tie_rule": "smallest k within 1e-12 of minimum inner MAE",
+  "scaler_fit": "each inner training group only; refit on outer training group after k selection",
+  "pca_fit": "each inner training group only, full float64 centered SVD, no whitening; refit after selection",
+  "training_window": "front",
+  "outer_evaluation_windows": [
+    "front",
+    "back"
+  ],
+  "training_loss": "record-equal squared error plus alpha times coefficient L2 norm; intercept unpenalized",
+  "baseline": "existing full512 standardized Ridge alpha1",
+  "protected_cohorts_used": false,
+  "encoder_changed_or_reinferred": false,
+  "independent_final_evaluation": false
+}

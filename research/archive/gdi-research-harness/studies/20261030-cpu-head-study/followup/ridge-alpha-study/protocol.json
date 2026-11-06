@@ -1,0 +1,43 @@
+{
+  "status": "predeclared_exploratory_comparison",
+  "declared_at_kst": "2026-10-30 14:14",
+  "alphas": [
+    1e-06,
+    0.0001,
+    0.01,
+    0.1,
+    1,
+    10,
+    100,
+    1000,
+    10000
+  ],
+  "representative_plot_alphas": [
+    1e-06,
+    0.01,
+    1,
+    100
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "training_window": "front",
+  "evaluation_windows": [
+    "front",
+    "back"
+  ],
+  "training_loss": "record_equal_squared_error_plus_alpha_times_sum_coefficient_squares",
+  "intercept_penalized": false,
+  "scaler": "original_fold_training_front_only_mean_scale_reused_for_all_alphas",
+  "solver": "float64 centered SVD; independently checked against sklearn Ridge(solver=svd)",
+  "aggregation": "same person/model weighting as completed train_eval_diagnostic",
+  "cpu_threads": 2,
+  "selection_policy": "Report all fixed conditions. No adaptive grid extension or automatic baseline replacement. Any best outer-CV value is exploratory, not unbiased final performance.",
+  "protected_cohorts_used": false,
+  "encoder_changed_or_reinferred": false,
+  "independent_final_evaluation": false
+}

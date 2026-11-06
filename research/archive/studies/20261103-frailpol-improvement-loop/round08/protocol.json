@@ -1,0 +1,64 @@
+{
+  "round": 8,
+  "code_sha256": "43d1d869eed7f0fa6173765531232fb15560f031fe8c99ee386fe79e66a942f2",
+  "data_sha256": "0d361d5e81cc073d312cf6e6a7a6ccf57a45169dc4bc1eb405042c785aff89fd",
+  "library_sha256": "85975d7fc141e0c827add04cabcd809f8aec49d49ea88fe78cc0fb06baec8c51",
+  "meta_library_sha256": "2d35d23eaaaede6dc553da6d513ea06501a76789baf5d870ce514677e49474e1",
+  "factory_sha256": "cc18a7abe68fdf5acbef27d7d306cbae79dde3c1f15aae73a908e821ba969390",
+  "conditions": [
+    "speed",
+    "bilateral"
+  ],
+  "candidates": [
+    {
+      "target": "speed_product",
+      "kind": "ridge",
+      "k": 32,
+      "alpha": 10
+    },
+    {
+      "target": "speed_product",
+      "kind": "svr",
+      "k": 32,
+      "C": 100,
+      "gamma": 0.03
+    },
+    {
+      "target": "speed_product",
+      "kind": "TabICLv2",
+      "k": 32
+    },
+    {
+      "target": "speed_product",
+      "kind": "TabPFNv2",
+      "k": 32
+    },
+    {
+      "target": "inverse_speed_residual",
+      "kind": "ridge",
+      "k": 32,
+      "alpha": 10
+    },
+    {
+      "target": "inverse_speed_residual",
+      "kind": "svr",
+      "k": 32,
+      "C": 100,
+      "gamma": 0.03
+    },
+    {
+      "target": "inverse_speed_residual",
+      "kind": "TabICLv2",
+      "k": 32
+    },
+    {
+      "target": "inverse_speed_residual",
+      "kind": "TabPFNv2",
+      "k": 32
+    }
+  ],
+  "design": "Same594/frozenouter5/inner3. Compare two fixed target transforms: actualTUG*observedspeed, invert by sameobservedspeed; or actualTUG minus training-onlyOLS[1,1/speed],addbaselinebackatinference. No clinical covariates/output clipping. Speedproduct is mathematical target,not literal walked distance. Positive measuredspeed asserted,noneexcluded. Train-only featureselection usestransformedtarget, speedretained. All8candidateinnerfits saved; all8finalmodelsrefit. OriginalTUGseconds usedforallevaluation/selection.",
+  "selection": "AggregateinnerOOF inoutertrainorder; minimize max(MAE/.9,p95/3,severeMAE/3),firsttie. Report selected/equaltop3 plusfixedpositiveRidgealpha10fusiononinnerOOF withtail4and16,middleweight sqrt(tail),allother1;nooutertuning. No meta hyperparametersearch.",
+  "verification": "240inner+80final+20metamodel replay; train-onlymedian/ranking/transformcoefficient verified, exactpersonpartitions/selection;NNLSKKT; originalmetricsandreplaypointtolerances unchanged;5000pairedpersonbootstrap. Fixedglobalfoundationweights hashed viaoriginalfactory. Reuseddevelopmentfolds,notclinical/external.",
+  "expected_additional_GB": 0.5
+}

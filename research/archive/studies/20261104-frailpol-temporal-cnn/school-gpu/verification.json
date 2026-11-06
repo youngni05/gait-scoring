@@ -1,0 +1,205 @@
+{
+  "status": "passed",
+  "people": 594,
+  "slow_people": 9,
+  "fits": 80,
+  "inner_checkpoint_replays": 240,
+  "final_checkpoint_replays": 20,
+  "checks": [
+    {
+      "condition": "speed_mlp",
+      "fold": 0,
+      "selected_epoch": 100,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 3.124386608988061e-06
+    },
+    {
+      "condition": "speed_mlp",
+      "fold": 1,
+      "selected_epoch": 100,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 3.4336575609472675e-06
+    },
+    {
+      "condition": "speed_mlp",
+      "fold": 2,
+      "selected_epoch": 100,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.39580018757124e-06
+    },
+    {
+      "condition": "speed_mlp",
+      "fold": 3,
+      "selected_epoch": 100,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.3661832884158684e-06
+    },
+    {
+      "condition": "speed_mlp",
+      "fold": 4,
+      "selected_epoch": 50,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 3.4816153018368823e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 0,
+      "selected_epoch": 50,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.982119838179642e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 1,
+      "selected_epoch": 25,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 3.138941966795983e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 2,
+      "selected_epoch": 100,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.7590593063564484e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 3,
+      "selected_epoch": 10,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.0291867137700592e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 4,
+      "selected_epoch": 50,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 3.1107094429216886e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 0,
+      "selected_epoch": 10,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 1.9256190739724843e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 1,
+      "selected_epoch": 100,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.4452170421795927e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 2,
+      "selected_epoch": 25,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.3667569877261485e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 3,
+      "selected_epoch": 10,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.8491857833046197e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 4,
+      "selected_epoch": 10,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 4.0124806446328876e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 0,
+      "selected_epoch": 50,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 1.9906093804422653e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 1,
+      "selected_epoch": 100,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 3.4056626887490893e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 2,
+      "selected_epoch": 25,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.0116633443478804e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 3,
+      "selected_epoch": 10,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.929305857435338e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 4,
+      "selected_epoch": 10,
+      "saved_checkpoint_replays": 13,
+      "training_only_normalization_and_inner_epoch_choice_verified": true,
+      "cpu64_max_delta": 2.968446395357205e-06
+    }
+  ],
+  "recovery_artifacts": {
+    "35659": {
+      "archive_sha256": "3b6a08087b579f8c94b704491dbd748f472dd164d5f96826459b0d67700b8f9b",
+      "worker-original.json": "ff3301c1fa635509a2b1bcd1302a2bb18820122eccfee8a0dd09abf7854cfd66",
+      "slurm-original.log": "7567641466f1b3a70d4564a80087e80c4faa844aded6b8410a2cbf54ce583833"
+    },
+    "35660": {
+      "archive_sha256": "1d5a21bb63f4f8d98ef0d32c3bf8c540975a77c6487516ae8ae056dfaf09c1c0",
+      "worker-original.json": "a352cad6f221c8d23dff71f23bf9b666695a832bd686e37772a116d3d33eded7",
+      "slurm-original.log": "63c3df3bd787b4a440251906e51e185b7d6ec8f38a72acb8e3b79bac97d0c706"
+    }
+  },
+  "gpu_environments": [
+    {
+      "torch": "2.4.0+cu121",
+      "gpu": "NVIDIA RTX A6000",
+      "gpu_uuid": "GPU-c7b193e6-b8ff-d6fd-3f61-a0af97df2843",
+      "pid": 902976,
+      "cuda_visible_devices": "0",
+      "hostname": "DIS01"
+    },
+    {
+      "torch": "2.4.0+cu121",
+      "gpu": "NVIDIA RTX A6000",
+      "gpu_uuid": "GPU-d5b98ca1-0f2a-1136-bf71-47b1dd3959ad",
+      "pid": 903016,
+      "cuda_visible_devices": "0",
+      "hostname": "DIS01"
+    }
+  ],
+  "comparison_sha256": "97b37999f41d5ef617b47011a5d16f1bf3b39f174c5080575ebf3126f19ef1cd",
+  "heldout_sha256": "5130216108985f84a3d536f5e1081836f3dcc4f209c31d5f947db85718d28ca7",
+  "uncertainty_sha256": "a1ea56e33477e4ac416fe3d45b92d44b95bd1d09e3abba31fc7702596146e900",
+  "protocol_sha256": "abf22ad59f7654714b1b4356bbd15b659895a49e365cc84ba65eabfba1feaaea",
+  "review_code_sha256": "0253facf340f9049505a5c28051d89d7ef87089eb32b7ecc2410959c2fc696af"
+}

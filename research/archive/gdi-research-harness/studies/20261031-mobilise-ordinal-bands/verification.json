@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "people": {
+    "sppb": {
+      "people": 2174,
+      "visits": 7356
+    },
+    "tug": {
+      "people": 1939,
+      "visits": 5688
+    }
+  },
+  "ledgers": 660,
+  "final_model_or_mapper_replays": 1020,
+  "selected_refits": 30,
+  "max_prediction_replay_error": 7.105427357601002e-15,
+  "max_independent_metric_error": 2.42861286636753e-16,
+  "metric_rows": 840,
+  "policy_rows": 1800,
+  "absolute_tolerance": 1e-10,
+  "seconds": 254.53349661827087,
+  "verification_sha256": "05fb6324539d19b36165ccc9f6766ea2678eb2f849751b3847070407c60ecc3e",
+  "checks": [
+    "source and model SHA256",
+    "identical participants visits and selected-bout median features across six conditions",
+    "person-disjoint outer and inner folds",
+    "training-only weighted scaling",
+    "four class boundaries and label alignment",
+    "all stored final predictions replayed",
+    "temperature and cross-calibration replay",
+    "internal threshold feasibility and adjacent-cut extremality",
+    "preselected inner/final forest refits",
+    "independent probability class and operating metrics"
+  ],
+  "limits": "selected inner fits replayed, not every inner forest; paired bootstrap is conditional on fixed fitted models and reused development folds"
+}

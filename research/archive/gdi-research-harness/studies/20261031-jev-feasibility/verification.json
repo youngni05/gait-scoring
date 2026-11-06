@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "requests_verified": 2040,
+  "input_tokens": 3678454,
+  "method_metric_sets_recomputed": 28,
+  "payloads_recreated": true,
+  "source_hashes_unchanged": true,
+  "person_ids_and_folds_match": true,
+  "model_retraining_independently_reproduced": false,
+  "results_sha256": "200b5e326552f25dd6aed72e1d3c14aa401cc965378a87557ea75d35c3cb9046",
+  "responses_sha256": "86de644d73f6cc9658514927b1d4bf262ff2f0764ede9fe77ec116889aaaa20f"
+}

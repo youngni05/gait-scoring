@@ -1,0 +1,99 @@
+{
+  "question": "Do learned side-view short-walk motion and joint+feature learning improve same-visit actual clinical TUG seconds?",
+  "authorization": "User approved return to TUG and same-person speed/features/learned-joint comparison, engineering improvement targets.",
+  "code_sha256": {
+    "prepare.py": "4335b18622175a9bd63b76c635be9572948e15efd055dabdf5720fbc60af4b40",
+    "learning.py": "527ae28e2c3c1a392a42292ff470d8bb5582dd93522cfd2c00e9259016ca9db5",
+    "run.py": "2c00ffc42d22e735c1be2a981bfea96cba37ee224ffbdf071090bb6b13b073fe"
+  },
+  "input_sha256": "28fc847721f0a9065497bed7a441ef6afa38e4b6f5df22c699f4c989ca6569ab",
+  "original_splits_sha256": "d29f38644cd05dd8ccc5238c6988962078984477c26ebd1f5398b69e0233ad4a",
+  "original_results_sha256": "9bbd9efd6d7fd9f6e3d54f19283ca8f5da0c860e146b606c505c81bf90a94857",
+  "source_baseline_bindings": {
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f0-speed_only.joblib": "5645aa14afe13175bca1bdc005f03962f791a7c2c7df7d78a492b66b93708790",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f0-speed_only-inner.npz": "c3d19cd52bf0fd45810c55d4e0f7ae76605fe0cc4057daa60db8d06229f8983a",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f0-speed_dynamics.joblib": "a17e14bae8ac25d113c12eb274dd4d1f54c6a3b3c98221135a5cdfb45607316f",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f0-speed_dynamics-inner.npz": "7f9ccb42ec17e0195cbd6ca7a6aebf4069efdb55e5e128adc11f56e5e8f01831",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f0-speed_plus_landmarks.joblib": "fea4dfb453240ccc0abf4c6c23f487e7798b24fe08f2b696496c080464f4c614",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f0-speed_plus_landmarks-inner.npz": "5805450c7f4c8b5739395134176e14013dd86b1054fc2b77cdf37b33e2a12039",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f1-speed_only.joblib": "f4df38095243a54542cd1b37625419675528829e6c9636a86d2c261f69162d77",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f1-speed_only-inner.npz": "fc35e49f82092c4de956be4d32cad8a336462bfe4ce4eca746e56b54d998e323",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f1-speed_dynamics.joblib": "d80c0bffaddfc29aa116bed8053a00b80b03f2d9ca16efaf865e403b64b89a47",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f1-speed_dynamics-inner.npz": "17dc4ad3a7eb2d1f0c3cbf664f27a074729feb58e94123a2b013851dfae69aaa",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f1-speed_plus_landmarks.joblib": "c3b1687a5ca17cde9d76f94c3a1c97e361f1e9c7ed3696e280b70fa21dfc8d6b",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f1-speed_plus_landmarks-inner.npz": "2c128dd5fdd63143557c94f1481945f56aeb8cb1b61b83dc20841d8086c78eb0",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f2-speed_only.joblib": "18a66a2120f4f72e349b7e6e96c94badb976838c1844b21060165d36901abc32",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f2-speed_only-inner.npz": "4bb676f9a056417dc674111a9813eccaaa6cba9cd0d76f6f7c0c9908ad0f4a51",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f2-speed_dynamics.joblib": "1258f41ac07722c01daf818776c8001c266f1a376d6b2dd3dcdb5849634a4ef3",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f2-speed_dynamics-inner.npz": "9fcdb2259df5632af0e0b22b92359a5943b8c8363f60802999665116bbaeb913",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f2-speed_plus_landmarks.joblib": "e543a465d16770dfdc6a92ac32eabc4aa8db7b3d1ab67b98790aa5749db6189c",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f2-speed_plus_landmarks-inner.npz": "ce6988cf90d948b8e18ce50bb197f2f88feb893a3734e5cfb82958b920a64eb5",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f3-speed_only.joblib": "041f2d359509290d4e2d51fdc97f35741224fb2f3fa7913df5f2b56c3f034de0",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f3-speed_only-inner.npz": "7070ffea35feb636bbc513645362e0941c514fcc43f5ce76a77012767f32eaa0",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f3-speed_dynamics.joblib": "a6cbe1f092008ceaf9f4655ceb2ef6b02d8fbde00ee1b11169c989ff5c972b33",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f3-speed_dynamics-inner.npz": "b219a41fd20d4b980b66178ebe675752efcb486f426a82059a59dfb389b9ca9c",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f3-speed_plus_landmarks.joblib": "9e09152594f48496fe79d8d000acb894a8889a4afba18cefd1c73f37bf9edd80",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f3-speed_plus_landmarks-inner.npz": "34c99943a39e14ec6e4c804490056bb33aec463e588b78f0b05455e06c67fc4b",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f4-speed_only.joblib": "6992f98ed283811a7bdcc62dda9b4485584477e52c2e9c4a4344749c2e3f7378",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f4-speed_only-inner.npz": "2cc58b00fbf71f8d09904f2558b516fe14d08668e5be9054117dd10d1272e500",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f4-speed_dynamics.joblib": "3365e8fd17af98d6605f4aa1e22bcb77048baa22a92cf1c751b895b000a2b6bb",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f4-speed_dynamics-inner.npz": "03140eba046df0bf41d1579649077501e0535d96c038eb529dbafc7cf804d276",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f4-speed_plus_landmarks.joblib": "641feba66d361a35355fbcd41a2b5285eee60b259fce7d4892005ec525e43a59",
+    "D:\\gait-research-data\\D_P\\opencap-camera-tug-20261104\\models\\r0-f4-speed_plus_landmarks-inner.npz": "f515931308e4bbb1d25680163beb3e13a195c03915d279b5049016d511ca6d4e"
+  },
+  "people": 297,
+  "age65plus": 34,
+  "TUG20plus": 9,
+  "source": "https://zenodo.org/records/22309771",
+  "target": "samepersonsamevisit tft_tug seconds; separate3secondnormal10mwalkingsegment,notTUGduration asinput.",
+  "input": "Exactold91samplesat30Hz,3sec,SG7/order2,idealcalibratedsideprojection.16landmarkswithouttoes;neck/midhipderivablefromMediaPipe,heelsincluded.32hip-centredcoordinates+2pelvisdynamicchannels,body-scaled=34channels. Sameoldmetric speed.",
+  "forbidden": "Age,sex,diagnosis,otherclinicalscores,TUGmotion,testduration,augmentedanatomicalmarkers,transversedepth,extraqualitymetadatasequencechannels.",
+  "arms": {
+    "A": "Previouslyfrozenselectedspeed-onlytabularbaseline,replay",
+    "A2": "Previousspeeddynamicstabularbaseline,replay",
+    "B": "Previous64featuretabularbaseline,replay",
+    "C": "TCN34x91sequence+speed",
+    "D": "SameTCN34x91sequence+all64features",
+    "R": "256fixedrandomtemporalfilters(max/positivefraction)+64features,Ridgealpha10/100/1000",
+    "E": "FixednonnegativeRidge1blendofinnerOOFB/C/D/R,train-onlycenteringandscaling"
+  },
+  "TCN": {
+    "grid": [
+      {
+        "width": 16,
+        "target": "raw"
+      },
+      {
+        "width": 16,
+        "target": "residual6overv"
+      },
+      {
+        "width": 32,
+        "target": "raw"
+      },
+      {
+        "width": 32,
+        "target": "residual6overv"
+      }
+    ],
+    "architecture": "ResidualdilatedConv1Dwidth16/32,dilations1/2/4,mean+maxpool,32unithead;noageinput",
+    "optimizer": "AdamWlr.001,weightdecay.05,Huberbeta.5standardizedtarget,batch64,gradientclip5,trainingsequenceGaussiannoise.005",
+    "epochs": "max100,patience15;innerbestMAEepoch,finalmedian3innerbestepochs;noouterstopping",
+    "target": "rawTUGorresidualabove6/max(speed,.1).6/v isillustrativeanchor,notmeasuredwalkingcomponent;targetmean/stdtrainonly",
+    "normalization": "Sequencechannelandfeaturemedians/scalersfitonlytrainingpeople;missingfeatureimputationisnotphysicalzeromeasurement"
+  },
+  "splits": "Originalrepeat0fivepersonouterfoldsandoriginal3innerfolds,reuseddevelopmentcohort.Eachpersonexactlyoneouterprediction.Allarmsuseidenticalpeople/windows. Other4repeatsnotrununlessprimarypromising.",
+  "counts": {
+    "internal_C_D": 120,
+    "internal_R": 45,
+    "final_C_D_R": 15,
+    "blends": 5,
+    "old_baseline_final_replays": 15
+  },
+  "diagnostic": "Test-timepermutationof91frames,C/Donly,descriptive,notatrainedcomparison. RecordallpeopleAE>1sec,scorebands,bias,highTUGcaseprofiles.",
+  "goals": "TUGMAE<=1sec,within2sec>=80percent,relativeMAEreduction>=20percentvsA;allandage65plus;paired95CIvsAandA2upper<0. EngineeringnotclinicalMDC.",
+  "continuation": "Ifanonbaselineprimarymethodpassesallgoalsorpaired95CIvsBupper<0,runallfourremainingoldpartitionswithsameprotocolasconditionaldevelopmentstabilitycheck. Otherwisecloseprimarywithfailurediagnosis;donotkeepouter-tuninguntilanumberpasses.",
+  "verification": "Every165internaland15finalmodelSHA/reloadprediction,training-onlynorm/targetstats,personboundary,innerselection,epochmedian;CPU64TCNtolerance2e-5;baseline15modelsreplay;blendNNLSrebuild;independentmetricsandpaired10000personbootstrap. Neverrelaxfailuretolerance.",
+  "storage": "LocalCPU1thread;noexternalGPU/upload/newdownloads.Expectedless1GBinD:/gait-research-data/D_P/opencap-motion-tug-20261105;~50GBfreeatstart.",
+  "limits": "Syntheticidealviewofmulticameravideo-derived3D,notactualphone/MediaPipemeasurementaccuracy;neuromusculardatasetnotgeneralelderly;34olderand9slow;repeated-usecohortnotindependentclinicalvalidation. ExistingB/D/Rincludeavailability-derivedfeaturesfromold64schema,nophoneaccuracyclaim."
+}

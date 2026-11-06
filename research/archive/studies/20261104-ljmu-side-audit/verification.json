@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "all_videos": 988,
+  "selected_videos": 881,
+  "people": 64,
+  "excluded": 107,
+  "windows_124": 3305,
+  "pose_sequences_readable": 987,
+  "original_pose_json_frames": 223058,
+  "all_candidates_visually_reviewed": 988
+}

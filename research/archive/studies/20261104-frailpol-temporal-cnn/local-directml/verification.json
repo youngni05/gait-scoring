@@ -1,0 +1,191 @@
+{
+  "status": "passed",
+  "fits": 80,
+  "inner_checkpoint_replays": 240,
+  "final_checkpoint_replays": 20,
+  "checks": [
+    {
+      "condition": "speed_mlp",
+      "fold": 0,
+      "selected_epoch": 100,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.2196264001527197e-06
+    },
+    {
+      "condition": "speed_mlp",
+      "fold": 1,
+      "selected_epoch": 50,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 2.4268477716304915e-06
+    },
+    {
+      "condition": "speed_mlp",
+      "fold": 2,
+      "selected_epoch": 25,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 1.6345590339028604e-06
+    },
+    {
+      "condition": "speed_mlp",
+      "fold": 3,
+      "selected_epoch": 100,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 2.679144220252283e-06
+    },
+    {
+      "condition": "speed_mlp",
+      "fold": 4,
+      "selected_epoch": 100,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 2.4523560178124626e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 0,
+      "selected_epoch": 25,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.0503059171849145e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 1,
+      "selected_epoch": 25,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.81728628084943e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 2,
+      "selected_epoch": 50,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.577963909151549e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 3,
+      "selected_epoch": 25,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 4.3015285200453945e-06
+    },
+    {
+      "condition": "features_mlp",
+      "fold": 4,
+      "selected_epoch": 25,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 5.27887663182014e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 0,
+      "selected_epoch": 50,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 2.1019993567961137e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 1,
+      "selected_epoch": 100,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.1686521033691406e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 2,
+      "selected_epoch": 50,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 2.693256888619544e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 3,
+      "selected_epoch": 50,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.660062670718389e-06
+    },
+    {
+      "condition": "motion_speed",
+      "fold": 4,
+      "selected_epoch": 10,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.023377516342407e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 0,
+      "selected_epoch": 50,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 4.417788009192236e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 1,
+      "selected_epoch": 100,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.131916088250364e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 2,
+      "selected_epoch": 100,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.847489153940842e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 3,
+      "selected_epoch": 10,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 3.2460002792333853e-06
+    },
+    {
+      "condition": "motion_features",
+      "fold": 4,
+      "selected_epoch": 25,
+      "training_only_normalization_verified": true,
+      "inner_epoch_selection_verified": true,
+      "saved_checkpoints_replayed": 13,
+      "max_cpu64_replay_delta_seconds": 4.619779563341808e-06
+    }
+  ],
+  "comparison_sha256": "cc584deddf9bcee0d0356d836121b54915c97e3e0cd631347312bd1d187946c3",
+  "heldout_sha256": "219713cda29fc37aaa00855c3165c5d628d3105eb9723edf75a9eafaf1d3b07a",
+  "review_code_sha256": "ffee712abfccbb70dbc93c1d0534cd98f02db17969d11f8bf3374f9b77591e56"
+}

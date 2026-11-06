@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "people": 695,
+  "records": 1064,
+  "temporal_values_checked": 85120,
+  "max_temporal_difference": 1.9984014443252818e-14,
+  "independent_outer_refits": 94,
+  "independent_inner_refits": 376,
+  "max_prediction_difference": 3.367972567502875e-12,
+  "candidate_rows_checked": 735,
+  "metric_rows_checked": 506,
+  "bootstrap_comparisons_checked": 42,
+  "sources_unchanged": 131,
+  "GPU_used": false,
+  "protected_numeric_data_used": false,
+  "independent_final_evaluation": false
+}

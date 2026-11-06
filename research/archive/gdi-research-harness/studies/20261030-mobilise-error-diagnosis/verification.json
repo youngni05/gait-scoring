@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "source_hashes_unchanged": true,
+  "independent_streamed_label_counts_match": true,
+  "sppb_component_sum_checks": 7350,
+  "sum_mismatches": 0,
+  "low_sppb_chair_zero_visits": 255,
+  "low_sppb_balance_zero_visits": 148,
+  "tug_below3_visits": 6,
+  "tug_above60_visits": 12,
+  "nearest_neighbor_fold_checks": 10,
+  "scope": "diagnostic counts and source checks; no new predictive model or causal attribution validated",
+  "artifact_sha256": {
+    "diagnosis.json": "25ca9626824166331cc9d5649080b1c538afddbee45b5769e42c3f7451e6e70a",
+    "feature-distributions.csv": "e4a84a1bc815e6670fa5666fbd50a7592ab51bf7de70014c003c5ca4653891e7",
+    "cohort-counts.csv": "63f1a2c758c8eb3cd5b0cc5b9990342fbcb1f3afb3d28c30428e747b3105c201"
+  },
+  "script_sha256": {
+    "analyze.py": "303798eafada2c697d3457f5b165790a4b03da3cfec60ce58483839d7ddbe648",
+    "verify.py": "aea37caf3d8f42efd8987802fa36b1c2681ec9f161307ed987c4f8fe025468e2"
+  }
+}

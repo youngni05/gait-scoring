@@ -1,0 +1,158 @@
+{
+  "passed_file_and_metadata_checks": true,
+  "c3d_records": 24,
+  "dynamic_records": 18,
+  "checks": [
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ01/SUBJ1 (0).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ01/SUBJ1 (1).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ01/SUBJ1 (2).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ01/SUBJ1 (3).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ02/SUBJ2 (0).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ02/SUBJ2 (1).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ02/SUBJ2 (2).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ02/SUBJ2 (3).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ03/SUBJ3 (0).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ03/SUBJ3 (1).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ03/SUBJ3 (2).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "138_HealthyPiG_10.05/SUBJ03/SUBJ3 (3).c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC04/BWA_6.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC04/BWA_7.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC04/BWA_8.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC04/TVC-4 Cal 03.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC08/BWA1.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC08/BWA3.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC08/BWA5.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC08/TVC-8 Cal 06.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC09/BWA1.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC09/BWA2.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC09/BWA3.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    },
+    {
+      "member": "50_StrokePiG/TVC09/TVC-9 Cal 03.c3d",
+      "second_reader_gdi_match": true,
+      "frames_match": true
+    }
+  ],
+  "joint_definition_verified_by_official_document": true,
+  "independent_geometry_records": 15,
+  "independent_geometry_people": 5,
+  "hip_reconstruction_max_error_mm": 0.35341781496881003,
+  "missing_anthropometry_people": [
+    "SUBJ03"
+  ],
+  "gdi_replay_pairs": 18,
+  "gdi_replay_mean_absolute_difference": 5.9916064377139655,
+  "gdi_replay_max_absolute_difference": 14.316159171504879,
+  "gdi_replay_matches_metadata": false,
+  "gdi_ground_truth_status": "Not adopted: calculation/reference/convention discrepancy unresolved",
+  "feature_eligibility": {
+    "90": {
+      "duration_eligible_records": 17,
+      "side_pan_eligible_records": 17,
+      "side_pan_eligible_people": 6
+    },
+    "124": {
+      "duration_eligible_records": 8,
+      "side_pan_eligible_records": 8,
+      "side_pan_eligible_people": 4
+    }
+  },
+  "gdi_inference_runs": 0,
+  "artifacts_sha256": {
+    "joint-gdi-audit.json": "6e47886f2bbd399957532ad25894d5071dd954c606f5bfa629c8ce2ce1b506b2",
+    "common-inputs.json": "2ec14a478352d700912de871e421e50bb0567c978da03be7562333f43864332f",
+    "audit.py": "9ed73e545f4c9b3569e629f38136da8a03b3d0cf1c9d07e8a7dc542f419f1d88",
+    "prepare_common.py": "17d6433ff6e716eb55c90c109bc6d54c59ae23f4e2ac1f79343b414695c64916"
+  }
+}

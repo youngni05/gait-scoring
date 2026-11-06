@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "results_sha256": "c240199bab414e7cd665115dcff88f908acfa684ed905369743d9407354c68fb",
+  "original_models_replayed": 10,
+  "inner_fits_checked": 40,
+  "all50_fit_hashes_checked": true,
+  "independent_train_calibration": true,
+  "person_splits_verified": true,
+  "paired_metrics_verified": true,
+  "cpu32_vs_gpu32_absolute_tolerance_gdi": 0.001,
+  "code_sha256": "d56a10a1f7919545dca4cfb6600a60b5c82fba410b81b60903784ccf56e69ea5"
+}

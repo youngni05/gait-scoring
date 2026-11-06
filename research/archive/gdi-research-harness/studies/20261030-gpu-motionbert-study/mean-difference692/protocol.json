@@ -1,0 +1,31 @@
+{
+  "purpose": "Keep existing CNN/STT blend mean and use bilateral STT signed left-right difference",
+  "people": 692,
+  "records": 1061,
+  "mean_source": "Existing nested CNN/STT blend; reuse frozen outer-specific CNN weights",
+  "primary": "Fixed full replacement of signed difference; no fitting",
+  "secondary": "Choose difference replacement fraction only using outer-training inner-validation predictions",
+  "difference_fraction_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "tie_break": "smallest fraction",
+  "selection_metric": "person-equal left/right MAE",
+  "inner_epochs": {
+    "CNN": 100,
+    "STT": 200,
+    "bilateral_STT": 200
+  },
+  "outer_epochs": "Original inner-selected refit epochs, unchanged",
+  "additional_calibration": false,
+  "neural_training": false,
+  "protected_final_data": false,
+  "limitations": [
+    "Development cohort previously inspected; not an independent final confirmation",
+    "Fixed terminal inner models differ in training length from selected outer refits",
+    "Same inner predictions choose existing CNN weight and new difference fraction; outer people excluded from both"
+  ]
+}

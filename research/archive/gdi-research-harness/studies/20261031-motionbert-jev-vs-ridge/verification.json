@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "cases": 62,
+  "same_512_inputs": true,
+  "same8_training_examples": true,
+  "all_examples_exclude_query_fold": true,
+  "payload_fingerprints_match": true,
+  "query_targets_not_in_payload": true,
+  "independent_matched_Ridge_dual_solves": 62,
+  "all_metrics_and_bootstrap_recomputed": true,
+  "full_Ridge_independently_retrained": false,
+  "source_and_protocol_hashes_match": true,
+  "results_sha256": "93fb0e7bc5a94dc0255daac559e5f40fba3ec7572b1627eb7e0cde9bc350f5ab",
+  "code_sha256": {
+    "run.py": "997100c754a496b80acc450aeb8c63791f9d658e21bcb3d66e0351651f588ae1",
+    "verify.py": "c4526154705c23bedc216b9ad7a06d26cb5854b3abb9cdec3684e52e648884ab"
+  }
+}

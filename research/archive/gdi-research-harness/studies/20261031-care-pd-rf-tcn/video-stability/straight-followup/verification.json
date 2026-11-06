@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "care_metric_max_error": 4.440892098500626e-16,
+  "care_features_max_error": 0.0,
+  "geometry_max_error": 5.684341886080802e-14,
+  "paired_people": 14,
+  "paired_clips": 56,
+  "care_source_people": 110,
+  "independent_person_weighting": true,
+  "geometry_sources_checked": 60,
+  "movi_pending": false,
+  "movi_features_max_error": 0.0,
+  "frozen_rf_replay_max_error": 0.0,
+  "movi_metrics_max_error": 0.0,
+  "checked_models": 60,
+  "primary_models": 30,
+  "initializations": 5,
+  "shared_hmr2_asset_hashes_matched": 42,
+  "collection_sha256": "931840eb10abeaaa5713b8d44d95a7799cd1acb24e39490e2587ab1f8ac801ab",
+  "analysis_sha256": "a320573ffd3425053c1634fe944a95622f82bc710c719a88cc1558745e65066f",
+  "care_analysis_sha256": "78e965e842b23c0f3606ddf4fb2a1a8cf3fcce54883536a6b8ae73c0ce837ae0"
+}

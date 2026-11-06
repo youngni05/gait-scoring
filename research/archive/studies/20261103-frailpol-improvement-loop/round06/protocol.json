@@ -1,0 +1,119 @@
+{
+  "round": 6,
+  "created": "2026-11-03T16:17:57.249404+00:00",
+  "owner_thread": "01a1a1c2-655b-79a3-87bc-e325af86028e",
+  "code_sha256": "6b95751a71ce6fe8716abd69cc1c927ef250de550009281c2528e9adb4d35440",
+  "round1_library_sha256": "22e2bd1e26fbf2b3d8a715bcc85d16799f1ba5b59bcb6d5ae4eb5fa8bbb9d653",
+  "source_sha256": "62b83914b235ebe5199640d59e972f8bcd8e7bb7de59219c94d18ab8fac345f0",
+  "features_sha256": "aff9375f8e6e7c43cd58194be05934b4e8b8173f9c2e4be69e5c4d4ae326afc6",
+  "catboost_version": "1.2.10",
+  "catboost_binary_sha256": "b3fb3dab53250e0850acf4aa0b529fcc71f055133e811b46cc7a807b1022d6eb",
+  "candidates": [
+    {
+      "depth": 3,
+      "loss": "RMSE",
+      "target": "raw",
+      "tail_weight": 1
+    },
+    {
+      "depth": 3,
+      "loss": "RMSE",
+      "target": "raw",
+      "tail_weight": 4
+    },
+    {
+      "depth": 3,
+      "loss": "RMSE",
+      "target": "velocity_product",
+      "tail_weight": 1
+    },
+    {
+      "depth": 3,
+      "loss": "RMSE",
+      "target": "velocity_product",
+      "tail_weight": 4
+    },
+    {
+      "depth": 3,
+      "loss": "Huber:delta=1.0",
+      "target": "raw",
+      "tail_weight": 1
+    },
+    {
+      "depth": 3,
+      "loss": "Huber:delta=1.0",
+      "target": "raw",
+      "tail_weight": 4
+    },
+    {
+      "depth": 3,
+      "loss": "Huber:delta=1.0",
+      "target": "velocity_product",
+      "tail_weight": 1
+    },
+    {
+      "depth": 3,
+      "loss": "Huber:delta=1.0",
+      "target": "velocity_product",
+      "tail_weight": 4
+    },
+    {
+      "depth": 5,
+      "loss": "RMSE",
+      "target": "raw",
+      "tail_weight": 1
+    },
+    {
+      "depth": 5,
+      "loss": "RMSE",
+      "target": "raw",
+      "tail_weight": 4
+    },
+    {
+      "depth": 5,
+      "loss": "RMSE",
+      "target": "velocity_product",
+      "tail_weight": 1
+    },
+    {
+      "depth": 5,
+      "loss": "RMSE",
+      "target": "velocity_product",
+      "tail_weight": 4
+    },
+    {
+      "depth": 5,
+      "loss": "Huber:delta=1.0",
+      "target": "raw",
+      "tail_weight": 1
+    },
+    {
+      "depth": 5,
+      "loss": "Huber:delta=1.0",
+      "target": "raw",
+      "tail_weight": 4
+    },
+    {
+      "depth": 5,
+      "loss": "Huber:delta=1.0",
+      "target": "velocity_product",
+      "tail_weight": 1
+    },
+    {
+      "depth": 5,
+      "loss": "Huber:delta=1.0",
+      "target": "velocity_product",
+      "tail_weight": 4
+    }
+  ],
+  "conditions": [
+    "speed",
+    "bilateral"
+  ],
+  "design": "Same594people/folds and frozen bilateral213features/core<=4s. CatBoost1.2.10Ordered,symmetric depth3/5,400trees,learningrate.03,L2=10,no bootstrap/random-strength,seed20261104. Native missing-value handling. Each training split fits its own64Medianquantization borders; no evaluation data is quantized with fit or used for early stopping.",
+  "targets": "RawTUGseconds or targetTUG*observed short-window speed; invert product prediction by that same observed speed at inference, without clipping. No actual testTUG used in transform inversion. Tailweights1/4, intermediate12..20sqrt(tailweight). RMSE versusHuber(delta1 in each target units). This is a predictive parameterization, not a measured physical travel distance.",
+  "selection": "Same3innerStratifiedKFold by<12/12..20/>=20 seed20261103 on outertraining only. Exact original person order for metrics, minimize max(MAE/.9,p95/3,slowMAE/3),first tie. Report selected and equal top3 average. No outer selection/calibration.",
+  "verification": "480inner+30final native model files, training borders, contexts and predictions saved. Independent borders rebuild from training people only, original targets/weights hashes, all saved models reload/replay, exactIDs/inner partitions/selection and independent metrics. Paired5000personbootstrap. No new GPU or external data upload.",
+  "expected_additional_GB": 0.7,
+  "limitations": "Repeated outer development folds; no external/camera clinical validation; severe subgroup9people."
+}
