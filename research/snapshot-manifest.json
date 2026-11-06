@@ -14145,14 +14145,6 @@
       "public_copy_changed": true
     },
     {
-      "source": "gdi-research-harness/studies/20261101-self-video-test01/relabel_results.py",
-      "destination": "archive/gdi-research-harness/studies/20261101-self-video-test01/relabel_results.py",
-      "source_sha256": "66fea309992735c602561b81a2c1216795fe72192df5ee993fd3510018b1a9e2",
-      "public_sha256": "66fea309992735c602561b81a2c1216795fe72192df5ee993fd3510018b1a9e2",
-      "bytes": 3188,
-      "public_copy_changed": false
-    },
-    {
       "source": "gdi-research-harness/studies/20261101-self-video-test01/results.json",
       "destination": "archive/gdi-research-harness/studies/20261101-self-video-test01/results.json",
       "source_sha256": "d6f96a598a02b97055fa0472af419739fc2a08885b514c0cf958f6715b7d7cdd",
@@ -14190,30 +14182,6 @@
       "source_sha256": "43b40ccfbfa58f21bf267771230a5a6121d4afa695d93822669c7de36f07adf8",
       "public_sha256": "b3fd9843c0665ddc438d22b84301a6c9114d69194420e2a7f4d5d743924e66fe",
       "bytes": 7674,
-      "public_copy_changed": true
-    },
-    {
-      "source": "gdi-research-harness/studies/20261101-self-video-test01/before-label-correction/README.md",
-      "destination": "archive/gdi-research-harness/studies/20261101-self-video-test01/before-label-correction/README.md",
-      "source_sha256": "7dcff15bda2b34c090ce615053dea43a4eac1a59571be8395e25a789611575d4",
-      "public_sha256": "bc755b6490694c789146faac0bb779a881659bf78cafa5e9fe3aef234144722b",
-      "bytes": 5999,
-      "public_copy_changed": true
-    },
-    {
-      "source": "gdi-research-harness/studies/20261101-self-video-test01/before-label-correction/results.json",
-      "destination": "archive/gdi-research-harness/studies/20261101-self-video-test01/before-label-correction/results.json",
-      "source_sha256": "4398c3d32ea5022b6a748818b94f96fe0ed928697695c5b357b0b801e7e2d367",
-      "public_sha256": "b921451596a0ca3d658c2beb60e9e25d1ed661323bc879560e09c53d825c3e47",
-      "bytes": 49414,
-      "public_copy_changed": true
-    },
-    {
-      "source": "gdi-research-harness/studies/20261101-self-video-test01/before-label-correction/verification.json",
-      "destination": "archive/gdi-research-harness/studies/20261101-self-video-test01/before-label-correction/verification.json",
-      "source_sha256": "12cfb363277cf780385ef656ee05d53ca82fa5285d6532c966af725c8f85524c",
-      "public_sha256": "24635e9b51608580881c950739a88952af2d81252ba25c0d313eb826e4cfcff9",
-      "bytes": 612,
       "public_copy_changed": true
     },
     {
