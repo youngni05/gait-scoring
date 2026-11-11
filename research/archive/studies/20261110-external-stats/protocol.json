@@ -1,0 +1,8 @@
+{
+  "date": "2026-11-10",
+  "frozen_before_results": true,
+  "authorization": "User asked on 2026-11-10 to run the planned paper-strengthening experiments.",
+  "question": "Are the normal versus abnormal differences of the self-captured and older sets larger than chance, as already shown for LIVE?",
+  "data": "Stored per-video (self-captured, 6 normal and 7 simulated abnormal) and per-person (older, healthy 11 and stroke 25 aged 65 or more) scores of the baseline and normal-added models (measured-value calibration). No new inference.",
+  "statistics": "Difference of mean rise (normal minus abnormal), gap before and after, and AUC of the normal-added scores, with 95 percent bootstrap intervals over the resampling unit (video for self-captured, person for older), 10000 draws, seed 20261110. Self-captured videos come from 3 people, so the video-level interval is reported as such."
+}

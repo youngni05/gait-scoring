@@ -1,0 +1,58 @@
+{
+  "stroke_people": 41,
+  "paretic_right": 13,
+  "recomputed": {
+    "paretic_lower_share": 0.561,
+    "paretic_lower_share_ci95": [
+      0.415,
+      0.707
+    ],
+    "mean_paretic_minus_other": -1.6,
+    "mean_ci95": [
+      -5.097,
+      1.937
+    ]
+  },
+  "baseline": {
+    "paretic_lower_share": 0.659,
+    "paretic_lower_share_ci95": [
+      0.512,
+      0.805
+    ],
+    "mean_paretic_minus_other": -1.64,
+    "mean_ci95": [
+      -2.984,
+      -0.296
+    ],
+    "corr_with_recomputed": 0.421,
+    "corr_ci95": [
+      0.121,
+      0.654
+    ],
+    "sign_agreement_with_recomputed": 0.561
+  },
+  "added": {
+    "paretic_lower_share": 0.805,
+    "paretic_lower_share_ci95": [
+      0.683,
+      0.927
+    ],
+    "mean_paretic_minus_other": -2.77,
+    "mean_ci95": [
+      -4.26,
+      -1.239
+    ],
+    "corr_with_recomputed": 0.437,
+    "corr_ci95": [
+      0.14,
+      0.651
+    ],
+    "sign_agreement_with_recomputed": 0.61
+  },
+  "healthy_abs_left_right": {
+    "people": 16,
+    "recomputed": 7.01,
+    "baseline": 2.44,
+    "added": 2.5
+  }
+}

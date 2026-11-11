@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-10",
+  "frozen_before_results": true,
+  "authorization": "User asked on 2026-11-10 to prepare experiment 8: recompute GDI with a new normal reference group from 3D joint angles and compare the video-model scores with it.",
+  "question": "When GDI is recomputed with healthy adults as the normal reference group, do the normal-added model scores agree with it better than the baseline scores?",
+  "data": "Van Criekinge et al. 2023 (Scientific Data 10:852), Plug-in Gait C3D of 138 able-bodied adults and 50 stroke survivors, already downloaded to D:/gait-research-data/D_P/frozen-transfer-and-deviation-20261103.",
+  "gdi_method": {
+    "angles": "Nine Plug-in Gait angles per side: pelvic tilt, obliquity, rotation (PelvisAngles X,Y,Z), hip flexion, abduction, rotation (HipAngles X,Y,Z), knee flexion (KneeAngles X), ankle dorsiflexion (AnkleAngles X), foot progression (FootProgressAngles Z).",
+    "cycles": "Foot strike to next ipsilateral foot strike from the C3D events, 0.6 to 2.5 s, all nine angles finite and not all zero. Each cycle resampled to 51 points; cycles averaged per person and side, giving one 459-value gait vector per limb.",
+    "features": "Singular value decomposition of the uncentred matrix of all limb vectors (healthy and stroke); first 15 features, following Schwartz and Rozumalski 2008.",
+    "score": "Distance of each limb to the mean feature vector of the reference limbs; ln of the distance standardised by the reference mean and standard deviation; GDI = 100 - 10 z. Limbs of a reference person are scored with that person left out of the reference.",
+    "references": {
+      "R_all": "all healthy adults",
+      "R_young": "healthy adults younger than 65"
+    }
+  },
+  "model_scores": "Person-level scores (mean of legs and trials) of the baseline and normal-added CNN-STT ensemble from studies/20261106-older-normal100/people-scores.json. Inputs were virtual side-view 2D projections of the same markers.",
+  "comparisons": {
+    "primary": "Under R_all, person MAE between model score and recomputed GDI (mean of the person's two limbs), normal-added minus baseline, with a 95 percent person bootstrap interval (10000 draws, seed 20261110), on all matched people.",
+    "secondary": [
+      "Pearson and Spearman correlation of model score with recomputed GDI, baseline and normal-added, all matched people and stroke only",
+      "Mean bias for healthy and stroke separately",
+      "Same under R_young",
+      "Recomputed GDI of healthy 65 or older and of stroke 65 or older"
+    ]
+  },
+  "limits": "The model scale comes from the original pediatric reference, which is not public; recomputed GDI uses an adult reference, so MAE mixes scale and agreement. Model inputs are projections of markers, not video. Matched people are limited to those whose projections passed the earlier input checks."
+}

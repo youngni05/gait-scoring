@@ -1,0 +1,138 @@
+{
+  "R_all": {
+    "matched_people": 58,
+    "by_cohort": {
+      "healthy": 16,
+      "stroke": 42
+    },
+    "ge65": 36,
+    "mae_baseline": 13.13,
+    "mae_added": 11.05,
+    "mae_difference": -2.08,
+    "mae_difference_ci95": [
+      -3.2,
+      -0.98
+    ],
+    "corr_baseline_pearson_spearman": [
+      0.776,
+      0.811
+    ],
+    "corr_added_pearson_spearman": [
+      0.737,
+      0.789
+    ],
+    "pearson_difference_ci95": [
+      -0.127,
+      0.033
+    ],
+    "healthy": {
+      "n": 16,
+      "recomputed_gdi": 97.49,
+      "baseline": 83.23,
+      "added": 92.07,
+      "bias_baseline": -14.25,
+      "bias_added": -5.41,
+      "mae_baseline": 14.74,
+      "mae_added": 9.94,
+      "corr_baseline": [
+        0.351,
+        0.282
+      ],
+      "corr_added": [
+        0.286,
+        0.338
+      ]
+    },
+    "stroke": {
+      "n": 42,
+      "recomputed_gdi": 83.35,
+      "baseline": 70.84,
+      "added": 72.13,
+      "bias_baseline": -12.51,
+      "bias_added": -11.21,
+      "mae_baseline": 12.51,
+      "mae_added": 11.47,
+      "corr_baseline": [
+        0.758,
+        0.803
+      ],
+      "corr_added": [
+        0.674,
+        0.765
+      ]
+    },
+    "healthy_minus_stroke": {
+      "recomputed": 14.14,
+      "baseline": 12.4,
+      "added": 19.94
+    }
+  },
+  "R_young": {
+    "matched_people": 58,
+    "by_cohort": {
+      "healthy": 16,
+      "stroke": 42
+    },
+    "ge65": 36,
+    "mae_baseline": 10.9,
+    "mae_added": 9.21,
+    "mae_difference": -1.69,
+    "mae_difference_ci95": [
+      -2.79,
+      -0.58
+    ],
+    "corr_baseline_pearson_spearman": [
+      0.785,
+      0.811
+    ],
+    "corr_added_pearson_spearman": [
+      0.751,
+      0.792
+    ],
+    "pearson_difference_ci95": [
+      -0.118,
+      0.039
+    ],
+    "healthy": {
+      "n": 16,
+      "recomputed_gdi": 95.65,
+      "baseline": 83.23,
+      "added": 92.07,
+      "bias_baseline": -12.42,
+      "bias_added": -3.58,
+      "mae_baseline": 13.46,
+      "mae_added": 9.46,
+      "corr_baseline": [
+        0.346,
+        0.226
+      ],
+      "corr_added": [
+        0.3,
+        0.338
+      ]
+    },
+    "stroke": {
+      "n": 42,
+      "recomputed_gdi": 80.69,
+      "baseline": 70.84,
+      "added": 72.13,
+      "bias_baseline": -9.85,
+      "bias_added": -8.55,
+      "mae_baseline": 9.92,
+      "mae_added": 9.12,
+      "corr_baseline": [
+        0.762,
+        0.799
+      ],
+      "corr_added": [
+        0.678,
+        0.762
+      ]
+    },
+    "healthy_minus_stroke": {
+      "recomputed": 14.96,
+      "baseline": 12.4,
+      "added": 19.94
+    }
+  }
+}

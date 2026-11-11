@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "date": "2026-11-07",
+  "frozen_before_results": true,
+  "purpose": "Report the small-addition model on the 222-person evaluation data, replacing a development-data statement in the paper.",
+  "origin": "Reviewer suggestion, requested by the user. Post-hoc: the 222 people were already used for the large-addition comparison.",
+  "training": false,
+  "arm": "matched-normal100 adult arm: 9 LJMU adults, 12 records, 12 windows, about 1% of training weight, calibration on Stanford training data only.",
+  "comparison": "Baseline versus small addition on 222 people and 377 records, then the existing large addition with measured-value calibration as context.",
+  "models": [
+    "CNN",
+    "STT",
+    "bilateral_STT",
+    "CNN_ensemble",
+    "STT_ensemble",
+    "fusion"
+  ],
+  "fusion": "Existing fixed fold weights from ensemble.json, unchanged.",
+  "metrics": "Same as 20261106-final222-normal100: person-averaged MAE and bias for all, ge90, ge100, lt70; paired person bootstrap 10000, seed 20261106.",
+  "reporting_rule": "Reported whatever the direction. The arm is not chosen after seeing the result; the child arm is not evaluated."
+}

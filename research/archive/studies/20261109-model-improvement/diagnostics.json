@@ -1,0 +1,20 @@
+{
+  "D_adversarial": {
+    "source_accuracy": 0.985,
+    "high_ljmu_share": 0.031,
+    "side_slope_per_gdi_point": -0.0418,
+    "side_spearman_gdi": -0.137,
+    "side_mean_dev": -6.116,
+    "side_self_normal": 1.902,
+    "shortcut_reduced": false
+  },
+  "C1_cycle": {
+    "source_accuracy": 0.993,
+    "high_ljmu_share": 0.05,
+    "side_slope_per_gdi_point": 0.0477,
+    "side_spearman_gdi": 0.095,
+    "side_mean_dev": -9.538,
+    "side_self_normal": 1.955,
+    "shortcut_reduced": true
+  }
+}

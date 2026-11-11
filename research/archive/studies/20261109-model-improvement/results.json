@@ -1,0 +1,554 @@
+{
+  "reference": {
+    "before_cnn_bag": {
+      "all": {
+        "people": 692,
+        "mae": 6.59,
+        "bias": 0.113,
+        "delta_mae": 0.0,
+        "delta_mae_ci95": [
+          0.0,
+          0.0
+        ],
+        "delta_abs_bias": 0.0,
+        "delta_abs_bias_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "ge90": {
+        "people": 162,
+        "mae": 9.291,
+        "bias": -8.82,
+        "delta_mae": 0.0,
+        "delta_mae_ci95": [
+          0.0,
+          0.0
+        ],
+        "delta_abs_bias": 0.0,
+        "delta_abs_bias_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "ge100": {
+        "people": 36,
+        "mae": 14.144,
+        "bias": -14.144,
+        "delta_mae": 0.0,
+        "delta_mae_ci95": [
+          0.0,
+          0.0
+        ],
+        "delta_abs_bias": 0.0,
+        "delta_abs_bias_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "lt70": {
+        "people": 383,
+        "mae": 7.155,
+        "bias": 5.623,
+        "delta_mae": 0.0,
+        "delta_mae_ci95": [
+          0.0,
+          0.0
+        ],
+        "delta_abs_bias": 0.0,
+        "delta_abs_bias_ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "normal_added_measured_cal": {
+      "all": {
+        "people": 692,
+        "mae": 6.685,
+        "bias": 0.363,
+        "delta_mae": 0.095,
+        "delta_mae_ci95": [
+          -0.007,
+          0.197
+        ],
+        "delta_abs_bias": 0.111,
+        "delta_abs_bias_ci95": [
+          -0.001,
+          0.227
+        ]
+      },
+      "ge90": {
+        "people": 162,
+        "mae": 9.339,
+        "bias": -8.911,
+        "delta_mae": 0.048,
+        "delta_mae_ci95": [
+          -0.222,
+          0.312
+        ],
+        "delta_abs_bias": 0.061,
+        "delta_abs_bias_ci95": [
+          -0.213,
+          0.328
+        ]
+      },
+      "ge100": {
+        "people": 36,
+        "mae": 14.455,
+        "bias": -14.455,
+        "delta_mae": 0.311,
+        "delta_mae_ci95": [
+          -0.347,
+          0.862
+        ],
+        "delta_abs_bias": 0.311,
+        "delta_abs_bias_ci95": [
+          -0.347,
+          0.862
+        ]
+      },
+      "lt70": {
+        "people": 383,
+        "mae": 7.479,
+        "bias": 6.047,
+        "delta_mae": 0.324,
+        "delta_mae_ci95": [
+          0.147,
+          0.505
+        ],
+        "delta_abs_bias": 0.339,
+        "delta_abs_bias_ci95": [
+          0.155,
+          0.528
+        ]
+      }
+    }
+  },
+  "R_rank": {
+    "development": {
+      "all": {
+        "people": 692,
+        "mae": 8.757,
+        "bias": 0.326,
+        "delta_mae": 2.167,
+        "delta_mae_ci95": [
+          1.811,
+          2.532
+        ],
+        "delta_abs_bias": 2.355,
+        "delta_abs_bias_ci95": [
+          1.949,
+          2.763
+        ]
+      },
+      "ge90": {
+        "people": 162,
+        "mae": 16.696,
+        "bias": -16.656,
+        "delta_mae": 7.406,
+        "delta_mae_ci95": [
+          6.68,
+          8.112
+        ],
+        "delta_abs_bias": 7.528,
+        "delta_abs_bias_ci95": [
+          6.79,
+          8.244
+        ]
+      },
+      "ge100": {
+        "people": 36,
+        "mae": 22.958,
+        "bias": -22.958,
+        "delta_mae": 8.814,
+        "delta_mae_ci95": [
+          7.242,
+          10.257
+        ],
+        "delta_abs_bias": 8.814,
+        "delta_abs_bias_ci95": [
+          7.242,
+          10.257
+        ]
+      },
+      "lt70": {
+        "people": 383,
+        "mae": 10.513,
+        "bias": 10.498,
+        "delta_mae": 3.358,
+        "delta_mae_ci95": [
+          2.834,
+          3.874
+        ],
+        "delta_abs_bias": 3.681,
+        "delta_abs_bias_ci95": [
+          3.145,
+          4.209
+        ]
+      }
+    },
+    "external": {
+      "TD": {
+        "people": 9,
+        "score": 90.36,
+        "baseline": 84.7,
+        "rise": 5.67
+      },
+      "CP": {
+        "people": 14,
+        "score": 73.89,
+        "baseline": 74.65,
+        "rise": -0.76
+      },
+      "ITW": {
+        "people": 4,
+        "score": 81.93,
+        "baseline": 80.77,
+        "rise": 1.16
+      },
+      "self_normal": {
+        "videos": 6,
+        "score": 77.24,
+        "baseline": 74.08,
+        "rise": 3.16
+      },
+      "self_abnormal": {
+        "videos": 7,
+        "score": 76.7,
+        "baseline": 66.65,
+        "rise": 10.05
+      },
+      "TD_minus_CP": 16.47,
+      "TD_minus_CP_baseline": 10.05
+    },
+    "success": {
+      "accuracy": false,
+      "high_scores": false,
+      "normal_response": true
+    }
+  },
+  "D_adversarial": {
+    "development": {
+      "all": {
+        "people": 692,
+        "mae": 7.311,
+        "bias": 0.218,
+        "delta_mae": 0.721,
+        "delta_mae_ci95": [
+          0.525,
+          0.918
+        ],
+        "delta_abs_bias": 0.854,
+        "delta_abs_bias_ci95": [
+          0.634,
+          1.076
+        ]
+      },
+      "ge90": {
+        "people": 162,
+        "mae": 11.942,
+        "bias": -11.942,
+        "delta_mae": 2.651,
+        "delta_mae_ci95": [
+          2.203,
+          3.083
+        ],
+        "delta_abs_bias": 2.782,
+        "delta_abs_bias_ci95": [
+          2.322,
+          3.221
+        ]
+      },
+      "ge100": {
+        "people": 36,
+        "mae": 18.621,
+        "bias": -18.621,
+        "delta_mae": 4.476,
+        "delta_mae_ci95": [
+          3.502,
+          5.378
+        ],
+        "delta_abs_bias": 4.476,
+        "delta_abs_bias_ci95": [
+          3.502,
+          5.378
+        ]
+      },
+      "lt70": {
+        "people": 383,
+        "mae": 8.063,
+        "bias": 7.427,
+        "delta_mae": 0.908,
+        "delta_mae_ci95": [
+          0.588,
+          1.224
+        ],
+        "delta_abs_bias": 1.07,
+        "delta_abs_bias_ci95": [
+          0.742,
+          1.401
+        ]
+      }
+    },
+    "external": {
+      "TD": {
+        "people": 9,
+        "score": 91.04,
+        "baseline": 85.79,
+        "rise": 5.25
+      },
+      "CP": {
+        "people": 14,
+        "score": 76.66,
+        "baseline": 74.37,
+        "rise": 2.28
+      },
+      "ITW": {
+        "people": 4,
+        "score": 88.97,
+        "baseline": 81.81,
+        "rise": 7.16
+      },
+      "self_normal": {
+        "videos": 6,
+        "score": 86.58,
+        "baseline": 74.08,
+        "rise": 12.5
+      },
+      "self_abnormal": {
+        "videos": 7,
+        "score": 73.58,
+        "baseline": 66.65,
+        "rise": 6.93
+      },
+      "TD_minus_CP": 14.38,
+      "TD_minus_CP_baseline": 11.42
+    },
+    "success": {
+      "accuracy": false,
+      "high_scores": false,
+      "normal_response": true
+    }
+  },
+  "C0_cycle": {
+    "development": {
+      "all": {
+        "people": 692,
+        "mae": 6.633,
+        "bias": 0.171,
+        "delta_mae": 0.043,
+        "delta_mae_ci95": [
+          -0.076,
+          0.157
+        ],
+        "delta_abs_bias": 0.08,
+        "delta_abs_bias_ci95": [
+          -0.056,
+          0.214
+        ]
+      },
+      "ge90": {
+        "people": 162,
+        "mae": 9.952,
+        "bias": -9.753,
+        "delta_mae": 0.661,
+        "delta_mae_ci95": [
+          0.367,
+          0.953
+        ],
+        "delta_abs_bias": 0.75,
+        "delta_abs_bias_ci95": [
+          0.448,
+          1.045
+        ]
+      },
+      "ge100": {
+        "people": 36,
+        "mae": 15.76,
+        "bias": -15.76,
+        "delta_mae": 1.616,
+        "delta_mae_ci95": [
+          0.897,
+          2.287
+        ],
+        "delta_abs_bias": 1.616,
+        "delta_abs_bias_ci95": [
+          0.897,
+          2.287
+        ]
+      },
+      "lt70": {
+        "people": 383,
+        "mae": 7.383,
+        "bias": 6.048,
+        "delta_mae": 0.228,
+        "delta_mae_ci95": [
+          0.024,
+          0.431
+        ],
+        "delta_abs_bias": 0.255,
+        "delta_abs_bias_ci95": [
+          0.042,
+          0.465
+        ]
+      }
+    },
+    "external": {
+      "TD": {
+        "people": 9,
+        "score": 83.33,
+        "baseline": 85.79,
+        "rise": -2.47
+      },
+      "CP": {
+        "people": 14,
+        "score": 73.21,
+        "baseline": 74.37,
+        "rise": -1.16
+      },
+      "ITW": {
+        "people": 4,
+        "score": 80.66,
+        "baseline": 81.81,
+        "rise": -1.15
+      },
+      "self_normal": {
+        "videos": 6,
+        "score": 80.84,
+        "baseline": 74.08,
+        "rise": 6.76
+      },
+      "self_abnormal": {
+        "videos": 7,
+        "score": 69.59,
+        "baseline": 66.65,
+        "rise": 2.95
+      },
+      "TD_minus_CP": 10.12,
+      "TD_minus_CP_baseline": 11.42
+    },
+    "success": {
+      "accuracy": false,
+      "high_scores": false,
+      "normal_response": false
+    }
+  },
+  "C1_cycle": {
+    "development": {
+      "all": {
+        "people": 692,
+        "mae": 6.799,
+        "bias": 0.312,
+        "delta_mae": 0.208,
+        "delta_mae_ci95": [
+          0.07,
+          0.347
+        ],
+        "delta_abs_bias": 0.28,
+        "delta_abs_bias_ci95": [
+          0.122,
+          0.441
+        ]
+      },
+      "ge90": {
+        "people": 162,
+        "mae": 10.297,
+        "bias": -10.088,
+        "delta_mae": 1.006,
+        "delta_mae_ci95": [
+          0.639,
+          1.358
+        ],
+        "delta_abs_bias": 1.097,
+        "delta_abs_bias_ci95": [
+          0.73,
+          1.45
+        ]
+      },
+      "ge100": {
+        "people": 36,
+        "mae": 15.786,
+        "bias": -15.786,
+        "delta_mae": 1.642,
+        "delta_mae_ci95": [
+          0.891,
+          2.405
+        ],
+        "delta_abs_bias": 1.642,
+        "delta_abs_bias_ci95": [
+          0.891,
+          2.405
+        ]
+      },
+      "lt70": {
+        "people": 383,
+        "mae": 7.719,
+        "bias": 6.393,
+        "delta_mae": 0.564,
+        "delta_mae_ci95": [
+          0.342,
+          0.788
+        ],
+        "delta_abs_bias": 0.618,
+        "delta_abs_bias_ci95": [
+          0.385,
+          0.85
+        ]
+      }
+    },
+    "external": {
+      "TD": {
+        "people": 9,
+        "score": 100.59,
+        "baseline": 85.79,
+        "rise": 14.8
+      },
+      "CP": {
+        "people": 14,
+        "score": 79.75,
+        "baseline": 74.37,
+        "rise": 5.38
+      },
+      "ITW": {
+        "people": 4,
+        "score": 96.94,
+        "baseline": 81.81,
+        "rise": 15.13
+      },
+      "self_normal": {
+        "videos": 6,
+        "score": 95.41,
+        "baseline": 74.08,
+        "rise": 21.33
+      },
+      "self_abnormal": {
+        "videos": 7,
+        "score": 71.04,
+        "baseline": 66.65,
+        "rise": 4.39
+      },
+      "TD_minus_CP": 20.84,
+      "TD_minus_CP_baseline": 11.42
+    },
+    "success": {
+      "accuracy": false,
+      "high_scores": false,
+      "normal_response": true
+    }
+  },
+  "audit": {
+    "R_rank": {
+      "refit_replay_max_error": 4.784266154089778e-05
+    },
+    "D_adversarial": {
+      "refit_replay_max_error": 0.0004024505615234375
+    },
+    "C0_cycle": {
+      "refit_replay_max_error": 4.57763671875e-05
+    },
+    "C1_cycle": {
+      "refit_replay_max_error": 3.0517578125e-05
+    }
+  }
+}

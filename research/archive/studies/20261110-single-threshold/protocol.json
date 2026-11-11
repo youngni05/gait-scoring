@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-10",
+  "frozen_before_results": true,
+  "authorization": "User agreed on 2026-11-10 to shift the paper toward generalisation and use, and to run the single-threshold analysis.",
+  "question": "Can one fixed score threshold separate normal from abnormal gait across all three external sets, with the baseline and the normal-added model?",
+  "threshold": "Primary: 90 points, one standard deviation of the GDI normal reference below 100, fixed before looking at the result. Secondary: 85 and 95.",
+  "rule": "Score at or above the threshold is called normal range; below is called abnormal.",
+  "data": "Stored scores, measured-value calibration for the normal-added model. LIVE: person level, 9 typically developing and 14 cerebral palsy. Self-captured: video level, 6 normal and 7 simulated abnormal (3 adults). Older: person level, 11 healthy and 25 stroke aged 65 or more.",
+  "metrics": "Share of normal called normal (specificity for normal), share of abnormal called abnormal (sensitivity), balanced accuracy, per set and pooled over the 92 units. 95 percent bootstrap intervals by resampling units within each group, 10000 draws, seed 20261110; interval of the balanced accuracy difference between models on the same units."
+}

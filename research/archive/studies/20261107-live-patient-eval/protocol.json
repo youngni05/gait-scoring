@@ -1,0 +1,63 @@
+{
+  "version": "1.1",
+  "frozen_before_results": true,
+  "date": "2026-11-07",
+  "authorization": "User approved evaluating LIVE-GaitNeuroKids cerebral palsy and idiopathic toe walking sagittal gait videos with the existing models, including video download and school GPU pose extraction.",
+  "questions": [
+    "Within one dataset, does the normal-added model raise children with real gait impairment less than typically developing children?",
+    "Does the source classifier treat these children like the normal adult data, and does the normal-added model behave differently from that rule?"
+  ],
+  "training": false,
+  "data": {
+    "source": "LIVE-GaitNeuroKids v1.1 VIDEO.zip, Zenodo record 21278362",
+    "new_groups": "CP and ITW, files named GAIT-*-SAGITTAL.MOV only. 96 and 47 videos in the archive listing.",
+    "reference_group": "The existing typically developing set: 9 people, 12 records, unchanged. It is not reselected.",
+    "eligible_frame_rate": "Nominal 30 fps only (metadata fps 40 or below)."
+  },
+  "pose": "Same BODY25 weights, GPU forward pass and official OpenPose 1.7.0 decoding as the typically developing videos. No time resampling, mirroring or left-right swap.",
+  "selection": {
+    "unit": "One 124-frame window per video at most.",
+    "target": "The walking child. Adults, therapists and bystanders are not the target. Frames where the child cannot be identified remain missing.",
+    "rules": [
+      "Required-coordinate missing fraction 25% or less.",
+      "Moving fraction 80% or more, using the same hip-speed rule as reinspect_live.py.",
+      "Up to two highest-moving candidates per video are reviewed on 17 chronological frames.",
+      "Reject jumps, turns, discontinuous walking, wrong target, or a non-sagittal view."
+    ],
+    "assistive_devices": "Recorded if visible, not an exclusion by itself.",
+    "blinding": "Selection and visual review finish before any GDI model or source classifier is run on these videos."
+  },
+  "models": {
+    "before": "Fusion trained on the cerebral palsy data only.",
+    "after_mixed": "Normal-added fusion with mixed calibration.",
+    "after_measured": "Normal-added fusion with measured-value calibration. Primary condition, matching Table 4.",
+    "source_control": "Existing logistic source classifier and hard gate on CNN and STT, threshold 0.5, unchanged."
+  },
+  "aggregation": "Window to record, then left-right mean, then record to person, then equal weight per person. Five outer-fold outputs are averaged.",
+  "primary_comparisons": [
+    "Per-person rise (after_measured minus before) in CP versus TD, and ITW versus TD.",
+    "Group mean prediction after_measured in CP and ITW versus TD."
+  ],
+  "uncertainty": "Person bootstrap, 10000 draws, seed 20261107, percentile 95% interval for group means and group differences. Exploratory, no multiple-comparison adjustment.",
+  "interpretation_fixed_in_advance": {
+    "supports_gait_response": "The 95% interval of the patient-minus-TD rise lies below 0 and the after_measured mean of the patient group is lower than TD.",
+    "supports_dataset_response": "The 95% interval of the patient-minus-TD rise includes 0 and the patient group after_measured mean is 90 or above.",
+    "otherwise": "Report as inconclusive.",
+    "source_control": "If the classifier gives patient videos probability 0.5 or above, compare the gate with the normal-added model. If it does not, report that the gate cannot explain the patient scores."
+  },
+  "reporting_rule": "All results are reported whatever their direction. No threshold, window, weight or calibration is changed after seeing scores.",
+  "limitations": [
+    "LIVE has no measured GDI, so this tests score response, not accuracy.",
+    "Children differ from the adults used for assumed scores.",
+    "The typically developing set was already used; only the new groups are unseen.",
+    "Clinical severity and assistive devices may affect pose extraction."
+  ],
+  "amendments": [
+    {
+      "date": "2026-11-07",
+      "when": "After video metadata, before pose extraction and before any score",
+      "change": "Exclude 5 videos recorded at 119.97 fps (P03 two, P08 one, P27 two, CP 3 and ITW 2 videos). Keep 138 videos near 30 fps.",
+      "reason": "124 frames at 119.97 fps cover about one second, so these inputs would not match the 30 fps training windows, and the protocol forbids time resampling. All 32 people keep at least one eligible video."
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "arms": {
+    "n0_s1": {
+      "eval_mae": 6.233,
+      "eval_delta_mae": -0.016,
+      "eval_delta_mae_ci95": [
+        -0.06,
+        0.029
+      ],
+      "eval_corr": 0.77,
+      "means": {
+        "LIVE_TD": 80.71,
+        "LIVE_CP": 72.44,
+        "self_normal": 79.39,
+        "self_abnormal": 67.03,
+        "older_healthy": 82.54,
+        "older_stroke": 72.64
+      },
+      "gaps": {
+        "LIVE": 8.27,
+        "self": 12.36,
+        "older": 9.9
+      }
+    },
+    "n0_s2": {
+      "eval_mae": 6.266,
+      "eval_delta_mae": 0.017,
+      "eval_delta_mae_ci95": [
+        -0.025,
+        0.06
+      ],
+      "eval_corr": 0.768,
+      "means": {
+        "LIVE_TD": 82.59,
+        "LIVE_CP": 72.88,
+        "self_normal": 79.73,
+        "self_abnormal": 66.98,
+        "older_healthy": 83.28,
+        "older_stroke": 72.55
+      },
+      "gaps": {
+        "LIVE": 9.71,
+        "self": 12.75,
+        "older": 10.73
+      }
+    },
+    "n64_s1": {
+      "eval_mae": 6.34,
+      "eval_delta_mae": 0.091,
+      "eval_delta_mae_ci95": [
+        -0.022,
+        0.215
+      ],
+      "eval_corr": 0.76,
+      "means": {
+        "LIVE_TD": 98.89,
+        "LIVE_CP": 79.07,
+        "self_normal": 93.63,
+        "self_abnormal": 69.54,
+        "older_healthy": 92.46,
+        "older_stroke": 73.68
+      },
+      "gaps": {
+        "LIVE": 19.82,
+        "self": 24.09,
+        "older": 18.78
+      }
+    },
+    "n64_s2": {
+      "eval_mae": 6.345,
+      "eval_delta_mae": 0.096,
+      "eval_delta_mae_ci95": [
+        -0.017,
+        0.221
+      ],
+      "eval_corr": 0.759,
+      "means": {
+        "LIVE_TD": 99.29,
+        "LIVE_CP": 79.47,
+        "self_normal": 93.93,
+        "self_abnormal": 69.41,
+        "older_healthy": 93.19,
+        "older_stroke": 73.53
+      },
+      "gaps": {
+        "LIVE": 19.82,
+        "self": 24.52,
+        "older": 19.66
+      }
+    },
+    "n4_s0": {
+      "eval_mae": 6.312,
+      "eval_delta_mae": 0.063,
+      "eval_delta_mae_ci95": [
+        -0.007,
+        0.135
+      ],
+      "eval_corr": 0.764,
+      "means": {
+        "LIVE_TD": 91.84,
+        "LIVE_CP": 76.01,
+        "self_normal": 88.45,
+        "self_abnormal": 67.5,
+        "older_healthy": 86.06,
+        "older_stroke": 72.45
+      },
+      "gaps": {
+        "LIVE": 15.83,
+        "self": 20.95,
+        "older": 13.61
+      }
+    },
+    "n8_s0": {
+      "eval_mae": 6.317,
+      "eval_delta_mae": 0.068,
+      "eval_delta_mae_ci95": [
+        -0.016,
+        0.154
+      ],
+      "eval_corr": 0.765,
+      "means": {
+        "LIVE_TD": 94.52,
+        "LIVE_CP": 76.67,
+        "self_normal": 90.94,
+        "self_abnormal": 68.17,
+        "older_healthy": 88.95,
+        "older_stroke": 73.05
+      },
+      "gaps": {
+        "LIVE": 17.85,
+        "self": 22.77,
+        "older": 15.9
+      }
+    },
+    "n16_s0": {
+      "eval_mae": 6.342,
+      "eval_delta_mae": 0.094,
+      "eval_delta_mae_ci95": [
+        0.003,
+        0.188
+      ],
+      "eval_corr": 0.761,
+      "means": {
+        "LIVE_TD": 96.58,
+        "LIVE_CP": 78.01,
+        "self_normal": 91.96,
+        "self_abnormal": 68.56,
+        "older_healthy": 89.92,
+        "older_stroke": 73.48
+      },
+      "gaps": {
+        "LIVE": 18.57,
+        "self": 23.4,
+        "older": 16.44
+      }
+    },
+    "n32_s0": {
+      "eval_mae": 6.355,
+      "eval_delta_mae": 0.106,
+      "eval_delta_mae_ci95": [
+        0.004,
+        0.217
+      ],
+      "eval_corr": 0.759,
+      "means": {
+        "LIVE_TD": 98.29,
+        "LIVE_CP": 78.94,
+        "self_normal": 93.68,
+        "self_abnormal": 68.93,
+        "older_healthy": 92.42,
+        "older_stroke": 73.64
+      },
+      "gaps": {
+        "LIVE": 19.35,
+        "self": 24.75,
+        "older": 18.78
+      }
+    },
+    "n0_s0": {
+      "eval_mae": 6.249,
+      "means": {
+        "LIVE_TD": 81.76,
+        "LIVE_CP": 72.41,
+        "self_normal": 79.35,
+        "self_abnormal": 66.68,
+        "older_healthy": 82.7,
+        "older_stroke": 71.89
+      },
+      "gaps": {
+        "LIVE": 9.35,
+        "self": 12.67,
+        "older": 10.81
+      }
+    },
+    "n64_s0": {
+      "eval_mae": 6.375,
+      "means": {
+        "LIVE_TD": 98.83,
+        "LIVE_CP": 79.29,
+        "self_normal": 94.23,
+        "self_abnormal": 69.46,
+        "older_healthy": 92.59,
+        "older_stroke": 73.38
+      },
+      "gaps": {
+        "LIVE": 19.54,
+        "self": 24.77,
+        "older": 19.21
+      }
+    }
+  },
+  "dose_order": [
+    "n0_s0",
+    "n4_s0",
+    "n8_s0",
+    "n16_s0",
+    "n32_s0",
+    "n64_s0"
+  ],
+  "ljmu_people": [
+    0,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "ljmu_videos": [
+    0,
+    62,
+    121,
+    233,
+    450,
+    881
+  ],
+  "seed": {
+    "s0": {
+      "LIVE_TD_rise": 17.07,
+      "gap_change": {
+        "LIVE": 10.19,
+        "self": 12.1,
+        "older": 8.4
+      },
+      "eval_mae_change": 0.126
+    },
+    "s1": {
+      "LIVE_TD_rise": 18.18,
+      "gap_change": {
+        "LIVE": 11.55,
+        "self": 11.73,
+        "older": 8.88
+      },
+      "eval_mae_change": 0.107
+    },
+    "s2": {
+      "LIVE_TD_rise": 16.7,
+      "gap_change": {
+        "LIVE": 10.11,
+        "self": 11.77,
+        "older": 8.93
+      },
+      "eval_mae_change": 0.079
+    }
+  },
+  "criteria": {
+    "dose_spearman_LIVE_TD": 1.0,
+    "dose_spearman_self_normal": 1.0,
+    "dose_gap_ge16_larger_than_0": true,
+    "dose_pass": true,
+    "seed_same_sign": true
+  }
+}

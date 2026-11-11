@@ -1453,5 +1453,106 @@
       "archive/studies/20261106-older-normal100/README.md"
     ],
     "status": "원본 기록 시점 기준; 이번 작업에서 재학습·원격 조회하지 않음"
+  },
+  {
+    "id": "20261106-final222-normal100",
+    "source": "studies/20261106-final222-normal100",
+    "files": 8,
+    "reports": [
+      "archive/studies/20261106-final222-normal100/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261107-live-patient-eval",
+    "source": "studies/20261107-live-patient-eval",
+    "files": 26,
+    "reports": [
+      "archive/studies/20261107-live-patient-eval/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261107-dose222",
+    "source": "studies/20261107-dose222",
+    "files": 6,
+    "reports": [
+      "archive/studies/20261107-dose222/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261109-model-improvement",
+    "source": "studies/20261109-model-improvement",
+    "files": 15,
+    "reports": [
+      "archive/studies/20261109-model-improvement/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261110-rescale-control",
+    "source": "studies/20261110-rescale-control",
+    "files": 4,
+    "reports": [
+      "archive/studies/20261110-rescale-control/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261110-external-stats",
+    "source": "studies/20261110-external-stats",
+    "files": 4,
+    "reports": [
+      "archive/studies/20261110-external-stats/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261110-recomputed-gdi",
+    "source": "studies/20261110-recomputed-gdi",
+    "files": 6,
+    "reports": [
+      "archive/studies/20261110-recomputed-gdi/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261110-paretic-leg",
+    "source": "studies/20261110-paretic-leg",
+    "files": 4,
+    "reports": [
+      "archive/studies/20261110-paretic-leg/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261110-dose-seed",
+    "source": "studies/20261110-dose-seed",
+    "files": 28,
+    "reports": [
+      "archive/studies/20261110-dose-seed/README.md",
+      "archive/studies/20261110-dose-seed/bundle/CNN/sources/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261110-finetune",
+    "source": "studies/20261110-finetune",
+    "files": 23,
+    "reports": [
+      "archive/studies/20261110-finetune/README.md",
+      "archive/studies/20261110-finetune/bundle/CNN/sources/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
+  },
+  {
+    "id": "20261110-single-threshold",
+    "source": "studies/20261110-single-threshold",
+    "files": 6,
+    "reports": [
+      "archive/studies/20261110-single-threshold/README.md"
+    ],
+    "status": "2026-11-11 추가; 원본 기록 시점 기준, 공개 사본에서 개인별 항목 제거"
   }
 ]

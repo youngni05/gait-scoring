@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-10",
+  "frozen_before_results": true,
+  "authorization": "User asked on 2026-11-10 to run experiment B.",
+  "question": "In unseen stroke survivors, does the model score the paretic leg lower than the other leg, in agreement with the left-right difference of GDI recomputed from 3D joint angles?",
+  "data": "Stroke survivors of Van Criekinge et al. 2023 with model scores (studies/20261106-older-normal100, primary records, virtual side-view input) and recomputed limb GDI (studies/20261110-recomputed-gdi, healthy adults as reference). Paretic side from LesionLeft (left lesion means right paretic).",
+  "model_legs": "Per person, the mean over primary-record windows of each leg, for the baseline and the normal-added ensemble (measured-value calibration). Leg order of the model output is left, right.",
+  "metrics": {
+    "primary": "Share of stroke survivors whose paretic leg scores lower than the other leg, per model, with a 95 percent person bootstrap interval; the same share for recomputed GDI as reference.",
+    "secondary": [
+      "Mean paretic minus other-leg difference per model and for recomputed GDI",
+      "Pearson correlation between model and recomputed paretic minus other-leg differences",
+      "Healthy adults: absolute left-right difference, as a noise reference"
+    ]
+  },
+  "bootstrap": "10000 person draws, seed 20261110."
+}

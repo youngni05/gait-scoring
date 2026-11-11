@@ -1,0 +1,72 @@
+{
+  "self_video_level": {
+    "n_normal": 6,
+    "n_abnormal": 7,
+    "rise_normal": 14.87,
+    "rise_abnormal": 2.77,
+    "rise_difference": 12.1,
+    "rise_difference_ci95": [
+      9.129,
+      14.825
+    ],
+    "gap_before": 12.67,
+    "gap_before_ci95": [
+      11.63,
+      13.683
+    ],
+    "gap_after": 24.77,
+    "gap_after_ci95": [
+      21.009,
+      27.95
+    ],
+    "gap_change_ci95": [
+      9.129,
+      14.825
+    ],
+    "auc_before": 1.0,
+    "auc_before_ci95": [
+      1.0,
+      1.0
+    ],
+    "auc_after": 1.0,
+    "auc_after_ci95": [
+      1.0,
+      1.0
+    ]
+  },
+  "older_person_level": {
+    "n_normal": 11,
+    "n_abnormal": 25,
+    "rise_normal": 9.89,
+    "rise_abnormal": 1.48,
+    "rise_difference": 8.41,
+    "rise_difference_ci95": [
+      4.536,
+      12.252
+    ],
+    "gap_before": 10.81,
+    "gap_before_ci95": [
+      7.175,
+      14.482
+    ],
+    "gap_after": 19.22,
+    "gap_after_ci95": [
+      13.799,
+      24.216
+    ],
+    "gap_change_ci95": [
+      4.536,
+      12.252
+    ],
+    "auc_before": 0.909,
+    "auc_before_ci95": [
+      0.8,
+      0.982
+    ],
+    "auc_after": 0.949,
+    "auc_after_ci95": [
+      0.869,
+      1.0
+    ]
+  }
+}

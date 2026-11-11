@@ -1,0 +1,61 @@
+{
+  "baseline": {
+    "tuned_threshold": {
+      "LIVE": 76.61,
+      "self": 72.61,
+      "older": 74.97
+    },
+    "in_set_balanced_accuracy": {
+      "LIVE": 0.893,
+      "self": 1.0,
+      "older": 0.86
+    },
+    "threshold_spread": 4.0,
+    "transferred_balanced_accuracy": {
+      "LIVE->self": 1.0,
+      "LIVE->older": 0.769,
+      "self->LIVE": 0.786,
+      "self->older": 0.8,
+      "older->LIVE": 0.857,
+      "older->self": 1.0
+    },
+    "mean_transferred": 0.869,
+    "fixed_90": {
+      "LIVE": 0.5,
+      "self": 0.5,
+      "older": 0.545
+    }
+  },
+  "normal_added": {
+    "tuned_threshold": {
+      "LIVE": 91.11,
+      "self": 79.54,
+      "older": 78.7
+    },
+    "in_set_balanced_accuracy": {
+      "LIVE": 0.929,
+      "self": 1.0,
+      "older": 0.9
+    },
+    "threshold_spread": 12.41,
+    "transferred_balanced_accuracy": {
+      "LIVE->self": 0.917,
+      "LIVE->older": 0.844,
+      "self->LIVE": 0.786,
+      "self->older": 0.829,
+      "older->LIVE": 0.786,
+      "older->self": 1.0
+    },
+    "mean_transferred": 0.86,
+    "fixed_90": {
+      "LIVE": 0.929,
+      "self": 0.917,
+      "older": 0.889
+    }
+  },
+  "mean_transferred_difference": -0.009,
+  "mean_transferred_difference_ci95": [
+    -0.08,
+    0.116
+  ]
+}

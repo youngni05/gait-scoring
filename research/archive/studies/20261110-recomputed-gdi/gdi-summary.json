@@ -1,0 +1,73 @@
+{
+  "counts": {
+    "files": 789,
+    "files_with_cycles": 597,
+    "cycles": 2437
+  },
+  "read_errors": 0,
+  "limbs": 375,
+  "people": {
+    "healthy": 138,
+    "stroke": 50
+  },
+  "healthy_young_people": 98,
+  "missing_age": 0,
+  "svd_15_variance_share": 0.9861,
+  "reference_sizes_limbs": {
+    "R_all": 276,
+    "R_young": 196
+  },
+  "R_all": {
+    "healthy_all": [
+      99.83,
+      276
+    ],
+    "healthy_ge65": [
+      97.0,
+      80
+    ],
+    "healthy_lt65": [
+      100.98,
+      196
+    ],
+    "stroke_all": [
+      85.21,
+      99
+    ],
+    "stroke_ge65": [
+      84.88,
+      55
+    ],
+    "stroke_lt65": [
+      85.63,
+      44
+    ]
+  },
+  "R_young": {
+    "healthy_all": [
+      98.41,
+      276
+    ],
+    "healthy_ge65": [
+      95.14,
+      80
+    ],
+    "healthy_lt65": [
+      99.75,
+      196
+    ],
+    "stroke_all": [
+      82.65,
+      99
+    ],
+    "stroke_ge65": [
+      82.3,
+      55
+    ],
+    "stroke_lt65": [
+      83.1,
+      44
+    ]
+  },
+  "gait_vectors_sha256": "c3640298856af46285cfee8858e9c9cbeaf12facb2523f31a280db31be4db941"
+}

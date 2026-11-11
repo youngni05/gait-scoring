@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "frozen_before_results": true,
+  "date": "2026-11-06",
+  "authorization": "User requested evaluating the normal-added models on the separate 222-person evaluation set so the paper can report before/after results on one evaluation set.",
+  "question": "On the 222 people held out from all model development, how do the Stanford-only models and the models trained with LJMU assumed scores compare?",
+  "training": false,
+  "input": "Existing final223-frozen features: 222 people, 377 records. No new preprocessing, exclusions or labels.",
+  "arms": {
+    "baseline": "Existing Stanford-only predictions already stored in final223-frozen. Not recomputed.",
+    "mixed": "Normal-added models with the calibration stored at training (Stanford + LJMU training rows).",
+    "mixed_stanford_cal": "Same normal-added networks. Each member slope and intercept fitted by least squares on that member's Stanford training rows only."
+  },
+  "models": "Seven paper models: CNN, RF, STT, bilateral STT, CNN ensemble, STT ensemble, CNN-STT fusion. Fusion uses the fixed fold weights in bundle/ensemble.json. RF has no linear calibration, so mixed_stanford_cal does not apply to RF.",
+  "aggregation": "Windows to record, then calibration, then the fold combination, then the equal mean of five outer-fold outputs. Same as the baseline evaluation.",
+  "metrics": {
+    "mae": "Within-person mean over records and sides, then equal mean across people.",
+    "bias": "Prediction minus measured GDI, same weighting.",
+    "bands": "All, below 50, below 70, 90 or above, 100 or above. Bands use the measured GDI of each record-side observation.",
+    "association": "Pearson correlation and regression slope of prediction on measured GDI over record-side observations."
+  },
+  "primary_comparison": "Fusion overall MAE: mixed_stanford_cal minus baseline.",
+  "uncertainty": "Paired person bootstrap, 10000 draws, seed 20261106, percentile 95% interval. Exploratory, not adjusted for multiple comparisons, conditional on fitted models.",
+  "reporting_rule": "Every result is reported whatever its direction. No threshold, setting, weight or calibration is chosen from these results.",
+  "validation": {
+    "checkpoint_hashes": "Every checkpoint SHA-256 must match complete.json.",
+    "person_separation": "No evaluation person may appear in a member's training or validation people.",
+    "replay_tolerance_points": 0.005,
+    "replay": "Each member's raw output on the LIVE inputs must reproduce the saved member-raw outputs.",
+    "baseline_check": "Stored baseline fusion must reproduce MAE 6.248559 and the stored score table."
+  },
+  "limitations": [
+    "This set was already used for the baseline final evaluation and later post-hoc analyses, so it is held out from training but not unseen by the project.",
+    "The normal-added models and both calibrations were fixed before this evaluation; none of them used this set.",
+    "Small bands below 50 and 100 or above are descriptive."
+  ]
+}

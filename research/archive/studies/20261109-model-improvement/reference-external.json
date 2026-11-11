@@ -1,0 +1,23 @@
+{
+  "TD": {
+    "people": 9,
+    "score": 98.88
+  },
+  "CP": {
+    "people": 14,
+    "score": 78.12
+  },
+  "ITW": {
+    "people": 4,
+    "score": 95.4
+  },
+  "self_normal": {
+    "videos": 6,
+    "score": 92.17
+  },
+  "self_abnormal": {
+    "videos": 7,
+    "score": 68.2
+  },
+  "TD_minus_CP": 20.76
+}

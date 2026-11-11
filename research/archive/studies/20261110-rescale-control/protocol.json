@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-10",
+  "frozen_before_results": true,
+  "authorization": "User asked on 2026-11-10 to run the planned paper-strengthening experiments.",
+  "question": "Can the baseline CNN-STT ensemble reach the same normal-gait scores by a linear change of its score scale alone, without retraining, and what does that cost in abnormal-gait scores and evaluation-set accuracy?",
+  "inputs": "Stored calibrated baseline ensemble predictions: development out-of-fold Stanford and LJMU rows (comparison-predictions.npz baseline__fusion), evaluation set 222 (final223-frozen predictions.npz fusion with labels from scores.csv), and the stored group means of LIVE, self-captured and older external sets.",
+  "rescales": {
+    "A_mixed_fit": "Least squares a*p+b fitted on development rows: Stanford with measured GDI and LJMU at 100, every record and leg weighted equally, the same targets the normal-added model was trained on.",
+    "B_ljmu_to_100": "a and b that minimise squared error on development Stanford rows subject to the mean LJMU prediction equal to 100.",
+    "C_live_td_match": "a and b that minimise squared error on development Stanford rows subject to the LIVE typically developing mean equal to the normal-added value 98.83."
+  },
+  "comparison": "Normal-added model with measured-value calibration (paper). For each rescale: evaluation person MAE and correlation (unchanged by a linear map), group means of LIVE typically developing and cerebral palsy, self normal and simulated abnormal, healthy and stroke adults 65 or older, and the normal minus abnormal gap in each source.",
+  "expectation_not_criterion": "If rescaling alone reaches similar normal scores with a similar evaluation MAE and gaps, the paper must not claim that retraining was needed."
+}

@@ -1,0 +1,117 @@
+{
+  "baseline": {
+    "scale": null,
+    "evaluation_mae": 6.249,
+    "delta_mae_ci95": [
+      0.0,
+      0.0
+    ],
+    "means": {
+      "LIVE_TD": 81.76,
+      "LIVE_CP": 72.41,
+      "self_normal": 79.35,
+      "self_abnormal": 66.68,
+      "older_healthy": 82.7,
+      "older_stroke": 71.89
+    },
+    "gaps": {
+      "LIVE": 9.35,
+      "self": 12.67,
+      "older": 10.81
+    }
+  },
+  "normal_added": {
+    "scale": null,
+    "evaluation_mae": 6.375,
+    "delta_mae_ci95": [
+      0.016,
+      0.246
+    ],
+    "means": {
+      "LIVE_TD": 98.83,
+      "LIVE_CP": 79.29,
+      "self_normal": 94.23,
+      "self_abnormal": 69.46,
+      "older_healthy": 92.59,
+      "older_stroke": 73.38
+    },
+    "gaps": {
+      "LIVE": 19.54,
+      "self": 24.77,
+      "older": 19.22
+    }
+  },
+  "A_mixed_fit": {
+    "scale": [
+      1.0263,
+      6.869
+    ],
+    "evaluation_mae": 9.729,
+    "delta_mae_ci95": [
+      2.765,
+      4.185
+    ],
+    "means": {
+      "LIVE_TD": 90.78,
+      "LIVE_CP": 81.19,
+      "self_normal": 88.31,
+      "self_abnormal": 75.31,
+      "older_healthy": 91.75,
+      "older_stroke": 80.65
+    },
+    "gaps": {
+      "LIVE": 9.59,
+      "self": 13.0,
+      "older": 11.1
+    }
+  },
+  "B_ljmu_to_100": {
+    "scale": [
+      1.8987,
+      -52.319
+    ],
+    "evaluation_mae": 16.774,
+    "delta_mae_ci95": [
+      9.317,
+      11.716
+    ],
+    "means": {
+      "LIVE_TD": 102.92,
+      "LIVE_CP": 85.18,
+      "self_normal": 98.35,
+      "self_abnormal": 74.29,
+      "older_healthy": 104.71,
+      "older_stroke": 84.18
+    },
+    "gaps": {
+      "LIVE": 17.75,
+      "self": 24.05,
+      "older": 20.53
+    }
+  },
+  "C_live_td_match": {
+    "scale": [
+      1.8732,
+      -54.32
+    ],
+    "evaluation_mae": 13.714,
+    "delta_mae_ci95": [
+      6.386,
+      8.516
+    ],
+    "means": {
+      "LIVE_TD": 98.83,
+      "LIVE_CP": 81.33,
+      "self_normal": 94.32,
+      "self_abnormal": 70.59,
+      "older_healthy": 100.6,
+      "older_stroke": 80.35
+    },
+    "gaps": {
+      "LIVE": 17.51,
+      "self": 23.73,
+      "older": 20.25
+    }
+  },
+  "protocol_sha256": "d350bdd48d2fd44f8e79572976efed4dd233d858e04f4c29ccce0f0053dee180"
+}

@@ -1,0 +1,9 @@
+{
+  "checkpoints_checked": 600,
+  "hash_mismatch": [],
+  "replay": {
+    "CNN": 3.0517578125e-05,
+    "STT": 3.0517578125e-05,
+    "bilateral": 4.00543212890625e-05
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-10",
+  "authorization": "User asked on 2026-11-10 to run the long GPU experiments first (dose curve and seed repeats), with GPU jobs split to finish sooner.",
+  "purpose": "Dose: how normal-gait scores and evaluation accuracy change with the number of assumed-normal LJMU people, under the same design as the published normal-added model. Seeds: whether the published before/after differences hold under other seed schedules.",
+  "design": "Same frozen CNN, STT and bilateral-STT training as studies/20261104-ljmu100-mixed: five person folds, four inner fits plus a refit, epoch chosen by inner validation, frozen ensemble weights. LJMU people of an arm keep their original fold and all their records. People are chosen nested and fold-balanced by a fixed hash. Seed offset is added to the protocol seed of every family.",
+  "existing_arms": {
+    "n0_s0": "published baseline models",
+    "n64_s0": "published normal-added models"
+  },
+  "arms": {
+    "n4_s0": {
+      "ljmu_people": 4,
+      "seed_offset": 0
+    },
+    "n8_s0": {
+      "ljmu_people": 8,
+      "seed_offset": 0
+    },
+    "n16_s0": {
+      "ljmu_people": 16,
+      "seed_offset": 0
+    },
+    "n32_s0": {
+      "ljmu_people": 32,
+      "seed_offset": 0
+    },
+    "n0_s1": {
+      "ljmu_people": 0,
+      "seed_offset": 1000
+    },
+    "n0_s2": {
+      "ljmu_people": 0,
+      "seed_offset": 2000
+    },
+    "n64_s1": {
+      "ljmu_people": 64,
+      "seed_offset": 1000
+    },
+    "n64_s2": {
+      "ljmu_people": 64,
+      "seed_offset": 2000
+    }
+  },
+  "calibration_for_reporting": "Linear calibration fitted on Stanford training rows only (measured-value calibration), as in the paper.",
+  "external_sets": [
+    "eval",
+    "livetd",
+    "self",
+    "livepat",
+    "older"
+  ],
+  "external_sources": {
+    "eval": "D:\\gait-research-data\\D_P\\final223-frozen-20261102\\features.npz",
+    "livetd": "D:\\gait-research-data\\D_P\\unseen-normal-test-20261105\\inputs.npz live__",
+    "self": "D:\\gait-research-data\\D_P\\unseen-normal-test-20261105\\inputs.npz self__",
+    "livepat": "D:\\gait-research-data\\D_P\\live-patient-eval-20261107\\inputs.npz",
+    "older": "D:\\gait-research-data\\D_P\\frozen-transfer-and-deviation-20261103\\features.npz"
+  },
+  "evaluation": "CNN-STT ensemble per arm. Evaluation set: person MAE and correlation. External: mean score of LIVE typically developing, LIVE cerebral palsy, self-captured normal and simulated abnormal, healthy and stroke adults aged 65 or more; normal minus abnormal gap in each source.",
+  "criteria_fixed_in_advance": {
+    "dose": "Rank correlation between LJMU people (0,4,8,16,32,64) and the normal score is positive for LIVE typically developing children and self-captured normal gait; the normal minus abnormal gap at 16 or more people is larger than at 0 in all three external sources.",
+    "seeds": "For each of the three seed schedules, normal-added minus baseline has the same sign as the published result for: LIVE typically developing score rise, normal minus abnormal gap change in all three sources, evaluation MAE change."
+  },
+  "data_sha256": "306f6f2139a58c0b7716175b6edb05d5072e35f98fdaec0f01b9d40693a08ca9",
+  "external_sha256": "91fd481092758e5fb444d5dcf74751ad03b60fd27fe62f1ee9bb6e5ca82f02c9"
+}

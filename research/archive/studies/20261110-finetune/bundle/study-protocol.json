@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-10",
+  "authorization": "User asked on 2026-11-10 to run experiment C: continued training from the baseline model.",
+  "question": "Does short continued training of the published baseline members on Stanford plus LJMU100 recover normal-gait scores with less loss of evaluation accuracy than training from scratch?",
+  "design": "Same data, folds, seeds and ensemble weights as the published normal-added model. Each member starts from the baseline member of the same outer and inner fold, so its Stanford training people are identical and no validation or outer person was seen. Optimizer state starts fresh. Epoch chosen by the weighted mean of the available inner validation curves (Stanford and LJMU validation people, as in the published model). CNN fold 0 has three baseline inner members. Bilateral STT has only baseline refit members, so its refit uses the epoch selected for STT in the same fold.",
+  "finetune": {
+    "CNN": {
+      "learning_rate": 0.0001,
+      "max_epochs": 30
+    },
+    "STT": {
+      "learning_rate": 3e-05,
+      "eta_min": 8e-06,
+      "max_epochs": 40
+    },
+    "bilateral": {
+      "learning_rate": 3e-05,
+      "eta_min": 8e-06,
+      "max_epochs": 40
+    }
+  },
+  "calibration_for_reporting": "Measured-value calibration on Stanford training rows, as in the paper.",
+  "external_sets": [
+    "eval",
+    "livetd",
+    "self",
+    "livepat",
+    "older"
+  ],
+  "criteria_fixed_in_advance": {
+    "accuracy": "Evaluation-set person MAE change against the baseline ensemble smaller than the published normal-added change (+0.126), reported with a 95 percent person bootstrap interval.",
+    "normal_scores": "LIVE typically developing and self-captured normal means at least 90.",
+    "selectivity": "Normal minus abnormal gap larger than the baseline in all three external sources."
+  },
+  "data_sha256": "306f6f2139a58c0b7716175b6edb05d5072e35f98fdaec0f01b9d40693a08ca9",
+  "external_sha256": "91fd481092758e5fb444d5dcf74751ad03b60fd27fe62f1ee9bb6e5ca82f02c9"
+}

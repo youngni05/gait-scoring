@@ -160,3 +160,14 @@
 | [20261105-unseen-normal-test](studies/20261105-unseen-normal-test/) | 16 | [기록](studies/20261105-unseen-normal-test/README.md) |
 | [20261106-meeting-demo](studies/20261106-meeting-demo/) | 6 | 별도 설명 없음; 코드·설정 확인 |
 | [20261106-older-normal100](studies/20261106-older-normal100/) | 9 | [기록](studies/20261106-older-normal100/README.md) |
+| [20261106-final222-normal100](studies/20261106-final222-normal100/) | 8 | [기록](studies/20261106-final222-normal100/README.md) |
+| [20261107-live-patient-eval](studies/20261107-live-patient-eval/) | 26 | [기록](studies/20261107-live-patient-eval/README.md) |
+| [20261107-dose222](studies/20261107-dose222/) | 6 | [기록](studies/20261107-dose222/README.md) |
+| [20261109-model-improvement](studies/20261109-model-improvement/) | 15 | [기록](studies/20261109-model-improvement/README.md) |
+| [20261110-rescale-control](studies/20261110-rescale-control/) | 4 | [기록](studies/20261110-rescale-control/README.md) |
+| [20261110-external-stats](studies/20261110-external-stats/) | 4 | [기록](studies/20261110-external-stats/README.md) |
+| [20261110-recomputed-gdi](studies/20261110-recomputed-gdi/) | 6 | [기록](studies/20261110-recomputed-gdi/README.md) |
+| [20261110-paretic-leg](studies/20261110-paretic-leg/) | 4 | [기록](studies/20261110-paretic-leg/README.md) |
+| [20261110-dose-seed](studies/20261110-dose-seed/) | 28 | [기록](studies/20261110-dose-seed/README.md) |
+| [20261110-finetune](studies/20261110-finetune/) | 23 | [기록](studies/20261110-finetune/README.md) |
+| [20261110-single-threshold](studies/20261110-single-threshold/) | 6 | [기록](studies/20261110-single-threshold/README.md) |

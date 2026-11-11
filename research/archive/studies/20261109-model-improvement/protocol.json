@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "date": "2026-11-09",
+  "frozen_before_results": true,
+  "authorization": "User asked on 2026-11-09 to run improvement ideas 1, 2 and 3 as experiments, including GPU training.",
+  "background": "The normal-added model learned to send inputs that do not look like the development data toward 100. Inside the development data its normal-side judgement does not follow measured GDI.",
+  "family": "CNN multiwindow, same architecture, optimiser, seeds, epoch rule and five person folds as the published runs. CNN bag of four inner fits and one refit per fold.",
+  "arms": {
+    "R_rank": "Development data with measured GDI, plus a ranking loss inside LIVE: every typically developing window must score at least 20 points above every cerebral palsy window of the training people. No LJMU. LIVE people are split into the same five folds by a fixed hash; held-out LIVE people are never trained on in that fold.",
+    "D_adversarial": "Development data plus LJMU at 100, with a domain classifier on the 320-value representation behind a gradient reversal layer, so the representation should not tell the two sources apart. Reversal weight ramps from 0 to 0.3 over training.",
+    "C0_cycle": "Development data only, with cycle-normalised input.",
+    "C1_cycle": "Development data plus LJMU at 100, with cycle-normalised input."
+  },
+  "cycle_input": "Per window, the stride period T is the lag between 15 and 62 frames with the highest autocorrelation of the ankle separation of the first leg. The first 2T frames are resampled to 124 frames for every channel and both legs, so each window holds two strides. Windows without a usable period keep their original frames and are counted.",
+  "ranking_loss": "Mean over all training typically-developing by cerebral palsy window pairs of max(0, 20 points minus score difference), on the scaled output, added to the window MSE with weight 1. Each step uses all training LIVE windows.",
+  "selection_and_calibration": "Epoch chosen by inner validation person MAE on development people only. Linear calibration fitted on development training rows only, for every arm.",
+  "references": "Existing CNN bag, before-addition and normal-added with measured-value calibration, same folds.",
+  "evaluation": {
+    "development": "Out-of-fold person MAE: all, measured 90 or above, 100 or above, below 70. Paired person bootstrap 10000 against the before-addition CNN bag.",
+    "external": "Mean score and rise against the before-addition CNN bag for LIVE TD, LIVE CP, LIVE ITW, self normal, self abnormal. For R_rank, LIVE people are scored only by the fold that held them out.",
+    "diagnostics": "For D_adversarial and C1_cycle: LJMU neighbour share of held-out high records and the slope of the side score on measured GDI, as in the neighbour test."
+  },
+  "success_fixed_in_advance": {
+    "accuracy": "Development all-person MAE no worse than the before-addition CNN bag by more than 0.10 points (upper 95 percent bound).",
+    "high_scores": "Bias of legs at 90 or above closer to zero than the before-addition CNN bag, with the 95 percent interval of the change excluding zero.",
+    "normal_response": "LIVE TD scores above LIVE CP by more than the before-addition CNN bag does, on the same held-out people.",
+    "source_shortcut": "For D_adversarial and C1_cycle, side score slope on measured GDI above zero, or high-record LJMU neighbour share at least 0.2."
+  },
+  "limits": "One seed schedule, CNN only. LIVE groups are small. Ranking uses LIVE, so LIVE results for R_rank are only on held-out people of each fold. Cycle normalisation is approximate.",
+  "reporting_rule": "All arms reported whatever the direction.",
+  "amendment": "Before any GPU training or outcome, the CPU pilot showed the ranking term near zero at a 10-point margin, because the before-addition model already separates LIVE TD and CP by about 9 points. The margin was raised to 20 points so the arm is not identical to the baseline. No other setting changed."
+}
