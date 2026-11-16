@@ -10,14 +10,15 @@ import numpy as np
 
 root = Path(__file__).resolve().parents[1] / 'local-test-data/stage3-synthetic'
 root.mkdir(parents=True, exist_ok=True)
-for name, width, height, count, variable in [
-    ('landscape', 320, 180, 180, False),
-    ('portrait', 180, 320, 90, False),
-    ('variable', 320, 180, 90, True),
+for name, width, height, count, variable, rate in [
+    ('landscape', 320, 180, 180, False, 30),
+    ('portrait', 180, 320, 90, False, 30),
+    ('variable', 320, 180, 90, True, 30),
+    ('high-fps', 320, 180, 300, False, 120),
 ]:
     path = root / (name + '.mp4')
     with av.open(str(path), 'w') as output:
-        stream = output.add_stream('libx264', rate=30)
+        stream = output.add_stream('libx264', rate=rate)
         stream.width, stream.height, stream.pix_fmt = width, height, 'yuv420p'
         stream.time_base = stream.codec_context.time_base = Fraction(1, 30000)
         pts = 0
@@ -30,7 +31,7 @@ for name, width, height, count, variable in [
             frame.pts, frame.time_base = pts, Fraction(1, 30000)
             for packet in stream.encode(frame):
                 output.mux(packet)
-            pts += 2000 if variable and index % 2 else 1000
+            pts += 2000 if variable and index % 2 else 30000 // rate
         for packet in stream.encode():
             output.mux(packet)
     with av.open(str(path)) as source:
