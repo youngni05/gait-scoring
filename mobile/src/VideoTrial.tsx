@@ -4,7 +4,7 @@ import { BrowserVideoSource, type BrowserVideoSession } from './pose/browser-vid
 import type { FrameSummary } from './pose/frame-audit';
 import type { ProcessingInput, VideoInfo } from './pose/ports';
 
-export function VideoTrial({ onSelection, input }: { onSelection: () => void; input: Omit<ProcessingInput,'recordingId'> }) {
+export function VideoTrial({ onSelection, onMetadata, input }: { onSelection: () => void; onMetadata: (value: string | null) => void; input: Omit<ProcessingInput,'recordingId'> }) {
   const [recordingId,setRecordingId]=useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const mount = useRef<HTMLDivElement>(null);
@@ -29,7 +29,7 @@ export function VideoTrial({ onSelection, input }: { onSelection: () => void; in
     try {
       const opened = await new BrowserVideoSource(mount.current!).open(file, abort.signal);
       if (id !== epoch.current) { await opened.dispose(); return; }
-      session.current = opened; setInfo(opened.info); setStatus('미리보기 준비 완료. 촬영일은 아래에서 직접 확인·입력하세요.');
+      session.current = opened; setInfo(opened.info); onMetadata(opened.info.recordedAtMetadata ?? null); setStatus('미리보기 준비 완료. 촬영일 적용 값을 아래에서 확인하세요.');
     } catch (error) { if (id === epoch.current) setStatus(abort.signal.aborted ? '선택 취소됨' : `오류: ${error instanceof Error ? error.message : String(error)}`); }
     finally { if (id === epoch.current) setPhase('idle'); }
   }
@@ -53,7 +53,7 @@ export function VideoTrial({ onSelection, input }: { onSelection: () => void; in
     <label>로컬 영상 파일 선택<input type="file" accept="video/*" onChange={e => { const file = e.target.files?.[0]; if (file) void select(file); e.target.value = ''; }} /></label>
     <p className="file-name">{name}</p><div className="video-preview" ref={mount} />
     {info && <p className="status">표시·캔버스 기준 {info.width} × {info.height} · {info.orientation === 'landscape' ? '가로' : '세로'} · {info.durationSeconds.toFixed(3)}초<br />파일 회전 메타데이터 {info.rotationAppliedDegrees}°를 캔버스에 적용합니다.</p>}
-    <small>촬영일 자동 추출은 지원하지 않습니다. 파일 수정일은 촬영일로 사용하지 않습니다. 영상을 바꾸면 촬영일 입력도 초기화됩니다.</small>
+    <small>촬영일을 직접 입력하지 않으면 영상 생성 시각 메타데이터를 사용합니다. 파일 수정일은 사용하지 않습니다. 영상을 바꾸면 날짜 입력도 초기화됩니다.</small>
     <div className="actions"><button disabled={!info || phase !== 'idle'} onClick={() => void read()}>프레임 읽기 시작</button><button className="secondary" disabled={phase === 'idle'} onClick={() => controller.current?.abort()}>취소</button><button className="secondary" onClick={() => void select()}>선택 해제</button></div>
     <p role="status" className="status">{status}</p>
     {summary && <div className="frame-report"><strong>추출 {summary.count} / 원본 {expected ?? '확인 중'}프레임</strong><p>첫 시각 {summary.first?.toFixed(6) ?? '—'}초 / 끝 시각 {summary.last?.toFixed(6) ?? '—'}초<br />최대 시각 간격 {summary.maxGap.toFixed(6)}초</p><details><summary>최근 원본 프레임 시각 (초, 최대 10개)</summary><pre>{summary.recent.join('\n')}</pre></details></div>}

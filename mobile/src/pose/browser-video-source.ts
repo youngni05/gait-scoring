@@ -1,3 +1,4 @@
+import { koreanMetadataTime } from './recorded-at';
 import type { DecodedFrame, VideoInfo, VideoSession, VideoSource } from './ports';
 import { FrameAudit } from './frame-audit';
 import { CompleteFrameAudit } from './complete-frame-audit';
@@ -106,12 +107,13 @@ export class BrowserVideoSource implements VideoSource {
       const width = await track.getDisplayWidth(), height = await track.getDisplayHeight();
       const durationSeconds = await track.computeDuration();
       const rotationAppliedDegrees = await track.getRotation();
+      const recordedAtMetadata = koreanMetadataTime((await input.getMetadataTags()).creationTime);
       if (signal.aborted) throw cancelled();
       if (!(width > 0 && height > 0 && Number.isFinite(durationSeconds) && durationSeconds > 0)) throw new Error('유효하지 않은 영상 정보');
       const video = document.createElement('video');
       video.controls = true; video.muted = true; video.playsInline = true; video.preload = 'metadata'; video.setAttribute('aria-label', '선택한 영상 미리보기');
       const url = URL.createObjectURL(selection); video.src = url; this.mount.replaceChildren(video);
-      return new BrowserVideoSession(video, { width, height, durationSeconds, orientation: width >= height ? 'landscape' : 'portrait', rotationAppliedDegrees }, url, selection);
+      return new BrowserVideoSession(video, { width, height, durationSeconds, recordedAtMetadata, orientation: width >= height ? 'landscape' : 'portrait', rotationAppliedDegrees }, url, selection);
     } catch (error) { if (signal.aborted) throw cancelled(); throw error; }
     finally { signal.removeEventListener('abort', stop); input.dispose(); }
   }

@@ -9,6 +9,7 @@ export interface ProcessingInput {
   recordingId: string;
 }
 export interface VideoInfo {
+  recordedAtMetadata?: string | null;
   width: number;
   height: number;
   durationSeconds: number;
