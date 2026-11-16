@@ -16,3 +16,7 @@ local-test-data/
 mobile/local-output/
 .env
 .env.*
+mobile/dist/
+mobile/public/vendor/
+mobile/public/models/
+.android-build/
