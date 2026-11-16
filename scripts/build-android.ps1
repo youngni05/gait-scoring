@@ -11,8 +11,6 @@ Push-Location (Join-Path $PSScriptRoot '..')
 try {
     $env:JAVA_HOME = $JdkRoot
     $env:ANDROID_HOME = $SdkRoot
-    & npm.cmd run prepare:assets
-    if ($LASTEXITCODE -ne 0) { throw 'Asset preparation failed' }
     & npm.cmd run android:sync
     if ($LASTEXITCODE -ne 0) { throw 'Web build / Capacitor sync failed' }
     Push-Location mobile/android

@@ -10,9 +10,11 @@
     "typecheck": "tsc --noEmit",
     "build:contracts": "tsc",
     "test": "npm run build:contracts && node --test tests/coords-1.test.cjs tests/processing-input.test.cjs",
+    "predev:mobile": "npm run prepare:assets",
     "dev:mobile": "vite mobile --host 127.0.0.1",
     "typecheck:mobile": "tsc -p mobile/tsconfig.json",
     "prepare:assets": "node scripts/prepare-mobile-assets.mjs",
+    "prebuild:mobile": "npm run prepare:assets",
     "build:mobile": "npm run typecheck:mobile && vite build mobile --base ./",
     "android:sync": "npm run build:mobile && cd mobile && cap sync android"
   },

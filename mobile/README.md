@@ -7,7 +7,6 @@
 
 ```powershell
 npm ci
-npm run prepare:assets
 npm run dev:mobile -- --port 5173 --strictPort
 ```
 
@@ -76,6 +75,8 @@ debug APK이며 배포용 서명 APK가 아닙니다. 자동 업데이트/서버
 ## 자산·권한·미정 사항
 
 `prepare:assets`는 고정 URL의 full 모델을 최초에 내려받고 SHA-256을 검사합니다.
+`dev:mobile`과 `build:mobile`은 이 작업을 자동으로 먼저 실행합니다.
+준비 또는 체크섬 검사 실패 시 실행/빌드를 중단합니다. 최초 실행은 인터넷이 필요합니다.
 WASM은 잠금된 npm 패키지에서 복사합니다. 모델/WASM은 APK에 동봉되며 원격 CDN을 실행 중 호출하지 않습니다.
 자산은 Git 제외, 출처/버전/해시는 `model-assets.json`에 기록합니다. 재현에는 최초 다운로드가 필요합니다.
 full/CPU는 작은 기술 시험용 후보이며 최종 모델·실행 방식 선정이 아닙니다.
