@@ -53,6 +53,6 @@ export function VideoTrial({ onSelection }: { onSelection: () => void }) {
     <div className="actions"><button disabled={!info || phase !== 'idle'} onClick={() => void read()}>프레임 읽기 시작</button><button className="secondary" disabled={phase === 'idle'} onClick={() => controller.current?.abort()}>취소</button><button className="secondary" onClick={() => void select()}>선택 해제</button></div>
     <p role="status" className="status">{status}</p>
     {summary && <div className="frame-report"><strong>추출 {summary.count} / 원본 {expected ?? '확인 중'}프레임</strong><p>첫 시각 {summary.first?.toFixed(6) ?? '—'}초 / 끝 시각 {summary.last?.toFixed(6) ?? '—'}초<br />최대 시각 간격 {summary.maxGap.toFixed(6)}초</p><details><summary>최근 원본 프레임 시각 (초, 최대 10개)</summary><pre>{summary.recent.join('\n')}</pre></details></div>}
-    <small>MP4/H.264 파일을 재생 속도와 무관하게 순차 디코딩합니다. 원본 PTS를 보존하며 개수·시각 불일치는 오류입니다. 취소 결과는 부분 기록입니다.</small>
+    <small>MP4/H.264·HEVC(H.265) 파일을 재생 속도와 무관하게 순차 디코딩합니다. 원본 PTS를 보존하며 개수·시각 불일치는 오류입니다. 취소 결과는 부분 기록입니다.</small>
   </section>;
 }

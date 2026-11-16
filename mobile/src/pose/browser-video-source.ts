@@ -4,6 +4,16 @@ import { CompleteFrameAudit } from './complete-frame-audit';
 const cancelled = () => new DOMException('작업을 취소했습니다.', 'AbortError');
 const inputFor = async (file: File) => { const { Input, BlobSource, MP4 } = await import('mediabunny'); return new Input({ source: new BlobSource(file), formats: [MP4] }); };
 
+
+async function supportedTrack(input: Awaited<ReturnType<typeof inputFor>>) {
+  const track = await input.getPrimaryVideoTrack();
+  if (!track) throw new Error('파일에 비디오 트랙이 없습니다.');
+  const codec = await track.getCodec();
+  if (codec !== 'avc' && codec !== 'hevc') throw new Error(`지원하지 않는 영상 코덱: ${codec ?? '알 수 없음'}. MP4/H.264 또는 HEVC(H.265)가 필요합니다.`);
+  if (!await track.canDecode()) throw new Error(`이 브라우저/기기는 ${codec === 'hevc' ? 'HEVC(H.265)' : 'H.264'} 디코딩을 지원하지 않습니다. 파일 형식은 지원하지만 현재 실행 환경의 디코더를 사용할 수 없습니다.`);
+  return track;
+}
+
 export class BrowserVideoSession implements VideoSession {
   audit = new FrameAudit();
   verification: CompleteFrameAudit | null = null;
@@ -25,9 +35,7 @@ export class BrowserVideoSession implements VideoSession {
     this.lifetime.signal.addEventListener('abort', stop, { once: true });
     this.element.pause(); this.element.controls = false;
     try {
-      const track = await input.getPrimaryVideoTrack(); check();
-      if (!track || await track.getCodec() !== 'avc' || !await track.canDecode())
-        throw new Error('현재 환경에서 MP4/H.264 전체 프레임 디코딩을 지원하지 않습니다.');
+      const track = await supportedTrack(input); check();
       const { EncodedPacketSink, VideoSampleSink } = await import('mediabunny');
       const timestamps: number[] = [];
       for await (const packet of new EncodedPacketSink(track).packets(undefined, undefined, { metadataOnly: true })) {
@@ -63,7 +71,7 @@ export class BrowserVideoSession implements VideoSession {
   }
 }
 
-/** Offline MP4/H.264 decoding; HTML video is used only for preview. No playback fallback. */
+/** Offline MP4/H.264 또는 HEVC(H.265) decoding; HTML video is used only for preview. No playback fallback. */
 export class BrowserVideoSource implements VideoSource {
   constructor(private mount: HTMLElement) {}
   async open(selection: unknown, signal: AbortSignal): Promise<BrowserVideoSession> {
@@ -74,9 +82,7 @@ export class BrowserVideoSource implements VideoSource {
     const stop = () => input.dispose();
     signal.addEventListener('abort', stop, { once: true });
     try {
-      const track = await input.getPrimaryVideoTrack();
-      if (!track || await track.getCodec() !== 'avc' || !await track.canDecode())
-        throw new Error('MP4/H.264와 WebCodecs 지원이 필요합니다. 지원하지 않는 파일/환경입니다.');
+      const track = await supportedTrack(input);
       const width = await track.getDisplayWidth(), height = await track.getDisplayHeight();
       const durationSeconds = await track.computeDuration();
       const rotationAppliedDegrees = await track.getRotation();

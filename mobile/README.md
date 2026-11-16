@@ -1,7 +1,7 @@
 # 보행 영상 개발용 앱 — 3단계
 
 현재 PC 검증 결과와 상세 확인 순서는 [3단계 기록](../docs/mobile-pose/stage-3-verification.txt)을 참고하세요.
-현재 구현은 MP4/H.264를 오프라인 순차 디코딩합니다. 원본 패킷 목록과 모든 출력 프레임의 개수·PTS를 대조하고 일치할 때만 완료 처리합니다. 최신 결과는 [전체 프레임 검증 기록](../docs/mobile-pose/stage-3-offline-verification.txt)을 참고하세요.
+현재 구현은 MP4/H.264 및 HEVC(H.265)를 오프라인 순차 디코딩합니다. 원본 패킷 목록과 모든 출력 프레임의 개수·PTS를 대조하고 일치할 때만 완료 처리합니다. 최신 결과는 [전체 프레임 검증 기록](../docs/mobile-pose/stage-3-offline-verification.txt)을 참고하세요.
 
 실제 계정/서버/분석 기능이 없는 시험 화면입니다. 개인정보를 입력하지 마세요.
 대상 기기는 사용자 제공 정보 기준 Galaxy Wide5 / Android 13입니다.
@@ -53,14 +53,14 @@ $adb = "$env:USERPROFILE/AppData/Local/Android/Sdk/platform-tools/adb.exe"
 ```
 
 여러 기기가 연결되면 각 명령에 `-s 기기시리얼`을 넣습니다. 시리얼을 공개 문서나 Git에 기록하지 마세요.
-앱 이름은 **보행 평가 개발용**, ID는 `com.gaitscoring.dev`, 버전은 `0.3.1` (4)입니다.
+앱 이름은 **보행 평가 개발용**, ID는 `com.gaitscoring.dev`, 버전은 `0.3.2` (5)입니다.
 debug APK이며 배포용 서명 APK가 아닙니다. 자동 업데이트/서버/인증 기능이 없습니다.
 
 ## 직접 확인할 순서
 
 | 순서 | 조작 | 기대 결과 |
 |---|---|---|
-| 1 | 앱 열기 | 개발 전용, Android 앱, 빌드 0.3.1 표시 |
+| 1 | 앱 열기 | 개발 전용, Android 앱, 빌드 0.3.2 표시 |
 | 2 | 촬영일을 비우고 입력 형식 확인 | 촬영일 입력 안내 |
 | 3 | 키 99로 확인 | 100~220cm 오류 안내 |
 | 4 | ID DEV-SUBJECT-001, 키 170, 시각 2026-11-16T10:00:00+09:00 입력 | 형식 확인 완료. 서버 성공으로 표시하지 않음 |
@@ -93,3 +93,5 @@ Capacitor 기본 INTERNET 권한은 존재하나 실제 업로드 코드/주소/
 [Android 설정](https://capacitorjs.com/docs/updating/8-0), [Vite 환경](https://vite.dev/guide/).
 
 개발용 독립 검증: `python scripts/generate-video-fixtures.py` 실행 후 `/offline-qa.html`에서 생성된 MP4와 expected.json 전체를 선택합니다. QA 페이지는 기본 프로덕션 빌드에 포함되지 않습니다.
+
+HEVC 원본 337프레임 검증 결과: [HEVC 검증 기록](../docs/mobile-pose/stage-3-hevc-verification.txt). HEVC는 현재 브라우저/기기의 디코더 지원이 필요하며 미지원 환경은 명시적 오류로 안내합니다.
