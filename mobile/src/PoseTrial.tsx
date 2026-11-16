@@ -1,3 +1,5 @@
+import { PayloadTrial } from './PayloadTrial';
+import type { ProcessingInput } from './pose/ports';
 import { StandTrial } from './StandTrial';
 import { useEffect, useRef, useState } from 'react';
 import type { PoseRun } from './pose/extract-video';
@@ -5,7 +7,7 @@ import { extractVideo } from './pose/extract-video';
 import { BrowserVideoSource, type BrowserVideoSession } from './pose/browser-video-source';
 import { MediaPipePoseExtractor } from './pose/mediapipe-extractor';
 
-export function PoseTrial({ file }: { file: File | null }) {
+export function PoseTrial({ file, input }: { file: File | null; input: ProcessingInput }) {
  const mount = useRef<HTMLDivElement>(null), canvas = useRef<HTMLCanvasElement>(null);
  const session = useRef<BrowserVideoSession | null>(null), control = useRef<AbortController | null>(null);
  const generation = useRef(0);
@@ -98,8 +100,9 @@ export function PoseTrial({ file }: { file: File | null }) {
    <small>표시는 visibility ≥ 0.5 관절만 연결합니다. 원본 33관절 값은 필터·보간·반전 없이 보존합니다. z는 미터가 아닌 상대 깊이입니다.</small>
    <details><summary>선택 프레임 원본 33관절 값</summary><pre style={{maxHeight:220,overflow:'auto',fontSize:11}}>{JSON.stringify(result.frames[index],null,2)}</pre></details>
    {session.current && <StandTrial frames={result.frames} duration={session.current.info.durationSeconds} aspectRatio={session.current.info.width/session.current.info.height} onSeek={t=>setIndex(result.frames.reduce((best,f,i)=>Math.abs(f.t-t)<Math.abs(result.frames[best]!.t-t)?i:best,0))}/>}
+   {session.current && <PayloadTrial key={JSON.stringify(input)} frames={result.frames} video={session.current.info} input={input}/>}
    <button className="secondary" disabled={busy} onClick={()=>void inspectPeople()}>다인 후보 점검</button>
   </>}
-  <p className="status">{multi}</p><small>관절 정렬 확인은 임상 정확도·GDI 호환성 검증이 아닙니다. 서 있기 검출은 실험 규칙이며 JSON 전송은 이후 단계입니다.</small>
+  <p className="status">{multi}</p><small>관절 정렬 확인은 임상 정확도·GDI 호환성 검증이 아닙니다. 서 있기 검출은 실험 규칙이며 실제 서버 전송은 연결 대기입니다.</small>
  </section>;
 }

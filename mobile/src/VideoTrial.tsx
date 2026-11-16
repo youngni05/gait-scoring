@@ -2,9 +2,10 @@ import { PoseTrial } from './PoseTrial';
 import { useEffect, useRef, useState } from 'react';
 import { BrowserVideoSource, type BrowserVideoSession } from './pose/browser-video-source';
 import type { FrameSummary } from './pose/frame-audit';
-import type { VideoInfo } from './pose/ports';
+import type { ProcessingInput, VideoInfo } from './pose/ports';
 
-export function VideoTrial({ onSelection }: { onSelection: () => void }) {
+export function VideoTrial({ onSelection, input }: { onSelection: () => void; input: Omit<ProcessingInput,'recordingId'> }) {
+  const [recordingId,setRecordingId]=useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const mount = useRef<HTMLDivElement>(null);
   const session = useRef<BrowserVideoSession | null>(null);
@@ -18,7 +19,7 @@ export function VideoTrial({ onSelection }: { onSelection: () => void }) {
   const [expected, setExpected] = useState<number | null>(null);
   useEffect(() => () => { epoch.current++; controller.current?.abort(); void session.current?.dispose(); }, []);
   async function select(file?: File) {
-    setSelectedFile(file ?? null);
+    setSelectedFile(file ?? null); setRecordingId(file?crypto.randomUUID():'');
     const id = ++epoch.current;
     controller.current?.abort(); void session.current?.dispose(); session.current = null;
     setInfo(null); setSummary(null); setExpected(null); setPhase('idle'); onSelection();
@@ -57,5 +58,5 @@ export function VideoTrial({ onSelection }: { onSelection: () => void }) {
     <p role="status" className="status">{status}</p>
     {summary && <div className="frame-report"><strong>추출 {summary.count} / 원본 {expected ?? '확인 중'}프레임</strong><p>첫 시각 {summary.first?.toFixed(6) ?? '—'}초 / 끝 시각 {summary.last?.toFixed(6) ?? '—'}초<br />최대 시각 간격 {summary.maxGap.toFixed(6)}초</p><details><summary>최근 원본 프레임 시각 (초, 최대 10개)</summary><pre>{summary.recent.join('\n')}</pre></details></div>}
     <small>MP4/H.264·HEVC(H.265) 파일을 재생 속도와 무관하게 순차 디코딩합니다. 원본 PTS를 보존하며 개수·시각 불일치는 오류입니다. 취소 결과는 부분 기록입니다.</small>
-  </section><PoseTrial file={selectedFile}/></>;
+  </section><PoseTrial file={selectedFile} input={{...input,recordingId}}/></>;
 }
