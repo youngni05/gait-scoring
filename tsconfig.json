@@ -13,5 +13,5 @@
     "outDir": ".stage1-build",
     "declaration": true
   },
-  "include": ["contracts/**/*.ts", "contracts/**/*.json", "mobile/src/**/*.ts"]
+  "include": ["contracts/**/*.ts", "contracts/**/*.json", "mobile/src/**/*.ts", "tests/**/*.ts"]
 }

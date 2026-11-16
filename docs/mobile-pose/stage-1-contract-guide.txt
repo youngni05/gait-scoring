@@ -56,8 +56,10 @@ NaN/Infinity는 JSON.stringify가 null로 바꾸기 전에 거부해야 함.
   이는 분석 가능성/품질/임상 정확도를 뜻하지 않음.
 - 키 100..220cm, ID는 비어 있지 않은 문자열. 실제 서버 발급 여부와
   소유권/인증은 서버 책임. UUID를 subject ID에 강제하지 않음.
-- recorded_at은 시간대 포함 날짜/시각. 로컬 검증은 RFC3339 date-time 사용.
-- width/height는 회전 적용 후 양의 정수. orientation은 허용 열거값 검사.
+- recorded_at은 시간대 포함 날짜/시각. 로컬 검증은 RFC3339 date-time과
+  대문자 T 및 Z 또는 명시적 UTC 오프셋 형태를 함께 검사함.
+- width/height는 회전 적용 후 양의 정수. orientation은 허용 열거값과
+  가로/세로 크기의 일치도 검사. 정사각형의 별도 방향 정책은 미확정.
 - marks는 둘 다 null이거나 0 <= 시작 < 끝. durationSeconds를 주면 실제
   영상 길이를 상한으로 검사하며 마지막 프레임도 그 안에 있어야 함.
   길이를 주지 않으면 마지막 관측 프레임 시각을 보수적인 상한으로 사용함.
@@ -100,7 +102,8 @@ NaN/Infinity는 JSON.stringify가 null로 바꾸기 전에 거부해야 함.
 
 자동 검사 결과
 - npm run typecheck: 통과 (5개 포트와 데이터 타입 포함).
-- npm test: 50개 통과, 실패/건너뜀 0개.
+- 최초 npm test: 50개 통과. 재검토 보완 후 60개 통과, 실패/건너뜀 0개.
+- tests/ports.typecheck.ts: 5개 모듈 연결 및 금지 타입에 대한 컴파일 검사 추가.
 - 정상 60프레임, null, 필드 누락, 32/34관절, 3/5성분, 시간 중복/역순,
   NaN/Infinity, 키 경계, 날짜/UUID, 구간 범위/역순/절반 null, 확장 필드,
   화면 밖 좌표, 가변 시각, 입력 불변성, 대상자 불일치 등을 검사.

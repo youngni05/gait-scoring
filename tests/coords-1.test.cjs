@@ -49,6 +49,9 @@ const invalid = {
   'interval past coverage': d => { d.marks.stand_end = 50; },
   'invalid UUID': d => { d.recording_id = 'test'; },
   'date without timezone': d => { d.capture.recorded_at = '2026-11-16T10:00:00'; },
+  'date with space separator': d => { d.capture.recorded_at = '2026-11-16 10:00:00+09:00'; },
+  'portrait on landscape dimensions': d => { d.capture.orientation = 'portrait'; },
+  'landscape on portrait dimensions': d => { d.capture.width = 720; d.capture.height = 1280; },
   'nonexistent date': d => { d.capture.recorded_at = '2026-02-30T10:00:00Z'; },
   'nonpositive width': d => { d.capture.width = 0; },
   'fractional height': d => { d.capture.height = 720.5; },
@@ -117,4 +120,64 @@ test('rejected input is not coerced, repaired or stripped', () => {
   const before = structuredClone(d);
   assert.equal(validateCoords(d).ok, false);
   assert.deepEqual(d, before);
+});
+
+test('required fields inherited from prototype cannot disappear during JSON serialization', () => {
+  for (const key of Object.keys(fixture)) {
+    const d = copy(); const value = d[key]; delete d[key];
+    Object.setPrototypeOf(d, { [key]: value });
+    assert.equal(validateCoords(d).ok, false, key);
+  }
+  const d = copy();
+  delete d.subject.id;
+  Object.setPrototypeOf(d.subject, { id: fixture.subject.id });
+  assert.equal(validateCoords(d).ok, false);
+});
+test('portrait and square dimensions remain accepted', () => {
+  const d = copy(); d.capture.width = 720; d.capture.height = 1280;
+  d.capture.orientation = 'portrait';
+  assert.equal(validateCoords(d).ok, true);
+  // No square orientation exists in coords-1; do not invent a new enum.
+  d.capture.height = 720;
+  assert.equal(validateCoords(d).ok, true);
+});
+test('timezone offsets, UTC and fractional seconds accepted', () => {
+  for (const recorded_at of ['2026-11-16T10:00:00Z', '2026-11-16T10:00:00.123456+09:00',
+    '2026-11-16T10:00:00-05:30']) {
+    const d = copy(); d.capture.recorded_at = recorded_at;
+    assert.equal(validateCoords(d).ok, true);
+  }
+});
+test('every required field is enforced, including nested objects', () => {
+  for (const key of Object.keys(fixture)) {
+    const d = copy(); delete d[key];
+    assert.equal(validateCoords(d).ok, false, key);
+  }
+  for (const [section, keys] of Object.entries({
+    subject: ['id', 'height_cm'],
+    capture: ['mode', 'recorded_at', 'width', 'height', 'orientation'],
+    pose: ['model', 'engine_version'], marks: ['stand_start', 'stand_end'],
+  })) for (const key of keys) {
+    const d = copy(); delete d[section][key];
+    assert.equal(validateCoords(d).ok, false, `${section}.${key}`);
+  }
+});
+test('all four landmark components reject all nonfinite numbers', () => {
+  for (let index = 0; index < 4; index++) for (const value of [NaN, Infinity, -Infinity]) {
+    const d = copy(); d.frames[0].lm[0][index] = value;
+    assert.equal(validateCoords(d).ok, false);
+  }
+});
+test('unknown fields rejected at all object levels', () => {
+  for (const section of ['subject', 'capture', 'pose', 'marks']) {
+    const d = copy(); d[section].unapproved = 1;
+    assert.equal(validateCoords(d).ok, false, section);
+  }
+  const d = copy(); d.frames[0].unapproved = 1;
+  assert.equal(validateCoords(d).ok, false);
+});
+test('JSON roundtrip preserves a valid synthetic payload', () => {
+  const roundtrip = JSON.parse(JSON.stringify(fixture));
+  assert.equal(validateCoords(roundtrip).ok, true);
+  assert.deepEqual(roundtrip, fixture);
 });

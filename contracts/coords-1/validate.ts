@@ -3,7 +3,7 @@ import addFormats from 'ajv-formats';
 import schema from './schema.json';
 import type { Coords1 } from './types';
 
-const ajv = new Ajv({ strict: true, allErrors: true, coerceTypes: false });
+const ajv = new Ajv({ strict: true, allErrors: true, coerceTypes: false, ownProperties: true });
 addFormats(ajv);
 const validateShape = ajv.compile<Coords1>(schema);
 export interface ContractIssue { path: string; message: string }
@@ -26,6 +26,11 @@ export function validateCoords(input: unknown, context: ValidationContext = {}):
   }
   const issues: ContractIssue[] = [];
   const issue = (path: string, message: string) => issues.push({ path, message });
+  const { width, height, orientation } = input.capture;
+  if ((width > height && orientation !== 'landscape') ||
+      (height > width && orientation !== 'portrait')) {
+    issue('/capture/orientation', 'Orientation must agree with rotated frame dimensions');
+  }
   input.frames.forEach((frame, i) => {
     const previous = input.frames[i - 1];
     if (previous && frame.t <= previous.t) issue(`/frames/${i}/t`, 'Time must strictly increase');
