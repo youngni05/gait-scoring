@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "lib": ["ES2022", "DOM"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "outDir": ".stage1-build",
+    "declaration": true
+  },
+  "include": ["contracts/**/*.ts", "contracts/**/*.json", "mobile/src/**/*.ts"]
+}

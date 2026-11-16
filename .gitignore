@@ -10,3 +10,9 @@ research/**/checks/
 *.npz
 *.npy
 *.tar.gz
+node_modules/
+.stage1-build/
+local-test-data/
+mobile/local-output/
+.env
+.env.*

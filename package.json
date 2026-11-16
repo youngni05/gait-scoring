@@ -1,0 +1,14 @@
+{
+  "name": "gait-scoring-contracts",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "npm@10.9.3",
+  "engines": { "node": ">=22.20.0" },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:contracts": "tsc",
+    "test": "npm run build:contracts && node --test tests/coords-1.test.cjs"
+  },
+  "dependencies": { "ajv": "8.20.0", "ajv-formats": "3.0.1" },
+  "devDependencies": { "typescript": "7.0.2" }
+}
