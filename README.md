@@ -3,7 +3,7 @@
 ## 모바일 영상 처리 개발
 
 개발용 React/Vite/Capacitor 앱의 [Windows 실행·Android 빌드·갤럭시 확인 절차](mobile/README.md)를 참고하세요.
-현재 구현 범위와 실제 검증 결과는 [4단계 기록 및 PC 확인법](docs/mobile-pose/stage-4-verification.txt)에 구분해 기록합니다.
+현재 구현 범위와 실제 검증 결과는 [5단계 기록 및 PC 확인법](docs/mobile-pose/stage-5-verification.txt)에 구분해 기록합니다.
 연구 모델 코드와 모바일 앱 실행은 별도입니다.
 
 2026-11-06: 지금까지 보존된 실험 코드·설정·집계 기록을 정리하고, 현재 선별 구성과 논문 관련 모델을 분리했다.

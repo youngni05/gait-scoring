@@ -1,3 +1,4 @@
+import { StandTrial } from './StandTrial';
 import { useEffect, useRef, useState } from 'react';
 import type { PoseRun } from './pose/extract-video';
 import { extractVideo } from './pose/extract-video';
@@ -92,12 +93,13 @@ export function PoseTrial({ file }: { file: File | null }) {
   {result && <>
    <canvas ref={canvas} aria-label="선택 프레임 관절 오버레이" style={{width:'100%',maxHeight:560,objectFit:'contain',background:'#16221c'}}/>
    <p role="status">{view}</p>
-   <label>프레임 번호<input type="number" min={1} max={result.frames.length} value={index+1} onChange={e=>setIndex(Math.max(0,Math.min(result.frames.length-1,Number(e.target.value)-1||0)))}/></label>
+   <label>프레임 번호<input type="number" min={1} max={result.frames.length} value={index+1} onChange={e=>setIndex(Math.max(0,Math.min(result.frames.length-1,Math.trunc(Number(e.target.value))-1||0)))}/></label>
    <div className="actions"><button className="secondary" disabled={index===0} onClick={()=>setIndex(i=>i-1)}>이전 프레임</button><button className="secondary" disabled={index===result.frames.length-1} onClick={()=>setIndex(i=>i+1)}>다음 프레임</button><button className="secondary" onClick={()=>setOverlay(v=>!v)}>{overlay?'오버레이 숨기기':'오버레이 보기'}</button></div>
    <small>표시는 visibility ≥ 0.5 관절만 연결합니다. 원본 33관절 값은 필터·보간·반전 없이 보존합니다. z는 미터가 아닌 상대 깊이입니다.</small>
    <details><summary>선택 프레임 원본 33관절 값</summary><pre style={{maxHeight:220,overflow:'auto',fontSize:11}}>{JSON.stringify(result.frames[index],null,2)}</pre></details>
+   {session.current && <StandTrial frames={result.frames} duration={session.current.info.durationSeconds} aspectRatio={session.current.info.width/session.current.info.height} onSeek={t=>setIndex(result.frames.reduce((best,f,i)=>Math.abs(f.t-t)<Math.abs(result.frames[best]!.t-t)?i:best,0))}/>}
    <button className="secondary" disabled={busy} onClick={()=>void inspectPeople()}>다인 후보 점검</button>
   </>}
-  <p className="status">{multi}</p><small>관절 정렬 확인은 임상 정확도·GDI 호환성 검증이 아닙니다. 서 있기 검출과 JSON 전송은 이후 단계입니다.</small>
+  <p className="status">{multi}</p><small>관절 정렬 확인은 임상 정확도·GDI 호환성 검증이 아닙니다. 서 있기 검출은 실험 규칙이며 JSON 전송은 이후 단계입니다.</small>
  </section>;
 }
