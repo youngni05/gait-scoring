@@ -1,9 +1,11 @@
+import { PoseTrial } from './PoseTrial';
 import { useEffect, useRef, useState } from 'react';
 import { BrowserVideoSource, type BrowserVideoSession } from './pose/browser-video-source';
 import type { FrameSummary } from './pose/frame-audit';
 import type { VideoInfo } from './pose/ports';
 
 export function VideoTrial({ onSelection }: { onSelection: () => void }) {
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const mount = useRef<HTMLDivElement>(null);
   const session = useRef<BrowserVideoSession | null>(null);
   const controller = useRef<AbortController | null>(null);
@@ -16,6 +18,7 @@ export function VideoTrial({ onSelection }: { onSelection: () => void }) {
   const [expected, setExpected] = useState<number | null>(null);
   useEffect(() => () => { epoch.current++; controller.current?.abort(); void session.current?.dispose(); }, []);
   async function select(file?: File) {
+    setSelectedFile(file ?? null);
     const id = ++epoch.current;
     controller.current?.abort(); void session.current?.dispose(); session.current = null;
     setInfo(null); setSummary(null); setExpected(null); setPhase('idle'); onSelection();
@@ -43,9 +46,9 @@ export function VideoTrial({ onSelection }: { onSelection: () => void }) {
       if (id === epoch.current) setStatus(abort.signal.aborted ? '프레임 읽기 취소됨. 부분 기록입니다. 다시 실행할 수 있습니다.' : `오류: ${error instanceof Error ? error.message : String(error)}`);
     } finally { if (id === epoch.current) { setSummary(current.audit.snapshot()); setExpected(current.verification?.expected.length ?? null); setPhase('idle'); } }
   }
-  return <section className="card">
+  return <><section className="card">
     <h2>영상 선택 · 프레임 점검</h2>
-    <p className="muted">원본은 이 기기에만 둡니다. 이번 단계는 관절 추출 전 영상 점검입니다.</p>
+    <p className="muted">원본은 이 기기에만 둡니다. 아래에서 프레임 점검과 관절 추출을 실행할 수 있습니다.</p>
     <label>로컬 영상 파일 선택<input type="file" accept="video/*" onChange={e => { const file = e.target.files?.[0]; if (file) void select(file); e.target.value = ''; }} /></label>
     <p className="file-name">{name}</p><div className="video-preview" ref={mount} />
     {info && <p className="status">표시·캔버스 기준 {info.width} × {info.height} · {info.orientation === 'landscape' ? '가로' : '세로'} · {info.durationSeconds.toFixed(3)}초<br />파일 회전 메타데이터 {info.rotationAppliedDegrees}°를 캔버스에 적용합니다.</p>}
@@ -54,5 +57,5 @@ export function VideoTrial({ onSelection }: { onSelection: () => void }) {
     <p role="status" className="status">{status}</p>
     {summary && <div className="frame-report"><strong>추출 {summary.count} / 원본 {expected ?? '확인 중'}프레임</strong><p>첫 시각 {summary.first?.toFixed(6) ?? '—'}초 / 끝 시각 {summary.last?.toFixed(6) ?? '—'}초<br />최대 시각 간격 {summary.maxGap.toFixed(6)}초</p><details><summary>최근 원본 프레임 시각 (초, 최대 10개)</summary><pre>{summary.recent.join('\n')}</pre></details></div>}
     <small>MP4/H.264·HEVC(H.265) 파일을 재생 속도와 무관하게 순차 디코딩합니다. 원본 PTS를 보존하며 개수·시각 불일치는 오류입니다. 취소 결과는 부분 기록입니다.</small>
-  </section>;
+  </section><PoseTrial file={selectedFile}/></>;
 }

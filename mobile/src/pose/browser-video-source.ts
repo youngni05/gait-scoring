@@ -63,6 +63,26 @@ export class BrowserVideoSession implements VideoSession {
       this.canvas.width = 0; this.canvas.height = 0; this.running = false; this.element.controls = !this.disposed;
     }
   }
+  /** Exact decoded frame for inspection; no HTMLVideoElement seeking approximation. */
+  async drawFrame(t: number, canvas: HTMLCanvasElement, signal: AbortSignal): Promise<void> {
+    const input = await inputFor(this.file);
+    const stop = () => input.dispose();
+    signal.addEventListener('abort', stop, { once: true });
+    try {
+      if (signal.aborted || this.disposed) throw cancelled();
+      const track = await supportedTrack(input);
+      const { VideoSampleSink } = await import('mediabunny');
+      const sample = await new VideoSampleSink(track).getSample(t + 0.000001);
+      if (!sample) throw new Error('해당 프레임을 찾지 못했습니다.');
+      try {
+        if (signal.aborted || this.disposed) throw cancelled();
+        if (Math.abs(sample.timestamp - t) > 0.0000011) throw new Error('오버레이 프레임 시각 불일치');
+        canvas.width = this.info.width; canvas.height = this.info.height;
+        const ctx = canvas.getContext('2d'); if (!ctx) throw new Error('Canvas 2D 사용 불가');
+        sample.draw(ctx, 0, 0);
+      } finally { sample.close(); }
+    } finally { signal.removeEventListener('abort', stop); input.dispose(); }
+  }
   async dispose(): Promise<void> {
     if (this.disposed) return;
     this.disposed = true; this.lifetime.abort();
