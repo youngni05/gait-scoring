@@ -19,7 +19,7 @@
 
 환경 준비
 - 기존 JDK 21.0.9 사용. JDK11 전역 JAVA_HOME은 변경하지 않음.
-- SDK 위치: C:/Users/Your/AppData/Local/Android/Sdk
+- SDK 위치: %LOCALAPPDATA%/Android/Sdk
 - 공식 commandlinetools-win-15859902_latest.zip 다운로드 및 공식 SHA-256 대조.
 - platform-tools, platforms;android-36, build-tools;36.0.0 설치.
 - 실제 platform-tools 버전 37.0.1. AGP가 요구한 build-tools;35.0.0도 자동 설치됨.

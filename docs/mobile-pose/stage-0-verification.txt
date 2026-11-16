@@ -65,7 +65,7 @@
 - node --version, npm --version, pnpm --version, JDK별 java/javac: 위 버전 확인.
 - 폴더가 Administrators 소유라 Git safe.directory 오류가 있었음.
   Git 명령마다 아래 옵션을 사용했으며 전역 safe.directory는 변경하지 않음:
-  -c 'safe.directory=C:/Users/Your/Documents/ChatGPT/보행능력점수평가모델 만들기/tmp/gait-scoring-review'
+  -c 'safe.directory=<repository-absolute-path>'
 - 최초 제한 환경에서 Git 프로세스 실행 오류가 있었으나 권한 검토를 거친 재실행으로
   원격 조회와 fetch에 성공. 접근 차단 상태는 해소됨.
 
