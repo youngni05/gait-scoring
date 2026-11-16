@@ -13,7 +13,7 @@ export interface VideoInfo {
   height: number;
   durationSeconds: number;
   orientation: 'landscape' | 'portrait';
-  rotationAppliedDegrees: number;
+  rotationAppliedDegrees: number | null;
 }
 /** Adapter-owned frame resource; opaque to contracts, UI and authentication. */
 export interface DecodedFrame {
@@ -43,7 +43,7 @@ export interface StandDetector {
 /** Local metadata: not approved API fields. Never merge into coords-1. */
 export interface ProcessingMetadata {
   recordedAtSource: ProcessingInput['recordedAtSource'];
-  rotationAppliedDegrees: number;
+  rotationAppliedDegrees: number | null;
   detection: StandDetection;
   modelAssetVersion?: string;
 }
