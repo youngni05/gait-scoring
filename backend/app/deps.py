@@ -1,4 +1,3 @@
-import os
 from uuid import UUID
 
 import jwt
@@ -10,6 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.db import get_db
 from app.models import User
+from app.config import JWT_SECRET_KEY
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
@@ -29,7 +29,7 @@ def get_current_user(
     try:
         payload = jwt.decode(
             token,
-            os.environ["JWT_SECRET_KEY"],
+            JWT_SECRET_KEY,
             algorithms=["HS256"],
             options={"require": ["sub", "exp"]},
         )

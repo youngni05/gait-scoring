@@ -25,6 +25,23 @@ Copy-Item .env.example .env
 
 `.env`에 로컬 PostgreSQL 사용자, 비밀번호, DB 이름 및 연결 주소를 설정합니다.
 
+JWT 키는 아래 명령으로 생성한 뒤 `.env`의 `JWT_SECRET_KEY` 값을 교체합니다.
+생성한 키는 공유하거나 Git에 커밋하지 않습니다.
+
+```powershell
+python -c "import secrets; print(secrets.token_urlsafe(32))"
+```
+
+로컬 Python이 없다면 Docker로 생성할 수 있습니다.
+
+```powershell
+docker run --rm python:3.12-slim python -c "import secrets; print(secrets.token_urlsafe(32))"
+```
+
+키가 없거나 공백, 예시 값, UTF-8 기준 32바이트 미만이면 API 시작을 거부합니다.
+길이 검사는 무작위성을 보장하지 않으므로 직접 문구를 만들지 말고 위 생성기를 사용하세요.
+키를 변경하면 기존 토큰을 사용할 수 없으므로 다시 로그인해야 합니다.
+
 ### 2. Docker 실행
 
 ```powershell
@@ -40,6 +57,25 @@ docker compose ps
 - API 상태: http://localhost:8000/health
 - DB 연결 확인: http://localhost:8000/db-health
 - API 문서: http://localhost:8000/docs
+
+### 4. 최초 DB 준비와 복지사 계정 생성
+
+새 개발 환경에서는 먼저 마이그레이션으로 테이블을 생성합니다.
+
+```powershell
+docker compose exec api alembic upgrade head
+```
+
+그다음 관리자가 아래 명령으로 첫 복지사 계정을 생성합니다.
+
+```powershell
+docker compose exec api python -m app.create_worker
+```
+
+프롬프트에 로그인 ID(1~100자)와 비밀번호(12자 이상)를 입력합니다.
+비밀번호 입력은 화면에 표시되지 않습니다. 같은 ID는 중복 생성할 수 없습니다.
+생성한 계정으로 `/docs`의 Authorize 또는 `POST /auth/login`을 통해 로그인합니다.
+계정 생성은 터미널에서 수행하며 공개 회원가입 API는 제공하지 않습니다.
 
 ## 프론트엔드 CORS 설정
 

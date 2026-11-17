@@ -1,9 +1,10 @@
-import os
 from datetime import datetime, timedelta, timezone
 from uuid import UUID
 
 import jwt
 from pwdlib import PasswordHash
+
+from app.config import JWT_SECRET_KEY
 
 
 password_hash = PasswordHash.recommended()
@@ -27,6 +28,6 @@ def create_access_token(user_id: UUID) -> str:
 
     return jwt.encode(
         payload,
-        os.environ["JWT_SECRET_KEY"],
+        JWT_SECRET_KEY,
         algorithm="HS256",
     )
