@@ -1,0 +1,84 @@
+{
+  "note": "기존 실험 검산 기록의 명시적 필드 발췌다. 공개 준비에서 모델 재추론이나 지표 재계산을 새로 실행하지 않았다.",
+  "records": {
+    "test02": {
+      "source": "studies/20261117-test02-fusion/verification.json",
+      "source_sha256": "7a1056b19191e5cb35653ea39fea3061a2ace6e627d10a205b7c2991ae326a00",
+      "status": "passed",
+      "fresh_member_replays": 327,
+      "fresh_window_side_values": 260946,
+      "replay_max_abs_error": 0.0,
+      "independent_aggregation_max_abs_error": 5.684341886080802e-14,
+      "result_sha256": "b7abf900e3829d9d3ca0cf4bcc3c46e82bfcf066f950a539ac8f02871e88a733",
+      "scope": "Fresh same-batch inference plus independent arithmetic/hash/identity audit. No clinical ground truth or cross-device accuracy claim."
+    },
+    "frozen_summary": {
+      "source": "studies/20261117-shortwalk-frozen/summary-verification.json",
+      "source_sha256": "e968d6fa95731b808b5e5083738fea1eaa9ba28471ec63b6ee83e313106bf3f4",
+      "status": "passed",
+      "result_sha256": "a14a824dd50ad4599e6244475f804b0514663738bd26b316b507faee5259bef0",
+      "external_metric_groups": 180,
+      "checks": 74860,
+      "max_abs_error": 2.842170943040401e-14,
+      "scope": "Independent input-owner scalar metrics and Test02 aggregation, own separately written extra strata and frequency-weighted paired bootstrap; no model replay here."
+    },
+    "training_seed1": {
+      "source": "studies/20261117-shortwalk-training/verification-summary-20261117.json",
+      "source_sha256": "ca3b3c3154e7778077ec3851281b7f873126c4d50f9c1e041358164a5da0f104",
+      "status": "passed",
+      "seed": 20261117,
+      "summary_groups": 1000,
+      "empty_groups_preserved": 140,
+      "paired_groups": 72,
+      "fusion_max_error": 1.1368683772161603e-13,
+      "common_evaluator_metric_max_error": 1.4210854715202004e-14,
+      "paired_bootstrap_max_error": 4.440892098500626e-16,
+      "summary_sha256": "84447a4f7d3840068fc9a4107db338de0855549f24d34d0f2992d0f66e906a18"
+    },
+    "training_seed2": {
+      "source": "studies/20261117-shortwalk-training/verification-summary-20261118.json",
+      "source_sha256": "1b3bf5901ad28675159b216320ee73cac96156cb5ed079f2df79bf53e536d56e",
+      "status": "passed",
+      "seed": 20261118,
+      "summary_groups": 1000,
+      "empty_groups_preserved": 140,
+      "paired_groups": 72,
+      "fusion_max_error": 5.684341886080802e-14,
+      "common_evaluator_metric_max_error": 2.842170943040401e-14,
+      "paired_bootstrap_max_error": 1.1102230246251565e-16,
+      "summary_sha256": "a4055f8ca9857551b0a92a5fdabe83e1630947aee3f60f51bc9713a807995522"
+    },
+    "independent_seed1": {
+      "source": "studies/20261117-shortwalk-inputs/training-summary-verification-20261117.json",
+      "source_sha256": "a02a04b37d9cc5fcfb05607ef753d6ca2a3729ab7d5dc8aba64cea29d09a4e8e",
+      "status": "passed",
+      "seed": 20261117,
+      "worker_summary_sha256": "84447a4f7d3840068fc9a4107db338de0855549f24d34d0f2992d0f66e906a18",
+      "source_prediction_files": 150,
+      "trained_components": 120,
+      "calibrated_values_checked": 1416660,
+      "summary_groups": 1000,
+      "paired_comparisons": 72,
+      "numeric_checks": 13268,
+      "max_abs_error": 5.684341886080802e-14,
+      "fusion_max_abs_error": 5.684341886080802e-14,
+      "scope": "Saved predictions, exact train/evaluation membership, training-only OLS calibration, fixed fusion, all coverage and summary point/tail/band/paired CI metrics. No model reinference. LJMU assumed100 deviations are not measured GDI accuracy."
+    },
+    "independent_seed2": {
+      "source": "studies/20261117-shortwalk-inputs/training-summary-verification-20261118.json",
+      "source_sha256": "65b83b6fbc73f3b2f2b34097921c814affd913b5a75b2e2899a7d324f9642b3a",
+      "status": "passed",
+      "seed": 20261118,
+      "worker_summary_sha256": "a4055f8ca9857551b0a92a5fdabe83e1630947aee3f60f51bc9713a807995522",
+      "source_prediction_files": 150,
+      "trained_components": 120,
+      "calibrated_values_checked": 1416660,
+      "summary_groups": 1000,
+      "paired_comparisons": 72,
+      "numeric_checks": 13268,
+      "max_abs_error": 5.684341886080802e-14,
+      "fusion_max_abs_error": 5.684341886080802e-14,
+      "scope": "Saved predictions, exact train/evaluation membership, training-only OLS calibration, fixed fusion, all coverage and summary point/tail/band/paired CI metrics. No model reinference. LJMU assumed100 deviations are not measured GDI accuracy."
+    }
+  }
+}

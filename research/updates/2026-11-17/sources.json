@@ -1,0 +1,223 @@
+{
+  "prepared_on": "2026-11-17",
+  "scope": "공개 후보의 근거가 되는 원본 상대경로와 파일 전체 SHA256이다. 원본 파일 자체의 공개를 뜻하지 않는다.",
+  "source_records": [
+    {
+      "source": "studies/20261117-test02-fusion/verification.json",
+      "bytes": 2648,
+      "sha256": "7a1056b19191e5cb35653ea39fea3061a2ace6e627d10a205b7c2991ae326a00",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-frozen/summary-verification.json",
+      "bytes": 693,
+      "sha256": "e968d6fa95731b808b5e5083738fea1eaa9ba28471ec63b6ee83e313106bf3f4",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/verification-summary-20261117.json",
+      "bytes": 575,
+      "sha256": "ca3b3c3154e7778077ec3851281b7f873126c4d50f9c1e041358164a5da0f104",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/verification-summary-20261118.json",
+      "bytes": 574,
+      "sha256": "1b3bf5901ad28675159b216320ee73cac96156cb5ed079f2df79bf53e536d56e",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-inputs/training-summary-verification-20261117.json",
+      "bytes": 914,
+      "sha256": "a02a04b37d9cc5fcfb05607ef753d6ca2a3729ab7d5dc8aba64cea29d09a4e8e",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-inputs/training-summary-verification-20261118.json",
+      "bytes": 914,
+      "sha256": "65b83b6fbc73f3b2f2b34097921c814affd913b5a75b2e2899a7d324f9642b3a",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-test02-fusion/README.md",
+      "bytes": 12572,
+      "sha256": "06aacf57068f530cc33f153020edda12e66b9c8b86eaf5d4922643e1c19bff34",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-test02-fusion/protocol.json",
+      "bytes": 94114,
+      "sha256": "6f73b213e3d357246820f0e821577ec1905bdc66a17460bc39c8ed6490a2ddd9",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-test02-fusion/result.json",
+      "bytes": 153180,
+      "sha256": "b7abf900e3829d9d3ca0cf4bcc3c46e82bfcf066f950a539ac8f02871e88a733",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-test02-fusion/study.py",
+      "bytes": 13862,
+      "sha256": "20678d19da073377c4a4e212e3c60ea8e4d325b7fbce4a1f1b3c189d94367252",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-test02-fusion/verify.py",
+      "bytes": 14663,
+      "sha256": "1e95da8e387b419ca43e8edc2a4fbdcc1b8e6392df79cb78cefe6f4e3cf90c92",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/README.md",
+      "bytes": 17206,
+      "sha256": "39dc095866c23674b2e43ef187bbb17722de97827fe290f1cb41cdf341e42c01",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/TRAINING_PROTOCOL.md",
+      "bytes": 5292,
+      "sha256": "3e4857a530985370b1fccf16faa76fe75cbb565c85ed9934a5e8b17617c24f45",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/summary-seed20261117.json",
+      "bytes": 1576112,
+      "sha256": "84447a4f7d3840068fc9a4107db338de0855549f24d34d0f2992d0f66e906a18",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/summary-seed20261118.json",
+      "bytes": 1576208,
+      "sha256": "a4055f8ca9857551b0a92a5fdabe83e1630947aee3f60f51bc9713a807995522",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/train.py",
+      "bytes": 14958,
+      "sha256": "af8a5dc10cb3cc27b665c6aa8027dbc8b0f179422824d3880d7b715ec864e61f",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/adapters.py",
+      "bytes": 3254,
+      "sha256": "402c3f0dc4c8b1105205bc2eb6c4c4ce3ffdef9b43881bea3e22237ddbb102dc",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/aggregate.py",
+      "bytes": 9782,
+      "sha256": "5c82e886913a5e002bdbdd017d79bf806757a57e272a23962c4ea1b38b55822f",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/audit_results.py",
+      "bytes": 8893,
+      "sha256": "56687465ef43165cee24929dbdbdcb8d9cb607a95f15846d50b0c1115fcb3f93",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-training/audit_summary.py",
+      "bytes": 5669,
+      "sha256": "f120559be9a2801383f0a4ed7355722965e385fd434f21e88ba581b32b1011dd",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-frozen/README.md",
+      "bytes": 14068,
+      "sha256": "d8b49b1740bf67b70c313b352cd1c9f3fdbdf49afee1958154e55915530505af",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-frozen/protocol.json",
+      "bytes": 93699,
+      "sha256": "6dfb115bf19a58d7d755eb6092c4bf70406c1a0a14ff8c448ddb853a23b5c389",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-frozen/result.json",
+      "bytes": 4627289,
+      "sha256": "a14a824dd50ad4599e6244475f804b0514663738bd26b316b507faee5259bef0",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-frozen/frozen_core.py",
+      "bytes": 3414,
+      "sha256": "b35efceb70432033a02308e9a100eb8fdc12e3800af161ebdbb01ff396eda5f5",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-frozen/metrics.py",
+      "bytes": 3380,
+      "sha256": "81f6dadf95beb0eb452bf1c2b610fa19b96aadd51ddd4715c26061d6e89a14a8",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-inputs/PROTOCOL.md",
+      "bytes": 6346,
+      "sha256": "5a137af0828e3aeaeaa1335103cee6c06e210c9353c826098de4941d68e7fa81",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-inputs/EVALUATION.md",
+      "bytes": 12149,
+      "sha256": "c9a38eb643a8b8deafd171db63aabccce552d44760b66279187a8485b4678f6b",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-inputs/crop-manifest.json",
+      "bytes": 16576747,
+      "sha256": "65de9f00791810b98ba9027ceb5867c44cc04cbf785d5cfdfa806013d039ad81",
+      "included_original": false
+    },
+    {
+      "source": "studies/20261117-shortwalk-inputs/evaluate.py",
+      "bytes": 10266,
+      "sha256": "558b3b31ca0bb7511c6d5c96cc10b907a797e21e5a2e11829daafa7a9a9086e1",
+      "included_original": false
+    },
+    {
+      "source": "docs/plans/20261117-short-walk-experiment.md",
+      "bytes": 11513,
+      "sha256": "b8b5af817b42101d6721206ad2c1a70211e6e2c2ee5cb8f928026c4d1c47292f",
+      "included_original": false
+    },
+    {
+      "source": "docs/plans/20261117-shortwalk-retention-experiment.md",
+      "bytes": 7851,
+      "sha256": "00e6952bd2d3199c6968867247acbdae4d6079aa2302af71c1d1bc41c1e51ba7",
+      "included_original": false
+    }
+  ],
+  "transformations": {
+    "README.md": "연구 질문에서 각 공개 요약으로 연결하는 찾아보기다.",
+    "test02.md": "원 보고서의 집계와 한계를 요약했다. 개인별 영상 이름·개인별 수치·로컬 경로는 제외했다.",
+    "shortwalk.md": "입력 변환·추가 학습·독립 평가의 집계를 요약했다. 실패와 부정적 결과도 보존했다.",
+    "TRAINING_PROTOCOL.md": "원문의 GPU 작업번호 2건을 일반 이름으로 바꿨다. 나머지 학습 조건은 유지했다.",
+    "verification-summary.json": "명시적으로 선택한 집계 필드만 발췌했다."
+  },
+  "upstream": [
+    {
+      "name": "Stanford mobile-gaitlab",
+      "url": "https://github.com/stanfordnmbl/mobile-gaitlab",
+      "observed_terms": "Official README: code Apache-2.0; processed video trajectories CC BY-NC 2.0; demo video separately restricted.",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "name": "STT original implementation",
+      "url": "https://github.com/vinuni-vishc/transformer-gait-analysis",
+      "commit": "549d58bc32449b24a0eae0c37ca573f9aa58a1dd",
+      "check": "GitHub API license=null; pinned recursive tree has no license/copying/notice filename. This does not establish redistribution permission.",
+      "included": false
+    },
+    {
+      "name": "LJMU",
+      "check": "Original acquisition and redistribution terms not independently established in this publication review. Data and weights excluded."
+    },
+    {
+      "name": "Test02",
+      "check": "Participant authorization for video/coordinates/person-level publication not established in the inspected records. Candidate contains group summaries only; public scope awaits user agreement."
+    }
+  ],
+  "reproduction_limit": "Conditions, summary evidence and source fingerprints only. No standalone end-to-end reproduction claim. Obtain data under provider terms; model/code redistribution and portable execution remain separate review work."
+}
