@@ -1,16 +1,13 @@
 # gait-scoring
 
-2026-11-06: 지금까지 보존된 실험 코드·설정·집계 기록을 정리하고, 현재 선별 구성과 논문 관련 모델을 분리했다.
+카메라로 촬영한 보행에서 GDI(보행 편차 지수)를 추정하는 연구다.
 
-| 찾으려는 자료 | 위치 |
+| 찾을 내용 | 바로가기 |
 |---|---|
-| 전체 실험·모델 코드와 기록 | [전체 실험 보관](research/archive/README.md) |
-| 현재 선별 후보·고정 평가 모델 | [선별 모델](research/selected/README.md) |
-| GDI 편향·정상 가정 라벨 및 모니터링 논문 근거 | [논문 관련 실험](research/paper-related/README.md) |
-| 정상 보행 과소평가 개선 연구 흐름(2026-11-11) | [연구 흐름 정리](research/paper-related/gdi-normal-calibration.md) |
-| 추론용 가중치 다운로드 | [이번 모델 배포](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106) |
-
-원본 영상·개인별 좌표·정답·예측·학습 중간 파일은 공개 대상에서 제외했다. 선별 목록은 기존 고정 모델과 비교 후보를 구분한 것이며, 임상 사용을 확정한 최종 모델의 선언은 아니다. 보관한 각 실험의 상태는 해당 문서의 마지막 확인 시점을 따른다. 아래 과거 안내의 연구 중단·공개 범위 표시는 당시 기록이다.
+| 최근 결과 | [Test02 촬영 비교와 짧은 보행](research/updates/2026-11-17/README.md) |
+| 팀원 모델 연결 | [PC에서 실행하는 방법과 입력 형식](research/selected/frozen-gdi/README.md) · [추론용 모델 다운로드](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106) |
+| 논문 근거 | [정상 보행 과소평가 개선 연구 흐름](research/paper-related/gdi-normal-calibration.md) · [실험별 근거](research/paper-related/README.md) |
+| 이전 연구 | [선별 모델과 평가](research/selected/README.md) · [전체 실험 보관](research/archive/README.md) · [SPPB·TUG](research/archived-sppb-tug/README.md) |
 
 **대학 과목 제출을 위한 비상업적 연구 결과를 공유하는 저장소다.** 원자료·기존 코드·모델의 출처별 이용 조건은 [출처·라이선스·수정 안내](research/licenses/README.md)를 따른다. 같은 안내와 관련 라이선스 원문을 각 모델 압축에도 동봉했다.
 

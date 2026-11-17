@@ -4,6 +4,11 @@
 
 코드는 원래 작업본의 상대 경로를 유지한다. 원자료·개인별 정답·예측·캐시·전체 체크포인트는 포함하지 않는다. 기존 절대 경로와 미포함 의존성이 있어 이 보관본 전체가 다른 PC에서 바로 실행된다는 뜻은 아니다. 공개용 사본의 접속 정보와 개인별 JSON 항목은 제거했으며 원본은 변경하지 않았다.
 
+최근 결과와 팀원 실행 안내는 [연구 첫 화면](../README.md)에서 볼 수 있다.
+
+<details>
+<summary>날짜별 전체 실험 목록 펼치기</summary>
+
 | 실험 | 코드·설정·기록 수 | 기록 |
 |---|---:|---|
 | [20261027-direction-feasibility](gdi-research-harness/studies/20261027-direction-feasibility/) | 6 | [기록](gdi-research-harness/studies/20261027-direction-feasibility/plan.md) |
@@ -171,3 +176,5 @@
 | [20261110-dose-seed](studies/20261110-dose-seed/) | 28 | [기록](studies/20261110-dose-seed/README.md) |
 | [20261110-finetune](studies/20261110-finetune/) | 23 | [기록](studies/20261110-finetune/README.md) |
 | [20261110-single-threshold](studies/20261110-single-threshold/) | 6 | [기록](studies/20261110-single-threshold/README.md) |
+
+</details>

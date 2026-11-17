@@ -1,19 +1,10 @@
 # 보행 점수 예측 연구 기록
 
-## 2026년 11월 17일 연구
+[최근 연구 요약](updates/2026-11-17/README.md)에서 Test02와 짧은 보행 두 실험의 결과를 보고, 실험별 상세 기록과 검산으로 이동할 수 있다.
 
-[Test02와 짧은 보행 연구](updates/2026-11-17/README.md)에서 두 실험의 핵심 결과와 상세 기록을 볼 수 있다.
-
-## 2026년 11월 6일 정리
-
-실험 전체를 찾아보는 목록과 현재 선별·논문 관련 목록을 분리했다. 기존 공개 자료와 릴리스는 보존한다. 아래 초기 공개 설명은 당시의 범위이며 현재 전체 상태와 구분한다.
-
-- [전체 실험 보관](archive/README.md): 원 작업 경로를 유지한 모델 코드·설정·집계 결과와 연구 폴더 목록이다. 완료·실패·미완료를 새로 판정하지 않고 원 기록을 따른다.
-- [현재 선별 모델](selected/README.md): CNN5개 기준, CNN24개 평균, CNN·STT54개 결합을 구분한다.222명 별도 평가에서 결합의 추가 개선은 불확실했다.
-- [논문 관련 실험](paper-related/README.md): GDI 편향·정상 가정100점과 모니터링 분석의 근거, 후속 탐색을 연결한다.
-- [모델 릴리스](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106): 고정54개와 정상 추가75개의 추론 전용 가중치다. 전체 실험의 모든 중간 체크포인트를 재배포한 것은 아니다.
-
-공개 사본에서는 접속 정보·개인별 명단과 수치를 제거했다. STT 원 구현은 라이선스가 명시되지 않아 사본 대신 원 저장소·고정 커밋을 안내한다. 원본 실험과 대용량 자료는 변경하지 않았다. [파일별 대응·지문](snapshot-manifest.json), [모델 배포 검산](model-release-assets.json)을 함께 보존한다.
+- [팀원용 추론 안내](selected/frozen-gdi/README.md) · [모델 다운로드](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106)
+- [선별 모델과 평가](selected/README.md) · [논문에 연결된 실험](paper-related/README.md)
+- [전체 실험 보관](archive/README.md) · [11월 6일 공개 당시 파일 지문](snapshot-manifest.json) · [모델 배포 검산](model-release-assets.json)
 
 ## 기존 공개 기록
 
