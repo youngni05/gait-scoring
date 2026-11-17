@@ -11,6 +11,26 @@
 - Alembic
 - Docker Compose
 
+## PR 자동 검증 (GitHub Actions)
+
+`.github/workflows/backend-ci.yml`은 main 대상 PR 생성·업데이트·재오픈 및 수동 실행 시
+`Backend checks` 작업을 실행합니다. 경로 필터 없이 모든 main 대상 PR에 같은 검사를 제공합니다.
+
+- Python 3.12에서 고정된 requirements.txt 설치 및 `pip check`
+- 앱·마이그레이션·CI 스크립트 Python 문법 검사
+- 독립 PostgreSQL 17 서비스에서 upgrade → 모델 비교 → downgrade → upgrade → 모델 비교
+- API 실행, health·DB 연결·OpenAPI 경로·인증 거부·JWT/비밀번호 해시·CORS 기본 검증
+
+실제 `.env`나 GitHub Secrets는 사용하지 않습니다. DB는 작업별 임시 서비스이고
+JWT 키는 실행마다 생성합니다. **CI의 downgrade 명령을 개발·운영 DB에서 실행하지 마세요.**
+`backend/scripts/ci_smoke.py`는 반복 자동 검증에 필요한 유지 파일이며 일회성 테스트가 아닙니다.
+기본 검증이므로 전체 업무 시나리오 테스트를 대체하지 않습니다.
+
+테스트 DB를 준비하고 마이그레이션을 적용한 환경에서는 backend 디렉터리에서
+`python -m scripts.ci_smoke`로 같은 API 검증을 실행할 수 있습니다.
+워크플로가 GitHub에 올라가기 전에는 Actions 실행 결과가 없습니다.
+병합 필수 검사로 강제하려면 저장소 ruleset/브랜치 보호에서 `Backend checks`를 별도로 지정합니다.
+
 ## 개발 환경 실행
 
 모든 명령어는 프로젝트 최상위 폴더(`happy-aging-app/`)에서 실행합니다.
