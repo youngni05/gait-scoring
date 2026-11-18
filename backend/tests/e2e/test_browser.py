@@ -15,6 +15,7 @@ import time
 import unittest
 from urllib.error import URLError
 from urllib.request import urlopen
+from urllib.parse import urlparse
 from uuid import uuid4
 
 import jwt
@@ -119,12 +120,27 @@ class BrowserIntegrationTests(unittest.TestCase):
         self.addCleanup(self.context.close)
         self.page = self.context.new_page()
         self.page.set_default_timeout(15000)
+        # Record only API paths/statuses, never headers, tokens or form bodies.
+        self.api_events = []
+        self.page.on('response', lambda response: self.api_events.append(
+            (response.request.method, urlparse(response.url).path, response.status)
+        ) if response.url.startswith(self.api + '/') else None)
+        self.page.on('requestfailed', lambda request: self.api_events.append(
+            (request.method, urlparse(request.url).path, 'network-failed')
+        ) if request.url.startswith(self.api + '/') else None)
         self.page.goto(self.ui)
         self.page.get_by_label('서버 주소', exact=True).fill(self.api)
         self.page.get_by_label('아이디', exact=True).fill(self.username)
         self.page.get_by_label('비밀번호', exact=True).fill(self.password)
-        self.page.get_by_role('button', name='로그인', exact=True).click()
-        expect(self.page.get_by_role('button', name='새 대상자 등록', exact=True)).to_be_visible()
+        try:
+            with self.page.expect_response(lambda response: response.url == self.api + '/auth/login'
+                                           and response.request.method == 'POST', timeout=15000) as login:
+                self.page.get_by_role('button', name='로그인', exact=True).click()
+            self.assertEqual(login.value.status, 200, 'Real API login must succeed before testing the workflow')
+            expect(self.page.get_by_role('button', name='새 대상자 등록', exact=True)).to_be_visible()
+        except Exception:
+            print('Login diagnostics:', self.api_events, self.page.get_by_role('status').all_text_contents(), flush=True)
+            raise
         self.name = '합성-' + uuid4().hex[:10]
 
     def registration_form(self):

@@ -9,6 +9,21 @@ const {validateParticipant, participantChanges, koreaToday} = require('../.stage
 const personInput = {name:'  테스트 대상자  ',gender:'F',birth_date:'1950-01-01',height_cm:'170.5'};
 const response = (data,status=200,headers={}) => new Response(JSON.stringify(data),{status,headers});
 
+test('default browser transport calls native fetch with its global receiver',async()=>{
+  const original=globalThis.fetch;
+  let called=false;
+  globalThis.fetch=function(url,init){
+    assert.equal(this,globalThis,'browser fetch must not receive ApiClient as this');
+    called=true;
+    return Promise.resolve(response({access_token:'test-token',token_type:'bearer'}));
+  };
+  try {
+    const api=new ApiClient('https://example.com',()=> '');
+    assert.equal(await api.login('synthetic','synthetic-password'),'test-token');
+    assert.equal(called,true);
+  } finally {globalThis.fetch=original;}
+});
+
 test('API URL rejects credentials, query, non-HTTP and insecure external endpoints',()=>{
   assert.equal(normalizeBase(' https://example.com/api/ '),'https://example.com/api');
   assert.equal(normalizeBase('http://localhost:8000'),'http://localhost:8000');
