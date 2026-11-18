@@ -1,6 +1,26 @@
+# Local environment and secrets (share the example only)
+.env
+.env.*
+!.env.example
+.venv/
+
+# Personal editor settings
+.vscode/
+
+# Python caches, logs, and coverage
 __pycache__/
 *.py[cod]
-.venv/
+.pytest_cache/
+.ruff_cache/
+*.log
+.coverage
+htmlcov/
+
+# Local data and database backups
+local_data/
+backups/
+
+# Existing research artifact exclusions from origin/main
 research/**/weights/
 research/**/runs/
 research/**/checks/
@@ -14,8 +34,6 @@ node_modules/
 .stage1-build/
 local-test-data/
 mobile/local-output/
-.env
-.env.*
 mobile/dist/
 mobile/public/vendor/
 mobile/public/models/
