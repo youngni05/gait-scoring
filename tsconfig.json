@@ -22,6 +22,7 @@
     "contracts/**/*.ts",
     "contracts/**/*.json",
     "mobile/src/pose/**/*.ts",
-    "tests/**/*.ts"
+    "tests/**/*.ts",
+    "mobile/src/api/**/*.ts"
   ]
 }
