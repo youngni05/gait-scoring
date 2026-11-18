@@ -80,10 +80,21 @@ class GaitMeasurement(Base):
     # Completed age at capture time; populated by the measurement service.
     age: Mapped[int] = mapped_column(SmallInteger, nullable=False)
     keypoints_json: Mapped[Any] = mapped_column(JSONB(none_as_null=True), nullable=False)
+    processing_metadata: Mapped[Any | None] = mapped_column(JSONB(none_as_null=True), nullable=True)
     extractor_name: Mapped[str] = mapped_column(String(100), nullable=False)
     extractor_version: Mapped[str] = mapped_column(String(100), nullable=False)
     measured_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     created_by: Mapped[UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+
+
+class MeasurementRequest(Base):
+    __tablename__ = "measurement_requests"
+
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id"), primary_key=True)
+    request_key: Mapped[UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True)
+    participant_id: Mapped[UUID] = mapped_column(ForeignKey("participants.id"), nullable=False)
+    body_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    measurement_id: Mapped[UUID] = mapped_column(ForeignKey("gait_measurements.id"), nullable=False)
 
 
 class GaitAnalysisResult(Base):
