@@ -1,9 +1,12 @@
 import { ParticipantForm } from './ParticipantForm';
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { ApiClient, errorMessage, type Participant, type MeasurementItem, type MeasurementResult } from './api/client';
 import { ApiSession } from './api/Session';
 import { VideoTrial } from './VideoTrial';
 import { resolveRecordedAt } from './pose/recorded-at';
+
+const SyntheticMeasurement = import.meta.env.DEV && import.meta.env.VITE_E2E_MODE === 'true'
+  ? lazy(() => import('./e2e/SyntheticMeasurement')) : null;
 
 function History({ client, participant, revision }: { client: ApiClient; participant: string; revision: number }) {
   const [offset, setOffset] = useState(0), [refresh, setRefresh] = useState(0);
@@ -41,6 +44,7 @@ function Recording({ participant }: { participant: Participant }) {
     <small>날짜만 입력하면 한국 시간 00:00로 기록합니다. 비워 두면 영상 메타데이터를 사용합니다.</small>
     <p>촬영 시각: {recordedAt || '영상 선택 또는 날짜 입력 필요'} · {recordedAtSource === 'metadata' ? '영상 메타데이터' : '직접 입력'}</p>
     <VideoTrial input={{ subjectId: participant.id, heightCm: Number(height), recordedAt, recordedAtSource }} onMetadata={setMetadata} onSelection={() => { setDay(''); setMetadata(null); }} />
+    {SyntheticMeasurement && <Suspense fallback={<p>테스트 준비 중…</p>}><SyntheticMeasurement participantId={participant.id} /></Suspense>}
   </section>;
 }
 
