@@ -1,5 +1,7 @@
 # 프론트 API 연결과 실제 서버 확인
 
+후속 변경: [대상자 등록·수정 화면](participant-management.md)이 추가되었다. 아래 등록·수정 미포함 설명은 최초 API 연결 PR의 범위를 기록한 것이다.
+
 2026-11-18 · `feature/frontend-api-integration`
 
 기준 main은 PR #7 병합 커밋 `63f43390220335647477eb8884e08dd904e2e304`이다.

@@ -1,4 +1,5 @@
 import type { PreparedMeasurement } from '../../../contracts/measurement-1/prepare';
+import type { ParticipantBody } from './participant-input';
 
 export interface Participant { id: string; name: string; birth_date: string | null; height_cm: string | number | null; gender: 'M' | 'F' | null }
 export interface Measurement { id: string; participant_id: string; age: number; measured_at: string; extractor_name: string; extractor_version: string; created_by: string }
@@ -60,6 +61,21 @@ export class ApiClient {
   async participants(signal?: AbortSignal): Promise<Participant[]> {
     const { data } = await this.request('/participants', {}, signal);
     if (!Array.isArray(data) || !data.every(p => typeof p.id === 'string' && typeof p.name === 'string')) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid participants');
+    return data;
+  }
+  async createParticipant(body: ParticipantBody, signal?: AbortSignal): Promise<Participant> {
+    const { data, status } = await this.request('/participants', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }, signal);
+    return this.participantResponse(data, status, 201);
+  }
+  async updateParticipant(id: string, body: Partial<ParticipantBody>, signal?: AbortSignal): Promise<Participant> {
+    if (!Object.keys(body).length) throw new Error('수정할 정보가 없습니다.');
+    const { data, status } = await this.request(`/participants/${encodeURIComponent(id)}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }, signal);
+    const participant = this.participantResponse(data, status, 200);
+    if (participant.id !== id) throw new ApiError(status, 'INVALID_RESPONSE', 'Wrong participant');
+    return participant;
+  }
+  private participantResponse(data: any, status: number, expected: number): Participant {
+    if (status !== expected || typeof data?.id !== 'string' || !/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(data.id) || typeof data.name !== 'string' || !['M', 'F'].includes(data.gender) || typeof data.birth_date !== 'string' || !['string', 'number'].includes(typeof data.height_cm) || !Number.isFinite(Number(data.height_cm)) || Number(data.height_cm) <= 0) throw new ApiError(status, 'INVALID_RESPONSE', 'Invalid participant response');
     return data;
   }
   async save(request: PreparedMeasurement, signal?: AbortSignal): Promise<Measurement> {
