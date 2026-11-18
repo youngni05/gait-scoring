@@ -1,0 +1,6 @@
+{
+  "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task",
+  "sha256": "5134a3aad27a58b93da0088d431f366da362b44e3ccfbe3462b3827a839011b1",
+  "engine": "@mediapipe/tasks-vision@1.2.3",
+  "purpose": "stage-4 CPU/full VIDEO extraction reference candidate; not final model selection"
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">보행 평가 개발용</string>
+    <string name="title_activity_main">보행 평가 개발용</string>
+    <string name="package_name">com.gaitscoring.dev</string>
+    <string name="custom_url_scheme">com.gaitscoring.dev</string>
+</resources>

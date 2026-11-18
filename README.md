@@ -1,5 +1,11 @@
 # gait-scoring
 
+## 모바일 영상 처리 개발
+
+개발용 React/Vite/Capacitor 앱의 [Windows 실행·Android 빌드·갤럭시 확인 절차](mobile/README.md)를 참고하세요.
+현재 구현 범위·담당자별 계약·호출 예시는 [인계 가이드](docs/mobile-pose/handoff.md), PC 실측과 실기기 보류 항목은 [7단계 검증 기록](docs/mobile-pose/stage-7-verification.txt)에 정리했습니다.
+연구 모델 코드와 모바일 앱 실행은 별도입니다.
+
 2026-11-06: 지금까지 보존된 실험 코드·설정·집계 기록을 정리하고, 현재 선별 구성과 논문 관련 모델을 분리했다.
 
 | 찾으려는 자료 | 위치 |

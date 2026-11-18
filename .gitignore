@@ -30,3 +30,11 @@ research/**/checks/
 *.npz
 *.npy
 *.tar.gz
+node_modules/
+.stage1-build/
+local-test-data/
+mobile/local-output/
+mobile/dist/
+mobile/public/vendor/
+mobile/public/models/
+.android-build/

@@ -1,0 +1,59 @@
+2단계 재검증 — 2026-11-16 (Asia/Seoul)
+검토 기준: 5656b58. 갤럭시 실기기는 사용자 요청으로 이번 검증에서 제외.
+검토 방식: 같은 에이전트의 코드 대조, 별도 깨끗한 폴더 빌드, PC UI 시험.
+
+ID 책임 확인
+- 현재 통합 계약에서 subject.id는 서버 발급 ID, recording_id는 앱 생성 UUID.
+- 시험 화면의 DEV-SUBJECT-001은 실제 ID 발급/가입/DB 저장이 없는 자리표시자.
+- 본 모듈은 외부 대상자 관리 모듈에서 ID와 키를 받도록 설계됨.
+- 팀이 대상자 ID 생성 주체를 변경한다면 별도 계약 갱신이 필요하며 이번에
+  임의로 변경하지 않음. 실제 ID 발급은 이번 영상 처리 범위에 포함하지 않음.
+
+발견한 문제와 재현
+- 커밋된 소스만 tmp/stage2-clean-audit에 복사하고 npm ci로 129개 패키지 설치.
+- 원래 npm run build:mobile은 성공했지만 dist/models/pose_landmarker_full.task가 없음.
+- 원인: Git 제외 자산을 준비하는 별도 명령에 의존. 명령 누락 시 기능 없는
+  번들이 성공으로 만들어짐. 기존 APK 자체는 이미 자산을 포함하고 있었음.
+- 수정: predev:mobile / prebuild:mobile에서 prepare:assets를 자동 실행.
+  android:sync 및 build-android.ps1도 이 경로를 사용. 중복 준비 명령 제거.
+- 수정 후 같은 깨끗한 폴더에서 자동 다운로드/해시 검사/웹 빌드 성공.
+  dist의 모델 SHA-256과 WASM 존재를 독립 Python 검사로 확인.
+- 별도 감사 폴더의 모델을 의도적으로 훼손한 뒤 build:mobile 실행:
+  체크섬 불일치로 빌드 전에 실패함을 확인. 해당 모델은 finally에서 원복.
+
+검증 결과
+- npm run typecheck: 통과.
+- npm run typecheck:mobile: 통과.
+- npm test: 69 tests / 69 pass / 0 fail / 0 skipped.
+- 커밋 소스 기반 npm ci --ignore-scripts: 성공. 고정 npm 잠금 파일 재현 확인.
+- npm run build:mobile (자산 없는 새 환경, 수정 후): 통과.
+- 자산 훼손 상태에서 빌드 차단: 통과 (예상한 실패).
+- PC 브라우저 별도 시험 탭:
+  키 99 거부, 키 170+시간대 포함 촬영일 허용, 서버 처리와 구분된 상태 표시.
+  MediaPipe 엔진 최초/반복 실행 성공, 합성 이미지 검출 0명.
+  CPU XNNPACK INFO 로그가 error 채널에 출력되지만 실행 실패 메시지는 아님.
+- UI에서 파일 선택/실제 영상 디코딩은 이번 재검토에 수행하지 않음.
+- powershell -NoProfile -File scripts/build-android.ps1: 전체 명령 경로 성공.
+  자산 준비 → 웹 빌드 → cap sync → Gradle assembleDebug 완료.
+  BUILD SUCCESSFUL in 55s, 24 executed / 69 up-to-date (증분 빌드).
+  이번에는 네이티브 의존성 캐시를 삭제한 완전 신규 SDK 빌드를 수행하지 않음.
+- APK ZIP 내 HTML/WASM/모델 존재 및 모델 SHA-256, 앱 ID/버전 재확인 통과.
+  APK SHA-256: 6447a4cd81b611b5d43d8c846cc65294338e840c78b8b4f303e78e5d250ca6f2
+- git diff --check: 통과.
+
+범위 대조 및 제한
+- React/Vite/TypeScript/Capacitor 개발 화면, 입력값/출처 지정, Windows 실행법 존재.
+- 실제 서버·인증·DB·GDI·원본 전송 구현 없음.
+- 합성 MediaPipe IMAGE 모드 시험을 실제 영상/VIDEO 모드 성공으로 표시하지 않음.
+- Android 파일 선택과 MediaPipe 초기화는 실기기 전에는 미검증으로 유지.
+- 자동 검사/PC 실행/APK 빌드는 갤럭시 설치·재실행·성능의 대체 근거가 아님.
+- Vite JS 번들 500KB 경고, Gradle flatDir/한글 경로 override/SDK XML 경고 존재.
+  현재 빌드 실패는 아니나 최초 용량/성능 및 도구 버전 정리는 추후 확인 대상.
+- 모델 자산 checksum과 npm lock은 재현성 확인이며 임상 정확도 검증이 아님.
+- 이번 수정은 실행 전 자산 준비만 변경. coords-1/모듈 인터페이스 변경 없음.
+- 실기기 연결/설치를 재요청하지 않음. 실제 영상/좌표/개인정보/토큰 미사용.
+
+최종 판정
+PC 실행과 빌드 재현성 범위는 발견 문제 수정 후 통과.
+갤럭시 설치/실행/파일 선택/MediaPipe 실행/재실행은 보류.
+따라서 2단계 전체의 실기기 완료를 선언하지 않음.

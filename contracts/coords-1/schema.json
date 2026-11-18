@@ -1,0 +1,207 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "coords-1",
+      "type": "string"
+    },
+    "recording_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "subject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "height_cm": {
+          "type": "number",
+          "minimum": 100,
+          "maximum": 220
+        }
+      },
+      "required": [
+        "id",
+        "height_cm"
+      ],
+      "additionalProperties": false
+    },
+    "capture": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "enum": [
+            "guided",
+            "fixed"
+          ]
+        },
+        "recorded_at": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$",
+          "format": "date-time"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "orientation": {
+          "enum": [
+            "landscape",
+            "portrait"
+          ]
+        },
+        "device": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "mode",
+        "recorded_at",
+        "width",
+        "height",
+        "orientation"
+      ],
+      "additionalProperties": false
+    },
+    "pose": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "enum": [
+            "pose_landmarker_lite",
+            "pose_landmarker_full",
+            "pose_landmarker_heavy"
+          ]
+        },
+        "engine_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "delegate": {
+          "enum": [
+            "CPU",
+            "GPU"
+          ]
+        }
+      },
+      "required": [
+        "model",
+        "engine_version"
+      ],
+      "additionalProperties": false
+    },
+    "marks": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "stand_start": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stand_end": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "stand_start",
+            "stand_end"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "stand_start": {
+              "type": "null"
+            },
+            "stand_end": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "stand_start",
+            "stand_end"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "frames": {
+      "type": "array",
+      "minItems": 60,
+      "items": {
+        "type": "object",
+        "properties": {
+          "t": {
+            "type": "number",
+            "minimum": 0
+          },
+          "lm": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "minItems": 33,
+                "maxItems": 33,
+                "items": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  ],
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "additionalItems": false
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "t",
+          "lm"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "recording_id",
+    "subject",
+    "capture",
+    "pose",
+    "marks",
+    "frames"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "coords-1 local strict draft",
+  "description": "Based on integrated requirements 2026-11-16. Unknown fields rejected locally pending consumer agreement. Visibility 0..1 follows MediaPipe semantics. Cross-field checks require validateCoords."
+}

@@ -1,0 +1,6 @@
+{
+  "appId": "com.gaitscoring.dev",
+  "appName": "보행 평가 개발용",
+  "webDir": "dist",
+  "android": { "allowMixedContent": false }
+}
