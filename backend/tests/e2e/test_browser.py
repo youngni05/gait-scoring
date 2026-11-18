@@ -119,6 +119,7 @@ class BrowserIntegrationTests(unittest.TestCase):
         self.context = self.browser.new_context(viewport={'width': 1280, 'height': 900})
         self.addCleanup(self.context.close)
         self.page = self.context.new_page()
+        self.addCleanup(self.report_failure)
         self.page.set_default_timeout(15000)
         # Record only API paths/statuses, never headers, tokens or form bodies.
         self.api_events = []
@@ -143,9 +144,22 @@ class BrowserIntegrationTests(unittest.TestCase):
             raise
         self.name = '합성-' + uuid4().hex[:10]
 
+    def report_failure(self):
+        result = self._outcome.result
+        if any(test is self for test, _ in result.failures + result.errors):
+            # Synthetic-only UI text; never DOM input values, tokens or request bodies.
+            print('Browser failure API events:', getattr(self, 'api_events', []), flush=True)
+            if not self.page.is_closed():
+                try:
+                    print('Browser failure visible text:', self.page.locator('body').inner_text(timeout=2000)[:6000], flush=True)
+                except Exception:
+                    print('Browser failure visible text unavailable', flush=True)
+
     def registration_form(self):
         self.page.get_by_role('button', name='새 대상자 등록', exact=True).click()
         form = self.page.get_by_role('region', name='대상자 등록', exact=True)
+        expect(form.get_by_role('combobox')).to_have_accessible_name('성별')
+        expect(self.page.locator('#participant-selection')).to_have_accessible_name('대상자')
         form.get_by_label('이름', exact=True).fill(self.name)
         form.get_by_label('성별', exact=True).select_option('F')
         form.get_by_label('생년월일', exact=True).fill('1950-01-01')

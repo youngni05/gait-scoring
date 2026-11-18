@@ -41,7 +41,7 @@ export function ParticipantForm({ client, original, onSaved, onClose }: {
       <fieldset disabled={busy || uncertain} style={{ border: 0, padding: 0, margin: 0 }}>
         <label>이름<input autoComplete="off" value={input.name} onChange={e => change('name', e.target.value)} aria-invalid={!!errors.name} aria-describedby={prefix + '-name'} /></label>
         <small id={prefix + '-name'}>{errors.name}</small>
-        <label>성별<select value={input.gender} onChange={e => change('gender', e.target.value)} aria-invalid={!!errors.gender} aria-describedby={prefix + '-gender'}><option value="">선택하세요</option><option value="M">남성</option><option value="F">여성</option></select></label>
+        <label htmlFor={prefix + '-gender-input'}>성별</label><select id={prefix + '-gender-input'} value={input.gender} onChange={e => change('gender', e.target.value)} aria-invalid={!!errors.gender} aria-describedby={prefix + '-gender'}><option value="">선택하세요</option><option value="M">남성</option><option value="F">여성</option></select>
         <small id={prefix + '-gender'}>{errors.gender}</small>
         <label>생년월일<input type="date" max={koreaToday()} value={input.birth_date} onChange={e => change('birth_date', e.target.value)} aria-invalid={!!errors.birth_date} aria-describedby={prefix + '-birth'} /></label>
         <small id={prefix + '-birth'}>{errors.birth_date}</small>

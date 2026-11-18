@@ -104,7 +104,7 @@ export function ConnectedApp() {
     </section>
     {client && <ApiSession.Provider value={{ client, onSaved: () => setRevision(v => v + 1) }}>
       <section className="card"><h2>대상자 선택</h2><button className="secondary" disabled={!!editor} onClick={() => void load(client)}>대상자 목록 새로고침</button>
-        <label>대상자<select disabled={!!editor} value={selected} onChange={e => { if (!selected || window.confirm('대상자를 바꾸면 현재 영상·좌표·재시도 요청이 지워집니다. 저장 상태를 확인했나요?')) setSelected(e.target.value); }}><option value="">선택하세요</option>{participants.map(p => <option key={p.id} value={p.id}>{p.name} · {p.birth_date ?? '생년월일 미등록'} · {p.id.slice(0, 8)}</option>)}</select></label>
+        <label htmlFor="participant-selection">대상자</label><select id="participant-selection" disabled={!!editor} value={selected} onChange={e => { if (!selected || window.confirm('대상자를 바꾸면 현재 영상·좌표·재시도 요청이 지워집니다. 저장 상태를 확인했나요?')) setSelected(e.target.value); }}><option value="">선택하세요</option>{participants.map(p => <option key={p.id} value={p.id}>{p.name} · {p.birth_date ?? '생년월일 미등록'} · {p.id.slice(0, 8)}</option>)}</select>
       </section>
       <section className="card"><h2>대상자 관리</h2><div className="actions">
         <button disabled={!!editor} onClick={() => openEditor(null)}>새 대상자 등록</button>
