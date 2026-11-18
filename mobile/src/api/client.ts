@@ -33,7 +33,8 @@ export function errorMessage(error: unknown): string {
 }
 export class ApiClient {
   readonly base: string;
-  constructor(base: string, private token: () => string, private transport: typeof fetch = fetch, private timeoutMs = 30000) { this.base = normalizeBase(base); }
+  // Native browser fetch needs the global receiver, not this ApiClient instance.
+  constructor(base: string, private token: () => string, private transport: typeof fetch = (input, init) => globalThis.fetch(input, init), private timeoutMs = 30000) { this.base = normalizeBase(base); }
   private async request(path: string, init: RequestInit = {}, signal?: AbortSignal, authenticated = true): Promise<{ data: any; status: number }> {
     const controller = new AbortController();
     const abort = () => controller.abort();
