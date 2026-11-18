@@ -1,3 +1,4 @@
+import { ParticipantForm } from './ParticipantForm';
 import { useEffect, useRef, useState } from 'react';
 import { ApiClient, errorMessage, type Participant, type MeasurementItem, type MeasurementResult } from './api/client';
 import { ApiSession } from './api/Session';
@@ -34,7 +35,7 @@ function Recording({ participant }: { participant: Participant }) {
   const { recordedAt, recordedAtSource } = resolveRecordedAt(day, metadata);
   return <section className="card"><h2>{participant.name} · 영상 측정</h2>
     <p>영상은 기기에서 처리하며 좌표와 처리 정보만 서버로 전송합니다.</p>
-    {!participant.birth_date && <p role="alert">대상자의 생년월일이 없습니다. 서버에서 생년월일을 등록해야 저장할 수 있습니다.</p>}
+    {!participant.birth_date && <p role="alert">생년월일이 없습니다. 위의 대상자 수정에서 등록해야 측정을 저장할 수 있습니다.</p>}
     <label>촬영 당시 키 (cm)<input type="number" min="100" max="220" step="0.1" value={height} onChange={e => setHeight(e.target.value)} /></label>
     <label>촬영일 (직접 입력 시 우선 적용)<input placeholder="YYYY-MM-DD" value={day} onChange={e => setDay(e.target.value)} /></label>
     <small>날짜만 입력하면 한국 시간 00:00로 기록합니다. 비워 두면 영상 메타데이터를 사용합니다.</small>
@@ -51,10 +52,11 @@ export function ConnectedApp() {
   const [message, setMessage] = useState('서버 주소와 테스트 계정으로 로그인하세요.'), [busy, setBusy] = useState(false);
   const [participants, setParticipants] = useState<Participant[]>([]), [selected, setSelected] = useState('');
   const [revision, setRevision] = useState(0);
+  const [editor, setEditor] = useState<{ original: Participant | null } | null>(null);
   useEffect(() => () => { loginAbort.current?.abort(); listAbort.current?.abort(); token.current = ''; }, []);
   async function load(api: ApiClient) {
     listAbort.current?.abort(); const abort = new AbortController(); listAbort.current = abort;
-    try { const people = await api.participants(abort.signal); if (!abort.signal.aborted) { setParticipants(people); setMessage(people.length ? '대상자를 선택하세요.' : '등록된 대상자가 없습니다. 백엔드 담당자에게 테스트 대상자 등록을 요청하세요.'); } }
+    try { const people = await api.participants(abort.signal); if (!abort.signal.aborted) { setParticipants(people); setMessage(people.length ? '대상자를 선택하세요.' : '등록된 대상자가 없습니다. 새 대상자를 등록하세요.'); } }
     catch (e) { if (!abort.signal.aborted) setMessage(errorMessage(e)); }
   }
   async function login() {
@@ -72,7 +74,17 @@ export function ConnectedApp() {
   function logout() {
     if (!window.confirm('화면의 영상·좌표·재시도 요청이 지워집니다. 저장 중이거나 응답을 받지 못했다면 먼저 같은 요청으로 재시도하세요. 로그아웃할까요?')) return;
     loginAbort.current?.abort(); loginAbort.current = null; listAbort.current?.abort(); token.current = '';
-    setClient(null); setParticipants([]); setSelected(''); setPassword(''); setBusy(false); setMessage('로그아웃했습니다.');
+    setEditor(null); setClient(null); setParticipants([]); setSelected(''); setPassword(''); setBusy(false); setMessage('로그아웃했습니다.');
+  }
+  function openEditor(original: Participant | null) {
+    if (!original && selected && !window.confirm('새 대상자를 등록하면 선택이 바뀌고 현재 영상·좌표·재시도 요청이 지워집니다. 현재 측정의 저장 상태를 확인했나요?')) return;
+    listAbort.current?.abort(); setEditor({ original });
+  }
+  function savedParticipant(person: Participant) {
+    listAbort.current?.abort();
+    setParticipants(people => [...people.filter(p => p.id !== person.id), person]);
+    setSelected(person.id); setEditor(null); setRevision(v => v + 1);
+    setMessage('대상자 정보를 저장했습니다. 선택된 대상자로 측정할 수 있습니다.');
   }
   const participant = participants.find(p => p.id === selected);
   return <main><header><span className="eyebrow">GAIT LAB</span><span className="badge">서버 연동</span></header>
@@ -87,9 +99,14 @@ export function ConnectedApp() {
       {client && <button className="secondary" onClick={logout}>로그아웃</button>}
     </section>
     {client && <ApiSession.Provider value={{ client, onSaved: () => setRevision(v => v + 1) }}>
-      <section className="card"><h2>대상자 선택</h2><button className="secondary" onClick={() => void load(client)}>대상자 목록 새로고침</button>
-        <label>대상자<select value={selected} onChange={e => { if (!selected || window.confirm('대상자를 바꾸면 현재 영상·좌표·재시도 요청이 지워집니다. 저장 상태를 확인했나요?')) setSelected(e.target.value); }}><option value="">선택하세요</option>{participants.map(p => <option key={p.id} value={p.id}>{p.name} · {p.birth_date ?? '생년월일 미등록'} · {p.id.slice(0, 8)}</option>)}</select></label>
+      <section className="card"><h2>대상자 선택</h2><button className="secondary" disabled={!!editor} onClick={() => void load(client)}>대상자 목록 새로고침</button>
+        <label>대상자<select disabled={!!editor} value={selected} onChange={e => { if (!selected || window.confirm('대상자를 바꾸면 현재 영상·좌표·재시도 요청이 지워집니다. 저장 상태를 확인했나요?')) setSelected(e.target.value); }}><option value="">선택하세요</option>{participants.map(p => <option key={p.id} value={p.id}>{p.name} · {p.birth_date ?? '생년월일 미등록'} · {p.id.slice(0, 8)}</option>)}</select></label>
       </section>
+      <section className="card"><h2>대상자 관리</h2><div className="actions">
+        <button disabled={!!editor} onClick={() => openEditor(null)}>새 대상자 등록</button>
+        <button className="secondary" disabled={!!editor || !participant} onClick={() => participant && openEditor(participant)}>선택한 대상자 수정</button>
+      </div></section>
+      {editor && <ParticipantForm key={editor.original?.id ?? 'new'} client={client} original={editor.original} onSaved={savedParticipant} onClose={() => { setEditor(null); void load(client); }} />}
       {participant && <><Recording key={participant.id} participant={participant} /><History key={participant.id + ':' + revision} client={client} participant={participant.id} revision={revision} /></>}
     </ApiSession.Provider>}
   </main>;
