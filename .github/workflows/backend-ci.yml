@@ -53,7 +53,7 @@ jobs:
       - name: Check dependency compatibility
         run: python -m pip check
       - name: Check Python syntax
-        run: python -m compileall -q app alembic scripts
+        run: python -m compileall -q app alembic scripts tests
       - name: Verify migration round trip on disposable CI database
         run: |
           python -m alembic upgrade head
@@ -63,3 +63,9 @@ jobs:
           python -m alembic check
       - name: Run API smoke checks
         run: python -m scripts.ci_smoke
+      - name: Verify measurement schema and shared fixture
+        run: python -m unittest discover -s tests -p test_measurement_schema.py -v
+      - name: Verify measurement API and concurrency on PostgreSQL
+        env:
+          GAIT_TEST_DB_WRITES: "1"
+        run: python -m unittest discover -s tests -p test_measurement_postgres.py -v

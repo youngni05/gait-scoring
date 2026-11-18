@@ -1,13 +1,15 @@
-from datetime import timedelta, timezone
+import hashlib
+import re
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request, Response
 from sqlalchemy import select
 from sqlalchemy.orm import Session, defer
 
 from app.db import get_db
 from app.deps import get_current_user
 from app.models import GaitAnalysisResult, GaitMeasurement, Participant, User
+from app.measurement_service import store_measurement, problem
 from app.schemas.measurements import (
     MeasurementCreate,
     MeasurementListItem,
@@ -17,7 +19,18 @@ from app.schemas.measurements import (
 
 
 router = APIRouter(tags=["Measurements"])
-KOREA_TIMEZONE = timezone(timedelta(hours=9))
+
+
+async def request_identity(
+    request: Request,
+    idempotency_key: str | None = Header(default=None, alias="Idempotency-Key"),
+) -> tuple[UUID | None, str]:
+    keys = request.headers.getlist("Idempotency-Key")
+    if not keys:
+        return None, ""
+    if len(keys) != 1 or not re.fullmatch(r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}", keys[0]):
+        raise problem("INVALID_REQUEST_KEY", "Idempotency-Key must be one UUID", 422)
+    return UUID(keys[0]), hashlib.sha256(await request.body()).hexdigest()
 
 
 def require_participant(db: Session, participant_id: UUID) -> Participant:
@@ -31,33 +44,21 @@ def require_participant(db: Session, participant_id: UUID) -> Participant:
     "/participants/{participant_id}/measurements",
     response_model=MeasurementResponse,
     status_code=201,
+    responses={200: {"model": MeasurementResponse, "description": "Previously accepted identical request"},
+               409: {"description": "Missing birth date, request conflict, or retryable lock wait"}},
 )
 def create_measurement(
     participant_id: UUID,
     data: MeasurementCreate,
+    response: Response,
+    identity: tuple[UUID | None, str] = Depends(request_identity),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    participant = require_participant(db, participant_id)
-    if participant.birth_date is None:
-        raise HTTPException(status_code=409, detail="Participant birth date is required before recording a measurement")
-
-    capture_date = data.measured_at.astimezone(KOREA_TIMEZONE).date()
-    birth_date = participant.birth_date
-    if capture_date < birth_date:
-        raise HTTPException(status_code=422, detail="Capture date must not precede birth date")
-    age = capture_date.year - birth_date.year - (
-        (capture_date.month, capture_date.day) < (birth_date.month, birth_date.day)
+    measurement, created = store_measurement(
+        db, current_user.id, participant_id, data, identity[0], identity[1],
     )
-    measurement = GaitMeasurement(
-        participant_id=participant.id,
-        age=age,
-        created_by=current_user.id,
-        **data.model_dump(),
-    )
-    db.add(measurement)
-    db.commit()
-    db.refresh(measurement)
+    response.status_code = 201 if created else 200
     return measurement
 
 
@@ -75,7 +76,8 @@ def list_measurements(
     require_participant(db, participant_id)
     rows = db.execute(
         select(GaitMeasurement, GaitAnalysisResult.id)
-        .options(defer(GaitMeasurement.keypoints_json, raiseload=True))
+        .options(defer(GaitMeasurement.keypoints_json, raiseload=True),
+                 defer(GaitMeasurement.processing_metadata, raiseload=True))
         .outerjoin(GaitAnalysisResult, GaitAnalysisResult.measurement_id == GaitMeasurement.id)
         .where(GaitMeasurement.participant_id == participant_id)
         .order_by(GaitMeasurement.measured_at.desc(), GaitMeasurement.id.desc())

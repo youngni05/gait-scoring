@@ -3,9 +3,10 @@ from datetime import datetime, timezone
 from typing import Literal
 from uuid import UUID
 
-from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, JsonValue, field_validator
+from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, JsonValue, field_validator, model_validator
 
 from app.schemas.participants import ParticipantResponse
+from app.schemas.coords import Coords, ProcessingMetadata
 
 
 class MeasurementCreate(BaseModel):
@@ -15,6 +16,22 @@ class MeasurementCreate(BaseModel):
     extractor_name: str = Field(min_length=1, max_length=100)
     extractor_version: str = Field(min_length=1, max_length=100)
     measured_at: AwareDatetime
+    processing_metadata: ProcessingMetadata | None = None
+
+    @model_validator(mode="after")
+    def validate_contract(self):
+        if "processing_metadata" in self.model_fields_set and self.processing_metadata is None:
+            raise ValueError("processing_metadata must not be null when supplied")
+        if self.processing_metadata is not None:
+            coords = Coords.model_validate(self.keypoints_json)
+            if self.extractor_name != "mediapipe_tasks_vision" or self.extractor_version != coords.pose.engine_version:
+                raise ValueError("Extractor metadata does not match coords-1")
+            captured = datetime.fromisoformat(coords.capture.recorded_at.replace("Z", "+00:00"))
+            if captured != self.measured_at:
+                raise ValueError("Capture timestamp does not match measured_at")
+            if self.processing_metadata.detection.marks.model_dump() != coords.marks.model_dump():
+                raise ValueError("Detection marks do not match coords-1")
+        return self
 
     @field_validator("extractor_name", "extractor_version", mode="before")
     @classmethod
@@ -26,7 +43,7 @@ class MeasurementCreate(BaseModel):
     def validate_keypoints(cls, value):
         if not value:
             raise ValueError("Keypoints must be a non-empty JSON object or array")
-        # JSONB cannot store NaN or Infinity. The detailed coordinate schema is TBD.
+        # JSONB cannot store NaN or Infinity, including in legacy requests.
         json.dumps(value, allow_nan=False)
         return value
 

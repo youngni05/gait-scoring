@@ -111,7 +111,7 @@ CORS_ALLOW_ORIGINS=http://localhost:5173,http://localhost:3000,http://localhost,
 API 서버 주소가 아니라 요청을 보내는 프론트 주소를 설정합니다.
 
 미설정 또는 빈 값이면 교차 출처를 허용하지 않습니다. `*`는 허용하지 않습니다.
-현재 GET·POST·PATCH와 Authorization·Content-Type 헤더를 허용하고 OPTIONS 사전 요청은
+현재 GET·POST·PATCH와 Authorization·Content-Type·Idempotency-Key 헤더를 허용하고 OPTIONS 사전 요청은
 CORS 미들웨어가 처리합니다. JWT Bearer 인증이므로 쿠키 credentials는 활성화하지 않습니다.
 프론트에서 `credentials: "include"`를 지정할 필요가 없습니다.
 
@@ -196,7 +196,7 @@ docker compose down
 ```
 
 좌표 예시는 임시 구조이며 AI 연동 규격이 아닙니다. 현재는 비어 있지 않은
-JSON 객체 또는 배열과 유한한 숫자인지만 검증하며, 세부 관절 구조는 추후 확정합니다.
+JSON 객체 또는 배열과 유한한 숫자인지만 검증하는 기존 요청 예시입니다. 신규 processing-1 요청은 coords-1의 33관절·프레임·시간·대상자 등을 검증합니다.
 원본 영상이나 파일 업로드는 받지 않습니다. `age`, `created_by`, `participant_id`는
 요청 본문에 넣지 않습니다. 경로의 어르신 ID와 로그인 사용자, 촬영일로 서버가 결정합니다.
 
@@ -217,3 +217,28 @@ JSON 객체 또는 배열과 유한한 숫자인지만 검증하며, 세부 관�
 
 현재 측정 등록은 AI를 호출하거나 분석 결과를 생성하지 않습니다.
 분석 결과 저장 및 AI 실행 연동은 추후 구현합니다.
+
+## processing-1 저장과 검증
+
+신규 메타데이터와 요청 키를 함께 보내면 서버에서 coords-1과 필드 일치를 검증하고 DB 트랜잭션으로 중복을 방지합니다.
+마이그레이션 `b419d223e901`은 기존 측정의 metadata를 NULL로 유지하고 요청 키 테이블을 추가합니다.
+기존 4필드 클라이언트는 그대로 동작합니다. [API 명세](../docs/API_SPEC.md)의 12절을 확인하세요.
+
+스키마 단위 테스트 (backend 폴더):
+
+```powershell
+python -m unittest discover -s tests -p test_measurement_schema.py -v
+```
+
+PostgreSQL/HTTP/동시성 테스트는 DB 이름이 `_ci`로 끝나는 폐기 가능한 테스트 DB에서만 실행합니다.
+실제 앱 DB에는 실행하지 마세요. 테스트는 UUID 이름의 독립 스키마에서 마이그레이션과 합성 데이터 쓰기를 수행하고 해당 스키마만 정리합니다.
+
+```powershell
+# 먼저 DATABASE_URL을 별도 테스트 DB로 지정합니다. 비밀번호는 Git에 저장하지 않습니다.
+$env:GAIT_TEST_DB_WRITES = '1'
+python -m unittest discover -s tests -p test_measurement_postgres.py -v
+```
+
+GitHub Actions는 PostgreSQL 17에서 위 두 테스트를 실행합니다. 기존 데이터 보존 마이그레이션,
+실제 로그인·HTTP 저장/조회, 순차·동시 중복, 실제 유일키 잠금 시간 초과와 재시도, CORS를 검사합니다.
+로컬 환경에 PostgreSQL이 없으면 스키마 테스트 통과만으로 DB 통합을 통과했다고 판단하지 않습니다.

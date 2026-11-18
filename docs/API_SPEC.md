@@ -36,7 +36,7 @@ CORS_ALLOW_ORIGINS=http://localhost:5173,http://localhost:3000,http://localhost,
 다른 포트, LAN IP, Capacitor live reload 주소를 사용하면 해당 origin을 추가해야 합니다.
 환경변수 변경 후 `docker compose up -d --no-deps --force-recreate api`로 API 컨테이너를 재생성합니다.
 미설정·빈 값은 교차 출처를 허용하지 않으며 `*`는 허용하지 않습니다.
-GET·POST·PATCH 및 Authorization·Content-Type 헤더를 허용합니다. 쿠키 인증을 쓰지 않으므로
+GET·POST·PATCH 및 Authorization·Content-Type·Idempotency-Key 헤더를 허용합니다. 쿠키 인증을 쓰지 않으므로
 프론트 요청에 `credentials: "include"`를 지정하지 않습니다.
 
 ## 2. API 목록
@@ -288,11 +288,11 @@ JWT 인증 필수이며 `Content-Type: application/json`으로 전송합니다.
 | `extractor_version` | 예 | 앞뒤 공백 제거 후 1~100자 |
 | `measured_at` | 예 | 실제 촬영 일시, 시간대 필수, 미래 불가 |
 
-- 좌표의 `NaN`, `Infinity`는 허용하지 않습니다. 세부 관절 구조는 아직 검증하지 않습니다.
+- 좌표의 `NaN`, `Infinity`는 허용하지 않습니다. 신규 processing-1 요청은 coords-1 구조와 관절·프레임·대상자·시간 일치를 검증합니다. 기존 4필드 요청에는 일반 JSON 검증을 유지합니다.
 - 촬영일은 생년월일보다 앞설 수 없습니다.
 - 본문에 `age`, `created_by`, `participant_id` 등 정의되지 않은 필드를 넣으면 `422`입니다.
 - 서버가 한국 날짜 기준으로 촬영 당시 만 나이를 계산합니다.
-- 중복 제출 방지 기능은 아직 없습니다. 같은 요청을 다시 보내면 새 기록이 생기므로 중복 클릭·자동 재전송에 유의합니다.
+- 기존 4필드 요청은 중복 제출 방지가 없습니다. 신규 processing-1 요청은 processing_metadata와 Idempotency-Key를 함께 전송하며 아래 12절의 중복 방지 규칙을 따릅니다.
 
 성공 응답 `201`:
 
@@ -445,26 +445,21 @@ JWT 인증 필수이며 `Content-Type: application/json`으로 전송합니다.
     {
       "type": "missing",
       "loc": ["body", "gender"],
-      "msg": "Field required",
-      "input": {
-        "name": "김예시",
-        "birth_date": "1950-03-12",
-        "height_cm": "160.50"
-      }
+      "msg": "Field required"
     }
   ]
 }
 ```
 
-프론트 오류 처리에서는 `detail`이 문자열인지 배열인지 구분해야 합니다.
+프론트 오류 처리에서는 `detail`의 문자열·배열·업무 오류 객체(`code`, `message`)를 구분해야 합니다. 검증 오류에는 입력 원문을 반환하지 않습니다.
 위 예시는 대표 형태이며 검증 오류 종류에 따라 추가 필드가 포함될 수 있습니다.
 
 ## 11. 현재 연동 범위와 남은 작업
 
 현재 연동 가능: 로그인, 어르신 등록·조회·수정, 좌표 저장, 촬영 목록, 저장된 결과 조회.
 
-추후 작업: AI 실행·결과 저장 연동, 좌표·그래프 세부 규격 확정,
-분석 작업 상태 관리, 중복 제출 방지.
+추후 작업: AI 실행·결과 저장 연동, 모델 입력 변환·그래프 세부 규격 확정, 분석 작업 상태 관리.
+신규 측정 요청의 메타데이터 저장·서버 좌표 검증·중복 제출 방지는 12절에 설명합니다.
 
 구현 참조:
 
@@ -473,3 +468,37 @@ JWT 인증 필수이며 `Content-Type: application/json`으로 전송합니다.
 - [측정 API](../backend/app/routers/measurements.py)
 - [어르신 요청·응답 스키마](../backend/app/schemas/participants.py)
 - [측정 요청·응답 스키마](../backend/app/schemas/measurements.py)
+
+## 12. processing-1 측정 저장 계약
+
+`POST /participants/{participant_id}/measurements`의 기존 4개 필드는 유지합니다.
+신규 클라이언트는 `processing_metadata` 객체와 UUID `Idempotency-Key` 헤더를 함께 전송합니다.
+하나만 보내거나 metadata를 명시적 null로 보내면 422입니다. 둘 다 없으면 기존 동작이며 중복 방지를 제공하지 않습니다.
+
+상세 필드와 합성 요청은 [연결 계약](integration/measurement-contract-v1.md),
+[합성 샘플](../contracts/measurement-1/synthetic.request.json)을 참고합니다.
+본문에는 `keypoints_json` 전체, `extractor_name=mediapipe_tasks_vision`, 엔진 버전 `extractor_version`,
+`measured_at`, 그리고 `schema_version=processing-1` 및 기존 추출 메타데이터를 가진 `processing_metadata`가 들어갑니다.
+메타데이터와 좌표는 저장하지만 목록·결과 응답에 원문을 추가하지 않습니다.
+
+| 상황 | 응답 |
+| --- | --- |
+| 최초 유효 요청 | 201, 기존 MeasurementResponse |
+| 같은 사용자·키·대상자·본문 바이트 | 200, 기존 측정 ID와 응답 재사용 |
+| 같은 사용자·키, 다른 본문 또는 대상자 | 409 IDEMPOTENCY_CONFLICT |
+| 선행 트랜잭션 잠금 대기 2초 초과 | 409 REQUEST_IN_PROGRESS, Retry-After: 2 |
+| 생년월일 누락 (신규 요청) | 409 PARTICIPANT_BIRTH_DATE_REQUIRED |
+| 경로와 coords.subject.id 불일치 | 422 PARTICIPANT_MISMATCH |
+| 키·메타데이터 짝 불일치 | 422 INVALID_MEASUREMENT_CONTRACT |
+| 잘못된 요청 키 | 422 INVALID_REQUEST_KEY |
+
+업무 오류는 `{"detail":{"code":"...","message":"..."}}`입니다.
+검증 오류 배열에는 loc/type/msg만 포함해 좌표·개인정보 입력 원문과 NaN을 반사하지 않습니다.
+기존 409 생년월일 누락은 문자열 응답을 유지합니다.
+
+키는 로그인 사용자별로 측정 수명 동안 보존합니다. 같은 키의 본문은 UTF-8 원문 SHA-256으로 비교하므로
+공백·키 순서 변경도 충돌입니다. 앱은 준비한 본문 문자열을 그대로 재사용해야 합니다.
+검증 실패는 키를 예약하지 않습니다. 네트워크 취소가 서버 저장 취소를 뜻하지 않습니다.
+AI 실행·결과 자동 저장은 이 계약에 포함되지 않습니다.
+
+브라우저에서 재시도 대기 시간을 읽을 수 있도록 CORS는 `Retry-After` 응답 헤더를 노출합니다.
