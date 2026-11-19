@@ -1,0 +1,126 @@
+{
+  "request_schema": "ai-history-request/1",
+  "response_schema": "ai-history-comparison/1",
+  "comparison_policy_version": "personal-history/1",
+  "entrypoints": {
+    "library": "from history import compare_history; compare_history(request)",
+    "http": "POST /v1/compare-history",
+    "cli": "python history_cli.py request.json [response.json]"
+  },
+  "limits": {
+    "max_prior_visits": 128,
+    "max_records_per_visit": 32,
+    "max_total_records": 256,
+    "max_segments_per_analysis": 16,
+    "max_string_chars": 256,
+    "max_body_bytes": 8000000
+  },
+  "request": {
+    "required": [
+      "schema",
+      "request_id",
+      "comparison_policy_version",
+      "current_visit",
+      "prior_visits"
+    ],
+    "optional": [
+      "initial_reference_visit_id",
+      "data_kind"
+    ],
+    "initial_reference_visit_id": "Nonempty ID or null. Never silently replaced when supplied. Default null.",
+    "data_kind": [
+      "synthetic_visits",
+      "recorded_visits",
+      "mixed",
+      "unspecified"
+    ],
+    "visit": {
+      "required": [
+        "subject_id",
+        "visit_id",
+        "captured_at",
+        "records"
+      ],
+      "captured_at": "ISO8601 with explicit timezone, or null for unknown. Compare UTC instants; date counts use fixed date_timezone UTC+09:00.",
+      "records": "0..32 records. Empty visit retains unavailable state. Repeated visit_id must have identical subject and capture instant; records are merged before aggregation.",
+      "record": {
+        "required": [
+          "source_id",
+          "source_sha256",
+          "analysis_id",
+          "analysis"
+        ],
+        "optional": [
+          "tracking_policy_id",
+          "sampling_policy_id"
+        ],
+        "source_sha256": "Lowercase SHA256 or literal unknown. Unknown identity is insufficient_metadata for comparison.",
+        "tracking_policy_id": "Backend/pipeline-assigned fixed tracker initialization/start policy ID; nonempty string or unknown; omitted means unknown. Never derive from absolute session timestamps or impose a 35-frame rule.",
+        "analysis": "Unmodified ai-analysis/2 result from analyze(). source_id must match envelope. Required top-level fields and known metric/envelope shapes validated; extension dictionaries retain execution diagnostics. No manually flattened metric list required.",
+        "sampling_policy_id": "Explicit pipeline/backend-assigned native sampling policy ID, including intended cadence/rate basis. Required for definitive GDI comparison only; omission means unknown. Never infer equivalent25/30Hz from native124 alone. Knee/gait do not require this field."
+      }
+    }
+  },
+  "metric_dimensions": {
+    "metric_id": [
+      "observed_knee_range",
+      "supported_knee_range",
+      "observed_left_minus_right_range",
+      "supported_left_minus_right_range",
+      "cadence",
+      "step_time",
+      "left_minus_right_step_time",
+      "gdi_baseline",
+      "gdi_normal100"
+    ],
+    "direction": [
+      "image_left",
+      "image_right",
+      "unknown"
+    ],
+    "side": [
+      "left",
+      "right",
+      "bilateral",
+      "none"
+    ],
+    "interpretation": "No cross-direction/model/side/unit pooling. Unknown direction is retained but excluded from definitive comparison. Bilateral differences use original same-segment difference metrics only. valid_steps is evidence, not a separate comparison endpoint."
+  },
+  "policy": {
+    "condition_key": "Current rows are grouped by method/unit/side/direction, analysis version, extractor runtime/version/model/delegate/settings, upright image geometry, clock basis, input object, tracking_policy_id, segmentation mode/method/settings, relevant measurement source hash; GDI also uses full model/checkpoint/calibration/selection/source provenance, central124 selection and time/orientation processing policy. Missing fields and unknown remain insufficient_metadata. No absolute source/session timestamps, session IDs, sample counts, elapsed times or measured cadence enter the condition key. GDI requires record.sampling_policy_id; measured source timestamps and floating median frame intervals are evidence, not literal equality keys.",
+    "multiple_current_conditions": "Return separate metric rows per distinct current condition key; never mix their values.",
+    "source_identity": "Same source_id OR same known source_sha256 forms a duplicate component, transitively. A current-visit component can never appear in past references. Among eligible past records of a component use earliest capture instant/visit_id; among matching reanalyses use lexicographically first analysis_id then source_id. Select by IDs/conditions, never by score. Duplicate components cannot count as multiple videos.",
+    "temporal_selection": "Same known subject, strictly earlier capture instant and different visit ID. Same-instant/future/current are not_prior. Unknown times/subject/identity/policy are insufficient_metadata.",
+    "aggregation": "Per current condition/direction/side/metric, select finite available matching segment values. Sort by start/stop/segment_id; exclude overlapping windows after the first available interval. Segment median -> one source/video median -> one visit median. Each video and each past visit has equal weight at its level. All IDs and metric-specific exclusions retained.",
+    "recent": "Most recent eligible visit with a value for this metric/condition. Timestamp ties resolved by lexicographically first visit_id.",
+    "initial": "If initial_reference_visit_id supplied, use only that earlier visit or explicit reason; never replace it. If absent, propose earliest visit comparable for any current metric. That earlier proposal can be compared immediately but backend must persist it. If no comparable past exists, propose current visit only for future persistence; never use current in its own past reference. No proposal if current has no comparison-ready value.",
+    "statistics": "Current minus reference in original units, no percentages. Past-only median/q1/q3/iqr with linear quantiles p*(n-1), n_visits/n_dates (fixed UTC+09:00), sorted timeline including current separately. Within-source segment IQR and within-visit source IQR are separate from between-date distribution. No clinical thresholds, alerts or personal model fitting."
+  },
+  "response": {
+    "required": [
+      "schema",
+      "request_id",
+      "comparison_policy_version",
+      "data_kind",
+      "status",
+      "current_visit_id",
+      "initial_reference",
+      "metrics",
+      "excluded_records",
+      "execution"
+    ],
+    "initial_reference": "requested_visit_id,effective_visit_id,proposed_visit_id,requires_persistence,unavailable_reason; effective is an earlier usable/provided visit only; proposed current is never effective in this request.",
+    "metric": {
+      "identity": "metric_id,direction,side,unit,condition_key_id (SHA256 of canonical condition_key),condition_key,missing_metadata,status",
+      "current": "visit summary with value,visit_id,captured_at,source_count,segment_count,valid_count,used_records,source_iqr; value can be present when comparability is unavailable.",
+      "recent": "value,delta,reference_visit_ids,captured_at,used_records,unavailable_reason",
+      "initial": "Same shape as recent. A missing/incompatible fixed initial visit does not suppress recent comparison.",
+      "past_distribution": "median,q1,q3,iqr,n_visits,n_dates,reference_visit_ids; all null with n=0 if no comparable past.",
+      "timeline": "Chronological comparable visit summaries; current is flagged is_current=true. Current excluded from past statistics.",
+      "excluded_records": "visit_id,source_id,analysis_id,optional segment_id,reason,optional fields. Includes null metrics, overlaps, duplicate identities and mismatching/unknown conditions."
+    },
+    "status": "Metric complete if both recent and initial comparisons available, partial if one, unavailable if neither; current observed value is still returned. Overall complete only if every metric complete, unavailable if zero metrics or every metric unavailable, otherwise partial.",
+    "execution": "history implementation/contract SHA256, metadata_basis=reported, date_timezone=UTC+09:00. No DB/file paths read from request."
+  },
+  "errors": "Same ai-error/1 strict UTF8/JSON/duplicate-key/NaN rejection as analyze endpoint. 400 invalid_json, 413 body too large, 415 wrong media, 422 invalid_request; unknown envelope fields rejected. No clinical numeric thresholds. No request persistence."
+}

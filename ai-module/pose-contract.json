@@ -1,0 +1,53 @@
+{
+  "version": "measurement-pose/1",
+  "output_version": "measurement-joints/1",
+  "scope": "Research transport and geometry. Product contracts remain separate.",
+  "input": {
+    "required": ["schema", "source_id", "image", "clock", "extractor", "frames"],
+    "image": {
+      "width": "positive integer, detector input width in pixels",
+      "height": "positive integer, detector input height in pixels",
+      "orientation": ["upright_unmirrored"],
+      "preview_mirrored": "boolean or null, presentation only"
+    },
+    "clock": {
+      "unit": "ms",
+      "basis": ["video_pts", "capture_monotonic", "callback_monotonic"],
+      "source_time_ms": "source time before any adjustment for detector task; finite, strictly increasing within the clip; retain gaps",
+      "detector_time_ms": "detector API timestamp; optional per frame; never substitute this for source_time_ms"
+    },
+    "extractor": {
+      "name": "MediaPipe Pose Landmarker",
+      "variant": ["full", "lite"],
+      "runtime": "platform/binding identity",
+      "runtime_version": "exact installed version or null if historical evidence unavailable",
+      "model_sha256": "64 lowercase hex digits of the actual model bytes",
+      "delegate": ["CPU", "GPU"],
+      "settings": "model setup including person count, thresholds and running mode"
+    },
+    "frame": {
+      "index": "source integer index, strictly increasing",
+      "source_time_ms": "source frame time, not reconstructed from frame number",
+      "landmarks": "null for unavailable pose, otherwise exactly 33 MediaPipe-indexed rows [x,y,z,visibility,presence]; individual missing values are null",
+      "why_unavailable": "null with pose; otherwise a reason such as no_pose, detector_error, ambiguous_subject, or unknown",
+      "xy": "normalized detector input image, origin upper left. May lie outside 0–1; never clamp.",
+      "z": "MediaPipe relative depth, preserved in raw input only",
+      "visibility": "model estimate of visibility; null if unavailable",
+      "presence": "model estimate of landmark presence; null if unavailable",
+      "sides": "anatomical left and right of the filmed person"
+    }
+  },
+  "output": {
+    "joint_order": ["left_hip", "left_knee", "left_ankle", "left_heel", "left_foot_index", "right_hip", "right_knee", "right_ankle", "right_heel", "right_foot_index"],
+    "mediapipe_indices": [23, 25, 27, 29, 31, 24, 26, 28, 30, 32],
+    "joint_fields": ["x_px", "y_px", "visibility", "presence"],
+    "frame": "Same index/source_time_ms/why_unavailable; joint array in joint_order, or null for unavailable pose. One unavailable coordinate makes both x_px and y_px null. No gap filling, confidence filtering or left-right switching.",
+    "metric_envelope": "Separate measurement result per segment: schema measurement-metrics/1, source_id, start_ms inclusive, stop_ms exclusive, method_id, metrics. Each metric has value (number or null), unit, valid_count (nonnegative integer), unavailable_reason (null or explainable code). Per-side metrics have anatomical left/right keys. Detector events use source_time_ms."
+  },
+  "geometry": "Front end decodes to upright image without pixel mirroring before extraction. A mirrored UI preview is presentation only. The AI adapter rejects other geometry because a transformed detector result cannot establish anatomical semantics.",
+  "gdi_legacy": {
+    "body25_to_mediapipe": {"9":24,"10":26,"11":28,"12":23,"13":25,"14":27,"19":31,"22":32},
+    "foot_note": "MediaPipe foot_index approximates BODY25 big_toe slots; visibility occupies the confidence slot. Presence and z are not used.",
+    "interpolation": "Mapping stage preserves missing values. Legacy feature generation applies its existing interpolation, body scale and centering separately to a selected crop. No inference from mapped joint equality about extractor or event accuracy."
+  }
+}

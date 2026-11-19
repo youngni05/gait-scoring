@@ -1,0 +1,189 @@
+{
+  "versions": {
+    "ai-analyze-request/1": {
+      "required": ["schema", "request_id", "pose", "segments", "provenance"],
+      "segments": "Required nonempty array, 1..16 explicit segments. Omission and [] are invalid.",
+      "response_schema": "ai-analysis/1",
+      "response_required": ["schema", "analysis_version", "request_id", "source_id", "status", "execution", "provenance", "comparison", "segments", "gdi"],
+      "gdi": "Legacy not_configured/value=null/gdi_model_not_connected. No segment GDI field.",
+      "status": "Availability of original knee and gait metric values."
+    },
+    "ai-analyze-request/2": {
+      "required": ["schema", "request_id", "pose", "provenance"],
+      "optional": ["segments"],
+      "segments": "Omit to detect automatic candidates. If present, use a nonempty array of 1..16 explicit segments with the same /1 fields. [] is invalid.",
+      "response_schema": "ai-analysis/2",
+      "response_required": ["schema", "analysis_version", "request_id", "source_id", "status", "execution", "provenance", "comparison", "segments", "gdi", "segmentation"],
+      "gdi": "Each segment includes gdi-segment/1 with baseline and normal100 models. Top gdi-summary/1 keeps directions separate in by_direction.",
+      "status": "Each segment counts knee/gait metric values plus both models' left/right GDI values: all available complete, some partial, none unavailable. Top status is complete only if every segment is complete, unavailable for zero segments or all unavailable, otherwise partial. Mixed-direction pooled GDI is null by design; available per-direction values remain in by_direction.",
+      "empty_frames": "Accepted. Automatic detection returns no segments and unavailable with no_source_frames. Explicit bounds return nulls with reasons."
+    }
+  },
+  "legacy_descriptions": "Top request_schema/response_schema/request.required/response.gdi describe /1 compatibility. versions is authoritative for per-version required fields and response shape.",
+  "request_schema": "ai-analyze-request/1",
+  "response_schema": "ai-analysis/1",
+  "analysis_version": "gait-measurement-prototype/2",
+  "limits": {
+    "max_body_bytes": 8000000,
+    "max_frames": 2000,
+    "max_segments": 16,
+    "max_string_chars": 256,
+    "max_image_dimension": 16384
+  },
+  "request": {
+    "required": [
+      "schema",
+      "request_id",
+      "pose",
+      "segments",
+      "provenance"
+    ],
+    "schema": "ai-analyze-request/1",
+    "request_id": "nonempty string <=256",
+    "pose": "measurement-pose/1, as described in pose-contract.json. Unknown extractor variant/runtime/runtime_version/model_sha256/delegate can use literal unknown. Model metadata never entered by end users. Historical runtime_version=null remains accepted and preserved as unknown.",
+    "segments": {
+      "items": {
+        "required": [
+          "segment_id",
+          "start_ms",
+          "stop_ms",
+          "direction"
+        ],
+        "segment_id": "unique nonempty string",
+        "start_ms": "finite source timestamp inclusive",
+        "stop_ms": "finite source timestamp exclusive and >start_ms",
+        "direction": [
+          "image_left",
+          "image_right",
+          "unknown"
+        ]
+      }
+    },
+    "provenance": {
+      "required": [
+        "input_object",
+        "tracking"
+      ],
+      "input_object": [
+        "ImageData",
+        "HTMLVideoElement",
+        "mp.Image",
+        "unknown"
+      ],
+      "tracking": {
+        "required": [
+          "session_id",
+          "start_time_ms",
+          "input_start_ms",
+          "input_stop_ms",
+          "prior_frame_count",
+          "fresh_tracker"
+        ],
+        "session_id": "nonempty automatically generated string, or unknown",
+        "start_time_ms": "finite timestamp or null for unknown; tracker history start",
+        "input_start_ms": "finite timestamp or null for unknown; full tracker input lower bound inclusive",
+        "input_stop_ms": "finite timestamp or null for unknown; full tracker input upper bound exclusive",
+        "prior_frame_count": "nonnegative integer or null; processed frames before first frame included in pose packet",
+        "fresh_tracker": "boolean or null; whether a new tracker was created at start_time_ms"
+      }
+    },
+    "v2": "schema ai-analyze-request/2 permits omitted segments for AI auto-detection. Explicit segments keep the same shape. Empty arrays remain invalid; omit the field to request auto."
+  },
+  "validation": {
+    "unknown_properties": "Reject at request/segment/provenance/tracking/pose/image/clock/extractor/frame objects. extractor.settings may contain arbitrary finite strict JSON data.",
+    "strict_json": "Reject NaN/Infinity, duplicate object keys and non-UTF8. All frame indices/source_time_ms strictly increasing. Finite landmark numbers or null; visibility/presence in 0..1 or null.",
+    "geometry": "pose.image.orientation must be upright_unmirrored, normalized xy with pixel width/height. preview_mirrored concerns display only. No coordinate clamp or automatic side swap.",
+    "unknown": "unknown metadata retained in response and comparison_key, comparison.ready=false if required conditions unknown. Unknown travel direction only makes gait output unavailable; knee geometry still runs.",
+    "tracking": "Known tracking times must be ordered. input_start_ms<=first supplied frame and input_stop_ms>last supplied frame. start_time_ms<=input_start_ms. No inferred 35-frame minimum.",
+    "empty": "Empty pose.frames is accepted with finite explicit segments; metrics become null with reasons.",
+    "segments": "Bounds may extend beyond supplied frames and overlaps are permitted. Each segment is sliced independently with original times; no interpolation across segments."
+  },
+  "response": {
+    "required": [
+      "schema",
+      "analysis_version",
+      "request_id",
+      "source_id",
+      "status",
+      "execution",
+      "provenance",
+      "comparison",
+      "segments",
+      "gdi"
+    ],
+    "status": [
+      "complete",
+      "partial",
+      "unavailable"
+    ],
+    "execution": "Python/platform/dependency versions and source hashes automatically collected by service.",
+    "provenance": "Original image/clock/extractor and request input_object/tracking; never replace unknown values.",
+    "comparison": "ready:boolean,unknown_fields:list,key:structured shared extraction/image/clock/tracker+analysis conditions. Each segment also supplies direction and same anatomical sides. Key agreement means processing-condition agreement.",
+    "segments": {
+      "items": {
+        "segment_id": "original id",
+        "start_ms": "inclusive",
+        "stop_ms": "exclusive",
+        "direction": "original",
+        "status": [
+          "complete",
+          "partial",
+          "unavailable"
+        ],
+        "observation": "source_frame_count, pose_frame_count, observed_span_ms (0 for <2frames), first/last_source_ms (null when empty), source_indices, provided_prior_frame_count",
+        "knee": "method_id,metrics,quality,views. observed=finite nondegenerate xy; supported=observed+inside image+visibility>=0.5; presence diagnostic only. Metrics retain original unit/value/valid_count/unavailable_reason. views includes curves and simultaneous bilateral summaries.",
+        "gait": "measurement-metrics/1 from fixed native-PTS relative-heel module; unknown direction returns same metric shape with nulls/unknown_direction; source_frames, events, steps, rejected_pairs, quality_reasons included.",
+        "validation": "status experimental, pose_reference unavailable,contact_reference unavailable"
+      }
+    },
+    "gdi": {
+      "status": "not_configured",
+      "value": null,
+      "unavailable_reason": "gdi_model_not_connected"
+    },
+    "v2": "ai-analysis/2 adds segmentation and actual gdi per segment. Top-level gdi.by_direction keeps image_left/image_right/unknown separate. models summary is provided only for a single known direction; mixed or unknown direction yields null pooled models with explicit reason. Inside each direction, earliest overlapping segment is retained, non-overlapping available segment predictions have equal-weight arithmetic mean. Segment/source/visit personal-history aggregation is not implemented here.",
+    "gdi_v2": "gdi_adapter.analyze_segment(pose,segment) result per segment. gdi summary status available/partial/unavailable; models keyed by baseline/normal100, nested value.left/right with used_segment_ids and aggregation. Never clip scores. Original GDI preprocessing permits at most 25% missing required coordinates and performs its original interpolation; input.required_missing_fraction and feature/source/checkpoint provenance are retained. This differs from auto segmentation, which never bridges excluded frames.",
+    "segmentation": "Automatic output marks candidate status and orientation-derived travel direction. Missing/uncertain/turn/low-motion/short ranges are excluded with source indices and reasons. Pelvis screen displacement is not a direction feature.",
+    "v1_compatibility": "ai-analyze-request/1 continues to require explicit segments and returns ai-analysis/1 with original GDI unconfigured envelope; numerical knee/gait results unchanged."
+  },
+  "http": {
+    "GET /health": "200 schema ai-health/1,status ok,analysis_version,limits",
+    "POST /v1/analyze": "200 response even for partial/unavailable measurements. Content-Type application/json required.",
+    "errors": {
+      "400": "invalid_json",
+      "413": "request_too_large",
+      "415": "unsupported_media_type",
+      "422": "invalid_request",
+      "404": "not_found",
+      "411": "length_required",
+      "500": "analysis_failed"
+    },
+    "error_shape": {
+      "schema": "ai-error/1",
+      "error": {
+        "code": "stable string",
+        "message": "non-sensitive short message",
+        "path": "field path or null"
+      }
+    },
+    "defaults": "127.0.0.1:8877. CORS only localhost/127.0.0.1. No file paths executed from request. No request-body logging or automatic persistence."
+  },
+  "entrypoints": {
+    "library": "from core import analyze; analyze(request_dict) -> response_dict",
+    "cli": "python cli.py request.json [output.json]",
+    "server": "python server.py --port 8877"
+  },
+  "fixture": "fixtures/request.json",
+  "ownership": {
+    "core": "core.py,schema.py,server.py,cli.py,contract.json,pose-contract.json,vendor,fixtures,README.md",
+    "other_workers": "client/ and tests/"
+  },
+  "request_schemas": [
+    "ai-analyze-request/1",
+    "ai-analyze-request/2"
+  ],
+  "response_schemas": {
+    "ai-analyze-request/1": "ai-analysis/1",
+    "ai-analyze-request/2": "ai-analysis/2"
+  }
+}
