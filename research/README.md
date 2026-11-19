@@ -1,28 +1,18 @@
-# 보행 점수 예측 연구 기록
+# 보행 영상 연구 과정
 
-[개인 보행 기록 비교 실험](updates/2026-11-19/README.md)에서 개인 기준, Test02 보행 지표, 동일 RGB 환경 비교의 요약과 상세 기록을 볼 수 있습니다.
+영상에서 보행 편차를 추정하는 실험부터 시작해, 짧은 영상에서도 지표를 얻고 같은 사람의 평소 기록과 비교하는 방법을 살펴보고 있습니다.
 
-[최근 연구 요약](updates/2026-11-17/README.md)에서 Test02와 짧은 보행 두 실험의 결과를 보고, 실험별 상세 기록과 검산으로 이동할 수 있다.
-
-- [팀원용 추론 안내](selected/frozen-gdi/README.md) · [모델 다운로드](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106)
-- [선별 모델과 평가](selected/README.md) · [논문에 연결된 실험](paper-related/README.md)
-- [전체 실험 보관](archive/README.md) · [11월 6일 공개 당시 파일 지문](snapshot-manifest.json) · [모델 배포 검산](model-release-assets.json)
-
-## 기존 공개 기록
-
-**이 배포는 대학 과목 제출을 위한 비상업적 연구 결과 공유다.** 각 모델 압축에 출처·수정 내역·배포 목적과 관련 라이선스 원문을 포함했다. [적용 범위와 출처별 조건](licenses/README.md)을 함께 확인한다.
-
-**현재 연구의 중심은 GDI다. SPPB·TUG 예측은 GDI 중심으로 연구 방향을 전환해 현재 후속 실험을 중단했으며, 완료한 결과를 연구 이력으로 보존한다.** 상태 표시는 2026-11-02 사용자 지시를 반영했다.
-
-| 연구 | 현재 상태 | 공개 범위 |
+| 연구 단계 | 무엇을 확인했나요? | 상세 기록 |
 |---|---|---|
-| GDI | 현재 중심 연구 | 아래의 초기 CNN·MotionBERT 실험 두 개 |
-| SPPB | 후속 실험 중단·과거 결과 보존 | [44명 실제 SPPB 실험](archived-sppb-tug/2026-10-30-sppb-older44/README.md) |
-| TUG | 후속 실험 중단·과거 결과 보존 | [298명 실제 TUG 실험](archived-sppb-tug/2026-10-30-tug-opencap298/README.md) |
+| 초기 모델 비교 | 같은 개발자료에서 CNN과 MotionBERT를 비교했습니다. 다음 단계에서는 평가에 쓸 사람을 따로 두고 고정 모델을 비교했습니다. | [초기 CNN](2026-10-30-cnn-baseline695/README.md) · [초기 MotionBERT](2026-10-30-motionbert695/README.md) · [선별 모델 평가](selected/README.md) |
+| 정상 보행 점수의 편향 | 정상 성인 자료를 추가한 모델에서 외부 정상 집단의 점수가 올랐습니다. 실측 GDI가 있는 별도 환자 222명의 평균 오차는 6.249점에서 6.375점으로 늘었습니다. | [논문 결과 요약](paper-related/README.md) · [논문 비교 조건과 세부 결과](paper-related/gdi-normal-calibration.md) |
+| 짧은 영상에서 점수 계산 | 짧은 입력에 맞춰 학습하면 개발자료에서 짧은 구간의 평균 오차는 줄었고, 저득점과 긴 입력의 오차는 늘었습니다. | [Test02와 짧은 보행 요약](updates/2026-11-17/README.md) |
+| 개인의 이전 기록과 비교 | 평소 영상으로 기준을 만드는 방법, 점수와 함께 표시할 무릎 움직임, 실행 환경에 따른 좌표 차이를 확인했습니다. | [세 실험 요약과 상세 기록](updates/2026-11-19/README.md) |
+| 초기 기능검사 연구 | 보행 자료에서 SPPB 총점과 TUG 시간을 예측할 수 있는지 살펴봤습니다. | [SPPB·TUG 요약과 실험별 결과](archived-sppb-tug/README.md) |
 
-2026-11-02 추가 공개: [GDI 미공개 완료 실험 25종 중 13종](gdi-batch2-20261102/README.md)을 더 올렸다. 날짜순으로 선택하고 홀수는 올림했으며, [이번 선택·보류 목록](gdi-batch2-20261102/selection.json)에 나머지 12종과 집계 기준을 보존했다. 분할별 파일 수와 실험 종류 수는 구분한다.
+[팀원용 모델 실행 방법](selected/frozen-gdi/README.md) · [모델 다운로드](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106) · [전체 실험 기록](archive/README.md)
 
-SPPB·TUG의 중단 이유와 모델 다운로드는 [과거 실험 안내](archived-sppb-tug/README.md)에 있다. 현재 전체 실험을 이 저장소에 모두 이관한 것은 아니다.
+[추가 GDI 실험 13종](gdi-batch2-20261102/README.md) · [11월 6일 공개 당시 파일 목록과 지문](snapshot-manifest.json) · [모델 배포 검산](model-release-assets.json)
 
 ## GDI 초기 CNN·MotionBERT 실험
 

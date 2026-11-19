@@ -1,24 +1,18 @@
 # gait-scoring
 
-카메라로 촬영한 보행에서 GDI(보행 편차 지수)를 추정하는 연구다.
+방문 도우미가 휴대폰으로 촬영한 보행 영상을 같은 사람의 이전 기록과 비교해, 걸음이 어떻게 달라졌는지 설명하는 프로젝트입니다.
 
-| 찾을 내용 | 바로가기 |
+보행 리듬, 좌우 차이, 관절 움직임, GDI(보행 편차 지수) 예측 점수를 살펴봅니다. 보호자와 도우미가 어떤 변화를 더 살펴볼지 판단하는 데 도움이 되는 정보를 제공하는 것이 목표입니다.
+
+현재는 집 안에서 찍은 짧은 보행 영상에서 어느 정도 안정적으로 지표를 얻을 수 있는지 확인하고 있습니다. 날짜가 다른 기록에서 실제 보행 변화를 구별할 수 있는지는 여러 날에 걸친 촬영으로 검증할 과제입니다.
+
+## 주요 자료
+
+| 구분 | 링크 |
 |---|---|
-| 개인 보행 기록 비교 | [세 실험 요약](research/updates/2026-11-19/README.md) |
-| 최근 결과 | [Test02 촬영 비교와 짧은 보행](research/updates/2026-11-17/README.md) |
-| 팀원 모델 연결 | [PC에서 실행하는 방법과 입력 형식](research/selected/frozen-gdi/README.md) · [추론용 모델 다운로드](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106) |
-| 논문 근거 | [정상 보행 과소평가 개선 연구 흐름](research/paper-related/gdi-normal-calibration.md) · [실험별 근거](research/paper-related/README.md) |
-| 이전 연구 | [선별 모델과 평가](research/selected/README.md) · [전체 실험 보관](research/archive/README.md) · [SPPB·TUG](research/archived-sppb-tug/README.md) |
+| 최근 실험 | [개인 기준·보행 지표·실행 환경 비교](research/updates/2026-11-19/README.md) · [Test02와 짧은 보행](research/updates/2026-11-17/README.md) |
+| 모델 사용 | [실행 방법](research/selected/frozen-gdi/README.md) · [모델 다운로드](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106) |
+| 연구 및 논문 | [연구 과정](research/README.md) · [논문 결과 요약](research/paper-related/README.md) |
+| 이전 실험 | [전체 실험 기록](research/archive/README.md) · [중간발표 자료](docs/2026-10-31-interim-presentation.md) |
 
-**대학 과목 제출을 위한 비상업적 연구 결과를 공유하는 저장소다.** 원자료·기존 코드·모델의 출처별 이용 조건은 [출처·라이선스·수정 안내](research/licenses/README.md)를 따른다. 같은 안내와 관련 라이선스 원문을 각 모델 압축에도 동봉했다.
-
-카메라로 촬영한 보행 정보에서 상태 관련 평가값을 추정할 수 있는지 연구하는 프로젝트다. 정해진 검사를 준비하고 반복 수행하는 부담을 줄이고, 장기적으로 결과 기록과 이전 상태 비교를 지원하는 시스템을 목표로 한다.
-
-현재 연구의 중심은 **GDI(보행 편차 지수) 예측**이다. SPPB·TUG 예측은 이전에 진행한 탐색 연구이며, GDI 중심으로 방향을 전환해 **현재 후속 실험을 중단한 상태**다. 완료한 실험의 코드·결과·모델은 연구 이력으로 보존한다. 일상 촬영·고령자 현장 적용·개인의 시간에 따른 변화 감지까지 검증한 상태는 아니다.
-
-- 프로젝트 저장소: [youngni05/gait-scoring](https://github.com/youngni05/gait-scoring)
-- [방향 전환 이후 중간발표 흐름과 원고](docs/2026-10-31-interim-presentation.md): 전환 이유, 목표 시스템, 데이터 제약, 실험과 진행 상황을 정리했다.
-
-- [초기 CNN·MotionBERT 실험 기록과 모델](research/README.md): 같은 695명 조건의 초기 실험 두 개, 코드·설정·집계 결과와 가중치 다운로드를 제공한다.
-- [GDI 추가 공개 2차 — 13종](research/gdi-batch2-20261102/README.md): 미공개 완료 실험 계열 25종 중 날짜순 앞쪽 절반을 올림해 공개했다. 선택·보류 목록, 코드·결과와 라이선스를 동봉한 모델을 연결한다.
-- [SPPB·TUG 과거 실험 — 현재 중단](research/archived-sppb-tug/README.md): 실제 점수·시간 예측의 대표 실험을 하나씩 보존했다. 현재 연구의 중심은 GDI다.
+이 저장소는 대학 종합설계프로젝트에서 진행한 비상업적 연구를 정리한 공간입니다. 데이터, 외부 코드, 모델의 출처와 이용 조건을 함께 확인할 수 있습니다. [라이선스 안내](research/licenses/README.md)
