@@ -4,6 +4,7 @@
 
 | 찾을 내용 | 바로가기 |
 |---|---|
+| 개인 보행 기록 비교 | [세 실험 요약](research/updates/2026-11-19/README.md) |
 | 최근 결과 | [Test02 촬영 비교와 짧은 보행](research/updates/2026-11-17/README.md) |
 | 팀원 모델 연결 | [PC에서 실행하는 방법과 입력 형식](research/selected/frozen-gdi/README.md) · [추론용 모델 다운로드](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106) |
 | 논문 근거 | [정상 보행 과소평가 개선 연구 흐름](research/paper-related/gdi-normal-calibration.md) · [실험별 근거](research/paper-related/README.md) |

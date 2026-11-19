@@ -1,5 +1,7 @@
 # 보행 점수 예측 연구 기록
 
+[개인 보행 기록 비교 실험](updates/2026-11-19/README.md)에서 개인 기준, Test02 보행 지표, 동일 RGB 환경 비교의 요약과 상세 기록을 볼 수 있습니다.
+
 [최근 연구 요약](updates/2026-11-17/README.md)에서 Test02와 짧은 보행 두 실험의 결과를 보고, 실험별 상세 기록과 검산으로 이동할 수 있다.
 
 - [팀원용 추론 안내](selected/frozen-gdi/README.md) · [모델 다운로드](https://github.com/youngni05/gait-scoring/releases/tag/research-snapshot-20261106)
