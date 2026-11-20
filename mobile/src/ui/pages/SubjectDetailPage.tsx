@@ -21,10 +21,10 @@ export function SubjectDetailPage() {
   if (!subject) return <NotFound />;
 
   const info: [string, ReactNode][] = [
-    ['나이', `만 ${ageOn(subject.birth)}세`],
-    ['성별', subject.sex],
-    ['키', <>{subject.heightCm} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
-    ['생년월일', <span style={{ fontSize: 17, lineHeight: '30px' }}>{fmtBirth(subject.birth)}</span>],
+    ['나이', subject.birth ? '만 '+ageOn(subject.birth)+'세' : '미확인'],
+    ['성별', subject.sex??'미확인'],
+    ['키', subject.heightCm===null?'미확인':<>{subject.heightCm} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
+    ['생년월일', <span style={{ fontSize: 17, lineHeight: '30px' }}>{fmtBirth(subject.birth)||'미확인'}</span>],
   ];
   const latest = records[0];
 

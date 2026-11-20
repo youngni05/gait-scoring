@@ -320,6 +320,33 @@ ol, ul { list-style: none; }
 .record-btn:hover { border-color: var(--primary); }
 .record-btn[data-latest] { border-color: var(--primary); }
 .record-btn[data-latest]:hover { background: rgb(227 236 246 / .4); }
+.record-item { position: relative; min-width: 0; word-break: keep-all; }
+.record-heading {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  flex-wrap: wrap; gap: 6px 8px; padding-right: 40px;
+}
+.record-identity { min-width: 0; max-width: 100%; }
+.record-identity .muted { overflow-wrap: anywhere; }
+.record-trash {
+  position: absolute; top: 4px; right: 4px; color: var(--fg-60);
+}
+.record-trash:is(:hover, :focus-visible) { color: var(--danger); background: var(--card); }
+
+.record-delete-sheet { inset: auto auto 0 50%; margin: 0; border: 0; color: var(--fg); font: inherit; max-height: 90dvh; word-break: keep-all; }
+.record-delete-sheet::backdrop { background: rgb(15 20 25 / .5); }
+.record-delete-sheet h2 { margin: 24px 0 16px; font-size: 21px; font-weight: 800; }
+.record-delete-target {
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--r-md);
+}
+.record-delete-target > svg { flex-shrink: 0; color: var(--fg-60); }
+.record-delete-target div { min-width: 0; }
+.record-delete-target p { margin-top: 2px; font-size: 14px; color: var(--fg-70); overflow-wrap: anywhere; }
+.record-delete-sheet > p { margin-top: 14px; font-size: 15px; line-height: 1.55; }
+.record-delete-actions { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.record-delete-confirm { background: color-mix(in srgb, var(--danger) 82%, var(--fg)); color: var(--bg); }
+.record-delete-confirm:hover { filter: brightness(.95); }
+.record-delete-actions button:disabled { opacity: .6; }
 
 .pick-area {
   margin-top: 20px; width: 100%; height: 340px; border-radius: var(--r-lg);

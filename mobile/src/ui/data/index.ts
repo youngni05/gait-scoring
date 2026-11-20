@@ -5,7 +5,9 @@
 import { mockSource } from './mockSource';
 import type { GaitDataSource } from './source';
 
-export const dataSource: GaitDataSource = mockSource;
+import { liveSource } from './liveSource';
+export const isDemo = new URLSearchParams(location.search).get('demo') === 'ui';
+export const dataSource: GaitDataSource = isDemo ? mockSource : liveSource;
 
 export * from './source';
 export * from './mock';

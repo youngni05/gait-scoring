@@ -1,6 +1,6 @@
 /** 로그인 상태와 비동기 데이터 불러오기 도우미. */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { dataSource } from './data';
+import { dataSource, isDemo } from './data';
 
 interface Session {
   loggedIn: boolean;
@@ -11,13 +11,15 @@ interface Session {
 const Ctx = createContext<Session | null>(null);
 
 export function SessionProvider({ children }: { children: ReactNode }) {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(!isDemo && sessionStorage.getItem('team-local-session')==='active');
   const login = useCallback(async (u: string, p: string) => {
     await dataSource.login(u, p);
+    if (!isDemo) sessionStorage.setItem('team-local-session','active');
     setLoggedIn(true);
   }, []);
   const logout = useCallback(() => {
     dataSource.logout();
+    sessionStorage.removeItem('team-local-session');
     setLoggedIn(false);
   }, []);
   const value = useMemo(() => ({ loggedIn, login, logout }), [loggedIn, login, logout]);

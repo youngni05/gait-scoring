@@ -12,6 +12,7 @@
  *   #/subjects/:id/results/:rid/chart/:joint  07-2 그래프 확대 보기
  */
 import { useEffect, type ReactNode } from 'react';
+import { isDemo } from './data';
 import { DemoPanel } from './components/DemoPanel';
 import { AnalyzePage } from './pages/AnalyzePage';
 import { ChartZoomPage } from './pages/ChartZoomPage';
@@ -69,7 +70,7 @@ export function App() {
     <RouterProvider>
       <SessionProvider>
         <Screens />
-        <DemoPanel />
+        {isDemo && <DemoPanel />}
       </SessionProvider>
     </RouterProvider>
   );

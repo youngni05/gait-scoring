@@ -1,7 +1,7 @@
 /** 01 로그인 · 01-1 입력 오류 · 01-2 로그인 실패 */
 import { useState, type FormEvent } from 'react';
 import { AlertCircleIcon, EyeIcon, EyeOffIcon, WalkIcon } from '../components/icons';
-import { LoginFailedError } from '../data';
+import { LoginFailedError, isDemo } from '../data';
 import { useNavigate } from '../router';
 import { useSession } from '../session';
 
@@ -57,7 +57,7 @@ export function LoginPage() {
         </div>
       )}
 
-      <form onSubmit={submit} noValidate style={{ marginTop: failed ? 24 : 40, display: 'grid', gap: 20 }}>
+      {!isDemo ? <button className="btn btn-primary" style={{marginTop:40}} onClick={()=>login('','').then(()=>navigate('/subjects',{replace:true}))}>이 PC에서 시작</button> : <form onSubmit={submit} noValidate style={{ marginTop: failed ? 24 : 40, display: 'grid', gap: 20 }}>
         <div className="field">
           <label htmlFor="uid" style={{ fontWeight: 600 }}>아이디</label>
           <input
@@ -111,12 +111,12 @@ export function LoginPage() {
         <button type="submit" className="btn btn-primary" style={{ marginTop: 12 }} disabled={busy}>
           {busy ? '확인 중…' : '로그인'}
         </button>
-      </form>
+      </form>}
 
       <p style={{ marginTop: 'auto', paddingTop: 40, textAlign: 'center', fontSize: 15, lineHeight: 1.6 }} className="muted">
-        계정 발급 및 비밀번호 문의는
+        {isDemo ? <>계정 발급 및 비밀번호 문의는
         <br />
-        소속 기관 관리자에게 연락해 주세요.
+        소속 기관 관리자에게 연락해 주세요.</> : "대상자와 분석 결과를 이 브라우저에 저장합니다."}
       </p>
     </main>
   );

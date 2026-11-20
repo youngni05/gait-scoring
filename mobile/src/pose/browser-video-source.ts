@@ -5,6 +5,16 @@ import { CompleteFrameAudit } from './complete-frame-audit';
 const cancelled = () => new DOMException('작업을 취소했습니다.', 'AbortError');
 const inputFor = async (file: File) => { const { Input, BlobSource, MP4 } = await import('mediabunny'); return new Input({ source: new BlobSource(file), formats: [MP4] }); };
 
+/** Reading the capture date does not require a video decoder. */
+export async function readCaptureDay(file: File): Promise<string | null> {
+  const input = await inputFor(file);
+  try {
+    const time = koreanMetadataTime((await input.getMetadataTags()).creationTime);
+    return time?.slice(0, 10) ?? null;
+  } finally {
+    input.dispose();
+  }
+}
 
 async function supportedTrack(input: Awaited<ReturnType<typeof inputFor>>) {
   const track = await input.getPrimaryVideoTrack();

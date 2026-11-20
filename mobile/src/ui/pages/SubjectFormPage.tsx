@@ -39,7 +39,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
   const [name, setName] = useState(editing?.name ?? '');
   const [sex, setSex] = useState<Sex | null>(editing?.sex ?? null);
   const [birth, setBirth] = useState(editing ? fmtBirth(editing.birth) : '');
-  const [height, setHeight] = useState(editing ? String(editing.heightCm) : '');
+  const [height, setHeight] = useState(editing?.heightCm != null ? String(editing.heightCm) : '');
   const [errors, setErrors] = useState<Errors>({});
   const [tried, setTried] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -51,12 +51,11 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
   const validate = (): Errors => {
     const e: Errors = {};
     if (!name.trim()) e.name = '이름을 입력해 주세요.';
-    if (!sex) e.sex = '성별을 선택해 주세요.';
-    if (!birth) e.birth = '생년월일을 입력해 주세요.';
-    else if (!birthIso) e.birth = '생년월일을 YYYY.MM.DD 형식의 실제 날짜로 입력해 주세요.';
+
+    if (birth && !birthIso) e.birth = '생년월일을 YYYY.MM.DD 형식의 실제 날짜로 입력해 주세요.';
     const h = Number(height);
-    if (!height.trim() || Number.isNaN(h)) e.height = '키를 cm 단위 숫자로 입력해 주세요.';
-    else if (h < HEIGHT_MIN || h > HEIGHT_MAX) e.height = `키를 ${HEIGHT_MIN}~${HEIGHT_MAX}cm 사이로 입력해 주세요.`;
+    if (height && Number.isNaN(h)) e.height = '키를 cm 단위 숫자로 입력해 주세요.';
+    else if (height && (h < HEIGHT_MIN || h > HEIGHT_MAX)) e.height = `키를 ${HEIGHT_MIN}~${HEIGHT_MAX}cm 사이로 입력해 주세요.`;
     return e;
   };
 
@@ -74,7 +73,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    const data = { name: name.trim(), sex: sex!, birth: birthIso!, heightCm: Math.round(Number(height) * 10) / 10 };
+    const data = { name: name.trim(), sex, birth: birthIso??'', heightCm: height ? Math.round(Number(height) * 10) / 10 : null };
     setSaving(true);
     setSaveError(null);
     const request = editing ? dataSource.updateSubject(editing.id, data) : dataSource.createSubject(data);
@@ -127,7 +126,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
         </div>
 
         <div className="field">
-          <p className="label" id="sex-label">성별 <span className="req">*</span></p>
+          <p className="label" id="sex-label">성별 (선택)</p>
           <div className="choice-grid" role="radiogroup" aria-labelledby="sex-label">
             {(['여', '남'] as Sex[]).map((v) => (
               <button
@@ -147,7 +146,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
         </div>
 
         <div className="field">
-          <label htmlFor="birth">생년월일 <span className="req">*</span></label>
+          <label htmlFor="birth">생년월일 (선택)</label>
           <div className="input-wrap">
             <input
               id="birth"
@@ -175,7 +174,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
         </div>
 
         <div className="field">
-          <label htmlFor="height">키 <span className="req">*</span></label>
+          <label htmlFor="height">키 (선택)</label>
           <div className="input-wrap">
             <input
               id="height"

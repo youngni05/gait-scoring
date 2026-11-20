@@ -11,12 +11,15 @@ import { ChartLineIcon, DownloadIcon, ExpandIcon, InfoIcon, TriangleAlertIcon } 
 import { JOINTS, JOINT_LABEL, MISSING_LABEL, dataSource, fmtDate, fmtTime, fmtWeekday, type MissingKey } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
+import { LiveMetrics, VisitHistory } from './VisitMetrics';
 import { NotFound } from './NotFound';
 
 export function ReportPage() {
   const { subjectId = '', recordId = '' } = useParams();
   const navigate = useNavigate();
   const [openInfo, setOpenInfo] = useState<{ gdi?: boolean; sym?: boolean }>({});
+  const [history,setHistory]=useState(false);
+  const [selected,setSelected]=useState(()=>Number(sessionStorage.getItem('segment-'+recordId)??0));
   const [downloading, setDownloading] = useState(false);
   const { data, loading, error, reload } = useAsync(
     (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.getResult(subjectId, recordId, signal)]),
@@ -63,36 +66,42 @@ export function ReportPage() {
       {/* 1. 대상자 정보 — 촬영 당시 값 */}
       <section className="card" style={{ margin: partial ? '16px 20px 0' : '20px 20px 0', padding: 20 }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
-          <div>
+          <div style={{minWidth:0,overflowWrap:'anywhere'}}>
             <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">대상자 이름</p>
             <h2 style={{ fontSize: 26, fontWeight: 800, lineHeight: 1.2 }}>{subject.name}</h2>
           </div>
-          <div style={{ textAlign: 'right' }}>
+          <div style={{ textAlign: 'right', flexShrink: 0 }}>
             <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">측정 날짜</p>
-            <p style={{ fontSize: 17, fontWeight: 700 }}>{fmtDate(rec.measuredAt)} ({fmtWeekday(rec.measuredAt)})</p>
-            <p style={{ fontSize: 13 }} className="muted">{fmtTime(rec.measuredAt)}</p>
+            <p style={{ fontSize: 17, fontWeight: 700 }}>{fmtDate(rec.measuredAt)}{rec.measuredAt && ` (${fmtWeekday(rec.measuredAt)})`}</p>
+            <p style={{ fontSize: 13 }} className="muted">{!rec.live && fmtTime(rec.measuredAt)}</p>
           </div>
         </div>
         <dl className="metric-grid3" style={{ marginTop: 16, background: '#fff', border: '1px solid var(--border)', textAlign: 'center' }}>
           <div style={{ padding: '12px 4px' }}>
-            <dt className="k">성별</dt>
-            <dd style={{ fontSize: 18, fontWeight: 700 }}>{subject.sex}</dd>
+            <dt className="k">{rec.live ? "분석 구간" : "성별"}</dt>
+            <dd style={{ fontSize: 18, fontWeight: 700 }}>{rec.live ? rec.live.analysis.segments.length+"개" : subject.sex}</dd>
           </div>
           <div style={{ padding: '12px 4px' }}>
             <dt className="k">촬영 당시 나이</dt>
-            <dd style={{ fontSize: 18, fontWeight: 700 }}>만 {rec.ageAtCapture}세</dd>
+            <dd style={{ fontSize: 18, fontWeight: 700 }}>{rec.ageAtCapture === null ? "미확인" : "만 "+rec.ageAtCapture+"세"}</dd>
           </div>
           <div style={{ padding: '12px 4px' }}>
             <dt className="k">촬영 당시 키</dt>
             <dd style={{ fontSize: 18, fontWeight: 700 }}>
-              {rec.heightAtCapture}
-              <span style={{ fontSize: 14, marginLeft: 2 }}>cm</span>
+              {rec.heightAtCapture ?? "미확인"}
+              <span style={{ fontSize: 14, marginLeft: 2 }}>{rec.heightAtCapture !== null && "cm"}</span>
             </dd>
           </div>
         </dl>
       </section>
 
-      {/* 2. 핵심 지표 */}
+      {rec.live ? <>
+        <div className="tabs" role="tablist" style={{margin:'20px 20px 0',gridTemplateColumns:'repeat(2,minmax(0,1fr))'}}>
+          <button role="tab" aria-selected={!history} onClick={()=>setHistory(false)}>이번 결과</button>
+          <button role="tab" aria-selected={history} onClick={()=>setHistory(true)}>지난 기록 비교</button>
+        </div>
+        {history ? <VisitHistory record={rec}/> : <LiveMetrics record={rec} selected={selected} select={i=>{setSelected(i);sessionStorage.setItem('segment-'+recordId,String(i));}} zoom={()=>navigate(base+'/results/'+rec.id+'/chart/knee')} openHistory={()=>{setHistory(true);window.scrollTo({top:0,behavior:'smooth'});}}/>}
+      </> : <>
       <section style={{ margin: '28px 20px 0' }}>
         <h3 style={{ fontSize: 19, fontWeight: 800, marginBottom: 12 }}>핵심 지표</h3>
         <div style={{ borderRadius: 'var(--r-lg)', background: 'var(--primary)', color: '#fff', padding: 20 }}>
@@ -210,6 +219,7 @@ export function ReportPage() {
         </p>
       </section>
 
+      </>}
       <div className="bottom-cta" style={partial ? { paddingTop: 12 } : undefined}>
         {partial && <p className="hint sm">누락된 항목은 ‘—’로 표시되어 저장됩니다</p>}
         <button className="btn btn-primary" onClick={() => setDownloading(true)}>

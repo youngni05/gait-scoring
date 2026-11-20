@@ -16,7 +16,7 @@ export function Avatar({ name, size, tone }: { name: string; size: 'sm' | 'md' |
  * 다른 대상자의 영상을 잘못 분석하는 실수를 막으려는 장치다.
  */
 export function SubjectBar({ subject, detail }: { subject: Subject; detail?: string | undefined }) {
-  const text = detail ?? `${subject.sex} · ${ageOn(subject.birth)}세`;
+  const text = detail ?? [subject.sex,subject.birth && ageOn(subject.birth)+'세'].filter(Boolean).join(' · ');
   return (
     <div className="subject-bar">
       <div className="subject-bar-inner">

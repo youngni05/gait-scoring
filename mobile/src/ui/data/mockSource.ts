@@ -78,6 +78,10 @@ export const mockSource: GaitDataSource = {
     return records.find((r) => r.id === resultId && r.subjectId === subjectId) ?? null;
   },
 
+  async deleteResult(subjectId, resultId) {
+    records = records.filter(r => r.id !== resultId || r.subjectId !== subjectId);
+  },
+
   async analyzeVideo(subjectId, video, onProgress, signal) {
     const outcome = getDemo().analysis; // 시작 시점의 데모 설정으로 끝까지 진행한다.
     const subject = subjects.find((s) => s.id === subjectId);

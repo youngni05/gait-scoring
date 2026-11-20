@@ -23,7 +23,9 @@ import {
   SpinnerIcon,
   TriangleAlertIcon,
 } from '../components/icons';
-import { AnalysisFailedError, dataSource, fmtDate } from '../data';
+import { AnalysisFailedError, ageOn, isDemo, dataSource, fmtDate } from '../data';
+import { openPoseEnabled } from '../data/analysis';
+import { readCaptureDay } from '../../pose/browser-video-source';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { NotFound } from './NotFound';
@@ -38,6 +40,7 @@ interface Picked {
   url: string | null;
   durationSec: number | null;
   fileDate: Date;
+  metadataDay: string | null | undefined; // undefined while reading
 }
 
 const STAGES = ['영상 확인', '보행 구간 찾기', '관절 움직임 분석', '결과지 만들기'];
@@ -53,12 +56,24 @@ export function AnalyzePage() {
   const loaded = useAsync((signal) => dataSource.getSubject(subjectId, signal), [subjectId]);
   const subject = loaded.data;
 
+  const [editedDay, setEditedDay] = useState<string | null>(null);
+  const [mode,setMode]=useState<'fixed'|'guided'>('guided');
+  const [extractor,setExtractor]=useState<'mediapipe'|'openpose'>('mediapipe');
+  const [editedHeight, setEditedHeight] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('pick');
   const [picked, setPicked] = useState<Picked | null>(null);
+  const [progressText,setProgressText]=useState('');
   const [pct, setPct] = useState(0);
   const [resultId, setResultId] = useState<string | null>(null);
   const [failure, setFailure] = useState<{ code: string; reason: string } | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
+  const day = editedDay ?? picked?.metadataDay ?? '';
+  const daySource = !day ? 'unknown' : editedDay === null ? 'metadata' : 'user_entered';
+  const registeredHeight = subject?.heightCm;
+  const usableHeight = registeredHeight != null && registeredHeight >= 100 && registeredHeight <= 220;
+  const height = editedHeight ?? (usableHeight ? String(registeredHeight) : '');
+  const invalidHeight = Boolean(height && (Number(height) < 100 || Number(height) > 220));
+  const ageAtCapture = subject?.birth && day >= subject.birth ? ageOn(subject.birth, new Date(day + 'T12:00:00')) : null;
 
   // 선택한 영상의 임시 주소는 화면을 떠나거나 영상을 바꿀 때 해제한다.
   const pickedUrl = picked?.url ?? null;
@@ -69,7 +84,7 @@ export function AnalyzePage() {
     if (phase !== 'running') return;
     const abort = new AbortController();
     dataSource
-      .analyzeVideo(subjectId, picked?.file ?? null, (p) => !abort.signal.aborted && setPct(p), abort.signal)
+      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode,extractor,height:height ? Number(height) : null})
       .then((rec) => {
         if (abort.signal.aborted) return;
         setResultId(rec.id);
@@ -80,7 +95,7 @@ export function AnalyzePage() {
         setFailure(
           e instanceof AnalysisFailedError
             ? { code: e.code, reason: e.reason }
-            : { code: 'GA-000', reason: '알 수 없는 이유로 분석하지 못했습니다' },
+            : { code: 'GA-000', reason: e instanceof Error ? e.message : '분석하지 못했습니다' },
         );
         setPhase('failed');
       });
@@ -98,17 +113,24 @@ export function AnalyzePage() {
   const onFile = (file: File | undefined) => {
     if (!file) return;
     const url = URL.createObjectURL(file);
-    setPicked({ file, name: file.name, url, durationSec: null, fileDate: new Date(file.lastModified) });
+    setEditedDay(null);
+    setEditedHeight(null);
+    setPicked({ file, name: file.name, url, durationSec: null, fileDate: new Date(file.lastModified), metadataDay: isDemo ? null : undefined });
     setPhase('preview');
+    if (!isDemo) {
+      void readCaptureDay(file).catch(() => null).then(metadataDay => {
+        setPicked(current => current?.url === url ? { ...current, metadataDay } : current);
+      });
+    }
   };
 
   const useSample = () => {
-    setPicked({ file: null, name: 'walk_sample.mp4', url: null, durationSec: 24, fileDate: new Date() });
+    setPicked({ file: null, name: 'walk_sample.mp4', url: null, durationSec: 24, fileDate: new Date(), metadataDay: null });
     setPhase('preview');
   };
 
   const start = () => {
-    setPct(0);
+    setPct(0);setProgressText('');
     setFailure(null);
     setPhase('running');
   };
@@ -130,7 +152,7 @@ export function AnalyzePage() {
     backToDetail();
   };
 
-  const stageIndex = Math.min(3, Math.floor(pct / 25));
+  const stageIndex = isDemo ? Math.min(3, Math.floor(pct / 25)) : pct === 0 ? 0 : pct < 90 ? 1 : pct < 100 ? 2 : 3;
   const remainSec = Math.max(0, Math.round(((100 - pct) / 100) * EXPECTED_SEC));
 
   return (
@@ -166,9 +188,9 @@ export function AnalyzePage() {
               <FolderOpenIcon size={18} /> 영상 선택
             </span>
           </button>
-          <button className="demo-link" onClick={useSample}>
+          {isDemo && <button className="demo-link" onClick={useSample}>
             <span className="pill pill-draft">데모</span> 휴대폰 영상 없이 예시 영상으로 진행
-          </button>
+          </button>}
         </section>
       )}
 
@@ -181,6 +203,19 @@ export function AnalyzePage() {
               <CheckCircleIcon size={16} /> 선택 완료
             </span>
           </div>
+          {!isDemo && <div className="card" style={{display:'grid',gap:8,padding:16,marginBottom:12}}>
+            <p>촬영일 · {day ? day.replaceAll('-', '.') : picked.metadataDay === undefined ? '확인 중' : '미확인'}</p>
+            {ageAtCapture != null && <p>촬영 당시 나이 · 만 {ageAtCapture}세</p>}
+            <p>{editedHeight === null ? '등록된 키' : '촬영 당시 키'} · {height ? height + ' cm' : registeredHeight != null && editedHeight === null ? '분석 범위 밖' : '미입력'}</p>
+            <details key={picked.url}>
+              <summary>촬영 정보 수정</summary>
+              <label>촬영일 <input type="date" value={day} onChange={e => setEditedDay(e.target.value)} /></label>
+              <label>촬영 당시 키 (100~220cm) <input type="number" min={100} max={220} step="0.1" value={height} onChange={e => setEditedHeight(e.target.value)} /></label>
+            </details>
+            {openPoseEnabled ? <label>좌표 추출 모델 <select value={extractor} onChange={e=>setExtractor(e.target.value as typeof extractor)}><option value="mediapipe">MediaPipe Full · 기기 GPU 우선</option><option value="openpose">OpenPose BODY_25 · 학교 GPU</option></select></label> : <p>좌표 추출 · MediaPipe Full</p>}
+            {extractor === 'openpose' && <p className="muted">MP4를 분석 PC로 보내고, 크기를 줄인 영상 프레임을 학교 GPU로 전송합니다. GPU 배정 대기가 있을 수 있습니다.</p>}
+            <label>촬영 방식 <select value={mode} onChange={e=>setMode(e.target.value as typeof mode)}><option value="fixed">고정 촬영</option><option value="guided">따라가며 촬영</option></select></label>
+          </div>}
           <VideoPreview picked={picked} onDuration={(d) => setPicked((p) => (p ? { ...p, durationSec: d } : p))} />
           <dl className="card" style={{ marginTop: 16, borderRadius: 'var(--r-md)', padding: '14px 16px', display: 'grid', gridTemplateColumns: 'auto 1fr', rowGap: 8, fontSize: 15 }}>
             <dt className="muted">파일명</dt>
@@ -203,16 +238,17 @@ export function AnalyzePage() {
           <p style={{ fontSize: 16, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }} className="primary">
             <SpinnerIcon size={16} /> 분석하고 있습니다
           </p>
-          <p style={{ marginTop: 4, fontSize: 48, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
+          {extractor === 'openpose' && !isDemo ? <p style={{marginTop:12}}>OpenPose BODY_25 · 학교 GPU 분석</p> : <><p style={{ marginTop: 4, fontSize: 48, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
             {pct}
             <span style={{ fontSize: 26 }}>%</span>
           </p>
           <div className="bar" style={{ marginTop: 16, height: 12 }}>
             <div style={{ width: `${pct}%` }} />
           </div>
-          <p style={{ marginTop: 8, fontSize: 14 }} className="muted">예상 남은 시간 약 {remainSec}초</p>
+          </>}
+          <p style={{ marginTop: 8, fontSize: 14 }} className="muted">{isDemo ? '예상 남은 시간 약 '+remainSec+'초' : progressText || (pct >= 90 ? '좌표로 모델값 계산 중' : '영상 프레임에서 관절 위치 추출 중')}</p>
           <ol style={{ marginTop: 24, borderRadius: 'var(--r-lg)', border: '1px solid var(--border)' }}>
-            {STAGES.map((name, i) => {
+            {(isDemo ? STAGES : ["영상 확인","프레임별 관절 위치 추출","보행 구간과 모델값 계산","결과 저장"]).map((name, i) => {
               const state = i < stageIndex ? 'done' : i === stageIndex ? 'now' : 'wait';
               return (
                 <li
@@ -245,7 +281,7 @@ export function AnalyzePage() {
           </span>
           <h2 style={{ marginTop: 24, fontSize: 24, fontWeight: 800 }}>분석이 완료되었습니다</h2>
           <p style={{ marginTop: 8, fontSize: 16, lineHeight: 1.6 }} className="muted">
-            {subject.name} 님의 {fmtDate(new Date().toISOString())} 측정 결과지가
+            {subject.name} 님의 측정 결과지가
             <br />
             준비되었습니다.
           </p>
@@ -288,14 +324,14 @@ export function AnalyzePage() {
           </>
         )}
         {phase === 'preview' && (
-          <button className="btn btn-primary" onClick={start}>
+          <button className="btn btn-primary" disabled={invalidHeight || picked?.metadataDay === undefined} onClick={start}>
             <PlayIcon size={16} /> 분석 시작
           </button>
         )}
         {phase === 'running' && (
-          <p style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 15, color: 'var(--fg-80)', padding: '4px 0' }}>
+          <div className="stack"><p style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 15, color: 'var(--fg-80)', padding: '4px 0' }}>
             <InfoIcon size={20} className="primary" /> 분석이 끝날 때까지 앱을 닫지 말아 주세요.
-          </p>
+          </p>{!isDemo && <button className="btn btn-outline" onClick={()=>setPhase('preview')}>분석 취소</button>}</div>
         )}
         {phase === 'done' && (
           <button className="btn btn-primary" onClick={() => navigate(`/subjects/${subject.id}/results/${resultId}`, { replace: true })}>
@@ -304,7 +340,7 @@ export function AnalyzePage() {
         )}
         {phase === 'failed' && (
           <div className="stack">
-            <button className="btn btn-primary" onClick={start}>
+            <button className="btn btn-primary" disabled={invalidHeight} onClick={start}>
               <RotateIcon /> 다시 시도
             </button>
             <button className="btn btn-outline" onClick={openPicker}>

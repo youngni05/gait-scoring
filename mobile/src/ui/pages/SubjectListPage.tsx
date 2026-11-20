@@ -104,7 +104,7 @@ export function SubjectListPage() {
                 <span style={{ flex: 1, minWidth: 0 }}>
                   <span style={{ display: 'block', fontSize: 18, fontWeight: 700 }}>{s.name}</span>
                   <span style={{ display: 'block', marginTop: 2, fontSize: 15, color: 'var(--fg-70)' }}>
-                    {s.sex} · {ageOn(s.birth)}세 · {s.heightCm}cm
+                    {[s.sex,s.birth && ageOn(s.birth)+'세',s.heightCm && s.heightCm+'cm'].filter(Boolean).join(' · ') || '등록 정보 미확인'}
                   </span>
                   {s.latestMeasuredAt ? (
                     <span className="primary" style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 4, fontSize: 14, fontWeight: 600 }}>

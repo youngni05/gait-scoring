@@ -11,13 +11,12 @@ type Phase = 'preparing' | 'done' | 'fail';
 export function DownloadSheet({ record, name, onClose }: { record: ResultRecord; name: string; onClose: () => void }) {
   const [phase, setPhase] = useState<Phase>('preparing');
   const [attempt, setAttempt] = useState(0);
-  const fileName = `${name}_보행분석결과_${fmtCompact(record.measuredAt)}`;
+  const fileName = record.live ? "gait-"+record.id+".json" : `${name}_보행분석결과_${fmtCompact(record.measuredAt)}`;
 
   useEffect(() => {
     let alive = true;
     setPhase('preparing');
-    dataSource
-      .downloadResult(record.id)
+    Promise.resolve().then(() => alive ? dataSource.downloadResult(record.id) : undefined)
       .then(() => alive && setPhase('done'))
       .catch(() => alive && setPhase('fail'));
     return () => {
@@ -53,8 +52,8 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
               <span className="round-icon" style={{ background: 'rgb(23 191 99 / .15)', color: 'var(--ok)' }}>
                 <CheckIcon size={28} />
               </span>
-              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>다운로드가 완료되었습니다</h2>
-              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">휴대폰의 ‘다운로드’ 폴더에 저장되었습니다.</p>
+              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>{record.live ? "브라우저에 파일을 전달했습니다" : "다운로드가 완료되었습니다"}</h2>
+              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">{record.live ? "브라우저의 다운로드 목록에서 확인해 주세요." : "휴대폰의 ‘다운로드’ 폴더에 저장되었습니다."}</p>
             </>
           )}
           {phase === 'fail' && (
@@ -96,7 +95,7 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
             <div style={{ minWidth: 0, flex: 1 }}>
               <p style={{ fontSize: 15, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{fileName}</p>
               <p style={{ marginTop: 2, fontSize: 13, color: 'var(--fg-60)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                파일 형식 <span className="pill pill-draft">확정 예정</span>
+                파일 형식 <span className="pill pill-draft">{record.live ? "JSON" : "확정 예정"}</span>
               </p>
             </div>
             {phase === 'done' && <CheckCircleIcon size={22} className="ok-icon" />}
