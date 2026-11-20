@@ -42,6 +42,17 @@
 
 ## 백엔드 실행과 API 연동
 
+Windows PC에서 같은 계정과 데이터를 유지하며 반복 실행하려면
+[로컬 실행 안내](docs/integration/persistent-local-dev.md)를 참고하세요.
+Docker Desktop을 켠 뒤 프로젝트 루트에서 아래 명령을 실행합니다.
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-dev.ps1
+```
+
+실행 후 http://127.0.0.1:5173 에서 기존 계정으로 로그인합니다.
+종료·재실행과 비밀번호 재설정 방법도 위 안내에 포함되어 있습니다.
+
 FastAPI·PostgreSQL 백엔드의 Docker 실행, 환경변수, 마이그레이션 및 최초 복지사 계정 생성은
 [백엔드 README](backend/README.md)를 참고하세요. 요청·응답 예시는 [API 명세](docs/API_SPEC.md)에 있습니다.
 
