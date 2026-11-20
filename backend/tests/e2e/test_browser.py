@@ -129,7 +129,8 @@ class BrowserIntegrationTests(unittest.TestCase):
         self.page.on('requestfailed', lambda request: self.api_events.append(
             (request.method, urlparse(request.url).path, 'network-failed')
         ) if request.url.startswith(self.api + '/') else None)
-        self.page.goto(self.ui)
+        # 첫 화면(index.html)은 새 디자인 화면(가상 데이터)이고, 서버 연동 화면은 connected.html에 있다.
+        self.page.goto(self.ui + '/connected.html')
         self.page.get_by_label('서버 주소', exact=True).fill(self.api)
         self.page.get_by_label('아이디', exact=True).fill(self.username)
         self.page.get_by_label('비밀번호', exact=True).fill(self.password)
