@@ -48,7 +48,9 @@ FastAPI·PostgreSQL 백엔드의 Docker 실행, 환경변수, 마이그레이션
 현재 로그인, 어르신 등록·조회·수정, 관절 좌표 저장, 촬영 목록·저장된 분석 결과 조회를 제공합니다.
 앱에서 좌표를 추출하며 원본 영상은 서버로 보내지 않습니다. AI 실행·분석 결과 자동 저장은 아직 연결되지 않았습니다.
 
-신규 앱은 `processing_metadata`와 `Idempotency-Key`를 함께 보내는 `processing-1` 계약을 사용합니다.
+신규 앱은 `processing_metadata`와 `Idempotency-Key`를 함께 보내는 `processing-2` 계약을 사용합니다.
+분석 시작 시각을 저장하며 한국 시간 기준 분석 시작일의 만 나이를 계산합니다.
+디자인 화면의 실제 API 연결과 실행 방법은 [프론트 연동 안내](docs/integration/design-ui-api.md)를 참고하세요.
 기존 4필드 요청은 호환용으로 유지되며 중복 제출 방지가 없습니다. 두 요청의 검증·오류·재시도 차이는
 [API 명세의 측정 저장](docs/API_SPEC.md#7-촬영관절-좌표-기록-저장)과 [신규 계약](docs/API_SPEC.md#12-processing-1-측정-저장-계약)에 정리했습니다.
 
