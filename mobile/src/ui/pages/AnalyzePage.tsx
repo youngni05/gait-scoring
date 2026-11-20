@@ -7,7 +7,7 @@ import { ApiError, errorMessage } from '../../api/client';
 import { apiSource, dataSource } from '../data';
 import { PageError, PageLoading, TopBar } from '../components/layout';
 import { useAsync } from '../session';
-import { useNavigate, useParams } from '../router';
+import { useLeaveGuard, useNavigate, useParams } from '../router';
 import { NotFound } from './NotFound';
 const Synthetic = import.meta.env.DEV && import.meta.env.VITE_E2E_MODE === 'true'
   ? lazy(() => import('../../e2e/SyntheticMeasurement')) : null;
@@ -39,15 +39,9 @@ export function AnalyzePage() {
     const timer = setTimeout(() => setWaiting(false), Math.max(0, retryAt - Date.now()));
     return () => clearTimeout(timer);
   }, [retryAt]);
-  useEffect(() => {
-    const warn = (e: BeforeUnloadEvent) => { if (prepared && !saved) { e.preventDefault(); e.returnValue = ''; } };
-    window.addEventListener('beforeunload', warn);
-    return () => window.removeEventListener('beforeunload', warn);
-  }, [prepared, saved]);
-  const back = () => {
-    if ((busy || (prepared && !saved)) && !window.confirm('저장 상태를 확인하지 못한 요청이 있습니다. 화면을 떠나면 재시도 요청이 사라집니다. 나갈까요?')) return;
-    navigate(`/subjects/${subjectId}`);
-  };
+  useLeaveGuard(busy || (!!prepared && !saved),
+    '처리 중이거나 저장 상태를 확인하지 못한 요청이 있습니다. 화면을 떠나면 재시도 요청이 사라집니다. 나갈까요?');
+  const back = () => navigate(`/subjects/${subjectId}`);
   async function prepare() {
     if (!file || !loaded.data || !mount.current || active.current) return;
     if (!loaded.data.birth || !loaded.data.heightCm) { setMessage('대상자의 생년월일과 키를 먼저 등록하세요.'); return; }

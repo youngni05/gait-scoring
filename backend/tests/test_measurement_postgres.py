@@ -4,7 +4,7 @@ Requires GAIT_TEST_DB_WRITES=1 and a DATABASE_URL database name ending in _ci.
 Uses one generated, isolated schema and removes only that schema afterwards.
 """
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 import copy
 import hashlib
 import json
@@ -156,6 +156,56 @@ class MeasurementPostgresTests(unittest.TestCase):
     def count(self):
         with Session(self.engine) as db:
             return db.scalar(select(func.count()).select_from(GaitMeasurement).where(GaitMeasurement.participant_id == self.participant_id))
+
+    def test_summary_endpoints_are_bounded_and_exclude_heavy_json(self):
+        endpoint = f"/participants/{self.participant_id}"
+        code, empty, _ = self.http(endpoint + "/summary")
+        self.assertEqual(code, 200)
+        self.assertEqual(empty["measurement_count"], 0)
+        self.assertIsNone(empty["latest_measured_at"])
+        base = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        ids = [uuid4() for _ in range(25)]
+        with Session(self.engine) as db:
+            for i, mid in enumerate(ids):
+                db.add(GaitMeasurement(
+                    id=mid, participant_id=self.participant_id, age=76, created_by=self.user_id,
+                    keypoints_json={"large_private_pose": [1, 2, 3]}, extractor_name="synthetic", extractor_version="1",
+                    measured_at=base + timedelta(days=i) if i < 24 else None,
+                    analysis_started_at=base + timedelta(days=i) if i == 24 else None,
+                ))
+            db.commit()
+        with self.engine.begin() as conn:
+            conn.execute(text("""INSERT INTO gait_analysis_results
+                (id,measurement_id,gdi_score,cadence_spm,stride_length_cm,hip_graph_json,model_version,analyzed_at)
+                VALUES (:id,:mid,0,NULL,0,'{"large_graph":[1,2,3]}'::jsonb,'synthetic',now())"""),
+                {"id": uuid4(), "mid": ids[-1]})
+        code, summaries, _ = self.http("/participants/summaries")
+        self.assertEqual(code, 200)
+        summary = next(row for row in summaries if row["id"] == str(self.participant_id))
+        self.assertEqual(summary["measurement_count"], 25)
+        self.assertEqual(summary["latest_measured_at"], "2026-01-25T00:00:00Z")
+        self.assertEqual(self.http(endpoint + "/summary")[1], summary)
+        code, first, _ = self.http(endpoint + "/measurement-summaries")
+        self.assertEqual(code, 200)
+        self.assertEqual((first["total"], first["offset"], first["limit"]), (25, 0, 20))
+        self.assertEqual([row["id"] for row in first["items"]], [str(mid) for mid in reversed(ids[5:])])
+        self.assertEqual(first["items"][0]["gdi_score"], 0)
+        self.assertIsNone(first["items"][0]["cadence_spm"])
+        self.assertTrue(first["items"][0]["has_analysis_result"])
+        self.assertFalse(first["items"][1]["has_analysis_result"])
+        self.assertIsNone(first["items"][1]["gdi_score"])
+        code, second, _ = self.http(endpoint + "/measurement-summaries?offset=20")
+        self.assertEqual(code, 200)
+        self.assertEqual([row["id"] for row in second["items"]], [str(mid) for mid in reversed(ids[:5])])
+        for row in first["items"] + second["items"]:
+            for private in ["keypoints_json", "processing_metadata", "hip_graph_json", "knee_graph_json", "ankle_graph_json"]:
+                self.assertNotIn(private, row)
+        self.assertEqual(self.http(endpoint + "/measurement-summaries?offset=100")[1]["items"], [])
+        for route in ["/participants/summaries", endpoint + "/summary", endpoint + "/measurement-summaries"]:
+            self.assertEqual(self.http(route, token=None)[0], 401)
+        self.assertEqual(self.http(f"/participants/{uuid4()}/summary")[0], 404)
+        self.assertEqual(self.http(f"/participants/{uuid4()}/measurement-summaries")[0], 404)
+        self.assertEqual(self.http(endpoint + "/measurement-summaries?limit=101")[0], 422)
 
     def test_migration_preserves_existing_data(self):
         with Session(self.engine) as db:

@@ -7,7 +7,7 @@ import { BirthDatePicker } from '../components/BirthDatePicker';
 import { PageError, PageLoading, TopBar } from '../components/layout';
 import { AlertCircleIcon, CalculatorIcon, CalendarIcon, CheckCircleIcon, InfoIcon } from '../components/icons';
 import { ageOn, dataSource, fmtBirth, maskBirth, parseBirth, type Sex, type Subject } from '../data';
-import { useNavigate, useParams } from '../router';
+import { useLeaveGuard, useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { NotFound } from './NotFound';
 import { ApiError, errorMessage } from '../../api/client';
@@ -42,8 +42,16 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
   const [errors, setErrors] = useState<Errors>({});
   const [tried, setTried] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [savedId, setSavedId] = useState<string | null>(null);
+  useEffect(() => {
+    if (savedId) navigate(`/subjects/${savedId}`, { replace: true });
+  }, [savedId, navigate]);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [uncertain, setUncertain] = useState(false);
+  const alive = useRef(true);
+  const savingNow = useRef(false);
+  useEffect(() => { alive.current = true; return () => { alive.current = false; }; }, []);
+  useLeaveGuard(saving, '대상자 정보를 저장 중입니다. 화면을 떠나도 서버에 저장될 수 있습니다. 나갈까요?');
   const [calendarOpen, setCalendarOpen] = useState(false);
   const calendarButton = useRef<HTMLButtonElement>(null);
   const closeCalendar = () => { setCalendarOpen(false); calendarButton.current?.focus(); };
@@ -68,7 +76,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
   }, [name, sex, birth, height]);
 
   const save = () => {
-    if (saving || uncertain) return;
+    if (savingNow.current || uncertain) return;
     const e = validate();
     setErrors(e);
     setTried(true);
@@ -77,18 +85,26 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
       return;
     }
     const data = { name: name.trim(), sex: sex!, birth: birthIso!, heightCm: Number(height) };
+    savingNow.current = true;
     setSaving(true);
     setSaveError(null);
     const request = editing ? dataSource.updateSubject(editing.id, data) : dataSource.createSubject(data);
     request
-      .then((saved) => navigate(`/subjects/${saved.id}`, { replace: true }))
+      .then((saved) => {
+        if (!alive.current) return;
+        savingNow.current = false;
+        setSaving(false);
+        // Run navigation after the render releases the save guard.
+        setSavedId(saved.id);
+      })
       .catch((error) => {
+        if (!alive.current) return;
         // 저장이 이미 반영되었을 수도 있으므로 무작정 다시 누르게 하지 않고 목록 확인을 안내한다.
         const ambiguous = !(error instanceof ApiError) || error.status === 0 || error.status >= 500 || error.code === 'INVALID_RESPONSE';
         setUncertain(!editing && ambiguous);
         setSaveError(ambiguous ? '저장 결과를 확인하지 못했습니다. 이미 반영되었을 수 있으니 대상자 목록에서 확인해 주세요.' : errorMessage(error));
       })
-      .finally(() => setSaving(false));
+      .finally(() => { if (alive.current) { savingNow.current = false; setSaving(false); } });
   };
 
   const errCount = Object.keys(errors).length;

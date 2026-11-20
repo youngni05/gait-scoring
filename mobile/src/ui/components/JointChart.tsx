@@ -80,7 +80,7 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
   const rawMax = Math.max(...ys, 0);
   const yStep = niceStep(rawMax - rawMin || 10, big ? 8 : 5);
   const y0 = Math.floor(rawMin / yStep) * yStep;
-  const y1 = Math.ceil(rawMax / yStep) * yStep;
+  const y1 = Math.max(Math.ceil(rawMax / yStep) * yStep, y0 + yStep);
   const xStep = x1 - x0 === 100 ? (big ? 10 : 25) : niceStep(x1 - x0, big ? 6 : 4);
 
   const sx = (x: number) => M.l + ((x - x0) / (x1 - x0)) * plotW;
