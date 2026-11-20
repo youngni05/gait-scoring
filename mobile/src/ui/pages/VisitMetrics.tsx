@@ -31,7 +31,8 @@ const sec = (ms: number) => (ms / 1000).toFixed(2);
 const span = (start: number, stop: number) => `${sec(start)}~${sec(stop)}초`;
 const signed = (v: number, digits: number) => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v).toFixed(digits);
 const VERDICT: Record<Verdict, string> = { better: '좋아짐', worse: '나빠짐', similar: '비슷함' };
-const BAND_NOTE = `좌우 차이와 변화 판정은 예시 기준(GDI ${EXAMPLE_BAND.gdi}점 · 분당 걸음 ${EXAMPLE_BAND.cadence}걸음 · 무릎 ${EXAMPLE_BAND.knee}° · 걸음 시간 ${EXAMPLE_BAND.stepGap}초)으로 나눴습니다. 같은 사람을 다시 촬영한 자료로 확정해야 하는 값입니다.`;
+const SHORT: Record<string, string> = { gdi: 'GDI', cadence: '걸음 수', stepGap: '좌우 걸음 시간 차', kneeLeft: '좌 무릎 폭', kneeRight: '우 무릎 폭' };
+const BAND_NOTE = `좌우 차이와 변화 판정은 측정 오차를 고려한 예시 기준(GDI ${EXAMPLE_BAND.gdi}점 · 분당 걸음 ${EXAMPLE_BAND.cadence}걸음 · 무릎 ${EXAMPLE_BAND.knee}° · 걸음 시간 ${EXAMPLE_BAND.stepGap}초)입니다. 이보다 작은 차이는 측정 오차와 구분할 수 없어 ‘비슷함’으로 표시합니다. 같은 사람을 다시 촬영한 자료로 확정해야 하는 값입니다.`;
 
 export function kneeCurve(visit: Visit, index: number) {
   const s = visit.analysis.segments[index];
@@ -63,14 +64,50 @@ function Disclosure({ title, hint, children, inline }: { title: string; hint?: s
   );
 }
 
-function VerdictPill({ verdict, text }: { verdict: Verdict; text?: string }) {
-  return <span className={`vd ${verdict}`}>{text && <b>{text}</b>}{VERDICT[verdict]}</span>;
+/** 화살표는 값이 커졌는지·작아졌는지, 색은 좋아짐(초록)·나빠짐(빨강)·비슷함(회색)을 뜻한다. */
+function VerdictIcon({ verdict, delta, size = 28 }: { verdict: Verdict; delta: number; size?: number }) {
+  const path = verdict === 'similar' ? 'M7 10h10M7 14h10' : delta > 0 ? 'M12 18V6M6.5 11.5L12 6l5.5 5.5' : 'M12 6v12M6.5 12.5L12 18l5.5-5.5';
+  return (
+    <span className={`vi ${verdict}`} style={{ width: size, height: size }} role="img" aria-label={VERDICT[verdict]}>
+      <svg width={size * 0.62} height={size * 0.62} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.8} strokeLinecap="round" strokeLinejoin="round">
+        <path d={path} />
+      </svg>
+    </span>
+  );
+}
+
+/** 좋아짐·나빠짐·비슷함 세 칸에 지표를 나눠 담는다. 글을 읽지 않아도 어디가 바뀌었는지 보이게 한다. */
+function VerdictBoard({ rows }: { rows: { key: string; short: string; delta: number; digits: number; unit: string; verdict: Verdict }[] }) {
+  return (
+    <div className="board">
+      {(['better', 'worse', 'similar'] as const).map((v) => {
+        const items = rows.filter((r) => r.verdict === v);
+        return (
+          <div key={v} className={`board-col ${v}`}>
+            <p className="bh">{VERDICT[v]}<b>{items.length}</b></p>
+            {items.length ? (
+              <ul>
+                {items.map((r) => (
+                  <li key={r.key}>
+                    <VerdictIcon verdict={r.verdict} delta={r.delta} size={20} />
+                    <span>{r.short}<small>{signed(r.delta, r.digits)}{r.unit}</small></span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="bnone">—</p>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 /** 방문별 값의 흐름. 마지막 점이 이번 기록이다. */
 function Spark({ points }: { points: { value: number }[] }) {
   if (points.length < 2) return null;
-  const w = 88, h = 30, pad = 4;
+  const w = 72, h = 28, pad = 4;
   const values = points.map((p) => p.value);
   const lo = Math.min(...values), hi = Math.max(...values);
   const x = (i: number) => pad + (i * (w - 2 * pad)) / (points.length - 1);
@@ -159,7 +196,7 @@ function Overview({ summary, history, openHistory }: {
             <dd className="lr">
               {SIDES.map((side) => (
                 <span key={side} className={side}>
-                  {side === 'left' ? '왼' : '오'} {walking[side].value === null ? <em>—</em> : <>{walking[side].value!.toFixed(2)}<small>초</small></>}
+                  {side === 'left' ? '좌' : '우'} {walking[side].value === null ? <em>—</em> : <>{walking[side].value!.toFixed(2)}<small>초</small></>}
                 </span>
               ))}
             </dd>
@@ -169,7 +206,7 @@ function Overview({ summary, history, openHistory }: {
             <dd className="lr">
               {SIDES.map((side) => (
                 <span key={side} className={side}>
-                  {side === 'left' ? '왼' : '오'} {knee[side] ? <>{knee[side]!.value.toFixed(1)}<small>°</small></> : <em>—</em>}
+                  {side === 'left' ? '좌' : '우'} {knee[side] ? <>{knee[side]!.value.toFixed(1)}<small>°</small></> : <em>—</em>}
                 </span>
               ))}
             </dd>
@@ -178,19 +215,21 @@ function Overview({ summary, history, openHistory }: {
 
         <div className="ov-note">
           <p className="h">결과 해설</p>
-          <ul className="notes">{lines.map((l) => <li key={l}>{l}</li>)}</ul>
+          <ul className="brief">
+            {lines.map((l) => (
+              <li key={l.label + l.text} className={l.notice ? 'notice' : ''}>
+                <span className="k">{l.label}</span>
+                <span className="t">{l.text}</span>
+              </li>
+            ))}
+          </ul>
           {recent && history && (
             <>
               <p className="h" style={{ marginTop: 12 }}>
                 지난 기록({fmtDay(recent.previousDate)})과 비교
                 {recent.skipped.length > 0 && <small> · {recent.directions.map(directionLabel).join(', ')} 구간끼리</small>}
               </p>
-              <div className="vd-list">
-                {recent.rows.map((r) => (
-                  <VerdictPill key={r.key} verdict={r.verdict} text={`${r.label} ${signed(r.delta, r.digits)}${r.unit}`} />
-                ))}
-              </div>
-              <p className="ln">{history.lines[0]}</p>
+              <VerdictBoard rows={recent.rows.map((r) => ({ ...r, short: SHORT[r.key] ?? r.label }))} />
               <button className="link-btn" onClick={openHistory}>변화와 추이 자세히 보기 <ChevronRightIcon size={16} /></button>
             </>
           )}
@@ -213,7 +252,7 @@ function Overview({ summary, history, openHistory }: {
                       <span className="t">{span(s.start, s.stop)}</span>
                       <span className="bar"><i style={{ width: `${Math.round(s.share * 100)}%` }} /></span>
                       <span className="w">비중 {Math.round(s.share * 100)}%</span>
-                      <span>왼 {fmt(s.left)} · 오 {fmt(s.right)}</span>
+                      <span>좌 {fmt(s.left)} · 우 {fmt(s.right)}</span>
                     </li>
                   ))}
                 </ul>
@@ -270,7 +309,6 @@ function Overview({ summary, history, openHistory }: {
 export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
   record: ResultRecord; selected: number; select: (i: number) => void; zoom: () => void; openHistory: () => void;
 }) {
-  const [timingInfo, setTimingInfo] = useState(false);
   const [gdiInfo, setGdiInfo] = useState(false);
   const priors = usePriorVisits(record);
   const visit = record.live!;
@@ -302,15 +340,9 @@ export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
   const cadence = cardMetric(segment, report, 'cadence');
   const timing = cardMetric(segment, report, 'difference');
   const knee = kneeCurve(visit, index);
-  const stepSides = segment.gait.metrics.step_time;
   const local = visit.local_observations_by_segment?.[segment.segment_id] ?? [];
   const kneeNote = notes?.find((m: { id: string }) => m.id === 'knee');
   const coverage = kneeNote?.evidence;
-  const timeNote = notes?.find((m: { id: string }) => m.id === 'step_time');
-  const sideTimes: { label: string; value: number }[] =
-    segment.direction !== 'unknown' && timeNote?.status === 'limited'
-      ? (timeNote.display_values ?? []).filter((r: { unit: string; value: number }) => r.unit === 's' && Number.isFinite(r.value))
-      : [];
   const coverageWarnings = SIDES.flatMap((side) => {
     const seen = coverage?.coverage?.[side]?.valid_frames;
     if (typeof seen !== 'number' || seen >= coverage.source_frame_count) return [];
@@ -422,50 +454,6 @@ export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
           )}
         </article>
 
-        {/* 선택 구간의 걸음 측정 */}
-        <Disclosure title="선택 구간의 걸음 측정" hint="기존 방식">
-          <div className="mcard" style={{ background: 'var(--card)' }}>
-            <p className="mcard-title">분당 걸음 수</p>
-            {cadence.value === null ? (
-              <p className="mcard-value none">측정 보류</p>
-            ) : (
-              <p className="mcard-value" style={{ fontSize: 28 }}>{fmt(cadence.value)}<small>걸음/분</small></p>
-            )}
-          </div>
-          <div className="mcard" style={{ background: 'var(--card)' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
-              <p className="mcard-title">좌우 걸음 시간</p>
-              <button className="info-btn" aria-label="걸음 시간 측정 근거" aria-expanded={timingInfo} onClick={() => setTimingInfo(!timingInfo)}>
-                <InfoIcon size={18} />
-              </button>
-            </div>
-            {timing.value !== null ? (
-              <dl className="kv" style={{ marginTop: 6 }}>
-                {SIDES.map((side) => (
-                  <div key={side}><dt>{sideName(side)}</dt><dd><b>{finite(stepSides[side].value) ? fmt(stepSides[side].value, 3) + '초' : '관측 부족'}</b></dd></div>
-                ))}
-              </dl>
-            ) : sideTimes.length ? (
-              <dl className="kv" style={{ marginTop: 6 }}>
-                {sideTimes.map((r) => (
-                  <div key={r.label}><dt>{r.label}</dt><dd><b>{fmt(r.value, 3)}초</b></dd></div>
-                ))}
-              </dl>
-            ) : (
-              <p className="mcard-value none">측정 보류</p>
-            )}
-          </div>
-          {timingInfo && (
-            <div className="alert alert-warn compact">
-              <InfoIcon size={18} />
-              <p>
-                {timing.reason ?? timing.sentence}
-                {timing.value !== null && ` 왼쪽−오른쪽 차이 ${fmt(timing.value, 3)}초`}
-              </p>
-            </div>
-          )}
-        </Disclosure>
-
         {/* 측정 상세 */}
         <Disclosure title="측정 상세">
           <dl className="kv">
@@ -515,30 +503,37 @@ function visitInput(v: Visit) {
   };
 }
 
-const SINCE: Record<Verdict, string> = { better: '좋아졌습니다', worse: '나빠졌습니다', similar: '비슷합니다' };
-
 function TrendRow({ t, directions }: { t: Trend; directions: string[] }) {
   const narrower = t.since && t.since.directions.length < directions.length;
   return (
     <div className="tr-row">
-      <div className="tr-top">
-        <span className="l">{t.label}</span>
-        <VerdictPill verdict={t.verdict} text={`${signed(t.delta, t.digits)}${t.unit}`} />
+      <VerdictIcon verdict={t.verdict} delta={t.delta} size={36} />
+      <div className="tr-body">
+        <div className="tr-top">
+          <span className="l">{t.label}</span>
+          <span className={`kw ${t.verdict}`}>{t.keyword}</span>
+        </div>
+        <div className="tr-mid">
+          <span className="vals">
+            <span className="prev">{t.previous.toFixed(t.digits)}</span>
+            <span className="arrow">→</span>
+            <b>{t.current.toFixed(t.digits)}</b>
+            <small>{t.unit === '걸음' ? '걸음/분' : t.unit}</small>
+            <span className="dl">{signed(t.delta, t.digits)}</span>
+          </span>
+          <Spark points={t.points} />
+        </div>
+        {(t.since || t.steady) && (
+          <div className="tags">
+            {t.since && (
+              <span className={`tag ${t.since.verdict}`} title={narrower ? `처음 기록은 ${t.since.directions.map(directionLabel).join(', ')} 구간끼리 비교` : undefined}>
+                처음({fmtDay(t.since.date).slice(5)}) 대비 {signed(t.since.delta, t.digits)}{t.unit} · {VERDICT[t.since.verdict]}{narrower && ' *'}
+              </span>
+            )}
+            {t.steady && <span className="tag streak">{t.points.length}회 연속 {t.delta > 0 ? '↑' : '↓'}</span>}
+          </div>
+        )}
       </div>
-      <div className="tr-mid">
-        <span className="vals">
-          <span className="prev">{t.previous.toFixed(t.digits)}</span>
-          <span className="arrow">→</span>
-          <b>{t.current.toFixed(t.digits)}</b>
-          <small>{t.unit === '걸음' ? '걸음/분' : t.unit}</small>
-        </span>
-        <Spark points={t.points} />
-      </div>
-      <p className="m">
-        {t.meaning}
-        {t.since && ` 처음 비교 기록(${fmtDay(t.since.date)})보다는 ${SINCE[t.since.verdict]}(${signed(t.since.delta, t.digits)}${t.unit}).`}
-        {narrower && ` 그 기록에는 ${t.since!.directions.map(directionLabel).join(', ')} 구간만 있어 그 방향끼리 비교했습니다.`}
-      </p>
     </div>
   );
 }
@@ -588,10 +583,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
       )}
       {recent && history && (
         <>
-          <div className="ov-note">
-            <p className="h">변화 해설</p>
-            <ul className="notes">{history.lines.map((l) => <li key={l}>{l}</li>)}</ul>
-          </div>
+          <VerdictBoard rows={recent.rows.map((r) => ({ ...r, short: SHORT[r.key] ?? r.label }))} />
 
           <article className="cmp">
             <div className="cmp-hd">
@@ -619,7 +611,11 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
               </div>
             )}
           </article>
-          <p className="ov-foot">{BAND_NOTE} 작은 그래프는 처음 비교 기록부터 이번 기록까지의 흐름이며, 마지막 점이 이번 기록입니다.</p>
+          <p className="ov-foot">
+            {BAND_NOTE} 작은 그래프는 처음 비교 기록부터 이번 기록까지의 흐름이며, 마지막 점이 이번 기록입니다.
+            {history.trends.some((t) => t.since && t.since.directions.length < recent.directions.length) &&
+              ' * 표시는 처음 기록에 한쪽 걷기 방향만 있어 그 방향끼리 비교했다는 뜻입니다.'}
+          </p>
         </>
       )}
 

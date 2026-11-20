@@ -17,8 +17,11 @@ const SIDES = ['left', 'right'];
 const finite = v => typeof v === 'number' && Number.isFinite(v);
 const mean = a => a.reduce((s, v) => s + v, 0) / a.length;
 
-/** 재촬영 흔들림으로 볼 폭. 실측 근거가 없는 예시 기준이다. */
-export const EXAMPLE_BAND = { gdi: 5, cadence: 5, knee: 5, stepGap: 0.05 };
+/**
+ * 측정 오차를 고려해 '비슷함'으로 볼 폭. 실측 근거가 없는 예시 기준이다.
+ * 걸음 시간은 30fps 영상의 한 프레임(약 0.033초) 단위로 재므로, 3프레임(0.1초) 이하 차이는 치우침으로 보지 않는다.
+ */
+export const EXAMPLE_BAND = { gdi: 5, cadence: 5, knee: 5, stepGap: 0.1 };
 
 const restrict = (visit, directions) => ({ ...visit, analysis: { ...visit.analysis,
   segments: visit.analysis.segments.filter(s => directions.includes(s.direction)) } });
@@ -101,57 +104,55 @@ const subjectOf = (items, withFinal, withoutFinal) =>
   items.map(i => i.text).join(', ') + particle(items.at(-1).label, withFinal, withoutFinal);
 export const fmtDay = iso => (iso ?? '').slice(0, 10).replaceAll('-', '.');
 
-/** 기록 하나만으로 할 수 있는 해설. 외부 정상범위는 쓰지 않는다(GDI 정의와 좌우 차이만). */
+/**
+ * 기록 하나만으로 할 수 있는 해설. 외부 정상범위는 쓰지 않는다(GDI 정의와 좌우 차이만).
+ * 숫자는 바로 위 지표에 보이므로 '항목 · 짧은 결론'만 돌려준다. notice=true는 눈여겨볼 결과다.
+ */
 export function describeVisit(summary) {
-  const lines = [];
+  const items = [];
+  const add = (label, text, notice = false) => items.push({ label, text, notice });
   const g = summary.gdi;
   if (finite(g.value)) {
-    // 화면에 보이는 반올림 값으로 차이를 계산해 '84.3점, 15.8점 낮음' 같은 어긋남을 막는다.
-    const shown = Math.round(g.value * 10) / 10, gap = Math.round((100 - shown) * 10) / 10, score = shown.toFixed(1);
-    lines.push(shown >= 100 ? `GDI ${score}점으로 정상 평균(100점) 이상입니다.`
-      : gap <= 10 ? `GDI ${score}점으로 정상 평균(100점)보다 ${gap.toFixed(1)}점 낮지만, 정상집단의 1표준편차(10점) 안입니다.`
-      : `GDI ${score}점으로 정상 평균(100점)보다 ${gap.toFixed(1)}점 낮습니다. 정상집단 기준 약 ${(gap / 10).toFixed(1)}표준편차 아래입니다.`);
+    // 화면에 보이는 반올림 값으로 차이를 계산한다. 정상집단 1표준편차(10점) 안이면 해설하지 않는다.
+    const shown = Math.round(g.value * 10) / 10, gap = Math.round((100 - shown) * 10) / 10;
+    if (gap > 10) add('GDI', `정상 평균보다 ${gap.toFixed(1)}점 낮음 (약 ${(gap / 10).toFixed(1)}표준편차)`, true);
     const sideGap = Math.round(g.left * 10) / 10 - Math.round(g.right * 10) / 10;
-    if (Math.abs(sideGap) > EXAMPLE_BAND.gdi)
-      lines.push(`${sideGap < 0 ? '왼쪽' : '오른쪽'} 다리 점수가 반대쪽보다 ${Math.abs(sideGap).toFixed(1)}점 낮습니다.`);
-    if (summary.available.length > g.directions.length)
-      lines.push('한쪽 걷기 방향에는 GDI를 계산할 구간이 없어 다른 방향 값만 사용했습니다.');
+    if (Math.abs(sideGap) > EXAMPLE_BAND.gdi) add('GDI 좌우', `${sideGap < 0 ? '왼쪽' : '오른쪽'} 다리가 ${Math.abs(sideGap).toFixed(1)}점 낮음`, true);
+    if (summary.available.length > g.directions.length) add('GDI', '한쪽 걷기 방향 구간만 사용');
   } else {
-    lines.push('GDI를 계산할 만큼 긴 보행 구간이 없어 이번 기록에는 GDI가 없습니다.');
+    add('GDI', '계산할 만큼 긴 보행 구간 없음');
   }
   const t = summary.gap;
   if (finite(t.value)) {
-    lines.push(Math.abs(t.value) <= EXAMPLE_BAND.stepGap
-      ? `좌우 걸음 시간이 비슷합니다(차이 ${Math.abs(t.value).toFixed(2)}초).`
-      : `${t.value > 0 ? '왼발' : '오른발'}로 내딛는 걸음이 반대쪽보다 ${Math.abs(t.value).toFixed(2)}초 길어, 걸음 리듬이 한쪽으로 치우쳐 있습니다.`);
+    if (Math.abs(t.value) <= EXAMPLE_BAND.stepGap) add('걸음 시간', '좌우 차이 없음 (측정 오차 범위)');
+    else add('걸음 시간', `${t.value > 0 ? '왼발' : '오른발'}이 ${Math.abs(t.value).toFixed(2)}초 더 김`, true);
   }
   const { left, right } = summary.knee;
   if (left && right) {
     const d = left.value - right.value;
-    const where = left.direction !== right.direction ? ' 두 무릎은 각각 잘 보인 다른 방향에서 측정했습니다.' : '';
-    lines.push((Math.abs(d) <= EXAMPLE_BAND.knee
-      ? `양쪽 무릎 움직임 폭이 비슷합니다(왼쪽 ${left.value.toFixed(1)}° · 오른쪽 ${right.value.toFixed(1)}°).`
-      : `${d < 0 ? '왼쪽' : '오른쪽'} 무릎 움직임 폭이 반대쪽보다 ${Math.abs(d).toFixed(1)}° 작습니다.`) + where);
+    if (Math.abs(d) <= EXAMPLE_BAND.knee) add('무릎 움직임 폭', '좌우 비슷함');
+    else add('무릎 움직임 폭', `${d < 0 ? '왼쪽' : '오른쪽'}이 ${Math.abs(d).toFixed(1)}° 작음`, true);
   } else if (left || right) {
-    lines.push(`${left ? '왼쪽' : '오른쪽'} 무릎만 측정되어 좌우를 비교할 수 없습니다.`);
+    add('무릎 움직임 폭', `${left ? '왼쪽' : '오른쪽'}만 측정됨`);
   }
-  return lines;
+  if (!items.length) add('좌우', '눈에 띄는 차이 없음');
+  return items;
 }
 
 // ── 지난 기록과 비교 ───────────────────────────
 
 export const METRICS = [
   { key: 'gdi', label: 'GDI', unit: '점', digits: 1, band: EXAMPLE_BAND.gdi, better: 'up', read: s => s.gdi.value,
-    up: '정상 보행 패턴에 더 가까워졌습니다.', down: '정상 보행 패턴과의 차이가 커졌습니다.' },
+    up: '정상 보행 패턴에 더 가까워졌습니다.', down: '정상 보행 패턴과의 차이가 커졌습니다.', upKey: '정상 패턴에 가까워짐', downKey: '정상 패턴과 멀어짐' },
   { key: 'cadence', label: '분당 걸음 수', unit: '걸음', digits: 0, band: EXAMPLE_BAND.cadence, better: 'up', read: s => s.walking.cadence,
-    up: '걸음 리듬이 빨라졌습니다.', down: '걸음 리듬이 느려졌습니다.' },
+    up: '걸음 리듬이 빨라졌습니다.', down: '걸음 리듬이 느려졌습니다.', upKey: '리듬 빨라짐', downKey: '리듬 느려짐' },
   { key: 'stepGap', label: '좌우 걸음 시간 차이', unit: '초', digits: 2, band: EXAMPLE_BAND.stepGap, better: 'down',
     read: s => (finite(s.gap.value) ? Math.abs(s.gap.value) : null),
-    up: '걸음 시간이 한쪽으로 더 치우쳤습니다.', down: '좌우 걸음 시간이 더 고르게 되었습니다.' },
+    up: '걸음 시간이 한쪽으로 더 치우쳤습니다.', down: '좌우 걸음 시간이 더 고르게 되었습니다.', upKey: '한쪽으로 치우침', downKey: '좌우 고르게' },
   { key: 'kneeLeft', label: '왼쪽 무릎 움직임 폭', unit: '°', digits: 1, band: EXAMPLE_BAND.knee, better: 'up',
-    read: s => s.knee.left?.value ?? null, up: '무릎을 더 크게 굽혔다 폈습니다.', down: '무릎 움직임 폭이 줄었습니다.' },
+    read: s => s.knee.left?.value ?? null, up: '무릎을 더 크게 굽혔다 폈습니다.', down: '무릎 움직임 폭이 줄었습니다.', upKey: '더 크게 움직임', downKey: '움직임 줄어듦' },
   { key: 'kneeRight', label: '오른쪽 무릎 움직임 폭', unit: '°', digits: 1, band: EXAMPLE_BAND.knee, better: 'up',
-    read: s => s.knee.right?.value ?? null, up: '무릎을 더 크게 굽혔다 폈습니다.', down: '무릎 움직임 폭이 줄었습니다.' },
+    read: s => s.knee.right?.value ?? null, up: '무릎을 더 크게 굽혔다 폈습니다.', down: '무릎 움직임 폭이 줄었습니다.', upKey: '더 크게 움직임', downKey: '움직임 줄어듦' },
 ];
 
 export function verdict(delta, metric) {
@@ -169,7 +170,8 @@ export function compareVisits(current, prior) {
     if (!finite(cur) || !finite(prev)) return [];
     const delta = cur - prev, v = verdict(delta, m);
     return [{ key: m.key, label: m.label, unit: m.unit, digits: m.digits, band: m.band, current: cur, previous: prev, delta,
-      verdict: v, meaning: v === 'similar' ? `재촬영 흔들림 범위(예시 기준 ±${m.band}${m.unit}) 안의 차이입니다.` : delta > 0 ? m.up : m.down }];
+      verdict: v, meaning: v === 'similar' ? `측정 오차를 고려한 기준(±${m.band}${m.unit}) 안의 차이입니다.` : delta > 0 ? m.up : m.down,
+      keyword: v === 'similar' ? '큰 변화 없음' : delta > 0 ? m.upKey : m.downKey }];
   });
   if (!rows.length) return null;
   return { previousId: prior.id, previousDate: prior.captured_at, directions: common,
@@ -188,7 +190,7 @@ function narrate(recent) {
   if (better.length && worse.length) first = `${subjectOf(better, '이', '가')} 좋아졌고, ${subjectOf(worse, '은', '는')} 나빠졌습니다.`;
   else if (better.length) first = `${subjectOf(better, '이', '가')} 좋아졌습니다.`;
   else if (worse.length) first = `${subjectOf(worse, '이', '가')} 나빠졌습니다.`;
-  else return [lead + '모든 항목이 재촬영 흔들림 범위 안에서 비슷합니다.'];
+  else return [lead + '모든 항목에 큰 변화가 없습니다.'];
   const lines = [lead + first];
   if (similar.length) lines.push(`${subjectOf(similar, '은', '는')} 비슷합니다.`);
   return lines;

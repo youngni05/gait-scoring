@@ -92,11 +92,24 @@ test('최근 비교를 문장으로 해설하고, 세 번 이상 같은 방향�
   assert.equal(visitHistory(at('c', '2026-11-15', 90), []).recent, null);
 });
 
-test('기록 하나의 해설은 GDI 정의와 좌우 차이만 사용', () => {
+test('기록 하나의 해설은 GDI 정의와 좌우 차이만, 항목·짧은 결론으로', () => {
   const v = visit('a', '2026-11-01', [seg('l', 'image_left', 0, 4000, [88, 82], { knee: [48, 56] })]);
-  const lines = describeVisit(visitSummary(v));
-  assert.match(lines[0], /GDI 85\.0점으로 정상 평균\(100점\)보다 15\.0점 낮습니다\. 정상집단 기준 약 1\.5표준편차 아래입니다\./);
-  assert.ok(lines.some(l => l === '오른쪽 다리 점수가 반대쪽보다 6.0점 낮습니다.'));
-  assert.ok(lines.some(l => l.startsWith('왼쪽 무릎 움직임 폭이 반대쪽보다 8.0° 작습니다.')));
-  assert.ok(lines.some(l => l.startsWith('좌우 걸음 시간이 비슷합니다')));
+  const items = describeVisit(visitSummary(v)).map(i => [i.label, i.text, i.notice]);
+  assert.deepEqual(items, [
+    ['GDI', '정상 평균보다 15.0점 낮음 (약 1.5표준편차)', true],
+    ['GDI 좌우', '오른쪽 다리가 6.0점 낮음', true],
+    ['걸음 시간', '좌우 차이 없음 (측정 오차 범위)', false],
+    ['무릎 움직임 폭', '왼쪽이 8.0° 작음', true],
+  ]);
+});
+
+test('해설 간소화: GDI가 1표준편차 안이면 생략, 0.07초 차이는 차이 없음', () => {
+  const v = visit('a', '2026-11-01', [
+    seg('l', 'image_left', 0, 4000, [94, 94], { leftExtra: 70, knee: [59, 30] }),
+    seg('r', 'image_right', 5000, 9000, [94, 94], { leftExtra: 70, knee: [30, 56] }),
+  ]);
+  v.analysis.current_report.segments[0].metrics[1].evidence.coverage.right.valid_frames = 1;
+  v.analysis.current_report.segments[1].metrics[1].evidence.coverage.left.valid_frames = 1;
+  assert.deepEqual(describeVisit(visitSummary(v)).map(i => i.label + ': ' + i.text),
+    ['걸음 시간: 좌우 차이 없음 (측정 오차 범위)', '무릎 움직임 폭: 좌우 비슷함']);
 });

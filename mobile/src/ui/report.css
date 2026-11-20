@@ -188,3 +188,57 @@
 .spark circle { fill: var(--fg-40); }
 .spark circle.now { fill: var(--primary); }
 .ov-note .h small { font-weight: 600; color: var(--fg-60); }
+
+/* 변화 아이콘: 화살표=값의 방향, 색=판정 */
+.vi { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; flex-shrink: 0; }
+.vi.better { background: rgb(23 191 99 / .16); color: #0b7a3e; }
+.vi.worse { background: rgb(244 33 46 / .12); color: #c0121d; }
+.vi.similar { background: var(--muted); color: var(--fg-60); }
+
+/* 좋아짐·나빠짐·비슷함 세 칸 */
+.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.ov-note .board { margin-top: 8px; }
+.board-col { border-radius: var(--r-md); background: var(--bg); border: 1px solid var(--border); padding: 10px 10px 12px; min-width: 0; }
+.board-col .bh { display: flex; align-items: baseline; justify-content: space-between; font-size: 13px; font-weight: 800; }
+.board-col.better .bh { color: #0b7a3e; } .board-col.worse .bh { color: #c0121d; } .board-col.similar .bh { color: var(--fg-60); }
+.board-col .bh b { font-size: 20px; }
+.board-col ul { margin-top: 8px; display: grid; gap: 8px; }
+.board-col li { display: flex; align-items: flex-start; gap: 6px; font-size: 13px; font-weight: 700; line-height: 1.3; min-width: 0; }
+.board-col li > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.board-col li small { display: block; font-size: 12px; font-weight: 600; color: var(--fg-60); font-variant-numeric: tabular-nums; }
+.board-col .bnone { margin-top: 8px; font-size: 15px; color: var(--fg-30); }
+
+/* 지난 기록 지표 줄(아이콘 + 키워드) */
+.tr-row { grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; align-items: start; }
+.tr-body { display: grid; gap: 4px; min-width: 0; }
+.kw { font-size: 13px; font-weight: 800; white-space: nowrap; }
+.kw.better { color: #0b7a3e; } .kw.worse { color: #c0121d; } .kw.similar { color: var(--fg-50); }
+.tr-mid .vals .dl { margin-left: 8px; font-size: 13px; font-weight: 700; color: var(--fg-60); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.tag { padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; background: var(--card); color: var(--fg-70); white-space: nowrap; }
+.tag.better { background: rgb(23 191 99 / .12); color: #0b7a3e; } .tag.worse { background: rgb(244 33 46 / .1); color: #c0121d; }
+.tag.streak { background: var(--accent); color: var(--primary); }
+/* 휴대폰 폭에서는 세 칸보다 세 줄이 읽기 쉽다: [판정 | 지표 칩들] */
+.board { grid-template-columns: 1fr; gap: 6px; }
+.board-col { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: start; gap: 8px; padding: 8px 10px; }
+.board-col .bh { padding-top: 5px; justify-content: flex-start; gap: 6px; }
+.board-col .bh b { font-size: 15px; }
+.board-col ul { margin-top: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.board-col li { align-items: center; padding: 3px 10px 3px 4px; border-radius: 999px; background: var(--card); }
+.board-col li small { display: inline; margin-left: 4px; }
+.board-col .bnone { margin-top: 0; padding-top: 4px; }
+.tr-top, .tr-mid { flex-wrap: wrap; row-gap: 2px; }
+.tr-mid .spark { margin-left: auto; }
+/* 오른쪽 표시선: 짧은 점선 테두리는 틈이 넓게 보여 흰 선처럼 보이므로, 색이 촘촘한 점선 막대로 그린다. */
+.ov-rows dd.lr > span.right::before, .pair .side.right::before {
+  border-top: 0; height: 3px; border-radius: 2px;
+  background: repeating-linear-gradient(90deg, var(--right) 0 4px, transparent 4px 6px);
+}
+.ov-rows dd.lr > span::before { width: 16px; }
+/* 결과 해설: [항목 | 짧은 결론]. 눈여겨볼 결과만 진하게 표시한다. */
+.brief { margin-top: 8px; display: grid; gap: 6px; }
+.brief li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 8px; align-items: baseline; font-size: 15px; line-height: 1.45; }
+.brief .k { font-size: 13px; font-weight: 700; color: var(--fg-60); }
+.brief .t { color: var(--fg-80); }
+.brief li.notice .t { font-weight: 800; color: var(--fg); }
+.brief li.notice .k::before { content: "●"; margin-right: 4px; font-size: 8px; vertical-align: 2px; color: var(--warn); }

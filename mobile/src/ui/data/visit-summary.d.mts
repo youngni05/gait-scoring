@@ -15,7 +15,7 @@ export interface VisitSummary {
 export type Verdict = 'better' | 'worse' | 'similar';
 export interface CompareRow {
   key: string; label: string; unit: string; digits: number; band: number;
-  current: number; previous: number; delta: number; verdict: Verdict; meaning: string;
+  current: number; previous: number; delta: number; verdict: Verdict; meaning: string; keyword: string;
 }
 export interface Comparison { previousId: string; previousDate: string; directions: string[]; skipped: string[]; notes: string[]; rows: CompareRow[] }
 export interface Trend extends CompareRow {
@@ -30,7 +30,7 @@ export function directionGdi(visit: unknown, direction: string): DirectionGdi | 
 export function visitGdi(visit: unknown, directions?: string[]): VisitGdi;
 export function stepGap(walking: ReturnType<typeof walkingEstimate>): VisitSummary['gap'];
 export function visitSummary(visit: unknown, directions?: string[]): VisitSummary;
-export function describeVisit(summary: VisitSummary): string[];
+export function describeVisit(summary: VisitSummary): { label: string; text: string; notice: boolean }[];
 export function compareVisits(current: unknown, prior: unknown): Comparison | null;
 export function visitHistory(current: unknown, priors: unknown[]): {
   recent: Comparison | null; trends: Trend[]; lines: string[]; visits: number; comparable?: number; sentence: string;
