@@ -9,7 +9,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build:contracts": "tsc",
-    "test": "npm run build:contracts && node --test tests/coords-1.test.cjs tests/processing-input.test.cjs tests/video-source.test.cjs tests/pose-extractor.test.cjs tests/stand-detector.test.cjs tests/serialization-upload.test.cjs tests/measurement-contract.test.cjs tests/api-client.test.cjs tests/gdi-candidate.test.cjs",
+    "test": "npm run build:contracts && node --test tests/coords-1.test.cjs tests/processing-input.test.cjs tests/video-source.test.cjs tests/pose-extractor.test.cjs tests/stand-detector.test.cjs tests/serialization-upload.test.cjs tests/measurement-contract.test.cjs tests/api-client.test.cjs tests/gdi-candidate.test.cjs tests/ui-api-source.test.cjs tests/analysis-start.test.cjs",
     "predev:mobile": "npm run prepare:assets",
     "dev:mobile": "vite mobile --host 127.0.0.1",
     "typecheck:mobile": "tsc -p mobile/tsconfig.json",

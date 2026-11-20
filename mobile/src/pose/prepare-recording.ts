@@ -4,19 +4,20 @@ import {MediaPipePoseExtractor} from './mediapipe-extractor';
 import {extractVideo} from './extract-video';
 import {FrontalStandDetector} from './stand-detector';
 import {JsonCoordsSerializer} from './coords-serializer';
-import {resolveRecordedAt} from './recorded-at';
 import type {UploadRequest} from './upload-gateway';
 
 export async function prepareRecording(file: File, mount: HTMLElement,
-  input: {subjectId: string; heightCm: number; day: string; recordingId: string; requestId: string},
+  input: {subjectId: string; heightCm: number; analysisStartedAt: string; recordingId: string; requestId: string},
   signal: AbortSignal): Promise<UploadRequest> {
   const session = await new BrowserVideoSource(mount).open(file, signal);
   let engine: MediaPipePoseExtractor | undefined;
   try {
+    // Internal coords-1 serializer adapter. measurement-2 removes these legacy fields before upload.
+    // Video capture metadata is deliberately not used for the analysis date.
+    const date = { recordedAt: input.analysisStartedAt, recordedAtSource: 'user_entered' as const };
     engine = await MediaPipePoseExtractor.create(signal);
     const run = await extractVideo(session, engine, signal);
     if (!session.verification?.complete) throw Error('전체 프레임 검증 미완료');
-    const date = resolveRecordedAt(input.day, session.info.recordedAtMetadata ?? null);
     const detection = new FrontalStandDetector(session.info.width/session.info.height)
       .analyze(run.frames, session.info.durationSeconds, signal).detection;
     const coords = new JsonCoordsSerializer().create({

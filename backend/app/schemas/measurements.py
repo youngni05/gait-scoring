@@ -6,7 +6,7 @@ from uuid import UUID
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, JsonValue, field_validator, model_validator
 
 from app.schemas.participants import ParticipantResponse
-from app.schemas.coords import Coords, ProcessingMetadata
+from app.schemas.coords import Coords, Coords2, ProcessingMetadata, ProcessingMetadata2
 
 
 class MeasurementCreate(BaseModel):
@@ -15,20 +15,28 @@ class MeasurementCreate(BaseModel):
     keypoints_json: dict[str, JsonValue] | list[JsonValue]
     extractor_name: str = Field(min_length=1, max_length=100)
     extractor_version: str = Field(min_length=1, max_length=100)
-    measured_at: AwareDatetime
-    processing_metadata: ProcessingMetadata | None = None
+    measured_at: AwareDatetime | None = None
+    analysis_started_at: AwareDatetime | None = None
+    processing_metadata: ProcessingMetadata | ProcessingMetadata2 | None = None
 
     @model_validator(mode="after")
     def validate_contract(self):
         if "processing_metadata" in self.model_fields_set and self.processing_metadata is None:
             raise ValueError("processing_metadata must not be null when supplied")
+        analysis_contract = isinstance(self.processing_metadata, ProcessingMetadata2)
+        if analysis_contract:
+            if self.analysis_started_at is None or "measured_at" in self.model_fields_set:
+                raise ValueError("processing-2 requires analysis_started_at and forbids measured_at")
+        elif self.measured_at is None or "analysis_started_at" in self.model_fields_set:
+            raise ValueError("Legacy requests require measured_at and forbid analysis_started_at")
         if self.processing_metadata is not None:
-            coords = Coords.model_validate(self.keypoints_json)
+            coords = (Coords2 if analysis_contract else Coords).model_validate(self.keypoints_json)
             if self.extractor_name != "mediapipe_tasks_vision" or self.extractor_version != coords.pose.engine_version:
                 raise ValueError("Extractor metadata does not match coords-1")
-            captured = datetime.fromisoformat(coords.capture.recorded_at.replace("Z", "+00:00"))
-            if captured != self.measured_at:
-                raise ValueError("Capture timestamp does not match measured_at")
+            if not analysis_contract:
+                captured = datetime.fromisoformat(coords.capture.recorded_at.replace("Z", "+00:00"))
+                if captured != self.measured_at:
+                    raise ValueError("Capture timestamp does not match measured_at")
             if self.processing_metadata.detection.marks.model_dump() != coords.marks.model_dump():
                 raise ValueError("Detection marks do not match coords-1")
         return self
@@ -47,11 +55,13 @@ class MeasurementCreate(BaseModel):
         json.dumps(value, allow_nan=False)
         return value
 
-    @field_validator("measured_at")
+    @field_validator("measured_at", "analysis_started_at")
     @classmethod
-    def validate_capture_time(cls, value: datetime) -> datetime:
+    def validate_capture_time(cls, value: datetime | None) -> datetime | None:
+        if value is None:
+            return None
         if value > datetime.now(timezone.utc):
-            raise ValueError("Capture time must not be in the future")
+            raise ValueError("Timestamp must not be in the future")
         return value.astimezone(timezone.utc)
 
 
@@ -63,7 +73,8 @@ class MeasurementResponse(BaseModel):
     age: int
     extractor_name: str
     extractor_version: str
-    measured_at: datetime
+    measured_at: datetime | None
+    analysis_started_at: datetime | None = None
     created_by: UUID
 
 

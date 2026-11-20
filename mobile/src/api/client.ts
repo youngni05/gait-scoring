@@ -2,11 +2,11 @@ import type { PreparedMeasurement } from '../../../contracts/measurement-1/prepa
 import type { ParticipantBody } from './participant-input';
 
 export interface Participant { id: string; name: string; birth_date: string | null; height_cm: string | number | null; gender: 'M' | 'F' | null }
-export interface Measurement { id: string; participant_id: string; age: number; measured_at: string; extractor_name: string; extractor_version: string; created_by: string }
+export interface Measurement { id: string; participant_id: string; age: number; measured_at: string | null; analysis_started_at?: string | null; extractor_name: string; extractor_version: string; created_by: string }
 export interface MeasurementItem extends Measurement { has_analysis_result: boolean }
 export interface MeasurementResult {
   status: 'available' | 'not_available'; participant: Participant; measurement: Measurement;
-  analysis_result: null | { gdi_score: number | null; stride_length_cm: number | null; cadence_spm: number | null; model_version: string; analyzed_at: string };
+  analysis_result: null | { gdi_score: number | null; stride_length_cm: number | null; cadence_spm: number | null; hip_graph_json?: unknown; knee_graph_json?: unknown; ankle_graph_json?: unknown; model_version: string; analyzed_at: string };
 }
 export class ApiError extends Error {
   constructor(public status: number, public code: string, message: string, public retryAfter = 0) { super(message); }
@@ -64,6 +64,11 @@ export class ApiClient {
     if (!Array.isArray(data) || !data.every(p => typeof p.id === 'string' && typeof p.name === 'string')) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid participants');
     return data;
   }
+  async participant(id: string, signal?: AbortSignal): Promise<Participant> {
+    const { data } = await this.request(`/participants/${encodeURIComponent(id)}`, {}, signal);
+    if (data?.id !== id || typeof data.name !== 'string') throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid participant');
+    return data;
+  }
   async createParticipant(body: ParticipantBody, signal?: AbortSignal): Promise<Participant> {
     const { data, status } = await this.request('/participants', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }, signal);
     return this.participantResponse(data, status, 201);
@@ -87,7 +92,7 @@ export class ApiClient {
   }
   async measurements(participant: string, offset: number, signal?: AbortSignal): Promise<MeasurementItem[]> {
     const { data } = await this.request(`/participants/${encodeURIComponent(participant)}/measurements?limit=20&offset=${offset}`, {}, signal);
-    if (!Array.isArray(data) || !data.every(m => typeof m.id === 'string' && m.participant_id === participant && typeof m.measured_at === 'string')) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid measurements');
+    if (!Array.isArray(data) || !data.every(m => typeof m.id === 'string' && m.participant_id === participant && typeof (m.analysis_started_at ?? m.measured_at) === 'string')) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid measurements');
     return data;
   }
   async result(id: string, signal?: AbortSignal): Promise<MeasurementResult> {

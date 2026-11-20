@@ -77,13 +77,14 @@ class GaitMeasurement(Base):
 
     id: Mapped[UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True, default=uuid4)
     participant_id: Mapped[UUID] = mapped_column(ForeignKey("participants.id"), nullable=False)
-    # Completed age at capture time; populated by the measurement service.
+    # Completed age at analysis start (legacy rows retain capture-time age).
     age: Mapped[int] = mapped_column(SmallInteger, nullable=False)
     keypoints_json: Mapped[Any] = mapped_column(JSONB(none_as_null=True), nullable=False)
     processing_metadata: Mapped[Any | None] = mapped_column(JSONB(none_as_null=True), nullable=True)
     extractor_name: Mapped[str] = mapped_column(String(100), nullable=False)
     extractor_version: Mapped[str] = mapped_column(String(100), nullable=False)
-    measured_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    measured_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    analysis_started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_by: Mapped[UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
 
 

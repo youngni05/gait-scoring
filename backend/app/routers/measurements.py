@@ -3,7 +3,7 @@ import re
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request, Response
-from sqlalchemy import select
+from sqlalchemy import select, func
 from sqlalchemy.orm import Session, defer
 
 from app.db import get_db
@@ -80,7 +80,7 @@ def list_measurements(
                  defer(GaitMeasurement.processing_metadata, raiseload=True))
         .outerjoin(GaitAnalysisResult, GaitAnalysisResult.measurement_id == GaitMeasurement.id)
         .where(GaitMeasurement.participant_id == participant_id)
-        .order_by(GaitMeasurement.measured_at.desc(), GaitMeasurement.id.desc())
+        .order_by(func.coalesce(GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at).desc(), GaitMeasurement.id.desc())
         .limit(limit)
         .offset(offset)
     ).all()

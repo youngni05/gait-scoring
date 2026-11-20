@@ -4,6 +4,21 @@
 
 AI 분석 실행은 아직 연결되지 않았습니다. 예시 데이터는 모두 가상입니다.
 
+## 분석 시작일 계약 (2026-11-20)
+
+새 화면은 `processing-2` / `coords-2`를 사용한다. 아래 본문의 `processing-1`과 촬영일 예시는 이전 클라이언트 호환용이다.
+
+- 요청: `analysis_started_at` 필수(시간대 포함 ISO 8601), `measured_at` 금지.
+- `keypoints_json.schema_version`은 `coords-2`. `capture.recorded_at`은 제거하며 나머지 좌표 구조·검증은 유지한다.
+- `processing_metadata.schema_version`은 `processing-2`. `recordedAtSource`는 제거한다.
+- `Idempotency-Key` 필수. 최초 좌표 추출 시작 시각과 준비된 요청 본문을 재시도에도 유지한다.
+- 서버는 시작 시각을 UTC로 저장하고 한국 시간 기준 시작일로 만 나이를 계산·보존한다.
+- 응답: 새 기록은 `analysis_started_at`에 시각, `measured_at`에 `null`. 기존 기록은 반대이며 날짜·나이를 소급 변경하지 않는다.
+- 목록은 분석 시작 시각(기존 기록은 촬영 시각) 역순이다. 결과의 `analyzed_at`은 분석 시작 시각과 별개다.
+- DB에 `alembic upgrade head` 적용 필요 (`d620f8a12b30`).
+
+전체 요청 예시: [measurement-2 fixture](../contracts/measurement-2/synthetic.request.json).
+
 ## 1. 공통 규칙
 
 | 항목 | 내용 |
