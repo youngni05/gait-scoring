@@ -1,6 +1,10 @@
 # Happy Aging Backend
 
-해피에이징 보행 영상 수집 및 분석 서비스의 백엔드입니다.
+해피에이징 보행 분석 서비스의 백엔드입니다. 원본 영상은 받지 않고 앱에서 추출한 좌표 JSON을 저장합니다.
+현재 로그인, 어르신 등록·조회·수정, 측정 저장·목록·결과 조회를 제공합니다. AI 실행·결과 자동 저장은 미연동 상태입니다.
+
+프론트 연동 시 [API 명세](../docs/API_SPEC.md)를 기준으로 사용하세요. 신규 앱은 `processing-1` 요청을 사용하며,
+기존 4필드 요청은 호환용으로 유지합니다. 두 요청의 차이는 아래 표에 정리했습니다.
 
 ## 기술 스택
 
@@ -17,18 +21,22 @@
 `Backend checks` 작업을 실행합니다. 경로 필터 없이 모든 main 대상 PR에 같은 검사를 제공합니다.
 
 - Python 3.12에서 고정된 requirements.txt 설치 및 `pip check`
-- 앱·마이그레이션·CI 스크립트 Python 문법 검사
+- 앱·마이그레이션·CI 스크립트·테스트 Python 문법 검사
 - 독립 PostgreSQL 17 서비스에서 upgrade → 모델 비교 → downgrade → upgrade → 모델 비교
 - API 실행, health·DB 연결·OpenAPI 경로·인증 거부·JWT/비밀번호 해시·CORS 기본 검증
+- coords-1·processing-1 스키마와 공유 합성 fixture 검증
+- PostgreSQL에서 기존 데이터 보존, 측정 HTTP API·동시 중복 요청·잠금 시간 초과·재시도 검증
 
 실제 `.env`나 GitHub Secrets는 사용하지 않습니다. DB는 작업별 임시 서비스이고
 JWT 키는 실행마다 생성합니다. **CI의 downgrade 명령을 개발·운영 DB에서 실행하지 마세요.**
 `backend/scripts/ci_smoke.py`는 반복 자동 검증에 필요한 유지 파일이며 일회성 테스트가 아닙니다.
-기본 검증이므로 전체 업무 시나리오 테스트를 대체하지 않습니다.
+별도 `frontend-ci.yml`은 프론트 테스트·타입 검사·모바일 빌드를 수행하고,
+`browser-integration-ci.yml`은 Chromium UI를 실제 API·임시 PostgreSQL에 연결해 검증합니다.
+자동 검증 통과가 실제 스마트폰 촬영 품질이나 AI 추론 검증을 의미하지는 않습니다.
 
 테스트 DB를 준비하고 마이그레이션을 적용한 환경에서는 backend 디렉터리에서
 `python -m scripts.ci_smoke`로 같은 API 검증을 실행할 수 있습니다.
-워크플로가 GitHub에 올라가기 전에는 Actions 실행 결과가 없습니다.
+위 명령은 smoke 검사만 실행합니다. 스키마·PostgreSQL 검사는 이 문서 마지막의 명령을 참고하세요.
 병합 필수 검사로 강제하려면 저장소 ruleset/브랜치 보호에서 `Backend checks`를 별도로 지정합니다.
 
 ## 개발 환경 실행
@@ -175,16 +183,34 @@ docker compose down
 생년월일 수정도 기존 촬영의 `age`를 변경하지 않습니다. 결과지의 키는 현재 키를 반영합니다.
 전체 요청·응답 예시는 [API 명세](../docs/API_SPEC.md)를 참고하세요.
 
-모든 요청에 `Authorization: Bearer <access_token>` 헤더가 필요합니다.
+아래 업무 API에는 `Authorization: Bearer <access_token>` 헤더가 필요합니다.
+`POST /auth/login`은 인증 없이 폼 데이터(`username`, `password`)로 호출합니다.
+토큰은 8시간 유효하며 갱신 API는 없습니다. `/health`, `/db-health`도 인증이 필요하지 않습니다.
 로그인한 복지사는 등록자와 관계없이 모든 어르신의 기록에 접근할 수 있습니다.
 
 | 메서드 | 경로 | 설명 |
 | --- | --- | --- |
-| POST | `/participants/{participant_id}/measurements` | 관절 좌표와 촬영 정보를 저장 (201) |
+| POST | `/participants/{participant_id}/measurements` | 최초 저장 201, 신규 계약의 동일 성공 요청 재전송 200 |
 | GET | `/participants/{participant_id}/measurements?limit=20&offset=0` | 촬영 일시 내림차순 목록 |
 | GET | `/measurements/{measurement_id}/result` | 선택한 촬영의 결과지 데이터 |
 
-### 측정 등록 예시
+### 기존 요청과 신규 요청
+
+| 항목 | 기존 4필드 요청 | 신규 processing-1 요청 |
+| --- | --- | --- |
+| 본문 | keypoints_json, extractor_name, extractor_version, measured_at | 기존 필드 + processing_metadata 객체 |
+| Idempotency-Key 헤더 | 생략 | UUID 1개 필수 |
+| 좌표 검증 | 비어 있지 않은 JSON 객체/배열, 유한한 숫자 | coords-1 구조와 필드 간 일치 검증 |
+| 재전송 | 별도 측정 생성 가능 | 같은 사용자·키·대상자·본문 바이트이면 기존 측정을 200으로 반환 |
+| 생년월일 누락 | 409 문자열 detail | 409 객체 detail, 코드 PARTICIPANT_BIRTH_DATE_REQUIRED |
+| AI 실행 | 없음 | 없음 |
+
+metadata와 키 중 하나만 보내거나 metadata를 명시적 null로 보내면 422입니다.
+신규 요청이 실패했다고 둘을 지워 기존 요청으로 전송하면 중복 방지가 사라집니다.
+
+### 기존 클라이언트 호환용 측정 등록 예시
+
+다음 예시에는 `Idempotency-Key`를 보내지 않습니다. 신규 요청 예시는 [API 명세 12절](../docs/API_SPEC.md#12-processing-1-측정-저장-계약)을 참고하세요.
 
 ```json
 {
@@ -195,8 +221,8 @@ docker compose down
 }
 ```
 
-좌표 예시는 임시 구조이며 AI 연동 규격이 아닙니다. 현재는 비어 있지 않은
-JSON 객체 또는 배열과 유한한 숫자인지만 검증하는 기존 요청 예시입니다. 신규 processing-1 요청은 coords-1의 33관절·프레임·시간·대상자 등을 검증합니다.
+위 좌표는 일반 JSON 검증을 통과하는 기존 요청 예시이며 신규 coords-1 형식이나 AI 연동 규격이 아닙니다.
+신규 processing-1 요청은 coords-1의 33관절·최소 60프레임·시간·대상자 등을 검증합니다.
 원본 영상이나 파일 업로드는 받지 않습니다. `age`, `created_by`, `participant_id`는
 요청 본문에 넣지 않습니다. 경로의 어르신 ID와 로그인 사용자, 촬영일로 서버가 결정합니다.
 
@@ -204,7 +230,7 @@ JSON 객체 또는 배열과 유한한 숫자인지만 검증하는 기존 요�
 생년월일에서 촬영 당시 만 나이를 계산합니다. 생년월일 미등록은 409,
 생년월일 이전 촬영이나 잘못된 입력은 422, 없는 어르신·촬영은 404입니다.
 
-등록 응답과 촬영 목록에는 좌표 원문을 포함하지 않습니다. 목록에는
+등록 응답·촬영 목록·결과 조회에는 좌표와 processing_metadata 원문을 포함하지 않습니다. 목록에는
 `has_analysis_result`가 포함되며 `limit`은 1~100, `offset`은 0 이상입니다.
 같은 촬영 시각인 경우 ID 내림차순으로 정렬합니다.
 
@@ -223,6 +249,18 @@ JSON 객체 또는 배열과 유한한 숫자인지만 검증하는 기존 요�
 신규 메타데이터와 요청 키를 함께 보내면 서버에서 coords-1과 필드 일치를 검증하고 DB 트랜잭션으로 중복을 방지합니다.
 마이그레이션 `b419d223e901`은 기존 측정의 metadata를 NULL로 유지하고 요청 키 테이블을 추가합니다.
 기존 4필드 클라이언트는 그대로 동작합니다. [API 명세](../docs/API_SPEC.md)의 12절을 확인하세요.
+
+- `extractor_name`은 `mediapipe_tasks_vision`, `extractor_version`은 coords의 엔진 버전과 일치해야 합니다.
+- 촬영 시각은 coords.capture.recorded_at과 같은 시점, detection.marks는 coords.marks와 같은 값이어야 합니다.
+- coords의 키는 100~220 범위의 JSON 숫자입니다. 프로필 등록·수정의 Decimal 키(숫자 문자열도 허용)와 규칙이 다릅니다.
+- 같은 키의 본문은 수신 바이트의 SHA-256으로 비교합니다. 공백·키 순서도 바꾸지 말고 직렬화한 본문을 보존합니다.
+- `409 REQUEST_IN_PROGRESS`는 `Retry-After` 이후 같은 요청으로 재시도합니다. `409 IDEMPOTENCY_CONFLICT`는 자동 재시도를 중단합니다.
+- 네트워크 취소·시간 초과가 저장 취소를 뜻하지 않습니다. 재로그인 시에도 같은 계정·키·본문으로 재시도합니다.
+- 오류 detail은 문자열·검증 오류 배열·업무 오류 객체 중 하나입니다. 검증 오류 배열은 loc/type/msg만 반환합니다.
+
+[합성 요청 파일](../contracts/measurement-1/synthetic.request.json)은 method/path/headers/body 묶음입니다.
+파일 전체를 HTTP 본문으로 보내지 말고 body만 직렬화하세요. 테스트 어르신 ID를 경로와 coords.subject.id에 동일하게 적용하고,
+별도 로그인 토큰을 붙여야 합니다. 실제 데이터나 토큰을 샘플 파일에 저장하지 않습니다.
 
 스키마 단위 테스트 (backend 폴더):
 
