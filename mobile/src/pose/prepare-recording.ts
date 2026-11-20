@@ -8,7 +8,7 @@ import type {UploadRequest} from './upload-gateway';
 
 export async function prepareRecording(file: File, mount: HTMLElement,
   input: {subjectId: string; heightCm: number; analysisStartedAt: string; recordingId: string; requestId: string},
-  signal: AbortSignal): Promise<UploadRequest> {
+  signal: AbortSignal, progress: (count: number, detected: number) => void = () => {}): Promise<UploadRequest> {
   const session = await new BrowserVideoSource(mount).open(file, signal);
   let engine: MediaPipePoseExtractor | undefined;
   try {
@@ -16,7 +16,7 @@ export async function prepareRecording(file: File, mount: HTMLElement,
     // Video capture metadata is deliberately not used for the analysis date.
     const date = { recordedAt: input.analysisStartedAt, recordedAtSource: 'user_entered' as const };
     engine = await MediaPipePoseExtractor.create(signal);
-    const run = await extractVideo(session, engine, signal);
+    const run = await extractVideo(session, engine, signal, progress);
     if (!session.verification?.complete) throw Error('전체 프레임 검증 미완료');
     const detection = new FrontalStandDetector(session.info.width/session.info.height)
       .analyze(run.frames, session.info.durationSeconds, signal).detection;

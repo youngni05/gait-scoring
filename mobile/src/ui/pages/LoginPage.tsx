@@ -1,7 +1,7 @@
 /** 01 로그인 · 01-1 입력 오류 · 01-2 로그인 실패 */
 import { useState, type FormEvent } from 'react';
 import { AlertCircleIcon, EyeIcon, EyeOffIcon, WalkIcon } from '../components/icons';
-import { LoginFailedError, apiSource } from '../data';
+import { LoginFailedError } from '../data';
 import { errorMessage } from '../../api/client';
 import { useNavigate } from '../router';
 import { useSession } from '../session';
@@ -16,7 +16,6 @@ export function LoginPage({ renewal = false }: { renewal?: boolean }) {
   /** 실패 안내 문구. null이면 안내를 숨긴다. */
   const [failed, setFailed] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const [server, setServer] = useState(apiSource.base);
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -26,8 +25,6 @@ export function LoginPage({ renewal = false }: { renewal?: boolean }) {
     if (next.id || next.pw) return;
     setBusy(true);
     setFailed(null);
-    try { if (!renewal) apiSource.configure(server); }
-    catch (e) { setFailed(errorMessage(e)); setBusy(false); return; }
     login(uid.trim(), pw)
       .then(() => { if (!renewal) navigate('/subjects', { replace: true }); })
       .catch((err) => {
@@ -64,7 +61,6 @@ export function LoginPage({ renewal = false }: { renewal?: boolean }) {
       )}
 
       <form onSubmit={submit} noValidate style={{ marginTop: failed ? 24 : 40, display: 'grid', gap: 20 }}>
-        {!renewal && <div className="field"><label htmlFor="api-server">서버 주소</label><input id="api-server" className="input" type="url" value={server} disabled={busy} onChange={e => setServer(e.target.value)} /></div>}
         <div className="field">
           <label htmlFor="uid" style={{ fontWeight: 600 }}>아이디</label>
           <input

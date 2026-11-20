@@ -22,7 +22,6 @@ class DesignUiTests(unittest.TestCase):
         self.addCleanup(self.report_failure)
         self.page.set_default_timeout(15000)
         self.page.goto(self.ui)
-        self.page.get_by_label('서버 주소', exact=True).fill(self.api)
         self.login()
         self.name = 'UI합성-' + uuid4().hex[:8]
 
@@ -56,6 +55,72 @@ class DesignUiTests(unittest.TestCase):
     def measurement_rows(self):
         with self.engine.connect() as conn:
             return conn.execute(text('SELECT id,age FROM gait_measurements WHERE participant_id=:id'), {'id': self.person_id}).all()
+
+    def test_video_picker_preview_invalid_media_and_back(self):
+        self.create_person()
+        self.page.get_by_role('button', name='새 보행 측정', exact=False).click()
+        expect(self.page.get_by_role('heading', name='분석할 보행 영상을 선택해 주세요')).to_be_visible()
+        expect(self.page.get_by_role('button', name='분석 시작', exact=True)).to_be_disabled()
+        with self.page.expect_file_chooser() as chooser:
+            self.page.get_by_role('button', name='기기에서 영상 선택', exact=False).click()
+        chooser.value.set_files({'name': 'invalid-video.mp4', 'mimeType': 'video/mp4', 'buffer': b'not a video'})
+        expect(self.page.get_by_role('heading', name='선택한 영상')).to_be_visible()
+        expect(self.page.get_by_text('invalid-video.mp4', exact=True)).to_be_visible()
+        expect(self.page.get_by_role('alert')).to_contain_text('재생할 수 없습니다')
+        expect(self.page.get_by_role('button', name='분석 시작', exact=True)).to_be_disabled()
+        with self.page.expect_file_chooser() as chooser:
+            self.page.get_by_role('button', name='다른 영상 선택').click()
+        chooser.value.set_files([])
+        expect(self.page.get_by_text('invalid-video.mp4', exact=True)).to_be_visible()
+        self.assertEqual(self.measurement_rows(), [])
+        self.page.get_by_role('button', name='뒤로', exact=True).click()
+        expect(self.page.get_by_role('button', name='대상자 정보 수정')).to_be_visible()
+
+    def test_analysis_start_prepares_then_saves_without_second_click(self):
+        # Stub only local pose preparation; exercise the real screen, request contract,
+        # API and DB. This is not a test of MediaPipe accuracy or AI inference.
+        fixture = json.loads((support.ROOT / 'contracts/measurement-1/synthetic.request.json').read_text(encoding='utf-8'))['body']
+        module = 'const fixture = ' + json.dumps(fixture) + ''';
+export async function prepareRecording(file, mount, input, signal, progress) {
+  progress(30, 30);
+  await new Promise(resolve => setTimeout(resolve, 300));
+  if (signal.aborted) throw new DOMException('Cancelled', 'AbortError');
+  const coords = structuredClone(fixture.keypoints_json);
+  coords.subject.id = input.subjectId;
+  coords.recording_id = input.recordingId;
+  coords.capture.recorded_at = input.analysisStartedAt;
+  const {schema_version, ...metadata} = fixture.processing_metadata;
+  return {coords, metadata, requestId: input.requestId};
+}
+'''
+        self.page.route('**/src/pose/prepare-recording.ts', lambda route: route.fulfill(status=200, content_type='application/javascript', body=module))
+        self.page.reload()
+        self.login()
+        self.create_person()
+        self.page.get_by_role('button', name='새 보행 측정', exact=False).click()
+        output = support.ROOT / 'mobile/local-output'
+        output.mkdir(parents=True, exist_ok=True)
+        expect(self.page.get_by_role('heading', name='분석할 보행 영상을 선택해 주세요')).to_be_visible()
+        self.page.screenshot(path=str(output / 'measurement-picker.png'), full_page=True)
+        # Browser-generated rectangle video: no personal files or images.
+        clip = self.page.evaluate('''async () => {
+          const canvas = document.createElement('canvas'); canvas.width=160; canvas.height=120;
+          canvas.getContext('2d').fillRect(0,0,160,120);
+          const stream=canvas.captureStream(10); const chunks=[];
+          const recorder=new MediaRecorder(stream, {mimeType:'video/webm'});
+          const done=new Promise(resolve => {recorder.onstop=resolve;});
+          recorder.ondataavailable=e=>chunks.push(e.data); recorder.start();
+          await new Promise(resolve=>setTimeout(resolve,300)); recorder.stop(); await done;
+          stream.getTracks().forEach(track=>track.stop());
+          return Array.from(new Uint8Array(await new Blob(chunks).arrayBuffer()));
+        }''')
+        self.page.get_by_label('보행 영상 선택', exact=True).set_input_files({'name':'synthetic.webm','mimeType':'video/webm','buffer':bytes(clip)})
+        expect(self.page.get_by_role('heading', name='선택한 영상')).to_be_visible()
+        self.page.screenshot(path=str(output / 'measurement-preview.png'), full_page=True)
+        self.page.get_by_role('button', name='분석 시작', exact=True).click()
+        expect(self.page.get_by_role('heading', name='측정 기록이 저장되었습니다')).to_be_visible(timeout=15000)
+        self.assertEqual(len(self.measurement_rows()), 1)
+        self.page.screenshot(path=str(output / 'measurement-saved.png'), full_page=True)
 
     def test_register_edit_save_result_and_json_download(self):
         self.create_person()

@@ -365,3 +365,33 @@ ol, ul { list-style: none; }
   display: inline-flex; align-items: center; justify-content: center;
 }
 .info-btn:hover { background: var(--accent); }
+
+/* Video selection, preview and processing follow the measurement wireframes. */
+.measurement-screen { padding-bottom: 220px; }
+.measurement-section { margin: 24px 20px 0; }
+.measurement-section h2 { font-size: 21px; font-weight: 800; line-height: 1.45; }
+.measurement-section p { margin-top: 10px; line-height: 1.65; }
+.measurement-picker { width: 100%; margin-top: 24px; padding: 36px 20px; display: flex; flex-direction: column; align-items: center; gap: 14px; border: 2px dashed var(--primary); border-radius: var(--r-lg); background: var(--accent); }
+.measurement-picker strong { font-size: 20px; }
+.measurement-film { width: 80px; height: 80px; display: grid; place-items: center; border-radius: 50%; background: white; color: var(--primary); }
+.measurement-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.measurement-row > span { display: flex; align-items: center; gap: 5px; font-size: 14px; }
+.measurement-video { display: block; width: 100%; height: min(48vh, 420px); object-fit: contain; background: #17232e; border-radius: var(--r-lg); margin: 16px 0; }
+.measurement-file-info { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; padding: 4px 0 20px; }
+.measurement-file-info dt { color: var(--fg-60); }
+.measurement-file-info dd { text-align: right; overflow-wrap: anywhere; font-weight: 600; }
+.measurement-file-card { padding: 16px; display: flex; align-items: center; gap: 12px; overflow-wrap: anywhere; }
+.measurement-file-card strong { min-width: 0; }
+.measurement-progress { margin-top: 28px; }
+.measurement-progress h2 { display: flex; gap: 10px; align-items: center; color: var(--primary); }
+.measurement-frame-count { font-size: 28px; font-weight: 800; }
+.measurement-stages { margin-top: 24px; border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
+.measurement-stages li { display: flex; gap: 12px; align-items: center; padding: 18px; border-bottom: 1px solid var(--border); }
+.measurement-stages li:last-child { border: 0; }
+.measurement-dot { width: 22px; height: 22px; border: 2px solid var(--border); border-radius: 50%; }
+.measurement-failure, .measurement-success { text-align: center; padding-top: 28px; }
+.measurement-status-icon { display: grid; place-items: center; width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; background: var(--accent); color: var(--ok); }
+.measurement-failure .measurement-status-icon { color: var(--danger); background: rgb(244 33 46 / .08); }
+.measurement-cause { margin-top: 20px; text-align: left; padding: 18px; border: 1px solid var(--danger); border-radius: var(--r-lg); background: rgb(244 33 46 / .04); overflow-wrap: anywhere; }
+.measurement-cause strong { color: var(--danger); }
+.measurement-note { margin: 20px; }
