@@ -26,7 +26,7 @@ import {prepareRecording} from './pose/prepare-recording';
 import {MockUploadGateway} from './pose/upload-gateway';
 const controller = new AbortController();
 const request = await prepareRecording(file, previewMount, {
-  subjectId: 'DEV-EXAMPLE', heightCm: 170, day: '',
+  subjectId: 'DEV-EXAMPLE', heightCm: 170, analysisStartedAt: new Date().toISOString(),
   recordingId: crypto.randomUUID(), requestId: crypto.randomUUID(),
 }, controller.signal);
 const gateway = new MockUploadGateway(() => 'success');
@@ -36,7 +36,7 @@ const receipt = await gateway.submit(request, controller.signal); // mock only
 ```
 
 실제 subjectId는 대상자 등록 화면이 제공해야 한다. 예시 값으로 실제 대상자 연결을 만들지 않는다.
-촬영일은 입력 YYYY-MM-DD가 우선이며 한국00:00을 저장한다. 빈 값이면 MP4 생성 시각 메타데이터를 한국시간으로 변환한다. 메타데이터도 없으면 사용자 입력이 필요하다. 파일 수정일/파일명은 사용하지 않는다. 편집된 파일의 생성 시각이 실제 촬영일과 다를 수 있으므로 화면에서 확인한다.
+현재 앱은 좌표 추출 시작 시 `analysisStartedAt`을 고정한다. 실제 전송은 `prepareAnalysisMeasurement`가 `coords-2` / `processing-2`로 변환하며 촬영 시각 필드를 제거한다. 촬영 메타데이터가 없어도 처리한다. 분석 시작일 표시와 나이 계산은 한국 시간 기준이다. 아래 내부 mock 포트 설명과 실제 서버 계약은 구분하며 [현재 화면 연동](../integration/design-ui-api.md)을 참고한다.
 
 ## 서버 담당자: 아직 내부 포트인 계약
 

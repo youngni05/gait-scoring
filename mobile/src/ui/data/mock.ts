@@ -11,10 +11,10 @@ export const JOINT_LABEL: Record<Joint, string> = { hip: '고관절', knee: '무
 export interface Subject {
   id: string;
   name: string;
-  sex: Sex;
+  sex: Sex | null;
   /** YYYY-MM-DD */
   birth: string;
-  heightCm: number;
+  heightCm: number | null;
 }
 
 /** 보행 주기 0~100%를 2% 간격(51점)으로 나눈 좌우 관절 각도(°). */
@@ -24,7 +24,7 @@ export interface JointCurve {
 }
 
 /** 산출하지 못한 항목과 그 이유. 값이 있으면 그 항목은 결과지에 ‘—’로 표시한다. */
-export type MissingKey = 'symmetry' | Joint;
+export type MissingKey = 'gdi' | 'cadence' | 'symmetry' | Joint;
 
 export interface ResultRecord {
   id: string;
@@ -32,8 +32,11 @@ export interface ResultRecord {
   /** ISO 날짜·시각 */
   measuredAt: string;
   /** 촬영 당시 나이와 키. 대상자 정보를 나중에 고쳐도 이 값은 바뀌지 않는다. */
-  ageAtCapture: number;
-  heightAtCapture: number;
+  ageAtCapture: number | string;
+  heightAtCapture: number | null;
+  status?: 'available' | 'not_available';
+  dateBasis?: 'analysis_start' | 'legacy_capture';
+  strideLength?: number | null;
   gdi: number | null;
   cadence: number | null;
   symmetry: number | null;
@@ -47,7 +50,8 @@ export interface ResultRecord {
 const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
 
 /** 만 나이. 생일이 지나지 않았으면 한 살을 뺀다. */
-export function ageOn(birth: string, on: Date = new Date()): number {
+export function ageOn(birth: string, on: Date = new Date()): number | string {
+  if (!birth) return '—';
   const [y, m, d] = birth.split('-').map(Number) as [number, number, number];
   let age = on.getFullYear() - y;
   const beforeBirthday = on.getMonth() + 1 < m || (on.getMonth() + 1 === m && on.getDate() < d);
@@ -58,16 +62,13 @@ export function ageOn(birth: string, on: Date = new Date()): number {
 const pad = (n: number) => String(n).padStart(2, '0');
 
 export const fmtDate = (iso: string) => {
-  const d = new Date(iso);
-  return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}`;
+  return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(iso)).replaceAll('-', '.');
 };
-export const fmtWeekday = (iso: string) => WEEKDAY[new Date(iso).getDay()] ?? '';
+export const fmtWeekday = (iso: string) => new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', weekday: 'narrow' }).format(new Date(iso));
 export const fmtTime = (iso: string) => {
-  const d = new Date(iso);
-  const h = d.getHours();
-  return `${h < 12 ? '오전' : '오후'} ${h % 12 === 0 ? 12 : h % 12}:${pad(d.getMinutes())}`;
+  return new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', hour: 'numeric', minute: '2-digit', hour12: true }).format(new Date(iso));
 };
-export const fmtBirth = (birth: string) => birth.replaceAll('-', '.');
+export const fmtBirth = (birth: string) => birth ? birth.replaceAll('-', '.') : '';
 export const fmtCompact = (iso: string) => fmtDate(iso).replaceAll('.', '');
 
 /** "1947.05.14" 같은 입력을 검사해 "1947-05-14"로 돌려준다. 틀리면 null. */
@@ -131,7 +132,7 @@ type Seed = Omit<ResultRecord, 'id' | 'curves' | 'ageAtCapture' | 'fileName'> & 
 
 function record(id: string, s: Seed): ResultRecord {
   const subject = SEED_SUBJECTS.find((x) => x.id === s.subjectId)!;
-  const skip = (Object.keys(s.missing) as MissingKey[]).filter((k): k is Joint => k !== 'symmetry');
+  const skip = (Object.keys(s.missing) as MissingKey[]).filter((k): k is Joint => JOINTS.includes(k as Joint));
   const { asym, ...rest } = s;
   return {
     ...rest,
@@ -178,6 +179,8 @@ export const SEED_RECORDS: ResultRecord[] = [
 ];
 
 export const MISSING_LABEL: Record<MissingKey, string> = {
+  gdi: 'GDI',
+  cadence: '케이던스',
   symmetry: '좌우 대칭 지표',
   hip: '고관절 그래프',
   knee: '무릎 그래프',

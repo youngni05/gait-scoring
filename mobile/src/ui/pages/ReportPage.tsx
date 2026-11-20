@@ -1,7 +1,7 @@
 /**
  * 07 분석 결과지 · 07-1 결과지 일부 누락.
  * 새 분석 직후와 이전 기록 조회 모두 이 화면 하나를 쓴다(디자인 원칙: 결과지는 같은 모양).
- * 구성: 1) 대상자 정보(촬영 당시 값) → 2) 핵심 지표 → 3) 관절별 그래프 → 다운로드.
+ * 구성: 1) 대상자 정보(촬영 당시 나이와 현재 프로필) → 2) 핵심 지표 → 3) 관절별 그래프 → 다운로드.
  */
 import { useState } from 'react';
 import { DownloadSheet } from '../components/DownloadSheet';
@@ -28,6 +28,7 @@ export function ReportPage() {
   const [subject, rec] = data;
   if (!subject || !rec) return <NotFound />;
 
+  if (rec.status === 'not_available') return <div className="screen"><TopBar title="측정 기록" nav="back" onNav={toList} subject={subject} /><section style={{ padding: 24 }}><h2>측정 저장 완료</h2><p style={{ marginTop: 16 }}>측정은 저장되었지만 분석 결과는 아직 없습니다. 자동 분석 실행 여부를 뜻하지 않습니다.</p><p>{fmtDate(rec.measuredAt)} · {rec.dateBasis === 'legacy_capture' ? '촬영 당시' : '분석 시작일 기준'} 만 {rec.ageAtCapture}세</p><button className="btn btn-outline" style={{ marginTop: 24 }} onClick={reload}>결과 다시 확인</button></section></div>;
   const missingKeys = Object.keys(rec.missing) as MissingKey[];
   const partial = missingKeys.length > 0;
   const base = `/subjects/${subject.id}`;
@@ -39,7 +40,7 @@ export function ReportPage() {
         nav="back"
         onNav={toList}
         subject={subject}
-        subjectDetail={`${fmtDate(rec.measuredAt)} 측정`}
+        subjectDetail={`${fmtDate(rec.measuredAt)} ${rec.dateBasis === 'legacy_capture' ? '촬영 (기존 기록)' : '분석 시작'}`}
       />
 
       {partial && (
@@ -60,15 +61,15 @@ export function ReportPage() {
         </div>
       )}
 
-      {/* 1. 대상자 정보 — 촬영 당시 값 */}
+      {/* 1. 촬영 당시 나이와 현재 대상자 정보 */}
       <section className="card" style={{ margin: partial ? '16px 20px 0' : '20px 20px 0', padding: 20 }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
           <div>
             <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">대상자 이름</p>
             <h2 style={{ fontSize: 26, fontWeight: 800, lineHeight: 1.2 }}>{subject.name}</h2>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">측정 날짜</p>
+            <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">{rec.dateBasis === 'legacy_capture' ? '촬영일 (기존 기록)' : '분석 시작일'}</p>
             <p style={{ fontSize: 17, fontWeight: 700 }}>{fmtDate(rec.measuredAt)} ({fmtWeekday(rec.measuredAt)})</p>
             <p style={{ fontSize: 13 }} className="muted">{fmtTime(rec.measuredAt)}</p>
           </div>
@@ -79,13 +80,13 @@ export function ReportPage() {
             <dd style={{ fontSize: 18, fontWeight: 700 }}>{subject.sex}</dd>
           </div>
           <div style={{ padding: '12px 4px' }}>
-            <dt className="k">촬영 당시 나이</dt>
+            <dt className="k">{rec.dateBasis === 'legacy_capture' ? '촬영 당시 나이 (기존)' : '분석 시작일 기준 나이'}</dt>
             <dd style={{ fontSize: 18, fontWeight: 700 }}>만 {rec.ageAtCapture}세</dd>
           </div>
           <div style={{ padding: '12px 4px' }}>
-            <dt className="k">촬영 당시 키</dt>
+            <dt className="k">현재 등록 키</dt>
             <dd style={{ fontSize: 18, fontWeight: 700 }}>
-              {rec.heightAtCapture}
+              {rec.heightAtCapture ?? '—'}
               <span style={{ fontSize: 14, marginLeft: 2 }}>cm</span>
             </dd>
           </div>
@@ -113,7 +114,7 @@ export function ReportPage() {
           <p style={{ marginTop: 8, fontSize: 14, color: 'rgb(255 255 255 / .8)' }}>Gait Deviation Index</p>
           {openInfo.gdi && (
             <div style={{ marginTop: 16, borderRadius: 'var(--r-md)', background: 'rgb(255 255 255 / .15)', padding: '12px 16px', fontSize: 14, lineHeight: 1.6 }}>
-              GDI 정의 및 해석 안내 문구는 확정 후 이곳에 표시됩니다.
+              연구용 보행 편차 추정값입니다. 임상 진단 결과가 아닙니다.
             </div>
           )}
         </div>
@@ -127,7 +128,7 @@ export function ReportPage() {
               걸음/분 <span style={{ fontWeight: 400, color: 'var(--fg-50)' }}>(steps/min)</span>
             </p>
           </div>
-          {rec.symmetry !== null ? (
+          {rec.strideLength !== undefined ? <div className="card" style={{ padding: 16 }}><p>평균 스트라이드 길이</p><p style={{ fontSize: 34, fontWeight: 800 }}>{rec.strideLength ?? '—'}</p><p>cm</p></div> : rec.symmetry !== null ? (
             <div className="card" style={{ padding: 16 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
                 <p style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.35 }}>좌우 대칭<br />지표</p>
@@ -206,7 +207,7 @@ export function ReportPage() {
           })}
         </div>
         <p style={{ margin: '16px 20px 0', fontSize: 13, textAlign: 'center', color: 'var(--fg-50)' }}>
-          결과 ID {rec.id} · 예시용 가상 데이터
+          결과 ID {rec.id}
         </p>
       </section>
 

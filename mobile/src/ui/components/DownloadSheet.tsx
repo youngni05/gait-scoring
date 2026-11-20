@@ -1,6 +1,6 @@
 /**
  * 08 결과 다운로드 바닥 시트: 준비 중 → 완료 / 실패.
- * 파일 형식이 아직 정해지지 않았다. 지금은 가상 데이터 구현이 진행 모습만 흉내 낸다.
+ * 실제 결과 API 응답을 JSON으로 내려받는다. 브라우저의 파일 저장 완료 여부는 단정하지 않는다.
  */
 import { useEffect, useState } from 'react';
 import { dataSource, fmtCompact, fmtDate, type ResultRecord } from '../data';
@@ -11,17 +11,20 @@ type Phase = 'preparing' | 'done' | 'fail';
 export function DownloadSheet({ record, name, onClose }: { record: ResultRecord; name: string; onClose: () => void }) {
   const [phase, setPhase] = useState<Phase>('preparing');
   const [attempt, setAttempt] = useState(0);
-  const fileName = `${name}_보행분석결과_${fmtCompact(record.measuredAt)}`;
+  const [failure, setFailure] = useState('');
+  const fileName = `gait-result-${record.id}.json`;
 
   useEffect(() => {
     let alive = true;
+    const controller = new AbortController();
     setPhase('preparing');
     dataSource
-      .downloadResult(record.id)
+      .downloadResult(record.id, controller.signal)
       .then(() => alive && setPhase('done'))
-      .catch(() => alive && setPhase('fail'));
+      .catch((e) => { if (alive) { setFailure(e instanceof Error ? e.message : '결과를 내려받지 못했습니다.'); setPhase('fail'); } });
     return () => {
       alive = false;
+      controller.abort();
     };
   }, [attempt, record.id]);
 
@@ -53,8 +56,8 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
               <span className="round-icon" style={{ background: 'rgb(23 191 99 / .15)', color: 'var(--ok)' }}>
                 <CheckIcon size={28} />
               </span>
-              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>다운로드가 완료되었습니다</h2>
-              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">휴대폰의 ‘다운로드’ 폴더에 저장되었습니다.</p>
+              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>다운로드를 요청했습니다</h2>
+              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">브라우저의 다운로드 목록에서 저장 여부를 확인하세요.</p>
             </>
           )}
           {phase === 'fail' && (
@@ -76,7 +79,7 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
           >
             <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--danger)' }}>원인</p>
             <p style={{ marginTop: 4, fontSize: 16, fontWeight: 700, lineHeight: 1.4 }}>
-              휴대폰 저장 공간이 부족하거나 네트워크 연결이 불안정합니다.
+              {failure}
             </p>
             <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'var(--fg-70)' }}>
               저장 공간과 인터넷 연결을 확인한 뒤 다시 시도해 주세요.
@@ -96,7 +99,7 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
             <div style={{ minWidth: 0, flex: 1 }}>
               <p style={{ fontSize: 15, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{fileName}</p>
               <p style={{ marginTop: 2, fontSize: 13, color: 'var(--fg-60)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                파일 형식 <span className="pill pill-draft">확정 예정</span>
+                파일 형식 <span className="pill">JSON</span>
               </p>
             </div>
             {phase === 'done' && <CheckCircleIcon size={22} className="ok-icon" />}

@@ -32,7 +32,7 @@ export function ChartZoomPage() {
         nav="close"
         onNav={close}
         subject={subject}
-        subjectDetail={`${fmtDate(rec.measuredAt)} 측정`}
+        subjectDetail={`${fmtDate(rec.measuredAt)} ${rec.dateBasis === 'legacy_capture' ? '촬영 (기존 기록)' : '분석 시작'}`}
       />
 
       <div className="tabs" role="tablist" aria-label="관절 선택" style={{ margin: '16px 20px 0' }}>

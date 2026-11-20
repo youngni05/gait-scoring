@@ -148,6 +148,29 @@ ol, ul { list-style: none; }
   color: var(--fg-40); display: inline-flex; pointer-events: none;
 }
 .input-action { position: absolute; right: 4px; top: 4px; color: var(--fg-50); }
+.account-menu { position: relative; flex-shrink: 0; }
+.account-trigger { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 64px; height: 44px; padding: 0 12px; background: #fff; border: 1px solid var(--border); border-radius: 14px; color: var(--fg-70); }
+.account-trigger:hover, .account-trigger[aria-expanded='true'] { background: var(--card); border-color: #c5d5df; }
+.account-chevron { transition: transform .15s; }
+.account-chevron.open { transform: rotate(180deg); }
+.account-panel { position: absolute; top: calc(100% + 10px); right: 0; z-index: 25; width: min(236px, calc(100vw - 40px)); border: 1px solid var(--border); border-radius: 16px; background: #fff; box-shadow: 0 8px 28px rgb(15 20 25 / .12); overflow: hidden; }
+.account-identity { padding: 18px 18px 16px; border-bottom: 1px solid var(--border); }
+.account-identity p { margin-bottom: 6px; font-size: 14px; color: var(--fg-60); }
+.account-identity strong { display: block; font-size: 16px; overflow-wrap: anywhere; }
+.account-logout { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 52px; padding: 14px 18px; color: #b43d48; text-align: left; font-size: 16px; font-weight: 600; }
+.account-logout:hover { background: #fff4f4; }
+.account-trigger:focus-visible, .account-logout:focus-visible { outline: 2px solid var(--primary); outline-offset: -3px; }
+.birth-calendar { margin-top: 12px; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); background: #fff; }
+.birth-calendar-toolbar { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; }
+.birth-calendar-toolbar select { min-width: 0; height: 44px; flex: 1; border: 1px solid var(--border); border-radius: 8px; background: var(--input); font: inherit; }
+.birth-calendar-toolbar button { width: 36px; height: 44px; font-size: 26px; }
+.birth-calendar-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; margin-bottom: 12px; text-align: center; }
+.birth-calendar-days > span { padding: 8px 0; color: var(--fg-60); }
+.birth-calendar-days button { min-height: 44px; border-radius: 8px; font-size: 16px; }
+.birth-calendar-days button:hover:not(:disabled) { background: var(--accent); }
+.birth-calendar-days button[aria-pressed='true'] { background: var(--primary); color: #fff; font-weight: 700; }
+.birth-calendar button:disabled { opacity: .3; }
+.birth-calendar button:focus-visible, .birth-calendar select:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
 .field-error {
   margin-top: 8px; font-size: 15px; font-weight: 500; color: var(--danger);
   display: flex; align-items: center; gap: 6px;

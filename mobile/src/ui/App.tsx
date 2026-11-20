@@ -12,7 +12,6 @@
  *   #/subjects/:id/results/:rid/chart/:joint  07-2 그래프 확대 보기
  */
 import { useEffect, type ReactNode } from 'react';
-import { DemoPanel } from './components/DemoPanel';
 import { AnalyzePage } from './pages/AnalyzePage';
 import { ChartZoomPage } from './pages/ChartZoomPage';
 import { LoginPage } from './pages/LoginPage';
@@ -69,8 +68,16 @@ export function App() {
     <RouterProvider>
       <SessionProvider>
         <Screens />
-        <DemoPanel />
+        <RenewSession />
       </SessionProvider>
     </RouterProvider>
   );
+}
+
+function RenewSession() {
+  const { expired } = useSession();
+  return expired ? <div role="dialog" aria-modal="true" aria-label="인증 갱신" style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'white', overflow: 'auto' }}>
+    <p style={{ padding: 20 }}>인증이 만료되었습니다. 같은 계정으로 로그인 후 기존 화면에서 다시 시도하세요.</p>
+    <LoginPage renewal />
+  </div> : null;
 }

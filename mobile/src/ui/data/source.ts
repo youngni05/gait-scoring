@@ -1,18 +1,4 @@
-/**
- * 화면이 쓰는 데이터 기능의 목록(연결 지점).
- *
- * 화면은 이 인터페이스만 알고, 실제 값은 data/index.ts가 고른 구현체에서 받는다.
- * 지금은 가상 데이터 구현(mockSource.ts)만 있다. 서버 연결 담당자는 같은 모양으로
- * ApiClient(src/api/client.ts)를 감싼 구현을 만들어 data/index.ts의 한 줄만 바꾸면 된다.
- *
- * 서버 응답과의 대응(참고용, 확정 아님):
- *   Subject.sex '여'/'남'          ↔ Participant.gender 'F'/'M'
- *   Subject.birth 'YYYY-MM-DD'     ↔ Participant.birth_date
- *   Subject.heightCm               ↔ Participant.height_cm
- *   ResultRecord.ageAtCapture      ↔ Measurement.age
- *   ResultRecord.gdi / cadence     ↔ analysis_result.gdi_score / cadence_spm
- *   ResultRecord.symmetry·curves   → 현재 서버 응답에 없음(추후 확정)
- */
+/** Screen data port. Production implementation: apiSource.ts. */
 import type { ResultRecord, Subject } from './mock';
 
 export type SubjectInput = Omit<Subject, 'id'>;
@@ -58,5 +44,5 @@ export interface GaitDataSource {
   ): Promise<ResultRecord>;
 
   /** 결과지를 파일로 내려받는다. 파일 형식은 추후 확정. */
-  downloadResult(resultId: string): Promise<void>;
+  downloadResult(resultId: string, signal?: AbortSignal): Promise<void>;
 }

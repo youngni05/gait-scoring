@@ -1,4 +1,4 @@
-/** 03 대상자 상세: 정보 확인 후 ‘새 보행 영상 분석’ 또는 ‘이전 결과 조회’로 갈라진다. */
+/** 03 대상자 상세: 정보 확인 후 ‘새 보행 측정’ 또는 ‘이전 결과 조회’로 갈라진다. */
 import type { ReactNode } from 'react';
 import { Avatar, PageError, PageLoading, TopBar } from '../components/layout';
 import { ChevronRightIcon, HistoryIcon, PenIcon, VideoIcon } from '../components/icons';
@@ -22,8 +22,8 @@ export function SubjectDetailPage() {
 
   const info: [string, ReactNode][] = [
     ['나이', `만 ${ageOn(subject.birth)}세`],
-    ['성별', subject.sex],
-    ['키', <>{subject.heightCm} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
+    ['성별', subject.sex ?? '—'],
+    ['키', <>{subject.heightCm ?? '—'} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
     ['생년월일', <span style={{ fontSize: 17, lineHeight: '30px' }}>{fmtBirth(subject.birth)}</span>],
   ];
   const latest = records[0];
@@ -69,8 +69,8 @@ export function SubjectDetailPage() {
               <VideoIcon size={28} />
             </span>
             <span style={{ flex: 1 }}>
-              <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>새 보행 영상 분석</span>
-              <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'rgb(255 255 255 / .85)' }}>휴대폰의 보행 영상을 선택해 분석합니다</span>
+              <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>새 보행 측정</span>
+              <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'rgb(255 255 255 / .85)' }}>보행 영상의 좌표를 추출해 저장합니다</span>
             </span>
             <ChevronRightIcon size={20} />
           </button>
@@ -86,9 +86,9 @@ export function SubjectDetailPage() {
               <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>이전 결과 조회</span>
               <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'var(--fg-70)' }}>
                 {latest ? (
-                  <>분석 기록 <b className="primary">{records.length}건</b> · 최근 {fmtDate(latest.measuredAt)}</>
+                  <>측정 기록 <b className="primary">{records.length}건</b> · 최근 {fmtDate(latest.measuredAt)}</>
                 ) : (
-                  '아직 분석 기록이 없습니다'
+                  '아직 측정 기록이 없습니다'
                 )}
               </span>
             </span>

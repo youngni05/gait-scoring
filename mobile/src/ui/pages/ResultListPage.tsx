@@ -29,7 +29,7 @@ export function ResultListPage() {
               <path d="M6 14l1.5-3a2 2 0 011.8-1H20a1 1 0 011 1.3l-1.6 6.2A2 2 0 0117.5 19H4a2 2 0 01-2-2V5a2 2 0 012-2h4l2 3h7a2 2 0 012 2v2" />
             </svg>
           </div>
-          <h2>아직 분석 기록이 없습니다</h2>
+          <h2>아직 측정 기록이 없습니다</h2>
           <p>
             {subject.name} 님의 보행 영상을 분석하면
             <br />
@@ -49,7 +49,7 @@ export function ResultListPage() {
 
       <div style={{ padding: '20px 20px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <p style={{ fontSize: 16, fontWeight: 700 }}>
-          분석 기록 <span className="primary">{records.length}건</span>
+          측정 기록 <span className="primary">{records.length}건</span>
         </p>
         <p style={{ fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 4 }} className="muted">
           <SortIcon size={16} /> 최신순
@@ -73,10 +73,11 @@ export function ResultListPage() {
                       {fmtDate(r.measuredAt)}{' '}
                       <span style={{ fontSize: 15, fontWeight: 600 }} className="muted">({fmtWeekday(r.measuredAt)})</span>
                     </p>
-                    <p style={{ fontSize: 14, marginTop: 2 }} className="muted">{fmtTime(r.measuredAt)} 측정</p>
+                    <p style={{ fontSize: 14, marginTop: 2 }} className="muted">{fmtTime(r.measuredAt)} {r.dateBasis === 'legacy_capture' ? '촬영 (기존 기록)' : '분석 시작'}</p>
                   </div>
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                     {isLatest && <span className="pill pill-primary">최신</span>}
+                    {r.status === 'not_available' && <span className="pill">분석 결과 없음</span>}
                     {partial && (
                       <span className="pill pill-warn"><TriangleAlertIcon size={14} />일부 결과 누락</span>
                     )}
@@ -95,13 +96,13 @@ export function ResultListPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="k">좌우 대칭</p>
-                    <p className={`v ${r.symmetry === null ? 'none' : ''}`}>{r.symmetry ?? '—'}</p>
+                    <p className="k">스트라이드(cm)</p>
+                    <p className={`v ${r.strideLength == null ? 'none' : ''}`}>{r.strideLength ?? '—'}</p>
                   </div>
                 </div>
                 <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 14, color: 'var(--fg-70)' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                    <UserIcon size={15} /> 촬영 당시 {r.ageAtCapture}세 · {r.heightAtCapture}cm
+                    <UserIcon size={15} /> {r.dateBasis === 'legacy_capture' ? '촬영 당시' : '분석 시작일 기준'} {r.ageAtCapture}세 · 현재 키 {r.heightAtCapture ?? '—'}cm
                   </span>
                   {isLatest ? (
                     <span className="primary" style={{ fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 2 }}>

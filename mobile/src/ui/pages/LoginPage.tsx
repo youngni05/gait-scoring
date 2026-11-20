@@ -1,11 +1,12 @@
 /** 01 로그인 · 01-1 입력 오류 · 01-2 로그인 실패 */
 import { useState, type FormEvent } from 'react';
 import { AlertCircleIcon, EyeIcon, EyeOffIcon, WalkIcon } from '../components/icons';
-import { LoginFailedError } from '../data';
+import { LoginFailedError, apiSource } from '../data';
+import { errorMessage } from '../../api/client';
 import { useNavigate } from '../router';
 import { useSession } from '../session';
 
-export function LoginPage() {
+export function LoginPage({ renewal = false }: { renewal?: boolean }) {
   const { login } = useSession();
   const navigate = useNavigate();
   const [uid, setUid] = useState('');
@@ -15,20 +16,25 @@ export function LoginPage() {
   /** 실패 안내 문구. null이면 안내를 숨긴다. */
   const [failed, setFailed] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [server, setServer] = useState(apiSource.base);
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
+    if (busy) return;
     const next = { id: !uid.trim(), pw: !pw };
     setErrors(next);
     if (next.id || next.pw) return;
     setBusy(true);
+    setFailed(null);
+    try { if (!renewal) apiSource.configure(server); }
+    catch (e) { setFailed(errorMessage(e)); setBusy(false); return; }
     login(uid.trim(), pw)
-      .then(() => navigate('/subjects', { replace: true }))
+      .then(() => { if (!renewal) navigate('/subjects', { replace: true }); })
       .catch((err) => {
         setFailed(
           err instanceof LoginFailedError
             ? '아이디 또는 비밀번호가 올바르지 않습니다. 다시 확인해 주세요.'
-            : '서버에 연결하지 못했습니다. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+            : errorMessage(err),
         );
         setPw('');
       })
@@ -58,6 +64,7 @@ export function LoginPage() {
       )}
 
       <form onSubmit={submit} noValidate style={{ marginTop: failed ? 24 : 40, display: 'grid', gap: 20 }}>
+        {!renewal && <div className="field"><label htmlFor="api-server">서버 주소</label><input id="api-server" className="input" type="url" value={server} disabled={busy} onChange={e => setServer(e.target.value)} /></div>}
         <div className="field">
           <label htmlFor="uid" style={{ fontWeight: 600 }}>아이디</label>
           <input
