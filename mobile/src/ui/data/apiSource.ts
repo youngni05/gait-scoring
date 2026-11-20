@@ -1,4 +1,4 @@
-import { ApiClient, ApiError, type Participant, type MeasurementResult, type MeasurementItem } from '../../api/client';
+import { ApiClient, ApiError, type Participant, type MeasurementResult, type MeasurementSummary } from '../../api/client';
 import type { PreparedMeasurement } from '../../../../contracts/measurement-1/prepare';
 import { LoginFailedError, type GaitDataSource, type SubjectInput } from './source';
 import { JOINTS, type Subject, type ResultRecord } from './mock';
@@ -33,6 +33,25 @@ export function mapResult(value: MeasurementResult): ResultRecord {
     gdi: a?.gdi_score ?? null, cadence: a?.cadence_spm ?? null, strideLength: a?.stride_length_cm ?? null,
     symmetry: null, curves, missing, fileName: '', status: value.status };
 }
+
+/** List rows deliberately contain no pose or curve data. */
+export function mapMeasurementSummary(row: MeasurementSummary): ResultRecord {
+  const missing: ResultRecord['missing'] = {};
+  if (row.has_analysis_result) {
+    if (row.gdi_score === null) missing.gdi = '서버에 저장된 값이 없습니다.';
+    if (row.cadence_spm === null) missing.cadence = '서버에 저장된 값이 없습니다.';
+  }
+  return {
+    id: row.id, subjectId: row.participant_id,
+    measuredAt: row.analysis_started_at ?? row.measured_at ?? '',
+    ageAtCapture: row.age, heightAtCapture: null,
+    dateBasis: row.analysis_started_at ? 'analysis_start' : 'legacy_capture',
+    gdi: row.gdi_score, cadence: row.cadence_spm, strideLength: row.stride_length_cm,
+    symmetry: null, curves: {}, missing, fileName: '',
+    status: row.has_analysis_result ? 'available' : 'not_available',
+  };
+}
+
 const body = (s: SubjectInput) => {
   if (!s.sex || !s.birth || s.heightCm === null) throw new Error('성별·생년월일·키를 입력하세요.');
   return { name: s.name, gender: s.sex === '여' ? 'F' as const : 'M' as const, birth_date: s.birth, height_cm: String(s.heightCm) };
@@ -62,25 +81,15 @@ export class ApiDataSource implements GaitDataSource {
       throw e;
     }
   }
-  async allMeasurements(id: string, signal?: AbortSignal): Promise<MeasurementItem[]> {
-    const rows: MeasurementItem[] = [];
-    for (let offset = 0; ; offset += 20) {
-      const page = await this.authenticated(() => this.client.measurements(id, offset, signal));
-      rows.push(...page);
-      if (page.length < 20) return rows;
-    }
-  }
   async listSubjects(signal?: AbortSignal) {
-    const people = await this.authenticated(() => this.client.participants(signal));
-    const summaries = [];
-    // Bound concurrency; no result/graph downloads are needed for this screen.
-    for (let i = 0; i < people.length; i += 4) {
-      summaries.push(...await Promise.all(people.slice(i, i + 4).map(async p => {
-        const rows = await this.allMeasurements(p.id, signal);
-        return { ...mapSubject(p), latestMeasuredAt: rows[0]?.analysis_started_at ?? rows[0]?.measured_at ?? null, resultCount: rows.length };
-      })));
-    }
-    return summaries;
+    const people = await this.authenticated(() => this.client.participantSummaries(signal));
+    return people.map(p => ({ ...mapSubject(p), latestMeasuredAt: p.latest_measured_at, resultCount: p.measurement_count }));
+  }
+  async getSubjectSummary(id: string, signal?: AbortSignal) {
+    try {
+      const p = await this.authenticated(() => this.client.participantSummary(id, signal));
+      return { ...mapSubject(p), latestMeasuredAt: p.latest_measured_at, resultCount: p.measurement_count };
+    } catch (e) { if (e instanceof ApiError && e.status === 404) return null; throw e; }
   }
   async getSubject(id: string, signal?: AbortSignal) {
     try { return mapSubject(await this.authenticated(() => this.client.participant(id, signal))); }
@@ -88,14 +97,9 @@ export class ApiDataSource implements GaitDataSource {
   }
   async createSubject(input: SubjectInput) { return mapSubject(await this.authenticated(() => this.client.createParticipant(body(input)))); }
   async updateSubject(id: string, input: SubjectInput) { return mapSubject(await this.authenticated(() => this.client.updateParticipant(id, body(input)))); }
-  async listResults(id: string, signal?: AbortSignal) {
-    const rows = await this.allMeasurements(id, signal);
-    const results: ResultRecord[] = [];
-    for (let i = 0; i < rows.length; i += 4) {
-      const page = await Promise.all(rows.slice(i, i + 4).map(row => this.getResult(id, row.id, signal)));
-      results.push(...page.filter((r): r is ResultRecord => r !== null));
-    }
-    return results;
+  async listResults(id: string, signal?: AbortSignal, offset = 0) {
+    const page = await this.authenticated(() => this.client.measurementSummaries(id, offset, signal));
+    return { ...page, items: page.items.map(mapMeasurementSummary) };
   }
   async getResult(subjectId: string, id: string, signal?: AbortSignal) {
     try {

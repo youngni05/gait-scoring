@@ -1,6 +1,7 @@
 /** 로그인 상태와 비동기 데이터 불러오기 도우미. */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { dataSource } from './data';
+import { useRouter } from './router';
 import { AUTH_EXPIRED } from './data/apiSource';
 
 interface Session {
@@ -14,6 +15,7 @@ interface Session {
 const Ctx = createContext<Session | null>(null);
 
 export function SessionProvider({ children }: { children: ReactNode }) {
+  const { confirmLeave } = useRouter();
   const [loggedIn, setLoggedIn] = useState(false);
   const [expired, setExpired] = useState(false);
   const [username, setUsername] = useState('');
@@ -29,11 +31,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setExpired(false);
   }, []);
   const logout = useCallback(() => {
+    if (!confirmLeave()) return;
     dataSource.logout();
     setUsername('');
     setLoggedIn(false);
     setExpired(false);
-  }, []);
+  }, [confirmLeave]);
   const value = useMemo(() => ({ loggedIn, expired, username, login, logout }), [loggedIn, expired, username, login, logout]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

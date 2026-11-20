@@ -102,3 +102,16 @@ class MeasurementResultResponse(BaseModel):
     participant: ParticipantResponse
     measurement: MeasurementResponse
     analysis_result: AnalysisResultResponse | None
+
+
+class MeasurementSummary(MeasurementListItem):
+    gdi_score: float | None
+    cadence_spm: float | None
+    stride_length_cm: float | None
+
+
+class MeasurementSummaryPage(BaseModel):
+    items: list[MeasurementSummary]
+    total: int
+    offset: int
+    limit: int

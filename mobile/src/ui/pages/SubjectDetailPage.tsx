@@ -11,13 +11,13 @@ export function SubjectDetailPage() {
   const { subjectId = '' } = useParams();
   const navigate = useNavigate();
   const { data, loading, error, reload } = useAsync(
-    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResults(subjectId, signal)]),
+    (signal) => dataSource.getSubjectSummary(subjectId, signal),
     [subjectId],
   );
   const back = () => navigate('/subjects');
   if (loading) return <PageLoading title="대상자 상세" nav="back" onNav={back} />;
-  if (error || !data) return <PageError title="대상자 상세" onNav={back} onRetry={reload} />;
-  const [subject, records] = data;
+  if (error) return <PageError title="대상자 상세" onNav={back} onRetry={reload} />;
+  const subject = data;
   if (!subject) return <NotFound />;
 
   const info: [string, ReactNode][] = [
@@ -26,7 +26,7 @@ export function SubjectDetailPage() {
     ['키', <>{subject.heightCm ?? '—'} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
     ['생년월일', <span style={{ fontSize: 17, lineHeight: '30px' }}>{fmtBirth(subject.birth)}</span>],
   ];
-  const latest = records[0];
+  const latest = subject.latestMeasuredAt;
 
   return (
     <div className="screen" style={{ paddingBottom: 40 }}>
@@ -86,7 +86,7 @@ export function SubjectDetailPage() {
               <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>이전 결과 조회</span>
               <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'var(--fg-70)' }}>
                 {latest ? (
-                  <>측정 기록 <b className="primary">{records.length}건</b> · 최근 {fmtDate(latest.measuredAt)}</>
+                  <>측정 기록 <b className="primary">{subject.resultCount}건</b> · 최근 {fmtDate(latest)}</>
                 ) : (
                   '아직 측정 기록이 없습니다'
                 )}

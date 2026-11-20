@@ -190,3 +190,109 @@ class DesignUiTests(unittest.TestCase):
         self.page.get_by_label('비밀번호', exact=True).fill('incorrect-password')
         self.page.get_by_role('button', name='로그인', exact=True).click()
         expect(self.page.get_by_text('로그인에 실패했습니다', exact=True)).to_be_visible()
+
+
+    def test_pending_measurement_guards_buttons_and_browser_history(self):
+        self.create_person()
+        save = self.open_save()
+        measurement_url = self.page.url
+        self.page.once("dialog", lambda dialog: dialog.dismiss())
+        self.page.get_by_role("button", name="측정 기록 확인", exact=True).click()
+        self.assertEqual(self.page.url, measurement_url)
+        expect(save).to_be_enabled()
+        self.page.once("dialog", lambda dialog: dialog.dismiss())
+        self.page.go_back()
+        expect(self.page).to_have_url(measurement_url)
+        expect(save).to_be_enabled()
+        # A rejected traversal must preserve history as well as the pending body.
+        self.page.once("dialog", lambda dialog: dialog.accept())
+        self.page.go_back()
+        expect(self.page.get_by_role("button", name="대상자 정보 수정")).to_be_visible()
+        save = self.open_save()
+        save.click()
+        expect(self.page.get_by_role("button", name="저장 기록 보기", exact=True)).to_be_visible()
+        self.page.get_by_role("button", name="측정 기록 확인", exact=True).click()
+        expect(self.page.locator(".record-btn")).to_have_count(1)
+
+    def assert_late_participant_save_stays_on_new_screen(self, editing):
+        if editing:
+            self.create_person()
+            self.page.get_by_role("button", name="대상자 정보 수정").click()
+            self.page.get_by_label("키", exact=False).fill("172.5")
+            endpoint = self.api + "/participants/" + self.person_id
+            action = "수정 내용 저장"
+        else:
+            self.fill_person()
+            endpoint = self.api + "/participants"
+            action = "저장"
+        held = []
+        self.page.route(endpoint, lambda route: held.append(route) if route.request.method in ("POST", "PATCH") else route.continue_())
+        with self.page.expect_request(lambda request: request.url == endpoint and request.method in ("POST", "PATCH")):
+            self.page.get_by_role("button", name=action, exact=True).click()
+        expect(self.page.get_by_role("button", name="저장 중…", exact=True)).to_be_visible()
+        self.page.once("dialog", lambda dialog: dialog.accept())
+        self.page.get_by_role("button", name="뒤로" if editing else "닫기", exact=True).click()
+        if editing:
+            self.page.get_by_role("button", name="이전 결과 조회", exact=False).click()
+            expect(self.page.get_by_role("heading", name="이전 결과", exact=True)).to_be_visible()
+        else:
+            expect(self.page.get_by_role("button", name="대상자 등록", exact=True)).to_be_visible()
+        destination = self.page.url
+        self.assertEqual(len(held), 1)
+        response = held[0].fetch()
+        self.assertEqual(response.status, 200 if editing else 201)
+        with self.page.expect_response(lambda response: response.url == endpoint and response.request.method in ("POST", "PATCH")):
+            held[0].fulfill(response=response)
+        self.page.evaluate("() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))")
+        self.assertEqual(self.page.url, destination)
+
+    def test_late_registration_response_does_not_navigate(self):
+        self.assert_late_participant_save_stays_on_new_screen(False)
+
+    def test_late_edit_response_does_not_navigate(self):
+        self.assert_late_participant_save_stays_on_new_screen(True)
+
+    def test_result_pagination_never_downloads_graph_details(self):
+        self.create_person()
+        with self.engine.begin() as conn:
+            for i in range(25):
+                conn.execute(text("""INSERT INTO gait_measurements
+                    (id,participant_id,age,keypoints_json,extractor_name,extractor_version,measured_at,created_by)
+                    VALUES (:id,:pid,76,'{}'::jsonb,'synthetic','1',:at,:uid)"""),
+                    {"id": uuid4(), "pid": self.person_id, "uid": self.user_id,
+                     "at": datetime(2026, 1, 1, tzinfo=timezone.utc) + timedelta(days=i)})
+        requests = []
+        self.page.on("request", lambda request: requests.append(request.url))
+        self.page.get_by_role("button", name="이전 결과 조회", exact=False).click()
+        expect(self.page.locator(".record-btn")).to_have_count(20)
+        self.page.get_by_role("button", name="다음 페이지", exact=True).click()
+        expect(self.page.locator(".record-btn")).to_have_count(5)
+        expect(self.page.get_by_role("button", name="다음 페이지", exact=True)).to_be_disabled()
+        self.page.get_by_role("button", name="이전 페이지", exact=True).click()
+        expect(self.page.locator(".record-btn")).to_have_count(20)
+        self.assertEqual(len([url for url in requests if "/measurement-summaries?" in url]), 3)
+        self.assertFalse(any("/result" in url or "/measurements?" in url for url in requests))
+
+    def test_zero_graph_has_finite_coordinates_in_report_and_zoom(self):
+        self.create_person()
+        self.open_save().click()
+        expect(self.page.get_by_role("button", name="저장 기록 보기", exact=True)).to_be_visible()
+        mid = str(self.measurement_rows()[0].id)
+        graph = json.dumps({"schema_version": "gait-cycle-degrees-1", "left": [0] * 51, "right": [0] * 51})
+        with self.engine.begin() as conn:
+            conn.execute(text("""INSERT INTO gait_analysis_results
+                (id,measurement_id,gdi_score,hip_graph_json,knee_graph_json,ankle_graph_json,model_version,analyzed_at)
+                VALUES (:id,:mid,0,CAST(:graph AS jsonb),CAST(:graph AS jsonb),CAST(:graph AS jsonb),'synthetic-zero',now())"""),
+                {"id": uuid4(), "mid": mid, "graph": graph})
+        self.page.get_by_role("button", name="저장 기록 보기", exact=True).click()
+        graphs = self.page.locator('svg[aria-label*="관절 각도 그래프"]')
+        expect(graphs).to_have_count(3)
+        def assert_finite():
+            paths = self.page.locator('svg[aria-label*="관절 각도 그래프"] path')
+            values = paths.evaluate_all("(elements) => elements.map(el => el.getAttribute('d'))")
+            self.assertTrue(values)
+            self.assertTrue(all(value and "NaN" not in value and "Infinity" not in value for value in values))
+        assert_finite()
+        self.page.get_by_role("button", name="확대", exact=True).first.click()
+        expect(graphs).to_have_count(1)
+        assert_finite()

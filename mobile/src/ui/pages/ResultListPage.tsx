@@ -1,4 +1,5 @@
 /** 05 이전 결과 목록 · 05-1 이전 결과 없음 */
+import { useState } from 'react';
 import { PageError, PageLoading, TopBar } from '../components/layout';
 import { ChevronRightIcon, SortIcon, TriangleAlertIcon, UserIcon, VideoIcon } from '../components/icons';
 import { dataSource, fmtDate, fmtTime, fmtWeekday } from '../data';
@@ -9,17 +10,19 @@ import { NotFound } from './NotFound';
 export function ResultListPage() {
   const { subjectId = '' } = useParams();
   const navigate = useNavigate();
+  const [offset, setOffset] = useState(0);
   const { data, loading, error, reload } = useAsync(
-    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResults(subjectId, signal)]),
-    [subjectId],
+    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResults(subjectId, signal, offset)]),
+    [subjectId, offset],
   );
   const back = () => navigate(`/subjects/${subjectId}`);
   if (loading) return <PageLoading title="이전 결과" nav="back" onNav={back} />;
   if (error || !data) return <PageError title="이전 결과" onNav={back} onRetry={reload} />;
-  const [subject, records] = data;
+  const [subject, page] = data;
+  const records = page.items;
   if (!subject) return <NotFound />;
 
-  if (records.length === 0) {
+  if (page.total === 0) {
     return (
       <div className="screen">
         <TopBar title="이전 결과" nav="back" onNav={back} subject={subject} sticky={false} />
@@ -49,7 +52,7 @@ export function ResultListPage() {
 
       <div style={{ padding: '20px 20px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <p style={{ fontSize: 16, fontWeight: 700 }}>
-          측정 기록 <span className="primary">{records.length}건</span>
+          측정 기록 <span className="primary">{page.total}건</span>
         </p>
         <p style={{ fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 4 }} className="muted">
           <SortIcon size={16} /> 최신순
@@ -58,7 +61,7 @@ export function ResultListPage() {
 
       <ul style={{ padding: '0 20px', display: 'grid', gap: 12 }}>
         {records.map((r, i) => {
-          const isLatest = i === 0;
+          const isLatest = offset === 0 && i === 0;
           const partial = Object.keys(r.missing).length > 0;
           return (
             <li key={r.id}>
@@ -79,7 +82,7 @@ export function ResultListPage() {
                     {isLatest && <span className="pill pill-primary">최신</span>}
                     {r.status === 'not_available' && <span className="pill">분석 결과 없음</span>}
                     {partial && (
-                      <span className="pill pill-warn"><TriangleAlertIcon size={14} />일부 결과 누락</span>
+                      <span className="pill pill-warn"><TriangleAlertIcon size={14} />일부 지표 누락</span>
                     )}
                   </div>
                 </div>
@@ -102,7 +105,7 @@ export function ResultListPage() {
                 </div>
                 <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 14, color: 'var(--fg-70)' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                    <UserIcon size={15} /> {r.dateBasis === 'legacy_capture' ? '촬영 당시' : '분석 시작일 기준'} {r.ageAtCapture}세 · 현재 키 {r.heightAtCapture ?? '—'}cm
+                    <UserIcon size={15} /> {r.dateBasis === 'legacy_capture' ? '촬영 당시' : '분석 시작일 기준'} {r.ageAtCapture}세 · 현재 키 {subject.heightCm ?? '—'}cm
                   </span>
                   {isLatest ? (
                     <span className="primary" style={{ fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 2 }}>
@@ -117,7 +120,11 @@ export function ResultListPage() {
           );
         })}
       </ul>
-      <p style={{ padding: '24px 20px 0', textAlign: 'center', fontSize: 14, color: 'var(--fg-50)' }}>모든 기록을 불러왔습니다.</p>
+      <nav aria-label="측정 기록 페이지" style={{ padding: '24px 20px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
+        <button className="btn btn-outline" disabled={offset === 0} onClick={() => setOffset(Math.max(0, offset - page.limit))}>이전 페이지</button>
+        <span>{Math.floor(offset / page.limit) + 1} / {Math.max(1, Math.ceil(page.total / page.limit))}</span>
+        <button className="btn btn-outline" disabled={offset + page.limit >= page.total} onClick={() => setOffset(offset + page.limit)}>다음 페이지</button>
+      </nav>
     </div>
   );
 }

@@ -9,6 +9,13 @@ export interface SubjectSummary extends Subject {
   resultCount: number;
 }
 
+export interface ResultPage {
+  items: ResultRecord[];
+  total: number;
+  offset: number;
+  limit: number;
+}
+
 /** 로그인 실패(아이디·비밀번호 불일치). 화면은 이 오류일 때 01-2 안내를 띄운다. */
 export class LoginFailedError extends Error {}
 
@@ -24,12 +31,13 @@ export interface GaitDataSource {
   logout(): void;
 
   listSubjects(signal?: AbortSignal): Promise<SubjectSummary[]>;
+  getSubjectSummary(id: string, signal?: AbortSignal): Promise<SubjectSummary | null>;
   getSubject(id: string, signal?: AbortSignal): Promise<Subject | null>;
   createSubject(input: SubjectInput): Promise<Subject>;
   updateSubject(id: string, input: SubjectInput): Promise<Subject>;
 
   /** 최신순 */
-  listResults(subjectId: string, signal?: AbortSignal): Promise<ResultRecord[]>;
+  listResults(subjectId: string, signal?: AbortSignal, offset?: number): Promise<ResultPage>;
   getResult(subjectId: string, resultId: string, signal?: AbortSignal): Promise<ResultRecord | null>;
 
   /**
