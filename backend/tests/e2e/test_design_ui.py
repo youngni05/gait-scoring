@@ -1,6 +1,7 @@
 """New design screens against real API/PostgreSQL, isolated by the existing harness."""
 import json
 import unittest
+from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
 from datetime import datetime, timedelta, timezone
 
@@ -262,7 +263,9 @@ class DesignUiTests(unittest.TestCase):
                     {"id": uuid4(), "pid": self.person_id, "uid": self.user_id,
                      "at": datetime(2026, 1, 1, tzinfo=timezone.utc) + timedelta(days=i)})
         requests = []
+        completed = []
         self.page.on("request", lambda request: requests.append(request.url))
+        self.page.on("requestfinished", lambda request: completed.append(request.url))
         self.page.get_by_role("button", name="이전 결과 조회", exact=False).click()
         expect(self.page.locator(".record-btn")).to_have_count(20)
         self.page.get_by_role("button", name="다음 페이지", exact=True).click()
@@ -270,7 +273,14 @@ class DesignUiTests(unittest.TestCase):
         expect(self.page.get_by_role("button", name="다음 페이지", exact=True)).to_be_disabled()
         self.page.get_by_role("button", name="이전 페이지", exact=True).click()
         expect(self.page.locator(".record-btn")).to_have_count(20)
-        self.assertEqual(len([url for url in requests if "/measurement-summaries?" in url]), 3)
+        # Ignore transfers aborted by the development StrictMode mount check.
+        # Keep monitoring every attempt below for unwanted detail requests.
+        queries = [parse_qs(urlsplit(url).query) for url in completed if "/measurement-summaries?" in url]
+        self.assertEqual(queries, [
+            {"limit": ["20"], "offset": ["0"]},
+            {"limit": ["20"], "offset": ["20"]},
+            {"limit": ["20"], "offset": ["0"]},
+        ])
         self.assertFalse(any("/result" in url or "/measurements?" in url for url in requests))
 
     def test_zero_graph_has_finite_coordinates_in_report_and_zoom(self):
