@@ -1,7 +1,8 @@
 /** 02 대상자 목록 · 02-1 빈 상태 · 02-2 로딩 · 검색 결과 없음 */
 import { useState } from 'react';
 import { Avatar } from '../components/layout';
-import { ChevronRightIcon, ClearIcon, ClockIcon, PlusIcon, RotateIcon, SearchIcon, SpinnerIcon, UserPlusIcon, UsersIcon } from '../components/icons';
+import { LoadingMark } from '../components/brand';
+import { ChevronRightIcon, ClearIcon, ClockIcon, PlusIcon, RotateIcon, SearchIcon, UserPlusIcon, UsersIcon } from '../components/icons';
 import { ageOn, dataSource, fmtDate } from '../data';
 import { useNavigate } from '../router';
 import { useAsync } from '../session';
@@ -50,7 +51,7 @@ export function SubjectListPage() {
       {loading && (
         <>
           <p role="status" style={{ padding: '20px 20px 0', fontSize: 15, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }} className="primary">
-            <SpinnerIcon size={16} /> 대상자 목록을 불러오는 중입니다…
+            <LoadingMark size={22} /> 대상자 목록을 불러오는 중입니다…
           </p>
           <ul style={{ padding: '16px 20px 0', display: 'grid', gap: 12 }} aria-hidden="true">
             {[80, 96, 64, 80, 96].map((w, i) => (

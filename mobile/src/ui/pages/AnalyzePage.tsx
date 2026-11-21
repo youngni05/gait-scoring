@@ -20,9 +20,9 @@ import {
   PlayIcon,
   RefreshIcon,
   RotateIcon,
-  SpinnerIcon,
   TriangleAlertIcon,
 } from '../components/icons';
+import { LoadingMark } from '../components/brand';
 import { AnalysisFailedError, ageOn, isDemo, dataSource, fmtDate } from '../data';
 import { openPoseEnabled } from '../data/analysis';
 import { readCaptureDay } from '../../pose/browser-video-source';
@@ -236,7 +236,7 @@ export function AnalyzePage() {
       {phase === 'running' && (
         <section style={{ margin: '24px 20px 0' }} role="status" aria-live="polite">
           <p style={{ fontSize: 16, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }} className="primary">
-            <SpinnerIcon size={16} /> 분석하고 있습니다
+            <LoadingMark size={22} /> 분석하고 있습니다
           </p>
           {extractor === 'openpose' && !isDemo ? <p style={{marginTop:12}}>OpenPose BODY_25 · 학교 GPU 분석</p> : <><p style={{ marginTop: 4, fontSize: 48, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
             {pct}
@@ -261,7 +261,7 @@ export function AnalyzePage() {
                   }}
                 >
                   {state === 'done' && <CheckCircleIcon size={22} className="ok-icon" />}
-                  {state === 'now' && <SpinnerIcon size={22} className="primary" />}
+                  {state === 'now' && <LoadingMark size={24} />}
                   {state === 'wait' && <CircleIcon size={22} className="faint" />}
                   <span style={{ fontSize: 16, fontWeight: state === 'now' ? 700 : 400, color: state === 'done' ? 'var(--fg-70)' : state === 'wait' ? 'var(--fg-50)' : undefined }}>
                     {name}

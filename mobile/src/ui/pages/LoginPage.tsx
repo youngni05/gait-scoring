@@ -1,6 +1,7 @@
 /** 01 로그인 · 01-1 입력 오류 · 01-2 로그인 실패 */
 import { useState, type FormEvent } from 'react';
-import { AlertCircleIcon, EyeIcon, EyeOffIcon, WalkIcon } from '../components/icons';
+import { APP_NAME, APP_TAGLINE, BrandMark, LoadingMark } from '../components/brand';
+import { AlertCircleIcon, EyeIcon, EyeOffIcon } from '../components/icons';
 import { LoginFailedError, isDemo } from '../data';
 import { useNavigate } from '../router';
 import { useSession } from '../session';
@@ -38,13 +39,9 @@ export function LoginPage() {
   return (
     <main className="screen" style={{ padding: '80px 24px 40px', display: 'flex', flexDirection: 'column' }}>
       <section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-        <div
-          style={{ width: 80, height: 80, borderRadius: 'var(--r-lg)', background: 'var(--primary)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <WalkIcon size={40} />
-        </div>
-        <h1 style={{ marginTop: 24, fontSize: 28, fontWeight: 800, letterSpacing: '-0.02em' }}>자동보행분석기</h1>
-        <p style={{ marginTop: 8, fontSize: 16 }} className="muted">보행 영상 분석 · 결과 조회</p>
+        <BrandMark size={80} label="해피에이징" />
+        <h1 style={{ marginTop: 24, fontSize: 28, fontWeight: 800, letterSpacing: '-0.02em' }}>{APP_NAME}</h1>
+        <p style={{ marginTop: 8, fontSize: 16 }} className="muted">{APP_TAGLINE}</p>
       </section>
 
       {failed && (
@@ -108,8 +105,8 @@ export function LoginPage() {
             <p id="err-pw" className="field-error"><AlertCircleIcon size={16} />비밀번호를 입력해 주세요.</p>
           )}
         </div>
-        <button type="submit" className="btn btn-primary" style={{ marginTop: 12 }} disabled={busy}>
-          {busy ? '확인 중…' : '로그인'}
+        <button type="submit" className={`btn btn-primary ${busy ? 'btn-busy' : ''}`} style={{ marginTop: 12 }} disabled={busy} aria-busy={busy || undefined}>
+          {busy ? <><LoadingMark size={26} /> 확인 중…</> : '로그인'}
         </button>
       </form>}
 

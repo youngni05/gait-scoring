@@ -4,7 +4,8 @@
  */
 import { useEffect, useState } from 'react';
 import { dataSource, fmtCompact, fmtDate, type ResultRecord } from '../data';
-import { CheckCircleIcon, CheckIcon, CloseIcon, FileIcon, RotateIcon, SpinnerIcon } from './icons';
+import { LoadingMark } from './brand';
+import { CheckCircleIcon, CheckIcon, CloseIcon, FileIcon, RotateIcon } from './icons';
 
 type Phase = 'preparing' | 'done' | 'fail';
 
@@ -41,7 +42,7 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
           {phase === 'preparing' && (
             <>
               <span className="round-icon" style={{ background: 'var(--accent)', color: 'var(--primary)' }}>
-                <SpinnerIcon size={28} />
+                <LoadingMark size={40} />
               </span>
               <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>결과 파일을 준비하고 있습니다</h2>
               <p style={{ marginTop: 6, fontSize: 15 }} className="muted">잠시만 기다려 주세요.</p>

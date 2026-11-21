@@ -1,7 +1,8 @@
 /** 여러 화면이 함께 쓰는 상단 표시줄·현재 대상자 표시줄·진행 단계 표시. */
 import type { ReactNode } from 'react';
 import { ageOn, type Subject } from '../data';
-import { ArrowLeftIcon, CheckIcon, CloseIcon, SpinnerIcon } from './icons';
+import { LoadingMark } from './brand';
+import { ArrowLeftIcon, CheckIcon, CloseIcon } from './icons';
 
 export function Avatar({ name, size, tone }: { name: string; size: 'sm' | 'md' | 'lg'; tone?: 'a' | 'b' }) {
   return (
@@ -124,8 +125,8 @@ export function PageLoading({ title, nav, onNav }: { title: string; nav?: 'back'
   return (
     <div className="screen">
       <TopBar title={title} nav={nav} onNav={onNav} />
-      <p role="status" className="primary" style={{ padding: '40px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontSize: 15, fontWeight: 600 }}>
-        <SpinnerIcon size={16} /> 불러오는 중입니다…
+      <p role="status" className="primary" style={{ padding: '72px 20px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, fontSize: 15, fontWeight: 600 }}>
+        <LoadingMark size={44} /> 불러오는 중입니다…
       </p>
     </div>
   );

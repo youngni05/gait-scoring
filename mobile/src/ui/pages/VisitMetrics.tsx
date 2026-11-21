@@ -11,7 +11,8 @@
 import { useState, type ReactNode } from 'react';
 import { JointChart } from '../components/JointChart';
 import { LegendLR } from '../components/layout';
-import { ChevronRightIcon, ExpandIcon, InfoIcon, RotateIcon, SpinnerIcon, TriangleAlertIcon } from '../components/icons';
+import { LoadingMark } from '../components/brand';
+import { ChevronRightIcon, ExpandIcon, InfoIcon, RotateIcon, TriangleAlertIcon } from '../components/icons';
 import { dataSource, fmtDate, type ResultRecord } from '../data';
 import { postJson } from '../data/analysis';
 import { cardMetric, directionLabel, prepareKneeSeries } from '../data/report-values.mjs';
@@ -546,7 +547,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
     return (
       <section className="rs">
         <p role="status" className="primary" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 600 }}>
-          <SpinnerIcon size={16} /> 지난 기록과 비교하고 있습니다…
+          <LoadingMark size={22} /> 지난 기록과 비교하고 있습니다…
         </p>
       </section>
     );
