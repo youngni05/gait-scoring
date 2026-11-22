@@ -212,6 +212,7 @@ class MeasurementPostgresTests(unittest.TestCase):
         ids = [uuid4() for _ in range(25)]
         graph = dict(schema_version="gait-cycle-degrees-1", left=[0]*51, right=[0]*51)
         report = {
+            "captured_at": base.isoformat(), "source_sha256": "sample-source",
             "local_step_intervals_by_segment": {"s": [{"start_ms": 0, "stop_ms": 500, "landing_side": "left"}]},
             "analysis": {"segments": [{"segment_id": "s", "start_ms": 0, "stop_ms": 2000, "direction": "image_left",
                 "knee": {"views": {"heavy_curve": list(range(2000))}},
@@ -245,7 +246,15 @@ class MeasurementPostgresTests(unittest.TestCase):
         self.assertEqual(len(self.http(endpoint+"?offset=20")[1]["items"]),5)
         self.assertEqual(self.http(endpoint+"?limit=21")[0],422)
         self.assertEqual(self.http(endpoint,token=None)[0],401)
-        self.assertEqual(self.http(f"/team/participant-summaries/{self.participant_id}")[1]["resultCount"],25)
+        summary = self.http(f"/team/participant-summaries/{self.participant_id}")[1]
+        self.assertEqual(summary["resultCount"], 25)
+        self.assertEqual(len(summary["recentVisits"]), 1)
+        visit = summary["recentVisits"][0]
+        self.assertEqual(visit["id"], str(ids[-2]))
+        self.assertEqual(visit["captured_at"], report["captured_at"])
+        self.assertEqual(visit["source_sha256"], "sample-source")
+        self.assertNotIn("heavy_curve", json.dumps(visit))
+        self.assertNotIn("unneeded", json.dumps(visit))
         detail = self.http(f"/team/recordings/{ids[-1]}")[1]
         self.assertEqual(detail["dateBasis"], "analysis_start")
         self.assertTrue(detail["measuredAt"].startswith("2026-01-25"))

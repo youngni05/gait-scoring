@@ -13,6 +13,7 @@ export interface SubjectSummary extends Subject {
   /** 가장 최근 측정 시각(ISO). 기록이 없으면 null */
   latestMeasuredAt: string | null;
   resultCount: number;
+  recentVisits?: unknown[];
 }
 
 /** 로그인 실패(아이디·비밀번호 불일치). 화면은 이 오류일 때 01-2 안내를 띄운다. */

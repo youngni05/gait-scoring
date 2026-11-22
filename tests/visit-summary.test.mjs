@@ -140,7 +140,7 @@ test('전체 기록 해석: 가장 최근 방문 기준, 처음 기록 대비 �
   assert.deepEqual(o.visits.map(v => [v.id, v.gdi]), [['c', 84], ['b', 81], ['a', 78]]);
   const gdi = o.trends.find(t => t.key === 'gdi');
   assert.deepEqual([gdi.fromFirst.delta, gdi.fromFirst.verdict, gdi.verdict], [6, 'better', 'similar']); // 직전 +3은 비슷함, 처음 대비 +6은 좋아짐
-  assert.equal(o.lines[0], '처음 기록(2026.11.01)과 비교하면 GDI(+6.0점)가 좋아졌고, 왼쪽 무릎 움직임 폭(−6.0°)은 나빠졌습니다.');
+  assert.deepEqual(o.lines.slice(0, 2), ['2026.11.01 대비 GDI 6.0점 증가', '2026.11.01 대비 왼쪽 무릎 움직임 폭 6.0° 감소']);
   assert.ok(o.lines.includes('GDI는 최근 3번의 기록에서 계속 늘었습니다.'));
   assert.ok(o.lines.includes('왼쪽 무릎 움직임 폭은 최근 3번의 기록에서 계속 줄었습니다.'));
 });
@@ -150,11 +150,19 @@ test('전체 기록 해석: 지난 기록이 하나면 그 기록이 처음 기�
   const two = subjectOverview([at('a', '2026-11-01', 80), at('b', '2026-11-08', 70)]);
   const gdi = two.trends.find(t => t.key === 'gdi');
   assert.deepEqual([gdi.since, gdi.fromFirst.delta, gdi.fromFirst.verdict], [null, -10, 'worse']);
-  assert.equal(two.lines[0], '처음 기록(2026.11.01)과 비교하면 GDI(−10.0점)가 나빠졌습니다.');
+  assert.equal(two.lines[0], '2026.11.01 대비 GDI 10.0점 감소');
   const one = subjectOverview([at('a', '2026-11-01', 80)]);
   assert.deepEqual([one.trends.length, one.lines], [0, ['기록이 2회 이상 쌓이면 방문 사이의 변화를 보여 드립니다.']]);
   assert.equal(subjectOverview([]).latest, null);
   const fixed = at('a', '2026-11-01', 80);
   fixed.capture_mode = 'fixed';
   assert.deepEqual(subjectOverview([fixed, at('b', '2026-11-08', 70)]).notes, ['2026.11.01 기록 — 촬영 방식 · 이전 고정 촬영 / 이번 따라가며 촬영']);
+});
+
+test('좌우 걸음 시간 차이가 줄면 전체 기록 요약에 감소로 표시한다', () => {
+  const timed = (id, day, leftExtra) => visit(id, day, [seg('s', 'image_left', 0, 4000, [80, 80], { leftExtra })]);
+  const overview = subjectOverview([timed('a', '2026-11-01', 200), timed('b', '2026-11-08', 0)]);
+  const gap = overview.trends.find(t => t.key === 'stepGap');
+  assert.equal(gap.fromFirst.verdict, 'better');
+  assert.ok(overview.lines.includes('2026.11.01 대비 좌우 걸음 시간 차이 0.20초 감소'));
 });
