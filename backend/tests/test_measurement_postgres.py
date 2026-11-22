@@ -4,7 +4,7 @@ Requires GAIT_TEST_DB_WRITES=1 and a DATABASE_URL database name ending in _ci.
 Uses one generated, isolated schema and removes only that schema afterwards.
 """
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 import copy
 import hashlib
 import json
@@ -18,6 +18,7 @@ import tempfile
 import threading
 import time
 import unittest
+import jwt
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -30,7 +31,7 @@ from alembic.config import Config
 from sqlalchemy import create_engine, select, func, text
 from sqlalchemy.engine import make_url
 from sqlalchemy.orm import Session
-from app.models import GaitMeasurement, MeasurementRequest, Participant, User
+from app.models import GaitAnalysisResult, GaitMeasurement, MeasurementRequest, Participant, User
 from app.security import create_access_token, hash_password
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -307,6 +308,152 @@ class MeasurementPostgresTests(unittest.TestCase):
         self.assertEqual(response_headers["Access-Control-Allow-Origin"], headers["Origin"])
         headers["Origin"] = "https://untrusted.example"
         self.assertEqual(self.http(self.path, "OPTIONS", token=None, headers=headers)[0], 400)
+
+    def test_expired_token_rejects_reads_and_writes_without_side_effects(self):
+        code, measurement, _ = self.http(self.path, "POST", self.body, self.key)
+        self.assertEqual(code, 201)
+        expired = jwt.encode(
+            {"sub": str(self.user_id), "exp": datetime.now(timezone.utc) - timedelta(minutes=1)},
+            os.environ["JWT_SECRET_KEY"], algorithm="HS256",
+        )
+        participant_path = f"/participants/{self.participant_id}"
+        new_key = str(uuid4())
+        requests = [
+            ("GET", "/auth/me", None, None),
+            ("GET", "/participants", None, None),
+            ("GET", participant_path, None, None),
+            ("GET", self.path, None, None),
+            ("GET", f'/measurements/{measurement["id"]}/result', None, None),
+            ("POST", "/participants", {"name": "Unauthorized fixture", "gender": "M",
+                                       "birth_date": "1950-01-01", "height_cm": "170.00"}, None),
+            ("PATCH", participant_path, {"name": "Unauthorized edit"}, None),
+            ("POST", self.path, self.body, new_key),
+        ]
+        with Session(self.engine) as db:
+            participants_before = db.scalar(select(func.count()).select_from(Participant))
+        for method, path, body, key in requests:
+            with self.subTest(method=method, path=path):
+                code, error, headers = self.http(path, method, body, key, token=expired)
+                self.assertEqual(code, 401)
+                self.assertEqual(error["detail"], "Invalid or expired token")
+                self.assertEqual(headers["WWW-Authenticate"], "Bearer")
+        with Session(self.engine) as db:
+            self.assertEqual(db.scalar(select(func.count()).select_from(Participant)), participants_before)
+            self.assertEqual(db.get(Participant, self.participant_id).name, "Synthetic participant")
+            self.assertIsNone(db.get(MeasurementRequest, (self.user_id, UUID(new_key))))
+        self.assertEqual(self.count(), 1)
+        # A real login must restore access; the rejected request did not consume its key.
+        code, login, _ = self.http("/auth/login", "POST",
+            urlencode({"username": self.login_id, "password": self.password}).encode(),
+            token=None, headers={"Content-Type": "application/x-www-form-urlencoded"})
+        self.assertEqual(code, 200)
+        self.assertEqual(self.http(self.path, "POST", self.body, new_key, login["access_token"])[0], 201)
+        self.assertEqual(self.count(), 2)
+
+    def test_participant_patch_by_other_worker_preserves_omitted_fields(self):
+        path = f"/participants/{self.participant_id}"
+        code, before, _ = self.http(path)
+        self.assertEqual(code, 200)
+        code, updated, _ = self.http(path, "PATCH", {"name": "  Updated fixture  ", "height_cm": "180.25"},
+                                      token=self.other_token)
+        self.assertEqual(code, 200)
+        expected = {**before, "name": "Updated fixture", "height_cm": "180.25"}
+        self.assertEqual(updated, expected)
+        self.assertEqual(updated["created_by"], str(self.user_id))
+        self.assertEqual(self.http(path)[1], expected)
+        with Session(self.engine) as db:
+            row = db.get(Participant, self.participant_id)
+            self.assertEqual(row.name, "Updated fixture")
+            self.assertEqual(str(row.height_cm), "180.25")
+            self.assertEqual(row.birth_date, date(1950, 1, 1))
+
+    def test_participant_patch_invalid_input_is_atomic(self):
+        path = f"/participants/{self.participant_id}"
+        before = self.http(path)[1]
+        future = (datetime.now(timezone(timedelta(hours=9))).date() + timedelta(days=1)).isoformat()
+        invalid = [{}, {"name": " "}, {"name": "x" * 101}, {"gender": "X"},
+                   {"birth_date": future}, {"birth_date": "1950-02-30"},
+                   {"height_cm": "0"}, {"height_cm": "170.123"},
+                   {"created_by": str(self.other_user_id)}, {"id": str(uuid4())}]
+        invalid.extend({field: None} for field in ("name", "gender", "birth_date", "height_cm"))
+        # Include a valid change with an invalid one to detect partial writes.
+        invalid.append({"name": "Must not persist", "height_cm": "-1"})
+        for payload in invalid:
+            with self.subTest(payload=payload):
+                code, error, _ = self.http(path, "PATCH", payload)
+                self.assertEqual(code, 422)
+                self.assertIsInstance(error["detail"], list)
+                self.assertEqual(self.http(path)[1], before)
+        code, error, _ = self.http(f"/participants/{uuid4()}", "PATCH", {"name": "Missing fixture"})
+        self.assertEqual((code, error["detail"]), (404, "Participant not found"))
+
+    def test_birth_date_patch_preserves_history_and_changes_new_measurement_age(self):
+        # The same capture instant is Jan 1 in Korea, before the corrected Jan 2 birthday.
+        self.body["measured_at"] = "2025-12-31T15:00:00Z"
+        self.body["keypoints_json"]["capture"]["recorded_at"] = self.body["measured_at"]
+        code, original, _ = self.http(self.path, "POST", self.body, self.key)
+        self.assertEqual((code, original["age"]), (201, 76))
+        code, _, _ = self.http(f"/participants/{self.participant_id}", "PATCH",
+            {"birth_date": "1960-01-02", "height_cm": "180.25"}, token=self.other_token)
+        self.assertEqual(code, 200)
+        code, replay, _ = self.http(self.path, "POST", self.body, self.key)
+        self.assertEqual(code, 200)
+        self.assertEqual(replay, original)
+        code, new, _ = self.http(self.path, "POST", self.body, str(uuid4()))
+        self.assertEqual((code, new["age"]), (201, 65))
+        code, rows, _ = self.http(self.path, token=self.other_token)
+        self.assertEqual(code, 200)
+        self.assertEqual({row["id"]: row["age"] for row in rows}, {original["id"]: 76, new["id"]: 65})
+        code, result, _ = self.http(f'/measurements/{original["id"]}/result', token=self.other_token)
+        self.assertEqual(code, 200)
+        self.assertEqual(result["measurement"]["age"], 76)
+        self.assertEqual(result["participant"]["birth_date"], "1960-01-02")
+        self.assertEqual(result["participant"]["height_cm"], "180.25")
+        with Session(self.engine) as db:
+            self.assertEqual(db.get(GaitMeasurement, UUID(original["id"])).age, 76)
+            self.assertEqual(db.get(GaitMeasurement, UUID(new["id"])).age, 65)
+
+    def test_partial_analysis_result_preserves_null_zero_and_graph(self):
+        code, measurement, _ = self.http(self.path, "POST", self.body, self.key)
+        self.assertEqual(code, 201)
+        path = f'/measurements/{measurement["id"]}/result'
+        code, before, _ = self.http(path)
+        self.assertEqual(code, 200)
+        self.assertEqual(before["status"], "not_available")
+        self.assertIsNone(before["analysis_result"])
+        # Synthetic storage fixture only: no AI endpoint or finalized graph contract.
+        graph = {"fixture": "synthetic", "samples": [0, None, 12.5]}
+        result_id = uuid4()
+        analyzed_at = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        with Session(self.engine) as db:
+            db.add(GaitAnalysisResult(id=result_id, measurement_id=UUID(measurement["id"]),
+                gdi_score=0.0, stride_length_cm=None, cadence_spm=98.5,
+                hip_graph_json=None, knee_graph_json=graph, ankle_graph_json=None,
+                model_version="synthetic-regression-v1", analyzed_at=analyzed_at))
+            db.commit()
+        code, result, _ = self.http(path, token=self.other_token)
+        self.assertEqual(code, 200)
+        self.assertEqual(result["status"], "available")
+        analysis = result["analysis_result"]
+        self.assertEqual(set(analysis), {"id", "measurement_id", "gdi_score", "stride_length_cm",
+            "cadence_spm", "hip_graph_json", "knee_graph_json", "ankle_graph_json", "model_version", "analyzed_at"})
+        self.assertEqual(analysis["id"], str(result_id))
+        self.assertEqual(analysis["measurement_id"], measurement["id"])
+        self.assertEqual(analysis["gdi_score"], 0.0)
+        self.assertEqual(analysis["cadence_spm"], 98.5)
+        for field in ("stride_length_cm", "hip_graph_json", "ankle_graph_json"):
+            self.assertIsNone(analysis[field])
+        self.assertEqual(analysis["knee_graph_json"], graph)
+        self.assertEqual(analysis["model_version"], "synthetic-regression-v1")
+        self.assertEqual(datetime.fromisoformat(analysis["analyzed_at"].replace("Z", "+00:00")), analyzed_at)
+        self.assertEqual(result["measurement"], measurement)
+        self.assertNotIn("keypoints_json", result["measurement"])
+        self.assertNotIn("processing_metadata", result["measurement"])
+        code, rows, _ = self.http(self.path, token=self.other_token)
+        self.assertEqual(code, 200)
+        self.assertEqual(len(rows), 1)
+        self.assertTrue(rows[0]["has_analysis_result"])
+        self.assertEqual(rows[0]["id"], measurement["id"])
 
 
 if __name__ == "__main__":

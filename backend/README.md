@@ -26,6 +26,8 @@
 - API 실행, health·DB 연결·OpenAPI 경로·인증 거부·JWT/비밀번호 해시·CORS 기본 검증
 - coords-1·processing-1 스키마와 공유 합성 fixture 검증
 - PostgreSQL에서 기존 데이터 보존, 측정 HTTP API·동시 중복 요청·잠금 시간 초과·재시도 검증
+- 만료 JWT의 업무 API 접근 거부·데이터 미변경, 다른 복지사의 어르신 수정, 잘못된 PATCH의 데이터 보존 검증
+- 생년월일 수정 후 과거 age 유지·신규 촬영 age 계산, 부분 분석 결과의 null·0·그래프 조회 검증
 
 실제 `.env`나 GitHub Secrets는 사용하지 않습니다. DB는 작업별 임시 서비스이고
 JWT 키는 실행마다 생성합니다. **CI의 downgrade 명령을 개발·운영 DB에서 실행하지 마세요.**
@@ -280,3 +282,8 @@ python -m unittest discover -s tests -p test_measurement_postgres.py -v
 GitHub Actions는 PostgreSQL 17에서 위 두 테스트를 실행합니다. 기존 데이터 보존 마이그레이션,
 실제 로그인·HTTP 저장/조회, 순차·동시 중복, 실제 유일키 잠금 시간 초과와 재시도, CORS를 검사합니다.
 로컬 환경에 PostgreSQL이 없으면 스키마 테스트 통과만으로 DB 통합을 통과했다고 판단하지 않습니다.
+
+`test_measurement_postgres.py`의 회귀 사례는 위 PostgreSQL 명령과 기존 Backend CI에서 함께 실행됩니다.
+브라우저 CI의 인증 갱신·정보 수정 시나리오에 더해 API 직접 호출의 오류와 저장 결과를 검사합니다.
+부분 분석 결과는 격리된 테스트 스키마에 합성 데이터를 넣어 조회만 검증하며, 실제 AI 실행이나 그래프 규격 확정을 의미하지 않습니다.
+이 테스트는 반복 회귀 검증을 위한 유지 파일입니다.
