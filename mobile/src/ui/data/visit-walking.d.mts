@@ -1,6 +1,6 @@
 interface StepTime { value:number|null; count:number }
 export function walkingEstimate(visit:unknown,direction?:string):{
-  cadence:number|null; left:StepTime; right:StepTime; count:number;
+  cadence:number|null; cadenceCount:number; left:StepTime; right:StepTime; count:number;
   intervals:{segmentId:string;direction:string;start_ms:number;stop_ms:number;side:string;seconds:number}[]
 };
 export function priorVisits<T>(current:unknown,priors:T[]):T[];

@@ -9,6 +9,7 @@ export function walkingEstimate(visit, direction) {
   for (const segment of visit.analysis.segments) {
     if (!directions.includes(segment.direction) || (direction && direction !== segment.direction)) continue;
     const gait = segment.gait;
+    const timingOnly = gait?.method_id === 'bilateral-foot-separation/native-pts-1';
     const tracking = reportMetric(segment, visit.analysis.current_report, 'rhythm')?.evidence?.tracking;
     if (!tracking || !Array.isArray(tracking.transitions)) continue;
     let steps = visit.local_step_intervals_by_segment?.[segment.segment_id];
@@ -19,20 +20,30 @@ export function walkingEstimate(visit, direction) {
     }
     for (const { start_ms, stop_ms, landing_side } of steps) {
       const seconds = (stop_ms - start_ms) / 1000;
-      if (!Number.isFinite(start_ms) || !Number.isFinite(stop_ms) || !sides.includes(landing_side) ||
+      if (!Number.isFinite(start_ms) || !Number.isFinite(stop_ms) ||
+          !(timingOnly ? landing_side === 'unknown' : sides.includes(landing_side)) ||
           start_ms < segment.start_ms || stop_ms > segment.stop_ms || seconds < .2 || seconds > 1.5) continue;
-      if (tracking.transitions.some(t => t.source_time_ms >= start_ms - tracking.contact_radius_ms &&
+      if (!timingOnly && tracking.transitions.some(t => t.source_time_ms >= start_ms - tracking.contact_radius_ms &&
           t.source_time_ms <= stop_ms + tracking.contact_radius_ms)) continue;
       intervals.set(start_ms + '/' + stop_ms, { segmentId:segment.segment_id, direction:segment.direction,
         start_ms, stop_ms, side:landing_side, seconds });
     }
   }
   const used = [...intervals.values()];
+  // A cadence estimate needs a continuous left-right rhythm within a pass.
+  // Isolated intervals still describe the observed landing side.
+  const boundary = (s, t, side) => [s.segmentId, t, side].join('/');
+  const starts = new Set(used.map(s => boundary(s, s.start_ms, s.side)));
+  const stops = new Set(used.map(s => boundary(s, s.stop_ms, s.side)));
+  const rhythm = used.filter(s => {
+    const opposite = s.side === 'unknown' ? 'unknown' : s.side === 'left' ? 'right' : 'left';
+    return stops.has(boundary(s, s.start_ms, opposite)) || starts.has(boundary(s, s.stop_ms, opposite));
+  });
   const time = side => {
     const values = used.filter(s => s.side === side).map(s => s.seconds);
     return { value:values.length ? mean(values) : null, count:values.length };
   };
-  return { cadence:used.length >= 2 ? 60 / mean(used.map(s => s.seconds)) : null,
+  return { cadence:rhythm.length ? 60 / mean(rhythm.map(s => s.seconds)) : null, cadenceCount:rhythm.length,
     left:time('left'), right:time('right'), count:used.length, intervals:used };
 }
 
@@ -40,12 +51,12 @@ function directionMetrics(visit, direction) {
   const segments = visit.analysis.segments.filter(s => s.direction === direction);
   const timing = walkingEstimate(visit, direction);
   const rows = [
-    ['cadence', '분당 걸음 수', timing.cadence, '걸음/분', timing.count],
+    ['cadence', '분당 걸음 수', timing.cadence, '걸음/분', timing.cadenceCount],
     ['left-time', '왼발 걸음 시간', timing.left.value, '초', timing.left.count],
     ['right-time', '오른발 걸음 시간', timing.right.value, '초', timing.right.count],
   ];
   const knees = visitKneeSummary({...visit, analysis:{...visit.analysis, segments}});
-  for (const row of knees) rows.push([row.side+'-knee', (row.side === 'left' ? '왼쪽' : '오른쪽')+' 무릎 움직임 폭',
+  for (const row of knees.filter(k => k.full)) rows.push([row.side+'-knee', (row.side === 'left' ? '왼쪽' : '오른쪽')+' 무릎 움직임 폭',
     row.value, '°', row.frames]);
   return rows.filter(row => Number.isFinite(row[2]));
 }

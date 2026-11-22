@@ -111,7 +111,22 @@ test('해설 간소화: GDI가 1표준편차 안이면 생략, 0.07초 차이는
   v.analysis.current_report.segments[0].metrics[1].evidence.coverage.right.valid_frames = 1;
   v.analysis.current_report.segments[1].metrics[1].evidence.coverage.left.valid_frames = 1;
   assert.deepEqual(describeVisit(visitSummary(v)).map(i => i.label + ': ' + i.text),
-    ['걸음 시간: 좌우 차이 없음 (측정 오차 범위)', '무릎 움직임 폭: 좌우 비슷함']);
+    ['걸음 시간: 좌우 차이 없음 (측정 오차 범위)', '무릎 움직임 폭: 같은 구간의 양쪽 무릎 관측 부족 · 좌우 비교 보류']);
+});
+
+test('부분 관측한 왼쪽 무릎은 기록 해석에서 제외하고 충분히 보인 오른쪽은 비교한다', () => {
+  const prior = visit('p', '2026-11-01', [seg('r', 'image_right', 0, 5800, null, { frames: 169, knee: [60, 47] })]);
+  const current = visit('c', '2026-11-08', [seg('r', 'image_right', 0, 5800, null, { frames: 173, knee: [19, 48] })]);
+  current.analysis.current_report.segments[0].metrics[1].evidence.coverage.left = {
+    valid_frames: 21, first_source_ms: 0, last_source_ms: 667,
+  };
+  current.local_observations_by_segment = { r: [{ segment_id: 'r', direction: 'image_right', side: 'left',
+    status: 'limited_local_observation', unit: 'deg', valid_count: 21, value: 19, start_ms: 0, stop_ms: 667 }] };
+  assert.equal(visitSummary(current).knee.left.value, 19);
+  const comparison = compareVisits(current, prior);
+  assert.ok(!comparison.rows.some(r => r.key === 'kneeLeft'));
+  assert.equal(comparison.rows.find(r => r.key === 'kneeRight').delta, 1);
+  assert.ok(!subjectOverview([prior, current]).trends.some(r => r.key === 'kneeLeft'));
 });
 
 test('전체 기록 해석: 가장 최근 방문 기준, 처음 기록 대비 변화와 연속 변화를 문장으로', () => {
