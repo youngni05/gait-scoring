@@ -86,6 +86,7 @@ class GaitMeasurement(Base):
     measured_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     analysis_status: Mapped[str | None] = mapped_column(String(16), nullable=True)
     received_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    analysis_started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_by: Mapped[UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
 
 

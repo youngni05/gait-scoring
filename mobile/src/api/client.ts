@@ -2,11 +2,14 @@ import type { PreparedMeasurement } from '../../../contracts/measurement-1/prepa
 import type { ParticipantBody } from './participant-input';
 
 export interface Participant { id: string; name: string; birth_date: string | null; height_cm: string | number | null; gender: 'M' | 'F' | null }
-export interface Measurement { id: string; participant_id: string; age: number | null; measured_at: string | null; extractor_name: string; extractor_version: string; created_by: string }
+export interface ParticipantSummary extends Participant { latest_measured_at: string | null; measurement_count: number }
+export interface Measurement { id: string; participant_id: string; age: number | null; measured_at: string | null; analysis_started_at?: string | null; extractor_name: string; extractor_version: string; created_by: string }
 export interface MeasurementItem extends Measurement { has_analysis_result: boolean }
+export interface MeasurementSummary extends MeasurementItem { gdi_score: number | null; cadence_spm: number | null; stride_length_cm: number | null }
+export interface MeasurementPage { items: MeasurementSummary[]; total: number; offset: number; limit: number }
 export interface MeasurementResult {
   status: 'available' | 'not_available'; participant: Participant; measurement: Measurement;
-  analysis_result: null | { gdi_score: number | null; stride_length_cm: number | null; cadence_spm: number | null; model_version: string; analyzed_at: string };
+  analysis_result: null | { gdi_score: number | null; stride_length_cm: number | null; cadence_spm: number | null; hip_graph_json?: unknown; knee_graph_json?: unknown; ankle_graph_json?: unknown; model_version: string; analyzed_at: string };
 }
 export class ApiError extends Error {
   constructor(public status: number, public code: string, message: string, public retryAfter = 0) { super(message); }
@@ -63,14 +66,40 @@ export class ApiClient {
     if (typeof data?.access_token !== 'string' || !data.access_token || data.token_type?.toLowerCase() !== 'bearer') throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid token response');
     return data.access_token;
   }
-  async participant(id: string, signal?: AbortSignal): Promise<Participant> {
-    const { data } = await this.request('/participants/' + encodeURIComponent(id), {}, signal);
-    if (data?.id !== id) throw new ApiError(200, 'INVALID_RESPONSE', 'Wrong participant');
-    return data;
-  }
   async participants(signal?: AbortSignal): Promise<Participant[]> {
     const { data } = await this.request('/participants', {}, signal);
     if (!Array.isArray(data) || !data.every(p => typeof p.id === 'string' && typeof p.name === 'string')) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid participants');
+    return data;
+  }
+  async participantSummaries(signal?: AbortSignal): Promise<ParticipantSummary[]> {
+    const { data } = await this.request('/participants/summaries', {}, signal);
+    if (!Array.isArray(data) || !data.every(p => this.isSummary(p))) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid summaries');
+    return data;
+  }
+  private isSummary(data: any): boolean {
+    return typeof data?.id === 'string' && typeof data.name === 'string' &&
+      Number.isInteger(data.measurement_count) && data.measurement_count >= 0 &&
+      (data.latest_measured_at === null || typeof data.latest_measured_at === 'string');
+  }
+  async participantSummary(id: string, signal?: AbortSignal): Promise<ParticipantSummary> {
+    const { data } = await this.request(`/participants/${encodeURIComponent(id)}/summary`, {}, signal);
+    if (!this.isSummary(data) || data.id !== id) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid summary');
+    return data;
+  }
+  async measurementSummaries(id: string, offset: number, signal?: AbortSignal): Promise<MeasurementPage> {
+    const { data } = await this.request(`/participants/${encodeURIComponent(id)}/measurement-summaries?limit=20&offset=${offset}`, {}, signal);
+    if (!Array.isArray(data?.items) || data.items.length > 20 ||
+        !Number.isInteger(data.total) || data.total < 0 || data.offset !== offset || data.limit !== 20 ||
+        !data.items.every((m: any) => typeof m.id === 'string' && m.participant_id === id &&
+          (m.measured_at === null || typeof m.measured_at === 'string') && (m.analysis_started_at == null || typeof m.analysis_started_at === 'string') && typeof m.has_analysis_result === 'boolean' &&
+          [m.gdi_score, m.cadence_spm, m.stride_length_cm].every(v => v === null || (typeof v === 'number' && Number.isFinite(v))))) {
+      throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid measurement summary page');
+    }
+    return data;
+  }
+  async participant(id: string, signal?: AbortSignal): Promise<Participant> {
+    const { data } = await this.request(`/participants/${encodeURIComponent(id)}`, {}, signal);
+    if (data?.id !== id || typeof data.name !== 'string') throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid participant');
     return data;
   }
   async createParticipant(body: ParticipantBody, signal?: AbortSignal): Promise<Participant> {

@@ -42,11 +42,12 @@ def store_measurement(db: Session, user_id: UUID, participant_id: UUID,
         if modern:
             raise problem("PARTICIPANT_BIRTH_DATE_REQUIRED", "Birth date is required before recording a measurement")
         raise HTTPException(status_code=409, detail="Participant birth date is required before recording a measurement")
-    capture_date = data.measured_at.astimezone(timezone(timedelta(hours=9))).date()
+    reference_time = data.analysis_started_at or data.measured_at
+    reference_date = reference_time.astimezone(timezone(timedelta(hours=9))).date()
     birth_date = participant.birth_date
-    if capture_date < birth_date:
-        raise HTTPException(status_code=422, detail="Capture date must not precede birth date")
-    age = capture_date.year - birth_date.year - ((capture_date.month, capture_date.day) < (birth_date.month, birth_date.day))
+    if reference_date < birth_date:
+        raise HTTPException(status_code=422, detail="Reference date must not precede birth date")
+    age = reference_date.year - birth_date.year - ((reference_date.month, reference_date.day) < (birth_date.month, birth_date.day))
     values = data.model_dump(exclude={"processing_metadata"})
     metadata = data.processing_metadata.model_dump(exclude_unset=True) if modern else None
     measurement = GaitMeasurement(participant_id=participant_id, age=age, created_by=user_id,

@@ -109,3 +109,32 @@ class ProcessingMetadata(StrictObject):
     rotationAppliedDegrees: FiniteFloat | None
     detection: Annotated[Detected | NotDetected, Field(discriminator="status")]
     modelAssetVersion: NonBlank = Field(default=None)
+
+
+class Capture2(StrictObject):
+    """Video geometry only. Capture timestamps are not accepted in coords-2."""
+    mode: Literal["guided", "fixed"]
+    width: Annotated[int, Field(ge=1)]
+    height: Annotated[int, Field(ge=1)]
+    orientation: Literal["landscape", "portrait"]
+    device: NonBlank = Field(default=None)
+
+    @model_validator(mode="after")
+    def validate_orientation(self):
+        if (self.width > self.height and self.orientation != "landscape") or (
+            self.height > self.width and self.orientation != "portrait"
+        ):
+            raise ValueError("Orientation must match rotated dimensions")
+        return self
+
+
+class Coords2(Coords):
+    schema_version: Literal["coords-2"]
+    capture: Capture2
+
+
+class ProcessingMetadata2(StrictObject):
+    schema_version: Literal["processing-2"]
+    rotationAppliedDegrees: FiniteFloat | None
+    detection: Annotated[Detected | NotDetected, Field(discriminator="status")]
+    modelAssetVersion: NonBlank = Field(default=None)

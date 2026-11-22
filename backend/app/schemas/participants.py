@@ -56,3 +56,8 @@ class ParticipantResponse(BaseModel):
     created_by: UUID
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class ParticipantSummary(ParticipantResponse):
+    latest_measured_at: datetime | None
+    measurement_count: int

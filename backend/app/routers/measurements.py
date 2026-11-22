@@ -3,7 +3,7 @@ import re
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request, Response
-from sqlalchemy import select
+from sqlalchemy import select, func
 from sqlalchemy.orm import Session, defer
 
 from app.db import get_db
@@ -15,6 +15,8 @@ from app.schemas.measurements import (
     MeasurementListItem,
     MeasurementResponse,
     MeasurementResultResponse,
+    MeasurementSummary,
+    MeasurementSummaryPage,
 )
 
 
@@ -80,7 +82,7 @@ def list_measurements(
                  defer(GaitMeasurement.processing_metadata, raiseload=True))
         .outerjoin(GaitAnalysisResult, GaitAnalysisResult.measurement_id == GaitMeasurement.id)
         .where(GaitMeasurement.participant_id == participant_id)
-        .order_by(GaitMeasurement.measured_at.desc().nulls_last(), GaitMeasurement.id.desc())
+        .order_by(func.coalesce(GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at).desc().nulls_last(), GaitMeasurement.id.desc())
         .limit(limit)
         .offset(offset)
     ).all()
@@ -112,3 +114,33 @@ def get_measurement_result(
         "measurement": measurement,
         "analysis_result": result,
     }
+
+
+@router.get("/participants/{participant_id}/measurement-summaries", response_model=MeasurementSummaryPage)
+def list_measurement_summaries(
+    participant_id: UUID,
+    limit: int = Query(default=20, ge=1, le=100),
+    offset: int = Query(default=0, ge=0),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    require_participant(db, participant_id)
+    total = db.scalar(select(func.count(GaitMeasurement.id)).where(GaitMeasurement.participant_id == participant_id))
+    # Explicit scalar projection: neither pose JSON nor graph JSON is read.
+    rows = db.execute(
+        select(
+            GaitMeasurement.id, GaitMeasurement.participant_id, GaitMeasurement.age,
+            GaitMeasurement.extractor_name, GaitMeasurement.extractor_version,
+            GaitMeasurement.measured_at, GaitMeasurement.analysis_started_at, GaitMeasurement.created_by,
+            GaitAnalysisResult.id.is_not(None).label("has_analysis_result"),
+            GaitAnalysisResult.gdi_score, GaitAnalysisResult.cadence_spm, GaitAnalysisResult.stride_length_cm,
+        )
+        .outerjoin(GaitAnalysisResult, GaitAnalysisResult.measurement_id == GaitMeasurement.id)
+        .where(GaitMeasurement.participant_id == participant_id)
+        .order_by(func.coalesce(GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at).desc().nulls_last(), GaitMeasurement.id.desc())
+        .limit(limit).offset(offset)
+    ).mappings().all()
+    return MeasurementSummaryPage(
+        items=[MeasurementSummary.model_validate(row) for row in rows],
+        total=total, limit=limit, offset=offset,
+    )
