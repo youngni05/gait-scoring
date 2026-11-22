@@ -35,6 +35,29 @@ test('a rejected pass requires locally reprocessed intervals; old records can st
   assert.equal(walkingEstimate(v).count,2);
 });
 
+test('two disconnected left landings do not imply 189 steps/min; continuous fast steps remain measurable', () => {
+  const v = visit('p','2026-01-03',['image_right']);
+  const steps = [{ start_ms: 1833, stop_ms: 2133, landing_side: 'left' },
+    { start_ms: 2300, stop_ms: 2633, landing_side: 'left' }];
+  v.local_step_intervals_by_segment = { '0': steps };
+  assert.equal(walkingEstimate(v).cadence, null);
+  assert.equal(walkingEstimate(v).left.count, 2);
+  steps[1] = { start_ms: 2133, stop_ms: 2466, landing_side: 'right' };
+  assert.equal(Math.round(walkingEstimate(v).cadence), 190);
+});
+
+test('timing recovered across a label switch contributes to cadence only', () => {
+  const v = visit('p','2026-01-03',['image_right']);
+  const gait = v.analysis.segments[0].gait;
+  gait.steps.forEach(s => { s.landing_side = 'unknown'; });
+  v.analysis.current_report.segments[0].metrics[0].evidence.tracking.transitions.push({source_time_ms:500});
+  assert.equal(walkingEstimate(v).count,0);
+  gait.method_id = 'bilateral-foot-separation/native-pts-1';
+  const timing = walkingEstimate(v);
+  assert.deepEqual([timing.cadence,timing.cadenceCount,timing.left.count,timing.right.count],[120,3,0,0]);
+  assert.ok(timing.intervals.every(s => s.side === 'unknown'));
+});
+
 test('group by travel direction across different segment counts, capture modes and extractors', () => {
   const current = visit('c','2026-01-03',['image_left','image_left','image_right']);
   const previous = visit('b','2026-01-02',['image_left','image_right','image_right']);

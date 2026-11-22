@@ -72,8 +72,10 @@ def gait_items(segment, frames, image):
     events = gait["events"]
     steps = gait["steps"]
     tracking = foot_tracking(frames, image, events)
+    from contact_review import SEPARATION_METHOD
+    timing_only = gait["method_id"] == SEPARATION_METHOD
     rejects = []
-    for first, second in zip(events, events[1:]):
+    for first, second in (() if timing_only else zip(events, events[1:])):
         _, rejected = calculate_steps((first, second))
         if rejected:
             rejects.append(dict(first=first, second=second, reason=next(iter(rejected))))
@@ -103,15 +105,18 @@ def gait_items(segment, frames, image):
         side_sentence = "이번 구간에서는 발을 내딛는 시간을 설명할 만큼 왼발과 오른발의 접촉을 확인하기 어려웠습니다."
 
     rhythm_values = []
-    if not unreliable and cadence["value"] is not None:
+    if (timing_only or not unreliable) and cadence["value"] is not None:
         average = evidence["average_interval_s"]
         n = evidence["interval_count"]
         rhythm_sentence = f"이번 구간에서는 약 {average:.2f}초마다 한 걸음을 내디뎠습니다. 연속된 걸음 간격 {n}개로 계산하면 분당 약 {cadence['value']:.0f}걸음입니다."
+        if timing_only:
+            rhythm_sentence += " 두 발 사이가 벌어졌다 좁아지는 움직임에서 걸음 시점을 추정했습니다."
+            side_sentence = "앞쪽 발이 계속 같은 쪽으로 표시되어 각 걸음의 좌우를 구별하기 어렵습니다."
         rhythm_values = [value("평균 걸음 간격", average, "s", n),
                          value("분당 걸음 수", cadence["value"], "steps/min", n)]
     rhythm = item("rhythm", "걸음 박자", "observed" if rhythm_values else "withheld",
                   "available" if cadence["value"] is not None else "unavailable", rhythm_sentence, evidence,
-                  rhythm_values, [*quality_reasons, cadence["unavailable_reason"]],
+                  rhythm_values, [] if timing_only else [*quality_reasons, cadence["unavailable_reason"]],
                   [gait["method_id"], "first-visit-gait-results/rhythm"])
 
     available_sides = [side for side in SIDES if sides[side]["value"] is not None]

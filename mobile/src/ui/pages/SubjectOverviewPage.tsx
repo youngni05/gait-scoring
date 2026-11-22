@@ -10,7 +10,7 @@ import { dataSource, fmtDate, fmtWeekday } from '../data';
 import { EXAMPLE_BAND, fmtDay, subjectOverview, type OverviewTrend, type SubjectOverview } from '../data/visit-summary.mjs';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
-import { BAND_NOTE, SHORT, VERDICT, VerdictIcon, signed } from './VisitMetrics';
+import { Criteria, SHORT, VERDICT, VerdictIcon, signed } from './VisitMetrics';
 import { NotFound } from './NotFound';
 import '../report.css';
 
@@ -205,11 +205,12 @@ function Notes({ overview }: { overview: SubjectOverview }) {
       {overview.trends.length > 0 && <p className="ov-foot">
         변화는 가장 최근 기록({fmtDay(overview.latest!.captured_at)})을 기준으로, 각 지난 기록과 두 방문에 공통으로 있는 걷기 방향만으로 다시 계산한 값입니다.
         그래서 그래프의 지난 값은 방문 목록의 종합값과 다를 수 있습니다.
-        {overview.undated > 0 && ` 촬영일이 없는 기록 ${overview.undated}건은 순서를 알 수 없어 뺐습니다.`} {BAND_NOTE}
+        {overview.undated > 0 && ` 촬영일이 없는 기록 ${overview.undated}건은 순서를 알 수 없어 뺐습니다.`}
       </p>}
       {overview.trends.length === 0 && overview.undated > 0 && (
         <p className="ov-foot">촬영일이 없는 기록 {overview.undated}건은 순서를 알 수 없어 뺐습니다.</p>
       )}
+      <Criteria />
     </section>
   );
 }

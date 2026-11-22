@@ -33,7 +33,11 @@ const span = (start: number, stop: number) => `${sec(start)}~${sec(stop)}초`;
 export const signed = (v: number, digits: number) => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v).toFixed(digits);
 export const VERDICT: Record<Verdict, string> = { better: '좋아짐', worse: '나빠짐', similar: '비슷함' };
 export const SHORT: Record<string, string> = { gdi: 'GDI', cadence: '걸음 수', stepGap: '좌우 걸음 시간 차', kneeLeft: '좌 무릎 폭', kneeRight: '우 무릎 폭' };
-export const BAND_NOTE = `좌우 차이와 변화 판정은 측정 오차를 고려한 예시 기준(GDI ${EXAMPLE_BAND.gdi}점 · 분당 걸음 ${EXAMPLE_BAND.cadence}걸음 · 무릎 ${EXAMPLE_BAND.knee}° · 걸음 시간 ${EXAMPLE_BAND.stepGap}초)입니다. 이보다 작은 차이는 측정 오차와 구분할 수 없어 ‘비슷함’으로 표시합니다. 같은 사람을 다시 촬영한 자료로 확정해야 하는 값입니다.`;
+export function Criteria() {
+  return <Disclosure title="판정 기준">
+    <p>차이가 GDI {EXAMPLE_BAND.gdi}점, 분당 걸음 수 {EXAMPLE_BAND.cadence}걸음, 무릎 움직임 폭 {EXAMPLE_BAND.knee}°, 걸음 시간 {EXAMPLE_BAND.stepGap}초 이내이면 ‘비슷함’으로 표시합니다. 같은 사람의 반복 촬영으로 확인할 예시 기준입니다.</p>
+  </Disclosure>;
+}
 
 export function kneeCurve(visit: Visit, index: number) {
   const s = visit.analysis.segments[index];
@@ -175,8 +179,8 @@ function usePriorVisits(record: ResultRecord) {
 
 // ── 이번 결과 ─────────────────────────────────
 
-function Overview({ summary, history, openHistory }: {
-  summary: VisitSummary; history: ReturnType<typeof visitHistory> | null; openHistory: () => void;
+function Overview({ summary, history, openHistory, fileName }: {
+  summary: VisitSummary; history: ReturnType<typeof visitHistory> | null; openHistory: () => void; fileName: string;
 }) {
   const [gdiInfo, setGdiInfo] = useState(false);
   const { gdi, walking, gap, knee } = summary;
@@ -184,7 +188,7 @@ function Overview({ summary, history, openHistory }: {
   const recent = history?.recent;
   return (
     <section className="rs" aria-label="이번 촬영 종합">
-      <SectionHead title="이번 촬영 종합" caption="여러 구간과 두 걷기 방향의 값을 하나로 모은 결과입니다." />
+      <SectionHead title="이번 촬영 종합" caption={fileName ? `분석 영상 · ${fileName}` : '영상 이름 미기록'} />
       <div className="ov">
         <div className="ov-gdi">
           <div className="top">
@@ -201,10 +205,6 @@ function Overview({ summary, history, openHistory }: {
           ) : (
             <p className="big none">측정 보류</p>
           )}
-          <p className="cap">
-            {gdi.directions.length > 1 ? '두 걷기 방향 종합' : gdi.directions.length ? directionLabel(gdi.directions[0]!) + ' 구간만 사용' : '계산 가능한 구간 없음'}
-            {' · 정상100 모델 연구용 추정값'}
-          </p>
           {gdiInfo && (
             <div className="info">
               100점은 정상 보행의 평균이고, 10점은 정상집단의 1표준편차입니다. 점수가 낮을수록 정상 보행 패턴과의 차이가 큽니다.
@@ -216,7 +216,7 @@ function Overview({ summary, history, openHistory }: {
 
         <dl className="ov-rows">
           <div>
-            <dt>분당 걸음 수<small>{walking.count}걸음 기준</small></dt>
+            <dt>분당 걸음 수<small>{walking.cadenceCount ? `연속 간격 ${walking.cadenceCount}개 기준` : '연속된 양발 간격 부족'}</small></dt>
             <dd>{walking.cadence === null ? <span className="none">관측 부족</span> : <>약 {walking.cadence.toFixed(0)}<small>걸음/분</small></>}</dd>
           </div>
           <div>
@@ -234,7 +234,7 @@ function Overview({ summary, history, openHistory }: {
             <dd className="lr">
               {SIDES.map((side) => (
                 <span key={side} className={side}>
-                  {side === 'left' ? '좌' : '우'} {knee[side] ? <>{knee[side]!.value.toFixed(1)}<small>°</small></> : <em>—</em>}
+                  {side === 'left' ? '좌' : '우'} {knee[side] ? <>{knee[side]!.value.toFixed(1)}<small>°{!knee[side]!.full && ' · 일부 관측'}</small></> : <em>—</em>}
                 </span>
               ))}
             </dd>
@@ -263,7 +263,6 @@ function Overview({ summary, history, openHistory }: {
             </>
           )}
         </div>
-        <p className="ov-foot">{BAND_NOTE}</p>
       </div>
 
       <Disclosure title="GDI를 이렇게 종합했습니다">
@@ -301,7 +300,8 @@ function Overview({ summary, history, openHistory }: {
 
       <Disclosure title="걸음·무릎 측정 근거">
         <p className="muted" style={{ fontSize: 13, lineHeight: 1.55 }}>
-          분당 걸음 수는 발이 번갈아 닿은 간격 {walking.count}개로 추정했습니다.
+          {walking.cadenceCount ? `관측한 간격 ${walking.count}개 중 같은 구간에서 연속으로 확인한 ${walking.cadenceCount}개로 분당 걸음 수를 추정했습니다.` : `관측한 간격 ${walking.count}개에서 양발로 이어지는 걸음을 확인하기 어려워 분당 걸음 수를 보류했습니다.`}
+          {walking.intervals.some(s => s.side === 'unknown') && ' 좌우를 구별하기 어려운 걸음은 두 발 사이가 벌어졌다 좁아지는 시점으로 간격을 추정했습니다.'}
           {finite(gap.value) && ` 좌우 걸음 시간 차이는 양발 걸음이 함께 보인 ${gap.segments}개 구간 안에서 계산했습니다.`}
         </p>
         {walking.count > 0 && (
@@ -310,7 +310,7 @@ function Overview({ summary, history, openHistory }: {
               <li key={s.start_ms + '-' + s.stop_ms}>
                 <span className="dir">{directionLabel(s.direction)}</span>
                 <span className="t">{span(s.start_ms, s.stop_ms)}</span>
-                <span>{sideName(s.side)} 착지</span>
+                <span>{s.side === 'unknown' ? '착지 · 좌우 미확인' : `${sideName(s.side)} 착지`}</span>
               </li>
             ))}
           </ul>
@@ -385,7 +385,7 @@ export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
   return (
     <>
       {/* 1) 이번 촬영 종합 */}
-      <Overview summary={summary} history={history} openHistory={openHistory} />
+      <Overview summary={summary} history={history} openHistory={openHistory} fileName={record.fileName} />
 
       {/* 2) 구간별 상세 */}
       <section className="rs" aria-label="구간별 상세">
@@ -523,6 +523,7 @@ export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
             </div>
           </dl>
         </Disclosure>
+        <Criteria />
       </section>
     </>
   );
@@ -649,7 +650,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
             )}
           </article>
           <p className="ov-foot">
-            {BAND_NOTE} 작은 그래프는 처음 비교 기록부터 이번 기록까지의 흐름이며, 마지막 점이 이번 기록입니다.
+            작은 그래프는 처음 비교 기록부터 이번 기록까지의 흐름이며, 마지막 점이 이번 기록입니다.
             {history.trends.some((t) => t.since && t.since.directions.length < recent.directions.length) &&
               ' * 표시는 처음 기록에 한쪽 걷기 방향만 있어 그 방향끼리 비교했다는 뜻입니다.'}
           </p>
@@ -692,6 +693,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
           <div className="disc-body">{showDetail && <StrictHistory current={current} prior={detailedPrior} />}</div>
         </details>
       )}
+      <Criteria />
     </section>
   );
 }

@@ -128,7 +128,9 @@ export function describeVisit(summary) {
     else add('걸음 시간', `${t.value > 0 ? '왼발' : '오른발'}이 ${Math.abs(t.value).toFixed(2)}초 더 김`, true);
   }
   const { left, right } = summary.knee;
-  if (left && right) {
+  if (left && right && (!left.full || !right.full || left.segmentId !== right.segmentId)) {
+    add('무릎 움직임 폭', '같은 구간의 양쪽 무릎 관측 부족 · 좌우 비교 보류');
+  } else if (left && right) {
     const d = left.value - right.value;
     if (Math.abs(d) <= EXAMPLE_BAND.knee) add('무릎 움직임 폭', '좌우 비슷함');
     else add('무릎 움직임 폭', `${d < 0 ? '왼쪽' : '오른쪽'}이 ${Math.abs(d).toFixed(1)}° 작음`, true);
@@ -165,17 +167,27 @@ export function compareVisits(current, prior) {
   const common = visitDirections(current).filter(d => priorDirections.includes(d));
   if (!common.length) return null;
   const now = visitSummary(current, common), before = visitSummary(prior, common);
+  const notes = conditionNote(current, prior);
   const rows = METRICS.flatMap(m => {
+    const side = m.key === 'kneeLeft' ? 'left' : m.key === 'kneeRight' ? 'right' : null;
+    if (side) {
+      const a = now.knee[side], b = before.knee[side];
+      if (!a?.full || !b?.full || a.direction !== b.direction) {
+        notes.push(`${m.label}은 같은 방향에서 구간 전체를 관측한 두 값이 없어 비교를 보류했습니다.`);
+        return [];
+      }
+    }
     const cur = m.read(now), prev = m.read(before);
     if (!finite(cur) || !finite(prev)) return [];
     const delta = cur - prev, v = verdict(delta, m);
     return [{ key: m.key, label: m.label, unit: m.unit, digits: m.digits, band: m.band, current: cur, previous: prev, delta,
-      verdict: v, meaning: v === 'similar' ? `측정 오차를 고려한 기준(±${m.band}${m.unit}) 안의 차이입니다.` : delta > 0 ? m.up : m.down,
+      ...(side ? { kneeDirection: now.knee[side].direction } : {}),
+      verdict: v, meaning: v === 'similar' ? `예시 기준(±${m.band}${m.unit}) 안의 차이입니다.` : delta > 0 ? m.up : m.down,
       keyword: v === 'similar' ? '큰 변화 없음' : delta > 0 ? m.upKey : m.downKey }];
   });
   if (!rows.length) return null;
   return { previousId: prior.id, previousDate: prior.captured_at, directions: common,
-    skipped: visitDirections(current).filter(d => !common.includes(d)), notes: conditionNote(current, prior), rows };
+    skipped: visitDirections(current).filter(d => !common.includes(d)), notes, rows };
 }
 
 const withDelta = r => ({ label: r.label, text: `${r.label}(${signed(r.delta, r.digits)}${r.unit})` });
@@ -210,9 +222,10 @@ export function visitHistory(current, priors) {
   }
   const recent = comparisons[0];
   const trends = recent.rows.map(row => {
-    const older = [...comparisons].reverse().find(c => c !== recent && c.rows.some(r => r.key === row.key));
+    const sameSeries = r => r.key === row.key && r.kneeDirection === row.kneeDirection;
+    const older = [...comparisons].reverse().find(c => c !== recent && c.rows.some(sameSeries));
     const points = [...comparisons].reverse().flatMap(c => {
-      const r = c.rows.find(x => x.key === row.key);
+      const r = c.rows.find(sameSeries);
       return r ? [{ date: c.previousDate, value: r.previous }] : [];
     });
     points.push({ date: current.captured_at, value: row.current, current: true });

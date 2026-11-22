@@ -241,9 +241,10 @@ def analyze(request, *, review_contacts=False):
         if segment["direction"] == "unknown":
             gait = unavailable_gait(pose, segment, len(selected))
         elif review_contacts:
-            from contact_review import measure_contacts
+            from contact_review import measure_contacts, recover_rhythm
             tracking = foot_tracking(selected, pose["image"], [])
             gait = measure_contacts(mapped, start, stop, segment["direction"].removeprefix("image_"), tracking)
+            recover_rhythm(gait, selected, pose["image"], tracking)
         else:
             gait = gait_events.measure_payload(mapped, start, stop, segment["direction"].removeprefix("image_"))
         stamps = [f["source_time_ms"] for f in selected]
@@ -269,8 +270,10 @@ def analyze(request, *, review_contacts=False):
         comparison=comparison(effective), segments=segments,
         gdi=summarize_gdi(segments) if v2 else dict(status="not_configured", value=None, unavailable_reason="gdi_model_not_connected"))
     if review_contacts:
-        from contact_review import METHOD
+        from contact_review import METHOD, SEPARATION_METHOD
         response["execution"]["measurement_methods"].append(METHOD)
+        if any(s["gait"]["method_id"] == SEPARATION_METHOD for s in segments):
+            response["execution"]["measurement_methods"].append(SEPARATION_METHOD)
         response["execution"]["source_sha256"]["contact_review.py"] = sha(HERE / "contact_review.py")
     if v2:
         response["segmentation"] = detection
