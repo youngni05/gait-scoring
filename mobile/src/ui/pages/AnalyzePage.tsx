@@ -71,6 +71,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   const [picked, setPicked] = useState<Picked | null>(null);
   const [progressText,setProgressText]=useState('');
   const [pct, setPct] = useState(0);
+  const [assetPercent,setAssetPercent] = useState<number>();
   useLeaveGuard(cleaning || phase === 'running' || phase === 'preview' || phase === 'failed', '분석 또는 저장 확인이 끝나지 않았습니다. 화면을 나갈까요?');
   const [resultId, setResultId] = useState<string | null>(null);
   const [failure, setFailure] = useState<{ code: string; reason: string } | null>(null);
@@ -108,7 +109,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
     if (phase !== 'running') return;
     const abort = new AbortController();
     dataSource
-      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode:'guided',height:height ? Number(height) : null,serverPose})
+      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail,asset) => {if(!abort.signal.aborted){setPct(p);setAssetPercent(asset);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode:'guided',height:height ? Number(height) : null,serverPose})
       .then((rec) => {
         if (abort.signal.aborted) return;
         showRecord(rec);
@@ -208,7 +209,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   };
 
   const start = () => {
-    setPct(0);setProgressText('');
+    setPct(0);setAssetPercent(undefined);setProgressText('');
     setFailure(null);
     setPhase('running');
   };
@@ -337,14 +338,14 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
       {showingProgress && (
         <section style={{ margin: '24px 20px 0' }} role="status" aria-live="polite">
           <p style={{ fontSize: 'var(--text-body)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }} className="primary">
-            {phase === 'done' ? <><CheckCircleIcon size={22} /> 분석 완료</> : <><LoadingMark size={22} /> 분석하고 있습니다</>}
+            {phase === 'done' ? <><CheckCircleIcon size={22} /> 분석 완료</> : <><LoadingMark size={22} /> {assetPercent === undefined ? '분석하고 있습니다' : '분석 파일 다운로드'}</>}
           </p>
           <p style={{ marginTop: 4, fontSize: '3rem', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
-            {pct}
+            {assetPercent ?? pct}
             <span style={{ fontSize: '1.625rem' }}>%</span>
           </p>
           <div className="bar" style={{ marginTop: 16, height: 12 }}>
-            <div style={{ width: `${pct}%` }} />
+            <div style={{ width: `${assetPercent ?? pct}%` }} />
           </div>
 
           <p style={{ marginTop: 8, fontSize: 'var(--text-caption)' }} className="muted">{isDemo ? '예상 남은 시간 약 '+remainSec+'초' : progressText || (pct >= 90 ? '추출한 좌표를 확인하고 있습니다.' : '영상 프레임에서 관절 위치 추출 중')}</p>

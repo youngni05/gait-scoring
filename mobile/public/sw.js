@@ -1,4 +1,4 @@
-const CACHE = 'team-gait-shell-v11';
+const CACHE = 'team-gait-shell-v12';
 const SHELL = ['/', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png', '/apple-touch-icon.png', '/favicon.svg', '/fonts/wanted-sans/WantedSansVariable.woff2'];
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
@@ -19,7 +19,7 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || u.origin !== self.location.origin) return;
   if (event.request.mode === 'navigate' && u.pathname === '/') {
     event.respondWith(fetch(event.request).catch(() => caches.match('/')));
-  } else if (u.pathname.startsWith('/assets/') || SHELL.includes(u.pathname)) {
+  } else if (/^\/assets\/[\w.-]+\.(js|css)$/.test(u.pathname) || SHELL.includes(u.pathname)) {
     event.respondWith((async () => {
       const cache = await caches.open(CACHE);
       const hit = await cache.match(event.request);

@@ -1,9 +1,10 @@
 import { BrowserVideoSource } from '../../pose/browser-video-source';
 import { MediaPipePoseExtractor, PoseInferenceError } from '../../pose/mediapipe-extractor';
 import { extractVideo } from '../../pose/extract-video';
-import type { CaptureDaySource } from './source';
+import type { AnalysisProgress, CaptureDaySource } from './source';
 
 import { teamApi } from './teamApi';
+import { preparePoseAssets } from './pose-assets';
 import { ApiError } from '../../api/client';
 
 interface ServerPose {
@@ -43,18 +44,20 @@ async function sha256(bytes: ArrayBuffer) {
   return Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function extractOnDevice(file: File, signal: AbortSignal, progress: (percent:number,detail?:string)=>void) {
+async function extractOnDevice(file: File, signal: AbortSignal, progress: AnalysisProgress) {
+  progress(0,'영상 형식과 길이를 확인하고 있습니다.');
   const session = await new BrowserVideoSource(document.createElement('div')).open(file, signal);
+  let assets: Awaited<ReturnType<typeof preparePoseAssets>> | undefined;
   try {
-    const asset = await fetch(teamApi.base + '/assets/pose-full.task', {signal});
-    if (!asset.ok)
-      throw new Error('관절 추출 모델을 불러오지 못했습니다. 앱 연결을 확인해 주세요.');
-    const bytes = await asset.arrayBuffer();
+    progress(0,'저장된 관절 모델과 실행 파일을 확인하고 있습니다.');
+    const prepared = await preparePoseAssets(teamApi.base,signal,(text,percent)=>progress(0,text,percent));
+    assets = prepared;
+    const modelHash = prepared.modelHash;
+    progress(0,'분석 파일을 확인했습니다. 관절 분석기를 시작합니다.');
     const sourceHash = await sha256(await file.arrayBuffer());
-    const modelHash = await sha256(bytes);
     async function extractWith(delegate: 'GPU' | 'CPU') {
       let engine: MediaPipePoseExtractor;
-      try { engine = await MediaPipePoseExtractor.create(signal, 1, 'ImageData', new Uint8Array(bytes), delegate); }
+      try { engine = await MediaPipePoseExtractor.create(signal, 1, 'ImageData', prepared.modelBytes, delegate, prepared.files); }
       catch (cause) { signal.throwIfAborted(); throw new PoseInferenceError('관절 추출기를 시작하지 못했습니다.', { cause }); }
       try {
         const run = await extractVideo(session, engine, signal, count => {
@@ -75,11 +78,12 @@ async function extractOnDevice(file: File, signal: AbortSignal, progress: (perce
     return {width,height,orientation,rotationAppliedDegrees,frames:run.frames,configuration,inputObject,sourceHash,modelHash,
       profile:'team-browser-full-'+configuration.delegate.toLowerCase()+'-video/1'};
   } finally {
+    assets?.dispose();
     await session.dispose();
   }
 }
 
-export async function extractCapture(file: File, aliasId: string, day: string, mode: 'guided'|'fixed', signal: AbortSignal, progress: (percent:number,detail?:string)=>void, captureHeight:number|null, daySource: CaptureDaySource = day ? 'user_entered' : 'unknown', serverPose=false) {
+export async function extractCapture(file: File, aliasId: string, day: string, mode: 'guided'|'fixed', signal: AbortSignal, progress: AnalysisProgress, captureHeight:number|null, daySource: CaptureDaySource = day ? 'user_entered' : 'unknown', serverPose=false) {
     if (serverPose) progress(5,'HTTPS로 전송해 서버에서 관절을 추출하고 있습니다.');
     const {width,height,orientation,rotationAppliedDegrees,frames,configuration,inputObject,sourceHash,modelHash,profile} =
       serverPose ? await extractOnServer(file,signal) : await extractOnDevice(file,signal,progress);
