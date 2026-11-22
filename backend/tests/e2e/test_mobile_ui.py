@@ -206,8 +206,9 @@ class MobileUiTests(unittest.TestCase):
                 mid = uuid4(); ids.append(str(mid))
                 conn.execute(text('''INSERT INTO gait_measurements
                     (id,participant_id,age,keypoints_json,extractor_name,extractor_version,measured_at,analysis_started_at,created_by)
-                    VALUES (:id,:pid,76,'{"private_pose":true}'::jsonb,'synthetic','1',NULL,:at,:uid)'''),
-                    dict(id=mid,pid=self.person_id,uid=self.user_id,at=datetime(2026,1,1,tzinfo=timezone.utc)+timedelta(days=i)))
+                    VALUES (:id,:pid,76,CAST(:pose AS jsonb),'synthetic','1',NULL,:at,:uid)'''),
+                    dict(id=mid,pid=self.person_id,uid=self.user_id,pose=json.dumps({"private_pose": True}),
+                         at=datetime(2026,1,1,tzinfo=timezone.utc)+timedelta(days=i)))
         return ids
 
     def test_pagination_and_subject_summary_avoid_detail_requests(self):
