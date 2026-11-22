@@ -84,8 +84,8 @@ class BrowserIntegrationTests(unittest.TestCase):
         cls.ui = f'http://127.0.0.1:{ui_port}'
         cls.launch([sys.executable, '-m', 'uvicorn', 'app.main:app', '--host', '127.0.0.1', '--port', str(api_port)],
                    BACKEND, {**os.environ, 'DATABASE_URL': scoped, 'JWT_SECRET_KEY': cls.secret, 'CORS_ALLOW_ORIGINS': cls.ui}, cls.api + '/db-health')
-        cls.launch(['node', str(ROOT / 'node_modules/vite/bin/vite.js'), 'legacy-ui', '--host', '127.0.0.1', '--port', str(ui_port), '--strictPort'],
-                   ROOT, {**os.environ, 'VITE_E2E_MODE': 'true'}, cls.ui)
+        cls.launch(['node', str(ROOT / 'node_modules/vite/bin/vite.js'), getattr(cls, 'ui_root', 'legacy-ui'), '--host', '127.0.0.1', '--port', str(ui_port), '--strictPort'],
+                   ROOT, {**os.environ, 'VITE_E2E_MODE': 'true', 'VITE_TEAM_API_BASE': cls.api}, cls.ui)
         cls.playwright = sync_playwright().start()
         cls.addClassCleanup(cls.playwright.stop)
         cls.browser = cls.playwright.chromium.launch()

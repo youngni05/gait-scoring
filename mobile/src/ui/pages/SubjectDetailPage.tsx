@@ -13,13 +13,13 @@ export function SubjectDetailPage() {
   const { subjectId = '' } = useParams();
   const navigate = useNavigate();
   const { data, loading, error, reload } = useAsync(
-    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResults(subjectId, signal)]),
+    (signal) => dataSource.getSubjectSummary(subjectId, signal),
     [subjectId],
   );
   const back = () => navigate('/subjects');
   if (loading) return <PageLoading title="대상자 상세" nav="back" onNav={back} />;
   if (error || !data) return <PageError title="대상자 상세" onNav={back} onRetry={reload} />;
-  const [subject, records] = data;
+  const subject = data;
   if (!subject) return <NotFound />;
 
   const info: [string, ReactNode][] = [
@@ -28,11 +28,6 @@ export function SubjectDetailPage() {
     ['키', subject.heightCm===null?'미확인':<>{subject.heightCm} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
     ['생년월일', <span style={{ fontSize: 17, lineHeight: '30px' }}>{fmtBirth(subject.birth)||'미확인'}</span>],
   ];
-  const latest = records[0];
-  // 실제 분석 기록이 있을 때만 전체 기록 요약 카드를 보여 준다(데모의 가상 기록은 이 계산의 입력이 아니다).
-  const lives = records.flatMap((r) => (r.live ? [r.live] : []));
-  const overview = lives.length ? subjectOverview(lives) : null;
-
   return (
     <div className="screen" style={{ paddingBottom: 40 }}>
       <TopBar title="대상자 상세" nav="back" onNav={back} />
@@ -62,18 +57,9 @@ export function SubjectDetailPage() {
         </button>
       </section>
 
-      {overview?.latest && (
-        <section style={{ margin: '20px 20px 0' }}>
-          <button className="ovw-summary" onClick={() => navigate(`/subjects/${subject.id}/overview`)}>
-            <span className="t">
-              보행 변화 요약
-              <small> · 기록 {overview.visits.length}회</small>
-            </span>
-            <span className="s">{overview.lines[0]}</span>
-            <span className="go">전체 기록 해석 보기 <ChevronRightIcon size={16} /></span>
-          </button>
-        </section>
-      )}
+      {subject.resultCount > 0 && <section style={{margin:20}}>
+        <button className="btn btn-outline" onClick={()=>navigate(`/subjects/${subject.id}/overview`)}>전체 기록 해석 보기</button>
+      </section>}
 
       <section style={{ margin: '28px 20px 0' }}>
         <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12 }}>무엇을 하시겠어요?</h3>
@@ -103,8 +89,8 @@ export function SubjectDetailPage() {
             <span style={{ flex: 1 }}>
               <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>이전 결과 조회</span>
               <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'var(--fg-70)' }}>
-                {latest ? (
-                  <>분석 기록 <b className="primary">{records.length}건</b> · 최근 {fmtDate(latest.measuredAt)}</>
+                {subject.resultCount > 0 ? (
+                  <>분석 기록 <b className="primary">{subject.resultCount}건</b> · 최근 {fmtDate(subject.latestMeasuredAt ?? '')}</>
                 ) : (
                   '아직 분석 기록이 없습니다'
                 )}

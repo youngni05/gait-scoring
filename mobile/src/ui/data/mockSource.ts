@@ -37,6 +37,7 @@ export const mockSource: GaitDataSource = {
   },
 
   logout() {},
+  async pendingCapture() { return null; },
 
   async listSubjects(signal) {
     await wait(600, signal);
@@ -49,6 +50,13 @@ export const mockSource: GaitDataSource = {
     });
   },
 
+  async getSubjectSummary(id, signal) {
+    return (await this.listSubjects(signal)).find(s => s.id === id) ?? null;
+  },
+  async listResultPage(id, offset, signal) {
+    const rows = await this.listResults(id, signal);
+    return {items:rows.slice(offset,offset+20), total:rows.length, offset, limit:20};
+  },
   async getSubject(id, signal) {
     await wait(150, signal);
     return subjects.find((s) => s.id === id) ?? null;

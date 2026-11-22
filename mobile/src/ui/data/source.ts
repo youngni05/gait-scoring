@@ -25,11 +25,16 @@ export class AnalysisFailedError extends Error {
   }
 }
 
+export interface ResultPage { items: ResultRecord[]; total: number; offset: number; limit: number }
+
 export interface GaitDataSource {
   login(username: string, password: string): Promise<void>;
   logout(): void;
+  pendingCapture(subjectId: string): Promise<{id: string; fileName: string} | null>;
 
   listSubjects(signal?: AbortSignal): Promise<SubjectSummary[]>;
+  getSubjectSummary(id: string, signal?: AbortSignal): Promise<SubjectSummary | null>;
+  listResultPage(subjectId: string, offset: number, signal?: AbortSignal): Promise<ResultPage>;
   getSubject(id: string, signal?: AbortSignal): Promise<Subject | null>;
   createSubject(input: SubjectInput): Promise<Subject>;
   updateSubject(id: string, input: SubjectInput): Promise<Subject>;
