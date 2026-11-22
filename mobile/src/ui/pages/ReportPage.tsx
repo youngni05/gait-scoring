@@ -10,32 +10,33 @@ import { AxisNote, LegendLR, PageError, PageLoading, TopBar } from '../component
 import { ChartLineIcon, DownloadIcon, ExpandIcon, InfoIcon, TriangleAlertIcon } from '../components/icons';
 import { JOINTS, JOINT_LABEL, MISSING_LABEL, dataSource, fmtDate, fmtTime, fmtWeekday, type MissingKey } from '../data';
 import { useNavigate, useParams } from '../router';
-import { useAsync } from '../session';
+import { useReport } from './useReport';
 import { LiveMetrics, VisitHistory } from './VisitMetrics';
-import { teamApi } from '../data/teamApi';
 import { NotFound } from './NotFound';
 
 export function ReportPage() {
   const { subjectId = '', recordId = '' } = useParams();
+  return <ReportContent key={subjectId+'/'+recordId} subjectId={subjectId} recordId={recordId} />;
+}
+
+function ReportContent({subjectId, recordId}: {subjectId: string; recordId: string}) {
   const navigate = useNavigate();
   const [openInfo, setOpenInfo] = useState<{ gdi?: boolean; sym?: boolean }>({});
   const [history,setHistory]=useState(false);
   const [selected,setSelected]=useState(()=>Number(sessionStorage.getItem('segment-'+recordId)??0));
-  const [retryFailed,setRetryFailed] = useState(false);
   const [downloading, setDownloading] = useState(false);
-  const { data, loading, error, reload } = useAsync(
-    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.getResult(subjectId, recordId, signal)]),
-    [subjectId, recordId],
-  );
+  const { data, refreshing, retrying, error, retryFailed, reload, retry } = useReport(subjectId, recordId);
   const toList = () => navigate(`/subjects/${subjectId}/results`);
   const pending = data?.[1]?.serverState === 'pending';
+  const [longWait, setLongWait] = useState(false);
   useEffect(() => {
-    if (!pending || loading || error) return;
-    const timer = window.setTimeout(reload, 3000);
+    setLongWait(false);
+    if (!pending) return;
+    const timer = window.setTimeout(() => setLongWait(true), 60000);
     return () => clearTimeout(timer);
-  }, [pending, loading, error, reload]);
-  if (loading) return <PageLoading title="분석 결과지" nav="back" onNav={toList} />;
-  if (error || !data) return <PageError title="분석 결과지" onNav={toList} onRetry={reload} />;
+  }, [pending]);
+  if (!data && refreshing) return <PageLoading title="분석 결과지" nav="back" onNav={toList} />;
+  if (!data) return <PageError title="분석 결과지" onNav={toList} onRetry={reload} />;
   const [subject, rec] = data;
   if (!subject || !rec) return <NotFound />;
 
@@ -44,11 +45,17 @@ export function ReportPage() {
     <section className="card" style={{margin:20,padding:20}} role="status">
       <h2>{pending ? '좌표가 서버에 저장되었습니다' : '서버 분석에 실패했습니다'}</h2>
       <p>{pending ? '분석이 끝나면 결과를 표시합니다. 화면을 닫아도 이전 결과에서 다시 열 수 있습니다.' : '촬영 좌표는 서버에 보관되어 있습니다.'}</p>
-      {!pending && <button className="btn btn-primary" onClick={async () => {
-        try { await teamApi.shared('/recordings/'+rec.id+'/retry',{method:'POST'}); reload(); }
-        catch { setRetryFailed(true); }
-      }}>같은 촬영 다시 분석</button>}
-      {retryFailed && <p role="alert">요청을 보내지 못했습니다. 연결을 확인해 주세요.</p>}
+      {pending && longWait && <p role="status">이 화면에서 1분 이상 기다리고 있습니다. 서버 처리 상황에 따라 더 걸릴 수 있습니다. 이전 결과 목록으로 나갔다가 다시 확인해도 됩니다.</p>}
+      {error != null && <p role="alert">최신 분석 상태를 확인하지 못했습니다. 마지막으로 확인한 상태를 표시합니다. {pending ? '잠시 후 자동으로 다시 확인합니다.' : '상태 확인 버튼으로 다시 확인해 주세요.'}</p>}
+      {pending && <button className="btn btn-outline" disabled={refreshing} onClick={reload}>
+        {refreshing ? '상태 확인 중…' : '지금 상태 확인'}
+      </button>}
+      {!pending && <button className="btn btn-primary" disabled={refreshing || retrying} onClick={retry}>
+        {retrying ? '재분석 요청 중…' : '같은 촬영 다시 분석'}
+      </button>}
+      {retryFailed && <p role="alert">재분석 요청의 처리 여부를 확인하지 못했습니다. 상태를 먼저 확인해 주세요.</p>}
+      {!pending && (retryFailed || error != null) && <button className="btn btn-outline" disabled={refreshing} onClick={reload}>지금 상태 확인</button>}
+      <button className="btn btn-outline" onClick={toList}>이전 결과 목록으로</button>
     </section></main>;
   const missingKeys = Object.keys(rec.missing) as MissingKey[];
   const partial = missingKeys.length > 0;
