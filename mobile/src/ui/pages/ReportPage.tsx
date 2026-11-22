@@ -13,6 +13,7 @@ import { useNavigate, useParams } from '../router';
 import { useReport } from './useReport';
 import { LiveMetrics, VisitHistory } from './VisitMetrics';
 import { NotFound } from './NotFound';
+import { formatMetric } from '../metric-format';
 
 export function ReportPage() {
   const { subjectId = '', recordId = '' } = useParams();
@@ -144,7 +145,7 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
               <InfoIcon size={18} />
             </button>
           </div>
-          <p style={{ marginTop: 8, fontSize: 52, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>{rec.gdi ?? '—'}</p>
+          <p style={{ marginTop: 8, fontSize: 52, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>{formatMetric(rec.gdi, 1)}</p>
           <p style={{ marginTop: 8, fontSize: 14, color: 'rgb(255 255 255 / .8)' }}>Gait Deviation Index</p>
           {openInfo.gdi && (
             <div style={{ marginTop: 16, borderRadius: 'var(--r-md)', background: 'rgb(255 255 255 / .15)', padding: '12px 16px', fontSize: 14, lineHeight: 1.6 }}>
@@ -157,7 +158,7 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
           <div className="card" style={{ padding: 16 }}>
             <p style={{ fontSize: 15, fontWeight: 700 }}>분당 걸음 수</p>
             <p style={{ fontSize: 13 }} className="muted">케이던스</p>
-            <p style={{ marginTop: 12, fontSize: 34, fontWeight: 800, lineHeight: 1 }}>{rec.cadence ?? '—'}</p>
+            <p style={{ marginTop: 12, fontSize: 34, fontWeight: 800, lineHeight: 1 }}>{formatMetric(rec.cadence, 0)}</p>
             <p style={{ marginTop: 6, fontSize: 14, fontWeight: 600, color: 'var(--fg-70)' }}>
               걸음/분 <span style={{ fontWeight: 400, color: 'var(--fg-50)' }}>(steps/min)</span>
             </p>
@@ -175,7 +176,7 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
                   <InfoIcon size={18} />
                 </button>
               </div>
-              <p style={{ marginTop: 12, fontSize: 34, fontWeight: 800, lineHeight: 1 }}>{rec.symmetry}</p>
+              <p style={{ marginTop: 12, fontSize: 34, fontWeight: 800, lineHeight: 1 }}>{formatMetric(rec.symmetry, 1)}</p>
               <p style={{ marginTop: 6, fontSize: 14, fontWeight: 600, color: 'var(--fg-50)' }}>단위 확정 예정</p>
             </div>
           ) : (
@@ -208,7 +209,7 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
           <div style={{ marginTop: 12 }}><LegendLR /></div>
           <AxisNote />
         </div>
-        <div style={{ margin: '16px 20px 0', display: 'grid', gap: 16 }}>
+        <div style={{ margin: '16px 20px 0', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 16 }}>
           {JOINTS.map((j) => {
             const curve = rec.curves[j];
             return (
