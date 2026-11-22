@@ -2,7 +2,7 @@
 import { useState, type FormEvent } from 'react';
 import { APP_NAME, APP_TAGLINE, BrandMark, LoadingMark } from '../components/brand';
 import { AlertCircleIcon, EyeIcon, EyeOffIcon } from '../components/icons';
-import { LoginFailedError, isDemo } from '../data';
+import { LoginFailedError } from '../data';
 import { useNavigate } from '../router';
 import { useSession } from '../session';
 
@@ -111,9 +111,9 @@ export function LoginPage() {
       </form>
 
       <p style={{ marginTop: 'auto', paddingTop: 40, textAlign: 'center', fontSize: 15, lineHeight: 1.6 }} className="muted">
-        {isDemo ? <>계정 발급 및 비밀번호 문의는
+        계정 발급 및 비밀번호 문의는
         <br />
-        소속 기관 관리자에게 연락해 주세요.</> : "팀 계정으로 로그인하면 다른 기기에서 저장한 측정 기록도 볼 수 있습니다."}
+        소속 기관 관리자에게 연락해 주세요.
       </p>
     </main>
   );
