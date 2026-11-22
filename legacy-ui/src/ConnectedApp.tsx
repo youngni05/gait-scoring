@@ -26,7 +26,7 @@ function History({ client, participant, revision }: { client: ApiClient; partici
   return <section className="card"><h2>측정 기록</h2><button className="secondary" disabled={busy} onClick={() => { setOffset(0); setRefresh(v => v + 1); }}>새로고침</button><p role="status">{message}</p>
     <ul>{rows.map(row => <li key={row.id}><button className="secondary" onClick={() => void show(row.id)}>{(row.analysis_started_at || row.measured_at) ? new Date(row.analysis_started_at ?? row.measured_at ?? '').toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }) : '촬영일 미확인'} · {row.has_analysis_result ? '결과 보기' : '저장 기록 보기'}</button></li>)}</ul>
     <div className="actions"><button disabled={busy || offset === 0} onClick={() => setOffset(v => Math.max(0, v - 20))}>이전</button><button disabled={busy || rows.length < 20} onClick={() => setOffset(v => v + 20)}>다음</button></div>
-    {result && <article><h3>측정 상세</h3><p>측정 ID: {result.measurement.id}</p><p>촬영 당시 나이 {result.measurement.age == null ? '미확인' : '만 '+result.measurement.age+'세'}</p>
+    {result && <article><h3>측정 상세</h3><p>측정 ID: {result.measurement.id}</p><p>{result.measurement.analysis_started_at ? '분석 시작 당시' : '촬영 당시'} {result.measurement.age == null ? '나이 미확인' : '만 '+result.measurement.age+'세'}</p>
       {result.status === 'not_available' ? <p>측정은 저장되었습니다. 분석 결과는 아직 없습니다. 자동 분석 실행 여부를 뜻하지 않습니다.</p> : <><p>GDI: {result.analysis_result!.gdi_score ?? '값 없음'}</p><p>보폭: {result.analysis_result!.stride_length_cm ?? '값 없음'} cm · 케이던스: {result.analysis_result!.cadence_spm ?? '값 없음'} steps/min</p><p>모델 버전: {result.analysis_result!.model_version}</p></>}
     </article>}
   </section>;
