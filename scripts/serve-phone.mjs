@@ -6,15 +6,18 @@ import { resolve, extname, sep } from 'node:path';
 
 const host = process.env.PHONE_HOST;
 if (!host || !/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) throw new Error('PHONE_HOST must be a local IPv4 address');
-const root = resolve('mobile/dist');
+const apiUrl = process.env.PHONE_API_URL;
+if (!apiUrl || !/^http:\/\/127\.0\.0\.1:\d+$/.test(apiUrl)) throw new Error('PHONE_API_URL must be the local Compose API URL');
+const api = new URL(apiUrl);
+const root = resolve('mobile/local-output/phone');
 const certificates = resolve('local-test-data/phone-tls');
 const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.task':'application/octet-stream','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2'};
 const server = https.createServer({key:readFileSync(resolve(certificates,'server.key')),cert:readFileSync(resolve(certificates,'server.crt'))}, (req,res) => {
   const url = new URL(req.url, 'https://localhost');
   if (url.pathname.startsWith('/api/')) {
-    const headers = {...req.headers, host:'127.0.0.1:8000'};
+    const headers = {...req.headers, host:api.host};
     delete headers.origin; delete headers.referer;
-    const upstream = http.request({hostname:'127.0.0.1',port:8000,path:url.pathname.slice(4)+url.search,method:req.method,headers}, response => {
+    const upstream = http.request({hostname:api.hostname,port:api.port,path:url.pathname.slice(4)+url.search,method:req.method,headers}, response => {
       res.writeHead(response.statusCode, response.headers); response.pipe(res);
     });
     upstream.on('error', () => { if (!res.headersSent) res.writeHead(502); res.end('Local API unavailable'); });

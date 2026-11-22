@@ -2,7 +2,9 @@ import { ApiClient } from '../../api/client';
 
 const tokenKey = 'team-access-token';
 export const teamApi = new ApiClient(
-  import.meta.env.VITE_TEAM_API_BASE || location.origin + '/api',
+  import.meta.env.VITE_TEAM_API_BASE === '/api'
+    ? location.origin + '/api'
+    : import.meta.env.VITE_TEAM_API_BASE || location.origin + '/api',
   () => sessionStorage.getItem(tokenKey) ?? '',
   async (url, init) => {
     const response = await fetch(url, init);

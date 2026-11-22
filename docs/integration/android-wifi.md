@@ -14,6 +14,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-phone.ps1 -A
 
 PC용 5173 개발 서버와 함께 실행할 수 있다. 휴대폰용은 빌드된 화면을 사용하므로 코드 수정 후에는
 Ctrl+C로 종료하고 위 명령을 다시 실행한다. API/DB는 기존 start-dev.ps1의 영구 환경이다.
+휴대폰 빌드는 `mobile/local-output/phone`에 따로 저장하므로 PC용 `mobile/dist`를 덮어쓰지 않는다.
+앱은 같은 주소의 `/api`로 요청하고, 휴대폰 서버는 Compose에서 확인한 실제 API 포트로 전달한다.
 
 방화벽 설정은 **관리자 권한 PowerShell**에서 한 번 실행한다. IP가 바뀌면 다시 실행한다.
 
