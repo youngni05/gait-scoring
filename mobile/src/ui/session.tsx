@@ -2,9 +2,11 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { dataSource, isDemo } from './data';
 import { useRouter } from './router';
+import { teamApi } from './data/teamApi';
 
 interface Session {
   loggedIn: boolean;
+  username: string;
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
 }
@@ -14,21 +16,32 @@ const Ctx = createContext<Session | null>(null);
 export function SessionProvider({ children }: { children: ReactNode }) {
   const { confirmLeave } = useRouter();
   const [loggedIn, setLoggedIn] = useState(!isDemo && Boolean(sessionStorage.getItem('team-access-token')));
+  const [username, setUsername] = useState('');
+  useEffect(() => {
+    if (!loggedIn || isDemo) return;
+    const abort = new AbortController();
+    teamApi.me(abort.signal)
+      .then(user => { if (!abort.signal.aborted) setUsername(user.login_id); })
+      .catch(() => { /* 인증 만료는 team-session-expired에서 처리한다. */ });
+    return () => abort.abort();
+  }, [loggedIn]);
   const login = useCallback(async (u: string, p: string) => {
     await dataSource.login(u, p);
+    setUsername(u);
     setLoggedIn(true);
   }, []);
   const logout = useCallback(() => {
     if (!confirmLeave()) return;
     dataSource.logout();
+    setUsername('');
     setLoggedIn(false);
   }, [confirmLeave]);
   useEffect(() => {
-    const expired = () => setLoggedIn(false);
+    const expired = () => { setUsername(''); setLoggedIn(false); };
     window.addEventListener('team-session-expired', expired);
     return () => window.removeEventListener('team-session-expired', expired);
   }, []);
-  const value = useMemo(() => ({ loggedIn, login, logout }), [loggedIn, login, logout]);
+  const value = useMemo(() => ({ loggedIn, username, login, logout }), [loggedIn, username, login, logout]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
