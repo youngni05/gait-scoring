@@ -45,6 +45,7 @@ export interface GaitDataSource {
   /** 최신순 */
   listResults(subjectId: string, signal?: AbortSignal): Promise<ResultRecord[]>;
   getResult(subjectId: string, resultId: string, signal?: AbortSignal): Promise<ResultRecord | null>;
+  updateCaptureDay(subjectId: string, resultId: string, day: string, previousDay: string | null): Promise<void>;
   deleteResult(subjectId: string, resultId: string): Promise<void>;
 
   /**

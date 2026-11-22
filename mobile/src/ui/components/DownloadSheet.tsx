@@ -44,8 +44,8 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
               <span className="round-icon" style={{ background: 'var(--accent)', color: 'var(--primary)' }}>
                 <LoadingMark size={40} />
               </span>
-              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>결과 파일을 준비하고 있습니다</h2>
-              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">잠시만 기다려 주세요.</p>
+              <h2 style={{ marginTop: 16, fontSize: '1.3125rem', fontWeight: 800 }}>결과 파일을 준비하고 있습니다</h2>
+              <p style={{ marginTop: 6, fontSize: 'var(--text-body)' }} className="muted">잠시만 기다려 주세요.</p>
             </>
           )}
           {phase === 'done' && (
@@ -53,8 +53,8 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
               <span className="round-icon" style={{ background: 'rgb(23 191 99 / .15)', color: 'var(--ok)' }}>
                 <CheckIcon size={28} />
               </span>
-              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>{record.live ? "브라우저에 파일을 전달했습니다" : "다운로드가 완료되었습니다"}</h2>
-              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">{record.live ? "브라우저의 다운로드 목록에서 확인해 주세요." : "휴대폰의 ‘다운로드’ 폴더에 저장되었습니다."}</p>
+              <h2 style={{ marginTop: 16, fontSize: '1.3125rem', fontWeight: 800 }}>{record.live ? "브라우저에 파일을 전달했습니다" : "다운로드가 완료되었습니다"}</h2>
+              <p style={{ marginTop: 6, fontSize: 'var(--text-body)' }} className="muted">{record.live ? "브라우저의 다운로드 목록에서 확인해 주세요." : "휴대폰의 ‘다운로드’ 폴더에 저장되었습니다."}</p>
             </>
           )}
           {phase === 'fail' && (
@@ -62,8 +62,8 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
               <span className="round-icon" style={{ background: 'rgb(244 33 46 / .1)', color: 'var(--danger)' }}>
                 <CloseIcon size={28} />
               </span>
-              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>다운로드하지 못했습니다</h2>
-              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">
+              <h2 style={{ marginTop: 16, fontSize: '1.3125rem', fontWeight: 800 }}>다운로드하지 못했습니다</h2>
+              <p style={{ marginTop: 6, fontSize: 'var(--text-body)' }} className="muted">
                 {name} · {fmtDate(record.measuredAt)} 측정 결과지
               </p>
             </>
@@ -74,11 +74,11 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
           <div
             style={{ marginTop: 24, borderRadius: 'var(--r-md)', border: '2px solid rgb(244 33 46 / .25)', background: 'rgb(244 33 46 / .05)', padding: 16 }}
           >
-            <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--danger)' }}>원인</p>
-            <p style={{ marginTop: 4, fontSize: 16, fontWeight: 700, lineHeight: 1.4 }}>
+            <p style={{ fontSize: 'var(--text-caption)', fontWeight: 700, color: 'var(--danger)' }}>원인</p>
+            <p style={{ marginTop: 4, fontSize: 'var(--text-body)', fontWeight: 700, lineHeight: 1.4 }}>
               휴대폰 저장 공간이 부족하거나 네트워크 연결이 불안정합니다.
             </p>
-            <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'var(--fg-70)' }}>
+            <p style={{ marginTop: 8, fontSize: 'var(--text-caption)', lineHeight: 1.6, color: 'var(--fg-70)' }}>
               저장 공간과 인터넷 연결을 확인한 뒤 다시 시도해 주세요.
             </p>
           </div>
@@ -94,8 +94,8 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
               <FileIcon size={22} />
             </span>
             <div style={{ minWidth: 0, flex: 1 }}>
-              <p style={{ fontSize: 15, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{fileName}</p>
-              <p style={{ marginTop: 2, fontSize: 13, color: 'var(--fg-60)', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <p style={{ fontSize: 'var(--text-body)', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{fileName}</p>
+              <p style={{ marginTop: 2, fontSize: 'var(--text-caption)', color: 'var(--fg-60)', display: 'flex', alignItems: 'center', gap: 6 }}>
                 파일 형식 <span className="pill pill-draft">{record.live ? "JSON" : "확정 예정"}</span>
               </p>
             </div>

@@ -54,15 +54,15 @@ export function ResultListPage() {
       <TopBar title="이전 결과" nav="back" onNav={back} subject={subject} />
 
       <div style={{ padding: '20px 20px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <p style={{ fontSize: 16, fontWeight: 700 }}>
+        <p style={{ fontSize: 'var(--text-body)', fontWeight: 700 }}>
           분석 기록 <span className="primary">{page.total}건</span>
         </p>
-        <p style={{ fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 4 }} className="muted">
+        <p style={{ fontSize: 'var(--text-caption)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 4 }} className="muted">
           <SortIcon size={16} /> 최신순
         </p>
       </div>
 
-      <ul style={{ padding: '0 20px', display: 'grid', gap: 12 }}>
+      <ul className="record-cards">
         {records.map((r, i) => {
           const isLatest = offset === 0 && i === 0;
           const partial = Object.keys(r.missing).length > 0;
@@ -75,11 +75,11 @@ export function ResultListPage() {
               >
                 <div className="record-heading">
                   <div className="record-identity">
-                    <p style={{ fontSize: 19, fontWeight: 800 }}>
+                    <p style={{ fontSize: 'var(--text-heading)', fontWeight: 800 }}>
                       {fmtDate(r.measuredAt)}{' '}
-                      <span style={{ fontSize: 15, fontWeight: 600 }} className="muted">{fmtWeekday(r.measuredAt)}</span>
+                      <span style={{ fontSize: 'var(--text-body)', fontWeight: 600 }} className="muted">{fmtWeekday(r.measuredAt)}</span>
                     </p>
-                    <p style={{ fontSize: r.live ? 13 : 14, marginTop: 2 }} className="muted">{r.serverState === 'pending' ? '팀 서버 분석 대기·진행 중' : r.serverState === 'failed' ? '서버 분석 실패' : r.live ? r.fileName : fmtTime(r.measuredAt)+' 측정'}</p>
+                    <p style={{ fontSize: 'var(--text-caption)', marginTop: 2 }} className="muted">{r.serverState === 'pending' ? '팀 서버 분석 대기·진행 중' : r.serverState === 'failed' ? '서버 분석 실패' : r.live || !r.measuredAt.includes('T') ? r.fileName : fmtTime(r.measuredAt)+' 측정'}</p>
                   </div>
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                     {isLatest && <span className="pill pill-primary">최신</span>}
@@ -105,7 +105,7 @@ export function ResultListPage() {
                     <p className={`v ${r.symmetry === null ? 'none' : ''}`}>{formatMetric(r.symmetry, 1)}</p>
                   </div>
                 </div>
-                <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 14, color: 'var(--fg-70)' }}>
+                <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 'var(--text-caption)', color: 'var(--fg-70)' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                     <UserIcon size={15} /> {r.dateBasis === 'analysis_start' ? '분석 시작 당시' : '촬영 당시'} {r.ageAtCapture===null?'나이 미확인':r.ageAtCapture+'세'} · {r.heightAtCapture===null?'키 미확인':r.heightAtCapture+'cm'}
                   </span>

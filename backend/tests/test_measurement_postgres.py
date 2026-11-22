@@ -157,6 +157,42 @@ class MeasurementPostgresTests(unittest.TestCase):
         with Session(self.engine) as db:
             return db.scalar(select(func.count()).select_from(GaitMeasurement).where(GaitMeasurement.participant_id == self.participant_id))
 
+    def test_edit_capture_day_preserves_original_and_reorders_visits(self):
+        from app.models import GaitAnalysisResult
+        first, second = uuid4(), uuid4()
+        stamp = datetime(2025, 7, 1, tzinfo=timezone.utc)
+        report = {"captured_at": None, "record": {"captured_at": None}, "analysis": {"segments": []}}
+        path = f"/team/participants/{self.participant_id}/recordings"
+        with Session(self.engine) as db:
+            for mid, measured in [(first, None), (second, stamp)]:
+                db.add(GaitMeasurement(id=mid, participant_id=self.participant_id, created_by=self.user_id,
+                    keypoints_json={}, extractor_name="test", extractor_version="1", measured_at=measured,
+                    processing_metadata={"height_cm": 166.5}, analysis_status="ready"))
+            db.flush()
+            db.add(GaitAnalysisResult(measurement_id=first, report_json=report, model_version="test", analyzed_at=stamp))
+            db.commit()
+        endpoint = f"{path}/{first}/capture-day"
+        body = {"day": "2025-08-15", "previous_day": None}
+        self.assertEqual(self.http(path)[1][0]["id"], str(second))
+        self.assertEqual(self.http(endpoint, "PATCH", body, token=None)[0], 401)
+        self.assertEqual(self.http(endpoint.replace(str(self.participant_id), str(uuid4())), "PATCH", body)[0], 404)
+        for invalid in ("1949-12-31", "2999-01-01"):
+            self.assertEqual(self.http(endpoint, "PATCH", {**body, "day": invalid})[0], 422)
+        for _ in range(2):
+            self.assertEqual(self.http(endpoint, "PATCH", body)[0], 204)
+        self.assertEqual(self.http(endpoint, "PATCH", {**body, "day": "2025-08-16"})[0], 409)
+        row = self.http(f"/team/recordings/{first}")[1]
+        self.assertEqual((row["captureDay"], row["heightAtCapture"], row["ageAtCapture"]), ("2025-08-15", 166.5, 75))
+        self.assertEqual(row["live"]["record"]["captured_at"], "2025-08-15T00:00:00+09:00")
+        self.assertEqual(self.http(path)[1][0]["id"], str(first))
+        summary = self.http(f"/team/participant-summaries/{self.participant_id}")[1]
+        self.assertEqual(summary["recentVisits"][0]["captured_at"], row["live"]["captured_at"])
+        page = self.http(f"/team/participants/{self.participant_id}/recording-summaries")[1]
+        self.assertEqual(page["items"][0]["id"], str(first))
+        with Session(self.engine) as db:
+            self.assertIsNone(db.get(GaitMeasurement, first).measured_at)
+            self.assertEqual(db.scalar(select(GaitAnalysisResult).where(GaitAnalysisResult.measurement_id == first)).report_json, report)
+
     def test_shared_capture_survives_disconnect_and_replay(self):
         from unittest.mock import patch
         from app.ai_module import POSE_MODEL_SHA256

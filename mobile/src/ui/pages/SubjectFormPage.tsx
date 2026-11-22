@@ -129,7 +129,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
 
       <form noValidate onSubmit={(e) => e.preventDefault()} style={{ padding: '24px 20px 0', display: 'grid', gap: 28 }}>
         {!isEdit && (
-          <p style={{ fontSize: 14 }} className="muted">
+          <p style={{ fontSize: 'var(--text-caption)' }} className="muted">
             <span className="req" style={{ fontWeight: 700 }}>*</span> 표시는 필수 입력 항목입니다.
           </p>
         )}
@@ -186,10 +186,10 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
             style={{ marginTop: 12, borderRadius: 'var(--r-md)', background: 'var(--accent)', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
             aria-live="polite"
           >
-            <span style={{ fontSize: 15, color: 'var(--fg-70)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ fontSize: 'var(--text-body)', color: 'var(--fg-70)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
               <CalculatorIcon size={16} className="primary" /> 나이 (자동 계산)
             </span>
-            <span style={{ fontSize: 18, fontWeight: 800 }} className={age === null ? 'muted' : 'primary'}>
+            <span style={{ fontSize: '1.125rem', fontWeight: 800 }} className={age === null ? 'muted' : 'primary'}>
               {age === null ? '—' : `만 ${age}세`}
             </span>
           </div>

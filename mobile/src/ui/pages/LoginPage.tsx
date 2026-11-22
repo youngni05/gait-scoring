@@ -40,8 +40,8 @@ export function LoginPage() {
     <main className="screen" style={{ padding: '80px 24px 40px', display: 'flex', flexDirection: 'column' }}>
       <section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <BrandMark size={96} label="해피워크" badge />
-        <h1 style={{ marginTop: 24, fontSize: 28, fontWeight: 800, letterSpacing: '-0.02em' }}>{APP_NAME}</h1>
-        <p style={{ marginTop: 8, fontSize: 16 }} className="muted">{APP_TAGLINE}</p>
+        <h1 style={{ marginTop: 24, fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.02em' }}>{APP_NAME}</h1>
+        <p style={{ marginTop: 8, fontSize: 'var(--text-body)' }} className="muted">{APP_TAGLINE}</p>
       </section>
 
       {failed && (
@@ -110,7 +110,7 @@ export function LoginPage() {
         </button>
       </form>
 
-      <p style={{ marginTop: 'auto', paddingTop: 40, textAlign: 'center', fontSize: 15, lineHeight: 1.6 }} className="muted">
+      <p style={{ marginTop: 'auto', paddingTop: 40, textAlign: 'center', fontSize: 'var(--text-body)', lineHeight: 1.6 }} className="muted">
         계정 발급 및 비밀번호 문의는
         <br />
         소속 기관 관리자에게 연락해 주세요.

@@ -22,14 +22,14 @@ export function SubjectListPage() {
     <div className={`screen ${empty ? '' : 'has-cta'}`}>
       <header className="topbar" style={{ padding: '24px 20px 16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-          <h1 style={{ fontSize: 26, fontWeight: 800, letterSpacing: '-0.02em' }}>대상자 목록</h1>
+          <h1 style={{ fontSize: '1.625rem', fontWeight: 800, letterSpacing: '-0.02em' }}>대상자 목록</h1>
           <AccountMenu />
         </div>
         <div style={{ marginTop: 4, minHeight: 20 }}>
           {loading ? (
             <span className="skeleton" style={{ display: 'block', width: 56, height: 20 }} />
           ) : (
-            !error && <span style={{ fontSize: 15, fontWeight: 600 }} className="muted">총 {list.length}명</span>
+            !error && <span style={{ fontSize: 'var(--text-body)', fontWeight: 600 }} className="muted">총 {list.length}명</span>
           )}
         </div>
         <div className="input-wrap" style={{ marginTop: 16, opacity: loading || empty ? 0.5 : 1 }}>
@@ -54,10 +54,10 @@ export function SubjectListPage() {
 
       {loading && (
         <>
-          <p role="status" style={{ padding: '20px 20px 0', fontSize: 15, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }} className="primary">
+          <p role="status" style={{ padding: '20px 20px 0', fontSize: 'var(--text-body)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }} className="primary">
             <LoadingMark size={22} /> 대상자 목록을 불러오는 중입니다…
           </p>
-          <ul style={{ padding: '16px 20px 0', display: 'grid', gap: 12 }} aria-hidden="true">
+          <ul className="subject-cards" aria-hidden="true">
             {[80, 96, 64, 80, 96].map((w, i) => (
               <li key={i} className="list-btn" style={{ pointerEvents: 'none' }}>
                 <span className="skeleton" style={{ width: 48, height: 48 }} />
@@ -101,22 +101,22 @@ export function SubjectListPage() {
       )}
 
       {!loading && !error && shown.length > 0 && (
-        <ul style={{ padding: '16px 20px 0', display: 'grid', gap: 12 }}>
+        <ul className="subject-cards">
           {shown.map((s, i) => (
             <li key={s.id}>
               <button className="list-btn" onClick={() => navigate(`/subjects/${s.id}`)}>
                 <Avatar name={s.name} size="md" tone={i % 2 === 0 ? 'a' : 'b'} />
                 <span style={{ flex: 1, minWidth: 0 }}>
-                  <span style={{ display: 'block', fontSize: 18, fontWeight: 700 }}>{s.name}</span>
-                  <span style={{ display: 'block', marginTop: 2, fontSize: 15, color: 'var(--fg-70)' }}>
+                  <span style={{ display: 'block', fontSize: '1.125rem', fontWeight: 700 }}>{s.name}</span>
+                  <span style={{ display: 'block', marginTop: 2, fontSize: 'var(--text-body)', color: 'var(--fg-70)' }}>
                     {[s.sex,s.birth && ageOn(s.birth)+'세',s.heightCm && s.heightCm+'cm'].filter(Boolean).join(' · ') || '등록 정보 미확인'}
                   </span>
                   {s.latestMeasuredAt ? (
-                    <span className="primary" style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 4, fontSize: 14, fontWeight: 600 }}>
+                    <span className="primary" style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 4, fontSize: 'var(--text-caption)', fontWeight: 600 }}>
                       <ClockIcon size={14} /> 최근 분석 {fmtDate(s.latestMeasuredAt)}
                     </span>
                   ) : (
-                    <span style={{ display: 'block', marginTop: 4, fontSize: 14, color: 'var(--fg-50)' }}>
+                    <span style={{ display: 'block', marginTop: 4, fontSize: 'var(--text-caption)', color: 'var(--fg-50)' }}>
                       {s.resultCount ? `촬영일 미확인 · 기록 ${s.resultCount}건` : '분석 기록 없음'}
                     </span>
                   )}
@@ -133,8 +133,8 @@ export function SubjectListPage() {
           <div style={{ width: 64, height: 64, margin: '0 auto', borderRadius: 999, background: 'var(--card)', color: 'var(--fg-40)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <SearchIcon size={26} />
           </div>
-          <p style={{ marginTop: 20, fontSize: 18, fontWeight: 700 }}>‘{keyword}’ 검색 결과가 없습니다</p>
-          <p style={{ marginTop: 8, fontSize: 15 }} className="muted">이름을 다시 확인하거나 새 대상자를 등록해 주세요.</p>
+          <p style={{ marginTop: 20, fontSize: '1.125rem', fontWeight: 700 }}>‘{keyword}’ 검색 결과가 없습니다</p>
+          <p style={{ marginTop: 8, fontSize: 'var(--text-body)' }} className="muted">이름을 다시 확인하거나 새 대상자를 등록해 주세요.</p>
         </section>
       )}
 

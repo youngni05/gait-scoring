@@ -1,3 +1,4 @@
+import { CaptureDateField } from '../components/CaptureDateField';
 /**
  * 06 영상 선택 · 06-1 영상 미리보기 · 06-2 분석 진행 중 · 06-3 분석 실패.
  * 한 주소 안에서 단계(phase)만 바꾼다. 분석 중에 뒤로 가기로 빠져나가 결과를 잃는 일을 줄이기 위해서다.
@@ -21,7 +22,7 @@ import {
   TriangleAlertIcon,
 } from '../components/icons';
 import { LoadingMark } from '../components/brand';
-import { AnalysisFailedError, ageOn, isDemo, dataSource, fmtDate } from '../data';
+import { AnalysisFailedError, isDemo, dataSource, fmtDate } from '../data';
 import { readCaptureDay } from '../../pose/browser-video-source';
 import { useLeaveGuard, useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
@@ -64,7 +65,6 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   useEffect(() => () => cleanupAbort.current?.abort(), []);
 
   const [editedDay, setEditedDay] = useState<string | null>(null);
-  const [mode,setMode]=useState<'fixed'|'guided'>('guided');
   const [editedHeight, setEditedHeight] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('pick');
   const [picked, setPicked] = useState<Picked | null>(null);
@@ -81,8 +81,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   const height = editedHeight ?? (usableHeight ? String(registeredHeight) : '');
   const today = new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Seoul'}).format(new Date());
   const invalidDay = Boolean(day && (day > today || (subject?.birth && day < subject.birth)));
-  const invalidHeight = Boolean(height && (Number(height) < 100 || Number(height) > 220));
-  const ageAtCapture = subject?.birth && day >= subject.birth ? ageOn(subject.birth, new Date(day + 'T12:00:00')) : null;
+  const invalidHeight = Boolean(height && (!Number.isInteger(Number(height) * 10) || Number(height) < 100 || Number(height) > 220));
 
   // 선택한 영상의 임시 주소는 화면을 떠나거나 영상을 바꿀 때 해제한다.
   const pickedUrl = picked?.url ?? null;
@@ -93,7 +92,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
     if (phase !== 'running') return;
     const abort = new AbortController();
     dataSource
-      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode,height:height ? Number(height) : null})
+      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode:'guided',height:height ? Number(height) : null})
       .then((rec) => {
         if (abort.signal.aborted) return;
         setResultId(rec.id);
@@ -223,16 +222,16 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
       {/* 06 영상 선택 */}
       {phase === 'pick' && !recovery.data && (
         <section style={{ margin: '24px 20px 0' }}>
-          <h2 style={{ fontSize: 20, fontWeight: 800 }}>분석할 보행 영상을 선택해 주세요</h2>
-          <p style={{ marginTop: 6, fontSize: 15 }} className="muted">휴대폰에 저장된 영상 중 1개를 선택합니다.</p>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 800 }}>분석할 보행 영상을 선택해 주세요</h2>
+          <p style={{ marginTop: 6, fontSize: 'var(--text-body)' }} className="muted">휴대폰에 저장된 영상 중 1개를 선택합니다.</p>
           <button className="pick-area" onClick={openPicker}>
             <span style={{ width: 80, height: 80, borderRadius: 999, background: '#fff', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <FilmIcon size={34} />
             </span>
-            <span style={{ marginTop: 20, fontSize: 19, fontWeight: 800 }}>휴대폰에서 영상 선택</span>
-            <span style={{ marginTop: 6, fontSize: 15 }} className="muted">갤러리 또는 파일에서 불러옵니다</span>
+            <span style={{ marginTop: 20, fontSize: 'var(--text-heading)', fontWeight: 800 }}>휴대폰에서 영상 선택</span>
+            <span style={{ marginTop: 6, fontSize: 'var(--text-body)' }} className="muted">갤러리 또는 파일에서 불러옵니다</span>
             <span
-              style={{ marginTop: 24, height: 48, padding: '0 24px', borderRadius: 'var(--r-lg)', background: 'var(--primary)', color: '#fff', fontSize: 16, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 8 }}
+              style={{ marginTop: 24, height: 48, padding: '0 24px', borderRadius: 'var(--r-lg)', background: 'var(--primary)', color: '#fff', fontSize: 'var(--text-body)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 8 }}
             >
               <FolderOpenIcon size={18} /> 영상 선택
             </span>
@@ -247,26 +246,28 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
       {phase === 'preview' && picked && (
         <section style={{ margin: '20px 20px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-            <h2 style={{ fontSize: 18, fontWeight: 800 }}>선택한 영상</h2>
-            <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--ok)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+            <h2 style={{ fontSize: '1.125rem', fontWeight: 800 }}>선택한 영상</h2>
+            <span style={{ fontSize: 'var(--text-caption)', fontWeight: 700, color: 'var(--ok)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
               <CheckCircleIcon size={16} /> 선택 완료
             </span>
           </div>
-          {!isDemo && <div className="card" style={{display:'grid',gap:8,padding:16,marginBottom:12}}>
-            <p>촬영일 · {day ? day.replaceAll('-', '.') : picked.metadataDay === undefined ? '확인 중' : '미확인'}</p>
-            {ageAtCapture != null && <p>촬영 당시 나이 · 만 {ageAtCapture}세</p>}
-            <p>{editedHeight === null ? '등록된 키' : '촬영 당시 키'} · {height ? height + ' cm' : registeredHeight != null && editedHeight === null ? '분석 범위 밖' : '미입력'}</p>
-            <details key={picked.url}>
-              <summary>촬영 정보 수정</summary>
-              <label>촬영일 <input type="date" value={day} onChange={e => setEditedDay(e.target.value)} /></label>
-              <label>촬영 당시 키 (100~220cm) <input type="number" min={100} max={220} step="0.1" value={height} onChange={e => setEditedHeight(e.target.value)} /></label>
-            </details>
-            <p>좌표 추출 · MediaPipe Full</p>
-            <label>촬영 방식 <select value={mode} onChange={e=>setMode(e.target.value as typeof mode)}><option value="fixed">고정 촬영</option><option value="guided">따라가며 촬영</option></select></label>
-          </div>}
-          {invalidDay && <p role="alert">촬영일은 생년월일 이후부터 오늘까지 선택해 주세요.</p>}
+          <div className="capture-fields" key={picked.url}>
+            <CaptureDateField value={day} min={subject.birth} onChange={setEditedDay} />
+            {invalidDay && <p className="field-error" role="alert">생년월일부터 오늘까지의 날짜를 선택해 주세요.</p>}
+            <div className="field">
+              <label htmlFor="capture-height">촬영 당시 키</label>
+              <div className="input-wrap">
+                <input id="capture-height" className={'input pad-right' + (invalidHeight ? ' invalid' : '')}
+                  type="number" inputMode="decimal" min={100} max={220} step="0.1" placeholder="키 입력"
+                  value={height} aria-invalid={invalidHeight} aria-describedby={invalidHeight ? 'height-error' : undefined}
+                  onChange={e => setEditedHeight(e.target.value)} />
+                <span className="input-suffix">cm</span>
+              </div>
+              {invalidHeight && <p className="field-error" id="height-error">100~220 cm 사이에서 소수 첫째 자리까지 입력해 주세요.</p>}
+            </div>
+          </div>
           <VideoPreview picked={picked} onDuration={(d) => setPicked((p) => (p ? { ...p, durationSec: d } : p))} />
-          <dl className="card" style={{ marginTop: 16, borderRadius: 'var(--r-md)', padding: '14px 16px', display: 'grid', gridTemplateColumns: 'auto 1fr', rowGap: 8, fontSize: 15 }}>
+          <dl className="card" style={{ marginTop: 16, borderRadius: 'var(--r-md)', padding: '14px 16px', display: 'grid', gridTemplateColumns: 'auto 1fr', rowGap: 8, fontSize: 'var(--text-body)' }}>
             <dt className="muted">파일명</dt>
             <dd style={{ fontWeight: 600, textAlign: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{picked.name}</dd>
             <dt className="muted">영상 길이</dt>
@@ -284,18 +285,18 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
       {(phase === 'running' || phase === 'done') && picked && <FileCard picked={picked} />}
       {phase === 'running' && (
         <section style={{ margin: '24px 20px 0' }} role="status" aria-live="polite">
-          <p style={{ fontSize: 16, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }} className="primary">
+          <p style={{ fontSize: 'var(--text-body)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }} className="primary">
             <LoadingMark size={22} /> 분석하고 있습니다
           </p>
-          <p style={{ marginTop: 4, fontSize: 48, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
+          <p style={{ marginTop: 4, fontSize: '3rem', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
             {pct}
-            <span style={{ fontSize: 26 }}>%</span>
+            <span style={{ fontSize: '1.625rem' }}>%</span>
           </p>
           <div className="bar" style={{ marginTop: 16, height: 12 }}>
             <div style={{ width: `${pct}%` }} />
           </div>
 
-          <p style={{ marginTop: 8, fontSize: 14 }} className="muted">{isDemo ? '예상 남은 시간 약 '+remainSec+'초' : progressText || (pct >= 90 ? '팀 서버에 좌표 저장 중' : '영상 프레임에서 관절 위치 추출 중')}</p>
+          <p style={{ marginTop: 8, fontSize: 'var(--text-caption)' }} className="muted">{isDemo ? '예상 남은 시간 약 '+remainSec+'초' : progressText || (pct >= 90 ? '팀 서버에 좌표 저장 중' : '영상 프레임에서 관절 위치 추출 중')}</p>
           <ol style={{ marginTop: 24, borderRadius: 'var(--r-lg)', border: '1px solid var(--border)' }}>
             {(isDemo ? STAGES : ["영상 확인","프레임별 관절 위치 추출","좌표 추출 검산","팀 서버에 좌표 저장"]).map((name, i) => {
               const state = i < stageIndex ? 'done' : i === stageIndex ? 'now' : 'wait';
@@ -312,11 +313,11 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
                   {state === 'done' && <CheckCircleIcon size={22} className="ok-icon" />}
                   {state === 'now' && <LoadingMark size={24} />}
                   {state === 'wait' && <CircleIcon size={22} className="faint" />}
-                  <span style={{ fontSize: 16, fontWeight: state === 'now' ? 700 : 400, color: state === 'done' ? 'var(--fg-70)' : state === 'wait' ? 'var(--fg-50)' : undefined }}>
+                  <span style={{ fontSize: 'var(--text-body)', fontWeight: state === 'now' ? 700 : 400, color: state === 'done' ? 'var(--fg-70)' : state === 'wait' ? 'var(--fg-50)' : undefined }}>
                     {name}
                   </span>
-                  {state === 'now' && <span style={{ marginLeft: 'auto', fontSize: 13, fontWeight: 700 }} className="primary">진행 중</span>}
-                  {state === 'wait' && <span style={{ marginLeft: 'auto', fontSize: 13, fontWeight: 600, color: 'var(--fg-40)' }}>대기</span>}
+                  {state === 'now' && <span style={{ marginLeft: 'auto', fontSize: 'var(--text-caption)', fontWeight: 700 }} className="primary">진행 중</span>}
+                  {state === 'wait' && <span style={{ marginLeft: 'auto', fontSize: 'var(--text-caption)', fontWeight: 600, color: 'var(--fg-40)' }}>대기</span>}
                 </li>
               );
             })}
@@ -328,8 +329,8 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
           <span style={{ width: 96, height: 96, borderRadius: 999, background: 'rgb(23 191 99 / .15)', color: 'var(--ok)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <CheckIcon size={40} />
           </span>
-          <h2 style={{ marginTop: 24, fontSize: 24, fontWeight: 800 }}>분석이 완료되었습니다</h2>
-          <p style={{ marginTop: 8, fontSize: 16, lineHeight: 1.6 }} className="muted">
+          <h2 style={{ marginTop: 24, fontSize: '1.5rem', fontWeight: 800 }}>분석이 완료되었습니다</h2>
+          <p style={{ marginTop: 8, fontSize: 'var(--text-body)', lineHeight: 1.6 }} className="muted">
             {subject.name} 님의 측정 결과지가
             <br />
             준비되었습니다.
@@ -344,13 +345,13 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
             <span style={{ width: 80, height: 80, borderRadius: 999, background: 'rgb(244 33 46 / .1)', color: 'var(--danger)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <TriangleAlertIcon size={34} />
             </span>
-            <h2 style={{ marginTop: 20, fontSize: 23, fontWeight: 800 }}>영상을 분석하지 못했습니다</h2>
-            <p style={{ marginTop: 8, fontSize: 16 }} className="muted">아래 원인을 확인한 뒤 다시 시도해 주세요.</p>
+            <h2 style={{ marginTop: 20, fontSize: '1.4375rem', fontWeight: 800 }}>영상을 분석하지 못했습니다</h2>
+            <p style={{ marginTop: 8, fontSize: 'var(--text-body)' }} className="muted">아래 원인을 확인한 뒤 다시 시도해 주세요.</p>
           </section>
           <section style={{ margin: '24px 20px 0', borderRadius: 'var(--r-lg)', border: '2px solid rgb(244 33 46 / .3)', background: 'rgb(244 33 46 / .05)', padding: 20 }}>
-            <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--danger)' }}>원인</p>
-            <p style={{ marginTop: 4, fontSize: 18, fontWeight: 800, lineHeight: 1.4 }}>{failure?.reason ?? '영상을 분석하지 못했습니다'}</p>
-            <ul style={{ marginTop: 16, display: 'grid', gap: 10, fontSize: 15, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'var(--text-caption)', fontWeight: 700, color: 'var(--danger)' }}>원인</p>
+            <p style={{ marginTop: 4, fontSize: '1.125rem', fontWeight: 800, lineHeight: 1.4 }}>{failure?.reason ?? '영상을 분석하지 못했습니다'}</p>
+            <ul style={{ marginTop: 16, display: 'grid', gap: 10, fontSize: 'var(--text-body)', lineHeight: 1.6 }}>
               {['대상자의 머리부터 발끝까지 화면에 보이는지', '여러 걸음을 이어서 걷는 장면이 포함되어 있는지', '화면이 심하게 흔들리거나 어둡지 않은지'].map((t) => (
                 <li key={t} style={{ display: 'flex', gap: 10 }}>
                   <CheckIcon size={16} className="primary check-mt" /> {t}
@@ -378,7 +379,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
           </button>
         )}
         {phase === 'running' && (
-          <div className="stack"><p style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 15, color: 'var(--fg-80)', padding: '4px 0' }}>
+          <div className="stack"><p style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 'var(--text-body)', color: 'var(--fg-80)', padding: '4px 0' }}>
             <InfoIcon size={20} className="primary" /> 분석이 끝날 때까지 앱을 닫지 말아 주세요.
           </p>{!isDemo && <button className="btn btn-outline" onClick={()=>setPhase('preview')}>분석 취소</button>}</div>
         )}
@@ -407,8 +408,8 @@ function FileCard({ picked, errorCode, dim }: { picked: Picked; errorCode?: stri
     <section className="card" style={{ margin: errorCode ? '16px 20px 0' : '20px 20px 0', padding: 12, display: 'flex', alignItems: 'center', gap: 12 }}>
       <Thumb picked={picked} size={56} dim={dim} />
       <div style={{ minWidth: 0, flex: 1 }}>
-        <p style={{ fontSize: 16, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{picked.name}</p>
-        <p style={{ fontSize: 14 }} className="muted">
+        <p style={{ fontSize: 'var(--text-body)', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{picked.name}</p>
+        <p style={{ fontSize: 'var(--text-caption)' }} className="muted">
           {fmtLength(picked.durationSec)} · {errorCode ? `오류 코드 ${errorCode}` : `파일 날짜 ${fmtDate(picked.fileDate.toISOString())}`}
         </p>
       </div>
@@ -488,7 +489,7 @@ function VideoPreview({ picked, onDuration }: { picked: Picked; onDuration: (sec
         <div style={{ height: 6, borderRadius: 999, background: 'rgb(255 255 255 / .3)' }}>
           <div style={{ height: 6, borderRadius: 999, background: 'var(--primary)', width: total ? `${(cur / total) * 100}%` : 0 }} />
         </div>
-        <div style={{ marginTop: 8, display: 'flex', justifyContent: 'space-between', color: '#fff', fontSize: 13, fontWeight: 600 }}>
+        <div style={{ marginTop: 8, display: 'flex', justifyContent: 'space-between', color: '#fff', fontSize: 'var(--text-caption)', fontWeight: 600 }}>
           <span>{fmtClock(cur)}</span>
           <span>{total ? fmtClock(total) : '--:--'}</span>
         </div>

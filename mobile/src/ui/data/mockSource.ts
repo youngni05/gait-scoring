@@ -87,11 +87,20 @@ export const mockSource: GaitDataSource = {
     return records.find((r) => r.id === resultId && r.subjectId === subjectId) ?? null;
   },
 
+  async updateCaptureDay(subjectId, resultId, day) {
+    const subject = subjects.find(s => s.id === subjectId);
+    const record = records.find(r => r.id === resultId && r.subjectId === subjectId);
+    if (!subject || !record) throw new Error('기록을 찾을 수 없습니다.');
+    records = records.map(r => r !== record ? r : {
+      ...r, captureDay: day, measuredAt: day, dateBasis: 'capture',
+      ageAtCapture: ageOn(subject.birth, new Date(day + 'T12:00:00')),
+    });
+  },
   async deleteResult(subjectId, resultId) {
     records = records.filter(r => r.id !== resultId || r.subjectId !== subjectId);
   },
 
-  async analyzeVideo(subjectId, video, onProgress, signal) {
+  async analyzeVideo(subjectId, video, onProgress, signal, capture) {
     const outcome = getDemo().analysis; // 시작 시점의 데모 설정으로 끝까지 진행한다.
     const subject = subjects.find((s) => s.id === subjectId);
     if (!subject) throw new AnalysisFailedError('GA-404', '대상자를 찾을 수 없습니다.');
@@ -112,9 +121,10 @@ export const mockSource: GaitDataSource = {
     const rec: ResultRecord = {
       id: `GA-${fmtCompact(now.toISOString())}-${String(Math.floor(Math.random() * 9000) + 1000)}`,
       subjectId,
-      measuredAt: now.toISOString(),
-      ageAtCapture: ageOn(subject.birth, now),
-      heightAtCapture: subject.heightCm,
+      measuredAt: capture?.day || now.toISOString(),
+      captureDay: capture?.day || null,
+      ageAtCapture: capture?.day ? ageOn(subject.birth, new Date(capture.day + 'T12:00:00')) : null,
+      heightAtCapture: capture ? capture.height : subject.heightCm,
       gdi: round1(76 + Math.random() * 12),
       cadence: Math.round(86 + Math.random() * 16),
       symmetry: partial ? null : round1(5 + asym * 5),
