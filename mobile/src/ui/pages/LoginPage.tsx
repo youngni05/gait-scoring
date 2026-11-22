@@ -39,7 +39,7 @@ export function LoginPage() {
   return (
     <main className="screen" style={{ padding: '80px 24px 40px', display: 'flex', flexDirection: 'column' }}>
       <section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-        <BrandMark size={80} label="해피에이징" />
+        <BrandMark size={96} label="해피워크" badge />
         <h1 style={{ marginTop: 24, fontSize: 28, fontWeight: 800, letterSpacing: '-0.02em' }}>{APP_NAME}</h1>
         <p style={{ marginTop: 8, fontSize: 16 }} className="muted">{APP_TAGLINE}</p>
       </section>

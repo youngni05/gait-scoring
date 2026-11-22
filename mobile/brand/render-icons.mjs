@@ -26,12 +26,18 @@ const ARCS = [
   { cx: 85.88, cy: 127.72, from: 28.4, color: [0xf7, 0x78, 0x4a] },
 ];
 const SPAN = 177.2;
-// 발자국 배지: 가운데 (170,170), 하늘색 원(반지름 32) + 흰 테두리(32~40) + 흰 발바닥 두 개
+// 발자국 배지: 가운데 (170,170), 하늘색 원(반지름 32) + 흰 테두리(32~40) + 흰 신발 자국 두 개.
+// 신발 자국 하나 = 앞창(넓은 앞쪽 타원 + 좁아지는 아치 타원) + 조금 떨어진 반원 뒤축.
+// 두 자국을 엇갈려 놓고 -25° 기울여 왼쪽 위(로고 쪽)로 걸어가게 한다(components/brand.tsx FootBadge와 같은 값).
 const BADGE = { cx: 170, cy: 170, inner: 32, outer: 40 };
-const SOLES = [
-  { cx: 160, cy: 177 },
-  { cx: 181, cy: 161 },
-].map((s) => ({ ...s, rx: 6.9, ry: 12.3, rot: (-18 * Math.PI) / 180 }));
+const SHOE = {
+  // 뒷발은 오른쪽 아래, 앞발은 왼쪽 위(걷는 방향 기준 앞뒤 8, 좌우 8씩 벌림)
+  at: [[180.6, 174.9], [159.4, 167.1]],
+  rot: -25,
+  scale: 0.8,
+  ellipses: [[0, -8, 8.5, 13], [0.5, 2, 6.5, 10]],
+  heel: { cx: 0, cy: 15.5, r: 6.5, top: 14.5 }, // 원의 top보다 아래쪽만 남겨 반원 뒤축을 만든다
+};
 // 로고와 배지를 모두 담는 범위: -14 ~ 214 (폭 228 단위)
 const CONTENT_SPAN = 228;
 
@@ -48,12 +54,15 @@ function arcColors(u, v) {
   return hits;
 }
 function inSole(u, v) {
-  for (const s of SOLES) {
-    const dx = u - s.cx;
-    const dy = v - s.cy;
-    const x = dx * Math.cos(-s.rot) - dy * Math.sin(-s.rot);
-    const y = dx * Math.sin(-s.rot) + dy * Math.cos(-s.rot);
-    if ((x * x) / (s.rx * s.rx) + (y * y) / (s.ry * s.ry) <= 1) return true;
+  const t = (SHOE.rot * Math.PI) / 180;
+  for (const [ax, ay] of SHOE.at) {
+    const dx = (u - ax) / SHOE.scale;
+    const dy = (v - ay) / SHOE.scale;
+    const x = dx * Math.cos(t) + dy * Math.sin(t);
+    const y = -dx * Math.sin(t) + dy * Math.cos(t);
+    for (const [cx, cy, rx, ry] of SHOE.ellipses) if (((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1) return true;
+    const h = SHOE.heel;
+    if (y >= h.top && (x - h.cx) ** 2 + (y - h.cy) ** 2 <= h.r * h.r) return true;
   }
   return false;
 }
@@ -143,7 +152,12 @@ const PATHS = [
   ['#EF4F9A', 'M147.70 77.18A42 42 0 0 1 109.58 152.01'],
   ['#F7784A', 'M122.82 147.70A42 42 0 0 1 47.99 109.58'],
 ];
-const SOLE_PATH = 'M0 -20C9 -20 12 -9 11 3C10 14 7 21 0 21C-7 21 -10 14 -11 3C-12 -9 -9 -20 0 -20Z';
+const HEEL_HALF = Math.sqrt(SHOE.heel.r ** 2 - (SHOE.heel.cy - SHOE.heel.top) ** 2).toFixed(2);
+const SHOE_SVG = SHOE.ellipses.map(([cx, cy, rx, ry]) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"/>`).join('')
+  + `<path d="M${HEEL_HALF} ${SHOE.heel.top}A${SHOE.heel.r} ${SHOE.heel.r} 0 1 1 -${HEEL_HALF} ${SHOE.heel.top}Z"/>`;
+const FOOT_SVG = SHOE.at
+  .map(([x, y]) => `<g fill="#FFFFFF" transform="translate(${x} ${y}) rotate(${SHOE.rot}) scale(${SHOE.scale})">${SHOE_SVG}</g>`)
+  .join('');
 function svg({ ratio, shape, radiusRatio = 0.225 }) {
   const size = 1024;
   const k = (ratio * size) / CONTENT_SPAN;
@@ -152,9 +166,7 @@ function svg({ ratio, shape, radiusRatio = 0.225 }) {
     ? `<rect width="${size}" height="${size}" rx="${radiusRatio * size}" fill="#FFFFFF"/>`
     : shape === 'full' ? `<rect width="${size}" height="${size}" fill="#FFFFFF"/>` : '';
   const logo = PATHS.map(([c, d]) => `<path d="${d}" stroke="${c}" style="mix-blend-mode:multiply"/>`).join('');
-  const badge = `<circle cx="170" cy="170" r="36" fill="#1E9DF1" stroke="#FFFFFF" stroke-width="8"/>`
-    + `<path fill="#FFFFFF" transform="translate(160 177) rotate(-18) scale(0.6)" d="${SOLE_PATH}"/>`
-    + `<path fill="#FFFFFF" transform="translate(181 161) rotate(-18) scale(0.6)" d="${SOLE_PATH}"/>`;
+  const badge = `<circle cx="170" cy="170" r="36" fill="#1E9DF1" stroke="#FFFFFF" stroke-width="8"/>` + FOOT_SVG;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">${bg}<g transform="${t}"><g fill="none" stroke-width="26" stroke-linecap="butt">${logo}</g>${badge}</g></svg>\n`;
 }
 

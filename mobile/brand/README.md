@@ -16,7 +16,7 @@ node mobile/brand/render-icons.mjs
 | `happywalk-icon-maskable.svg`, `happywalk-icon-maskable-1024.png` | 흰 꽉 찬 사각형 바탕. 기기가 원·둥근 사각 등으로 잘라도 배지까지 남도록 내용을 폭의 62%로 줄임 |
 | `happywalk-icon-foreground.svg`, `happywalk-icon-foreground-432.png` | 안드로이드 적응형 아이콘의 전경(로고와 배지만, 바탕 투명, 내용 폭 50%). 배경은 흰색 |
 
-PNG의 발바닥 모양은 SVG의 발바닥 곡선을 타원으로 근사해 그린다(작은 크기에서는 구분되지 않는다).
+배지 속 그림은 신발 자국 두 개다. 자국 하나는 앞창(타원 두 개)과 조금 떨어진 반원 뒤축이며, 두 자국을 엇갈려 왼쪽 위(로고 쪽)로 걸어가게 놓는다. 앱 화면의 로고(`src/ui/components/brand.tsx`의 `FootBadge`)도 같은 값을 쓴다(스크립트의 `SHOE`).
 
 ## PWA가 쓰는 파일(`mobile/public/`)
 

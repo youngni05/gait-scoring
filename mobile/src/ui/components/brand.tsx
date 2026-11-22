@@ -24,13 +24,38 @@ const PETALS = [
   ['ll', '#F7784A', 'M122.82 147.70A42 42 0 0 1 47.99 109.58'],
 ] as const;
 
-/** 움직이지 않는 로고. label을 주면 화면 낭독기가 로고 이름을 읽는다. */
-export function BrandMark({ size = 40, label }: { size?: number; label?: string }) {
+/**
+ * 해피워크 발자국 배지(앱 아이콘 D안). 로고 오른쪽 아래 (170,170)에 붙는 하늘색 원 안의 흰 신발 자국 두 개.
+ * 자국 하나는 앞창(넓은 앞쪽 타원 + 좁아지는 아치 타원)과 조금 떨어진 반원 뒤축이다.
+ * 뒷발은 오른쪽 아래, 앞발은 왼쪽 위에 엇갈려 놓고 -25° 기울여 왼쪽 위(로고 쪽)로 걸어가게 한다.
+ * 값은 mobile/brand/render-icons.mjs의 SHOE와 같다(아이콘 파일과 같은 모양).
+ */
+const SHOE_AT = [[180.6, 174.9], [159.4, 167.1]] as const;
+function FootBadge({ className }: { className?: string }) {
+  return (
+    <g className={className}>
+      <circle cx="170" cy="170" r="36" fill="#1E9DF1" stroke="#FFFFFF" strokeWidth="8" />
+      {SHOE_AT.map(([x, y]) => (
+        <g key={x} fill="#FFFFFF" transform={`translate(${x} ${y}) rotate(-25) scale(0.8)`}>
+          <ellipse cx="0" cy="-8" rx="8.5" ry="13" />
+          <ellipse cx="0.5" cy="2" rx="6.5" ry="10" />
+          <path d="M6.42 14.5A6.5 6.5 0 1 1 -6.42 14.5Z" />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+/**
+ * 움직이지 않는 로고. label을 주면 화면 낭독기가 로고 이름을 읽는다.
+ * badge를 켜면 해피워크 앱 아이콘(D안)처럼 발자국 배지를 붙인다.
+ */
+export function BrandMark({ size = 40, label, badge = false }: { size?: number; label?: string; badge?: boolean }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="12 12 176 176"
+      viewBox={badge ? '-14 -14 228 228' : '12 12 176 176'}
       role={label ? 'img' : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}
@@ -38,6 +63,7 @@ export function BrandMark({ size = 40, label }: { size?: number; label?: string 
       {PETALS.map(([key, color, d]) => (
         <path key={key} className="hm-petal" stroke={color} d={d} />
       ))}
+      {badge && <FootBadge />}
     </svg>
   );
 }
@@ -65,8 +91,6 @@ export function LoadingMark({ size = 22, className }: { size?: number; className
   );
 }
 
-const SOLE = 'M0 -20C9 -20 12 -9 11 3C10 14 7 21 0 21C-7 21 -10 14 -11 3C-12 -9 -9 -20 0 -20Z';
-
 /**
  * 시작 화면용 로고. 흩어진 조각이 돌며 모여 로고가 된다(한 번만 재생).
  * badge를 켜면 앱 아이콘(D안)처럼 로고가 모인 뒤 오른쪽 아래에 하늘색 발자국 배지가 톡 붙는다.
@@ -80,13 +104,7 @@ export function IntroMark({ size = 168, badge = false }: { size?: number; badge?
           <path className="hm-petal" stroke={color} d={d} />
         </g>
       ))}
-      {badge && (
-        <g className="hm-badge">
-          <circle cx="170" cy="170" r="36" fill="#1E9DF1" stroke="#FFFFFF" strokeWidth="8" />
-          <path fill="#FFFFFF" transform="translate(160 177) rotate(-18) scale(0.6)" d={SOLE} />
-          <path fill="#FFFFFF" transform="translate(181 161) rotate(-18) scale(0.6)" d={SOLE} />
-        </g>
-      )}
+      {badge && <FootBadge className="hm-badge" />}
     </svg>
   );
 }
