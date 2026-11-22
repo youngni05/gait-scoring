@@ -248,3 +248,66 @@ class MobileUiTests(unittest.TestCase):
             values=graphs.locator('path').evaluate_all('(els)=>els.map(e=>e.getAttribute("d"))')
             self.assertTrue(values)
             self.assertTrue(all(v and 'NaN' not in v and 'Infinity' not in v for v in values))
+
+    def wait_for_held_route(self, held):
+        deadline = support.time.monotonic() + 10
+        while not held and support.time.monotonic() < deadline:
+            self.page.wait_for_timeout(20)
+        self.assertEqual(len(held), 1)
+
+    def open_report_stub(self, state='pending'):
+        self.create_person()
+        rid = str(uuid4())
+        record = dict(id=rid, subjectId=self.person_id, measuredAt='2026-01-01T00:00:00Z',
+                      dateBasis='capture', ageAtCapture=76, heightAtCapture=170.5,
+                      fileName='synthetic.mp4', serverState=state, live=None,
+                      gdi=None, cadence=None, symmetry=None, curves={}, missing={})
+        endpoint = self.api + '/team/recordings/' + rid
+        self.page.route(endpoint, lambda route: route.fulfill(json=record))
+        self.page.goto(self.ui+'/#/subjects/'+self.person_id+'/results/'+rid)
+        expect(self.page.get_by_role('heading', name='좌표가 서버에 저장되었습니다' if state == 'pending' else '서버 분석에 실패했습니다')).to_be_visible()
+        return endpoint, record
+
+    def test_pending_poll_preserves_screen_on_slow_and_failed_refresh(self):
+        self.page.clock.install()
+        endpoint, record = self.open_report_stub()
+        held = []
+        self.page.route(endpoint, lambda route: held.append(route))
+        self.page.locator('main.screen').evaluate("el => el.dataset.retained = 'yes'")
+        self.page.clock.fast_forward(3000)
+        expect(self.page.get_by_role('button', name='상태 확인 중…')).to_be_disabled()
+        expect(self.page.locator('main[data-retained="yes"]')).to_be_visible()
+        self.wait_for_held_route(held)
+        held.pop().abort('failed')
+        expect(self.page.get_by_role('alert')).to_contain_text('최신 분석 상태를 확인하지 못했습니다')
+        expect(self.page.locator('main[data-retained="yes"]')).to_be_visible()
+        self.page.clock.fast_forward(10000)
+        expect(self.page.get_by_role('button', name='상태 확인 중…')).to_be_disabled()
+        self.wait_for_held_route(held)
+        held.pop().fulfill(json={**record, 'serverState': 'legacy'})
+        expect(self.page.get_by_text('촬영일', exact=True)).to_be_visible()
+
+    def test_pending_long_wait_keeps_navigation_available(self):
+        self.page.clock.install()
+        endpoint, _ = self.open_report_stub()
+        self.page.route(endpoint, lambda route: None)  # A slow GET must not stop the notice timer.
+        self.page.clock.fast_forward(60000)
+        expect(self.page.get_by_text('이 화면에서 1분 이상 기다리고 있습니다.', exact=False)).to_be_visible()
+        self.page.get_by_role('button', name='이전 결과 목록으로', exact=True).click()
+        expect(self.page).to_have_url(self.ui+'/#/subjects/'+self.person_id+'/results')
+
+    def test_retry_has_single_inflight_request_and_recovers_after_get_failure(self):
+        endpoint, record = self.open_report_stub('failed')
+        held = []
+        self.page.route(endpoint+'/retry', lambda route: held.append(route))
+        button = self.page.get_by_role('button', name='같은 촬영 다시 분석', exact=True)
+        button.evaluate('(el) => { el.click(); el.click(); }')
+        expect(self.page.get_by_role('button', name='재분석 요청 중…')).to_be_disabled()
+        self.wait_for_held_route(held)
+        self.page.route(endpoint, lambda route: route.abort('failed'))
+        held[0].fulfill(json={'id':record['id']}, status=202)
+        expect(self.page.get_by_role('heading', name='좌표가 서버에 저장되었습니다')).to_be_visible()
+        expect(self.page.get_by_role('alert')).to_contain_text('최신 분석 상태를 확인하지 못했습니다')
+        self.page.route(endpoint, lambda route: route.fulfill(json={**record, 'serverState':'legacy'}))
+        self.page.get_by_role('button', name='지금 상태 확인', exact=True).click()
+        expect(self.page.get_by_text('촬영일', exact=True)).to_be_visible()
