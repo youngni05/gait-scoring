@@ -65,15 +65,28 @@ export function LoadingMark({ size = 22, className }: { size?: number; className
   );
 }
 
-/** 시작 화면용 로고. 흩어진 조각이 돌며 모여 로고가 된다(한 번만 재생). */
-export function IntroMark({ size = 168 }: { size?: number }) {
+const SOLE = 'M0 -20C9 -20 12 -9 11 3C10 14 7 21 0 21C-7 21 -10 14 -11 3C-12 -9 -9 -20 0 -20Z';
+
+/**
+ * 시작 화면용 로고. 흩어진 조각이 돌며 모여 로고가 된다(한 번만 재생).
+ * badge를 켜면 앱 아이콘(D안)처럼 로고가 모인 뒤 오른쪽 아래에 하늘색 발자국 배지가 톡 붙는다.
+ * 배지 모양은 mobile/brand/render-icons.mjs의 아이콘 파일과 같다.
+ */
+export function IntroMark({ size = 168, badge = false }: { size?: number; badge?: boolean }) {
   return (
-    <svg width={size} height={size} viewBox="-20 -20 240 240" role="img" aria-label="해피에이징" className="hm-intro">
+    <svg width={size} height={size} viewBox="-20 -20 240 240" role="img" aria-label={badge ? '해피워크' : '해피에이징'} className="hm-intro">
       {PETALS.map(([key, color, d]) => (
         <g key={key} className={`hm-in-${key}`}>
           <path className="hm-petal" stroke={color} d={d} />
         </g>
       ))}
+      {badge && (
+        <g className="hm-badge">
+          <circle cx="170" cy="170" r="36" fill="#1E9DF1" stroke="#FFFFFF" strokeWidth="8" />
+          <path fill="#FFFFFF" transform="translate(160 177) rotate(-18) scale(0.6)" d={SOLE} />
+          <path fill="#FFFFFF" transform="translate(181 161) rotate(-18) scale(0.6)" d={SOLE} />
+        </g>
+      )}
     </svg>
   );
 }

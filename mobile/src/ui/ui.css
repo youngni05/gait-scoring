@@ -303,8 +303,10 @@ ol, ul { list-style: none; }
 @keyframes hm-in-lr { from { transform: translate(27.72px, 14.13px); } }
 @keyframes hm-in-ll { from { transform: translate(-14.13px, 27.72px); } }
 
+.hm-badge { transform-box: fill-box; transform-origin: center; animation: hm-badge .35s cubic-bezier(.34, 1.56, .64, 1) .95s both; }
+@keyframes hm-badge { from { transform: scale(0); opacity: 0; } }
 .splash {
-  position: fixed; inset: 0; z-index: 100; background: var(--bg);
+  position: fixed; inset: 0; z-index: 100; background: var(--bg); color: var(--fg);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   padding-bottom: 48px; transition: opacity .25s ease-out;
 }
@@ -312,9 +314,9 @@ ol, ul { list-style: none; }
 .splash-name { margin-top: 20px; display: flex; flex-direction: column; align-items: center; animation: splash-name .5s ease-out .55s both; }
 .splash-name h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
 .splash-name p { margin-top: 8px; font-size: 16px; color: var(--fg-60); }
-.splash-company { position: absolute; left: 0; right: 0; bottom: calc(44px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.splash-company b { font-size: 17px; font-weight: 800; letter-spacing: -0.5px; color: #2b3a8f; }
-.splash-company span { font-size: 11px; letter-spacing: .14em; color: #1e7fb0; }
+.splash-company { position: absolute; left: 0; right: 0; bottom: calc(44px + env(safe-area-inset-bottom)); display: flex; align-items: baseline; justify-content: center; gap: 6px; }
+.splash-company b { font-size: 16px; font-weight: 800; letter-spacing: -0.5px; color: #2b3a8f; }
+.splash-company span { font-size: 13px; color: var(--fg-60); }
 @keyframes splash-name { from { opacity: 0; transform: translateY(8px); } }
 
 /* 로그인 확인 중: 회색 비활성 대신 연한 하늘색 바탕에서 로딩 아이콘이 돈다. */
@@ -324,7 +326,7 @@ ol, ul { list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   .hm-loading, .hm-loading g { animation: none; }
   .hm-loading { animation: hm-fade 2s ease-in-out infinite; }
-  .hm-intro, .hm-intro g, .splash-name { animation: none; }
+  .hm-intro, .hm-intro g, .splash-name, .hm-badge { animation: none; }
 }
 @keyframes hm-fade { 50% { opacity: .45; } }
 
