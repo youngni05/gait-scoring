@@ -5,25 +5,26 @@ import { ChevronRightIcon, SortIcon, TrashIcon, TriangleAlertIcon, UserIcon, Vid
 import { dataSource, fmtDate, fmtTime, fmtWeekday, type ResultRecord } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
-import { visitHistory, visitSummary, type CompareRow } from '../data/visit-summary.mjs';
 import { NotFound } from './NotFound';
 
 export function ResultListPage() {
   const { subjectId = '' } = useParams();
   const navigate = useNavigate();
+  const [offset, setOffset] = useState(0);
   const [selected, setSelected] = useState<ResultRecord | null>(null);
   const { data, loading, error, reload } = useAsync(
-    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResults(subjectId, signal)]),
-    [subjectId],
+    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResultPage(subjectId, offset, signal)]),
+    [subjectId, offset],
   );
   const back = () => navigate(`/subjects/${subjectId}`);
   if (loading) return <PageLoading title="이전 결과" nav="back" onNav={back} />;
   if (error || !data) return <PageError title="이전 결과" onNav={back} onRetry={reload} />;
-  const [subject, records] = data;
+  const [subject, page] = data;
+  const records = page.items;
   if (!subject) return <NotFound />;
-  const lives = records.flatMap((r) => (r.live ? [r.live] : []));
 
-  if (records.length === 0) {
+
+  if (page.total === 0) {
     return (
       <div className="screen">
         <TopBar title="이전 결과" nav="back" onNav={back} subject={subject} sticky={false} />
@@ -53,7 +54,7 @@ export function ResultListPage() {
 
       <div style={{ padding: '20px 20px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <p style={{ fontSize: 16, fontWeight: 700 }}>
-          분석 기록 <span className="primary">{records.length}건</span>
+          분석 기록 <span className="primary">{page.total}건</span>
         </p>
         <p style={{ fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 4 }} className="muted">
           <SortIcon size={16} /> 최신순
@@ -62,7 +63,7 @@ export function ResultListPage() {
 
       <ul style={{ padding: '0 20px', display: 'grid', gap: 12 }}>
         {records.map((r, i) => {
-          const isLatest = i === 0;
+          const isLatest = offset === 0 && i === 0;
           const partial = Object.keys(r.missing).length > 0;
           return (
             <li key={r.id} className="record-item">
@@ -86,7 +87,7 @@ export function ResultListPage() {
                     )}
                   </div>
                 </div>
-                {r.live ? <LiveRecordMetrics visit={r.live} all={lives} /> : <div className="metric-grid3" style={{ marginTop: 16 }}>
+                <div className="metric-grid3" style={{ marginTop: 16 }}>
                   <div>
                     <p className="k">GDI</p>
                     <p className={`v ${r.gdi === null ? 'none' : ''}`}>{r.gdi ?? '—'}</p>
@@ -103,9 +104,9 @@ export function ResultListPage() {
                     <p className={`v ${r.symmetry === null ? 'none' : ''}`}>{r.symmetry ?? '—'}</p>
                   </div>
                 </div>
-                }<div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 14, color: 'var(--fg-70)' }}>
+                <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 14, color: 'var(--fg-70)' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                    <UserIcon size={15} /> 촬영 당시 {r.ageAtCapture===null?'나이 미확인':r.ageAtCapture+'세'} · {r.heightAtCapture===null?'키 미확인':r.heightAtCapture+'cm'}
+                    <UserIcon size={15} /> {r.dateBasis === 'analysis_start' ? '분석 시작 당시' : '촬영 당시'} {r.ageAtCapture===null?'나이 미확인':r.ageAtCapture+'세'} · {r.heightAtCapture===null?'키 미확인':r.heightAtCapture+'cm'}
                   </span>
                   {isLatest ? (
                     <span className="primary" style={{ fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 2 }}>
@@ -129,9 +130,14 @@ export function ResultListPage() {
         onDelete={async () => {
           await dataSource.deleteResult(subjectId, selected.id);
           setSelected(null);
-          reload();
+          if (records.length === 1 && offset > 0) setOffset(Math.max(0, offset - 20));
+          else reload();
         }} />}
-      <p style={{ padding: '24px 20px 0', textAlign: 'center', fontSize: 14, color: 'var(--fg-50)' }}>모든 기록을 불러왔습니다.</p>
+      <nav aria-label="결과 목록 페이지" style={{padding:20,display:'flex',gap:12,alignItems:'center'}}>
+        <button className="btn btn-outline" disabled={offset === 0} onClick={()=>setOffset(Math.max(0,offset-20))}>이전 페이지</button>
+        <span>{Math.floor(offset/20)+1} / {Math.max(1,Math.ceil(page.total/20))}</span>
+        <button className="btn btn-outline" disabled={offset+20 >= page.total} onClick={()=>setOffset(offset+20)}>다음 페이지</button>
+      </nav>
     </div>
   );
 }
@@ -171,53 +177,4 @@ function DeleteRecordDialog({ record, onCancel, onDelete }: {
       </button>
     </div>
   </dialog>;
-}
-
-type Visit = NonNullable<ResultRecord['live']>;
-const signed = (v: number, digits: number) => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v).toFixed(digits);
-
-/** 바로 지난 기록 대비 변화. 색은 좋아짐(초록)·나빠짐(빨강)·비슷함(회색)으로 결과지의 비교판과 같다. */
-function Delta({ row }: { row: CompareRow | undefined }) {
-  if (!row) return null;
-  return <p className={`dlt ${row.verdict}`}>{signed(row.delta, row.digits)}{row.unit === '걸음' ? '' : row.unit}</p>;
-}
-
-/**
- * 실제 분석 기록 카드의 핵심 값. 결과지 맨 위와 같은 종합 GDI·분당 걸음 수를 보여 주고,
- * 결과지의 '지난 기록과 비교'와 같은 계산(visitHistory)으로 바로 이전 방문 대비 변화를 붙인다.
- * 변화는 두 방문에 공통인 걷기 방향만으로 다시 계산한 값이라, 카드 숫자끼리 뺀 값과 다를 수 있다.
- */
-function LiveRecordMetrics({ visit, all }: { visit: Visit; all: Visit[] }) {
-  const summary = visitSummary(visit);
-  const recent = visitHistory(visit, all).recent;
-  const row = (key: string) => recent?.rows.find((r) => r.key === key);
-  const count = (v: CompareRow['verdict']) => recent?.rows.filter((r) => r.verdict === v).length ?? 0;
-  const gdi = summary.gdi.value, cadence = summary.walking.cadence;
-  return (
-    <div className="metric-grid3 live" style={{ marginTop: 16 }}>
-      <div>
-        <p className="k">GDI</p>
-        <p className={`v ${gdi === null ? 'none' : ''}`}>{gdi === null ? '—' : gdi.toFixed(1)}{gdi !== null && <small>점</small>}</p>
-        <Delta row={row('gdi')} />
-      </div>
-      <div>
-        <p className="k">분당 걸음 수</p>
-        <p className={`v ${cadence === null ? 'none' : ''}`}>{cadence === null ? '—' : cadence.toFixed(0)}{cadence !== null && <small>걸음</small>}</p>
-        <Delta row={row('cadence')} />
-      </div>
-      <div>
-        <p className="k">직전 대비</p>
-        {!recent ? (
-          <p className="cnt none">비교 없음</p>
-        ) : count('better') + count('worse') === 0 ? (
-          <p className="cnt">모두 비슷함</p>
-        ) : (
-          <p className="cnt">
-            {count('better') > 0 && <span className="better">좋아짐 {count('better')}</span>}
-            {count('worse') > 0 && <span className="worse">나빠짐 {count('worse')}</span>}
-          </p>
-        )}
-      </div>
-    </div>
-  );
 }

@@ -5,12 +5,13 @@ import json
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, Response
-from sqlalchemy import delete, func, select
+from sqlalchemy import delete, func, select, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.orm import Session, defer
 
 from app.ai_module import LIMITS, RequestError, compare_and_explain, parse_json, to_request
 from app.db import get_db
+from app.recording_views import legacy_curves, SUMMARY_SQL
 from app.deps import get_current_user
 from app.models import GaitAnalysisResult, GaitMeasurement, Participant, User
 from app.routers.measurements import require_participant
@@ -95,7 +96,7 @@ def submit(participant_id: UUID, response: Response, body=Depends(bounded_json),
 def summaries(db: Session = Depends(get_db)):
     return [dict(id=p.id, name=p.name, sex={"F": "여", "M": "남"}.get(p.gender), birth=p.birth_date or "",
                  heightCm=p.height_cm and float(p.height_cm), latestMeasuredAt=latest, resultCount=count)
-            for p, latest, count in db.execute(select(Participant, func.max(GaitMeasurement.measured_at),
+            for p, latest, count in db.execute(select(Participant, func.max(func.coalesce(GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at)),
                 func.count(GaitMeasurement.id)).outerjoin(GaitMeasurement).group_by(Participant.id).order_by(Participant.name, Participant.id))]
 
 
@@ -105,17 +106,19 @@ def record_query():
 
 def record_dict(m, result):
     meta = m.processing_metadata or {}
-    return dict(id=m.id, subjectId=m.participant_id, measuredAt=m.measured_at or "", ageAtCapture=m.age,
+    curves, missing = legacy_curves(result) if m.analysis_status is None else ({}, {})
+    return dict(id=m.id, subjectId=m.participant_id, measuredAt=m.analysis_started_at or m.measured_at or "", ageAtCapture=m.age,
+                dateBasis="analysis_start" if m.analysis_started_at else "legacy_capture" if m.analysis_status is None else "capture",
                 heightAtCapture=meta.get("height_cm"), fileName=meta.get("file_name", ""),
                 serverState=m.analysis_status or "legacy", live=result.report_json if result else None,
                 gdi=result.gdi_score if result else None, cadence=result.cadence_spm if result else None,
-                symmetry=None, curves={}, missing={})
+                symmetry=None, curves=curves, missing=missing)
 
 
 @router.get("/participants/{participant_id}/recordings")
 def list_records(participant_id: UUID, offset: int = Query(0, ge=0), db: Session = Depends(get_db)):
     query = record_query().where(GaitMeasurement.participant_id == participant_id).order_by(
-        func.coalesce(GaitMeasurement.received_at, GaitMeasurement.measured_at).desc(), GaitMeasurement.id).offset(offset).limit(20)
+        func.coalesce(GaitMeasurement.received_at, GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at).desc(), GaitMeasurement.id).offset(offset).limit(20)
     return [record_dict(*row) for row in db.execute(query)]
 
 
@@ -160,3 +163,28 @@ def history(body=Depends(bounded_json)):
         return compare_and_explain(body)
     except RequestError as e:
         raise HTTPException(e.status, e.code) from None
+
+
+@router.get("/participant-summaries/{participant_id}")
+def participant_summary(participant_id: UUID, db: Session = Depends(get_db)):
+    p = require_participant(db, participant_id)
+    latest, count = db.execute(select(
+        func.max(func.coalesce(GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at)),
+        func.count(GaitMeasurement.id)).where(GaitMeasurement.participant_id == participant_id)).one()
+    return dict(id=p.id, name=p.name, sex={"F": "여", "M": "남"}.get(p.gender), birth=p.birth_date or "",
+                heightCm=float(p.height_cm) if p.height_cm is not None else None,
+                latestMeasuredAt=latest, resultCount=count)
+
+
+@router.get("/participants/{participant_id}/recording-summaries")
+def recording_summaries(participant_id: UUID, offset: int = Query(0, ge=0),
+                        limit: int = Query(20, ge=1, le=20), db: Session = Depends(get_db)):
+    require_participant(db, participant_id)
+    total = db.scalar(select(func.count(GaitMeasurement.id)).where(GaitMeasurement.participant_id == participant_id))
+    rows = db.execute(text(SUMMARY_SQL), dict(participant_id=participant_id, offset=offset, limit=limit)).mappings()
+    items = [dict(id=m["id"], subjectId=m["participant_id"], measuredAt=m["measured_at"] or "",
+                  dateBasis=m["date_basis"], ageAtCapture=m["age"], heightAtCapture=m["height_cm"],
+                  fileName=m["file_name"] or "", serverState=m["analysis_status"] or "legacy",
+                  gdi=m["gdi_score"], cadence=m["cadence_spm"], symmetry=None, curves={}, missing={},
+                  preview=m["preview"]) for m in rows]
+    return dict(items=items, total=total, offset=offset, limit=limit)

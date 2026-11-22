@@ -31,6 +31,7 @@ export interface ResultRecord {
   subjectId: string;
   /** ISO 날짜·시각 */
   measuredAt: string;
+  dateBasis?: 'analysis_start' | 'legacy_capture' | 'capture';
   /** 촬영 당시 나이와 키. 대상자 정보를 나중에 고쳐도 이 값은 바뀌지 않는다. */
   ageAtCapture: number | null;
   /** Versioned JSON returned by the existing Python report adapter. */

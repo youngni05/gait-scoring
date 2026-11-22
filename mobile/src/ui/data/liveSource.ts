@@ -3,8 +3,9 @@ import { extractCapture } from './analysis';
 import { teamApi } from './teamApi';
 import { readPending, keepPending, clearPending } from './pending-capture';
 import type { Subject, ResultRecord } from './mock';
-import { LoginFailedError, type GaitDataSource, type SubjectInput, type SubjectSummary } from './source';
+import { LoginFailedError, type GaitDataSource, type SubjectInput, type SubjectSummary, type ResultPage } from './source';
 import { visitKneeSummary } from './report-values.mjs';
+import { visitGdi } from './visit-summary.mjs';
 import { walkingEstimate } from './visit-walking.mjs';
 
 function subject(p: Participant): Subject {
@@ -36,6 +37,19 @@ export const liveSource:GaitDataSource = {
   logout() { sessionStorage.removeItem('team-access-token'); },
   async pendingCapture(id) { const p = await readPending(pendingKey(id)); return p ? {id:p.id, fileName:p.fileName} : null; },
   listSubjects(signal) { return teamApi.shared<SubjectSummary[]>('/participant-summaries',{},signal); },
+  async getSubjectSummary(id,signal) {
+    try { return await teamApi.shared<SubjectSummary>('/participant-summaries/'+encodeURIComponent(id),{},signal); }
+    catch (error) { if (error instanceof ApiError && error.status === 404) return null; throw error; }
+  },
+  async listResultPage(id,offset,signal) {
+    const page = await teamApi.shared<Omit<ResultPage, 'items'> & {items:(ResultRecord & {preview?:any})[]}>(
+      '/participants/'+encodeURIComponent(id)+'/recording-summaries?limit=20&offset='+offset,{},signal);
+    if (!Array.isArray(page.items) || page.offset !== offset || page.limit !== 20 || !Number.isInteger(page.total))
+      throw Error('목록 응답 형식을 확인하지 못했습니다.');
+    return {...page, items:page.items.map(({preview,...row}) => preview ? {
+      ...row, gdi:visitGdi(preview).value, cadence:walkingEstimate(preview).cadence,
+    } : row)};
+  },
   async getSubject(id,signal) {
     try { return subject(await teamApi.participant(id,signal)); }
     catch (error) { if (error instanceof ApiError && error.status === 404) return null; throw error; }

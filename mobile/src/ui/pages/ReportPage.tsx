@@ -90,7 +90,7 @@ export function ReportPage() {
             <h2 style={{ fontSize: 26, fontWeight: 800, lineHeight: 1.2 }}>{subject.name}</h2>
           </div>
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
-            <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">측정 날짜</p>
+            <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">{rec.dateBasis === 'analysis_start' ? '분석 시작일' : '촬영일'}</p>
             <p style={{ fontSize: 17, fontWeight: 700 }}>{fmtDate(rec.measuredAt)}{rec.measuredAt && ` (${fmtWeekday(rec.measuredAt)})`}</p>
             <p style={{ fontSize: 13 }} className="muted">{!rec.live && fmtTime(rec.measuredAt)}</p>
           </div>
@@ -101,7 +101,7 @@ export function ReportPage() {
             <dd style={{ fontSize: 18, fontWeight: 700 }}>{rec.live ? rec.live.analysis.segments.length+"개" : subject.sex}</dd>
           </div>
           <div style={{ padding: '12px 4px' }}>
-            <dt className="k">촬영 당시 나이</dt>
+            <dt className="k">{rec.dateBasis === 'analysis_start' ? '분석 시작일 기준 나이' : '촬영 당시 나이'}</dt>
             <dd style={{ fontSize: 18, fontWeight: 700 }}>{rec.ageAtCapture === null ? "미확인" : "만 "+rec.ageAtCapture+"세"}</dd>
           </div>
           <div style={{ padding: '12px 4px' }}>

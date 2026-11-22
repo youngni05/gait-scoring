@@ -339,7 +339,7 @@ export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
   record: ResultRecord; selected: number; select: (i: number) => void; zoom: () => void; openHistory: () => void;
 }) {
   const [gdiInfo, setGdiInfo] = useState(false);
-  const priors = usePriorVisits(record);
+
   const visit = record.live!;
   const segments = visit.analysis.segments;
   const index = segments[selected] ? selected : 0;
@@ -353,7 +353,7 @@ export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
   }
 
   const summary = visitSummary(visit);
-  const history = priors.data?.prior.length ? visitHistory(visit, priors.data.prior) : null;
+  const history = null; // Load comparisons only when the history tab is opened.
 
   // 걷는 방향별로 구간 번호를 묶는다.
   const groups = new Map<string, number[]>();
