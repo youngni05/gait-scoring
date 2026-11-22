@@ -1,12 +1,13 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy import select, func
+from fastapi import APIRouter, Depends, HTTPException, Response
+from sqlalchemy import select, func, delete
+from sqlalchemy.exc import DBAPIError
 from sqlalchemy.orm import Session
 
 from app.db import get_db
 from app.deps import get_current_user
-from app.models import GaitMeasurement, Participant, User
+from app.models import GaitAnalysisResult, GaitMeasurement, MeasurementRequest, Participant, User
 from app.schemas.participants import (
     ParticipantCreate,
     ParticipantResponse,
@@ -19,6 +20,41 @@ router = APIRouter(
     prefix="/participants",
     tags=["Participants"],
 )
+
+
+@router.delete("/{participant_id}", status_code=204)
+def delete_participant(
+    participant_id: UUID,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    # Team-shared access, like update. Lock before deleting any dependent rows;
+    # an active upload/worker must finish before the user can retry deletion.
+    try:
+        participant = db.scalar(select(Participant).where(Participant.id == participant_id)
+                                .with_for_update(nowait=True))
+        if participant is None:
+            return Response(status_code=204)
+        rows = db.execute(select(GaitMeasurement.id, GaitMeasurement.analysis_status)
+                          .where(GaitMeasurement.participant_id == participant_id)
+                          .with_for_update(nowait=True)).all()
+        if any(status == "pending" for _, status in rows):
+            raise HTTPException(409, "Analysis is pending; retry after it finishes")
+        ids = [mid for mid, _ in rows]
+        db.execute(delete(MeasurementRequest).where(MeasurementRequest.participant_id == participant_id))
+        db.execute(delete(GaitAnalysisResult).where(GaitAnalysisResult.measurement_id.in_(ids)))
+        db.execute(delete(GaitMeasurement).where(GaitMeasurement.participant_id == participant_id))
+        db.delete(participant)
+        db.commit()
+    except HTTPException:
+        db.rollback()
+        raise
+    except DBAPIError as exc:
+        db.rollback()
+        if getattr(exc.orig, "sqlstate", None) == "55P03":
+            raise HTTPException(409, "Participant is busy; retry after processing finishes") from None
+        raise
+    return Response(status_code=204)
 
 
 @router.post(

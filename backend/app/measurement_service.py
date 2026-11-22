@@ -3,7 +3,7 @@ from datetime import timedelta, timezone
 from uuid import UUID
 
 from fastapi import HTTPException
-from sqlalchemy import text
+from sqlalchemy import select, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy.orm import Session
@@ -29,7 +29,8 @@ def store_measurement(db: Session, user_id: UUID, participant_id: UUID,
         raise problem("INVALID_MEASUREMENT_CONTRACT", "Metadata and Idempotency-Key must be supplied together", 422)
     if modern and data.keypoints_json["subject"]["id"] != str(participant_id):
         raise problem("PARTICIPANT_MISMATCH", "Coordinates must match the selected participant", 422)
-    participant = db.get(Participant, participant_id)
+    participant = db.scalar(select(Participant).where(Participant.id == participant_id)
+                            .with_for_update(read=True, key_share=True))
     if participant is None:
         raise HTTPException(status_code=404, detail="Participant not found")
     if modern:

@@ -30,7 +30,7 @@ from alembic.config import Config
 from sqlalchemy import create_engine, select, func, text
 from sqlalchemy.engine import make_url
 from sqlalchemy.orm import Session
-from app.models import GaitMeasurement, MeasurementRequest, Participant, User
+from app.models import GaitAnalysisResult, GaitMeasurement, MeasurementRequest, Participant, User
 from app.security import create_access_token, hash_password
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -156,6 +156,57 @@ class MeasurementPostgresTests(unittest.TestCase):
     def count(self):
         with Session(self.engine) as db:
             return db.scalar(select(func.count()).select_from(GaitMeasurement).where(GaitMeasurement.participant_id == self.participant_id))
+
+    def test_delete_participant_cascades_only_target_and_preserves_summary(self):
+        status, measurement, _ = self.http(self.path, "POST", self.body, self.key)
+        self.assertEqual(status, 201)
+        mid = UUID(measurement["id"])
+        with Session(self.engine) as db:
+            db.add(GaitAnalysisResult(measurement_id=mid, model_version="synthetic",
+                                      analyzed_at=datetime.now(timezone.utc)))
+            db.commit()
+        # Registering a different participant must not change the existing summary.
+        summary_path = f"/team/participant-summaries/{self.participant_id}"
+        before = self.http(summary_path)[1]
+        status, other, _ = self.http("/participants", "POST", {
+            "name": "Deletion isolation fixture", "gender": "F", "birth_date": "1950-01-01", "height_cm": 160,
+        })
+        self.assertEqual(status, 201)
+        self.assertEqual(self.http(summary_path)[1], before)
+        endpoint = f"/participants/{self.participant_id}"
+        self.assertEqual(self.http(endpoint, "DELETE", token=None)[0], 401)
+        self.assertEqual(self.http(endpoint, "DELETE", token=self.other_token)[0], 204)
+        self.assertEqual(self.http(endpoint, "DELETE")[0], 204)
+        self.assertEqual(self.http(endpoint)[0], 404)
+        self.assertEqual(self.http(self.path, "POST", self.body, self.key)[0], 404)
+        self.assertEqual(self.http(f'/participants/{other["id"]}')[0], 200)
+        self.assertEqual(self.http(f'/participants/{self.legacy_participant}')[0], 200)
+        with Session(self.engine) as db:
+            self.assertIsNone(db.get(GaitMeasurement, mid))
+            self.assertIsNone(db.scalar(select(GaitAnalysisResult).where(GaitAnalysisResult.measurement_id == mid)))
+            self.assertIsNone(db.get(MeasurementRequest, (self.user_id, UUID(self.key))))
+
+    def test_delete_participant_rejects_pending_and_active_worker(self):
+        status, measurement, _ = self.http(self.path, "POST", self.body, self.key)
+        self.assertEqual(status, 201)
+        mid = UUID(measurement["id"])
+        endpoint = f"/participants/{self.participant_id}"
+        with Session(self.engine) as db:
+            db.get(GaitMeasurement, mid).analysis_status = "pending"
+            db.commit()
+        self.assertEqual(self.http(endpoint, "DELETE")[0], 409)
+        self.assertEqual(self.count(), 1)
+        with Session(self.engine) as db:
+            db.get(GaitMeasurement, mid).analysis_status = "ready"
+            db.commit()
+            db.scalar(select(GaitMeasurement).where(GaitMeasurement.id == mid).with_for_update())
+            self.assertEqual(self.http(endpoint, "DELETE")[0], 409)
+        with Session(self.engine) as db:
+            db.scalar(select(Participant).where(Participant.id == self.participant_id)
+                      .with_for_update(read=True, key_share=True))
+            self.assertEqual(self.http(endpoint, "DELETE")[0], 409)
+        self.assertEqual(self.http(endpoint)[0], 200)
+        self.assertEqual(self.http(endpoint, "DELETE")[0], 204)
 
     def test_shared_capture_survives_disconnect_and_replay(self):
         from unittest.mock import patch

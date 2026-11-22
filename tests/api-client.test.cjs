@@ -9,6 +9,18 @@ const {validateParticipant, participantChanges, koreaToday} = require('../.stage
 const personInput = {name:'  테스트 대상자  ',gender:'F',birth_date:'1950-01-01',height_cm:'170.5'};
 const response = (data,status=200,headers={}) => new Response(JSON.stringify(data),{status,headers});
 
+test('participant deletion uses authenticated participant route and requires confirmation', async()=>{
+  const api=new ApiClient('https://example.com',()=> 'test-token',async(url,init)=>{
+    assert.equal(url,'https://example.com/participants/subject-1');
+    assert.equal(init.method,'DELETE');
+    assert.equal(init.headers.get('Authorization'),'Bearer test-token');
+    return new Response(null,{status:204});
+  });
+  await api.deleteParticipant('subject-1');
+  const invalid=new ApiClient('https://example.com',()=> 'test-token',async()=>response({}));
+  await assert.rejects(invalid.deleteParticipant('subject-1'),e=>e.code==='INVALID_RESPONSE');
+});
+
 test('default browser transport calls native fetch with its global receiver',async()=>{
   const original=globalThis.fetch;
   let called=false;

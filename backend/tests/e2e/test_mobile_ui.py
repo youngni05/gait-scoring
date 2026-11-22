@@ -87,6 +87,34 @@ class MobileUiTests(unittest.TestCase):
         with self.engine.connect() as conn:
             return conn.execute(text('SELECT count(*) FROM gait_measurements WHERE participant_id=:pid'), {'pid': self.person_id}).scalar_one()
 
+    def test_delete_subject_cancel_conflict_and_success(self):
+        self.create_person()
+        identity = self.page.locator('.subject-identity').inner_text()
+        def open_delete():
+            self.page.get_by_role('button', name='대상자 더보기').click()
+            self.page.get_by_role('button', name='대상자 삭제', exact=True).click()
+            expect(self.page.get_by_role('dialog')).to_be_visible()
+        open_delete()
+        self.page.get_by_role('button', name='취소', exact=True).click()
+        expect(self.page.get_by_role('dialog')).to_have_count(0)
+        self.assertEqual(self.page.locator('.subject-identity').inner_text(), identity)
+        endpoint = self.api + '/participants/' + self.person_id
+        def busy(route):
+            if route.request.method == 'DELETE':
+                route.fulfill(status=409, content_type='application/json', body='{"detail":"busy"}')
+            else:
+                route.continue_()
+        self.page.route(endpoint, busy)
+        open_delete()
+        self.page.get_by_role('button', name='삭제하기', exact=True).click()
+        expect(self.page.get_by_role('alert')).to_contain_text('AI 분석이 진행 중')
+        self.page.unroute(endpoint, busy)
+        self.page.get_by_role('button', name='삭제하기', exact=True).click()
+        expect(self.page.get_by_role('button', name='대상자 등록', exact=True)).to_be_visible()
+        with self.engine.connect() as conn:
+            self.assertEqual(conn.execute(text('SELECT count(*) FROM participants WHERE id=:id'),
+                                          {'id': self.person_id}).scalar_one(), 0)
+
     def test_current_registration_and_edit(self):
         self.create_person()
         self.page.get_by_role('button', name='대상자 정보 수정').click()

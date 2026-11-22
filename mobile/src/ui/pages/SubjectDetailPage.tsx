@@ -9,6 +9,7 @@ import { ChangeBadge } from '../components/ChangeBadge';
 import { signed } from './VisitMetrics';
 import { NotFound } from './NotFound';
 import '../report.css';
+import { SubjectDeleteMenu } from '../components/SubjectDeleteMenu';
 
 export function SubjectDetailPage() {
   const { subjectId = '' } = useParams();
@@ -28,7 +29,8 @@ export function SubjectDetailPage() {
 
   return (
     <div className="screen" style={{ paddingBottom: 40 }}>
-      <TopBar title="대상자 상세" nav="back" onNav={back} />
+      <TopBar title="대상자 상세" nav="back" onNav={back}
+        actions={<SubjectDeleteMenu subject={subject} onDeleted={back} />} />
 
       <section className="subject-identity" aria-label="대상자 정보">
         <div className="subject-identity-head">

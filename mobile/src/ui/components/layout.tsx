@@ -41,9 +41,10 @@ interface TopBarProps {
   subjectDetail?: string | undefined;
   sticky?: boolean;
   children?: ReactNode;
+  actions?: ReactNode;
 }
 
-export function TopBar({ title, nav, onNav, subject, subjectDetail, sticky = true, children }: TopBarProps) {
+export function TopBar({ title, nav, onNav, subject, subjectDetail, sticky = true, children, actions }: TopBarProps) {
   return (
     <header className="topbar" style={sticky ? undefined : { position: 'static' }}>
       <div className={`topbar-row ${nav ? '' : 'no-back'}`}>
@@ -53,6 +54,7 @@ export function TopBar({ title, nav, onNav, subject, subjectDetail, sticky = tru
           </button>
         )}
         <h1>{title}</h1>
+        {actions}
       </div>
       {subject && <SubjectBar subject={subject} detail={subjectDetail} />}
       {children}

@@ -88,6 +88,7 @@ export const liveSource:GaitDataSource = {
   },
   async createSubject(input) { return subject(await teamApi.createParticipant(profile(input))); },
   async updateSubject(id,input) { return subject(await teamApi.updateParticipant(id,profile(input))); },
+  async deleteSubject(id) { await teamApi.deleteParticipant(id); },
   async listResults(id,signal) {
     const rows: ResultRecord[] = [];
     for (;;) {

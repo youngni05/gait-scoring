@@ -111,6 +111,10 @@ export class ApiClient {
     const { data, status } = await this.request('/participants', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }, signal);
     return this.participantResponse(data, status, 201);
   }
+  async deleteParticipant(id: string): Promise<void> {
+    const { status } = await this.request(`/participants/${encodeURIComponent(id)}`, { method: 'DELETE' });
+    if (status !== 204) throw new ApiError(status, 'INVALID_RESPONSE', 'Deletion not confirmed');
+  }
   async updateParticipant(id: string, body: Partial<ParticipantBody>, signal?: AbortSignal): Promise<Participant> {
     if (!Object.keys(body).length) throw new Error('수정할 정보가 없습니다.');
     const { data, status } = await this.request(`/participants/${encodeURIComponent(id)}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }, signal);

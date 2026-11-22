@@ -77,6 +77,11 @@ export const mockSource: GaitDataSource = {
     return updated;
   },
 
+  async deleteSubject(id) {
+    subjects = subjects.filter(s => s.id !== id);
+    records = records.filter(r => r.subjectId !== id);
+  },
+
   async listResults(subjectId, signal) {
     await wait(300, signal);
     return records.filter((r) => r.subjectId === subjectId).sort(byLatest);

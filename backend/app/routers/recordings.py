@@ -64,7 +64,10 @@ def submit(participant_id: UUID, response: Response, body=Depends(bounded_json),
     existing = replay()
     if existing is not None:
         return existing
-    person = require_participant(db, participant_id)
+    person = db.scalar(select(Participant).where(Participant.id == participant_id)
+                       .with_for_update(read=True, key_share=True))
+    if person is None:
+        raise HTTPException(404, "Participant not found")
     stamp = coords["capture"]["recorded_at"]
     received = datetime.now(timezone.utc)
     measured = datetime.fromisoformat(stamp) if stamp else None
