@@ -286,9 +286,21 @@
 .ovw-visits .m b { font-size: 15px; color: var(--fg); }
 .ovw-visits .chev { color: var(--fg-40); }
 /* 대상자 상세의 보행 변화 요약 카드 */
-.ovw-summary { width: 100%; text-align: left; display: grid; gap: 8px; padding: 16px 18px; border-radius: var(--r-lg); background: var(--accent); border: 2px solid rgb(30 157 241 / .2); }
+.ovw-summary { width: 100%; text-align: left; display: grid; gap: 10px; padding: 16px; border-radius: var(--r-lg); background: color-mix(in srgb, var(--accent) 60%, white); border: 1px solid #c1def1; }
 .ovw-summary:hover { border-color: var(--primary); }
-.ovw-summary .t { font-size: 14px; font-weight: 800; color: var(--primary); }
-.ovw-summary .t small { font-weight: 600; color: var(--fg-60); }
-.ovw-summary .s { font-size: 16px; font-weight: 700; line-height: 1.5; color: var(--fg); }
-.ovw-summary .go { display: inline-flex; align-items: center; gap: 2px; font-size: 15px; font-weight: 700; color: var(--primary); }
+.ovw-summary .t { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 17px; font-weight: 800; }
+.ovw-summary .t small, .ovw-baseline { font-size: 13px; font-weight: 600; color: var(--fg-70); }
+.ovw-summary .t small { display: inline-flex; align-items: center; color: #126595; }
+.ovw-blocks { display: grid; gap: 4px; }
+.ovw-block, .ovw-state { padding: 7px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-sm); }
+.ovw-block { display: grid; grid-template-columns: minmax(0,1fr) auto auto; align-items: center; gap: 4px 6px; }
+.ovw-metric { font-size: 14px; font-weight: 700; word-break: keep-all; }
+.ovw-block strong { font-size: 18px; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.ovw-block strong small { margin-left: 3px; font-size: 13px; font-weight: 600; }
+.change-badge { padding: 2px 8px; border-radius: 999px; font-size: 13px; font-weight: 700; }
+.change-badge.up { background: #e6f2ff; color: #125992; }
+.change-badge.down { background: #fcecee; color: #a52b39; }
+.change-badge.similar, .ovw-state { color: var(--fg-70); }
+.change-badge.similar { background: var(--card); }
+.ovw-series { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; color: var(--fg-70); font-size: 12px; }
+.ovw-series b { color: var(--fg); font-size: 13px; font-variant-numeric: tabular-nums; }

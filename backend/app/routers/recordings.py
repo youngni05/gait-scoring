@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session, defer
 
 from app.ai_module import LIMITS, RequestError, compare_and_explain, parse_json, to_request
 from app.db import get_db
-from app.recording_views import legacy_curves, SUMMARY_SQL
+from app.recording_views import legacy_curves, RECENT_VISITS_SQL, SUMMARY_SQL
 from app.deps import get_current_user
 from app.models import GaitAnalysisResult, GaitMeasurement, Participant, User
 from app.routers.measurements import require_participant
@@ -171,9 +171,10 @@ def participant_summary(participant_id: UUID, db: Session = Depends(get_db)):
     latest, count = db.execute(select(
         func.max(func.coalesce(GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at)),
         func.count(GaitMeasurement.id)).where(GaitMeasurement.participant_id == participant_id)).one()
+    previews = db.execute(text(RECENT_VISITS_SQL), {"participant_id": participant_id}).scalars().all() if count else []
     return dict(id=p.id, name=p.name, sex={"F": "여", "M": "남"}.get(p.gender), birth=p.birth_date or "",
                 heightCm=float(p.height_cm) if p.height_cm is not None else None,
-                latestMeasuredAt=latest, resultCount=count)
+                latestMeasuredAt=latest, resultCount=count, recentVisits=previews)
 
 
 @router.get("/participants/{participant_id}/recording-summaries")

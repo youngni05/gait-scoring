@@ -284,15 +284,10 @@ function overviewLines(trends, priorCount) {
       : '기록이 2회 이상 쌓이면 방문 사이의 변화를 보여 드립니다.'];
   }
   const first = trends.map(t => t.fromFirst.date).sort()[0];
-  const by = v => trends.filter(t => t.fromFirst.verdict === v)
-    .map(t => ({ label: t.label, text: `${t.label}(${signed(t.fromFirst.delta, t.digits)}${t.unit})` }));
-  const better = by('better'), worse = by('worse');
-  const lead = `처음 기록(${fmtDay(first)})과 비교하면 `;
-  const lines = [];
-  if (better.length && worse.length) lines.push(lead + `${subjectOf(better, '이', '가')} 좋아졌고, ${subjectOf(worse, '은', '는')} 나빠졌습니다.`);
-  else if (better.length) lines.push(lead + `${subjectOf(better, '이', '가')} 좋아졌습니다.`);
-  else if (worse.length) lines.push(lead + `${subjectOf(worse, '이', '가')} 나빠졌습니다.`);
-  else lines.push(lead + '모든 항목이 비슷한 범위 안에 있습니다.');
+  const moved = trends.filter(t => t.fromFirst.verdict !== 'similar');
+  const lines = moved.length ? moved.map(t =>
+    `${fmtDay(t.fromFirst.date)} 대비 ${t.label} ${Math.abs(t.fromFirst.delta).toFixed(t.digits)}${t.unit} ${t.fromFirst.delta > 0 ? '증가' : '감소'}`
+  ) : [`처음 기록(${fmtDay(first)})과 비교하면 모든 항목이 비슷한 범위 안에 있습니다.`];
   for (const t of trends.filter(x => x.steady)) {
     lines.push(`${t.label}${particle(t.label, '은', '는')} 최근 ${t.points.length}번의 기록에서 계속 ${t.delta > 0 ? '늘었습니다' : '줄었습니다'}.`);
   }

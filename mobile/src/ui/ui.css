@@ -366,6 +366,34 @@ ol, ul { list-style: none; }
 .warn-icon { color: var(--warn); flex-shrink: 0; }
 .faint { color: var(--fg-30); flex-shrink: 0; }
 .check-mt { margin-top: 4px; flex-shrink: 0; }
+.subject-identity { margin: 12px 20px 0; padding: 8px 12px 12px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--card); }
+.subject-identity-head { display: flex; align-items: center; gap: 8px; }
+.subject-identity-head h2 { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 18px; line-height: 1.35; }
+.subject-edit { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; min-width: 48px; color: #126595; font-size: 14px; font-weight: 700; }
+.subject-facts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; margin-top: 4px; line-height: 1.35; }
+.subject-facts div { padding: 6px 12px; border: 1px solid var(--border); background: var(--bg); border-radius: var(--r-sm); }
+.subject-facts dt { font-size: 13px; color: var(--fg-70); }
+.subject-facts dd { margin-top: 2px; font-size: 16px; font-weight: 700; }
+.subject-actions { display: grid; gap: 12px; }
+.subject-summary-section { margin: 12px 20px 0; }
+.subject-action-section { margin: 16px 20px 0; }
+.subject-action-section h3 { margin-bottom: 12px; font-size: 20px; font-weight: 800; }
+.subject-action-title { display: block; font-size: 20px; font-weight: 800; }
+.subject-actions button { display: flex; align-items: center; gap: 16px; width: 100%; padding: 20px; border-radius: var(--r-lg); text-align: left; word-break: keep-all; }
+.subject-actions .history-btn { background: var(--accent); border: 2px solid rgb(30 157 241 / .2); }
+.subject-action-icon { display: grid; place-items: center; width: 56px; height: 56px; flex-shrink: 0; border-radius: var(--r-md); background: rgb(255 255 255 / .2); }
+.history-btn .subject-action-icon { background: var(--bg); color: var(--primary); }
+.subject-action-note { display: block; margin-top: 4px; font-size: 15px; }
+.btn-primary .subject-action-note { color: rgb(255 255 255 / .85); }
+.history-btn .subject-action-note { color: var(--fg-70); }
+@media (max-height: 600px) {
+  .subject-identity, .subject-summary-section, .subject-action-section { margin: 8px 12px 0; }
+  .subject-identity { padding: 4px 10px 8px; }
+  .subject-facts div { padding: 4px 10px; }
+  .subject-summary-section .ovw-summary { gap: 5px; padding: 9px 10px; }
+  .subject-summary-section .ovw-block { padding: 4px 7px; }
+  .subject-action-section h3 { margin-bottom: 6px; font-size: 18px; }
+}
 .history-btn:hover { border-color: var(--primary) !important; }
 
 .record-btn {

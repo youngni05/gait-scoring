@@ -1,11 +1,12 @@
 /** 03 대상자 상세: 정보 확인 후 ‘새 보행 영상 분석’ 또는 ‘이전 결과 조회’로 갈라진다. */
-import type { ReactNode } from 'react';
 import { Avatar, PageError, PageLoading, TopBar } from '../components/layout';
 import { ChevronRightIcon, HistoryIcon, PenIcon, VideoIcon } from '../components/icons';
 import { ageOn, dataSource, fmtBirth, fmtDate } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
-import { subjectOverview } from '../data/visit-summary.mjs';
+import { fmtDay, subjectOverview, type SubjectOverview } from '../data/visit-summary.mjs';
+import { ChangeBadge } from '../components/ChangeBadge';
+import { signed } from './VisitMetrics';
 import { NotFound } from './NotFound';
 import '../report.css';
 
@@ -22,73 +23,71 @@ export function SubjectDetailPage() {
   const subject = data;
   if (!subject) return <NotFound />;
 
-  const info: [string, ReactNode][] = [
-    ['나이', subject.birth ? '만 '+ageOn(subject.birth)+'세' : '미확인'],
-    ['성별', subject.sex??'미확인'],
-    ['키', subject.heightCm===null?'미확인':<>{subject.heightCm} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
-    ['생년월일', <span style={{ fontSize: 17, lineHeight: '30px' }}>{fmtBirth(subject.birth)||'미확인'}</span>],
-  ];
+  const previews = subject.recentVisits ?? [];
+  const overview = previews.length ? subjectOverview(previews) : null;
+
   return (
     <div className="screen" style={{ paddingBottom: 40 }}>
       <TopBar title="대상자 상세" nav="back" onNav={back} />
 
-      <section className="card" style={{ margin: '20px 20px 0', padding: 20 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <Avatar name={subject.name} size="lg" />
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <p style={{ fontSize: 14, fontWeight: 600 }} className="primary">대상자</p>
-            <h2 style={{ fontSize: 26, fontWeight: 800, lineHeight: 1.2 }}>{subject.name}</h2>
-          </div>
+      <section className="subject-identity" aria-label="대상자 정보">
+        <div className="subject-identity-head">
+          <Avatar name={subject.name} size="sm" />
+          <h2>{subject.name}</h2>
+          <button className="subject-edit" aria-label="대상자 정보 수정" onClick={() => navigate(`/subjects/${subject.id}/edit`)}>
+            <PenIcon size={16} />수정
+          </button>
         </div>
-        <dl style={{ marginTop: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-          {info.map(([k, v]) => (
-            <div key={k} style={{ borderRadius: 'var(--r-md)', background: '#fff', border: '1px solid var(--border)', padding: '12px 16px' }}>
-              <dt style={{ fontSize: 14 }} className="muted">{k}</dt>
-              <dd style={{ marginTop: 2, fontSize: 20, fontWeight: 700 }}>{v}</dd>
-            </div>
-          ))}
+        <dl className="subject-facts">
+          <div><dt>나이</dt><dd>{subject.birth ? `만 ${ageOn(subject.birth)}세` : '미확인'}</dd></div>
+          <div><dt>성별</dt><dd>{subject.sex ?? '미확인'}</dd></div>
+          <div><dt>키</dt><dd>{subject.heightCm == null ? '미확인' : `${subject.heightCm} cm`}</dd></div>
+          <div><dt>생년월일</dt><dd>{fmtBirth(subject.birth) || '미확인'}</dd></div>
         </dl>
-        <button
-          className="btn btn-outline btn-sm"
-          style={{ marginTop: 16, background: '#fff' }}
-          onClick={() => navigate(`/subjects/${subject.id}/edit`)}
-        >
-          <PenIcon size={18} /> 대상자 정보 수정
-        </button>
       </section>
 
-      {subject.resultCount > 0 && <section style={{margin:20}}>
-        <button className="btn btn-outline" onClick={()=>navigate(`/subjects/${subject.id}/overview`)}>전체 기록 해석 보기</button>
+      {overview?.latest && (
+        <section className="subject-summary-section">
+          <button className="ovw-summary" onClick={() => navigate(`/subjects/${subject.id}/overview`)}>
+            <span className="t">보행 변화 요약<small>최근 {overview.visits.length}회 · 전체 보기 <ChevronRightIcon size={14} /></small></span>
+            <ChangeBlocks overview={overview} />
+          </button>
+        </section>
+      )}
+
+      {!overview?.latest && subject.resultCount > 0 && <section className="subject-summary-section">
+        <button className="ovw-summary" onClick={() => navigate(`/subjects/${subject.id}/overview`)}>
+          <span className="t">보행 변화 요약<small>전체 기록 해석 보기 <ChevronRightIcon size={14} /></small></span>
+          <span className="ovw-baseline">비교 가능한 기록 확인</span>
+        </button>
       </section>}
 
-      <section style={{ margin: '28px 20px 0' }}>
-        <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12 }}>무엇을 하시겠어요?</h3>
-        <div style={{ display: 'grid', gap: 12 }}>
+      <section className="subject-action-section">
+        <h3>무엇을 하시겠어요?</h3>
+        <div className="subject-actions">
           <button
             className="btn-primary"
-            style={{ width: '100%', textAlign: 'left', borderRadius: 'var(--r-lg)', padding: 20, display: 'flex', alignItems: 'center', gap: 16 }}
             onClick={() => navigate(`/subjects/${subject.id}/analyze`)}
           >
-            <span style={{ width: 56, height: 56, flexShrink: 0, borderRadius: 'var(--r-md)', background: 'rgb(255 255 255 / .2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span className="subject-action-icon">
               <VideoIcon size={28} />
             </span>
             <span style={{ flex: 1 }}>
-              <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>새 보행 영상 분석</span>
-              <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'rgb(255 255 255 / .85)' }}>휴대폰의 보행 영상을 선택해 분석합니다</span>
+              <span className="subject-action-title">새 보행 영상 분석</span>
+              <span className="subject-action-note">휴대폰의 보행 영상을 선택해 분석합니다</span>
             </span>
             <ChevronRightIcon size={20} />
           </button>
           <button
             className="history-btn"
-            style={{ width: '100%', textAlign: 'left', borderRadius: 'var(--r-lg)', padding: 20, display: 'flex', alignItems: 'center', gap: 16, background: 'var(--accent)', border: '2px solid rgb(30 157 241 / .2)' }}
             onClick={() => navigate(`/subjects/${subject.id}/results`)}
           >
-            <span style={{ width: 56, height: 56, flexShrink: 0, borderRadius: 'var(--r-md)', background: '#fff', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span className="subject-action-icon">
               <HistoryIcon size={28} />
             </span>
             <span style={{ flex: 1 }}>
-              <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>이전 결과 조회</span>
-              <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'var(--fg-70)' }}>
+              <span className="subject-action-title">이전 결과 조회</span>
+              <span className="subject-action-note muted">
                 {subject.resultCount > 0 ? (
                   <>분석 기록 <b className="primary">{subject.resultCount}건</b> · 최근 {fmtDate(subject.latestMeasuredAt ?? '')}</>
                 ) : (
@@ -102,4 +101,34 @@ export function SubjectDetailPage() {
       </section>
     </div>
   );
+}
+
+function ChangeBlocks({ overview }: { overview: SubjectOverview }) {
+  const { trends, visits, history } = overview;
+  const recent = history?.recent;
+  if (!recent || !trends.length) {
+    return <span className="ovw-state">{visits.length === 1 ? '첫 기록 · 다음 기록부터 비교' : '비교 가능한 지표 없음'}</span>;
+  }
+
+  // 최근 달라진 지표를 먼저, 그다음 여러 기록에서 비교할 수 있는 지표를 표시한다.
+  const priority = (t: SubjectOverview['trends'][number]) =>
+    t.verdict !== 'similar' ? 0 : t.points.length > 2 ? 1 : 2;
+  const visible = [...trends].sort((a, b) => priority(a) - priority(b)).slice(0, 2);
+  return <>
+    <span className="ovw-baseline">최근 비교 · {fmtDay(recent.previousDate)} → {fmtDay(visits[0]!.date)}</span>
+    <span className="ovw-blocks">
+      {visible.map(t => {
+        const points = t.points.slice(-4);
+        return <span className="ovw-block" key={t.key}>
+          <span className="ovw-metric">{t.label}</span>
+          <strong>{signed(t.delta, t.digits)}<small>{t.key === 'cadence' ? '걸음/분' : t.unit}</small></strong>
+          <ChangeBadge delta={t.delta} verdict={t.verdict} />
+          {points.length >= 3 && <span className="ovw-series">
+            <span>최근 {points.length}회 흐름</span>
+            <b>{points.map(p => p.value.toFixed(t.digits)).join(' → ')}</b>
+          </span>}
+        </span>;
+      })}
+    </span>
+  </>;
 }

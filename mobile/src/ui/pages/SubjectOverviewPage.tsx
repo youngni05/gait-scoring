@@ -10,7 +10,8 @@ import { dataSource, fmtDate, fmtWeekday } from '../data';
 import { EXAMPLE_BAND, fmtDay, subjectOverview, type OverviewTrend, type SubjectOverview } from '../data/visit-summary.mjs';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
-import { Criteria, SHORT, VERDICT, VerdictIcon, signed } from './VisitMetrics';
+import { Criteria, SHORT, signed } from './VisitMetrics';
+import { ChangeBadge } from '../components/ChangeBadge';
 import { NotFound } from './NotFound';
 import '../report.css';
 
@@ -83,12 +84,9 @@ function Headline({ overview }: { overview: SubjectOverview }) {
           <div className="since" style={{ background: 'var(--bg)' }}>
             <ul style={{ marginTop: 0 }}>
               {moved.map((t) => (
-                <li key={t.key} className={t.fromFirst.verdict}>
-                  <VerdictIcon verdict={t.fromFirst.verdict} delta={t.fromFirst.delta} size={20} />
-                  <span>
-                    {SHORT[t.key] ?? t.label} {VERDICT[t.fromFirst.verdict]}
-                    <small>{signed(t.fromFirst.delta, t.digits)}{t.unit}</small>
-                  </span>
+                <li key={t.key}>
+                  <span>{SHORT[t.key] ?? t.label}<small>{signed(t.fromFirst.delta, t.digits)}{t.unit}</small></span>
+                  <ChangeBadge {...t.fromFirst} />
                 </li>
               ))}
             </ul>
@@ -104,14 +102,14 @@ function Trends({ trends }: { trends: OverviewTrend[] }) {
     <section className="rs" aria-label="지표별 흐름">
       <div className="rs-head">
         <h3>지표별 흐름</h3>
-        <p>점 하나가 방문 한 번입니다. 회색 띠는 처음 기록에서 ‘비슷함’으로 보는 범위이며, 띠를 벗어나면 처음보다 좋아지거나 나빠진 것입니다.</p>
+        <p>점 하나가 방문 한 번입니다. 회색 띠는 처음 기록에서 ‘비슷함’으로 보는 범위이며, 띠 위는 처음보다 증가한 값, 아래는 감소한 값입니다.</p>
       </div>
       {trends.map((t) => (
         <article key={t.key} className="ovw-card">
           <div className="ovw-top">
             <span className="l">{t.label}</span>
-            <span className={`kw ${t.fromFirst.verdict}`}>
-              처음 대비 {VERDICT[t.fromFirst.verdict]}
+            <span className="kw">
+              처음 대비 <ChangeBadge {...t.fromFirst} />
             </span>
           </div>
           <p className="ovw-vals">
