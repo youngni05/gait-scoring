@@ -2,13 +2,15 @@
  * 04 대상자 등록 · 04-1 대상자 정보 수정.
  * 두 화면은 입력 항목이 같아서 하나의 화면으로 만들고, 주소에 대상자 번호가 있으면 수정으로 동작한다.
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PageError, PageLoading, TopBar } from '../components/layout';
 import { AlertCircleIcon, CalculatorIcon, CalendarIcon, CheckCircleIcon, InfoIcon } from '../components/icons';
 import { ageOn, isDemo, dataSource, fmtBirth, maskBirth, parseBirth, type Sex, type Subject } from '../data';
-import { useNavigate, useParams } from '../router';
+import { useLeaveGuard, useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { NotFound } from './NotFound';
+
+import { ApiError, errorMessage } from '../../api/client';
 
 type Errors = Partial<Record<'name' | 'sex' | 'birth' | 'height', string>>;
 
@@ -43,6 +45,13 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
   const [errors, setErrors] = useState<Errors>({});
   const [tried, setTried] = useState(false);
   const [saving, setSaving] = useState(false);
+  const alive = useRef(true);
+  const savingNow = useRef(false);
+  const [uncertain, setUncertain] = useState(false);
+  const [savedId, setSavedId] = useState<string | null>(null);
+  useEffect(() => { alive.current = true; return () => { alive.current = false; }; }, []);
+  useLeaveGuard(saving, '대상자 정보를 저장 중입니다. 떠나도 서버에 저장될 수 있습니다. 나갈까요?');
+  useEffect(() => { if (savedId) navigate(`/subjects/${savedId}`, { replace: true }); }, [savedId, navigate]);
   const [saveError, setSaveError] = useState<string | null>(null);
 
   const birthIso = parseBirth(birth);
@@ -69,6 +78,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
   }, [name, sex, birth, height]);
 
   const save = () => {
+    if (savingNow.current || uncertain) return;
     const e = validate();
     setErrors(e);
     setTried(true);
@@ -77,16 +87,25 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
       return;
     }
     const data = { name: name.trim(), sex, birth: birthIso??'', heightCm: height ? Math.round(Number(height) * 10) / 10 : null };
+    savingNow.current = true;
     setSaving(true);
     setSaveError(null);
     const request = editing ? dataSource.updateSubject(editing.id, data) : dataSource.createSubject(data);
     request
-      .then((saved) => navigate(`/subjects/${saved.id}`, { replace: true }))
-      .catch(() => {
+      .then((saved) => {
+        if (!alive.current) return;
+        setSaving(false);
+        setSavedId(saved.id);
+      })
+      .catch((error) => {
+        if (!alive.current) return;
+        const ambiguous = !(error instanceof ApiError) || error.status === 0 || error.status >= 500 || error.code === 'INVALID_RESPONSE';
+        setUncertain(!editing && ambiguous);
+        if (!ambiguous) { setSaveError(errorMessage(error)); return; }
         // 저장이 이미 반영되었을 수도 있으므로 무작정 다시 누르게 하지 않고 목록 확인을 안내한다.
         setSaveError('저장 결과를 확인하지 못했습니다. 이미 반영되었을 수 있으니 대상자 목록에서 확인해 주세요.');
       })
-      .finally(() => setSaving(false));
+      .finally(() => { if (alive.current) { savingNow.current = false; setSaving(false); } });
   };
 
   const errCount = Object.keys(errors).length;
@@ -206,7 +225,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
 
       <div className="bottom-cta">
         {saveError && <p className="hint" role="alert" style={{ color: 'var(--danger)' }}>{saveError}</p>}
-        <button className="btn btn-primary" onClick={save} disabled={saving}>
+        <button className="btn btn-primary" onClick={save} disabled={saving || uncertain}>
           {saving ? '저장 중…' : isEdit ? '수정 내용 저장' : '저장'}
         </button>
       </div>

@@ -28,6 +28,7 @@ export class AnalysisFailedError extends Error {
 export interface GaitDataSource {
   login(username: string, password: string): Promise<void>;
   logout(): void;
+  pendingCapture(subjectId: string): Promise<{id: string; fileName: string} | null>;
 
   listSubjects(signal?: AbortSignal): Promise<SubjectSummary[]>;
   getSubject(id: string, signal?: AbortSignal): Promise<Subject | null>;

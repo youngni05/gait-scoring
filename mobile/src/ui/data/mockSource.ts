@@ -37,6 +37,7 @@ export const mockSource: GaitDataSource = {
   },
 
   logout() {},
+  async pendingCapture() { return null; },
 
   async listSubjects(signal) {
     await wait(600, signal);

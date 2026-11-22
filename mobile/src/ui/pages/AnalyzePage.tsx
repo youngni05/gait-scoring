@@ -23,7 +23,7 @@ import {
 import { LoadingMark } from '../components/brand';
 import { AnalysisFailedError, ageOn, isDemo, dataSource, fmtDate } from '../data';
 import { readCaptureDay } from '../../pose/browser-video-source';
-import { useNavigate, useParams } from '../router';
+import { useLeaveGuard, useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { NotFound } from './NotFound';
 
@@ -52,6 +52,7 @@ export function AnalyzePage() {
   const navigate = useNavigate();
   const loaded = useAsync((signal) => dataSource.getSubject(subjectId, signal), [subjectId]);
   const subject = loaded.data;
+  const recovery = useAsync(() => dataSource.pendingCapture(subjectId), [subjectId]);
 
   const [editedDay, setEditedDay] = useState<string | null>(null);
   const [mode,setMode]=useState<'fixed'|'guided'>('guided');
@@ -60,6 +61,7 @@ export function AnalyzePage() {
   const [picked, setPicked] = useState<Picked | null>(null);
   const [progressText,setProgressText]=useState('');
   const [pct, setPct] = useState(0);
+  useLeaveGuard(phase === 'running' || phase === 'preview' || phase === 'failed', '분석 또는 저장 확인이 끝나지 않았습니다. 화면을 나갈까요?');
   const [resultId, setResultId] = useState<string | null>(null);
   const [failure, setFailure] = useState<{ code: string; reason: string } | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -83,10 +85,6 @@ export function AnalyzePage() {
       .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode,height:height ? Number(height) : null})
       .then((rec) => {
         if (abort.signal.aborted) return;
-        if (!isDemo) {
-          navigate(`/subjects/${subjectId}/results/${rec.id}`, { replace: true });
-          return;
-        }
         setResultId(rec.id);
         setPhase('done');
       })
@@ -103,10 +101,16 @@ export function AnalyzePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  useEffect(() => {
+    if (!isDemo && phase === 'done' && resultId) navigate(`/subjects/${subjectId}/results/${resultId}`, { replace: true });
+  }, [phase, resultId, subjectId, navigate]);
+
   const backToDetail = () => navigate(`/subjects/${subjectId}`);
   if (loaded.loading) return <PageLoading title="새 보행 영상 분석" nav="back" onNav={backToDetail} />;
   if (loaded.error) return <PageError title="새 보행 영상 분석" onNav={backToDetail} onRetry={loaded.reload} />;
   if (!subject) return <NotFound />;
+  if (recovery.loading) return <PageLoading title="저장 요청 확인" nav="back" onNav={backToDetail} />;
+  if (recovery.error) return <PageError title="저장 요청 확인" onNav={backToDetail} onRetry={recovery.reload} />;
 
   const openPicker = () => fileInput.current?.click();
 
@@ -171,8 +175,13 @@ export function AnalyzePage() {
         }}
       />
 
+      {recovery.data && <section className="card" style={{margin:20,padding:20}} role="status">
+        <h2>확인하지 못한 저장 요청이 있습니다</h2>
+        <p>{recovery.data.fileName}</p><p>파일을 다시 선택하지 않고 기존 요청의 저장 여부를 확인합니다.</p>
+        <button className="btn btn-primary" disabled={phase === 'running'} onClick={start}>이전 저장 요청 이어가기</button>
+      </section>}
       {/* 06 영상 선택 */}
-      {phase === 'pick' && (
+      {phase === 'pick' && !recovery.data && (
         <section style={{ margin: '24px 20px 0' }}>
           <h2 style={{ fontSize: 20, fontWeight: 800 }}>분석할 보행 영상을 선택해 주세요</h2>
           <p style={{ marginTop: 6, fontSize: 15 }} className="muted">휴대폰에 저장된 영상 중 1개를 선택합니다.</p>
@@ -314,7 +323,7 @@ export function AnalyzePage() {
 
       {/* 하단 고정 영역 */}
       <div className="bottom-cta" style={phase === 'pick' ? { paddingTop: 12 } : undefined}>
-        {phase === 'pick' && (
+        {phase === 'pick' && !recovery.data && (
           <>
             <p className="hint">영상을 선택하면 분석을 시작할 수 있습니다</p>
             <button className="btn btn-primary" disabled>
