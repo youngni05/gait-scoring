@@ -30,7 +30,9 @@ export interface ResultPage { items: ResultRecord[]; total: number; offset: numb
 export interface GaitDataSource {
   login(username: string, password: string): Promise<void>;
   logout(): void;
-  pendingCapture(subjectId: string): Promise<{id: string; fileName: string} | null>;
+  pendingCapture(subjectId: string): Promise<{id: string; fileName: string; canDiscard: boolean; rejectionStatus?: number | undefined} | null>;
+
+  discardRejectedCapture(subjectId: string, requestId: string, signal?: AbortSignal): Promise<ResultRecord | null>;
 
   listSubjects(signal?: AbortSignal): Promise<SubjectSummary[]>;
   getSubjectSummary(id: string, signal?: AbortSignal): Promise<SubjectSummary | null>;

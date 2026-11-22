@@ -49,10 +49,19 @@ const fmtLength = (sec: number | null) => (sec === null ? '확인 중' : `${Math
 
 export function AnalyzePage() {
   const { subjectId = '' } = useParams();
+  return <AnalyzeContent key={subjectId} subjectId={subjectId} />;
+}
+
+function AnalyzeContent({subjectId}: {subjectId: string}) {
   const navigate = useNavigate();
   const loaded = useAsync((signal) => dataSource.getSubject(subjectId, signal), [subjectId]);
   const subject = loaded.data;
   const recovery = useAsync(() => dataSource.pendingCapture(subjectId), [subjectId]);
+
+  const [cleaning, setCleaning] = useState(false);
+  const [cleanupError, setCleanupError] = useState<string | null>(null);
+  const cleanupAbort = useRef<AbortController | null>(null);
+  useEffect(() => () => cleanupAbort.current?.abort(), []);
 
   const [editedDay, setEditedDay] = useState<string | null>(null);
   const [mode,setMode]=useState<'fixed'|'guided'>('guided');
@@ -61,7 +70,7 @@ export function AnalyzePage() {
   const [picked, setPicked] = useState<Picked | null>(null);
   const [progressText,setProgressText]=useState('');
   const [pct, setPct] = useState(0);
-  useLeaveGuard(phase === 'running' || phase === 'preview' || phase === 'failed', '분석 또는 저장 확인이 끝나지 않았습니다. 화면을 나갈까요?');
+  useLeaveGuard(cleaning || phase === 'running' || phase === 'preview' || phase === 'failed', '분석 또는 저장 확인이 끝나지 않았습니다. 화면을 나갈까요?');
   const [resultId, setResultId] = useState<string | null>(null);
   const [failure, setFailure] = useState<{ code: string; reason: string } | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -96,6 +105,7 @@ export function AnalyzePage() {
             : { code: 'GA-000', reason: e instanceof Error ? e.message : '분석하지 못했습니다' },
         );
         setPhase('failed');
+        recovery.reload();
       });
     return () => abort.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -104,6 +114,29 @@ export function AnalyzePage() {
   useEffect(() => {
     if (!isDemo && phase === 'done' && resultId) navigate(`/subjects/${subjectId}/results/${resultId}`, { replace: true });
   }, [phase, resultId, subjectId, navigate]);
+
+  const discardRejected = async () => {
+    const pending = recovery.data;
+    if (!pending?.canDiscard || cleanupAbort.current || phase === 'running') return;
+    if (!window.confirm('실패한 임시 저장 요청을 정리하고 새로 분석할까요? 원본 영상과 서버에 저장된 결과는 삭제하지 않습니다.')) return;
+    const abort = new AbortController();
+    cleanupAbort.current = abort;
+    setCleaning(true);
+    setCleanupError(null);
+    try {
+      const saved = await dataSource.discardRejectedCapture(subjectId, pending.id, abort.signal);
+      if (abort.signal.aborted) return;
+      if (saved) { setResultId(saved.id); setPhase('done'); }
+      else {
+        setPicked(null); setFailure(null); setEditedDay(null); setEditedHeight(null); setPhase('pick');
+        recovery.reload();
+      }
+    } catch {
+      if (!abort.signal.aborted) setCleanupError('저장 여부를 확인하지 못해 요청을 보관했습니다. 연결 상태와 로그인 상태를 확인한 뒤 다시 시도해 주세요.');
+    } finally {
+      if (!abort.signal.aborted) { cleanupAbort.current = null; setCleaning(false); }
+    }
+  };
 
   const backToDetail = () => navigate(`/subjects/${subjectId}`);
   if (loaded.loading) return <PageLoading title="새 보행 영상 분석" nav="back" onNav={backToDetail} />;
@@ -178,7 +211,12 @@ export function AnalyzePage() {
       {recovery.data && <section className="card" style={{margin:20,padding:20}} role="status">
         <h2>확인하지 못한 저장 요청이 있습니다</h2>
         <p>{recovery.data.fileName}</p><p>파일을 다시 선택하지 않고 기존 요청의 저장 여부를 확인합니다.</p>
-        <button className="btn btn-primary" disabled={phase === 'running'} onClick={start}>이전 저장 요청 이어가기</button>
+        <button className="btn btn-primary" disabled={phase === 'running' || cleaning} onClick={start}>이전 저장 요청 이어가기</button>
+        {recovery.data.rejectionStatus && <p>서버가 요청을 거절했습니다 (응답 코드 {recovery.data.rejectionStatus}). {recovery.data.canDiscard ? '임시 요청을 정리한 뒤 촬영 정보나 영상을 바꿔 다시 분석해 주세요.' : '이전 저장 여부가 불확실해 요청을 보관합니다. 담당자에게 확인해 주세요.'}</p>}
+        {recovery.data.canDiscard && <button className="btn btn-outline" disabled={phase === 'running' || cleaning} onClick={() => void discardRejected()}>
+          {cleaning ? '서버 저장 여부 확인 중…' : '실패한 요청 정리하고 새로 분석'}
+        </button>}
+        {cleanupError && <p role="alert">{cleanupError}</p>}
       </section>}
       {/* 06 영상 선택 */}
       {phase === 'pick' && !recovery.data && (
@@ -297,7 +335,7 @@ export function AnalyzePage() {
       )}
 
       {/* 06-3 분석 실패 */}
-      {phase === 'failed' && picked && (
+      {phase === 'failed' && (
         <>
           <section role="alert" style={{ padding: '32px 20px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <span style={{ width: 80, height: 80, borderRadius: 999, background: 'rgb(244 33 46 / .1)', color: 'var(--danger)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -317,7 +355,7 @@ export function AnalyzePage() {
               ))}
             </ul>
           </section>
-          <FileCard picked={picked} errorCode={failure?.code ?? 'GA-000'} dim />
+          {picked && <FileCard picked={picked} errorCode={failure?.code ?? 'GA-000'} dim />}
         </>
       )}
 
@@ -348,10 +386,10 @@ export function AnalyzePage() {
         )}
         {phase === 'failed' && (
           <div className="stack">
-            <button className="btn btn-primary" disabled={invalidHeight} onClick={start}>
+            <button className="btn btn-primary" disabled={invalidHeight || cleaning} onClick={start}>
               <RotateIcon /> 다시 시도
             </button>
-            <button className="btn btn-outline" onClick={openPicker}>
+            <button className="btn btn-outline" disabled={Boolean(recovery.data) || cleaning} onClick={openPicker}>
               <FolderOpenIcon /> 다른 영상 선택
             </button>
           </div>

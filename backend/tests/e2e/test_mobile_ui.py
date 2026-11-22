@@ -311,3 +311,49 @@ class MobileUiTests(unittest.TestCase):
         self.page.route(endpoint, lambda route: route.fulfill(json={**record, 'serverState':'legacy'}))
         self.page.get_by_role('button', name='지금 상태 확인', exact=True).click()
         expect(self.page.get_by_text('촬영일', exact=True)).to_be_visible()
+
+    def rejected_capture(self):
+        self.create_person()
+        self.install_extractor()
+        self.open_capture()
+        endpoint = self.api + '/team/participants/' + self.person_id + '/recordings'
+        self.page.route(endpoint, lambda route: route.fulfill(status=422, json={'detail':'Invalid coordinate packet'}))
+        self.page.get_by_role('button', name='분석 시작', exact=True).click()
+        expect(self.page.get_by_role('button', name='실패한 요청 정리하고 새로 분석', exact=True)).to_be_visible()
+
+    def test_rejected_request_cleanup_requires_confirmation_and_survives_reload(self):
+        self.rejected_capture()
+        self.page.once('dialog', lambda d: d.accept())
+        self.page.reload()
+        clean = self.page.get_by_role('button', name='실패한 요청 정리하고 새로 분석', exact=True)
+        expect(clean).to_be_visible()
+        self.page.once('dialog', lambda d: d.dismiss())
+        clean.click()
+        expect(clean).to_be_visible()
+        self.page.once('dialog', lambda d: d.accept())
+        clean.click()
+        expect(self.page.get_by_role('button', name='휴대폰에서 영상 선택', exact=False)).to_be_visible()
+        self.assertEqual(self.count(), 0)
+
+    def test_rejected_request_cleanup_keeps_body_when_server_check_fails(self):
+        self.rejected_capture()
+        self.page.route(self.api+'/team/recordings/*', lambda route: route.fulfill(status=500, json={'detail':'unavailable'}))
+        self.page.once('dialog', lambda d: d.accept())
+        self.page.get_by_role('button', name='실패한 요청 정리하고 새로 분석', exact=True).click()
+        expect(self.page.get_by_text('저장 여부를 확인하지 못해 요청을 보관했습니다.', exact=False)).to_be_visible()
+        self.page.once('dialog', lambda d: d.accept())
+        self.page.reload()
+        expect(self.page.get_by_role('button', name='실패한 요청 정리하고 새로 분석', exact=True)).to_be_visible()
+
+    def test_uncertain_request_cannot_be_discarded_after_later_rejection(self):
+        self.create_person()
+        self.install_extractor()
+        self.open_capture()
+        endpoint = self.api + '/team/participants/' + self.person_id + '/recordings'
+        self.page.route(endpoint, lambda route: route.abort('failed'))
+        self.page.get_by_role('button', name='분석 시작', exact=True).click()
+        expect(self.page.get_by_role('button', name='다시 시도', exact=True)).to_be_visible()
+        self.page.route(endpoint, lambda route: route.fulfill(status=422, json={'detail':'Invalid coordinate packet'}))
+        self.page.get_by_role('button', name='다시 시도', exact=True).click()
+        expect(self.page.get_by_text('이전 저장 여부가 불확실해 요청을 보관합니다.', exact=False)).to_be_visible()
+        expect(self.page.get_by_role('button', name='실패한 요청 정리하고 새로 분석', exact=True)).to_have_count(0)

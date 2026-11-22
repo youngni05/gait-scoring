@@ -1,5 +1,5 @@
 /** Durable outbox. Commit identical request bytes before the first network send. */
-export interface PendingCapture { key: string; id: string; subjectId: string; fileName: string; body: string }
+export interface PendingCapture { key: string; id: string; subjectId: string; fileName: string; body: string; delivery?: 'unsent' | 'unconfirmed' | 'rejected'; rejectionStatus?: number }
 
 function database(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -46,6 +46,22 @@ export function clearPending(key: string, id: string): Promise<void> {
     const request = table.get(key);
     request.onsuccess = () => {
       if (request.result?.id === id) table.delete(key);
+      finish(undefined);
+    };
+  });
+}
+
+/** Serialize submission and cleanup across tabs; cleanup requires Web Locks support. */
+export function withPendingLock<T>(key: string, action: () => Promise<T>): Promise<T> {
+  return navigator.locks ? navigator.locks.request('gait-capture:'+key, action) : action();
+}
+
+export function markDelivery(key: string, id: string, delivery: PendingCapture['delivery'], rejectionStatus?: number): Promise<void> {
+  return transaction((table, finish) => {
+    const request = table.get(key);
+    request.onsuccess = () => {
+      if (request.result?.id !== id) { finish(undefined); return; }
+      table.put({...request.result, delivery, rejectionStatus});
       finish(undefined);
     };
   });
