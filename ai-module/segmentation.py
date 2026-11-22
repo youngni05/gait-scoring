@@ -3,9 +3,10 @@ from math import hypot, nextafter, inf
 from collections import Counter
 import numpy as np
 
-METHOD = "sidewalk-orientation-native/1"
+METHOD = "sidewalk-orientation-native/2"
 SETTINGS = dict(visibility=0.5, foot_horizontal_fraction=0.5, min_cue_leg_fraction=0.02,
                 vote_window_frames=5, minimum_votes=3, turn_margin_ms=200,
+                max_heading_gap_frames=2, max_heading_anchor_span_ms=150,
                 min_frames=7, min_span_ms=500, min_motion_leg_fraction=0.10, max_gap_factor=2)
 
 
@@ -59,7 +60,7 @@ def detect(pose, max_segments=16):
     w, h = pose["image"]["width"], pose["image"]["height"]
     if not frames:
         return dict(mode="automatic", method_id=METHOD, status="unavailable", segments=[],
-                    excluded=[], settings=SETTINGS, boundaries=[], limits=dict(max_segments=max_segments),
+                    excluded=[], settings=SETTINGS, boundaries=[], interpolated_heading_frames=[], limits=dict(max_segments=max_segments),
                     assumptions=["forward_side_view_walking", "facing_cue_used_for_travel_direction"],
                     unsupported=["backward_walking_direction", "physical_path_straightness_without_reference"],
                     reasons=["no_source_frames"])
@@ -79,6 +80,7 @@ def detect(pose, max_segments=16):
     blocks.append((start, len(frames)))
     labels = [None] * len(frames)
     reasons = [c[1] or "insufficient_heading_votes" for c in cues]
+    bridged = []
     for begin, end in blocks:
         for i in range(begin, end):
             if cues[i][1] is not None:
@@ -94,8 +96,21 @@ def detect(pose, max_segments=16):
             for i in range(begin, end):
                 if abs(times[i]-times[pivot]) <= SETTINGS["turn_margin_ms"]:
                     labels[i], reasons[i] = None, "direction_transition_margin"
+        # Fill only direction labels between observed, agreeing anchors. Preserve native coordinates.
+        anchors = [i for i in valid if labels[i] is not None]
+        for left, right in zip(anchors, anchors[1:]):
+            gap = right - left - 1
+            if not 0 < gap <= SETTINGS["max_heading_gap_frames"] or labels[left] != labels[right]:
+                continue
+            if times[right] - times[left] > SETTINGS["max_heading_anchor_span_ms"]:
+                continue
+            if not all(reasons[j] in ("direction_cues_disagree", "heading_uncertain", "insufficient_heading_votes")
+                       and cues[j][0] in (None, labels[left]) for j in range(left+1, right)):
+                continue
+            for j in range(left+1, right):
+                bridged.append(dict(frame_index=indices[j], reason=reasons[j]))
+                labels[j], reasons[j] = labels[left], None
     segments = []
-    # Build runs without bridging gaps, unknown frames or direction changes.
     for begin, end in blocks:
         i = begin
         while i < end:
@@ -139,6 +154,7 @@ def detect(pose, max_segments=16):
         i = stop
     return dict(mode="automatic", method_id=METHOD, status="candidates_found" if segments else "unavailable",
                 segments=segments, excluded=excluded, boundaries=boundary_rows, settings=SETTINGS,
+                interpolated_heading_frames=bridged,
                 assumptions=["forward_side_view_walking", "facing_cue_used_for_travel_direction"],
                 unsupported=["backward_walking_direction", "physical_path_straightness_without_reference"],
                 limits=dict(max_segments=max_segments), reasons=[] if segments else ["no_eligible_sidewalk_candidate"])

@@ -80,7 +80,7 @@ def list_measurements(
                  defer(GaitMeasurement.processing_metadata, raiseload=True))
         .outerjoin(GaitAnalysisResult, GaitAnalysisResult.measurement_id == GaitMeasurement.id)
         .where(GaitMeasurement.participant_id == participant_id)
-        .order_by(GaitMeasurement.measured_at.desc(), GaitMeasurement.id.desc())
+        .order_by(GaitMeasurement.measured_at.desc().nulls_last(), GaitMeasurement.id.desc())
         .limit(limit)
         .offset(offset)
     ).all()

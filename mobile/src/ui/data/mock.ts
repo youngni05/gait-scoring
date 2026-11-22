@@ -33,7 +33,9 @@ export interface ResultRecord {
   measuredAt: string;
   /** 촬영 당시 나이와 키. 대상자 정보를 나중에 고쳐도 이 값은 바뀌지 않는다. */
   ageAtCapture: number | null;
-  live?: ReturnType<typeof import("./analysis").analyzeFile> extends Promise<infer T> ? T : never;
+  /** Versioned JSON returned by the existing Python report adapter. */
+  live?: any;
+  serverState?: 'pending' | 'failed' | 'ready' | 'legacy';
   heightAtCapture: number | null;
   gdi: number | null;
   cadence: number | null;

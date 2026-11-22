@@ -11,16 +11,19 @@ interface Session {
 const Ctx = createContext<Session | null>(null);
 
 export function SessionProvider({ children }: { children: ReactNode }) {
-  const [loggedIn, setLoggedIn] = useState(!isDemo && sessionStorage.getItem('team-local-session')==='active');
+  const [loggedIn, setLoggedIn] = useState(!isDemo && Boolean(sessionStorage.getItem('team-access-token')));
   const login = useCallback(async (u: string, p: string) => {
     await dataSource.login(u, p);
-    if (!isDemo) sessionStorage.setItem('team-local-session','active');
     setLoggedIn(true);
   }, []);
   const logout = useCallback(() => {
     dataSource.logout();
-    sessionStorage.removeItem('team-local-session');
     setLoggedIn(false);
+  }, []);
+  useEffect(() => {
+    const expired = () => setLoggedIn(false);
+    window.addEventListener('team-session-expired', expired);
+    return () => window.removeEventListener('team-session-expired', expired);
   }, []);
   const value = useMemo(() => ({ loggedIn, login, logout }), [loggedIn, login, logout]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

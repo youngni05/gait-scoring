@@ -1,9 +1,9 @@
 import { ParticipantForm } from './ParticipantForm';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { ApiClient, errorMessage, type Participant, type MeasurementItem, type MeasurementResult } from './api/client';
-import { ApiSession } from './api/Session';
+import { ApiClient, errorMessage, type Participant, type MeasurementItem, type MeasurementResult } from '../../mobile/src/api/client';
+import { ApiSession } from '../../mobile/src/api/Session';
 import { VideoTrial } from './VideoTrial';
-import { resolveRecordedAt } from './pose/recorded-at';
+import { resolveRecordedAt } from '../../mobile/src/pose/recorded-at';
 
 const SyntheticMeasurement = import.meta.env.DEV && import.meta.env.VITE_E2E_MODE === 'true'
   ? lazy(() => import('./e2e/SyntheticMeasurement')) : null;
@@ -24,9 +24,9 @@ function History({ client, participant, revision }: { client: ApiClient; partici
     catch (e) { if (!abort.signal.aborted) setMessage(errorMessage(e)); }
   }
   return <section className="card"><h2>측정 기록</h2><button className="secondary" disabled={busy} onClick={() => { setOffset(0); setRefresh(v => v + 1); }}>새로고침</button><p role="status">{message}</p>
-    <ul>{rows.map(row => <li key={row.id}><button className="secondary" onClick={() => void show(row.id)}>{new Date(row.measured_at).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })} · {row.has_analysis_result ? '결과 보기' : '저장 기록 보기'}</button></li>)}</ul>
+    <ul>{rows.map(row => <li key={row.id}><button className="secondary" onClick={() => void show(row.id)}>{row.measured_at ? new Date(row.measured_at).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }) : '촬영일 미확인'} · {row.has_analysis_result ? '결과 보기' : '저장 기록 보기'}</button></li>)}</ul>
     <div className="actions"><button disabled={busy || offset === 0} onClick={() => setOffset(v => Math.max(0, v - 20))}>이전</button><button disabled={busy || rows.length < 20} onClick={() => setOffset(v => v + 20)}>다음</button></div>
-    {result && <article><h3>측정 상세</h3><p>측정 ID: {result.measurement.id}</p><p>촬영 당시 만 {result.measurement.age}세</p>
+    {result && <article><h3>측정 상세</h3><p>측정 ID: {result.measurement.id}</p><p>촬영 당시 나이 {result.measurement.age == null ? '미확인' : '만 '+result.measurement.age+'세'}</p>
       {result.status === 'not_available' ? <p>측정은 저장되었습니다. 분석 결과는 아직 없습니다. 자동 분석 실행 여부를 뜻하지 않습니다.</p> : <><p>GDI: {result.analysis_result!.gdi_score ?? '값 없음'}</p><p>보폭: {result.analysis_result!.stride_length_cm ?? '값 없음'} cm · 케이던스: {result.analysis_result!.cadence_spm ?? '값 없음'} steps/min</p><p>모델 버전: {result.analysis_result!.model_version}</p></>}
     </article>}
   </section>;
@@ -92,7 +92,7 @@ export function ConnectedApp() {
   }
   const participant = participants.find(p => p.id === selected);
   return <main><header><span className="eyebrow">GAIT LAB</span><span className="badge">서버 연동</span></header>
-    <section className="intro"><h1>보행 측정</h1><p>대상자를 선택하고 영상에서 추출한 좌표를 저장합니다.</p>{import.meta.env.DEV && !client && <a href="/dev.html">서버 없이 영상 처리 시험</a>}</section>
+    <section className="intro"><h1>보행 측정 · 구버전</h1><p>대상자를 선택하고 영상에서 추출한 좌표를 저장합니다.</p>{import.meta.env.DEV && !client && <a href="/dev.html">서버 없이 영상 처리 시험</a>}</section>
     <section className="card"><h2>{client ? '로그인 상태 / 인증 갱신' : '로그인'}</h2>
       <form onSubmit={e => { e.preventDefault(); void login(); }}>
         <label>서버 주소<input type="url" required placeholder="https://api.example.com" value={base} disabled={!!client || busy} onChange={e => setBase(e.target.value)} /></label>

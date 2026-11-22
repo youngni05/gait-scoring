@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { PoseFrame } from '../../contracts/coords-1/types';
-import { FrontalStandDetector, STAND_CONFIG } from './pose/stand-detector';
+import { FrontalStandDetector, STAND_CONFIG } from '../../mobile/src/pose/stand-detector';
 export function StandTrial({frames,duration,aspectRatio,onSeek}:{frames:readonly PoseFrame[];duration:number;aspectRatio:number;onSeek:(t:number)=>void}){
  const report=useMemo(()=>new FrontalStandDetector(aspectRatio).analyze(frames,duration,new AbortController().signal),[frames,duration,aspectRatio]);
  const [kind,setKind]=useState('unmarked'),[start,setStart]=useState(''),[end,setEnd]=useState('');

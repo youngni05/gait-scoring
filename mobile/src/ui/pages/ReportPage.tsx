@@ -3,7 +3,7 @@
  * 새 분석 직후와 이전 기록 조회 모두 이 화면 하나를 쓴다(디자인 원칙: 결과지는 같은 모양).
  * 구성: 1) 대상자 정보(촬영 당시 값) → 2) 핵심 지표 → 3) 관절별 그래프 → 다운로드.
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DownloadSheet } from '../components/DownloadSheet';
 import { JointChart } from '../components/JointChart';
 import { AxisNote, LegendLR, PageError, PageLoading, TopBar } from '../components/layout';
@@ -12,6 +12,7 @@ import { JOINTS, JOINT_LABEL, MISSING_LABEL, dataSource, fmtDate, fmtTime, fmtWe
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { LiveMetrics, VisitHistory } from './VisitMetrics';
+import { teamApi } from '../data/teamApi';
 import { NotFound } from './NotFound';
 
 export function ReportPage() {
@@ -20,17 +21,35 @@ export function ReportPage() {
   const [openInfo, setOpenInfo] = useState<{ gdi?: boolean; sym?: boolean }>({});
   const [history,setHistory]=useState(false);
   const [selected,setSelected]=useState(()=>Number(sessionStorage.getItem('segment-'+recordId)??0));
+  const [retryFailed,setRetryFailed] = useState(false);
   const [downloading, setDownloading] = useState(false);
   const { data, loading, error, reload } = useAsync(
     (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.getResult(subjectId, recordId, signal)]),
     [subjectId, recordId],
   );
   const toList = () => navigate(`/subjects/${subjectId}/results`);
+  const pending = data?.[1]?.serverState === 'pending';
+  useEffect(() => {
+    if (!pending || loading || error) return;
+    const timer = window.setTimeout(reload, 3000);
+    return () => clearTimeout(timer);
+  }, [pending, loading, error, reload]);
   if (loading) return <PageLoading title="분석 결과지" nav="back" onNav={toList} />;
   if (error || !data) return <PageError title="분석 결과지" onNav={toList} onRetry={reload} />;
   const [subject, rec] = data;
   if (!subject || !rec) return <NotFound />;
 
+  if (pending || rec.serverState === 'failed') return <main className="screen">
+    <TopBar title="분석 결과지" nav="back" onNav={toList} subject={subject} />
+    <section className="card" style={{margin:20,padding:20}} role="status">
+      <h2>{pending ? '좌표가 서버에 저장되었습니다' : '서버 분석에 실패했습니다'}</h2>
+      <p>{pending ? '분석이 끝나면 결과를 표시합니다. 화면을 닫아도 이전 결과에서 다시 열 수 있습니다.' : '촬영 좌표는 서버에 보관되어 있습니다.'}</p>
+      {!pending && <button className="btn btn-primary" onClick={async () => {
+        try { await teamApi.shared('/recordings/'+rec.id+'/retry',{method:'POST'}); reload(); }
+        catch { setRetryFailed(true); }
+      }}>같은 촬영 다시 분석</button>}
+      {retryFailed && <p role="alert">요청을 보내지 못했습니다. 연결을 확인해 주세요.</p>}
+    </section></main>;
   const missingKeys = Object.keys(rec.missing) as MissingKey[];
   const partial = missingKeys.length > 0;
   const base = `/subjects/${subject.id}`;
@@ -215,7 +234,7 @@ export function ReportPage() {
           })}
         </div>
         <p style={{ margin: '16px 20px 0', fontSize: 13, textAlign: 'center', color: 'var(--fg-50)' }}>
-          결과 ID {rec.id} · 예시용 가상 데이터
+          결과 ID {rec.id} · {rec.serverState ? '서버 저장 기록' : '예시용 가상 데이터'}
         </p>
       </section>
 

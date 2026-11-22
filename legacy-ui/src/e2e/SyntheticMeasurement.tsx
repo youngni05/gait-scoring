@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import fixture from '../../../contracts/measurement-1/synthetic.request.json';
 import { MeasurementUpload } from '../MeasurementUpload';
-import { validateUploadRequest, type UploadRequest } from '../pose/upload-gateway';
+import { validateUploadRequest, type UploadRequest } from '../../../mobile/src/pose/upload-gateway';
 
 /** Loaded only by the explicit DEV E2E build. Never an alternate production input. */
 export default function SyntheticMeasurement({ participantId }: { participantId: string }) {

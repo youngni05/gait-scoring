@@ -5,6 +5,7 @@ import { ChevronRightIcon, SortIcon, TrashIcon, TriangleAlertIcon, UserIcon, Vid
 import { dataSource, fmtDate, fmtTime, fmtWeekday, type ResultRecord } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
+import { visitHistory, visitSummary, type CompareRow } from '../data/visit-summary.mjs';
 import { NotFound } from './NotFound';
 
 export function ResultListPage() {
@@ -20,6 +21,7 @@ export function ResultListPage() {
   if (error || !data) return <PageError title="이전 결과" onNav={back} onRetry={reload} />;
   const [subject, records] = data;
   if (!subject) return <NotFound />;
+  const lives = records.flatMap((r) => (r.live ? [r.live] : []));
 
   if (records.length === 0) {
     return (
@@ -75,7 +77,7 @@ export function ResultListPage() {
                       {fmtDate(r.measuredAt)}{' '}
                       <span style={{ fontSize: 15, fontWeight: 600 }} className="muted">{fmtWeekday(r.measuredAt)}</span>
                     </p>
-                    <p style={{ fontSize: 14, marginTop: 2 }} className="muted">{r.live ? r.fileName : fmtTime(r.measuredAt)+' 측정'}</p>
+                    <p style={{ fontSize: r.live ? 13 : 14, marginTop: 2 }} className="muted">{r.serverState === 'pending' ? '팀 서버 분석 대기·진행 중' : r.serverState === 'failed' ? '서버 분석 실패' : r.live ? r.fileName : fmtTime(r.measuredAt)+' 측정'}</p>
                   </div>
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                     {isLatest && <span className="pill pill-primary">최신</span>}
@@ -84,7 +86,7 @@ export function ResultListPage() {
                     )}
                   </div>
                 </div>
-                {r.live ? <p style={{marginTop:16}}>분석 구간 {r.live.analysis.segments.length}개 · 구간별 GDI 및 측정값</p> : <div className="metric-grid3" style={{ marginTop: 16 }}>
+                {r.live ? <LiveRecordMetrics visit={r.live} all={lives} /> : <div className="metric-grid3" style={{ marginTop: 16 }}>
                   <div>
                     <p className="k">GDI</p>
                     <p className={`v ${r.gdi === null ? 'none' : ''}`}>{r.gdi ?? '—'}</p>
@@ -114,11 +116,11 @@ export function ResultListPage() {
                   )}
                 </div>
               </button>
-              <button type="button" className="icon-btn record-trash" title="기록 삭제"
+              {r.serverState !== 'legacy' && <button type="button" className="icon-btn record-trash" title="기록 삭제"
                 aria-label={`${fmtDate(r.measuredAt)} ${r.fileName} 기록 삭제`}
                 aria-haspopup="dialog" onClick={() => setSelected(r)}>
                 <TrashIcon size={19} />
-              </button>
+              </button>}
             </li>
           );
         })}
@@ -160,7 +162,7 @@ function DeleteRecordDialog({ record, onCancel, onDelete }: {
       <VideoIcon size={22} />
       <div><b>{fmtDate(record.measuredAt)}</b><p>{record.fileName}</p></div>
     </div>
-    <p id="delete-record-note">삭제하면 지난 기록 비교에서 제외되며 복구할 수 없습니다.</p>
+    <p id="delete-record-note">{record.serverState ? '삭제하면 팀 전체 기기의 기록과 지난 방문 비교에서 사라집니다.' : '삭제하면 지난 기록 비교에서 제외됩니다.'}</p>
     {failed && <p role="alert" className="field-error">삭제하지 못했습니다. 다시 시도해 주세요.</p>}
     <div className="record-delete-actions">
       <button type="button" className="btn btn-outline" disabled={busy} onClick={onCancel}>취소</button>
@@ -169,4 +171,53 @@ function DeleteRecordDialog({ record, onCancel, onDelete }: {
       </button>
     </div>
   </dialog>;
+}
+
+type Visit = NonNullable<ResultRecord['live']>;
+const signed = (v: number, digits: number) => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v).toFixed(digits);
+
+/** 바로 지난 기록 대비 변화. 색은 좋아짐(초록)·나빠짐(빨강)·비슷함(회색)으로 결과지의 비교판과 같다. */
+function Delta({ row }: { row: CompareRow | undefined }) {
+  if (!row) return null;
+  return <p className={`dlt ${row.verdict}`}>{signed(row.delta, row.digits)}{row.unit === '걸음' ? '' : row.unit}</p>;
+}
+
+/**
+ * 실제 분석 기록 카드의 핵심 값. 결과지 맨 위와 같은 종합 GDI·분당 걸음 수를 보여 주고,
+ * 결과지의 '지난 기록과 비교'와 같은 계산(visitHistory)으로 바로 이전 방문 대비 변화를 붙인다.
+ * 변화는 두 방문에 공통인 걷기 방향만으로 다시 계산한 값이라, 카드 숫자끼리 뺀 값과 다를 수 있다.
+ */
+function LiveRecordMetrics({ visit, all }: { visit: Visit; all: Visit[] }) {
+  const summary = visitSummary(visit);
+  const recent = visitHistory(visit, all).recent;
+  const row = (key: string) => recent?.rows.find((r) => r.key === key);
+  const count = (v: CompareRow['verdict']) => recent?.rows.filter((r) => r.verdict === v).length ?? 0;
+  const gdi = summary.gdi.value, cadence = summary.walking.cadence;
+  return (
+    <div className="metric-grid3 live" style={{ marginTop: 16 }}>
+      <div>
+        <p className="k">GDI</p>
+        <p className={`v ${gdi === null ? 'none' : ''}`}>{gdi === null ? '—' : gdi.toFixed(1)}{gdi !== null && <small>점</small>}</p>
+        <Delta row={row('gdi')} />
+      </div>
+      <div>
+        <p className="k">분당 걸음 수</p>
+        <p className={`v ${cadence === null ? 'none' : ''}`}>{cadence === null ? '—' : cadence.toFixed(0)}{cadence !== null && <small>걸음</small>}</p>
+        <Delta row={row('cadence')} />
+      </div>
+      <div>
+        <p className="k">직전 대비</p>
+        {!recent ? (
+          <p className="cnt none">비교 없음</p>
+        ) : count('better') + count('worse') === 0 ? (
+          <p className="cnt">모두 비슷함</p>
+        ) : (
+          <p className="cnt">
+            {count('better') > 0 && <span className="better">좋아짐 {count('better')}</span>}
+            {count('worse') > 0 && <span className="worse">나빠짐 {count('worse')}</span>}
+          </p>
+        )}
+      </div>
+    </div>
+  );
 }

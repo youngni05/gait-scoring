@@ -1,11 +1,11 @@
 import { PayloadTrial } from './PayloadTrial';
-import type { ProcessingInput } from './pose/ports';
+import type { ProcessingInput } from '../../mobile/src/pose/ports';
 import { StandTrial } from './StandTrial';
 import { useEffect, useRef, useState } from 'react';
-import type { PoseRun } from './pose/extract-video';
-import { extractVideo } from './pose/extract-video';
-import { BrowserVideoSource, type BrowserVideoSession } from './pose/browser-video-source';
-import { MediaPipePoseExtractor } from './pose/mediapipe-extractor';
+import type { PoseRun } from '../../mobile/src/pose/extract-video';
+import { extractVideo } from '../../mobile/src/pose/extract-video';
+import { BrowserVideoSource, type BrowserVideoSession } from '../../mobile/src/pose/browser-video-source';
+import { MediaPipePoseExtractor } from '../../mobile/src/pose/mediapipe-extractor';
 
 export function PoseTrial({ file, input }: { file: File | null; input: ProcessingInput }) {
  const mount = useRef<HTMLDivElement>(null), canvas = useRef<HTMLCanvasElement>(null);

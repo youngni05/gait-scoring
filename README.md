@@ -2,9 +2,9 @@
 
 # 어르신 보행 분석 및 기록 관리 시스템
 
-## 팀원 PC에서 영상 분석 실행
+## 팀 앱 실행
 
-팀 개발용 화면에서 MP4를 열면 브라우저가 MediaPipe Full로 관절을 추출하고, 같은 PC의 분석 서버가 보행 지표와 두 GDI를 계산한다. 최초 설치와 실행 순서는 [로컬 AI 분석 안내](ai-module/README.md)에 있다.
+휴대폰에서 관절 좌표를 추출하고 팀 서버에서 Python으로 분석한다. 대상자와 결과지는 한 PostgreSQL 데이터베이스에 저장한다. [팀 앱 실행과 배포](mobile/README.md)
 
 ## 서비스 개요
 
@@ -44,15 +44,17 @@
 
 
 
-## 백엔드 실행과 API 연동
+## 구버전 서버 연동 화면과 백엔드
+
+[서버 연동 화면](legacy-ui/)은 `npm run dev:legacy`로 별도 실행한다. 아래 계정·기록 API는 이 화면에서 사용한다. [현재 앱](mobile/)은 같은 팀 백엔드에 좌표를 제출하고 저장된 상세 결과를 읽는다.
 
 FastAPI·PostgreSQL 백엔드의 Docker 실행, 환경변수, 마이그레이션 및 최초 복지사 계정 생성은
 [백엔드 README](backend/README.md)를 참고하세요. 요청·응답 예시는 [API 명세](docs/API_SPEC.md)에 있습니다.
 
 현재 로그인, 어르신 등록·조회·수정, 관절 좌표 저장, 촬영 목록·저장된 분석 결과 조회를 제공합니다.
-앱에서 좌표를 추출하며 원본 영상은 서버로 보내지 않습니다. AI 실행·분석 결과 자동 저장은 아직 연결되지 않았습니다.
+앱에서 좌표를 추출하며 원본 영상은 서버로 보내지 않습니다. 현재 앱의 촬영은 팀 워커가 분석하고 결과를 같은 촬영 기록에 연결합니다.
 
-신규 앱은 `processing_metadata`와 `Idempotency-Key`를 함께 보내는 `processing-1` 계약을 사용합니다.
+구버전 연동 화면은 `processing_metadata`와 `Idempotency-Key`를 함께 보내는 `processing-1` 계약을 사용합니다.
 기존 4필드 요청은 호환용으로 유지되며 중복 제출 방지가 없습니다. 두 요청의 검증·오류·재시도 차이는
 [API 명세의 측정 저장](docs/API_SPEC.md#7-촬영관절-좌표-기록-저장)과 [신규 계약](docs/API_SPEC.md#12-processing-1-측정-저장-계약)에 정리했습니다.
 
@@ -60,7 +62,7 @@ AI 모듈 연동에서 확정된 요구사항과 남은 논의는 [AI–백엔�
 
 ## 모바일 영상 처리 개발
 
-개발용 React/Vite/Capacitor 앱의 [Windows 실행·Android 빌드·갤럭시 확인 절차](mobile/README.md)를 참고하세요.
+현재 화면의 실행 방법은 [모바일 앱 안내](mobile/README.md)에 있습니다. 이전 [영상 처리 시험·Android 빌드 기록](legacy-ui/README.md)은 구버전 자료입니다.
 현재 구현 범위·담당자별 계약·호출 예시는 [인계 가이드](docs/mobile-pose/handoff.md), PC 실측과 실기기 보류 항목은 [7단계 검증 기록](docs/mobile-pose/stage-7-verification.txt)에 정리했습니다.
 연구 모델 코드와 모바일 앱 실행은 별도입니다.
 

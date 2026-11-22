@@ -57,6 +57,9 @@ export function conditionNote(a, b) {
     return [info?.name, info?.delegate].filter(Boolean).join(' ') || '추출기 미기록';
   };
   const notes = [];
+  const contactMethods = v => [...new Set(v.analysis.segments.map(s => s.gait?.method_id).filter(Boolean))].sort().join('/');
+  if (contactMethods(a) !== contactMethods(b))
+    notes.push('두 기록의 착지 검출 방식이 달라 걸음 수와 걸음 시간 차이에 영향을 줄 수 있습니다.');
   if (!a.capture_mode || !b.capture_mode || a.capture_mode !== b.capture_mode)
     notes.push('촬영 방식 · 이전 '+label(b)+' / 이번 '+label(a));
   if (extractor(a) !== extractor(b))

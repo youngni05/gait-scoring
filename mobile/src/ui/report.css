@@ -227,6 +227,19 @@
 .board-col li { align-items: center; padding: 3px 10px 3px 4px; border-radius: 999px; background: var(--card); }
 .board-col li small { display: inline; margin-left: 4px; }
 .board-col .bnone { margin-top: 0; padding-top: 4px; }
+/* 모두 비슷할 때는 판정 이름이 길어 왼쪽 칸을 넓힌다 */
+.board-col.all { grid-template-columns: 84px minmax(0, 1fr); }
+.board-h { margin: 14px 0 8px; font-size: 14px; font-weight: 800; color: var(--primary); }
+
+/* 처음 기록부터 쌓인 변화: 지난 기록 비교판 위에 둔다 */
+.since { margin-top: 12px; padding: 10px 12px; border-radius: var(--r-md); background: var(--bg); border: 1px solid var(--border); }
+.rs > .since { margin-top: 0; }
+.since-h { font-size: 14px; font-weight: 800; color: var(--fg); }
+.since ul { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.since li { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; border-radius: 999px; font-size: 13px; font-weight: 800; line-height: 1.3; }
+.since li.better { background: rgb(23 191 99 / .12); color: #0b7a3e; }
+.since li.worse { background: rgb(244 33 46 / .1); color: #c0121d; }
+.since li small { margin-left: 4px; font-size: 12px; font-weight: 600; color: var(--fg-60); font-variant-numeric: tabular-nums; }
 .tr-top, .tr-mid { flex-wrap: wrap; row-gap: 2px; }
 .tr-mid .spark { margin-left: auto; }
 /* 오른쪽 표시선: 짧은 점선 테두리는 틈이 넓게 보여 흰 선처럼 보이므로, 색이 촘촘한 점선 막대로 그린다. */
@@ -242,3 +255,40 @@
 .brief .t { color: var(--fg-80); }
 .brief li.notice .t { font-weight: 800; color: var(--fg); }
 .brief li.notice .k::before { content: "●"; margin-right: 4px; font-size: 8px; vertical-align: 2px; color: var(--warn); }
+
+/* 대상자 전체 기록 해석 */
+.ovw-lines { margin-top: 8px; display: grid; gap: 6px; font-size: 15px; line-height: 1.55; font-weight: 700; color: var(--fg); }
+.ov-note .since { margin-top: 12px; }
+.ovw-card { border-radius: var(--r-lg); background: var(--bg); border: 1px solid var(--border); padding: 14px 14px 8px; display: grid; gap: 4px; }
+.ovw-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.ovw-top .l { font-size: 16px; font-weight: 800; }
+.ovw-vals { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px; font-variant-numeric: tabular-nums; }
+.ovw-vals .prev { font-size: 15px; color: var(--fg-50); }
+.ovw-vals .arrow { color: var(--fg-40); }
+.ovw-vals b { font-size: 22px; font-weight: 800; }
+.ovw-vals small { font-size: 13px; color: var(--fg-60); }
+.ovw-vals .dl { margin-left: 4px; font-size: 13px; font-weight: 700; color: var(--fg-60); }
+.ovw-vals .tag { margin-left: 4px; }
+.ovw-chart { width: 100%; height: auto; display: block; overflow: visible; }
+.ovw-chart .band { fill: var(--muted); }
+.ovw-chart polyline { fill: none; stroke: var(--primary); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.ovw-chart circle { fill: #fff; stroke: var(--primary); stroke-width: 2; }
+.ovw-chart circle.now { fill: var(--primary); }
+.ovw-chart text { font-size: 11px; fill: var(--fg-60); font-variant-numeric: tabular-nums; }
+.ovw-chart text.val { font-weight: 700; }
+.ovw-chart text.val.now { font-size: 12px; font-weight: 800; fill: var(--fg); }
+.ovw-visits { display: grid; gap: 8px; }
+.ovw-visits button { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto; align-items: center; gap: 12px; padding: 12px 14px; border-radius: var(--r-md); background: var(--bg); border: 1px solid var(--border); text-align: left; }
+.ovw-visits button:hover { border-color: var(--primary); }
+.ovw-visits .d { font-size: 15px; font-weight: 800; white-space: nowrap; }
+.ovw-visits .d small { font-size: 13px; font-weight: 600; color: var(--fg-50); }
+.ovw-visits .m { font-size: 13px; color: var(--fg-60); white-space: nowrap; }
+.ovw-visits .m b { font-size: 15px; color: var(--fg); }
+.ovw-visits .chev { color: var(--fg-40); }
+/* 대상자 상세의 보행 변화 요약 카드 */
+.ovw-summary { width: 100%; text-align: left; display: grid; gap: 8px; padding: 16px 18px; border-radius: var(--r-lg); background: var(--accent); border: 2px solid rgb(30 157 241 / .2); }
+.ovw-summary:hover { border-color: var(--primary); }
+.ovw-summary .t { font-size: 14px; font-weight: 800; color: var(--primary); }
+.ovw-summary .t small { font-weight: 600; color: var(--fg-60); }
+.ovw-summary .s { font-size: 16px; font-weight: 700; line-height: 1.5; color: var(--fg); }
+.ovw-summary .go { display: inline-flex; align-items: center; gap: 2px; font-size: 15px; font-weight: 700; color: var(--primary); }

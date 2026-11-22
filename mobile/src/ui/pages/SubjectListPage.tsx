@@ -112,7 +112,9 @@ export function SubjectListPage() {
                       <ClockIcon size={14} /> 최근 분석 {fmtDate(s.latestMeasuredAt)}
                     </span>
                   ) : (
-                    <span style={{ display: 'block', marginTop: 4, fontSize: 14, color: 'var(--fg-50)' }}>분석 기록 없음</span>
+                    <span style={{ display: 'block', marginTop: 4, fontSize: 14, color: 'var(--fg-50)' }}>
+                      {s.resultCount ? `촬영일 미확인 · 기록 ${s.resultCount}건` : '분석 기록 없음'}
+                    </span>
                   )}
                 </span>
                 <ChevronRightIcon size={18} className="chev" />

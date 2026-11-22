@@ -1,9 +1,9 @@
-import {BrowserVideoSource}from'./pose/browser-video-source';
-import {MediaPipePoseExtractor}from'./pose/mediapipe-extractor';
-import {extractVideo}from'./pose/extract-video';
-import {FrontalStandDetector}from'./pose/stand-detector';
-import {JsonCoordsSerializer}from'./pose/coords-serializer';
-import {MockUploadGateway,type MockScenario,type UploadRequest}from'./pose/upload-gateway';
+import {BrowserVideoSource}from'../../mobile/src/pose/browser-video-source';
+import {MediaPipePoseExtractor}from'../../mobile/src/pose/mediapipe-extractor';
+import {extractVideo}from'../../mobile/src/pose/extract-video';
+import {FrontalStandDetector}from'../../mobile/src/pose/stand-detector';
+import {JsonCoordsSerializer}from'../../mobile/src/pose/coords-serializer';
+import {MockUploadGateway,type MockScenario,type UploadRequest}from'../../mobile/src/pose/upload-gateway';
 const assert=(ok:unknown,m:string)=>{if(!ok)throw Error(m)};let outputUrl:string|null=null;
 window.addEventListener('pagehide',()=>{if(outputUrl)URL.revokeObjectURL(outputUrl)});
 document.querySelector<HTMLButtonElement>('#run')!.onclick=async()=>{

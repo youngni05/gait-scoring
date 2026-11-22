@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Capacitor } from '@capacitor/core';
 import { FilesetResolver, PoseLandmarker } from '@mediapipe/tasks-vision';
-import { checkProcessingInput } from './pose/processing-input';
-import { resolveRecordedAt } from './pose/recorded-at';
+import { checkProcessingInput } from '../../mobile/src/pose/processing-input';
+import { resolveRecordedAt } from '../../mobile/src/pose/recorded-at';
 import './style.css';
 import { VideoTrial } from './VideoTrial';
 

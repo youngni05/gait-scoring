@@ -4,10 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from statistics import median
 from uuid import UUID
-from core import analyze
 from schema import fields,finite,require,text,strict_value,LIMITS
-from local_observations import build_local_observations,reviewed_recover
-from local_steps import local_step_intervals
 from prepare_assets import POSE_MODEL_SHA256
 
 SAMPLING='native-video-pts-no-resampling/1'
@@ -119,7 +116,10 @@ def analyze_coords(body):
     return finish(request,record,body['bridge_context']['source_sha256'],c,body['bridge_context']['profile'],f'team-browser-full-{delegate}-fresh-native-allframes/1')
 
 def finish(request,record,source,coords,profile,tracking):
-    analysis=analyze(request);frames=request['pose']['frames']
+    from core import analyze
+    from local_observations import build_local_observations, reviewed_recover
+    from local_steps import local_step_intervals
+    analysis=analyze(request, review_contacts=request['pose']['extractor']['name']=='MediaPipe Pose Landmarker');frames=request['pose']['frames']
     times=[f['source_time_ms'] for f in frames];dt=[b-a for a,b in zip(times,times[1:])]
     sampling=dict(frame_count=len(frames),missing_pose_frames=sum(f['landmarks'] is None for f in frames),
         median_interval_ms=median(dt) if dt else None,minimum_interval_ms=min(dt) if dt else None,

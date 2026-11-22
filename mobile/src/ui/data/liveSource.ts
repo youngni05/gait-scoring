@@ -1,71 +1,74 @@
-import { analyzeFile } from './analysis';
-import { ageOn, type Subject, type ResultRecord } from './mock';
-import { AnalysisFailedError, type GaitDataSource } from './source';
+import { ApiError, errorMessage, type Participant } from '../../api/client';
+import { extractCapture } from './analysis';
+import { teamApi } from './teamApi';
+import type { Subject, ResultRecord } from './mock';
+import { LoginFailedError, type GaitDataSource, type SubjectInput, type SubjectSummary } from './source';
 import { visitKneeSummary } from './report-values.mjs';
 import { walkingEstimate } from './visit-walking.mjs';
 
-function database() {
-  return new Promise<IDBDatabase>((resolve, reject) => {
-    const req = indexedDB.open('team-template-model-v1',1);
-    req.onupgradeneeded = () => {
-      for (const key of ['subjects','results']) req.result.createObjectStore(key,{keyPath:'id'});
-    };
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
-  });
+function subject(p: Participant): Subject {
+  return {id:p.id, name:p.name, sex:p.gender === 'F' ? '여' : p.gender === 'M' ? '남' : null,
+    birth:p.birth_date ?? '', heightCm:p.height_cm == null ? null : Number(p.height_cm)};
 }
-async function access<T>(store:string, mode:IDBTransactionMode, action:(table:IDBObjectStore)=>IDBRequest<T>) {
-  const db=await database();
-  try {
-    return await new Promise<T>((resolve,reject)=>{
-      const tx=db.transaction(store,mode);
-      const req=action(tx.objectStore(store));
-      tx.oncomplete=()=>resolve(req.result);
-      tx.onabort=()=>reject(tx.error ?? req.error);
-    });
-  } finally { db.close(); }
+function profile(input: SubjectInput) {
+  if (!input.sex || !input.birth || input.heightCm == null) throw Error('성별·생년월일·키를 입력해 주세요.');
+  return {name:input.name, gender:input.sex === '여' ? 'F' as const : 'M' as const,
+    birth_date:input.birth, height_cm:String(input.heightCm)};
 }
-const results=()=>access<ResultRecord[]>('results','readonly',t=>t.getAll());
-export const liveSource:GaitDataSource={
-  async login(){}, logout(){},
-  async listSubjects(){
-    const [subjects,records]=await Promise.all([access<Subject[]>('subjects','readonly',t=>t.getAll()),results()]);
-    return subjects.map(s=>{
-      const mine=records.filter(r=>r.subjectId===s.id).sort((a,b)=>b.measuredAt.localeCompare(a.measuredAt));
-      return {...s,latestMeasuredAt:mine[0]?.measuredAt || null,resultCount:mine.length};
-    });
+const capturePath = (id:string) => '/participants/' + encodeURIComponent(id) + '/recordings';
+const getRecord = (id:string, signal?:AbortSignal) => teamApi.shared<ResultRecord>('/recordings/'+encodeURIComponent(id), {}, signal);
+// Keep only the current submission for this selected File so a lost receipt can replay identical bytes.
+let submissions = new WeakMap<File, {settings:string; body:string; id:string}>();
+
+export const liveSource:GaitDataSource = {
+  async login(username,password) {
+    try { sessionStorage.setItem('team-access-token',await teamApi.login(username,password)); }
+    catch (error) { if (error instanceof ApiError && error.status === 401) throw new LoginFailedError(); throw error; }
   },
-  async getSubject(id){return (await access<Subject>('subjects','readonly',t=>t.get(id)))??null;},
-  async createSubject(input){const s={...input,id:crypto.randomUUID()}; await access('subjects','readwrite',t=>t.add(s));return s;},
-  async updateSubject(id,input){const s={...input,id};await access('subjects','readwrite',t=>t.put(s));return s;},
-  async listResults(id){return (await results()).filter(r=>r.subjectId===id).sort((a,b)=>(b.live?.saved_at??'').localeCompare(a.live?.saved_at??''));},
-  async getResult(id,rid){const r=await access<ResultRecord>('results','readonly',t=>t.get(rid));return r?.subjectId===id?r:null;},
-  async deleteResult(subjectId, resultId) {
-    await access('results', 'readwrite', table => {
-      const request = table.openCursor(IDBKeyRange.only(resultId));
-      request.onsuccess = () => {
-        const cursor = request.result;
-        if (cursor?.value.subjectId === subjectId) cursor.delete();
-      };
-      return request;
-    });
+  logout() { sessionStorage.removeItem('team-access-token'); submissions = new WeakMap(); },
+  listSubjects(signal) { return teamApi.shared<SubjectSummary[]>('/participant-summaries',{},signal); },
+  async getSubject(id,signal) {
+    try { return subject(await teamApi.participant(id,signal)); }
+    catch (error) { if (error instanceof ApiError && error.status === 404) return null; throw error; }
   },
-  async analyzeVideo(id,file,progress,signal,capture){
-    if(!file)throw new AnalysisFailedError('GA-FILE','실제 MP4 영상을 선택해 주세요.');
-    const subject=await this.getSubject(id);
-    if(!subject)throw new AnalysisFailedError('GA-404','대상자를 찾지 못했습니다.');
-    const day=capture?.day??'';
-    const live=await analyzeFile(file,id,day,capture?.mode??'guided',signal??new AbortController().signal,progress,capture?.height??null,capture?.extractor,capture?.daySource);
-    if(!live.analysis.segments.length)throw new AnalysisFailedError('GA-SEG','영상에서 직선 보행 구간을 찾지 못했습니다.');
-    live.saved_at=new Date().toISOString();
-    const r:ResultRecord={id:live.id,subjectId:id,measuredAt:live.captured_at??'',ageAtCapture:day&&subject.birth&&day>=subject.birth?ageOn(subject.birth,new Date(day+'T12:00:00')):null,
-      heightAtCapture:capture?.height??null,fileName:file.name,gdi:null,cadence:null,symmetry:null,curves:{},missing:{},live};
-    signal?.throwIfAborted();
-    await access('results','readwrite',t=>t.add(r));progress(100);return r;
+  async createSubject(input) { return subject(await teamApi.createParticipant(profile(input))); },
+  async updateSubject(id,input) { return subject(await teamApi.updateParticipant(id,profile(input))); },
+  async listResults(id,signal) {
+    const rows: ResultRecord[] = [];
+    for (;;) {
+      const page = await teamApi.shared<ResultRecord[]>(capturePath(id)+'?offset='+rows.length, {}, signal);
+      rows.push(...page);
+      if (page.length < 20) return rows;
+    }
   },
-  async downloadResult(id){
-    const r=await access<ResultRecord>('results','readonly',t=>t.get(id));
-    if(!r)throw Error('저장 기록을 찾지 못했습니다.');
+  async getResult(id,rid,signal) {
+    try { const r = await getRecord(rid,signal); return r.subjectId === id ? r : null; }
+    catch (error) { if (error instanceof ApiError && error.status === 404) return null; throw error; }
+  },
+  async deleteResult(id,rid) { await teamApi.shared(capturePath(id)+'/'+encodeURIComponent(rid),{method:'DELETE'}); },
+  async analyzeVideo(id,file,progress,signal,capture) {
+    if (!file) throw Error('MP4 영상을 선택해 주세요.');
+    const settings = JSON.stringify([id, capture]);
+    let pending = submissions.get(file);
+    if (!pending || pending.settings !== settings) {
+      const packet = await extractCapture(file,id,capture?.day ?? '',capture?.mode ?? 'guided',
+        signal ?? new AbortController().signal,progress,capture?.height ?? null,capture?.daySource);
+      pending = {settings, body:JSON.stringify({fileName:file.name,packet}), id:packet.requestId};
+      submissions.set(file,pending);
+    }
+    progress(95,'팀 서버에 촬영 한 건의 좌표를 저장하고 있습니다.');
+    try {
+      const receipt = await teamApi.shared<{id:string;participant_id:string}>(capturePath(id), {
+        method:'POST',headers:{'Content-Type':'application/json'},body:pending.body,
+      },signal);
+      if (receipt.id !== pending.id || receipt.participant_id !== id) throw Error('촬영 저장 번호가 일치하지 않습니다.');
+      const row = await getRecord(receipt.id,signal);
+      submissions.delete(file);
+      return row;
+    } catch (error) { throw Error(errorMessage(error)); }
+  },
+  async downloadResult(id) {
+    const r = await getRecord(id);
     const report = r.live ? {...r, walking_estimate:walkingEstimate(r.live), knee_observation_summary: {
       unit:'deg', time_unit:'ms', observations:visitKneeSummary(r.live)
     }} : r;

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { ApiClient, ApiError, errorMessage, type Participant } from './api/client';
-import { koreaToday, participantChanges, validateParticipant, type ParticipantInput, type ParticipantErrors } from './api/participant-input';
+import { ApiClient, ApiError, errorMessage, type Participant } from '../../mobile/src/api/client';
+import { koreaToday, participantChanges, validateParticipant, type ParticipantInput, type ParticipantErrors } from '../../mobile/src/api/participant-input';
 
 export function ParticipantForm({ client, original, onSaved, onClose }: {
   client: ApiClient; original: Participant | null; onSaved: (person: Participant) => void; onClose: () => void;

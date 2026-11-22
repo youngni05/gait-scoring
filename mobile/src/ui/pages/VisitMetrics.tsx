@@ -30,10 +30,10 @@ const finite = (n: unknown): n is number => typeof n === 'number' && Number.isFi
 const fmt = (n: unknown, digits = 1) => (finite(n) ? n.toFixed(digits) : '측정 보류');
 const sec = (ms: number) => (ms / 1000).toFixed(2);
 const span = (start: number, stop: number) => `${sec(start)}~${sec(stop)}초`;
-const signed = (v: number, digits: number) => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v).toFixed(digits);
-const VERDICT: Record<Verdict, string> = { better: '좋아짐', worse: '나빠짐', similar: '비슷함' };
-const SHORT: Record<string, string> = { gdi: 'GDI', cadence: '걸음 수', stepGap: '좌우 걸음 시간 차', kneeLeft: '좌 무릎 폭', kneeRight: '우 무릎 폭' };
-const BAND_NOTE = `좌우 차이와 변화 판정은 측정 오차를 고려한 예시 기준(GDI ${EXAMPLE_BAND.gdi}점 · 분당 걸음 ${EXAMPLE_BAND.cadence}걸음 · 무릎 ${EXAMPLE_BAND.knee}° · 걸음 시간 ${EXAMPLE_BAND.stepGap}초)입니다. 이보다 작은 차이는 측정 오차와 구분할 수 없어 ‘비슷함’으로 표시합니다. 같은 사람을 다시 촬영한 자료로 확정해야 하는 값입니다.`;
+export const signed = (v: number, digits: number) => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v).toFixed(digits);
+export const VERDICT: Record<Verdict, string> = { better: '좋아짐', worse: '나빠짐', similar: '비슷함' };
+export const SHORT: Record<string, string> = { gdi: 'GDI', cadence: '걸음 수', stepGap: '좌우 걸음 시간 차', kneeLeft: '좌 무릎 폭', kneeRight: '우 무릎 폭' };
+export const BAND_NOTE = `좌우 차이와 변화 판정은 측정 오차를 고려한 예시 기준(GDI ${EXAMPLE_BAND.gdi}점 · 분당 걸음 ${EXAMPLE_BAND.cadence}걸음 · 무릎 ${EXAMPLE_BAND.knee}° · 걸음 시간 ${EXAMPLE_BAND.stepGap}초)입니다. 이보다 작은 차이는 측정 오차와 구분할 수 없어 ‘비슷함’으로 표시합니다. 같은 사람을 다시 촬영한 자료로 확정해야 하는 값입니다.`;
 
 export function kneeCurve(visit: Visit, index: number) {
   const s = visit.analysis.segments[index];
@@ -66,7 +66,7 @@ function Disclosure({ title, hint, children, inline }: { title: string; hint?: s
 }
 
 /** 화살표는 값이 커졌는지·작아졌는지, 색은 좋아짐(초록)·나빠짐(빨강)·비슷함(회색)을 뜻한다. */
-function VerdictIcon({ verdict, delta, size = 28 }: { verdict: Verdict; delta: number; size?: number }) {
+export function VerdictIcon({ verdict, delta, size = 28 }: { verdict: Verdict; delta: number; size?: number }) {
   const path = verdict === 'similar' ? 'M7 10h10M7 14h10' : delta > 0 ? 'M12 18V6M6.5 11.5L12 6l5.5 5.5' : 'M12 6v12M6.5 12.5L12 18l5.5-5.5';
   return (
     <span className={`vi ${verdict}`} style={{ width: size, height: size }} role="img" aria-label={VERDICT[verdict]}>
@@ -77,30 +77,57 @@ function VerdictIcon({ verdict, delta, size = 28 }: { verdict: Verdict; delta: n
   );
 }
 
-/** 좋아짐·나빠짐·비슷함 세 칸에 지표를 나눠 담는다. 글을 읽지 않아도 어디가 바뀌었는지 보이게 한다. */
+/**
+ * 좋아짐·나빠짐·비슷함 칸에 지표를 나눠 담는다. 글을 읽지 않아도 어디가 바뀌었는지 보이게 한다.
+ * 지표가 없는 칸은 그리지 않는다. 모두 비슷하면 '모두 비슷함' 한 칸만 남는다.
+ */
 function VerdictBoard({ rows }: { rows: { key: string; short: string; delta: number; digits: number; unit: string; verdict: Verdict }[] }) {
+  const columns = (['better', 'worse', 'similar'] as const)
+    .map((v) => ({ v, items: rows.filter((r) => r.verdict === v) }))
+    .filter((c) => c.items.length);
+  const allSimilar = columns.length === 1 && columns[0]!.v === 'similar';
   return (
     <div className="board">
-      {(['better', 'worse', 'similar'] as const).map((v) => {
-        const items = rows.filter((r) => r.verdict === v);
-        return (
-          <div key={v} className={`board-col ${v}`}>
-            <p className="bh">{VERDICT[v]}<b>{items.length}</b></p>
-            {items.length ? (
-              <ul>
-                {items.map((r) => (
-                  <li key={r.key}>
-                    <VerdictIcon verdict={r.verdict} delta={r.delta} size={20} />
-                    <span>{r.short}<small>{signed(r.delta, r.digits)}{r.unit}</small></span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="bnone">—</p>
-            )}
-          </div>
-        );
-      })}
+      {columns.map(({ v, items }) => (
+        <div key={v} className={`board-col ${v}${allSimilar ? ' all' : ''}`}>
+          <p className="bh">{allSimilar ? '모두 비슷함' : VERDICT[v]}<b>{items.length}</b></p>
+          <ul>
+            {items.map((r) => (
+              <li key={r.key}>
+                <VerdictIcon verdict={r.verdict} delta={r.delta} size={20} />
+                <span>{r.short}<small>{signed(r.delta, r.digits)}{r.unit}</small></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * 처음 비교 기록부터 이번 기록까지 좋아지거나 나빠진 지표. 바로 지난 기록과는 '비슷함'이어도
+ * 방문을 거듭하며 쌓인 변화가 여기에 드러난다. 판정 폭은 지난 기록 비교와 같은 예시 기준이다.
+ * 비교 가능한 지난 기록이 두 번 이상일 때만 의미가 있어, 그 전에는 그리지 않는다.
+ */
+function SinceFirst({ trends }: { trends: Trend[] }) {
+  const moved = trends.filter((t) => t.since && t.since.verdict !== 'similar');
+  if (!moved.length) return null;
+  const first = moved.map((t) => t.since!.date).sort()[0];
+  return (
+    <div className="since">
+      <p className="since-h">처음 기록({fmtDay(first)})부터 쌓인 변화</p>
+      <ul>
+        {moved.map((t) => (
+          <li key={t.key} className={t.since!.verdict}>
+            <VerdictIcon verdict={t.since!.verdict} delta={t.since!.delta} size={20} />
+            <span>
+              {SHORT[t.key] ?? t.label} {VERDICT[t.since!.verdict]}
+              <small>{signed(t.since!.delta, t.digits)}{t.unit}{t.steady && ` · ${t.points.length}회 연속 ${t.delta > 0 ? '↑' : '↓'}`}</small>
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -226,6 +253,7 @@ function Overview({ summary, history, openHistory }: {
           </ul>
           {recent && history && (
             <>
+              <SinceFirst trends={history.trends} />
               <p className="h" style={{ marginTop: 12 }}>
                 지난 기록({fmtDay(recent.previousDate)})과 비교
                 {recent.skipped.length > 0 && <small> · {recent.directions.map(directionLabel).join(', ')} 구간끼리</small>}
@@ -342,6 +370,7 @@ export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
   const timing = cardMetric(segment, report, 'difference');
   const knee = kneeCurve(visit, index);
   const local = visit.local_observations_by_segment?.[segment.segment_id] ?? [];
+  const held = segment.gait?.local_held_contacts ?? segment.gait?.held_contacts;
   const kneeNote = notes?.find((m: { id: string }) => m.id === 'knee');
   const coverage = kneeNote?.evidence;
   const coverageWarnings = SIDES.flatMap((side) => {
@@ -459,6 +488,11 @@ export function LiveMetrics({ record, selected, select, zoom, openHistory }: {
         <Disclosure title="측정 상세">
           <dl className="kv">
             <div><dt>구간</dt><dd>{span(segment.start_ms ?? 0, segment.stop_ms)} · {directionLabel(segment.direction)}</dd></div>
+            {Array.isArray(held) && <div><dt>착지 후보 검토</dt><dd>
+              {held.length ? <>같은 발이 연속 표시되어 시간 간격을 확인한 뒤 {held.length}개 후보를 계산에서 보류했습니다.
+                {' '}{held.map((e: {side: string; source_time_ms: number}) => `${sec(e.source_time_ms)}초 ${sideName(e.side)} 발`).join(' · ')}</>
+                : '시간 간격을 기준으로 보류한 착지 후보가 없습니다.'}
+            </dd></div>}
             {kneeNote?.sentence && <div><dt>무릎 관측</dt><dd>{kneeNote.sentence}</dd></div>}
             {local.map(
               (r: { side: string; value: number; unit: string; status: string }, i: number) =>
@@ -559,7 +593,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
           <TriangleAlertIcon size={20} />
           <div>
             <p className="title">이전 기록을 비교하지 못했습니다</p>
-            <p style={{ marginTop: 4 }}>{error instanceof Error && !(error instanceof TypeError) ? error.message : '로컬 분석 서버 연결을 확인해 주세요.'}</p>
+            <p style={{ marginTop: 4 }}>{error instanceof Error && !(error instanceof TypeError) ? error.message : '팀 서버 연결을 확인해 주세요.'}</p>
           </div>
         </div>
         <button className="btn btn-outline btn-sm" onClick={reload}><RotateIcon size={18} /> 다시 시도</button>
@@ -584,6 +618,8 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
       )}
       {recent && history && (
         <>
+          <SinceFirst trends={history.trends} />
+          <p className="board-h">지난 기록({fmtDay(recent.previousDate)})과 비교</p>
           <VerdictBoard rows={recent.rows.map((r) => ({ ...r, short: SHORT[r.key] ?? r.label }))} />
 
           <article className="cmp">
@@ -662,7 +698,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
 
 function StrictHistory({ current, prior }: { current: Visit; prior: Visit[] }) {
   const { data, loading, error } = useAsync(async (signal) => {
-    const res = await postJson('/v1/history/explain', {
+    const res = await postJson('/history/explain', {
       schema: 'ai-history-request/1', request_id: crypto.randomUUID(), comparison_policy_version: 'personal-history/1',
       data_kind: 'recorded_visits', current_visit: visitInput(current), prior_visits: prior.map(visitInput),
     }, signal);

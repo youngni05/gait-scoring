@@ -36,3 +36,14 @@ export function visitHistory(current: unknown, priors: unknown[]): {
   recent: Comparison | null; trends: Trend[]; lines: string[]; visits: number; comparable?: number; sentence: string;
 };
 export const fmtDay: (iso: string | null | undefined) => string;
+export interface OverviewTrend extends Trend {
+  fromFirst: { date: string; delta: number; verdict: Verdict; directions: string[] };
+}
+export interface SubjectOverview {
+  latest: { id: string; captured_at: string } | null;
+  history: ReturnType<typeof visitHistory> | null;
+  trends: OverviewTrend[];
+  visits: { id: string; date: string; gdi: number | null; cadence: number | null; directions: string[] }[];
+  undated: number; notes: string[]; lines: string[];
+}
+export function subjectOverview(visits: unknown[]): SubjectOverview;

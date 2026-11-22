@@ -424,3 +424,12 @@ ol, ul { list-style: none; }
   display: inline-flex; align-items: center; justify-content: center;
 }
 .info-btn:hover { background: var(--accent); }
+
+/* 실제 분석 기록 카드: 이전 방문 대비 변화 */
+.metric-grid3.live .dlt { margin-top: 2px; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--fg-50); }
+.metric-grid3.live .dlt.better { color: #0b7a3e; }
+.metric-grid3.live .dlt.worse { color: #c0121d; }
+.metric-grid3.live .cnt { margin-top: 4px; display: grid; gap: 2px; font-size: 14px; font-weight: 800; color: var(--fg-60); }
+.metric-grid3.live .cnt.none { font-weight: 600; color: var(--fg-40); }
+.metric-grid3.live .cnt .better { color: #0b7a3e; }
+.metric-grid3.live .cnt .worse { color: #c0121d; }

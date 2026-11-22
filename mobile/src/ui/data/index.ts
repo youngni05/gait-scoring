@@ -1,6 +1,6 @@
 /**
  * 화면이 사용할 데이터 구현을 고르는 곳.
- * 서버 연결 시 아래 한 줄을 ApiClient 기반 구현으로 바꾼다(source.ts의 GaitDataSource 모양을 따른다).
+ * 기본값은 팀 API이고 demo=ui에서는 예시 데이터를 사용한다.
  */
 import { mockSource } from './mockSource';
 import type { GaitDataSource } from './source';

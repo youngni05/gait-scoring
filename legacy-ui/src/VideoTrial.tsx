@@ -1,8 +1,8 @@
 import { PoseTrial } from './PoseTrial';
 import { useEffect, useRef, useState } from 'react';
-import { BrowserVideoSource, type BrowserVideoSession } from './pose/browser-video-source';
-import type { FrameSummary } from './pose/frame-audit';
-import type { ProcessingInput, VideoInfo } from './pose/ports';
+import { BrowserVideoSource, type BrowserVideoSession } from '../../mobile/src/pose/browser-video-source';
+import type { FrameSummary } from '../../mobile/src/pose/frame-audit';
+import type { ProcessingInput, VideoInfo } from '../../mobile/src/pose/ports';
 
 export function VideoTrial({ onSelection, onMetadata, input }: { onSelection: () => void; onMetadata: (value: string | null) => void; input: Omit<ProcessingInput,'recordingId'> }) {
   const [recordingId,setRecordingId]=useState('');

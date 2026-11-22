@@ -1,6 +1,6 @@
-# 팀원 PC에서 보행 영상 분석하기
+# 팀 분석 모델 준비
 
-브라우저에서 MP4를 열고 MediaPipe Full로 관절을 추출한다. 같은 PC의 Python 서버가 좌표로 보행 구간, 무릎 움직임, 걸음 지표, 기존 GDI와 정상100 GDI를 계산한다. 대상자와 결과는 현재 브라우저에 저장한다. 팀 계정 및 공용 데이터베이스 연동은 별도 개발 작업이다.
+현재 앱에서는 팀 서버의 Python 워커가 이 모듈을 호출한다. 앱·계정·DB 실행 방법은 [팀 앱 안내](../mobile/README.md)에 있다. 아래 설치 명령은 모델 파일과 소스 준비에 사용한다. Docker 워커에는 Python 의존성이 이미지에 포함된다.
 
 ## 최초 설치
 
@@ -27,17 +27,6 @@ git clone https://github.com/vinuni-vishc/transformer-gait-analysis.git $teamStt
 git -C $teamStt checkout --detach 549d58bc32449b24a0eae0c37ca573f9aa58a1dd
 ```
 
-## 앱 열기
+## 모델 폴더 연결
 
-```powershell
-$teamPython = '.\.venv\Scripts\python.exe'
-$teamAssets = Join-Path $env:USERPROFILE 'gait-scoring-models'
-$teamStt = Join-Path $teamAssets 'transformer-gait-analysis'
-& $teamPython ai-module/team_server.py --assets $teamAssets --stt-source $teamStt
-```
-
-서버를 켜 둔 상태에서 같은 PC의 [앱](http://127.0.0.1:8881/)을 연다. **이 PC에서 시작 → 대상자 등록 → 새 보행 영상 분석**으로 진행한다. 결과에서 두 GDI가 계산되려면 같은 직선 보행 구간에 연속 124프레임과 충분한 관절 좌표가 있어야 한다. 조건을 충족하지 못하면 결과에 측정 보류가 표시된다.
-
-화면 개발 중에는 분석 서버를 켜 두고 다른 창에서 `npm.cmd run dev:mobile`을 실행한다. 콘솔에 표시된 개발 주소에서 분석 서버로 요청이 전달된다. 브라우저 저장 기록은 접속 주소와 브라우저 프로필마다 따로 저장된다.
-
-서버 시작 시 파일이 없거나 SHA-256이 다르면 해당 경로를 표시한다. 모델 설치 경로와 STT 커밋을 확인한다. 앱이 연결되지 않으면 브라우저에서 [서버 상태](http://127.0.0.1:8881/health)를 확인한다.
+준비한 `$teamAssets` 경로를 서버 `.env`의 `GAIT_MODEL_DIR`로 설정한다. 워커가 시작할 때 고정된 모델과 소스의 파일 해시를 검증한다.

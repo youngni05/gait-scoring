@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { prepareMeasurement, type PreparedMeasurement } from '../../contracts/measurement-1/prepare';
-import type { UploadRequest } from './pose/upload-gateway';
-import { ApiSession } from './api/Session';
-import { ApiError, errorMessage } from './api/client';
+import type { UploadRequest } from '../../mobile/src/pose/upload-gateway';
+import { ApiSession } from '../../mobile/src/api/Session';
+import { ApiError, errorMessage } from '../../mobile/src/api/client';
 
 export function MeasurementUpload({ request }: { request: UploadRequest }) {
   const session = useContext(ApiSession);

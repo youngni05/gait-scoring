@@ -157,6 +157,51 @@ class MeasurementPostgresTests(unittest.TestCase):
         with Session(self.engine) as db:
             return db.scalar(select(func.count()).select_from(GaitMeasurement).where(GaitMeasurement.participant_id == self.participant_id))
 
+    def test_shared_capture_survives_disconnect_and_replay(self):
+        from unittest.mock import patch
+        from app.ai_module import POSE_MODEL_SHA256
+        from app.analysis_worker import process_one
+
+        coords = self.body["keypoints_json"]
+        coords.update(schema_version="team-local-coords/1", recording_id=self.key,
+                      pose=dict(model="pose_landmarker_full", engine_version="1.2.3", delegate="CPU"),
+                      marks=dict(stand_start=None, stand_end=None), frames=[dict(t=0, lm=None)])
+        coords["capture"]["recorded_at"] = None
+        packet = dict(requestId=self.key, coords=coords,
+                      metadata=dict(recordedAtSource="unknown", rotationAppliedDegrees=0),
+                      bridge_context=dict(profile="team-browser-full-cpu-video/1", source_sha256="unknown",
+                                          model_sha256=POSE_MODEL_SHA256, input_object="ImageData",
+                                          image_geometry="upright_unmirrored", clock_basis="video_pts",
+                                          frame_audit_complete=True, fresh_tracker=True))
+        body = dict(fileName="synthetic.mp4", packet=packet)
+        path = f"/team/participants/{self.participant_id}/recordings"
+        self.assertEqual(self.http(path, "POST", body, token=None)[0], 401)
+        self.assertEqual(self.http(path, "POST", body)[0], 202)
+        self.assertEqual(self.http(path, "POST", body)[0], 200)
+        self.assertEqual(self.http(path, "POST", dict(body, fileName="other.mp4"))[0], 409)
+        self.assertEqual(self.count(), 1)
+        detail = f"/team/recordings/{self.key}"
+        self.assertEqual(self.http(detail)[1]["serverState"], "pending")
+        with Session(self.engine) as db, patch("app.analysis_worker.analyze_coords", side_effect=ValueError("test failure")):
+            self.assertTrue(process_one(db))
+        self.assertEqual(self.http(detail)[1]["serverState"], "failed")
+        self.assertEqual(self.http(detail + "/retry", "POST")[0], 202)
+        analysis = {"analysis": {"analysis_version": "test", "segments": []},
+                    "record": {"captured_at": None}}
+        with Session(self.engine) as db, patch("app.analysis_worker.analyze_coords", return_value=analysis) as run:
+            self.assertTrue(process_one(db))
+            self.assertFalse(process_one(db))
+            run.assert_called_once_with(packet)
+        row = self.http(detail)[1]
+        self.assertEqual(row["serverState"], "ready")
+        self.assertIsNone(row["ageAtCapture"])
+        self.assertEqual(row["measuredAt"], "")
+        self.assertEqual(row["live"]["id"], self.key)
+        self.assertEqual(row["live"], self.http(path)[1][0]["live"])
+        self.assertEqual(self.http(f"/measurements/{self.key}/result")[1]["analysis_result"]["report_json"], row["live"])
+        self.assertEqual(self.http(path + "/" + self.key, "DELETE")[0], 204)
+        self.assertEqual(self.http(detail)[0], 404)
+
     def test_migration_preserves_existing_data(self):
         with Session(self.engine) as db:
             old = db.get(GaitMeasurement, self.legacy_measurement)

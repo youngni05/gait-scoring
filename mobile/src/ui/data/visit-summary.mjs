@@ -235,3 +235,53 @@ export function visitHistory(current, priors) {
   return { recent, trends, lines, visits: unique.length, comparable: comparisons.length,
     sentence: '두 방문에 공통으로 있는 걷기 방향만으로 양쪽 값을 다시 계산해 비교했습니다.' };
 }
+
+// ── 대상자 전체 기록 해석 ───────────────────────
+
+/**
+ * 한 사람의 기록 전체를 가장 최근 방문 기준으로 해석한다. 계산은 visitHistory와 같다.
+ * 지표마다 '처음 비교 가능한 기록 → 가장 최근 기록'의 변화(fromFirst)를 붙인다.
+ * 비교 가능한 지난 기록이 하나뿐이면 그 기록이 곧 처음 기록이다.
+ * 촬영일이 없는 기록은 방문 순서를 알 수 없어 해석에서 빼고 개수만 알린다.
+ */
+export function subjectOverview(visits) {
+  const time = v => Date.parse(v.captured_at ?? '');
+  const dated = visits.filter(v => Number.isFinite(time(v))).sort((a, b) => time(b) - time(a) || String(a.id).localeCompare(String(b.id)));
+  const undated = visits.length - dated.length;
+  const rows = dated.map(v => {
+    const s = visitSummary(v);
+    return { id: v.id, date: v.captured_at, gdi: s.gdi.value, cadence: s.walking.cadence, directions: s.directions };
+  });
+  if (!dated.length) return { latest: null, history: null, trends: [], visits: rows, undated, notes: [], lines: [] };
+  const latest = dated[0];
+  const priors = dated.slice(1);
+  const history = visitHistory(latest, priors);
+  const recent = history.recent;
+  const trends = history.trends.map(t => ({ ...t,
+    fromFirst: t.since ?? { date: recent.previousDate, delta: t.delta, verdict: t.verdict, directions: recent.directions } }));
+  // 어느 방문의 조건이 다른지 알 수 있게 지난 기록의 촬영일을 앞에 붙인다.
+  const notes = priorVisits(latest, priors).flatMap(p => conditionNote(latest, p).map(n => `${fmtDay(p.captured_at)} 기록 — ${n}`));
+  return { latest, history, trends, visits: rows, undated, notes, lines: overviewLines(trends, priors.length) };
+}
+
+/** 전체 기록 해석의 머리 문장. 처음 기록 대비 변화 → 연속 변화 순서로 쓴다. */
+function overviewLines(trends, priorCount) {
+  if (!trends.length) {
+    return [priorCount ? '지난 기록과 같은 방향으로 걸은 구간이 없어 변화를 계산하지 못했습니다.'
+      : '기록이 2회 이상 쌓이면 방문 사이의 변화를 보여 드립니다.'];
+  }
+  const first = trends.map(t => t.fromFirst.date).sort()[0];
+  const by = v => trends.filter(t => t.fromFirst.verdict === v)
+    .map(t => ({ label: t.label, text: `${t.label}(${signed(t.fromFirst.delta, t.digits)}${t.unit})` }));
+  const better = by('better'), worse = by('worse');
+  const lead = `처음 기록(${fmtDay(first)})과 비교하면 `;
+  const lines = [];
+  if (better.length && worse.length) lines.push(lead + `${subjectOf(better, '이', '가')} 좋아졌고, ${subjectOf(worse, '은', '는')} 나빠졌습니다.`);
+  else if (better.length) lines.push(lead + `${subjectOf(better, '이', '가')} 좋아졌습니다.`);
+  else if (worse.length) lines.push(lead + `${subjectOf(worse, '이', '가')} 나빠졌습니다.`);
+  else lines.push(lead + '모든 항목이 비슷한 범위 안에 있습니다.');
+  for (const t of trends.filter(x => x.steady)) {
+    lines.push(`${t.label}${particle(t.label, '은', '는')} 최근 ${t.points.length}번의 기록에서 계속 ${t.delta > 0 ? '늘었습니다' : '줄었습니다'}.`);
+  }
+  return lines;
+}

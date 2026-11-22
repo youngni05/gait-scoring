@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react';
 import { PageError, PageLoading, TopBar } from '../components/layout';
 import { AlertCircleIcon, CalculatorIcon, CalendarIcon, CheckCircleIcon, InfoIcon } from '../components/icons';
-import { ageOn, dataSource, fmtBirth, maskBirth, parseBirth, type Sex, type Subject } from '../data';
+import { ageOn, isDemo, dataSource, fmtBirth, maskBirth, parseBirth, type Sex, type Subject } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { NotFound } from './NotFound';
@@ -50,8 +50,11 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
 
   const validate = (): Errors => {
     const e: Errors = {};
-    if (!name.trim()) e.name = '이름을 입력해 주세요.';
+    if (!name.trim() || name.trim().length > 100) e.name = '이름을 1~100자로 입력해 주세요.';
 
+    if (!isDemo && !sex) e.sex = '성별을 선택해 주세요.';
+    if (!isDemo && !birth) e.birth = '생년월일을 입력해 주세요.';
+    if (!isDemo && !height) e.height = '키를 입력해 주세요.';
     if (birth && !birthIso) e.birth = '생년월일을 YYYY.MM.DD 형식의 실제 날짜로 입력해 주세요.';
     const h = Number(height);
     if (height && Number.isNaN(h)) e.height = '키를 cm 단위 숫자로 입력해 주세요.';
@@ -126,7 +129,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
         </div>
 
         <div className="field">
-          <p className="label" id="sex-label">성별 (선택)</p>
+          <p className="label" id="sex-label">성별 {isDemo ? '(선택)' : '*'}</p>
           <div className="choice-grid" role="radiogroup" aria-labelledby="sex-label">
             {(['여', '남'] as Sex[]).map((v) => (
               <button
@@ -146,7 +149,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
         </div>
 
         <div className="field">
-          <label htmlFor="birth">생년월일 (선택)</label>
+          <label htmlFor="birth">생년월일 {isDemo ? '(선택)' : '*'}</label>
           <div className="input-wrap">
             <input
               id="birth"
@@ -174,7 +177,7 @@ function SubjectForm({ editing }: { editing: Subject | undefined }) {
         </div>
 
         <div className="field">
-          <label htmlFor="height">키 (선택)</label>
+          <label htmlFor="height">키 {isDemo ? '(선택)' : '*'}</label>
           <div className="input-wrap">
             <input
               id="height"

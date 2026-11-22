@@ -2,9 +2,7 @@
  * 06 영상 선택 · 06-1 영상 미리보기 · 06-2 분석 진행 중 · 06-3 분석 실패.
  * 한 주소 안에서 단계(phase)만 바꾼다. 분석 중에 뒤로 가기로 빠져나가 결과를 잃는 일을 줄이기 위해서다.
  *
- * 실제 연결 상태: 휴대폰 영상 선택과 미리보기 재생은 브라우저 기능으로 실제 동작한다.
- * 분석은 dataSource.analyzeVideo가 맡는다. 지금은 가상 데이터 구현이 진행률과 결과를 흉내 낸다.
- * (실제 연결 시 기존 관절 추출·측정 저장 코드(pose/, MeasurementUpload)를 이 함수 뒤에서 호출하게 된다.)
+ * 브라우저가 프레임별 좌표를 추출하고 팀 서버가 접수한 촬영의 결과 화면을 연다.
  */
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { PageError, PageLoading, Steps, TopBar, type StepState } from '../components/layout';
@@ -24,7 +22,6 @@ import {
 } from '../components/icons';
 import { LoadingMark } from '../components/brand';
 import { AnalysisFailedError, ageOn, isDemo, dataSource, fmtDate } from '../data';
-import { openPoseEnabled } from '../data/analysis';
 import { readCaptureDay } from '../../pose/browser-video-source';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
@@ -58,7 +55,6 @@ export function AnalyzePage() {
 
   const [editedDay, setEditedDay] = useState<string | null>(null);
   const [mode,setMode]=useState<'fixed'|'guided'>('guided');
-  const [extractor,setExtractor]=useState<'mediapipe'|'openpose'>('mediapipe');
   const [editedHeight, setEditedHeight] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('pick');
   const [picked, setPicked] = useState<Picked | null>(null);
@@ -84,9 +80,13 @@ export function AnalyzePage() {
     if (phase !== 'running') return;
     const abort = new AbortController();
     dataSource
-      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode,extractor,height:height ? Number(height) : null})
+      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode,height:height ? Number(height) : null})
       .then((rec) => {
         if (abort.signal.aborted) return;
+        if (!isDemo) {
+          navigate(`/subjects/${subjectId}/results/${rec.id}`, { replace: true });
+          return;
+        }
         setResultId(rec.id);
         setPhase('done');
       })
@@ -212,8 +212,7 @@ export function AnalyzePage() {
               <label>촬영일 <input type="date" value={day} onChange={e => setEditedDay(e.target.value)} /></label>
               <label>촬영 당시 키 (100~220cm) <input type="number" min={100} max={220} step="0.1" value={height} onChange={e => setEditedHeight(e.target.value)} /></label>
             </details>
-            {openPoseEnabled ? <label>좌표 추출 모델 <select value={extractor} onChange={e=>setExtractor(e.target.value as typeof extractor)}><option value="mediapipe">MediaPipe Full · 기기 GPU 우선</option><option value="openpose">OpenPose BODY_25 · 학교 GPU</option></select></label> : <p>좌표 추출 · MediaPipe Full</p>}
-            {extractor === 'openpose' && <p className="muted">MP4를 분석 PC로 보내고, 크기를 줄인 영상 프레임을 학교 GPU로 전송합니다. GPU 배정 대기가 있을 수 있습니다.</p>}
+            <p>좌표 추출 · MediaPipe Full</p>
             <label>촬영 방식 <select value={mode} onChange={e=>setMode(e.target.value as typeof mode)}><option value="fixed">고정 촬영</option><option value="guided">따라가며 촬영</option></select></label>
           </div>}
           <VideoPreview picked={picked} onDuration={(d) => setPicked((p) => (p ? { ...p, durationSec: d } : p))} />
@@ -238,17 +237,17 @@ export function AnalyzePage() {
           <p style={{ fontSize: 16, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }} className="primary">
             <LoadingMark size={22} /> 분석하고 있습니다
           </p>
-          {extractor === 'openpose' && !isDemo ? <p style={{marginTop:12}}>OpenPose BODY_25 · 학교 GPU 분석</p> : <><p style={{ marginTop: 4, fontSize: 48, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
+          <p style={{ marginTop: 4, fontSize: 48, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
             {pct}
             <span style={{ fontSize: 26 }}>%</span>
           </p>
           <div className="bar" style={{ marginTop: 16, height: 12 }}>
             <div style={{ width: `${pct}%` }} />
           </div>
-          </>}
-          <p style={{ marginTop: 8, fontSize: 14 }} className="muted">{isDemo ? '예상 남은 시간 약 '+remainSec+'초' : progressText || (pct >= 90 ? '좌표로 모델값 계산 중' : '영상 프레임에서 관절 위치 추출 중')}</p>
+
+          <p style={{ marginTop: 8, fontSize: 14 }} className="muted">{isDemo ? '예상 남은 시간 약 '+remainSec+'초' : progressText || (pct >= 90 ? '팀 서버에 좌표 저장 중' : '영상 프레임에서 관절 위치 추출 중')}</p>
           <ol style={{ marginTop: 24, borderRadius: 'var(--r-lg)', border: '1px solid var(--border)' }}>
-            {(isDemo ? STAGES : ["영상 확인","프레임별 관절 위치 추출","보행 구간과 모델값 계산","결과 저장"]).map((name, i) => {
+            {(isDemo ? STAGES : ["영상 확인","프레임별 관절 위치 추출","좌표 추출 검산","팀 서버에 좌표 저장"]).map((name, i) => {
               const state = i < stageIndex ? 'done' : i === stageIndex ? 'now' : 'wait';
               return (
                 <li

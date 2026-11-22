@@ -14,7 +14,7 @@ import scipy
 from schema import ANALYSIS_VERSION, LIMITS, RequestError, validate
 from vendor import knee, gait_events
 from segmentation import detect as detect_segments
-from current_report import build_report
+from current_report import build_report, foot_tracking
 
 
 def sha(path):
@@ -218,7 +218,7 @@ def summarize_gdi(segments):
         segment_count=len(segments), by_direction=grouped, aggregation_scope="by_direction", unavailable_reason=reason)
 
 
-def analyze(request):
+def analyze(request, *, review_contacts=False):
     validate(request)
     v2 = request["schema"] == "ai-analyze-request/2"
     pose = request["pose"]
@@ -240,6 +240,10 @@ def analyze(request):
         knees = knee_result(pose, selected)
         if segment["direction"] == "unknown":
             gait = unavailable_gait(pose, segment, len(selected))
+        elif review_contacts:
+            from contact_review import measure_contacts
+            tracking = foot_tracking(selected, pose["image"], [])
+            gait = measure_contacts(mapped, start, stop, segment["direction"].removeprefix("image_"), tracking)
         else:
             gait = gait_events.measure_payload(mapped, start, stop, segment["direction"].removeprefix("image_"))
         stamps = [f["source_time_ms"] for f in selected]
@@ -264,6 +268,10 @@ def analyze(request):
         provenance=dict(image=pose["image"], clock=pose["clock"], extractor=pose["extractor"], **request["provenance"]),
         comparison=comparison(effective), segments=segments,
         gdi=summarize_gdi(segments) if v2 else dict(status="not_configured", value=None, unavailable_reason="gdi_model_not_connected"))
+    if review_contacts:
+        from contact_review import METHOD
+        response["execution"]["measurement_methods"].append(METHOD)
+        response["execution"]["source_sha256"]["contact_review.py"] = sha(HERE / "contact_review.py")
     if v2:
         response["segmentation"] = detection
         response["current_report"] = build_report(pose["source_id"], segments, frame_groups, pose["image"], detection)

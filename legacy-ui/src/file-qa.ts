@@ -1,4 +1,4 @@
-import { BrowserVideoSource } from './pose/browser-video-source';
+import { BrowserVideoSource } from '../../mobile/src/pose/browser-video-source';
 const output = document.querySelector<HTMLPreElement>('#result')!;
 const mount = document.querySelector<HTMLDivElement>('#preview')!;
 const assert = (ok: unknown, message: string) => { if (!ok) throw new Error(message); };

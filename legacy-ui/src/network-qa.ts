@@ -1,5 +1,5 @@
-import { BrowserVideoSource } from './pose/browser-video-source';
-import { MediaPipePoseExtractor } from './pose/mediapipe-extractor';
+import { BrowserVideoSource } from '../../mobile/src/pose/browser-video-source';
+import { MediaPipePoseExtractor } from '../../mobile/src/pose/mediapipe-extractor';
 document.querySelector<HTMLButtonElement>('#run')!.onclick=async()=>{
  const out=document.querySelector('#result')!;out.textContent='';
  const records:unknown[]=[];

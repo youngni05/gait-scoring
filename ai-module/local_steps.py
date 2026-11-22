@@ -3,6 +3,7 @@ from math import isfinite
 from statistics import median
 
 from core import mapped_pose
+from contact_review import METHOD, measure_contacts
 from vendor import gait_events
 
 
@@ -43,11 +44,19 @@ def local_step_intervals(pose, analysis):
         if run:
             runs.append(run)
         steps = []
+        review = gait['method_id'] == METHOD
+        if review:
+            gait['local_held_contacts'] = []
         for run in runs:
             if len(run) < 7:
                 continue
-            measured = gait_events.measure_payload(dict(mapped, frames=run), segment['start_ms'], segment['stop_ms'],
-                                                   segment['direction'].removeprefix('image_'))
+            args = (dict(mapped, frames=run), segment['start_ms'], segment['stop_ms'],
+                    segment['direction'].removeprefix('image_'))
+            if review:
+                measured = measure_contacts(*args, tracking)
+                gait['local_held_contacts'].extend(measured['held_contacts'])
+            else:
+                measured = gait_events.measure_payload(*args)
             steps.extend(measured['steps'])
         result[segment['segment_id']] = steps
     return result

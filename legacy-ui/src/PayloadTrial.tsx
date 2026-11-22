@@ -1,11 +1,11 @@
-import {ApiSession} from './api/Session';
+import {ApiSession} from '../../mobile/src/api/Session';
 import {MeasurementUpload} from './MeasurementUpload';
 import {useContext,useEffect,useRef,useState}from'react';
 import type {PoseFrame}from'../../contracts/coords-1/types';
-import type {ProcessingInput,VideoInfo}from'./pose/ports';
-import {JsonCoordsSerializer}from'./pose/coords-serializer';
-import {MockUploadGateway,type MockScenario,type UploadRequest,validateUploadRequest}from'./pose/upload-gateway';
-import {FrontalStandDetector}from'./pose/stand-detector';
+import type {ProcessingInput,VideoInfo}from'../../mobile/src/pose/ports';
+import {JsonCoordsSerializer}from'../../mobile/src/pose/coords-serializer';
+import {MockUploadGateway,type MockScenario,type UploadRequest,validateUploadRequest}from'../../mobile/src/pose/upload-gateway';
+import {FrontalStandDetector}from'../../mobile/src/pose/stand-detector';
 export function PayloadTrial({frames,video,input}:{frames:readonly PoseFrame[];video:VideoInfo;input:ProcessingInput}){
  const session=useContext(ApiSession);
  const [prepared,setPrepared]=useState<{request:UploadRequest;text:string;bytes:number}|null>(null);

@@ -1,6 +1,6 @@
-import { BrowserVideoSource } from './pose/browser-video-source';
-import { MediaPipePoseExtractor } from './pose/mediapipe-extractor';
-import { extractVideo } from './pose/extract-video';
+import { BrowserVideoSource } from '../../mobile/src/pose/browser-video-source';
+import { MediaPipePoseExtractor } from '../../mobile/src/pose/mediapipe-extractor';
+import { extractVideo } from '../../mobile/src/pose/extract-video';
 const assert=(ok:unknown,message:string)=>{if(!ok)throw Error(message)};
 document.querySelector<HTMLButtonElement>('#run')!.onclick=async()=>{
  const out=document.querySelector('#result')!,button=document.querySelector<HTMLButtonElement>('#run')!;button.disabled=true;out.textContent='';

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { compareVisits, describeVisit, directionGdi, stepGap, visitGdi, visitHistory, visitSummary }
+import { compareVisits, describeVisit, directionGdi, stepGap, subjectOverview, visitGdi, visitHistory, visitSummary }
   from '../mobile/src/ui/data/visit-summary.mjs';
 
 // 직접 만든 가상 방문 기록. 실제 측정값이 아니라 계산 규칙을 확인하기 위한 값이다.
@@ -112,4 +112,34 @@ test('해설 간소화: GDI가 1표준편차 안이면 생략, 0.07초 차이는
   v.analysis.current_report.segments[1].metrics[1].evidence.coverage.left.valid_frames = 1;
   assert.deepEqual(describeVisit(visitSummary(v)).map(i => i.label + ': ' + i.text),
     ['걸음 시간: 좌우 차이 없음 (측정 오차 범위)', '무릎 움직임 폭: 좌우 비슷함']);
+});
+
+test('전체 기록 해석: 가장 최근 방문 기준, 처음 기록 대비 변화와 연속 변화를 문장으로', () => {
+  const at = (id, date, g, knee) => visit(id, date, [seg('l', 'image_left', 0, 4000, [g, g], { knee })]);
+  // 입력 순서와 관계없이 촬영일로 정렬한다. 촬영일 없는 기록은 빼고 개수만 센다.
+  const undated = at('x', '2026-11-20', 50);
+  undated.captured_at = null;
+  const o = subjectOverview([at('a', '2026-11-01', 78, [50, 55]), at('c', '2026-11-15', 84, [44, 55]), undated, at('b', '2026-11-08', 81, [47, 55])]);
+  assert.equal(o.latest.id, 'c');
+  assert.equal(o.undated, 1);
+  assert.deepEqual(o.visits.map(v => [v.id, v.gdi]), [['c', 84], ['b', 81], ['a', 78]]);
+  const gdi = o.trends.find(t => t.key === 'gdi');
+  assert.deepEqual([gdi.fromFirst.delta, gdi.fromFirst.verdict, gdi.verdict], [6, 'better', 'similar']); // 직전 +3은 비슷함, 처음 대비 +6은 좋아짐
+  assert.equal(o.lines[0], '처음 기록(2026.11.01)과 비교하면 GDI(+6.0점)가 좋아졌고, 왼쪽 무릎 움직임 폭(−6.0°)은 나빠졌습니다.');
+  assert.ok(o.lines.includes('GDI는 최근 3번의 기록에서 계속 늘었습니다.'));
+  assert.ok(o.lines.includes('왼쪽 무릎 움직임 폭은 최근 3번의 기록에서 계속 줄었습니다.'));
+});
+
+test('전체 기록 해석: 지난 기록이 하나면 그 기록이 처음 기록, 기록 하나면 안내 문장만', () => {
+  const at = (id, date, g) => visit(id, date, [seg('l', 'image_left', 0, 4000, [g, g])]);
+  const two = subjectOverview([at('a', '2026-11-01', 80), at('b', '2026-11-08', 70)]);
+  const gdi = two.trends.find(t => t.key === 'gdi');
+  assert.deepEqual([gdi.since, gdi.fromFirst.delta, gdi.fromFirst.verdict], [null, -10, 'worse']);
+  assert.equal(two.lines[0], '처음 기록(2026.11.01)과 비교하면 GDI(−10.0점)가 나빠졌습니다.');
+  const one = subjectOverview([at('a', '2026-11-01', 80)]);
+  assert.deepEqual([one.trends.length, one.lines], [0, ['기록이 2회 이상 쌓이면 방문 사이의 변화를 보여 드립니다.']]);
+  assert.equal(subjectOverview([]).latest, null);
+  const fixed = at('a', '2026-11-01', 80);
+  fixed.capture_mode = 'fixed';
+  assert.deepEqual(subjectOverview([fixed, at('b', '2026-11-08', 70)]).notes, ['2026.11.01 기록 — 촬영 방식 · 이전 고정 촬영 / 이번 따라가며 촬영']);
 });
