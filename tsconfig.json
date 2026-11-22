@@ -24,7 +24,7 @@
     "mobile/src/pose/**/*.ts",
     "tests/**/*.ts",
     "mobile/src/api/**/*.ts",
-    "mobile/src/ui/data/apiSource.ts",
-    "mobile/src/ui/leave-guards.ts"
+    "legacy-ui/src/ui/data/apiSource.ts",
+    "legacy-ui/src/ui/leave-guards.ts"
   ]
 }

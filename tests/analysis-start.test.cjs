@@ -1,8 +1,8 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {prepareAnalysisMeasurement}=require('../.stage1-build/contracts/measurement-2/prepare.js');
-const {mapResult}=require('../.stage1-build/mobile/src/ui/data/apiSource.js');
-const {fmtDate}=require('../.stage1-build/mobile/src/ui/data/mock.js');
+const {mapResult}=require('../.stage1-build/legacy-ui/src/ui/data/apiSource.js');
+const {fmtDate}=require('../.stage1-build/legacy-ui/src/ui/data/mock.js');
 const fixture=require('../contracts/measurement-1/synthetic.request.json');
 function request(){const b=structuredClone(fixture.body);const {schema_version,...metadata}=b.processing_metadata;return {coords:b.keypoints_json,metadata,requestId:crypto.randomUUID()};}
 test('analysis request removes capture timestamp/source and freezes the start across retries',()=>{

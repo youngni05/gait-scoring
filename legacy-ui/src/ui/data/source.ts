@@ -1,0 +1,56 @@
+/** Screen data port. Production implementation: apiSource.ts. */
+import type { ResultRecord, Subject } from './mock';
+
+export type SubjectInput = Omit<Subject, 'id'>;
+
+export interface SubjectSummary extends Subject {
+  /** 가장 최근 측정 시각(ISO). 기록이 없으면 null */
+  latestMeasuredAt: string | null;
+  resultCount: number;
+}
+
+export interface ResultPage {
+  items: ResultRecord[];
+  total: number;
+  offset: number;
+  limit: number;
+}
+
+/** 로그인 실패(아이디·비밀번호 불일치). 화면은 이 오류일 때 01-2 안내를 띄운다. */
+export class LoginFailedError extends Error {}
+
+/** 영상 분석 실패. code는 화면 하단에 ‘오류 코드’로 보여준다. */
+export class AnalysisFailedError extends Error {
+  constructor(public code: string, public reason: string) {
+    super(reason);
+  }
+}
+
+export interface GaitDataSource {
+  login(username: string, password: string): Promise<void>;
+  logout(): void;
+
+  listSubjects(signal?: AbortSignal): Promise<SubjectSummary[]>;
+  getSubjectSummary(id: string, signal?: AbortSignal): Promise<SubjectSummary | null>;
+  getSubject(id: string, signal?: AbortSignal): Promise<Subject | null>;
+  createSubject(input: SubjectInput): Promise<Subject>;
+  updateSubject(id: string, input: SubjectInput): Promise<Subject>;
+
+  /** 최신순 */
+  listResults(subjectId: string, signal?: AbortSignal, offset?: number): Promise<ResultPage>;
+  getResult(subjectId: string, resultId: string, signal?: AbortSignal): Promise<ResultRecord | null>;
+
+  /**
+   * 영상을 분석해 결과를 만든다. 진행률(0~100)을 onProgress로 알린다.
+   * video가 null이면 예시 영상(데모)으로 진행한다.
+   */
+  analyzeVideo(
+    subjectId: string,
+    video: File | null,
+    onProgress: (percent: number) => void,
+    signal?: AbortSignal,
+  ): Promise<ResultRecord>;
+
+  /** 결과지를 파일로 내려받는다. 파일 형식은 추후 확정. */
+  downloadResult(resultId: string, signal?: AbortSignal): Promise<void>;
+}

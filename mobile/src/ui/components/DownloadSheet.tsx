@@ -1,30 +1,27 @@
 /**
  * 08 결과 다운로드 바닥 시트: 준비 중 → 완료 / 실패.
- * 실제 결과 API 응답을 JSON으로 내려받는다. 브라우저의 파일 저장 완료 여부는 단정하지 않는다.
+ * 파일 형식이 아직 정해지지 않았다. 지금은 가상 데이터 구현이 진행 모습만 흉내 낸다.
  */
 import { useEffect, useState } from 'react';
 import { dataSource, fmtCompact, fmtDate, type ResultRecord } from '../data';
-import { CheckCircleIcon, CheckIcon, CloseIcon, FileIcon, RotateIcon, SpinnerIcon } from './icons';
+import { LoadingMark } from './brand';
+import { CheckCircleIcon, CheckIcon, CloseIcon, FileIcon, RotateIcon } from './icons';
 
 type Phase = 'preparing' | 'done' | 'fail';
 
 export function DownloadSheet({ record, name, onClose }: { record: ResultRecord; name: string; onClose: () => void }) {
   const [phase, setPhase] = useState<Phase>('preparing');
   const [attempt, setAttempt] = useState(0);
-  const [failure, setFailure] = useState('');
-  const fileName = `gait-result-${record.id}.json`;
+  const fileName = record.live ? "gait-"+record.id+".json" : `${name}_보행분석결과_${fmtCompact(record.measuredAt)}`;
 
   useEffect(() => {
     let alive = true;
-    const controller = new AbortController();
     setPhase('preparing');
-    dataSource
-      .downloadResult(record.id, controller.signal)
+    Promise.resolve().then(() => alive ? dataSource.downloadResult(record.id) : undefined)
       .then(() => alive && setPhase('done'))
-      .catch((e) => { if (alive) { setFailure(e instanceof Error ? e.message : '결과를 내려받지 못했습니다.'); setPhase('fail'); } });
+      .catch(() => alive && setPhase('fail'));
     return () => {
       alive = false;
-      controller.abort();
     };
   }, [attempt, record.id]);
 
@@ -45,7 +42,7 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
           {phase === 'preparing' && (
             <>
               <span className="round-icon" style={{ background: 'var(--accent)', color: 'var(--primary)' }}>
-                <SpinnerIcon size={28} />
+                <LoadingMark size={40} />
               </span>
               <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>결과 파일을 준비하고 있습니다</h2>
               <p style={{ marginTop: 6, fontSize: 15 }} className="muted">잠시만 기다려 주세요.</p>
@@ -56,8 +53,8 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
               <span className="round-icon" style={{ background: 'rgb(23 191 99 / .15)', color: 'var(--ok)' }}>
                 <CheckIcon size={28} />
               </span>
-              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>다운로드를 요청했습니다</h2>
-              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">브라우저의 다운로드 목록에서 저장 여부를 확인하세요.</p>
+              <h2 style={{ marginTop: 16, fontSize: 21, fontWeight: 800 }}>{record.live ? "브라우저에 파일을 전달했습니다" : "다운로드가 완료되었습니다"}</h2>
+              <p style={{ marginTop: 6, fontSize: 15 }} className="muted">{record.live ? "브라우저의 다운로드 목록에서 확인해 주세요." : "휴대폰의 ‘다운로드’ 폴더에 저장되었습니다."}</p>
             </>
           )}
           {phase === 'fail' && (
@@ -79,7 +76,7 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
           >
             <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--danger)' }}>원인</p>
             <p style={{ marginTop: 4, fontSize: 16, fontWeight: 700, lineHeight: 1.4 }}>
-              {failure}
+              휴대폰 저장 공간이 부족하거나 네트워크 연결이 불안정합니다.
             </p>
             <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.6, color: 'var(--fg-70)' }}>
               저장 공간과 인터넷 연결을 확인한 뒤 다시 시도해 주세요.
@@ -99,7 +96,7 @@ export function DownloadSheet({ record, name, onClose }: { record: ResultRecord;
             <div style={{ minWidth: 0, flex: 1 }}>
               <p style={{ fontSize: 15, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{fileName}</p>
               <p style={{ marginTop: 2, fontSize: 13, color: 'var(--fg-60)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                파일 형식 <span className="pill">JSON</span>
+                파일 형식 <span className="pill pill-draft">{record.live ? "JSON" : "확정 예정"}</span>
               </p>
             </div>
             {phase === 'done' && <CheckCircleIcon size={22} className="ok-icon" />}

@@ -49,11 +49,6 @@ export const mockSource: GaitDataSource = {
     });
   },
 
-  async getSubjectSummary(id, signal) {
-    const rows = await this.listSubjects(signal);
-    return rows.find(row => row.id === id) ?? null;
-  },
-
   async getSubject(id, signal) {
     await wait(150, signal);
     return subjects.find((s) => s.id === id) ?? null;
@@ -73,15 +68,18 @@ export const mockSource: GaitDataSource = {
     return updated;
   },
 
-  async listResults(subjectId, signal, offset = 0) {
+  async listResults(subjectId, signal) {
     await wait(300, signal);
-    const rows = records.filter((r) => r.subjectId === subjectId).sort(byLatest);
-    return { items: rows.slice(offset, offset + 20), total: rows.length, offset, limit: 20 };
+    return records.filter((r) => r.subjectId === subjectId).sort(byLatest);
   },
 
   async getResult(subjectId, resultId, signal) {
     await wait(200, signal);
     return records.find((r) => r.id === resultId && r.subjectId === subjectId) ?? null;
+  },
+
+  async deleteResult(subjectId, resultId) {
+    records = records.filter(r => r.id !== resultId || r.subjectId !== subjectId);
   },
 
   async analyzeVideo(subjectId, video, onProgress, signal) {

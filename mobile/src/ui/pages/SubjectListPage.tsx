@@ -1,11 +1,11 @@
 /** 02 대상자 목록 · 02-1 빈 상태 · 02-2 로딩 · 검색 결과 없음 */
 import { useState } from 'react';
 import { Avatar } from '../components/layout';
-import { ChevronRightIcon, ClearIcon, ClockIcon, PlusIcon, RotateIcon, SearchIcon, SpinnerIcon, UserPlusIcon, UsersIcon } from '../components/icons';
+import { LoadingMark } from '../components/brand';
+import { ChevronRightIcon, ClearIcon, ClockIcon, PlusIcon, RotateIcon, SearchIcon, UserPlusIcon, UsersIcon } from '../components/icons';
 import { ageOn, dataSource, fmtDate } from '../data';
 import { useNavigate } from '../router';
 import { useAsync } from '../session';
-import { AccountMenu } from '../components/AccountMenu';
 
 export function SubjectListPage() {
   const navigate = useNavigate();
@@ -20,16 +20,13 @@ export function SubjectListPage() {
   return (
     <div className={`screen ${empty ? '' : 'has-cta'}`}>
       <header className="topbar" style={{ padding: '24px 20px 16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-          <div>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
           <h1 style={{ fontSize: 26, fontWeight: 800, letterSpacing: '-0.02em' }}>대상자 목록</h1>
           {loading ? (
             <span className="skeleton" style={{ width: 56, height: 20, marginBottom: 4 }} />
           ) : (
             !error && <span style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }} className="muted">총 {list.length}명</span>
           )}
-          </div>
-          <AccountMenu />
         </div>
         <div className="input-wrap" style={{ marginTop: 16, opacity: loading || empty ? 0.5 : 1 }}>
           <span className="input-prefix"><SearchIcon size={20} /></span>
@@ -54,7 +51,7 @@ export function SubjectListPage() {
       {loading && (
         <>
           <p role="status" style={{ padding: '20px 20px 0', fontSize: 15, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8 }} className="primary">
-            <SpinnerIcon size={16} /> 대상자 목록을 불러오는 중입니다…
+            <LoadingMark size={22} /> 대상자 목록을 불러오는 중입니다…
           </p>
           <ul style={{ padding: '16px 20px 0', display: 'grid', gap: 12 }} aria-hidden="true">
             {[80, 96, 64, 80, 96].map((w, i) => (
@@ -108,14 +105,16 @@ export function SubjectListPage() {
                 <span style={{ flex: 1, minWidth: 0 }}>
                   <span style={{ display: 'block', fontSize: 18, fontWeight: 700 }}>{s.name}</span>
                   <span style={{ display: 'block', marginTop: 2, fontSize: 15, color: 'var(--fg-70)' }}>
-                    {s.sex ?? '—'} · {ageOn(s.birth)}세 · {s.heightCm ?? '—'}cm
+                    {[s.sex,s.birth && ageOn(s.birth)+'세',s.heightCm && s.heightCm+'cm'].filter(Boolean).join(' · ') || '등록 정보 미확인'}
                   </span>
                   {s.latestMeasuredAt ? (
                     <span className="primary" style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 4, fontSize: 14, fontWeight: 600 }}>
-                      <ClockIcon size={14} /> 최근 측정 {fmtDate(s.latestMeasuredAt)}
+                      <ClockIcon size={14} /> 최근 분석 {fmtDate(s.latestMeasuredAt)}
                     </span>
                   ) : (
-                    <span style={{ display: 'block', marginTop: 4, fontSize: 14, color: 'var(--fg-50)' }}>측정 기록 없음</span>
+                    <span style={{ display: 'block', marginTop: 4, fontSize: 14, color: 'var(--fg-50)' }}>
+                      {s.resultCount ? `촬영일 미확인 · 기록 ${s.resultCount}건` : '분석 기록 없음'}
+                    </span>
                   )}
                 </span>
                 <ChevronRightIcon size={18} className="chev" />

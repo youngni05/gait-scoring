@@ -3,7 +3,7 @@ import type { ParticipantBody } from './participant-input';
 
 export interface Participant { id: string; name: string; birth_date: string | null; height_cm: string | number | null; gender: 'M' | 'F' | null }
 export interface ParticipantSummary extends Participant { latest_measured_at: string | null; measurement_count: number }
-export interface Measurement { id: string; participant_id: string; age: number; measured_at: string | null; analysis_started_at?: string | null; extractor_name: string; extractor_version: string; created_by: string }
+export interface Measurement { id: string; participant_id: string; age: number | null; measured_at: string | null; analysis_started_at?: string | null; extractor_name: string; extractor_version: string; created_by: string }
 export interface MeasurementItem extends Measurement { has_analysis_result: boolean }
 export interface MeasurementSummary extends MeasurementItem { gdi_score: number | null; cadence_spm: number | null; stride_length_cm: number | null }
 export interface MeasurementPage { items: MeasurementSummary[]; total: number; offset: number; limit: number }
@@ -49,13 +49,17 @@ export class ApiClient {
       if (authenticated) headers.set('Authorization', `Bearer ${this.token()}`);
       const response = await this.transport(this.base + path, { ...init, headers, signal: controller.signal, credentials: 'omit', redirect: 'error', cache: 'no-store' });
       let data: any;
-      try { data = await response.json(); } catch { throw new ApiError(response.status, 'INVALID_RESPONSE', 'Invalid JSON response'); }
+      try { data = response.status === 204 ? null : await response.json(); } catch { throw new ApiError(response.status, 'INVALID_RESPONSE', 'Invalid JSON response'); }
       if (!response.ok) throw new ApiError(response.status, typeof data?.detail?.code === 'string' ? data.detail.code : 'HTTP_ERROR', 'Request failed', Math.max(0, Number(response.headers.get('Retry-After')) || 0));
       return { data, status: response.status };
     } catch (error) {
       if (error instanceof ApiError) throw error;
       throw new ApiError(0, signal?.aborted ? 'CANCELLED' : 'NETWORK', 'Response unavailable');
     } finally { clearTimeout(timer); signal?.removeEventListener('abort', abort); }
+  }
+  async shared<T>(path: string, init: RequestInit = {}, signal?: AbortSignal): Promise<T> {
+    const { data } = await this.request('/team' + path, init, signal);
+    return data as T;
   }
   async login(username: string, password: string, signal?: AbortSignal): Promise<string> {
     const { data } = await this.request('/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ username, password }).toString() }, signal, false);
@@ -87,7 +91,7 @@ export class ApiClient {
     if (!Array.isArray(data?.items) || data.items.length > 20 ||
         !Number.isInteger(data.total) || data.total < 0 || data.offset !== offset || data.limit !== 20 ||
         !data.items.every((m: any) => typeof m.id === 'string' && m.participant_id === id &&
-          typeof (m.analysis_started_at ?? m.measured_at) === 'string' && typeof m.has_analysis_result === 'boolean' &&
+          (m.measured_at === null || typeof m.measured_at === 'string') && (m.analysis_started_at == null || typeof m.analysis_started_at === 'string') && typeof m.has_analysis_result === 'boolean' &&
           [m.gdi_score, m.cadence_spm, m.stride_length_cm].every(v => v === null || (typeof v === 'number' && Number.isFinite(v))))) {
       throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid measurement summary page');
     }
@@ -121,7 +125,7 @@ export class ApiClient {
   }
   async measurements(participant: string, offset: number, signal?: AbortSignal): Promise<MeasurementItem[]> {
     const { data } = await this.request(`/participants/${encodeURIComponent(participant)}/measurements?limit=20&offset=${offset}`, {}, signal);
-    if (!Array.isArray(data) || !data.every(m => typeof m.id === 'string' && m.participant_id === participant && typeof (m.analysis_started_at ?? m.measured_at) === 'string')) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid measurements');
+    if (!Array.isArray(data) || !data.every(m => typeof m.id === 'string' && m.participant_id === participant && (m.measured_at === null || typeof m.measured_at === 'string'))) throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid measurements');
     return data;
   }
   async result(id: string, signal?: AbortSignal): Promise<MeasurementResult> {

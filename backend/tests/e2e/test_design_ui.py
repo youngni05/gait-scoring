@@ -22,7 +22,7 @@ class DesignUiTests(unittest.TestCase):
         self.page = self.context.new_page()
         self.addCleanup(self.report_failure)
         self.page.set_default_timeout(15000)
-        self.page.goto(self.ui)
+        self.page.goto(self.ui + "/design.html")
         self.page.get_by_label('서버 주소', exact=True).fill(self.api)
         self.login()
         self.name = 'UI합성-' + uuid4().hex[:8]

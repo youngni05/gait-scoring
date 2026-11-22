@@ -1,0 +1,110 @@
+/**
+ * 해피에이징 로고와, 로고를 움직여 만든 로딩 아이콘.
+ *
+ * 로고는 네 색 고리 조각(초록·하늘·분홍·주황)으로 이루어지고,
+ * 원본처럼 정사각형 배치에서 왼쪽(반시계 방향)으로 약 18° 기울어져 있다.
+ * 로딩 아이콘은 이 조각들이 한 바퀴 돌며 벌어졌다가 다시 붙는다.
+ * 한 바퀴의 시작과 끝이 원래 로고 모양이라, 움직임이 멈추면 로고로 보인다.
+ * 움직임 정의(키프레임)는 ui.css의 「로고·로딩 아이콘」 묶음에 있다.
+ *
+ * 로고 색은 로고와 로딩 표시에만 쓴다. 조각이 겹친 곳은 곱하기 합성(multiply)으로
+ * 진하게 보이므로 흰색·연한 바탕 위에 둔다(진한 바탕에서는 검게 보인다).
+ * 16px 이하에서는 네 조각이 구분되지 않으므로 로딩 아이콘은 20px 이상으로 쓴다.
+ */
+
+/** 앱 이름과 소개 문구. 이름을 바꿀 때는 이 값과 index.html·manifest.webmanifest를 함께 고친다. */
+export const APP_NAME = '해피워크';
+export const APP_TAGLINE = '보행 영상 분석 · 결과 조회';
+
+/** 조각마다 [움직임 이름, 색, 고리 모양]. 좌표는 가운데가 (100, 100)인 200×200 기준이다. */
+const PETALS = [
+  ['ul', '#5DBB4F', 'M52.30 122.82A42 42 0 0 1 90.42 47.99'],
+  ['ur', '#16C1E4', 'M77.18 52.30A42 42 0 0 1 152.01 90.42'],
+  ['lr', '#EF4F9A', 'M147.70 77.18A42 42 0 0 1 109.58 152.01'],
+  ['ll', '#F7784A', 'M122.82 147.70A42 42 0 0 1 47.99 109.58'],
+] as const;
+
+/**
+ * 해피워크 발자국 배지(앱 아이콘 D안). 로고 오른쪽 아래 (170,170)에 붙는 하늘색 원 안의 흰 신발 자국 두 개.
+ * 자국 하나는 앞창(넓은 앞쪽 타원 + 좁아지는 아치 타원)과 조금 떨어진 반원 뒤축이다.
+ * 뒷발은 오른쪽 아래, 앞발은 왼쪽 위에 엇갈려 놓고 -25° 기울여 왼쪽 위(로고 쪽)로 걸어가게 한다.
+ * 값은 mobile/brand/render-icons.mjs의 SHOE와 같다(아이콘 파일과 같은 모양).
+ */
+const SHOE_AT = [[180.6, 174.9], [159.4, 167.1]] as const;
+function FootBadge({ className }: { className?: string }) {
+  return (
+    <g className={className}>
+      <circle cx="170" cy="170" r="36" fill="#1E9DF1" stroke="#FFFFFF" strokeWidth="8" />
+      {SHOE_AT.map(([x, y]) => (
+        <g key={x} fill="#FFFFFF" transform={`translate(${x} ${y}) rotate(-25) scale(0.8)`}>
+          <ellipse cx="0" cy="-8" rx="8.5" ry="13" />
+          <ellipse cx="0.5" cy="2" rx="6.5" ry="10" />
+          <path d="M6.42 14.5A6.5 6.5 0 1 1 -6.42 14.5Z" />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+/**
+ * 움직이지 않는 로고. label을 주면 화면 낭독기가 로고 이름을 읽는다.
+ * badge를 켜면 해피워크 앱 아이콘(D안)처럼 발자국 배지를 붙인다.
+ */
+export function BrandMark({ size = 40, label, badge = false }: { size?: number; label?: string; badge?: boolean }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={badge ? '-14 -14 228 228' : '12 12 176 176'}
+      role={label ? 'img' : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : true}
+    >
+      {PETALS.map(([key, color, d]) => (
+        <path key={key} className="hm-petal" stroke={color} d={d} />
+      ))}
+      {badge && <FootBadge />}
+    </svg>
+  );
+}
+
+/**
+ * 로딩 아이콘. 문구와 함께 쓰므로 화면 낭독기에는 숨긴다(문구가 상태를 알린다).
+ * 벌어진 조각이 잘리지 않도록 로고보다 여백을 넓게 잡는다.
+ */
+export function LoadingMark({ size = 22, className }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="-10 -10 220 220"
+      aria-hidden="true"
+      className={`hm-loading ${className ?? ''}`}
+      style={{ flexShrink: 0 }}
+    >
+      {PETALS.map(([key, color, d]) => (
+        <g key={key} className={`hm-${key}`}>
+          <path className="hm-petal" stroke={color} d={d} />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+/**
+ * 시작 화면용 로고. 흩어진 조각이 돌며 모여 로고가 된다(한 번만 재생).
+ * badge를 켜면 앱 아이콘(D안)처럼 로고가 모인 뒤 오른쪽 아래에 하늘색 발자국 배지가 톡 붙는다.
+ * 배지 모양은 mobile/brand/render-icons.mjs의 아이콘 파일과 같다.
+ */
+export function IntroMark({ size = 168, badge = false }: { size?: number; badge?: boolean }) {
+  return (
+    <svg width={size} height={size} viewBox="-20 -20 240 240" role="img" aria-label={badge ? '해피워크' : '해피에이징'} className="hm-intro">
+      {PETALS.map(([key, color, d]) => (
+        <g key={key} className={`hm-in-${key}`}>
+          <path className="hm-petal" stroke={color} d={d} />
+        </g>
+      ))}
+      {badge && <FootBadge className="hm-badge" />}
+    </svg>
+  );
+}

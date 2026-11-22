@@ -1,7 +1,7 @@
 # Happy Aging Backend
 
 해피에이징 보행 분석 서비스의 백엔드입니다. 원본 영상은 받지 않고 앱에서 추출한 좌표 JSON을 저장합니다.
-현재 로그인, 어르신 등록·조회·수정, 측정 저장·목록·결과 조회를 제공합니다. AI 실행·결과 자동 저장은 미연동 상태입니다.
+현재 로그인, 어르신 등록·조회·수정, 측정 저장·목록·결과 조회를 제공합니다. 현재 앱의 촬영은 인증된 /team API에서 접수하고 Python 워커가 분석 결과를 PostgreSQL에 저장합니다. [공용 앱 실행 안내](../mobile/README.md)
 
 프론트 연동 시 [API 명세](../docs/API_SPEC.md)를 기준으로 사용하세요. 신규 앱은 `processing-1` 요청을 사용하며,
 기존 4필드 요청은 호환용으로 유지합니다. 두 요청의 차이는 아래 표에 정리했습니다.
@@ -73,7 +73,7 @@ docker run --rm python:3.12-slim python -c "import secrets; print(secrets.token_
 ### 2. Docker 실행
 
 ```powershell
-docker compose up -d --build
+docker compose up -d --build api
 ```
 
 ### 3. 실행 상태 확인
@@ -242,7 +242,7 @@ metadata와 키 중 하나만 보내거나 metadata를 명시적 null로 보내�
 키는 Decimal 직렬화에 따라 JSON 문자열로 반환됩니다.
 
 현재 측정 등록은 AI를 호출하거나 분석 결과를 생성하지 않습니다.
-분석 결과 저장 및 AI 실행 연동은 추후 구현합니다.
+현재 앱이 /team 경로로 제출한 촬영은 워커가 분석하며 report_json에 상세 결과를 저장합니다.
 
 ## processing-1 저장과 검증
 

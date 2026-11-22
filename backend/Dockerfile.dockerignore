@@ -1,0 +1,11 @@
+**
+!backend/
+!backend/app/**
+!backend/alembic/**
+!backend/alembic.ini
+!backend/requirements.txt
+!ai-module/**
+!research/selected/frozen-gdi/*.py
+!research/selected/frozen-gdi/models.json
+!research/paper-related/normal100-models/models.json
+**/__pycache__/

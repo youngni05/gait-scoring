@@ -11,7 +11,8 @@ const C = { L: '#1e9df1', R: '#e0245e', grid: '#e1eaef', zero: '#cfd3d6', fg: '#
 const M = { l: 48, r: 14, t: 10, b: 44 };
 
 interface Props {
-  curve: JointCurve;
+  curve: JointCurve | {left:(number|null)[];right:(number|null)[]};
+  native?: {x:number[];source_indices:number[]};
   height: number;
   zoomable?: boolean;
   /** 값이 바뀌면 확대를 풀고 처음 범위로 돌아간다. */
@@ -47,10 +48,12 @@ function smoothPath(pts: [number, number][]): string {
 
 let clipSeq = 0;
 
-export function JointChart({ curve, height, zoomable = false, resetKey = 0, label }: Props) {
+export function JointChart({ curve, native, height, zoomable = false, resetKey = 0, label }: Props) {
+  const axis = native?.x ?? CYCLE_X;
+  const end = axis.at(-1) || 1;
   const boxRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(300);
-  const [domain, setDomain] = useState<[number, number]>([0, 100]);
+  const [domain, setDomain] = useState<[number, number]>([0, end]);
   const [drag, setDrag] = useState<{ a: number; b: number } | null>(null);
   const [hover, setHover] = useState<number | null>(null);
   const clipId = useMemo(() => `jc-clip-${++clipSeq}`, []);
@@ -64,9 +67,9 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
   }, []);
 
   useEffect(() => {
-    setDomain([0, 100]);
+    setDomain([0, end]);
     setHover(null);
-  }, [curve, resetKey]);
+  }, [curve, end, resetKey]);
 
   const big = zoomable;
   const plotW = width - M.l - M.r;
@@ -74,13 +77,13 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
   const [x0, x1] = domain;
 
   // 보이는 구간의 값으로 세로축 범위를 정한다.
-  const visible = CYCLE_X.map((x, i) => ({ x, l: curve.left[i]!, r: curve.right[i]! })).filter((p) => p.x >= x0 - 2 && p.x <= x1 + 2);
-  const ys = visible.flatMap((p) => [p.l, p.r]);
+  const visible = axis.map((x, i) => ({ x, l: curve.left[i], r: curve.right[i] })).filter((p) => p.x >= x0 && p.x <= x1);
+  const ys = visible.flatMap((p) => [p.l, p.r]).filter((v): v is number => typeof v === 'number');
   const rawMin = Math.min(...ys, 0);
   const rawMax = Math.max(...ys, 0);
   const yStep = niceStep(rawMax - rawMin || 10, big ? 8 : 5);
   const y0 = Math.floor(rawMin / yStep) * yStep;
-  const y1 = Math.max(Math.ceil(rawMax / yStep) * yStep, y0 + yStep);
+  const y1 = Math.max(y0 + yStep, Math.ceil(rawMax / yStep) * yStep);
   const xStep = x1 - x0 === 100 ? (big ? 10 : 25) : niceStep(x1 - x0, big ? 6 : 4);
 
   const sx = (x: number) => M.l + ((x - x0) / (x1 - x0)) * plotW;
@@ -92,7 +95,15 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
   const yTicks: number[] = [];
   for (let v = y0; v <= y1 + 1e-9; v += yStep) yTicks.push(Math.round(v * 100) / 100);
 
-  const line = (vals: number[]) => smoothPath(CYCLE_X.map((x, i) => [sx(x), sy(vals[i]!)]));
+  const line = (vals: (number|null)[]) => {
+    if (!native) return smoothPath(axis.map((x,i) => [sx(x),sy(vals[i]!)]));
+    return axis.map((x,i) => {
+      const v = vals[i];
+      if (v == null) return '';
+      const connected = vals[i-1] != null && native.source_indices[i] === native.source_indices[i-1]! + 1;
+      return (connected ? 'L' : 'M') + sx(x) + ',' + sy(v);
+    }).join(' ');
+  };
 
   // ── 손가락·마우스 처리 ──
   const localX = (e: PointerEvent) => {
@@ -101,7 +112,7 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
   };
   const nearestIndex = (px: number) => {
     const x = toX(px);
-    return Math.max(0, Math.min(CYCLE_X.length - 1, Math.round(x / 2)));
+    return axis.reduce((best,v,i)=>Math.abs(v-x)<Math.abs(axis[best]!-x)?i:best,0);
   };
 
   const onDown = (e: PointerEvent) => {
@@ -127,12 +138,12 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
       setHover(nearestIndex(localX(e)));
       return; // 짧은 탭은 확대가 아니라 값 보기로 처리한다.
     }
-    const lo = Math.max(0, Math.floor(toX(a)));
-    const hi = Math.min(100, Math.ceil(toX(b)));
-    if (hi - lo >= 4) setDomain([lo, hi]);
+    const lo = Math.max(0, native ? toX(a) : Math.floor(toX(a)));
+    const hi = Math.min(end, native ? toX(b) : Math.ceil(toX(b)));
+    if (hi - lo >= end / 25) setDomain([lo, hi]);
   };
 
-  const hv = hover !== null ? { x: CYCLE_X[hover]!, l: curve.left[hover]!, r: curve.right[hover]! } : null;
+  const hv = hover !== null ? { x: axis[hover]!, l: curve.left[hover], r: curve.right[hover] } : null;
   const showHover = hv && hv.x >= x0 && hv.x <= x1;
   const fs = big ? 13 : 12;
 
@@ -164,7 +175,7 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
             <text x={sx(v)} y={M.t + plotH + 18} textAnchor="middle" fontSize={fs} fill={C.fg}>{v}</text>
           </g>
         ))}
-        <text x={M.l + plotW / 2} y={height - 6} textAnchor="middle" fontSize={12} fill={C.fg}>보행 주기 (%)</text>
+        <text x={M.l + plotW / 2} y={height - 6} textAnchor="middle" fontSize={12} fill={C.fg}>{native ? '구간 경과 시간 (초)' : '보행 주기 (%)'}</text>
         <text transform={`translate(13 ${M.t + plotH / 2}) rotate(-90)`} textAnchor="middle" fontSize={12} fill={C.fg}>각도 (°)</text>
 
         <g clipPath={`url(#${clipId})`}>
@@ -173,8 +184,8 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
           {showHover && (
             <>
               <line x1={sx(hv.x)} x2={sx(hv.x)} y1={M.t} y2={M.t + plotH} stroke={C.sub} strokeDasharray="3 3" />
-              <circle cx={sx(hv.x)} cy={sy(hv.l)} r={4.5} fill="#fff" stroke={C.L} strokeWidth={2} />
-              <circle cx={sx(hv.x)} cy={sy(hv.r)} r={4.5} fill="#fff" stroke={C.R} strokeWidth={2} />
+              {hv.l != null && <circle cx={sx(hv.x)} cy={sy(hv.l)} r={4.5} fill="#fff" stroke={C.L} strokeWidth={2} />}
+              {hv.r != null && <circle cx={sx(hv.x)} cy={sy(hv.r)} r={4.5} fill="#fff" stroke={C.R} strokeWidth={2} />}
             </>
           )}
         </g>
@@ -207,11 +218,11 @@ export function JointChart({ curve, height, zoomable = false, resetKey = 0, labe
             lineHeight: 1.5,
           }}
         >
-          <b>보행 주기 {hv.x}%</b>
+          <b>{native ? hv.x.toFixed(3) + '초' : '보행 주기 ' + hv.x + '%'}</b>
           <br />
-          <span style={{ color: '#8fd0ff' }}>■</span> 왼쪽 {hv.l.toFixed(1)}°
+          <span style={{ color: '#8fd0ff' }}>■</span> 왼쪽 {hv.l == null ? '관측 불가' : hv.l.toFixed(1)+'°'}
           <br />
-          <span style={{ color: '#ff8fb0' }}>■</span> 오른쪽 {hv.r.toFixed(1)}°
+          <span style={{ color: '#ff8fb0' }}>■</span> 오른쪽 {hv.r == null ? '관측 불가' : hv.r.toFixed(1)+'°'}
         </div>
       )}
     </div>

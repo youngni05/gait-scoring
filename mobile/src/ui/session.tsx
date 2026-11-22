@@ -1,13 +1,9 @@
 /** 로그인 상태와 비동기 데이터 불러오기 도우미. */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { dataSource } from './data';
-import { useRouter } from './router';
-import { AUTH_EXPIRED } from './data/apiSource';
+import { dataSource, isDemo } from './data';
 
 interface Session {
   loggedIn: boolean;
-  expired: boolean;
-  username: string;
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
 }
@@ -15,29 +11,21 @@ interface Session {
 const Ctx = createContext<Session | null>(null);
 
 export function SessionProvider({ children }: { children: ReactNode }) {
-  const { confirmLeave } = useRouter();
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [expired, setExpired] = useState(false);
-  const [username, setUsername] = useState('');
-  useEffect(() => {
-    const expire = () => setExpired(true);
-    window.addEventListener(AUTH_EXPIRED, expire);
-    return () => window.removeEventListener(AUTH_EXPIRED, expire);
-  }, []);
+  const [loggedIn, setLoggedIn] = useState(!isDemo && Boolean(sessionStorage.getItem('team-access-token')));
   const login = useCallback(async (u: string, p: string) => {
     await dataSource.login(u, p);
-    setUsername(u);
     setLoggedIn(true);
-    setExpired(false);
   }, []);
   const logout = useCallback(() => {
-    if (!confirmLeave()) return;
     dataSource.logout();
-    setUsername('');
     setLoggedIn(false);
-    setExpired(false);
-  }, [confirmLeave]);
-  const value = useMemo(() => ({ loggedIn, expired, username, login, logout }), [loggedIn, expired, username, login, logout]);
+  }, []);
+  useEffect(() => {
+    const expired = () => setLoggedIn(false);
+    window.addEventListener('team-session-expired', expired);
+    return () => window.removeEventListener('team-session-expired', expired);
+  }, []);
+  const value = useMemo(() => ({ loggedIn, login, logout }), [loggedIn, login, logout]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 

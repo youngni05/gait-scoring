@@ -69,6 +69,9 @@ export const UsersIcon = (p: P) => (
 );
 export const PlusIcon = (p: P) => <Icon {...p} sw={3}><path d="M12 5v14M5 12h14" /></Icon>;
 export const PenIcon = (p: P) => <Icon {...p}><path d="M17 3l4 4L8 20H4v-4z" /></Icon>;
+export const TrashIcon = (p: P) => (
+  <Icon {...p}><path d="M3 6h18M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2M5 6l1 14a1 1 0 001 1h10a1 1 0 001-1l1-14M10 10v7m4-7v7" /></Icon>
+);
 export const VideoIcon = (p: P) => (
   <Icon {...p}><rect x="2" y="6" width="14" height="12" rx="2" /><path d="M16 10l6-3v10l-6-3" /></Icon>
 );

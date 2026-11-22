@@ -1,7 +1,7 @@
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
-const {ApiDataSource, mapSubject, mapResult} = require('../.stage1-build/mobile/src/ui/data/apiSource.js');
-const {LoginFailedError} = require('../.stage1-build/mobile/src/ui/data/source.js');
+const {ApiDataSource, mapSubject, mapResult} = require('../.stage1-build/legacy-ui/src/ui/data/apiSource.js');
+const {LoginFailedError} = require('../.stage1-build/legacy-ui/src/ui/data/source.js');
 const response = (data, status=200) => new Response(JSON.stringify(data), {status});
 const person = {id:'11111111-1111-4111-8111-111111111111', name:'합성', gender:'F', birth_date:'1950-01-01', height_cm:'170.50'};
 const result = {status:'available', participant:person, measurement:{id:'m1',participant_id:person.id,age:70,measured_at:'2020-01-01T00:00:00Z'},analysis_result:{gdi_score:0,cadence_spm:null,stride_length_cm:0,hip_graph_json:{left:[1],right:[2]},knee_graph_json:null,ankle_graph_json:null}};
@@ -72,7 +72,7 @@ test('renewal uses same account and failed login never becomes authenticated',as
  api.logout();await api.login('other','right');
 });
 
-const {LeaveGuards}=require('../.stage1-build/mobile/src/ui/leave-guards.js');
+const {LeaveGuards}=require('../.stage1-build/legacy-ui/src/ui/leave-guards.js');
 test('shared leave guard keeps pending work on rejection and unregisters on exit',()=>{
  const guards=new LeaveGuards(); let pending=true, prompts=0;
  const remove=guards.register(()=>pending?'pending save':null);
