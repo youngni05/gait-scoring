@@ -30,3 +30,16 @@ git -C $teamStt checkout --detach 549d58bc32449b24a0eae0c37ca573f9aa58a1dd
 ## 모델 폴더 연결
 
 준비한 `$teamAssets` 경로를 서버 `.env`의 `GAIT_MODEL_DIR`로 설정한다. 워커가 시작할 때 고정된 모델과 소스의 파일 해시를 검증한다.
+
+## 합성 좌표로 연결 시험
+
+위에서 설치한 Python 환경을 활성화하고 `ai-module` 폴더에서 다음 명령을 실행한다. 첫 명령은 한 구간의 합성 관절 좌표를 분석하고, 두 번째 명령은 합성 방문 기록을 비교한다.
+
+```powershell
+python cli.py fixtures/request-v2.json
+python history_cli.py fixtures/history-synthetic.json
+```
+
+HTTP 연결을 시험할 때는 `python server.py --port 8877`로 로컬 서버를 시작한다. 같은 폴더에서 다른 터미널을 열고 `python client/backend_example.py fixtures/request-v2.json`을 실행한다. 방문 비교는 `python client/backend_example.py fixtures/history-synthetic.json --operation compare-history`로 확인한다. 분석 응답은 `ai-analysis/2`, 방문 비교 응답은 `ai-history-comparison/1` 형식이다.
+
+2026년 11월 19일 버전을 재현할 때는 당시 서버와 합성 예제가 함께 들어 있는 [팀 연동 시험 ZIP](./ai-module-integration.zip)을 사용한다. 현재 배포판 검증에는 위 명령과 현재 소스 파일을 사용한다.
