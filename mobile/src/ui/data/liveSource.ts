@@ -128,7 +128,7 @@ export const liveSource:GaitDataSource = {
           body, delivery: 'unsent'}, lease);
       }
       await check();
-      progress(95,'이전에 저장됐는지 확인하고 같은 요청으로 이어갑니다.');
+      progress(95,'서버에서 요청을 확인하고 있습니다.');
       try {
         let row: ResultRecord;
         try { row = await getRecord(pending.id,signal); }

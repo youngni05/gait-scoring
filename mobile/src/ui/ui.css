@@ -187,6 +187,18 @@ ol, ul { list-style: none; }
 
 /* ── 카드·목록 ─────────────────────────────── */
 .card { border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--border); }
+.capture-recovery {
+  margin: 20px; padding: 20px; display: grid; gap: 12px;
+  font-size: var(--text-body); line-height: 1.5; color: var(--fg-70);
+  word-break: keep-all; overflow-wrap: anywhere;
+}
+.capture-recovery h2 { color: var(--fg); font-size: var(--text-heading); font-weight: 700; line-height: 1.35; }
+.capture-recovery-file {
+  display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-sm);
+  color: var(--fg); font-size: var(--text-caption); font-weight: 600;
+}
+.capture-recovery-file svg { flex-shrink: 0; color: var(--primary); }
 .list-btn {
   width: 100%; text-align: left; display: flex; align-items: center; gap: 16px;
   border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--border);

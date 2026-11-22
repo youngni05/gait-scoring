@@ -170,7 +170,10 @@ class MobileUiTests(unittest.TestCase):
         recover = self.page.get_by_role('button', name='이전 저장 요청 이어가기', exact=True)
         expect(recover).to_be_visible()
         recover.click()
-        expect(self.page.get_by_role('heading', name='좌표가 서버에 저장되었습니다')).to_be_visible()
+        expect(self.page.get_by_text('서버에서 보행을 분석하고 있습니다.')).to_be_visible()
+        expect(self.page.get_by_text('95%', exact=True)).to_be_visible()
+        expect(self.page.get_by_role('listitem').filter(has_text='서버에서 분석 진행')).to_contain_text('진행 중')
+        expect(recover).to_have_count(0)
         self.assertEqual(self.count(), 1)
         self.assertEqual(len(attempts), 1 if accepted else 2)
         if not accepted:
@@ -179,6 +182,14 @@ class MobileUiTests(unittest.TestCase):
           const db = await new Promise((resolve,reject) => { const r=indexedDB.open('gait-pending-captures',1); r.onsuccess=()=>resolve(r.result); r.onerror=()=>reject(r.error); });
           const count=await new Promise(resolve=>{const r=db.transaction('pending').objectStore('pending').count();r.onsuccess=()=>resolve(r.result);});db.close();return count;
         }'''), 0)
+        record_id = json.loads(attempts[0])['packet']['requestId']
+        result_url = self.api + '/team/recordings/' + record_id
+        def return_ready(route):
+            response = route.fetch()
+            route.fulfill(json={**response.json(), 'serverState': 'ready'})
+        self.page.route(result_url, return_ready)
+        self.page.wait_for_function("document.body.innerText.includes('100%')")
+        expect(self.page).to_have_url(self.ui+'/#/subjects/'+self.person_id+'/results/'+record_id)
 
     def test_lost_receipt_reload_queries_existing_record(self):
         self.recover_after_reload(True)
