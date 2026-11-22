@@ -79,6 +79,8 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   const registeredHeight = subject?.heightCm;
   const usableHeight = registeredHeight != null && registeredHeight >= 100 && registeredHeight <= 220;
   const height = editedHeight ?? (usableHeight ? String(registeredHeight) : '');
+  const today = new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Seoul'}).format(new Date());
+  const invalidDay = Boolean(day && (day > today || (subject?.birth && day < subject.birth)));
   const invalidHeight = Boolean(height && (Number(height) < 100 || Number(height) > 220));
   const ageAtCapture = subject?.birth && day >= subject.birth ? ageOn(subject.birth, new Date(day + 'T12:00:00')) : null;
 
@@ -118,7 +120,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   const discardRejected = async () => {
     const pending = recovery.data;
     if (!pending?.canDiscard || cleanupAbort.current || phase === 'running') return;
-    if (!window.confirm('실패한 임시 저장 요청을 정리하고 새로 분석할까요? 원본 영상과 서버에 저장된 결과는 삭제하지 않습니다.')) return;
+    if (!window.confirm('영상을 다시 선택할까요? 원본 영상과 이전 결과는 그대로 남아 있습니다.')) return;
     const abort = new AbortController();
     cleanupAbort.current = abort;
     setCleaning(true);
@@ -212,9 +214,9 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
         <h2>확인하지 못한 저장 요청이 있습니다</h2>
         <p>{recovery.data.fileName}</p><p>파일을 다시 선택하지 않고 기존 요청의 저장 여부를 확인합니다.</p>
         <button className="btn btn-primary" disabled={phase === 'running' || cleaning} onClick={start}>이전 저장 요청 이어가기</button>
-        {recovery.data.rejectionStatus && <p>서버가 요청을 거절했습니다 (응답 코드 {recovery.data.rejectionStatus}). {recovery.data.canDiscard ? '임시 요청을 정리한 뒤 촬영 정보나 영상을 바꿔 다시 분석해 주세요.' : '이전 저장 여부가 불확실해 요청을 보관합니다. 담당자에게 확인해 주세요.'}</p>}
+        {recovery.data.rejectionStatus && <p>서버가 요청을 거절했습니다 (응답 코드 {recovery.data.rejectionStatus}). {recovery.data.canDiscard ? '영상을 다시 선택해 분석해 주세요. 같은 문제가 반복되면 담당자에게 알려 주세요.' : '이전 저장 여부가 불확실해 요청을 보관합니다. 담당자에게 확인해 주세요.'}</p>}
         {recovery.data.canDiscard && <button className="btn btn-outline" disabled={phase === 'running' || cleaning} onClick={() => void discardRejected()}>
-          {cleaning ? '서버 저장 여부 확인 중…' : '실패한 요청 정리하고 새로 분석'}
+          {cleaning ? '서버 저장 여부 확인 중…' : '다시 분석하기'}
         </button>}
         {cleanupError && <p role="alert">{cleanupError}</p>}
       </section>}
@@ -262,6 +264,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
             <p>좌표 추출 · MediaPipe Full</p>
             <label>촬영 방식 <select value={mode} onChange={e=>setMode(e.target.value as typeof mode)}><option value="fixed">고정 촬영</option><option value="guided">따라가며 촬영</option></select></label>
           </div>}
+          {invalidDay && <p role="alert">촬영일은 생년월일 이후부터 오늘까지 선택해 주세요.</p>}
           <VideoPreview picked={picked} onDuration={(d) => setPicked((p) => (p ? { ...p, durationSec: d } : p))} />
           <dl className="card" style={{ marginTop: 16, borderRadius: 'var(--r-md)', padding: '14px 16px', display: 'grid', gridTemplateColumns: 'auto 1fr', rowGap: 8, fontSize: 15 }}>
             <dt className="muted">파일명</dt>
@@ -370,7 +373,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
           </>
         )}
         {phase === 'preview' && (
-          <button className="btn btn-primary" disabled={invalidHeight || picked?.metadataDay === undefined} onClick={start}>
+          <button className="btn btn-primary" disabled={invalidHeight || invalidDay || picked?.metadataDay === undefined} onClick={start}>
             <PlayIcon size={16} /> 분석 시작
           </button>
         )}
@@ -386,7 +389,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
         )}
         {phase === 'failed' && (
           <div className="stack">
-            <button className="btn btn-primary" disabled={invalidHeight || cleaning} onClick={start}>
+            <button className="btn btn-primary" disabled={invalidHeight || invalidDay || cleaning} onClick={start}>
               <RotateIcon /> 다시 시도
             </button>
             <button className="btn btn-outline" disabled={Boolean(recovery.data) || cleaning} onClick={openPicker}>
