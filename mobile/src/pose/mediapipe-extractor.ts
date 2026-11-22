@@ -8,10 +8,10 @@ export class MediaPipePoseExtractor implements PoseExtractor {
   private previous = -1;
   private disposed = false;
   private constructor(private engine: PoseLandmarker, readonly maxPoses: 1 | 2, readonly inputObject: 'HTMLCanvasElement' | 'ImageData', readonly delegate: 'CPU' | 'GPU') {}
-  static async create(signal: AbortSignal, maxPoses: 1 | 2 = 1, inputObject: 'HTMLCanvasElement' | 'ImageData' = 'HTMLCanvasElement', modelBytes?: Uint8Array, delegate: 'CPU' | 'GPU' = 'CPU') {
+  static async create(signal: AbortSignal, maxPoses: 1 | 2 = 1, inputObject: 'HTMLCanvasElement' | 'ImageData' = 'HTMLCanvasElement', modelBytes?: Uint8Array, delegate: 'CPU' | 'GPU' = 'CPU', preparedFiles?: {wasmLoaderPath:string; wasmBinaryPath:string}) {
     if (signal.aborted) throw abortError();
     const { FilesetResolver, PoseLandmarker } = await import('@mediapipe/tasks-vision');
-    const files = await FilesetResolver.forVisionTasks('/vendor/mediapipe');
+    const files = preparedFiles ?? await FilesetResolver.forVisionTasks('/vendor/mediapipe');
     if (signal.aborted) throw abortError();
     const engine = await PoseLandmarker.createFromOptions(files, {
       baseOptions: { ...(modelBytes ? { modelAssetBuffer: modelBytes } : { modelAssetPath: '/models/pose_landmarker_full.task' }), delegate },

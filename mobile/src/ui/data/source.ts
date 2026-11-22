@@ -8,6 +8,7 @@ import type { ResultRecord, Subject } from './mock';
 
 export type SubjectInput = Omit<Subject, 'id'>;
 export type CaptureDaySource = 'metadata' | 'user_entered' | 'unknown';
+export type AnalysisProgress = (percent:number, detail?:string, assetPercent?:number)=>void;
 
 export interface SubjectSummary extends Subject {
   /** 가장 최근 측정 시각(ISO). 기록이 없으면 null */
@@ -56,7 +57,7 @@ export interface GaitDataSource {
   analyzeVideo(
     subjectId: string,
     video: File | null,
-    onProgress: (percent: number, detail?: string) => void,
+    onProgress: AnalysisProgress,
     signal?: AbortSignal,
     capture?: {day:string; daySource?:CaptureDaySource; mode:"guided"|"fixed"; height:number|null; extractor?:"mediapipe"|"openpose"; serverPose?:boolean},
   ): Promise<ResultRecord>;

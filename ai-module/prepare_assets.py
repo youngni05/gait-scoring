@@ -1,6 +1,7 @@
 """Prepare the pinned MediaPipe and GDI files in a directory outside the repo."""
 import argparse
 import hashlib
+import json
 from pathlib import Path
 import shutil
 import tarfile
@@ -8,7 +9,7 @@ from urllib.request import urlopen
 
 
 POSE_MODEL = "pose_landmarker_full.task"
-POSE_MODEL_SHA256 = "4eaa5eb7a98365221087693fcc286334cf0858e2eb6e15b506aa4a7ecdcec4ad"
+POSE_MODEL_SHA256 = json.loads(Path(__file__).with_name("pose-asset.json").read_text())["sha256"]
 POSE_URL = (
     "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/"
     + POSE_MODEL + "?generation=1682642787774579"
