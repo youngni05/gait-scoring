@@ -53,4 +53,4 @@ DB 볼륨을 지우는 `docker compose down -v`는 사용하지 않는다.
 프로젝트의 `.env`와 Docker 볼륨을 유지해야 같은 계정·데이터가 유지된다.
 
 최근 `local-tester`로 사용한 임시 미리보기 데이터는 별도 DB에 있으며 자동으로 합치지 않는다.
-AI 자동 분석은 아직 미연동이다. 좌표 추출·저장과 저장된 결과 조회를 테스트할 수 있다.
+현재 앱은 Python 워커가 AI 분석을 수행한다. 실행 전에 mobile/README.md에 따라 GAIT_MODEL_DIR 모델을 준비해야 한다. 시작 스크립트는 최신 Compose의 migrate·worker·web 구성을 사용한다. 기존 .env와 DB 볼륨을 유지하고 최초 갱신 실행 전 DB 백업을 수행한다.

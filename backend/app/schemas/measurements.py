@@ -70,7 +70,7 @@ class MeasurementResponse(BaseModel):
 
     id: UUID
     participant_id: UUID
-    age: int
+    age: int | None
     extractor_name: str
     extractor_version: str
     measured_at: datetime | None
@@ -93,6 +93,7 @@ class AnalysisResultResponse(BaseModel):
     hip_graph_json: JsonValue
     knee_graph_json: JsonValue
     ankle_graph_json: JsonValue
+    report_json: dict | None = None
     model_version: str
     analyzed_at: datetime
 
@@ -102,3 +103,16 @@ class MeasurementResultResponse(BaseModel):
     participant: ParticipantResponse
     measurement: MeasurementResponse
     analysis_result: AnalysisResultResponse | None
+
+
+class MeasurementSummary(MeasurementListItem):
+    gdi_score: float | None
+    cadence_spm: float | None
+    stride_length_cm: float | None
+
+
+class MeasurementSummaryPage(BaseModel):
+    items: list[MeasurementSummary]
+    total: int
+    offset: int
+    limit: int

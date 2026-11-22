@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {
+      "path": "studies/20261117-knee-motion/knee.py",
+      "source_sha256": "2b8f321a1b5ac878805ef4bbc0662e437b15391a463476b86726be6c527bb5d8",
+      "vendored": "vendor/knee.py",
+      "vendored_sha256": "7f770a17e9465158cc387fa699546e6dd605aed4bafa616f1b9b476747560b19",
+      "change": "Unmodified source; core uses measure() numerical entry point"
+    },
+    {
+      "path": "studies/20261117-gait-events/gait_events.py",
+      "source_sha256": "9661c52c6cb9d47c937affa0ef3d4697849d9b2a554c23e30bffe3b4f0b4babe",
+      "vendored": "vendor/gait_events.py",
+      "vendored_sha256": "06c8be24c488d43fc3abf0fba93096f70aa59804963e820913238b252ce5b633",
+      "change": "Standalone I/O import replaced with local io_support; numerical functions unchanged"
+    }
+  ]
+}

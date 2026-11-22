@@ -158,6 +158,153 @@ class MeasurementPostgresTests(unittest.TestCase):
         with Session(self.engine) as db:
             return db.scalar(select(func.count()).select_from(GaitMeasurement).where(GaitMeasurement.participant_id == self.participant_id))
 
+    def test_shared_capture_survives_disconnect_and_replay(self):
+        from unittest.mock import patch
+        from app.ai_module import POSE_MODEL_SHA256
+        from app.analysis_worker import process_one
+
+        coords = self.body["keypoints_json"]
+        coords.update(schema_version="team-local-coords/1", recording_id=self.key,
+                      pose=dict(model="pose_landmarker_full", engine_version="1.2.3", delegate="CPU"),
+                      marks=dict(stand_start=None, stand_end=None), frames=[dict(t=0, lm=None)])
+        coords["capture"]["recorded_at"] = None
+        packet = dict(requestId=self.key, coords=coords,
+                      metadata=dict(recordedAtSource="unknown", rotationAppliedDegrees=0),
+                      bridge_context=dict(profile="team-browser-full-cpu-video/1", source_sha256="unknown",
+                                          model_sha256=POSE_MODEL_SHA256, input_object="ImageData",
+                                          image_geometry="upright_unmirrored", clock_basis="video_pts",
+                                          frame_audit_complete=True, fresh_tracker=True))
+        body = dict(fileName="synthetic.mp4", packet=packet)
+        path = f"/team/participants/{self.participant_id}/recordings"
+        self.assertEqual(self.http(path, "POST", body, token=None)[0], 401)
+        self.assertEqual(self.http(path, "POST", body)[0], 202)
+        self.assertEqual(self.http(path, "POST", body)[0], 200)
+        self.assertEqual(self.http(path, "POST", dict(body, fileName="other.mp4"))[0], 409)
+        self.assertEqual(self.count(), 1)
+        detail = f"/team/recordings/{self.key}"
+        self.assertEqual(self.http(detail)[1]["serverState"], "pending")
+        with Session(self.engine) as db, patch("app.analysis_worker.analyze_coords", side_effect=ValueError("test failure")):
+            self.assertTrue(process_one(db))
+        self.assertEqual(self.http(detail)[1]["serverState"], "failed")
+        self.assertEqual(self.http(detail + "/retry", "POST")[0], 202)
+        analysis = {"analysis": {"analysis_version": "test", "segments": []},
+                    "record": {"captured_at": None}}
+        with Session(self.engine) as db, patch("app.analysis_worker.analyze_coords", return_value=analysis) as run:
+            self.assertTrue(process_one(db))
+            self.assertFalse(process_one(db))
+            run.assert_called_once_with(packet)
+        row = self.http(detail)[1]
+        self.assertEqual(row["serverState"], "ready")
+        self.assertIsNone(row["ageAtCapture"])
+        self.assertEqual(row["measuredAt"], "")
+        self.assertEqual(row["live"]["id"], self.key)
+        self.assertEqual(row["live"], self.http(path)[1][0]["live"])
+        code, page, _ = self.http(f"/team/participants/{self.participant_id}/recording-summaries")
+        self.assertEqual(code, 200)
+        self.assertEqual(page["total"], 1)
+        self.assertEqual(page["items"][0]["preview"]["analysis"]["segments"], [])
+        self.assertEqual(self.http(f"/measurements/{self.key}/result")[1]["analysis_result"]["report_json"], row["live"])
+        self.assertEqual(self.http(path + "/" + self.key, "DELETE")[0], 204)
+        self.assertEqual(self.http(detail)[0], 404)
+
+    def test_team_summary_projection_and_legacy_compatibility(self):
+        from app.models import GaitAnalysisResult
+        base = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        ids = [uuid4() for _ in range(25)]
+        graph = dict(schema_version="gait-cycle-degrees-1", left=[0]*51, right=[0]*51)
+        report = {
+            "local_step_intervals_by_segment": {"s": [{"start_ms": 0, "stop_ms": 500, "landing_side": "left"}]},
+            "analysis": {"segments": [{"segment_id": "s", "start_ms": 0, "stop_ms": 2000, "direction": "image_left",
+                "knee": {"views": {"heavy_curve": list(range(2000))}},
+                "gdi": {"models": {"normal100": {"status": "available", "value": {"left": 80, "right": 90}, "provenance": {"heavy": True}}}},
+                "gait": {"steps": [], "quality_reasons": []}}],
+                "current_report": {"segments": [{"segment_id": "s", "metrics": [
+                    {"id": "rhythm", "evidence": {"tracking": {"transitions": [], "contact_radius_ms": 50}}},
+                    {"id": "knee", "unneeded": True}]}]}}}
+        with Session(self.engine) as db:
+            for i, mid in enumerate(ids):
+                db.add(GaitMeasurement(id=mid, participant_id=self.participant_id, age=76, created_by=self.user_id,
+                    keypoints_json={"private_pose": [1,2,3]}, extractor_name="synthetic", extractor_version="1",
+                    measured_at=base, analysis_started_at=base+timedelta(days=i)))
+            db.flush()
+            db.add(GaitAnalysisResult(measurement_id=ids[-1], hip_graph_json=graph,
+                knee_graph_json={"schema_version": "unknown", "left": [0]}, ankle_graph_json=None,
+                gdi_score=0, model_version="synthetic", analyzed_at=base))
+            db.add(GaitAnalysisResult(measurement_id=ids[-2], report_json=report, model_version="synthetic", analyzed_at=base))
+            db.commit()
+        endpoint = f"/team/participants/{self.participant_id}/recording-summaries"
+        code, page, _ = self.http(endpoint)
+        self.assertEqual(code, 200)
+        self.assertEqual((page["total"], page["offset"], page["limit"]), (25,0,20))
+        self.assertEqual([m["id"] for m in page["items"]], [str(mid) for mid in reversed(ids[5:])])
+        encoded = json.dumps(page)
+        for name in ("private_pose", "heavy_curve", "provenance", "unneeded", "report_json", "hip_graph_json"):
+            self.assertNotIn(name, encoded)
+        preview = page["items"][1]["preview"]
+        self.assertEqual(preview["analysis"]["segments"][0]["gdi"]["models"]["normal100"]["value"], {"left":80,"right":90})
+        self.assertEqual(preview["local_step_intervals_by_segment"], report["local_step_intervals_by_segment"])
+        self.assertEqual(len(self.http(endpoint+"?offset=20")[1]["items"]),5)
+        self.assertEqual(self.http(endpoint+"?limit=21")[0],422)
+        self.assertEqual(self.http(endpoint,token=None)[0],401)
+        self.assertEqual(self.http(f"/team/participant-summaries/{self.participant_id}")[1]["resultCount"],25)
+        detail = self.http(f"/team/recordings/{ids[-1]}")[1]
+        self.assertEqual(detail["dateBasis"], "analysis_start")
+        self.assertTrue(detail["measuredAt"].startswith("2026-01-25"))
+        self.assertEqual(detail["curves"]["hip"], {"left":[0]*51,"right":[0]*51})
+        self.assertNotIn("knee", detail["curves"])
+        self.assertIn("knee", detail["missing"])
+        self.assertIn("ankle", detail["missing"])
+
+    def test_summary_endpoints_are_bounded_and_exclude_heavy_json(self):
+        endpoint = f"/participants/{self.participant_id}"
+        code, empty, _ = self.http(endpoint + "/summary")
+        self.assertEqual(code, 200)
+        self.assertEqual(empty["measurement_count"], 0)
+        self.assertIsNone(empty["latest_measured_at"])
+        base = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        ids = [uuid4() for _ in range(25)]
+        with Session(self.engine) as db:
+            for i, mid in enumerate(ids):
+                db.add(GaitMeasurement(
+                    id=mid, participant_id=self.participant_id, age=76, created_by=self.user_id,
+                    keypoints_json={"large_private_pose": [1, 2, 3]}, extractor_name="synthetic", extractor_version="1",
+                    measured_at=base + timedelta(days=i) if i < 24 else None,
+                    analysis_started_at=base + timedelta(days=i) if i == 24 else None,
+                ))
+            db.commit()
+        with self.engine.begin() as conn:
+            conn.execute(text("""INSERT INTO gait_analysis_results
+                (id,measurement_id,gdi_score,cadence_spm,stride_length_cm,hip_graph_json,model_version,analyzed_at)
+                VALUES (:id,:mid,0,NULL,0,'{"large_graph":[1,2,3]}'::jsonb,'synthetic',now())"""),
+                {"id": uuid4(), "mid": ids[-1]})
+        code, summaries, _ = self.http("/participants/summaries")
+        self.assertEqual(code, 200)
+        summary = next(row for row in summaries if row["id"] == str(self.participant_id))
+        self.assertEqual(summary["measurement_count"], 25)
+        self.assertEqual(summary["latest_measured_at"], "2026-01-25T00:00:00Z")
+        self.assertEqual(self.http(endpoint + "/summary")[1], summary)
+        code, first, _ = self.http(endpoint + "/measurement-summaries")
+        self.assertEqual(code, 200)
+        self.assertEqual((first["total"], first["offset"], first["limit"]), (25, 0, 20))
+        self.assertEqual([row["id"] for row in first["items"]], [str(mid) for mid in reversed(ids[5:])])
+        self.assertEqual(first["items"][0]["gdi_score"], 0)
+        self.assertIsNone(first["items"][0]["cadence_spm"])
+        self.assertTrue(first["items"][0]["has_analysis_result"])
+        self.assertFalse(first["items"][1]["has_analysis_result"])
+        self.assertIsNone(first["items"][1]["gdi_score"])
+        code, second, _ = self.http(endpoint + "/measurement-summaries?offset=20")
+        self.assertEqual(code, 200)
+        self.assertEqual([row["id"] for row in second["items"]], [str(mid) for mid in reversed(ids[:5])])
+        for row in first["items"] + second["items"]:
+            for private in ["keypoints_json", "processing_metadata", "hip_graph_json", "knee_graph_json", "ankle_graph_json"]:
+                self.assertNotIn(private, row)
+        self.assertEqual(self.http(endpoint + "/measurement-summaries?offset=100")[1]["items"], [])
+        for route in ["/participants/summaries", endpoint + "/summary", endpoint + "/measurement-summaries"]:
+            self.assertEqual(self.http(route, token=None)[0], 401)
+        self.assertEqual(self.http(f"/participants/{uuid4()}/summary")[0], 404)
+        self.assertEqual(self.http(f"/participants/{uuid4()}/measurement-summaries")[0], 404)
+        self.assertEqual(self.http(endpoint + "/measurement-summaries?limit=101")[0], 422)
+
     def test_migration_preserves_existing_data(self):
         with Session(self.engine) as db:
             old = db.get(GaitMeasurement, self.legacy_measurement)
@@ -436,12 +583,12 @@ class MeasurementPostgresTests(unittest.TestCase):
         self.assertEqual(result["status"], "available")
         analysis = result["analysis_result"]
         self.assertEqual(set(analysis), {"id", "measurement_id", "gdi_score", "stride_length_cm",
-            "cadence_spm", "hip_graph_json", "knee_graph_json", "ankle_graph_json", "model_version", "analyzed_at"})
+            "cadence_spm", "hip_graph_json", "knee_graph_json", "ankle_graph_json", "report_json", "model_version", "analyzed_at"})
         self.assertEqual(analysis["id"], str(result_id))
         self.assertEqual(analysis["measurement_id"], measurement["id"])
         self.assertEqual(analysis["gdi_score"], 0.0)
         self.assertEqual(analysis["cadence_spm"], 98.5)
-        for field in ("stride_length_cm", "hip_graph_json", "ankle_graph_json"):
+        for field in ("stride_length_cm", "hip_graph_json", "ankle_graph_json", "report_json"):
             self.assertIsNone(analysis[field])
         self.assertEqual(analysis["knee_graph_json"], graph)
         self.assertEqual(analysis["model_version"], "synthetic-regression-v1")

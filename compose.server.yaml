@@ -1,35 +1,75 @@
-# Standalone configuration: never combine with compose.yaml.
+# Standalone shared-server configuration. Restore the DB before starting migrate/API/worker.
 name: happy-aging-shared
+x-api-build: &api-build
+  context: .
+  dockerfile: backend/Dockerfile
+  target: api
+x-db-env: &db-env
+  DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL in .env}
+  JWT_SECRET_KEY: ${JWT_SECRET_KEY:?Set JWT_SECRET_KEY in .env}
 services:
   db:
     image: postgres:17
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:?Required}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Required}
-      POSTGRES_DB: ${POSTGRES_DB:?Required}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - shared_postgres:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 5s
       timeout: 5s
       retries: 10
+
+  migrate:
+    build: *api-build
+    environment: *db-env
+    command: ["python", "-m", "alembic", "upgrade", "head"]
+    depends_on:
+      db: {condition: service_healthy}
+
   api:
-    build: ./backend
+    build: *api-build
     restart: unless-stopped
     environment:
-      DATABASE_URL: ${DATABASE_URL:?Required}
-      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?Required}
-      CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS:?Required}
+      <<: *db-env
+      CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS:-}
+    volumes:
+      - type: bind
+        source: ${GAIT_MODEL_DIR:-./local_data/models}
+        target: /models
+        read_only: true
     depends_on:
-      db:
-        condition: service_healthy
-    healthcheck:
-      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/db-health', timeout=4)"]
-      interval: 15s
-      timeout: 5s
-      retries: 5
+      migrate: {condition: service_completed_successfully}
+
+  worker:
+    build:
+      <<: *api-build
+      target: analysis
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      GAIT_MODEL_ASSETS: /models
+      GAIT_STT_SOURCE: /models/transformer-gait-analysis
+    volumes:
+      - type: bind
+        source: ${GAIT_MODEL_DIR:-./local_data/models}
+        target: /models
+        read_only: true
+        bind: {create_host_path: false}
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+
+  web:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    volumes:
+      - ./mobile/dist:/usr/share/nginx/html:ro
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on: [api]
+
   gateway:
     image: caddy:2
     restart: unless-stopped
@@ -42,10 +82,10 @@ services:
       - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
       - caddy_config:/config
-    depends_on:
-      api:
-        condition: service_healthy
+    depends_on: [web]
+
 volumes:
-  shared_postgres:
+  postgres_data:
+
   caddy_data:
   caddy_config:

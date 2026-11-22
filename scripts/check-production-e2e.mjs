@@ -1,5 +1,4 @@
 import { readdir, readFile } from 'node:fs/promises';
-const root = new URL('../mobile/dist/', import.meta.url);
 async function check(dir) {
   for (const item of await readdir(dir, {withFileTypes:true})) {
     const path = new URL(item.name + (item.isDirectory() ? '/' : ''), dir);
@@ -10,5 +9,6 @@ async function check(dir) {
     }
   }
 }
-await check(root);
+await check(new URL('../mobile/dist/', import.meta.url));
+if (process.argv.includes('--include-legacy')) await check(new URL('../legacy-ui/dist/', import.meta.url));
 console.log('Production output excludes synthetic measurement controls.');

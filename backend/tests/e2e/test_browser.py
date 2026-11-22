@@ -84,8 +84,8 @@ class BrowserIntegrationTests(unittest.TestCase):
         cls.ui = f'http://127.0.0.1:{ui_port}'
         cls.launch([sys.executable, '-m', 'uvicorn', 'app.main:app', '--host', '127.0.0.1', '--port', str(api_port)],
                    BACKEND, {**os.environ, 'DATABASE_URL': scoped, 'JWT_SECRET_KEY': cls.secret, 'CORS_ALLOW_ORIGINS': cls.ui}, cls.api + '/db-health')
-        cls.launch(['node', str(ROOT / 'node_modules/vite/bin/vite.js'), 'mobile', '--host', '127.0.0.1', '--port', str(ui_port), '--strictPort'],
-                   ROOT, {**os.environ, 'VITE_E2E_MODE': 'true', 'VITE_API_BASE_URL': cls.api}, cls.ui)
+        cls.launch(['node', str(ROOT / 'node_modules/vite/bin/vite.js'), getattr(cls, 'ui_root', 'legacy-ui'), '--host', '127.0.0.1', '--port', str(ui_port), '--strictPort'],
+                   ROOT, {**os.environ, 'VITE_E2E_MODE': 'true', 'VITE_TEAM_API_BASE': cls.api}, cls.ui)
         cls.playwright = sync_playwright().start()
         cls.addClassCleanup(cls.playwright.stop)
         cls.browser = cls.playwright.chromium.launch()
@@ -129,7 +129,7 @@ class BrowserIntegrationTests(unittest.TestCase):
         self.page.on('requestfailed', lambda request: self.api_events.append(
             (request.method, urlparse(request.url).path, 'network-failed')
         ) if request.url.startswith(self.api + '/') else None)
-        self.page.goto(self.ui + "/connected.html")
+        self.page.goto(self.ui + '/')
         self.page.get_by_label('서버 주소', exact=True).fill(self.api)
         self.page.get_by_label('아이디', exact=True).fill(self.username)
         self.page.get_by_label('비밀번호', exact=True).fill(self.password)

@@ -1,5 +1,7 @@
 # 공용 서버 이전 절차
 
+2026-11-22 main 통합: 웹·API·분석 워커·마이그레이션을 포함하도록 배포 초안을 갱신했다. GAIT_MODEL_DIR 모델 준비와 npm ci 및 npm run build:mobile 실행이 먼저 필요하다. 공용 주소는 앱 루트이며 외부 API 경로는 /api이다. 팀원 스크립트의 -ApiUrl에는 https://실제도메인/api를 지정한다.
+
 상태: 배포 준비만 완료. 서버/도메인 미확보, 실제 백업/복원/외부 접속 미검증.
 기존 로컬 DB와 미커밋 작업은 변경하지 않는다.
 
@@ -50,10 +52,10 @@ API를 시작하거나 마이그레이션을 적용하기 전에 전체 백업�
 
 ```bash
 dc exec -T db sh -c 'pg_restore -U "$POSTGRES_USER" -d "$POSTGRES_DB" --no-owner --no-acl --exit-on-error --single-transaction' < /private/path/gait-backup.dump
-dc build api
+dc build api worker
 dc run --rm api alembic upgrade head
 dc up -d --wait
-curl --fail https://api.your-domain.com/db-health
+curl --fail https://api.your-domain.com/api/db-health
 ```
 
 복원 전후 users/participants/gait_measurements/gait_analysis_results/measurement_requests
@@ -66,7 +68,7 @@ curl --fail https://api.your-domain.com/db-health
 ## 팀원 PC
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-shared.ps1 -ApiUrl https://api.your-domain.com
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-shared.ps1 -ApiUrl https://api.your-domain.com/api
 ```
 
 기존 start-dev.ps1은 로컬 서버용이므로 공용 접속 시 위 스크립트를 사용한다.

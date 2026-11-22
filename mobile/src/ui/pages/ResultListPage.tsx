@@ -1,7 +1,8 @@
 /** 05 이전 결과 목록 · 05-1 이전 결과 없음 */
+import { useEffect, useRef, useState } from 'react';
 import { PageError, PageLoading, TopBar } from '../components/layout';
-import { ChevronRightIcon, SortIcon, TriangleAlertIcon, UserIcon, VideoIcon } from '../components/icons';
-import { dataSource, fmtDate, fmtTime, fmtWeekday } from '../data';
+import { ChevronRightIcon, SortIcon, TrashIcon, TriangleAlertIcon, UserIcon, VideoIcon } from '../components/icons';
+import { dataSource, fmtDate, fmtTime, fmtWeekday, type ResultRecord } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { NotFound } from './NotFound';
@@ -9,17 +10,21 @@ import { NotFound } from './NotFound';
 export function ResultListPage() {
   const { subjectId = '' } = useParams();
   const navigate = useNavigate();
+  const [offset, setOffset] = useState(0);
+  const [selected, setSelected] = useState<ResultRecord | null>(null);
   const { data, loading, error, reload } = useAsync(
-    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResults(subjectId, signal)]),
-    [subjectId],
+    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResultPage(subjectId, offset, signal)]),
+    [subjectId, offset],
   );
   const back = () => navigate(`/subjects/${subjectId}`);
   if (loading) return <PageLoading title="이전 결과" nav="back" onNav={back} />;
   if (error || !data) return <PageError title="이전 결과" onNav={back} onRetry={reload} />;
-  const [subject, records] = data;
+  const [subject, page] = data;
+  const records = page.items;
   if (!subject) return <NotFound />;
 
-  if (records.length === 0) {
+
+  if (page.total === 0) {
     return (
       <div className="screen">
         <TopBar title="이전 결과" nav="back" onNav={back} subject={subject} sticky={false} />
@@ -29,7 +34,7 @@ export function ResultListPage() {
               <path d="M6 14l1.5-3a2 2 0 011.8-1H20a1 1 0 011 1.3l-1.6 6.2A2 2 0 0117.5 19H4a2 2 0 01-2-2V5a2 2 0 012-2h4l2 3h7a2 2 0 012 2v2" />
             </svg>
           </div>
-          <h2>아직 측정 기록이 없습니다</h2>
+          <h2>아직 분석 기록이 없습니다</h2>
           <p>
             {subject.name} 님의 보행 영상을 분석하면
             <br />
@@ -49,7 +54,7 @@ export function ResultListPage() {
 
       <div style={{ padding: '20px 20px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <p style={{ fontSize: 16, fontWeight: 700 }}>
-          측정 기록 <span className="primary">{records.length}건</span>
+          분석 기록 <span className="primary">{page.total}건</span>
         </p>
         <p style={{ fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 4 }} className="muted">
           <SortIcon size={16} /> 최신순
@@ -58,26 +63,25 @@ export function ResultListPage() {
 
       <ul style={{ padding: '0 20px', display: 'grid', gap: 12 }}>
         {records.map((r, i) => {
-          const isLatest = i === 0;
+          const isLatest = offset === 0 && i === 0;
           const partial = Object.keys(r.missing).length > 0;
           return (
-            <li key={r.id}>
+            <li key={r.id} className="record-item">
               <button
                 className="record-btn"
                 data-latest={isLatest || undefined}
                 onClick={() => navigate(`/subjects/${subject.id}/results/${r.id}`)}
               >
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
-                  <div>
+                <div className="record-heading">
+                  <div className="record-identity">
                     <p style={{ fontSize: 19, fontWeight: 800 }}>
                       {fmtDate(r.measuredAt)}{' '}
-                      <span style={{ fontSize: 15, fontWeight: 600 }} className="muted">({fmtWeekday(r.measuredAt)})</span>
+                      <span style={{ fontSize: 15, fontWeight: 600 }} className="muted">{fmtWeekday(r.measuredAt)}</span>
                     </p>
-                    <p style={{ fontSize: 14, marginTop: 2 }} className="muted">{fmtTime(r.measuredAt)} {r.dateBasis === 'legacy_capture' ? '촬영 (기존 기록)' : '분석 시작'}</p>
+                    <p style={{ fontSize: r.live ? 13 : 14, marginTop: 2 }} className="muted">{r.serverState === 'pending' ? '팀 서버 분석 대기·진행 중' : r.serverState === 'failed' ? '서버 분석 실패' : r.live ? r.fileName : fmtTime(r.measuredAt)+' 측정'}</p>
                   </div>
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                     {isLatest && <span className="pill pill-primary">최신</span>}
-                    {r.status === 'not_available' && <span className="pill">분석 결과 없음</span>}
                     {partial && (
                       <span className="pill pill-warn"><TriangleAlertIcon size={14} />일부 결과 누락</span>
                     )}
@@ -96,13 +100,13 @@ export function ResultListPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="k">스트라이드(cm)</p>
-                    <p className={`v ${r.strideLength == null ? 'none' : ''}`}>{r.strideLength ?? '—'}</p>
+                    <p className="k">좌우 대칭</p>
+                    <p className={`v ${r.symmetry === null ? 'none' : ''}`}>{r.symmetry ?? '—'}</p>
                   </div>
                 </div>
                 <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 14, color: 'var(--fg-70)' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                    <UserIcon size={15} /> {r.dateBasis === 'legacy_capture' ? '촬영 당시' : '분석 시작일 기준'} {r.ageAtCapture}세 · 현재 키 {r.heightAtCapture ?? '—'}cm
+                    <UserIcon size={15} /> {r.dateBasis === 'analysis_start' ? '분석 시작 당시' : '촬영 당시'} {r.ageAtCapture===null?'나이 미확인':r.ageAtCapture+'세'} · {r.heightAtCapture===null?'키 미확인':r.heightAtCapture+'cm'}
                   </span>
                   {isLatest ? (
                     <span className="primary" style={{ fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 2 }}>
@@ -113,11 +117,64 @@ export function ResultListPage() {
                   )}
                 </div>
               </button>
+              {r.serverState !== 'legacy' && <button type="button" className="icon-btn record-trash" title="기록 삭제"
+                aria-label={`${fmtDate(r.measuredAt)} ${r.fileName} 기록 삭제`}
+                aria-haspopup="dialog" onClick={() => setSelected(r)}>
+                <TrashIcon size={19} />
+              </button>}
             </li>
           );
         })}
       </ul>
-      <p style={{ padding: '24px 20px 0', textAlign: 'center', fontSize: 14, color: 'var(--fg-50)' }}>모든 기록을 불러왔습니다.</p>
+      {selected && <DeleteRecordDialog record={selected} onCancel={() => setSelected(null)}
+        onDelete={async () => {
+          await dataSource.deleteResult(subjectId, selected.id);
+          setSelected(null);
+          if (records.length === 1 && offset > 0) setOffset(Math.max(0, offset - 20));
+          else reload();
+        }} />}
+      <nav aria-label="결과 목록 페이지" style={{padding:20,display:'flex',gap:12,alignItems:'center'}}>
+        <button className="btn btn-outline" disabled={offset === 0} onClick={()=>setOffset(Math.max(0,offset-20))}>이전 페이지</button>
+        <span>{Math.floor(offset/20)+1} / {Math.max(1,Math.ceil(page.total/20))}</span>
+        <button className="btn btn-outline" disabled={offset+20 >= page.total} onClick={()=>setOffset(offset+20)}>다음 페이지</button>
+      </nav>
     </div>
   );
+}
+
+function DeleteRecordDialog({ record, onCancel, onDelete }: {
+  record: ResultRecord; onCancel: () => void; onDelete: () => Promise<void>;
+}) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    const el = dialog.current!;
+    el.showModal();
+    return () => el.close();
+  }, []);
+  async function confirm() {
+    if (busy) return;
+    setBusy(true);
+    setFailed(false);
+    try { await onDelete(); }
+    catch { setFailed(true); setBusy(false); }
+  }
+  return <dialog ref={dialog} className="sheet record-delete-sheet" aria-labelledby="delete-record-title"
+    aria-describedby="delete-record-note" onCancel={e => { e.preventDefault(); if (!busy) onCancel(); }}>
+    <div className="grip" />
+    <h2 id="delete-record-title">이 기록을 삭제할까요?</h2>
+    <div className="record-delete-target">
+      <VideoIcon size={22} />
+      <div><b>{fmtDate(record.measuredAt)}</b><p>{record.fileName}</p></div>
+    </div>
+    <p id="delete-record-note">{record.serverState ? '삭제하면 팀 전체 기기의 기록과 지난 방문 비교에서 사라집니다.' : '삭제하면 지난 기록 비교에서 제외됩니다.'}</p>
+    {failed && <p role="alert" className="field-error">삭제하지 못했습니다. 다시 시도해 주세요.</p>}
+    <div className="record-delete-actions">
+      <button type="button" className="btn btn-outline" disabled={busy} onClick={onCancel}>취소</button>
+      <button type="button" className="btn record-delete-confirm" disabled={busy} onClick={confirm}>
+        {busy ? '삭제 중…' : '기록 삭제'}
+      </button>
+    </div>
+  </dialog>;
 }

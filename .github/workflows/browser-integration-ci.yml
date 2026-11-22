@@ -62,7 +62,9 @@ jobs:
           VITE_E2E_MODE: 'true'
         run: |
           npm run build:mobile
-          node scripts/check-production-e2e.mjs
+          npx --no-install tsc -p legacy-ui/tsconfig.json
+          npx --no-install vite build legacy-ui
+          node scripts/check-production-e2e.mjs --include-legacy
       - name: Run Chromium UI against real API and PostgreSQL
         working-directory: backend
         run: python -m unittest discover -s tests/e2e -v

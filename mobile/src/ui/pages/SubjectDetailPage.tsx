@@ -1,33 +1,33 @@
-/** 03 대상자 상세: 정보 확인 후 ‘새 보행 측정’ 또는 ‘이전 결과 조회’로 갈라진다. */
+/** 03 대상자 상세: 정보 확인 후 ‘새 보행 영상 분석’ 또는 ‘이전 결과 조회’로 갈라진다. */
 import type { ReactNode } from 'react';
 import { Avatar, PageError, PageLoading, TopBar } from '../components/layout';
 import { ChevronRightIcon, HistoryIcon, PenIcon, VideoIcon } from '../components/icons';
 import { ageOn, dataSource, fmtBirth, fmtDate } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
+import { subjectOverview } from '../data/visit-summary.mjs';
 import { NotFound } from './NotFound';
+import '../report.css';
 
 export function SubjectDetailPage() {
   const { subjectId = '' } = useParams();
   const navigate = useNavigate();
   const { data, loading, error, reload } = useAsync(
-    (signal) => Promise.all([dataSource.getSubject(subjectId, signal), dataSource.listResults(subjectId, signal)]),
+    (signal) => dataSource.getSubjectSummary(subjectId, signal),
     [subjectId],
   );
   const back = () => navigate('/subjects');
   if (loading) return <PageLoading title="대상자 상세" nav="back" onNav={back} />;
   if (error || !data) return <PageError title="대상자 상세" onNav={back} onRetry={reload} />;
-  const [subject, records] = data;
+  const subject = data;
   if (!subject) return <NotFound />;
 
   const info: [string, ReactNode][] = [
-    ['나이', `만 ${ageOn(subject.birth)}세`],
-    ['성별', subject.sex ?? '—'],
-    ['키', <>{subject.heightCm ?? '—'} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
-    ['생년월일', <span style={{ fontSize: 17, lineHeight: '30px' }}>{fmtBirth(subject.birth)}</span>],
+    ['나이', subject.birth ? '만 '+ageOn(subject.birth)+'세' : '미확인'],
+    ['성별', subject.sex??'미확인'],
+    ['키', subject.heightCm===null?'미확인':<>{subject.heightCm} <span style={{ fontSize: 15, fontWeight: 600 }}>cm</span></>],
+    ['생년월일', <span style={{ fontSize: 17, lineHeight: '30px' }}>{fmtBirth(subject.birth)||'미확인'}</span>],
   ];
-  const latest = records[0];
-
   return (
     <div className="screen" style={{ paddingBottom: 40 }}>
       <TopBar title="대상자 상세" nav="back" onNav={back} />
@@ -57,6 +57,10 @@ export function SubjectDetailPage() {
         </button>
       </section>
 
+      {subject.resultCount > 0 && <section style={{margin:20}}>
+        <button className="btn btn-outline" onClick={()=>navigate(`/subjects/${subject.id}/overview`)}>전체 기록 해석 보기</button>
+      </section>}
+
       <section style={{ margin: '28px 20px 0' }}>
         <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12 }}>무엇을 하시겠어요?</h3>
         <div style={{ display: 'grid', gap: 12 }}>
@@ -69,8 +73,8 @@ export function SubjectDetailPage() {
               <VideoIcon size={28} />
             </span>
             <span style={{ flex: 1 }}>
-              <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>새 보행 측정</span>
-              <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'rgb(255 255 255 / .85)' }}>보행 영상의 좌표를 추출해 저장합니다</span>
+              <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>새 보행 영상 분석</span>
+              <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'rgb(255 255 255 / .85)' }}>휴대폰의 보행 영상을 선택해 분석합니다</span>
             </span>
             <ChevronRightIcon size={20} />
           </button>
@@ -85,10 +89,10 @@ export function SubjectDetailPage() {
             <span style={{ flex: 1 }}>
               <span style={{ display: 'block', fontSize: 20, fontWeight: 800 }}>이전 결과 조회</span>
               <span style={{ display: 'block', marginTop: 4, fontSize: 15, color: 'var(--fg-70)' }}>
-                {latest ? (
-                  <>측정 기록 <b className="primary">{records.length}건</b> · 최근 {fmtDate(latest.measuredAt)}</>
+                {subject.resultCount > 0 ? (
+                  <>분석 기록 <b className="primary">{subject.resultCount}건</b> · 최근 {fmtDate(subject.latestMeasuredAt ?? '')}</>
                 ) : (
-                  '아직 측정 기록이 없습니다'
+                  '아직 분석 기록이 없습니다'
                 )}
               </span>
             </span>

@@ -1,0 +1,2 @@
+vendor/*.py -text whitespace=trailing-space,space-before-tab,cr-at-eol
+local_knee.py -text

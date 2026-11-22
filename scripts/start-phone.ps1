@@ -31,12 +31,12 @@ extendedKeyUsage=serverAuth
     Invoke-OpenSSL @('x509','-req','-in','server.csr','-CA','ca.crt','-CAkey','ca.key','-CAcreateserial','-out','server.crt','-days','90','-sha256','-extfile','server.ext')
     Invoke-OpenSSL @('x509','-in','ca.crt','-noout','-fingerprint','-sha256')
 } finally { Pop-Location }
-$previousApi = $env:VITE_API_BASE_URL
+$previousApi = $env:VITE_TEAM_API_BASE
 $previousE2e = $env:VITE_E2E_MODE
 $previousHost = $env:PHONE_HOST
 try {
     if (!(Test-Path 'node_modules/.package-lock.json')) { npm.cmd ci; if ($LASTEXITCODE -ne 0) { throw 'npm ci failed' } }
-    $env:VITE_API_BASE_URL = "https://${phoneHost}:5443/api"
+    $env:VITE_TEAM_API_BASE = "https://${phoneHost}:5443/api"
     $env:VITE_E2E_MODE = 'false'
     npm.cmd run build:mobile
     if ($LASTEXITCODE -ne 0) { throw 'Mobile build failed' }
@@ -44,7 +44,7 @@ try {
     node scripts/serve-phone.mjs
     if ($LASTEXITCODE -ne 0) { throw 'Phone server stopped with an error' }
 } finally {
-    $env:VITE_API_BASE_URL = $previousApi
+    $env:VITE_TEAM_API_BASE = $previousApi
     $env:VITE_E2E_MODE = $previousE2e
     $env:PHONE_HOST = $previousHost
 }

@@ -6,6 +6,7 @@ import { HandIcon, PhoneIcon, ResetIcon } from '../components/icons';
 import { JOINTS, JOINT_LABEL, dataSource, fmtDate, type Joint } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
+import { kneeCurve } from './VisitMetrics';
 import { NotFound } from './NotFound';
 
 export function ChartZoomPage() {
@@ -23,7 +24,8 @@ export function ChartZoomPage() {
   const [subject, rec] = data;
   const j = joint as Joint;
   if (!subject || !rec || !JOINTS.includes(j)) return <NotFound />;
-  const curve = rec.curves[j];
+  const actual=rec.live && j==='knee' ? kneeCurve(rec.live,Number(sessionStorage.getItem('segment-'+recordId)??0)) : null;
+  const curve = actual ?? rec.curves[j];
 
   return (
     <div className="screen" style={{ paddingBottom: 32 }}>
@@ -32,7 +34,7 @@ export function ChartZoomPage() {
         nav="close"
         onNav={close}
         subject={subject}
-        subjectDetail={`${fmtDate(rec.measuredAt)} ${rec.dateBasis === 'legacy_capture' ? '촬영 (기존 기록)' : '분석 시작'}`}
+        subjectDetail={`${fmtDate(rec.measuredAt)} 측정`}
       />
 
       <div className="tabs" role="tablist" aria-label="관절 선택" style={{ margin: '16px 20px 0' }}>
@@ -41,7 +43,7 @@ export function ChartZoomPage() {
             key={k}
             role="tab"
             aria-selected={k === j}
-            disabled={!rec.curves[k]}
+            disabled={!rec.curves[k] && !(actual && k==="knee")}
             title={rec.curves[k] ? undefined : '산출되지 않은 그래프입니다'}
             onClick={() => navigate(`${reportUrl}/chart/${k}`, { replace: true })}
           >
@@ -63,13 +65,13 @@ export function ChartZoomPage() {
       <section style={{ margin: '12px 12px 0', borderRadius: 'var(--r-lg)', border: '1px solid var(--border)', padding: '12px 4px 4px' }}>
         <p style={{ padding: '0 16px', fontSize: 18, fontWeight: 800 }}>{JOINT_LABEL[j]}</p>
         {curve ? (
-          <JointChart key={j} curve={curve} height={460} zoomable resetKey={resetKey} label={JOINT_LABEL[j]} />
+          <JointChart key={j} curve={curve} {...(actual ? {native:actual} : {})} height={460} zoomable resetKey={resetKey} label={JOINT_LABEL[j]} />
         ) : (
           <p style={{ padding: 48, textAlign: 'center' }} className="muted">이 관절의 그래프는 산출되지 않았습니다.</p>
         )}
       </section>
       <div style={{ margin: '8px 20px 0' }}>
-        <AxisNote />
+        {rec.live ? "가로축은 구간 시작 후 경과 시간(초), 세로축은 무릎 각도(°)입니다." : <AxisNote />}
       </div>
 
       <div className="card" style={{ margin: '16px 20px 0', borderRadius: 'var(--r-md)', padding: '14px 16px', display: 'grid', gap: 8, fontSize: 14, color: 'var(--fg-80)' }}>
