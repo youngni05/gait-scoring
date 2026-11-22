@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from app.routers import health, auth, participants, measurements, recordings
+from app.routers import health, auth, participants, measurements, recordings, video_pose
 
 app = FastAPI(
     title="Happy Aging API",
@@ -44,3 +44,4 @@ app.include_router(auth.router)
 app.include_router(participants.router)
 app.include_router(measurements.router)
 app.include_router(recordings.router)
+app.include_router(video_pose.router)

@@ -67,6 +67,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   const [editedDay, setEditedDay] = useState<string | null>(null);
   const [editedHeight, setEditedHeight] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('pick');
+  const [serverPose, setServerPose] = useState(false);
   const [picked, setPicked] = useState<Picked | null>(null);
   const [progressText,setProgressText]=useState('');
   const [pct, setPct] = useState(0);
@@ -107,7 +108,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
     if (phase !== 'running') return;
     const abort = new AbortController();
     dataSource
-      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode:'guided',height:height ? Number(height) : null})
+      .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode:'guided',height:height ? Number(height) : null,serverPose})
       .then((rec) => {
         if (abort.signal.aborted) return;
         showRecord(rec);
@@ -189,6 +190,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   const onFile = (file: File | undefined) => {
     if (!file) return;
     const url = URL.createObjectURL(file);
+    setServerPose(false);
     setEditedDay(null);
     setEditedHeight(null);
     setPicked({ file, name: file.name, url, durationSec: null, fileDate: new Date(file.lastModified), metadataDay: isDemo ? null : undefined });
@@ -292,6 +294,15 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
             </span>
           </div>
           <div className="capture-fields" key={picked.url}>
+            {!isDemo && <div className="field">
+              <label htmlFor="analysis-location">관절 분석 위치</label>
+              <select className="input" id="analysis-location" value={serverPose ? 'server' : 'phone'}
+                onChange={e => setServerPose(e.target.value === 'server')}>
+                <option value="phone">휴대폰에서 분석</option>
+                <option value="server" disabled={location.protocol !== 'https:'}>서버에서 분석 (HTTPS)</option>
+              </select>
+              <p className="muted">{serverPose ? 'MP4·MOV(64 MiB 이하)를 팀 서버에 전송합니다. 관절 추출 완료·실패·취소 시 서버의 영상 사본을 삭제합니다.' : '원본 영상은 이 기기에 두고 분석 데이터만 전송합니다.'}</p>
+            </div>}
             <CaptureDateField value={day} min={subject.birth} onChange={setEditedDay} />
             {invalidDay && <p className="field-error" role="alert">생년월일부터 오늘까지의 날짜를 선택해 주세요.</p>}
             <div className="field">

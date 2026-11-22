@@ -266,6 +266,7 @@ class MeasurementPostgresTests(unittest.TestCase):
         self.assertEqual(self.http(path, "POST", body)[0], 202)
         self.assertEqual(self.http(path, "POST", body)[0], 200)
         self.assertEqual(self.http(path, "POST", dict(body, fileName="other.mp4"))[0], 409)
+        self.assertEqual(self.http(path, "POST", dict(body, fileName="촬영-" + packet["requestId"]))[0], 200)
         self.assertEqual(self.count(), 1)
         detail = f"/team/recordings/{self.key}"
         self.assertEqual(self.http(detail)[1]["serverState"], "pending")

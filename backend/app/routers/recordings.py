@@ -52,14 +52,22 @@ def submit(participant_id: UUID, response: Response, body=Depends(bounded_json),
     recording = UUID(coords["recording_id"])
     if coords["schema_version"] != "team-local-coords/1" or packet["requestId"] != str(recording) or coords["subject"]["id"] != str(participant_id):
         raise HTTPException(422, "Recording or participant mismatch")
-    fingerprint = sha256(json.dumps(body, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    def fingerprint_for(label):
+        payload = {"fileName": label, "packet": packet}
+        return sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+
+    fingerprint = fingerprint_for(filename)
     def replay():
         previous = db.scalar(select(GaitMeasurement).where(GaitMeasurement.id == recording)
                              .options(defer(GaitMeasurement.keypoints_json)))
         if previous is None:
             return None
-        if (previous.created_by != user.id or previous.participant_id != participant_id
-                or (previous.processing_metadata or {}).get("fingerprint") != fingerprint):
+        meta = previous.processing_metadata or {}
+        if previous.created_by != user.id or previous.participant_id != participant_id:
+            raise HTTPException(409, "Recording ID already used")
+        if meta.get("fingerprint") != fingerprint and not (
+            filename == f"촬영-{recording}" and meta.get("fingerprint") == fingerprint_for(meta.get("file_name"))
+        ):
             raise HTTPException(409, "Recording ID already used")
         response.status_code = 200
         return {"id": recording, "participant_id": participant_id}

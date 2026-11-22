@@ -58,7 +58,7 @@ export interface GaitDataSource {
     video: File | null,
     onProgress: (percent: number, detail?: string) => void,
     signal?: AbortSignal,
-    capture?: {day:string; daySource?:CaptureDaySource; mode:"guided"|"fixed"; height:number|null; extractor?:"mediapipe"|"openpose"},
+    capture?: {day:string; daySource?:CaptureDaySource; mode:"guided"|"fixed"; height:number|null; extractor?:"mediapipe"|"openpose"; serverPose?:boolean},
   ): Promise<ResultRecord>;
 
   /** 결과지를 파일로 내려받는다. 파일 형식은 추후 확정. */
