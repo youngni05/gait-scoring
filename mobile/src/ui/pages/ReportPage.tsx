@@ -1,3 +1,4 @@
+import { CaptureDayEditor } from '../components/CaptureDayEditor';
 /**
  * 07 분석 결과지 · 07-1 결과지 일부 누락.
  * 새 분석 직후와 이전 기록 조회 모두 이 화면 하나를 쓴다(디자인 원칙: 결과지는 같은 모양).
@@ -94,29 +95,30 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
       <section className="card" style={{ margin: partial ? '16px 20px 0' : '20px 20px 0', padding: 20 }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
           <div style={{minWidth:0,overflowWrap:'anywhere'}}>
-            <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">대상자 이름</p>
-            <h2 style={{ fontSize: 26, fontWeight: 800, lineHeight: 1.2 }}>{subject.name}</h2>
+            <p style={{ fontSize: 'var(--text-caption)', fontWeight: 600 }} className="muted">대상자 이름</p>
+            <h2 style={{ fontSize: '1.625rem', fontWeight: 800, lineHeight: 1.2 }}>{subject.name}</h2>
           </div>
-          <div style={{ textAlign: 'right', flexShrink: 0 }}>
-            <p style={{ fontSize: 14, fontWeight: 600 }} className="muted">{rec.dateBasis === 'analysis_start' ? '분석 시작일' : '촬영일'}</p>
-            <p style={{ fontSize: 17, fontWeight: 700 }}>{fmtDate(rec.measuredAt)}{rec.measuredAt && ` (${fmtWeekday(rec.measuredAt)})`}</p>
-            <p style={{ fontSize: 13 }} className="muted">{!rec.live && fmtTime(rec.measuredAt)}</p>
-          </div>
+          {rec.dateBasis === 'analysis_start' && <div style={{ textAlign: 'right', flexShrink: 0 }}>
+            <p style={{ fontSize: 'var(--text-caption)', fontWeight: 600 }} className="muted">분석 시작일</p>
+            <p style={{ fontSize: '1.0625rem', fontWeight: 700 }}>{fmtDate(rec.measuredAt)}{rec.measuredAt && ` (${fmtWeekday(rec.measuredAt)})`}</p>
+            <p style={{ fontSize: 'var(--text-caption)' }} className="muted">{!rec.live && fmtTime(rec.measuredAt)}</p>
+          </div>}
         </div>
+        <CaptureDayEditor key={rec.id} record={rec} birth={subject.birth} reload={reload} />
         <dl className="metric-grid3" style={{ marginTop: 16, background: '#fff', border: '1px solid var(--border)', textAlign: 'center' }}>
           <div style={{ padding: '12px 4px' }}>
             <dt className="k">{rec.live ? "분석 구간" : "성별"}</dt>
-            <dd style={{ fontSize: 18, fontWeight: 700 }}>{rec.live ? rec.live.analysis.segments.length+"개" : subject.sex}</dd>
+            <dd style={{ fontSize: '1.125rem', fontWeight: 700 }}>{rec.live ? rec.live.analysis.segments.length+"개" : subject.sex}</dd>
           </div>
           <div style={{ padding: '12px 4px' }}>
             <dt className="k">{rec.dateBasis === 'analysis_start' ? '분석 시작일 기준 나이' : '촬영 당시 나이'}</dt>
-            <dd style={{ fontSize: 18, fontWeight: 700 }}>{rec.ageAtCapture === null ? "미확인" : "만 "+rec.ageAtCapture+"세"}</dd>
+            <dd style={{ fontSize: '1.125rem', fontWeight: 700 }}>{rec.ageAtCapture === null ? "미확인" : "만 "+rec.ageAtCapture+"세"}</dd>
           </div>
           <div style={{ padding: '12px 4px' }}>
             <dt className="k">촬영 당시 키</dt>
-            <dd style={{ fontSize: 18, fontWeight: 700 }}>
+            <dd style={{ fontSize: '1.125rem', fontWeight: 700 }}>
               {rec.heightAtCapture ?? "미확인"}
-              <span style={{ fontSize: 14, marginLeft: 2 }}>{rec.heightAtCapture !== null && "cm"}</span>
+              <span style={{ fontSize: 'var(--text-caption)', marginLeft: 2 }}>{rec.heightAtCapture !== null && "cm"}</span>
             </dd>
           </div>
         </dl>
@@ -130,10 +132,10 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
         {history ? <VisitHistory record={rec}/> : <LiveMetrics record={rec} selected={selected} select={i=>{setSelected(i);sessionStorage.setItem('segment-'+recordId,String(i));}} zoom={()=>navigate(base+'/results/'+rec.id+'/chart/knee')} openHistory={()=>{setHistory(true);window.scrollTo({top:0,behavior:'smooth'});}}/>}
       </> : <>
       <section style={{ margin: '28px 20px 0' }}>
-        <h3 style={{ fontSize: 19, fontWeight: 800, marginBottom: 12 }}>핵심 지표</h3>
+        <h3 style={{ fontSize: 'var(--text-heading)', fontWeight: 800, marginBottom: 12 }}>핵심 지표</h3>
         <div style={{ borderRadius: 'var(--r-lg)', background: 'var(--primary)', color: '#fff', padding: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <p style={{ fontSize: 16, fontWeight: 700 }}>
+            <p style={{ fontSize: 'var(--text-body)', fontWeight: 700 }}>
               GDI <span style={{ fontWeight: 600, color: 'rgb(255 255 255 / .8)' }}>· 보행 편차 지수</span>
             </p>
             <button
@@ -145,10 +147,10 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
               <InfoIcon size={18} />
             </button>
           </div>
-          <p style={{ marginTop: 8, fontSize: 52, fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>{formatMetric(rec.gdi, 1)}</p>
-          <p style={{ marginTop: 8, fontSize: 14, color: 'rgb(255 255 255 / .8)' }}>Gait Deviation Index</p>
+          <p style={{ marginTop: 8, fontSize: '3.25rem', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>{formatMetric(rec.gdi, 1)}</p>
+          <p style={{ marginTop: 8, fontSize: 'var(--text-caption)', color: 'rgb(255 255 255 / .8)' }}>Gait Deviation Index</p>
           {openInfo.gdi && (
-            <div style={{ marginTop: 16, borderRadius: 'var(--r-md)', background: 'rgb(255 255 255 / .15)', padding: '12px 16px', fontSize: 14, lineHeight: 1.6 }}>
+            <div style={{ marginTop: 16, borderRadius: 'var(--r-md)', background: 'rgb(255 255 255 / .15)', padding: '12px 16px', fontSize: 'var(--text-caption)', lineHeight: 1.6 }}>
               GDI 정의 및 해석 안내 문구는 확정 후 이곳에 표시됩니다.
             </div>
           )}
@@ -156,17 +158,17 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
 
         <div style={{ marginTop: 12, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           <div className="card" style={{ padding: 16 }}>
-            <p style={{ fontSize: 15, fontWeight: 700 }}>분당 걸음 수</p>
-            <p style={{ fontSize: 13 }} className="muted">케이던스</p>
-            <p style={{ marginTop: 12, fontSize: 34, fontWeight: 800, lineHeight: 1 }}>{formatMetric(rec.cadence, 0)}</p>
-            <p style={{ marginTop: 6, fontSize: 14, fontWeight: 600, color: 'var(--fg-70)' }}>
+            <p style={{ fontSize: 'var(--text-body)', fontWeight: 700 }}>분당 걸음 수</p>
+            <p style={{ fontSize: 'var(--text-caption)' }} className="muted">케이던스</p>
+            <p style={{ marginTop: 12, fontSize: '2.125rem', fontWeight: 800, lineHeight: 1 }}>{formatMetric(rec.cadence, 0)}</p>
+            <p style={{ marginTop: 6, fontSize: 'var(--text-caption)', fontWeight: 600, color: 'var(--fg-70)' }}>
               걸음/분 <span style={{ fontWeight: 400, color: 'var(--fg-50)' }}>(steps/min)</span>
             </p>
           </div>
           {rec.symmetry !== null ? (
             <div className="card" style={{ padding: 16 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                <p style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.35 }}>좌우 대칭<br />지표</p>
+                <p style={{ fontSize: 'var(--text-body)', fontWeight: 700, lineHeight: 1.35 }}>좌우 대칭<br />지표</p>
                 <button
                   aria-label="계산 방식 보기"
                   aria-expanded={Boolean(openInfo.sym)}
@@ -176,14 +178,14 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
                   <InfoIcon size={18} />
                 </button>
               </div>
-              <p style={{ marginTop: 12, fontSize: 34, fontWeight: 800, lineHeight: 1 }}>{formatMetric(rec.symmetry, 1)}</p>
-              <p style={{ marginTop: 6, fontSize: 14, fontWeight: 600, color: 'var(--fg-50)' }}>단위 확정 예정</p>
+              <p style={{ marginTop: 12, fontSize: '2.125rem', fontWeight: 800, lineHeight: 1 }}>{formatMetric(rec.symmetry, 1)}</p>
+              <p style={{ marginTop: 6, fontSize: 'var(--text-caption)', fontWeight: 600, color: 'var(--fg-50)' }}>단위 확정 예정</p>
             </div>
           ) : (
             <div style={{ borderRadius: 'var(--r-lg)', border: '2px dashed rgb(247 185 40 / .6)', padding: 16 }}>
-              <p style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.35 }}>좌우 대칭<br />지표</p>
-              <p style={{ marginTop: 12, fontSize: 34, fontWeight: 800, lineHeight: 1, color: 'var(--fg-30)' }}>—</p>
-              <p style={{ marginTop: 6, fontSize: 14, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <p style={{ fontSize: 'var(--text-body)', fontWeight: 700, lineHeight: 1.35 }}>좌우 대칭<br />지표</p>
+              <p style={{ marginTop: 12, fontSize: '2.125rem', fontWeight: 800, lineHeight: 1, color: 'var(--fg-30)' }}>—</p>
+              <p style={{ marginTop: 6, fontSize: 'var(--text-caption)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 4 }}>
                 <TriangleAlertIcon size={15} className="warn-icon" /> 산출되지 않음
               </p>
             </div>
@@ -191,12 +193,12 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
         </div>
         {openInfo.sym && rec.symmetry !== null && (
           <div style={{ marginTop: 12, borderRadius: 'var(--r-md)', border: '2px dashed rgb(30 157 241 / .4)', background: 'rgb(227 236 246 / .5)', padding: '12px 16px' }}>
-            <p style={{ fontSize: 14, fontWeight: 700 }} className="primary">좌우 대칭 지표 계산 방식</p>
-            <p style={{ marginTop: 4, fontSize: 14, lineHeight: 1.6, color: 'var(--fg-80)' }}>계산식과 단위는 확정 후 이 영역에 표시됩니다.</p>
+            <p style={{ fontSize: 'var(--text-caption)', fontWeight: 700 }} className="primary">좌우 대칭 지표 계산 방식</p>
+            <p style={{ marginTop: 4, fontSize: 'var(--text-caption)', lineHeight: 1.6, color: 'var(--fg-80)' }}>계산식과 단위는 확정 후 이 영역에 표시됩니다.</p>
           </div>
         )}
         {rec.missing.symmetry && (
-          <p style={{ marginTop: 12, fontSize: 14, lineHeight: 1.6, color: 'var(--fg-70)', display: 'flex', gap: 6 }}>
+          <p style={{ marginTop: 12, fontSize: 'var(--text-caption)', lineHeight: 1.6, color: 'var(--fg-70)', display: 'flex', gap: 6 }}>
             <InfoIcon size={16} className="faint" /> 좌우 대칭 지표: {rec.missing.symmetry}
           </p>
         )}
@@ -205,7 +207,7 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
       {/* 3. 관절별 그래프 */}
       <section style={{ marginTop: 32 }}>
         <div style={{ margin: '0 20px' }}>
-          <h3 style={{ fontSize: 19, fontWeight: 800 }}>관절별 그래프</h3>
+          <h3 style={{ fontSize: 'var(--text-heading)', fontWeight: 800 }}>관절별 그래프</h3>
           <div style={{ marginTop: 12 }}><LegendLR /></div>
           <AxisNote />
         </div>
@@ -215,13 +217,13 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
             return (
               <article key={j} style={{ borderRadius: 'var(--r-lg)', border: '1px solid var(--border)', padding: curve ? '16px 8px 8px' : 16 }}>
                 <div style={{ padding: curve ? '0 12px' : 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h4 style={{ fontSize: 17, fontWeight: 800 }}>{JOINT_LABEL[j]}</h4>
+                  <h4 style={{ fontSize: '1.0625rem', fontWeight: 800 }}>{JOINT_LABEL[j]}</h4>
                   {curve ? (
                     <button className="zoom-btn" onClick={() => navigate(`${base}/results/${rec.id}/chart/${j}`)}>
                       <ExpandIcon size={15} /> 확대
                     </button>
                   ) : (
-                    <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--fg-50)' }}>확대 불가</span>
+                    <span style={{ fontSize: 'var(--text-caption)', fontWeight: 700, color: 'var(--fg-50)' }}>확대 불가</span>
                   )}
                 </div>
                 {curve ? (
@@ -233,15 +235,15 @@ function ReportContent({subjectId, recordId}: {subjectId: string; recordId: stri
                     style={{ marginTop: 12, height: 180, borderRadius: 'var(--r-md)', border: '2px dashed rgb(247 185 40 / .6)', background: 'var(--card)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px' }}
                   >
                     <ChartLineIcon size={30} className="faint" />
-                    <p style={{ marginTop: 12, fontSize: 16, fontWeight: 700 }}>{JOINT_LABEL[j]} 그래프를 표시할 수 없습니다</p>
-                    <p style={{ marginTop: 4, fontSize: 14, lineHeight: 1.6 }} className="muted">{rec.missing[j] ?? '데이터를 산출하지 못했습니다.'}</p>
+                    <p style={{ marginTop: 12, fontSize: 'var(--text-body)', fontWeight: 700 }}>{JOINT_LABEL[j]} 그래프를 표시할 수 없습니다</p>
+                    <p style={{ marginTop: 4, fontSize: 'var(--text-caption)', lineHeight: 1.6 }} className="muted">{rec.missing[j] ?? '데이터를 산출하지 못했습니다.'}</p>
                   </div>
                 )}
               </article>
             );
           })}
         </div>
-        <p style={{ margin: '16px 20px 0', fontSize: 13, textAlign: 'center', color: 'var(--fg-50)' }}>
+        <p style={{ margin: '16px 20px 0', fontSize: 'var(--text-caption)', textAlign: 'center', color: 'var(--fg-50)' }}>
           결과 ID {rec.id} · {rec.serverState ? '서버 저장 기록' : '예시용 가상 데이터'}
         </p>
       </section>

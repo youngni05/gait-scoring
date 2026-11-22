@@ -174,7 +174,7 @@ function usePriorVisits(record: ResultRecord) {
       return { prior: [], sentence: reasons.join(' ') };
     }
     return { prior };
-  }, [record.id]);
+  }, [record.id, record.live?.captured_at]);
 }
 
 // ── 이번 결과 ─────────────────────────────────
@@ -289,17 +289,17 @@ function Overview({ summary, history, openHistory, fileName }: {
             <p className="agg-sum">
               {gdi.byDirection.length > 1 ? '두 방향을 같은 비중으로 평균' : '한 방향 값 그대로'} → 왼쪽 {fmt(gdi.left)} · 오른쪽 {fmt(gdi.right)} → 좌우 평균 <b>{fmt(gdi.value)}점</b>
             </p>
-            <p className="muted" style={{ fontSize: 13, lineHeight: 1.55 }}>
+            <p className="muted" style={{ fontSize: 'var(--text-caption)', lineHeight: 1.55 }}>
               구간 비중은 구간 길이(초)로 정합니다. 긴 보행 한 번이 여러 구간으로 나뉘어도 짧은 조각이 같은 무게를 갖지 않게 하기 위해서입니다. 서로 겹치는 구간은 먼저 나온 구간만 씁니다.
             </p>
           </>
         ) : (
-          <p className="muted" style={{ fontSize: 14 }}>GDI를 계산할 수 있는 구간이 없습니다.</p>
+          <p className="muted" style={{ fontSize: 'var(--text-caption)' }}>GDI를 계산할 수 있는 구간이 없습니다.</p>
         )}
       </Disclosure>
 
       <Disclosure title="걸음·무릎 측정 근거">
-        <p className="muted" style={{ fontSize: 13, lineHeight: 1.55 }}>
+        <p className="muted" style={{ fontSize: 'var(--text-caption)', lineHeight: 1.55 }}>
           {walking.cadenceCount ? `관측한 간격 ${walking.count}개 중 같은 구간에서 연속으로 확인한 ${walking.cadenceCount}개로 분당 걸음 수를 추정했습니다.` : `관측한 간격 ${walking.count}개에서 양발로 이어지는 걸음을 확인하기 어려워 분당 걸음 수를 보류했습니다.`}
           {walking.intervals.some(s => s.side === 'unknown') && ' 좌우를 구별하기 어려운 걸음은 두 발 사이가 벌어졌다 좁아지는 시점으로 간격을 추정했습니다.'}
           {finite(gap.value) && ` 좌우 걸음 시간 차이는 양발 걸음이 함께 보인 ${gap.segments}개 구간 안에서 계산했습니다.`}
@@ -581,7 +581,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
   if (loading) {
     return (
       <section className="rs">
-        <p role="status" className="primary" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 600 }}>
+        <p role="status" className="primary" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 'var(--text-body)', fontWeight: 600 }}>
           <LoadingMark size={22} /> 지난 기록과 비교하고 있습니다…
         </p>
       </section>
@@ -635,7 +635,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
             </div>
             <div className="cmp-rows">{history.trends.map((t) => <TrendRow key={t.key} t={t} directions={recent.directions} />)}</div>
             {recent.skipped.length > 0 && (
-              <p className="muted" style={{ fontSize: 13, lineHeight: 1.55 }}>
+              <p className="muted" style={{ fontSize: 'var(--text-caption)', lineHeight: 1.55 }}>
                 이번 기록의 {recent.skipped.map(directionLabel).join(', ')} 구간은 지난 기록에 없어 비교에서 뺐습니다. 그래서 위 이번 값은 결과지 맨 위 종합값과 다를 수 있습니다.
               </p>
             )}
@@ -662,7 +662,7 @@ export function VisitHistory({ record }: { record: ResultRecord }) {
           {groups.map((group) => (
             <article className="cmp" key={group.direction} style={{ background: 'var(--bg)' }}>
               <div className="cmp-hd">
-                <span className="dir" style={{ fontSize: 13, padding: '4px 10px' }}>{directionLabel(group.direction)}</span>
+                <span className="dir" style={{ fontSize: 'var(--text-caption)', padding: '4px 10px' }}>{directionLabel(group.direction)}</span>
                 <span className="meta">이전 {fmtDate(group.previousDate)} · {group.previousSegments}구간 → 이번 {group.currentSegments}구간</span>
               </div>
               <div className="cmp-rows">
@@ -708,8 +708,8 @@ function StrictHistory({ current, prior }: { current: Visit; prior: Visit[] }) {
       throw Error('기록을 확인하지 못했습니다.');
     return res.explanation;
   }, [current.id, prior]);
-  if (loading) return <p role="status" className="muted" style={{ fontSize: 14 }}>추가 해석 중…</p>;
-  if (error) return <p className="muted" style={{ fontSize: 14 }}>추가 해석을 불러오지 못했습니다.</p>;
+  if (loading) return <p role="status" className="muted" style={{ fontSize: 'var(--text-caption)' }}>추가 해석 중…</p>;
+  if (error) return <p className="muted" style={{ fontSize: 'var(--text-caption)' }}>추가 해석을 불러오지 못했습니다.</p>;
   return (
     <>
       {data?.sentence && <p className="summary-line">{data.sentence}</p>}

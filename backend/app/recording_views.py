@@ -39,7 +39,7 @@ _PREVIEW = """CASE WHEN r.report_json IS NULL THEN NULL ELSE jsonb_build_object(
        ) END"""
 _LIST_PREVIEW = _PREVIEW % dict(identity="", source="", knee="")
 _VISIT_PREVIEW = _PREVIEW % dict(
-    identity="'id', m.id, 'subject_id', m.participant_id, 'captured_at', r.report_json->'captured_at', "
+    identity="'id', m.id, 'subject_id', m.participant_id, 'captured_at', coalesce(to_jsonb(to_char(m.corrected_capture_at AT TIME ZONE 'Asia/Seoul', 'YYYY-MM-DD\"T\"HH24:MI:SS\"+09:00\"')), r.report_json->'captured_at'), "
     "'source_sha256', r.report_json->'source_sha256',",
     source="'source_id', r.report_json#>'{analysis,source_id}',",
     knee="""|| coalesce((SELECT jsonb_agg(jsonb_build_object('id', 'knee', 'evidence', jsonb_build_object(
@@ -50,9 +50,11 @@ _VISIT_PREVIEW = _PREVIEW % dict(
 )
 
 SUMMARY_SQL = """
-SELECT m.id, m.participant_id, m.age, m.analysis_status,
-       coalesce(m.analysis_started_at, m.measured_at) AS measured_at,
-       CASE WHEN m.analysis_started_at IS NOT NULL THEN 'analysis_start'
+SELECT m.id, m.participant_id, CAST(m.corrected_capture_at AT TIME ZONE 'Asia/Seoul' AS date) AS corrected_day,
+       CASE WHEN m.corrected_capture_at IS NOT NULL THEN m.corrected_capture_age ELSE m.age END AS age, m.analysis_status,
+       coalesce(m.corrected_capture_at, m.analysis_started_at, m.measured_at) AS measured_at,
+       CASE WHEN m.corrected_capture_at IS NOT NULL THEN 'capture'
+            WHEN m.analysis_started_at IS NOT NULL THEN 'analysis_start'
             WHEN m.analysis_status IS NULL THEN 'legacy_capture' ELSE 'capture' END AS date_basis,
        m.processing_metadata->'height_cm' AS height_cm,
        m.processing_metadata->>'file_name' AS file_name,
@@ -61,7 +63,7 @@ SELECT m.id, m.participant_id, m.age, m.analysis_status,
 FROM gait_measurements m
 LEFT JOIN gait_analysis_results r ON r.measurement_id = m.id
 WHERE m.participant_id = :participant_id
-ORDER BY coalesce(m.received_at, m.analysis_started_at, m.measured_at) DESC, m.id
+ORDER BY coalesce(m.corrected_capture_at, m.analysis_started_at, m.measured_at) DESC NULLS LAST, m.received_at DESC NULLS LAST, m.id
 LIMIT :limit OFFSET :offset
 """
 
@@ -71,7 +73,8 @@ RECENT_VISITS_SQL = """
 SELECT """ + _VISIT_PREVIEW + """
 FROM gait_measurements m
 JOIN gait_analysis_results r ON r.measurement_id = m.id
-WHERE m.participant_id = :participant_id AND r.report_json->>'captured_at' IS NOT NULL
-ORDER BY m.measured_at DESC NULLS LAST, m.id
+WHERE m.participant_id = :participant_id AND r.report_json IS NOT NULL
+  AND (m.corrected_capture_at IS NOT NULL OR r.report_json->>'captured_at' IS NOT NULL)
+ORDER BY coalesce(m.corrected_capture_at, m.measured_at) DESC NULLS LAST, m.id
 LIMIT 4
 """

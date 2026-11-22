@@ -87,6 +87,8 @@ class GaitMeasurement(Base):
     extractor_name: Mapped[str] = mapped_column(String(100), nullable=False)
     extractor_version: Mapped[str] = mapped_column(String(100), nullable=False)
     measured_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    corrected_capture_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    corrected_capture_age: Mapped[int | None] = mapped_column(SmallInteger, nullable=True)
     analysis_status: Mapped[str | None] = mapped_column(String(16), nullable=True)
     received_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     analysis_started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

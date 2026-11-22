@@ -214,7 +214,7 @@ export function JointChart({ curve, native, height, zoomable = false, resetKey =
             color: '#fff',
             borderRadius: 8,
             padding: '6px 10px',
-            fontSize: 12,
+            fontSize: 'var(--text-caption)',
             lineHeight: 1.5,
           }}
         >
