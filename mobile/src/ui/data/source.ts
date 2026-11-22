@@ -6,7 +6,7 @@
  */
 import type { ResultRecord, Subject } from './mock';
 
-export type SubjectInput = Omit<Subject, 'id' | 'createdAt'>;
+export type SubjectInput = Omit<Subject, 'id'>;
 export type CaptureDaySource = 'metadata' | 'user_entered' | 'unknown';
 
 export interface SubjectSummary extends Subject {

@@ -1,7 +1,7 @@
 import type { PreparedMeasurement } from '../../../contracts/measurement-1/prepare';
 import type { ParticipantBody } from './participant-input';
 
-export interface Participant { id: string; name: string; birth_date: string | null; height_cm: string | number | null; gender: 'M' | 'F' | null; created_at?: string | null }
+export interface Participant { id: string; name: string; birth_date: string | null; height_cm: string | number | null; gender: 'M' | 'F' | null }
 export interface ParticipantSummary extends Participant { latest_measured_at: string | null; measurement_count: number }
 export interface Measurement { id: string; participant_id: string; age: number | null; measured_at: string | null; analysis_started_at?: string | null; extractor_name: string; extractor_version: string; created_by: string }
 export interface MeasurementItem extends Measurement { has_analysis_result: boolean }

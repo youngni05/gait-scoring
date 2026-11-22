@@ -493,15 +493,3 @@ ol, ul { list-style: none; }
 .account-logout { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 52px; padding: 14px 18px; color: #b43d48; text-align: left; font-size: 16px; font-weight: 600; }
 .account-logout:hover { background: #fff4f4; }
 .account-trigger:focus-visible, .account-logout:focus-visible { outline: 2px solid var(--primary); outline-offset: -3px; }
-
-/* 대상자 상세 상단 정보 카드 */
-.subject-profile-card { margin: 20px 20px 0; padding: 20px; background: #fff; border: 1px solid var(--border); border-radius: 20px; }
-.subject-profile-heading { display: flex; align-items: center; gap: 16px; }
-.subject-profile-heading > div { flex: 1; min-width: 0; }
-.subject-profile-heading h2 { font-size: 23px; font-weight: 800; overflow-wrap: anywhere; }
-.subject-profile-meta { margin-top: 5px; color: var(--fg-60); font-size: 14px; }
-.subject-profile-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 20px; }
-.subject-profile-stats > div { text-align: center; padding: 12px 4px; background: var(--card); border-radius: 12px; }
-.subject-profile-stats dt { font-size: 12px; color: var(--fg-60); }
-.subject-profile-stats dd { margin-top: 6px; font-size: 15px; font-weight: 700; }
-.subject-profile-edit { margin-top: 16px; background: #fff; }

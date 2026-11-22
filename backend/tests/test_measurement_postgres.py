@@ -313,39 +313,6 @@ class MeasurementPostgresTests(unittest.TestCase):
         self.assertEqual(self.http(f"/participants/{uuid4()}/measurement-summaries")[0], 404)
         self.assertEqual(self.http(endpoint + "/measurement-summaries?limit=101")[0], 422)
 
-    def test_participant_registration_time_preserves_legacy_and_uses_server_clock(self):
-        legacy_path = f"/participants/{self.legacy_participant}"
-        with Session(self.engine) as db:
-            self.assertIsNone(db.get(Participant, self.legacy_participant).created_at)
-        self.assertIsNone(self.http(legacy_path)[1]["created_at"])
-        self.assertIsNone(self.http(f"/team/participant-summaries/{self.legacy_participant}")[1]["createdAt"])
-        code, edited, _ = self.http(legacy_path, "PATCH", {"name": "Legacy registration fixture"})
-        self.assertEqual(code, 200)
-        self.assertIsNone(edited["created_at"])
-
-        before = datetime.now(timezone.utc)
-        code, created, _ = self.http("/participants", "POST", {
-            "name": "Registration fixture", "gender": "F", "birth_date": "1950-01-01", "height_cm": "152.00",
-            "created_at": "1990-01-01T00:00:00Z",  # Client cannot choose the server timestamp.
-        })
-        self.assertEqual(code, 201)
-        timestamp = datetime.fromisoformat(created["created_at"].replace("Z", "+00:00"))
-        self.assertGreaterEqual(timestamp, before)
-        self.assertLessEqual(timestamp, datetime.now(timezone.utc))
-        participant_id = created["id"]
-        path = f"/participants/{participant_id}"
-        code, edited, _ = self.http(path, "PATCH", {"height_cm": "153.00"})
-        self.assertEqual(code, 200)
-        self.assertEqual(edited["created_at"], created["created_at"])
-        self.assertEqual(self.http(path, "PATCH", {"created_at": "1990-01-01T00:00:00Z"})[0], 422)
-        for endpoint in (path, path + "/summary", f"/team/participant-summaries/{participant_id}"):
-            row = self.http(endpoint)[1]
-            value = row.get("created_at", row.get("createdAt"))
-            self.assertEqual(datetime.fromisoformat(value.replace("Z", "+00:00")), timestamp)
-        for endpoint, field in (("/participants", "created_at"), ("/participants/summaries", "created_at"), ("/team/participant-summaries", "createdAt")):
-            row = next(p for p in self.http(endpoint)[1] if p["id"] == participant_id)
-            self.assertEqual(datetime.fromisoformat(row[field].replace("Z", "+00:00")), timestamp)
-
     def test_migration_preserves_existing_data(self):
         with Session(self.engine) as db:
             old = db.get(GaitMeasurement, self.legacy_measurement)

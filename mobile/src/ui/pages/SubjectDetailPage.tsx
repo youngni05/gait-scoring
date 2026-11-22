@@ -1,7 +1,7 @@
 /** 03 대상자 상세: 정보 확인 후 ‘새 보행 영상 분석’ 또는 ‘이전 결과 조회’로 갈라진다. */
 import { Avatar, PageError, PageLoading, TopBar } from '../components/layout';
 import { ChevronRightIcon, HistoryIcon, PenIcon, VideoIcon } from '../components/icons';
-import { ageOn, dataSource, fmtRegistrationDate, fmtDate } from '../data';
+import { ageOn, dataSource, fmtBirth, fmtDate } from '../data';
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { fmtDay, subjectOverview, type SubjectOverview } from '../data/visit-summary.mjs';
@@ -30,22 +30,20 @@ export function SubjectDetailPage() {
     <div className="screen" style={{ paddingBottom: 40 }}>
       <TopBar title="대상자 상세" nav="back" onNav={back} />
 
-      <section className="card subject-profile-card" aria-label="대상자 정보">
-        <div className="subject-profile-heading">
-          <Avatar name={subject.name} size="lg" />
-          <div>
-            <h2>{subject.name}</h2>
-            <p className="subject-profile-meta">{subject.sex === '여' ? '여성' : subject.sex === '남' ? '남성' : '성별 미확인'}</p>
-          </div>
+      <section className="subject-identity" aria-label="대상자 정보">
+        <div className="subject-identity-head">
+          <Avatar name={subject.name} size="sm" />
+          <h2>{subject.name}</h2>
+          <button className="subject-edit" aria-label="대상자 정보 수정" onClick={() => navigate(`/subjects/${subject.id}/edit`)}>
+            <PenIcon size={16} />수정
+          </button>
         </div>
-        <dl className="subject-profile-stats">
+        <dl className="subject-facts">
           <div><dt>나이</dt><dd>{subject.birth ? `만 ${ageOn(subject.birth)}세` : '미확인'}</dd></div>
+          <div><dt>성별</dt><dd>{subject.sex ?? '미확인'}</dd></div>
           <div><dt>키</dt><dd>{subject.heightCm == null ? '미확인' : `${subject.heightCm} cm`}</dd></div>
-          <div><dt>등록일</dt><dd>{fmtRegistrationDate(subject.createdAt)}</dd></div>
+          <div><dt>생년월일</dt><dd>{fmtBirth(subject.birth) || '미확인'}</dd></div>
         </dl>
-        <button className="btn btn-outline btn-sm subject-profile-edit" aria-label="대상자 정보 수정" onClick={() => navigate(`/subjects/${subject.id}/edit`)}>
-          <PenIcon size={18} /> 정보 수정
-        </button>
       </section>
 
       {overview?.latest && (

@@ -9,23 +9,12 @@ export const JOINTS: Joint[] = ['hip', 'knee', 'ankle'];
 export const JOINT_LABEL: Record<Joint, string> = { hip: '고관절', knee: '무릎', ankle: '발목' };
 
 export interface Subject {
-  /** Server registration timestamp; absent for legacy participants. */
-  createdAt?: string | null;
   id: string;
   name: string;
   sex: Sex | null;
   /** YYYY-MM-DD */
   birth: string;
   heightCm: number | null;
-}
-
-/** Registration dates are displayed in Korean time on every device. */
-export function fmtRegistrationDate(value?: string | null): string {
-  if (!value) return '—';
-  const date = new Date(value);
-  if (!Number.isFinite(date.getTime())) return '—';
-  const parts = new Intl.DateTimeFormat('en', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(date);
-  return ['year', 'month', 'day'].map(type => parts.find(p => p.type === type)?.value).join('.');
 }
 
 /** 보행 주기 0~100%를 2% 간격(51점)으로 나눈 좌우 관절 각도(°). */

@@ -54,7 +54,6 @@ class ParticipantResponse(BaseModel):
     birth_date: date | None
     height_cm: Decimal | None
     created_by: UUID
-    created_at: datetime | None
 
     model_config = ConfigDict(from_attributes=True)
 

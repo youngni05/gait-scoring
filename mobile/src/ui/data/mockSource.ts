@@ -65,14 +65,14 @@ export const mockSource: GaitDataSource = {
 
   async createSubject(input) {
     await wait(400);
-    const created = { ...input, id: `s${Date.now().toString(36)}${seq++}`, createdAt: new Date().toISOString() };
+    const created = { ...input, id: `s${Date.now().toString(36)}${seq++}` };
     subjects = [created, ...subjects];
     return created;
   },
 
   async updateSubject(id, input) {
     await wait(400);
-    const updated = { ...input, id, createdAt: subjects.find(s => s.id === id)?.createdAt ?? null };
+    const updated = { ...input, id };
     subjects = subjects.map((s) => (s.id === id ? updated : s));
     return updated;
   },
