@@ -9,7 +9,7 @@ import { visitGdi } from './visit-summary.mjs';
 import { walkingEstimate } from './visit-walking.mjs';
 
 function subject(p: Participant): Subject {
-  return {id:p.id, name:p.name, sex:p.gender === 'F' ? '여' : p.gender === 'M' ? '남' : null,
+  return {id:p.id, name:p.name, createdAt:p.created_at ?? null, sex:p.gender === 'F' ? '여' : p.gender === 'M' ? '남' : null,
     birth:p.birth_date ?? '', heightCm:p.height_cm == null ? null : Number(p.height_cm)};
 }
 function profile(input: SubjectInput) {

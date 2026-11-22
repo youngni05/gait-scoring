@@ -94,7 +94,7 @@ def submit(participant_id: UUID, response: Response, body=Depends(bounded_json),
 
 @router.get("/participant-summaries")
 def summaries(db: Session = Depends(get_db)):
-    return [dict(id=p.id, name=p.name, sex={"F": "여", "M": "남"}.get(p.gender), birth=p.birth_date or "",
+    return [dict(id=p.id, name=p.name, createdAt=p.created_at, sex={"F": "여", "M": "남"}.get(p.gender), birth=p.birth_date or "",
                  heightCm=p.height_cm and float(p.height_cm), latestMeasuredAt=latest, resultCount=count)
             for p, latest, count in db.execute(select(Participant, func.max(func.coalesce(GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at)),
                 func.count(GaitMeasurement.id)).outerjoin(GaitMeasurement).group_by(Participant.id).order_by(Participant.name, Participant.id))]
@@ -172,7 +172,7 @@ def participant_summary(participant_id: UUID, db: Session = Depends(get_db)):
         func.max(func.coalesce(GaitMeasurement.analysis_started_at, GaitMeasurement.measured_at)),
         func.count(GaitMeasurement.id)).where(GaitMeasurement.participant_id == participant_id)).one()
     previews = db.execute(text(RECENT_VISITS_SQL), {"participant_id": participant_id}).scalars().all() if count else []
-    return dict(id=p.id, name=p.name, sex={"F": "여", "M": "남"}.get(p.gender), birth=p.birth_date or "",
+    return dict(id=p.id, name=p.name, createdAt=p.created_at, sex={"F": "여", "M": "남"}.get(p.gender), birth=p.birth_date or "",
                 heightCm=float(p.height_cm) if p.height_cm is not None else None,
                 latestMeasuredAt=latest, resultCount=count, recentVisits=previews)
 

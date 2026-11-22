@@ -14,6 +14,7 @@ from sqlalchemy import (
     SmallInteger,
     String,
     UniqueConstraint,
+    func,
 )
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
@@ -65,6 +66,8 @@ class Participant(Base):
     gender: Mapped[str | None] = mapped_column(String(1), nullable=True)
     birth_date: Mapped[date | None] = mapped_column(Date, nullable=True)
     height_cm: Mapped[Decimal | None] = mapped_column(Numeric(5, 2), nullable=True)
+    # NULL for pre-migration participants; only new inserts receive a timestamp.
+    created_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True, server_default=func.now())
 
 
 class GaitMeasurement(Base):
