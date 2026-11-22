@@ -22,13 +22,13 @@ import {
   TriangleAlertIcon,
 } from '../components/icons';
 import { LoadingMark } from '../components/brand';
-import { AnalysisFailedError, isDemo, dataSource, fmtDate } from '../data';
+import { AnalysisFailedError, isDemo, dataSource, fmtDate, type ResultRecord } from '../data';
 import { readCaptureDay } from '../../pose/browser-video-source';
 import { useLeaveGuard, useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { NotFound } from './NotFound';
 
-type Phase = 'pick' | 'preview' | 'running' | 'failed' | 'done';
+type Phase = 'pick' | 'preview' | 'running' | 'server' | 'failed' | 'done' | 'open-report';
 
 interface Picked {
   /** 실제로 고른 파일. 예시 영상이면 null */
@@ -87,6 +87,21 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   const pickedUrl = picked?.url ?? null;
   useEffect(() => () => { if (pickedUrl) URL.revokeObjectURL(pickedUrl); }, [pickedUrl]);
 
+  function showRecord(record: ResultRecord) {
+    setResultId(record.id);
+    if (record.serverState === 'pending') {
+      setPct(95);
+      setProgressText('서버에서 보행을 분석하고 있습니다.');
+      setPhase('server');
+    } else if (record.serverState === 'failed') {
+      setPhase('open-report');
+    } else {
+      setPct(100);
+      setProgressText('분석이 완료되었습니다.');
+      setPhase('done');
+    }
+  }
+
   // 분석 진행. 화면을 떠나면 진행 중인 분석을 취소한다.
   useEffect(() => {
     if (phase !== 'running') return;
@@ -95,8 +110,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
       .analyzeVideo(subjectId, picked?.file ?? null, (p,detail) => {if(!abort.signal.aborted){setPct(p);setProgressText(detail??'');}}, abort.signal, {day,daySource,mode:'guided',height:height ? Number(height) : null})
       .then((rec) => {
         if (abort.signal.aborted) return;
-        setResultId(rec.id);
-        setPhase('done');
+        showRecord(rec);
       })
       .catch((e) => {
         if (abort.signal.aborted) return;
@@ -113,7 +127,31 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
   }, [phase]);
 
   useEffect(() => {
-    if (!isDemo && phase === 'done' && resultId) navigate(`/subjects/${subjectId}/results/${resultId}`, { replace: true });
+    if (phase !== 'server' || !resultId) return;
+    const abort = new AbortController();
+    let timer: number;
+    const poll = async () => {
+      try {
+        const record = await dataSource.getResult(subjectId, resultId, abort.signal);
+        if (abort.signal.aborted) return;
+        if (!record) return setPhase('open-report');
+        showRecord(record);
+        if (record.serverState !== 'pending') return;
+        timer = window.setTimeout(poll, 3000);
+      } catch {
+        if (abort.signal.aborted) return;
+        setProgressText('연결 상태를 확인하고 있습니다. 잠시 후 다시 확인합니다.');
+        timer = window.setTimeout(poll, 10000);
+      }
+    };
+    timer = window.setTimeout(poll, 3000);
+    return () => { abort.abort(); clearTimeout(timer); };
+  }, [phase, resultId, subjectId]);
+
+  useEffect(() => {
+    if (isDemo || !resultId || (phase !== 'done' && phase !== 'open-report')) return;
+    const timer = window.setTimeout(() => navigate(`/subjects/${subjectId}/results/${resultId}`, { replace: true }), phase === 'done' ? 500 : 0);
+    return () => clearTimeout(timer);
   }, [phase, resultId, subjectId, navigate]);
 
   const discardRejected = async () => {
@@ -127,7 +165,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
     try {
       const saved = await dataSource.discardRejectedCapture(subjectId, pending.id, abort.signal);
       if (abort.signal.aborted) return;
-      if (saved) { setResultId(saved.id); setPhase('done'); }
+      if (saved) { showRecord(saved); }
       else {
         setPicked(null); setFailure(null); setEditedDay(null); setEditedHeight(null); setPhase('pick');
         recovery.reload();
@@ -173,10 +211,11 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
     setPhase('running');
   };
 
+  const showingProgress = phase === 'running' || phase === 'server' || (!isDemo && phase === 'done');
   const stepStates: [StepState, StepState, StepState] =
     phase === 'pick' || phase === 'preview'
       ? ['now', 'todo', 'todo']
-      : phase === 'running'
+      : phase === 'running' || phase === 'server'
         ? ['done', 'now', 'todo']
         : phase === 'failed'
           ? ['done', 'fail', 'todo']
@@ -184,13 +223,13 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
 
   const title = phase === 'pick' || phase === 'preview' ? '새 보행 영상 분석' : '보행 영상 분석';
   // 분석 중에는 뒤로 가기를 숨긴다(디자인 06-2).
-  const nav = phase === 'running' ? undefined : 'back';
+  const nav = showingProgress ? undefined : 'back';
   const onBack = () => {
     if (phase === 'preview') return setPhase('pick');
     backToDetail();
   };
 
-  const stageIndex = isDemo ? Math.min(3, Math.floor(pct / 25)) : pct === 0 ? 0 : pct < 90 ? 1 : pct < 100 ? 2 : 3;
+  const stageIndex = isDemo ? Math.min(3, Math.floor(pct / 25)) : pct === 0 ? 0 : pct < 90 ? 1 : pct < 95 ? 2 : pct < 100 ? 3 : 4;
   const remainSec = Math.max(0, Math.round(((100 - pct) / 100) * EXPECTED_SEC));
 
   return (
@@ -209,12 +248,13 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
         }}
       />
 
-      {recovery.data && <section className="card" style={{margin:20,padding:20}} role="status">
-        <h2>확인하지 못한 저장 요청이 있습니다</h2>
-        <p>{recovery.data.fileName}</p><p>파일을 다시 선택하지 않고 기존 요청의 저장 여부를 확인합니다.</p>
-        <button className="btn btn-primary" disabled={phase === 'running' || cleaning} onClick={start}>이전 저장 요청 이어가기</button>
+      {recovery.data && (phase === 'pick' || phase === 'failed') && <section className="card capture-recovery" aria-labelledby="recovery-title">
+        <h2 id="recovery-title">이전 영상의 저장 여부를 확인해 주세요</h2>
+        <p className="capture-recovery-file"><FileIcon size={18} /><span>{recovery.data.fileName}</span></p>
+        <p>영상을 다시 선택할 필요 없이 저장 여부를 확인할 수 있습니다.</p>
+        <button className="btn btn-primary btn-sm" disabled={cleaning} onClick={start}>이전 저장 요청 이어가기</button>
         {recovery.data.rejectionStatus && <p>서버가 요청을 거절했습니다 (응답 코드 {recovery.data.rejectionStatus}). {recovery.data.canDiscard ? '영상을 다시 선택해 분석해 주세요. 같은 문제가 반복되면 담당자에게 알려 주세요.' : '이전 저장 여부가 불확실해 요청을 보관합니다. 담당자에게 확인해 주세요.'}</p>}
-        {recovery.data.canDiscard && <button className="btn btn-outline" disabled={phase === 'running' || cleaning} onClick={() => void discardRejected()}>
+        {recovery.data.canDiscard && <button className="btn btn-outline btn-sm" disabled={cleaning} onClick={() => void discardRejected()}>
           {cleaning ? '서버 저장 여부 확인 중…' : '다시 분석하기'}
         </button>}
         {cleanupError && <p role="alert">{cleanupError}</p>}
@@ -282,11 +322,11 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
       )}
 
       {/* 06-2 분석 진행 중 · 완료 */}
-      {(phase === 'running' || phase === 'done') && picked && <FileCard picked={picked} />}
-      {phase === 'running' && (
+      {(showingProgress || phase === 'done') && picked && <FileCard picked={picked} />}
+      {showingProgress && (
         <section style={{ margin: '24px 20px 0' }} role="status" aria-live="polite">
           <p style={{ fontSize: 'var(--text-body)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }} className="primary">
-            <LoadingMark size={22} /> 분석하고 있습니다
+            {phase === 'done' ? <><CheckCircleIcon size={22} /> 분석 완료</> : <><LoadingMark size={22} /> 분석하고 있습니다</>}
           </p>
           <p style={{ marginTop: 4, fontSize: '3rem', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.02em' }}>
             {pct}
@@ -296,9 +336,9 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
             <div style={{ width: `${pct}%` }} />
           </div>
 
-          <p style={{ marginTop: 8, fontSize: 'var(--text-caption)' }} className="muted">{isDemo ? '예상 남은 시간 약 '+remainSec+'초' : progressText || (pct >= 90 ? '팀 서버에 좌표 저장 중' : '영상 프레임에서 관절 위치 추출 중')}</p>
+          <p style={{ marginTop: 8, fontSize: 'var(--text-caption)' }} className="muted">{isDemo ? '예상 남은 시간 약 '+remainSec+'초' : progressText || (pct >= 90 ? '추출한 좌표를 확인하고 있습니다.' : '영상 프레임에서 관절 위치 추출 중')}</p>
           <ol style={{ marginTop: 24, borderRadius: 'var(--r-lg)', border: '1px solid var(--border)' }}>
-            {(isDemo ? STAGES : ["영상 확인","프레임별 관절 위치 추출","좌표 추출 검산","팀 서버에 좌표 저장"]).map((name, i) => {
+            {(isDemo ? STAGES : ["영상 확인","프레임별 관절 위치 추출","좌표 추출 검산","서버에서 분석 진행"]).map((name, i) => {
               const state = i < stageIndex ? 'done' : i === stageIndex ? 'now' : 'wait';
               return (
                 <li
@@ -324,7 +364,7 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
           </ol>
         </section>
       )}
-      {phase === 'done' && (
+      {isDemo && phase === 'done' && (
         <section style={{ margin: '40px 20px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }} role="status">
           <span style={{ width: 96, height: 96, borderRadius: 999, background: 'rgb(23 191 99 / .15)', color: 'var(--ok)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <CheckIcon size={40} />
@@ -381,9 +421,12 @@ function AnalyzeContent({subjectId}: {subjectId: string}) {
         {phase === 'running' && (
           <div className="stack"><p style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 'var(--text-body)', color: 'var(--fg-80)', padding: '4px 0' }}>
             <InfoIcon size={20} className="primary" /> 분석이 끝날 때까지 앱을 닫지 말아 주세요.
-          </p>{!isDemo && <button className="btn btn-outline" onClick={()=>setPhase('preview')}>분석 취소</button>}</div>
+          </p>{!isDemo && <button className="btn btn-outline" onClick={() => {
+            setPhase(recovery.data || !picked ? 'pick' : 'preview');
+          }}>분석 취소</button>}</div>
         )}
-        {phase === 'done' && (
+        {phase === 'server' && <button className="btn btn-outline" onClick={() => navigate(`/subjects/${subjectId}/results`)}>이전 결과 목록으로</button>}
+        {isDemo && phase === 'done' && (
           <button className="btn btn-primary" onClick={() => navigate(`/subjects/${subject.id}/results/${resultId}`, { replace: true })}>
             <FileIcon /> 결과지 보기
           </button>
