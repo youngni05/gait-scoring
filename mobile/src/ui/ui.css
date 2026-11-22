@@ -433,3 +433,17 @@ ol, ul { list-style: none; }
 .metric-grid3.live .cnt.none { font-weight: 600; color: var(--fg-40); }
 .metric-grid3.live .cnt .better { color: #0b7a3e; }
 .metric-grid3.live .cnt .worse { color: #c0121d; }
+
+/* 로그인 계정과 로그아웃 */
+.account-menu { position: relative; flex-shrink: 0; }
+.account-trigger { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 64px; height: 44px; padding: 0 12px; background: #fff; border: 1px solid var(--border); border-radius: 14px; color: var(--fg-70); }
+.account-trigger:hover, .account-trigger[aria-expanded='true'] { background: var(--card); border-color: #c5d5df; }
+.account-chevron { transition: transform .15s; }
+.account-chevron.open { transform: rotate(180deg); }
+.account-panel { position: absolute; top: calc(100% + 10px); right: 0; z-index: 25; width: min(236px, calc(100vw - 40px)); border: 1px solid var(--border); border-radius: 16px; background: #fff; box-shadow: 0 8px 28px rgb(15 20 25 / .12); overflow: hidden; }
+.account-identity { padding: 18px 18px 16px; border-bottom: 1px solid var(--border); }
+.account-identity p { margin-bottom: 6px; font-size: 14px; color: var(--fg-60); }
+.account-identity strong { display: block; font-size: 16px; overflow-wrap: anywhere; }
+.account-logout { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 52px; padding: 14px 18px; color: #b43d48; text-align: left; font-size: 16px; font-weight: 600; }
+.account-logout:hover { background: #fff4f4; }
+.account-trigger:focus-visible, .account-logout:focus-visible { outline: 2px solid var(--primary); outline-offset: -3px; }

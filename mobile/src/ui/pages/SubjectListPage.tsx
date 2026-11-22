@@ -1,6 +1,7 @@
 /** 02 대상자 목록 · 02-1 빈 상태 · 02-2 로딩 · 검색 결과 없음 */
 import { useState } from 'react';
 import { Avatar } from '../components/layout';
+import { AccountMenu } from '../components/AccountMenu';
 import { LoadingMark } from '../components/brand';
 import { ChevronRightIcon, ClearIcon, ClockIcon, PlusIcon, RotateIcon, SearchIcon, UserPlusIcon, UsersIcon } from '../components/icons';
 import { ageOn, dataSource, fmtDate } from '../data';
@@ -20,12 +21,15 @@ export function SubjectListPage() {
   return (
     <div className={`screen ${empty ? '' : 'has-cta'}`}>
       <header className="topbar" style={{ padding: '24px 20px 16px' }}>
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <h1 style={{ fontSize: 26, fontWeight: 800, letterSpacing: '-0.02em' }}>대상자 목록</h1>
+          <AccountMenu />
+        </div>
+        <div style={{ marginTop: 4, minHeight: 20 }}>
           {loading ? (
-            <span className="skeleton" style={{ width: 56, height: 20, marginBottom: 4 }} />
+            <span className="skeleton" style={{ display: 'block', width: 56, height: 20 }} />
           ) : (
-            !error && <span style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }} className="muted">총 {list.length}명</span>
+            !error && <span style={{ fontSize: 15, fontWeight: 600 }} className="muted">총 {list.length}명</span>
           )}
         </div>
         <div className="input-wrap" style={{ marginTop: 16, opacity: loading || empty ? 0.5 : 1 }}>

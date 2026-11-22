@@ -61,6 +61,11 @@ export class ApiClient {
     const { data } = await this.request('/team' + path, init, signal);
     return data as T;
   }
+  async me(signal?: AbortSignal): Promise<{ id: string; login_id: string }> {
+    const { data } = await this.request('/auth/me', {}, signal);
+    if (typeof data?.id !== 'string' || typeof data.login_id !== 'string') throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid account response');
+    return data;
+  }
   async login(username: string, password: string, signal?: AbortSignal): Promise<string> {
     const { data } = await this.request('/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ username, password }).toString() }, signal, false);
     if (typeof data?.access_token !== 'string' || !data.access_token || data.token_type?.toLowerCase() !== 'bearer') throw new ApiError(200, 'INVALID_RESPONSE', 'Invalid token response');
