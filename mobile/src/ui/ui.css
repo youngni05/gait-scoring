@@ -369,6 +369,7 @@ ol, ul { list-style: none; }
 .history-btn:hover { border-color: var(--primary) !important; }
 
 .record-btn {
+  container-type: inline-size;
   width: 100%; text-align: left; border-radius: var(--r-lg); background: var(--bg);
   border: 2px solid var(--border); padding: 16px; transition: border-color .15s, background .15s;
 }
@@ -376,6 +377,23 @@ ol, ul { list-style: none; }
 .record-btn[data-latest] { border-color: var(--primary); }
 .record-btn[data-latest]:hover { background: rgb(227 236 246 / .4); }
 .record-item { position: relative; min-width: 0; word-break: keep-all; }
+.record-btn .metric-grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.record-btn .metric-grid3 .k { font-size: .875rem; }
+.record-btn .metric-grid3 .v { font-size: 1.25rem; }
+.record-btn .metric-grid3 .v small { display: inline-block; font-size: .8125rem; white-space: nowrap; }
+@container (max-width: 18.5rem) {
+  .record-btn .metric-grid3 { grid-template-columns: 1fr; }
+  .record-btn .metric-grid3 > div {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
+  }
+  .record-btn .metric-grid3 .k { margin-right: auto; }
+  .record-btn .metric-grid3 > div + div { border-left: 0; border-top: 1px solid var(--border); }
+}
+.record-pagination {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 12px; align-items: center; padding: 20px;
+}
+.record-pagination span { white-space: nowrap; }
 .record-heading {
   display: flex; align-items: flex-start; justify-content: space-between;
   flex-wrap: wrap; gap: 6px 8px; padding-right: 40px;

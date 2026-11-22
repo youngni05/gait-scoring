@@ -6,6 +6,7 @@ import { dataSource, fmtDate, fmtTime, fmtWeekday, type ResultRecord } from '../
 import { useNavigate, useParams } from '../router';
 import { useAsync } from '../session';
 import { NotFound } from './NotFound';
+import { formatMetric } from '../metric-format';
 
 export function ResultListPage() {
   const { subjectId = '' } = useParams();
@@ -90,18 +91,18 @@ export function ResultListPage() {
                 <div className="metric-grid3" style={{ marginTop: 16 }}>
                   <div>
                     <p className="k">GDI</p>
-                    <p className={`v ${r.gdi === null ? 'none' : ''}`}>{r.gdi ?? '—'}</p>
+                    <p className={`v ${r.gdi === null ? 'none' : ''}`}>{formatMetric(r.gdi, 1)}</p>
                   </div>
                   <div>
                     <p className="k">케이던스</p>
                     <p className={`v ${r.cadence === null ? 'none' : ''}`}>
-                      {r.cadence ?? '—'}
+                      {formatMetric(r.cadence, 0)}
                       {r.cadence !== null && <small>걸음/분</small>}
                     </p>
                   </div>
                   <div>
                     <p className="k">좌우 대칭</p>
-                    <p className={`v ${r.symmetry === null ? 'none' : ''}`}>{r.symmetry ?? '—'}</p>
+                    <p className={`v ${r.symmetry === null ? 'none' : ''}`}>{formatMetric(r.symmetry, 1)}</p>
                   </div>
                 </div>
                 <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 14, color: 'var(--fg-70)' }}>
@@ -133,7 +134,7 @@ export function ResultListPage() {
           if (records.length === 1 && offset > 0) setOffset(Math.max(0, offset - 20));
           else reload();
         }} />}
-      <nav aria-label="결과 목록 페이지" style={{padding:20,display:'flex',gap:12,alignItems:'center'}}>
+      <nav aria-label="결과 목록 페이지" className="record-pagination">
         <button className="btn btn-outline" disabled={offset === 0} onClick={()=>setOffset(Math.max(0,offset-20))}>이전 페이지</button>
         <span>{Math.floor(offset/20)+1} / {Math.max(1,Math.ceil(page.total/20))}</span>
         <button className="btn btn-outline" disabled={offset+20 >= page.total} onClick={()=>setOffset(offset+20)}>다음 페이지</button>
