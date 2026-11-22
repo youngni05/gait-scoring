@@ -115,7 +115,7 @@ export function LegendLR() {
 /** 축 이름과 단위가 아직 확정되지 않았음을 알리는 표시. */
 export function AxisNote() {
   return (
-    <p style={{ marginTop: 8, fontSize: 13, color: 'var(--fg-60)', display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+    <p style={{ marginTop: 8, fontSize: 'var(--text-caption)', color: 'var(--fg-60)', display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
       <span className="pill pill-draft">가안</span>
       가로축 보행 주기(%) · 세로축 관절 각도(°)
     </p>
@@ -127,7 +127,7 @@ export function PageLoading({ title, nav, onNav }: { title: string; nav?: 'back'
   return (
     <div className="screen">
       <TopBar title={title} nav={nav} onNav={onNav} />
-      <p role="status" className="primary" style={{ padding: '72px 20px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, fontSize: 15, fontWeight: 600 }}>
+      <p role="status" className="primary" style={{ padding: '72px 20px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, fontSize: 'var(--text-body)', fontWeight: 600 }}>
         <LoadingMark size={44} /> 불러오는 중입니다…
       </p>
     </div>

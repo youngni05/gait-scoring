@@ -56,14 +56,14 @@ export function ChartZoomPage() {
         <LegendLR />
         <button
           onClick={() => setResetKey((n) => n + 1)}
-          style={{ marginLeft: 'auto', height: 40, padding: '0 14px', borderRadius: 999, border: '2px solid var(--border)', fontSize: 14, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 4 }}
+          style={{ marginLeft: 'auto', height: 40, padding: '0 14px', borderRadius: 999, border: '2px solid var(--border)', fontSize: 'var(--text-caption)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 4 }}
         >
           <ResetIcon size={15} /> 원래대로
         </button>
       </div>
 
       <section style={{ margin: '12px 12px 0', borderRadius: 'var(--r-lg)', border: '1px solid var(--border)', padding: '12px 4px 4px' }}>
-        <p style={{ padding: '0 16px', fontSize: 18, fontWeight: 800 }}>{JOINT_LABEL[j]}</p>
+        <p style={{ padding: '0 16px', fontSize: '1.125rem', fontWeight: 800 }}>{JOINT_LABEL[j]}</p>
         {curve ? (
           <JointChart key={j} curve={curve} {...(actual ? {native:actual} : {})} height={460} zoomable resetKey={resetKey} label={JOINT_LABEL[j]} />
         ) : (
@@ -74,7 +74,7 @@ export function ChartZoomPage() {
         {rec.live ? "가로축은 구간 시작 후 경과 시간(초), 세로축은 무릎 각도(°)입니다." : <AxisNote />}
       </div>
 
-      <div className="card" style={{ margin: '16px 20px 0', borderRadius: 'var(--r-md)', padding: '14px 16px', display: 'grid', gap: 8, fontSize: 14, color: 'var(--fg-80)' }}>
+      <div className="card" style={{ margin: '16px 20px 0', borderRadius: 'var(--r-md)', padding: '14px 16px', display: 'grid', gap: 8, fontSize: 'var(--text-caption)', color: 'var(--fg-80)' }}>
         <p style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <HandIcon size={18} className="primary" /> 그래프를 가로로 드래그하면 해당 구간이 확대되고, 누르면 그 지점의 값이 보입니다.
         </p>

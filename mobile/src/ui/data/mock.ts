@@ -31,6 +31,7 @@ export interface ResultRecord {
   subjectId: string;
   /** ISO 날짜·시각 */
   measuredAt: string;
+  captureDay?: string | null;
   dateBasis?: 'analysis_start' | 'legacy_capture' | 'capture';
   /** 촬영 당시 나이와 키. 대상자 정보를 나중에 고쳐도 이 값은 바뀌지 않는다. */
   ageAtCapture: number | null;
@@ -61,14 +62,16 @@ export function ageOn(birth: string, on: Date = new Date()): number {
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
-export const fmtDate = (iso: string) => {
-  if (!iso) return "촬영일 미확인";
-  const d = new Date(iso);
-  return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}`;
-};
-export const fmtWeekday = (iso: string) => WEEKDAY[new Date(iso).getDay()] ?? '';
+// 촬영 날짜는 한국 날짜로 표시한다. 시간대가 없는 예시 기록은 입력된 날짜를 유지한다.
+const seoulDate = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' });
+const seoulTime = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', hour: 'numeric', minute: '2-digit', hour12: true });
+const hasOffset = (iso: string) => /(?:Z|[+-]\d{2}:\d{2})$/i.test(iso);
+export const displayDay = (iso: string) => hasOffset(iso) ? seoulDate.format(new Date(iso)) : iso.slice(0, 10);
+export const fmtDate = (iso: string) => iso ? displayDay(iso).replaceAll('-', '.') : '촬영일 미확인';
+export const fmtWeekday = (iso: string) => iso ? WEEKDAY[new Date(displayDay(iso) + 'T12:00:00').getDay()] : '';
 export const fmtTime = (iso: string) => {
   if (!iso) return "";
+  if (hasOffset(iso)) return seoulTime.format(new Date(iso));
   const d = new Date(iso);
   const h = d.getHours();
   return `${h < 12 ? '오전' : '오후'} ${h % 12 === 0 ? 12 : h % 12}:${pad(d.getMinutes())}`;

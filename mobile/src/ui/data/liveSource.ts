@@ -101,6 +101,12 @@ export const liveSource:GaitDataSource = {
     try { const r = await getRecord(rid,signal); return r.subjectId === id ? r : null; }
     catch (error) { if (error instanceof ApiError && error.status === 404) return null; throw error; }
   },
+  async updateCaptureDay(id, rid, day, previousDay) {
+    await teamApi.shared(capturePath(id) + '/' + encodeURIComponent(rid) + '/capture-day', {
+      method: 'PATCH', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({day, previous_day: previousDay}),
+    });
+  },
   async deleteResult(id,rid) { await teamApi.shared(capturePath(id)+'/'+encodeURIComponent(rid),{method:'DELETE'}); },
   async analyzeVideo(id,file,progress,signal,capture) {
     const key = pendingKey(id);
