@@ -69,6 +69,7 @@ class MobileUiTests(unittest.TestCase):
           packet.requestId = crypto.randomUUID();
           packet.coords.recording_id = packet.requestId;
           packet.coords.subject.id = id;
+          if (window.oversizedTestPacket) packet.testPadding = 'x'.repeat(8000000);
           return packet;
         }
         export async function postJson() { throw Error('Not used by this test'); }
@@ -311,3 +312,107 @@ class MobileUiTests(unittest.TestCase):
         self.page.route(endpoint, lambda route: route.fulfill(json={**record, 'serverState':'legacy'}))
         self.page.get_by_role('button', name='지금 상태 확인', exact=True).click()
         expect(self.page.get_by_text('촬영일', exact=True)).to_be_visible()
+
+    def rejected_capture(self):
+        self.create_person()
+        self.install_extractor()
+        self.open_capture()
+        endpoint = self.api + '/team/participants/' + self.person_id + '/recordings'
+        self.page.route(endpoint, lambda route: route.fulfill(status=422, json={'detail':'Invalid coordinate packet'}))
+        self.page.get_by_role('button', name='분석 시작', exact=True).click()
+        expect(self.page.get_by_role('button', name='다시 분석하기', exact=True)).to_be_visible()
+
+    def test_rejected_request_cleanup_requires_confirmation_and_survives_reload(self):
+        self.rejected_capture()
+        self.page.once('dialog', lambda d: d.accept())
+        self.page.reload()
+        clean = self.page.get_by_role('button', name='다시 분석하기', exact=True)
+        expect(clean).to_be_visible()
+        self.page.once('dialog', lambda d: d.dismiss())
+        clean.click()
+        expect(clean).to_be_visible()
+        self.page.once('dialog', lambda d: d.accept())
+        clean.click()
+        expect(self.page.get_by_role('button', name='휴대폰에서 영상 선택', exact=False)).to_be_visible()
+        self.assertEqual(self.count(), 0)
+
+    def test_rejected_request_cleanup_keeps_body_when_server_check_fails(self):
+        self.rejected_capture()
+        self.page.route(self.api+'/team/recordings/*', lambda route: route.fulfill(status=500, json={'detail':'unavailable'}))
+        self.page.once('dialog', lambda d: d.accept())
+        self.page.get_by_role('button', name='다시 분석하기', exact=True).click()
+        expect(self.page.get_by_text('저장 여부를 확인하지 못해 요청을 보관했습니다.', exact=False)).to_be_visible()
+        self.page.once('dialog', lambda d: d.accept())
+        self.page.reload()
+        expect(self.page.get_by_role('button', name='다시 분석하기', exact=True)).to_be_visible()
+
+    def test_uncertain_request_cannot_be_discarded_after_later_rejection(self):
+        self.create_person()
+        self.install_extractor()
+        self.open_capture()
+        endpoint = self.api + '/team/participants/' + self.person_id + '/recordings'
+        self.page.route(endpoint, lambda route: route.abort('failed'))
+        self.page.get_by_role('button', name='분석 시작', exact=True).click()
+        expect(self.page.get_by_role('button', name='다시 시도', exact=True)).to_be_visible()
+        self.page.route(endpoint, lambda route: route.fulfill(status=422, json={'detail':'Invalid coordinate packet'}))
+        self.page.get_by_role('button', name='다시 시도', exact=True).click()
+        expect(self.page.get_by_text('이전 저장 여부가 불확실해 요청을 보관합니다.', exact=False)).to_be_visible()
+        expect(self.page.get_by_role('button', name='다시 분석하기', exact=True)).to_have_count(0)
+
+    def test_cleanup_rejects_invalid_success_and_proxy_404(self):
+        self.rejected_capture()
+        endpoint = self.api+'/team/recordings/*'
+        for status, body, content_type in [(200, 'null', 'application/json'), (404, '<h1>Missing proxy route</h1>', 'text/html')]:
+            with self.subTest(status=status):
+                def respond(route):
+                    route.fulfill(status=status, body=body, content_type=content_type)
+                self.page.route(endpoint, respond)
+                self.page.once('dialog', lambda d: d.accept())
+                self.page.get_by_role('button', name='다시 분석하기', exact=True).click()
+                expect(self.page.get_by_text('저장 여부를 확인하지 못해 요청을 보관했습니다.', exact=False)).to_be_visible()
+                expect(self.page.get_by_role('button', name='다시 분석하기', exact=True)).to_be_enabled()
+                self.page.unroute(endpoint, respond)
+        self.page.once('dialog', lambda d: d.accept())
+        self.page.get_by_role('button', name='다시 분석하기', exact=True).click()
+        expect(self.page.get_by_role('button', name='휴대폰에서 영상 선택', exact=False)).to_be_visible()
+
+    def test_indexeddb_fallback_blocks_concurrent_submissions(self):
+        self.create_person()
+        self.install_extractor()
+        statuses = self.page.evaluate('''async (id) => {
+          Object.defineProperty(navigator, 'locks', {value:undefined,configurable:true});
+          const {liveSource} = await import('/src/ui/data/liveSource.ts');
+          const file = new File(['synthetic'], 'synthetic.mp4', {type:'video/mp4'});
+          const run = () => liveSource.analyzeVideo(id, file, () => {}, new AbortController().signal);
+          return (await Promise.allSettled([run(),run()])).map(r=>r.status).sort();
+        }''', self.person_id)
+        self.assertEqual(statuses, ['fulfilled', 'rejected'])
+        self.assertEqual(self.count(), 1)
+
+    def test_oversized_packet_never_creates_pending_or_posts(self):
+        self.create_person()
+        self.install_extractor()
+        self.open_capture()
+        self.page.evaluate('window.oversizedTestPacket = true')
+        posts = []
+        self.page.on('request', lambda r: posts.append(r.url) if r.method == 'POST' and r.url.endswith('/recordings') else None)
+        self.page.get_by_role('button', name='분석 시작', exact=True).click()
+        expect(self.page.get_by_text('분석 데이터가 너무 큽니다.', exact=False)).to_be_visible()
+        self.assertEqual(posts, [])
+        self.assertEqual(self.count(), 0)
+        expect(self.page.get_by_role('button', name='다른 영상 선택', exact=False)).to_be_enabled()
+
+    def test_expired_owner_cannot_mark_request_rejected(self):
+        result = self.page.evaluate('''async () => {
+          const m = await import('/src/ui/data/pending-capture.ts');
+          const key='expired-test';
+          await m.keepPending({key,id:'r',subjectId:'p',fileName:'x',body:'{}',delivery:'rejected'});
+          const db=await new Promise(resolve=>{const q=indexedDB.open('gait-pending-captures');q.onsuccess=()=>resolve(q.result)});
+          await new Promise((resolve,reject)=>{const t=db.transaction('pending','readwrite');t.objectStore('pending').put({key:'!capture-lock:'+key,owner:'old',expires:0});t.oncomplete=resolve;t.onabort=reject});db.close();
+          return m.withPendingLock(key,async lease=>{
+            let fenced=false;
+            try{await m.markDelivery(key,'r','rejected',422,{key:lease.key,owner:'old'})}catch{fenced=true}
+            return {delivery:(await m.readPending(key)).delivery,fenced};
+          });
+        }''')
+        self.assertEqual(result, dict(delivery='unconfirmed', fenced=True))

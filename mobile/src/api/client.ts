@@ -12,7 +12,7 @@ export interface MeasurementResult {
   analysis_result: null | { gdi_score: number | null; stride_length_cm: number | null; cadence_spm: number | null; hip_graph_json?: unknown; knee_graph_json?: unknown; ankle_graph_json?: unknown; model_version: string; analyzed_at: string };
 }
 export class ApiError extends Error {
-  constructor(public status: number, public code: string, message: string, public retryAfter = 0) { super(message); }
+  constructor(public status: number, public code: string, message: string, public retryAfter = 0, public detail?: unknown) { super(message); }
 }
 export function normalizeBase(value: string): string {
   const url = new URL(value.trim());
@@ -50,7 +50,7 @@ export class ApiClient {
       const response = await this.transport(this.base + path, { ...init, headers, signal: controller.signal, credentials: 'omit', redirect: 'error', cache: 'no-store' });
       let data: any;
       try { data = response.status === 204 ? null : await response.json(); } catch { throw new ApiError(response.status, 'INVALID_RESPONSE', 'Invalid JSON response'); }
-      if (!response.ok) throw new ApiError(response.status, typeof data?.detail?.code === 'string' ? data.detail.code : 'HTTP_ERROR', 'Request failed', Math.max(0, Number(response.headers.get('Retry-After')) || 0));
+      if (!response.ok) throw new ApiError(response.status, typeof data?.detail?.code === 'string' ? data.detail.code : 'HTTP_ERROR', 'Request failed', Math.max(0, Number(response.headers.get('Retry-After')) || 0), data?.detail);
       return { data, status: response.status };
     } catch (error) {
       if (error instanceof ApiError) throw error;
