@@ -51,7 +51,10 @@ def to_request(body):
     pose=c['pose'];fields(pose,('model','engine_version'),'$.coords.pose',('delegate',))
     delegate=pose.get('delegate')
     require(delegate in ('CPU','GPU') and pose['model']=='pose_landmarker_full' and pose['engine_version']=='1.2.3',
-            'Expected browser Full 1.2.3 and actual CPU/GPU delegate','$.coords.pose')
+            'Expected Full 1.2.3 and actual CPU/GPU delegate','$.coords.pose')
+    context=body['bridge_context']
+    fields(context,('profile','source_sha256','model_sha256','input_object','image_geometry','clock_basis','frame_audit_complete','fresh_tracker'),'$.bridge_context')
+    native=context['profile']=='team-server-full-cpu-video/1'
     frames=c['frames'];require(isinstance(frames,list) and (1 if local else 60)<=len(frames)<=LIMITS['max_frames'],'Invalid frame count','$.coords.frames')
     previous=-1;output=[]
     for i,f in enumerate(frames):
@@ -63,7 +66,7 @@ def to_request(body):
             for j,point in enumerate(lm):
                 require(isinstance(point,list) and len(point)==4 and all(finite(v) for v in point) and 0<=point[3]<=1,
                         'Expected finite[x,y,z,visibility] without clipping',path+f'.lm[{j}]')
-        output.append(dict(index=i,source_time_ms=f['t']*1000,detector_time_ms=f['t']*1000,
+        output.append(dict(index=i,source_time_ms=f['t']*1000,detector_time_ms=round(f['t']*1000) if native else f['t']*1000,
             landmarks=None if lm is None else [[*point,None] for point in lm],why_unavailable='no_pose' if lm is None else None))
     checked_marks(c['marks'],'$.coords.marks',frames[-1]['t'])
     m=body['metadata'];fields(m,('recordedAtSource','rotationAppliedDegrees'),'$.metadata',('detection','modelAssetVersion'))
@@ -79,13 +82,11 @@ def to_request(body):
         require(d['marks']==c['marks'],'Standing metadata and coords marks differ','$.metadata.detection.marks')
         require((d['status']=='not_detected')==(c['marks']['stand_start'] is None),'Standing status differs from marks','$.metadata.detection')
         if d['status']=='not_detected':text(d.get('reason'),'$.metadata.detection.reason')
-    context=body['bridge_context']
-    fields(context,('profile','source_sha256','model_sha256','input_object','image_geometry','clock_basis','frame_audit_complete','fresh_tracker'),'$.bridge_context')
-    require(context['profile']==f'team-browser-full-{delegate.lower()}-video/1','Extractor profile differs from delegate','$.bridge_context.profile')
+    require((native and local and delegate=='CPU') or context['profile']==f'team-browser-full-{delegate.lower()}-video/1','Extractor profile differs from delegate','$.bridge_context.profile')
     require(context['source_sha256']=='unknown' or isinstance(context['source_sha256'],str) and HASH.fullmatch(context['source_sha256']) is not None,
             'Expected original File SHA256 or unknown','$.bridge_context.source_sha256')
-    require(context['model_sha256']==POSE_MODEL_SHA256,'Browser task model differs from checked full model','$.bridge_context.model_sha256')
-    require(context['input_object'] in ('ImageData','HTMLVideoElement','unknown'),'Canvas must be reported unknown, not relabelled','$.bridge_context.input_object')
+    require(context['model_sha256']==POSE_MODEL_SHA256,'Task model differs from checked full model','$.bridge_context.model_sha256')
+    require(context['input_object'] in (('mp.Image',) if native else ('ImageData','HTMLVideoElement','unknown')),'Unexpected extractor input','$.bridge_context.input_object')
     require(context['image_geometry']=='upright_unmirrored','Analysis coordinates must be upright and unmirrored','$.bridge_context.image_geometry')
     require(context['clock_basis']=='video_pts','Native PTS required','$.bridge_context.clock_basis')
     require(context['frame_audit_complete'] is True and context['fresh_tracker'] is True,'Complete source frame audit and fresh tracker are required','$.bridge_context')
@@ -94,8 +95,8 @@ def to_request(body):
     result=dict(schema='ai-analyze-request/2',request_id=body['requestId'],pose=dict(schema='measurement-pose/1',source_id=source_id,
         image=dict(width=capture['width'],height=capture['height'],orientation='upright_unmirrored',preview_mirrored=None),
         clock=dict(unit='ms',basis='video_pts'),extractor=dict(name='MediaPipe Pose Landmarker',variant='full',
-            runtime='mediapipe-tasks-vision-web',runtime_version=pose['engine_version'],model_sha256=context['model_sha256'],delegate=delegate,settings=dict(SETTINGS)),frames=output),
-        provenance=dict(input_object=context['input_object'],tracking=dict(session_id='team-browser:'+c['recording_id'],
+            runtime='mediapipe-python' if native else 'mediapipe-tasks-vision-web',runtime_version=pose['engine_version'],model_sha256=context['model_sha256'],delegate=delegate,settings=dict(SETTINGS)),frames=output),
+        provenance=dict(input_object=context['input_object'],tracking=dict(session_id=('team-server:' if native else 'team-browser:')+c['recording_id'],
             start_time_ms=low,input_start_ms=low,input_stop_ms=high,prior_frame_count=0,fresh_tracker=True)))
     return result
 
@@ -113,7 +114,9 @@ def analyze_coords(body):
     record=dict(subject_id=c['subject']['id'],recording_id=c['recording_id'],captured_at=c['capture']['recorded_at'],
                 height_cm=c['subject']['height_cm'],recorded_at_source=body['metadata']['recordedAtSource'])
     delegate=c['pose']['delegate'].lower()
-    return finish(request,record,body['bridge_context']['source_sha256'],c,body['bridge_context']['profile'],f'team-browser-full-{delegate}-fresh-native-allframes/1')
+    profile=body['bridge_context']['profile']
+    tracking='team-server-full-cpu-fresh-native-allframes/1' if profile=='team-server-full-cpu-video/1' else f'team-browser-full-{delegate}-fresh-native-allframes/1'
+    return finish(request,record,body['bridge_context']['source_sha256'],c,profile,tracking)
 
 def finish(request,record,source,coords,profile,tracking):
     from core import analyze

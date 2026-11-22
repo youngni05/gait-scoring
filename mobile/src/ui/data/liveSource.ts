@@ -32,6 +32,8 @@ function checkPendingBody(body: string, id: string, subjectId: string) {
   try { saved = JSON.parse(body); } catch { throw Error('보관된 분석 정보를 읽을 수 없습니다. 데이터를 유지했으니 담당자에게 확인해 주세요.'); }
   if (saved?.packet?.requestId !== id || saved?.packet?.coords?.subject?.id !== subjectId || typeof saved.fileName !== 'string')
     throw Error('보관된 분석 정보가 맞지 않습니다. 데이터를 유지했으니 담당자에게 확인해 주세요.');
+  // Also redact requests saved by earlier app versions before replaying them.
+  return JSON.stringify({packet:saved.packet, fileName:'촬영-'+id});
 }
 
 // Partition retries by API and account; never save credentials in the outbox.
@@ -120,12 +122,12 @@ export const liveSource:GaitDataSource = {
       if (!pending) {
         if (!file) throw Error('복구할 요청이 없습니다. 영상을 선택해 주세요.');
         const packet = await extractCapture(file,id,capture?.day ?? '',capture?.mode ?? 'guided',
-          signal ?? new AbortController().signal,progress,capture?.height ?? null,capture?.daySource);
+          signal ?? new AbortController().signal,progress,capture?.height ?? null,capture?.daySource,capture?.serverPose);
         await check();
-        const body = JSON.stringify({fileName:file.name,packet});
+        const body = JSON.stringify({fileName:'촬영-'+packet.requestId,packet});
         if (new TextEncoder().encode(body).byteLength > 8000000) throw Error('분석 데이터가 너무 큽니다. 더 짧은 영상을 선택해 주세요. 서버에는 전송하지 않았습니다.');
         checkPendingBody(body, packet.requestId, id);
-        pending = await keepPending({key, id:packet.requestId, subjectId:id, fileName:file.name,
+        pending = await keepPending({key, id:packet.requestId, subjectId:id, fileName:'촬영-'+packet.requestId,
           body, delivery: 'unsent'}, lease);
       }
       await check();
@@ -136,7 +138,7 @@ export const liveSource:GaitDataSource = {
         catch (error) {
           if (!isMissing(error)) throw error;
           await check();
-          checkPendingBody(pending.body, pending.id, id);
+          const safeBody = checkPendingBody(pending.body, pending.id, id);
           const knownUnsent = pending.delivery === 'unsent' || pending.delivery === 'rejected';
           // Persist uncertainty BEFORE sending: a crash or lost response must never enable cleanup.
           await markDelivery(key, pending.id, 'unconfirmed', undefined, lease);
@@ -144,7 +146,7 @@ export const liveSource:GaitDataSource = {
           let receipt: {id:string;participant_id:string};
           try {
             receipt = await teamApi.shared<{id:string;participant_id:string}>(capturePath(id), {
-              method:'POST',headers:{'Content-Type':'application/json'},body:pending.body,
+              method:'POST',headers:{'Content-Type':'application/json'},body:safeBody,
             },signal);
           } catch (error) {
             if (isRejected(error)) {

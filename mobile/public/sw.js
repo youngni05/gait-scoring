@@ -1,4 +1,4 @@
-const CACHE = 'team-gait-shell-v10';
+const CACHE = 'team-gait-shell-v11';
 const SHELL = ['/', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png', '/apple-touch-icon.png', '/favicon.svg', '/fonts/wanted-sans/WantedSansVariable.woff2'];
 self.addEventListener('install', event => {
   event.waitUntil((async () => {

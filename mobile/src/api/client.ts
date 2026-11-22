@@ -38,12 +38,12 @@ export class ApiClient {
   readonly base: string;
   // Native browser fetch needs the global receiver, not this ApiClient instance.
   constructor(base: string, private token: () => string, private transport: typeof fetch = (input, init) => globalThis.fetch(input, init), private timeoutMs = 30000) { this.base = normalizeBase(base); }
-  private async request(path: string, init: RequestInit = {}, signal?: AbortSignal, authenticated = true): Promise<{ data: any; status: number }> {
+  private async request(path: string, init: RequestInit = {}, signal?: AbortSignal, authenticated = true, timeoutMs = this.timeoutMs): Promise<{ data: any; status: number }> {
     const controller = new AbortController();
     const abort = () => controller.abort();
     signal?.addEventListener('abort', abort, { once: true });
     if (signal?.aborted) abort();
-    const timer = setTimeout(abort, this.timeoutMs);
+    const timer = setTimeout(abort, timeoutMs);
     try {
       const headers = new Headers(init.headers);
       if (authenticated) headers.set('Authorization', `Bearer ${this.token()}`);
@@ -57,8 +57,8 @@ export class ApiClient {
       throw new ApiError(0, signal?.aborted ? 'CANCELLED' : 'NETWORK', 'Response unavailable');
     } finally { clearTimeout(timer); signal?.removeEventListener('abort', abort); }
   }
-  async shared<T>(path: string, init: RequestInit = {}, signal?: AbortSignal): Promise<T> {
-    const { data } = await this.request('/team' + path, init, signal);
+  async shared<T>(path: string, init: RequestInit = {}, signal?: AbortSignal, timeoutMs?: number): Promise<T> {
+    const { data } = await this.request('/team' + path, init, signal, true, timeoutMs);
     return data as T;
   }
   async me(signal?: AbortSignal): Promise<{ id: string; login_id: string }> {
