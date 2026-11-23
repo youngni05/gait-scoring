@@ -5,7 +5,7 @@ import { readPending, keepPending, clearPending, markDelivery, withPendingLock, 
 import type { Subject, ResultRecord } from './mock';
 import { LoginFailedError, type GaitDataSource, type SubjectInput, type SubjectSummary, type ResultPage } from './source';
 import { visitKneeSummary } from './report-values.mjs';
-import { visitGdi } from './visit-summary.mjs';
+import { stepGap, visitGdi } from './visit-summary.mjs';
 import { walkingEstimate } from './visit-walking.mjs';
 
 function subject(p: Participant): Subject {
@@ -80,9 +80,13 @@ export const liveSource:GaitDataSource = {
       '/participants/'+encodeURIComponent(id)+'/recording-summaries?limit=20&offset='+offset,{},signal);
     if (!Array.isArray(page.items) || page.offset !== offset || page.limit !== 20 || !Number.isInteger(page.total))
       throw Error('목록 응답 형식을 확인하지 못했습니다.');
-    return {...page, items:page.items.map(({preview,...row}) => preview ? {
-      ...row, gdi:visitGdi(preview).value, cadence:walkingEstimate(preview).cadence,
-    } : row)};
+    return {...page, items:page.items.map(({preview,...row}) => {
+      if (!preview) return row.symmetry == null ? {...row, stepTimeGapSeconds:null} : row;
+      const walking = walkingEstimate(preview);
+      const gap = stepGap(walking).value;
+      return {...row, gdi:visitGdi(preview).value, cadence:walking.cadence,
+        stepTimeGapSeconds:gap === null ? null : Math.abs(gap)};
+    })};
   },
   async getSubject(id,signal) {
     try { return subject(await teamApi.participant(id,signal)); }
