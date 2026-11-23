@@ -66,6 +66,9 @@ export function ResultListPage() {
         {records.map((r, i) => {
           const isLatest = offset === 0 && i === 0;
           const partial = Object.keys(r.missing).length > 0;
+          const gap = r.stepTimeGapSeconds;
+          const hasGapMetric = gap !== undefined;
+          const metricValue = hasGapMetric ? gap : r.symmetry;
           return (
             <li key={r.id} className="record-item">
               <button
@@ -101,8 +104,11 @@ export function ResultListPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="k">좌우 대칭</p>
-                    <p className={`v ${r.symmetry === null ? 'none' : ''}`}>{formatMetric(r.symmetry, 1)}</p>
+                    <p className="k">{hasGapMetric ? '좌우 걸음 시간 차' : '좌우 대칭'}</p>
+                    <p className={`v ${metricValue === null ? 'none' : ''}`}>
+                      {formatMetric(metricValue, hasGapMetric ? 2 : 1)}
+                      {typeof gap === 'number' && <small>초</small>}
+                    </p>
                   </div>
                 </div>
                 <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 'var(--text-caption)', color: 'var(--fg-70)' }}>

@@ -27,7 +27,12 @@ export class AnalysisFailedError extends Error {
   }
 }
 
-export interface ResultPage { items: ResultRecord[]; total: number; offset: number; limit: number }
+export interface ResultPage {
+  items: (ResultRecord & { stepTimeGapSeconds?: number | null })[];
+  total: number;
+  offset: number;
+  limit: number;
+}
 
 export interface GaitDataSource {
   login(username: string, password: string): Promise<void>;
