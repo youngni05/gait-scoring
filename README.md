@@ -2,6 +2,10 @@
 
 # 어르신 보행 분석 및 기록 관리 시스템
 
+## GitHub 이슈 작성
+
+OpenCode에서 `@github-issues 앱의 개선안을 이슈 초안으로 작성해 줘`라고 요청하면 [팀용 이슈 스킬](.opencode/skills/github-issues/SKILL.md)이 기존 이슈를 검색하고 한국어 초안을 작성합니다. 초안을 승인한 뒤에만 새 이슈를 등록하며, 등록하려면 해당 저장소에 이슈를 작성할 수 있는 GitHub 연결이 필요합니다.
+
 ## 팀 앱 실행
 
 휴대폰에서 관절 좌표를 추출하고 팀 서버에서 Python으로 분석한다. 대상자와 결과지는 한 PostgreSQL 데이터베이스에 저장한다. [팀 앱 실행과 배포](mobile/README.md)
